@@ -90,6 +90,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.nexatrode.nexawal.BuildConfig
 import com.nexatrode.nexawal.DeviceAuthGate
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.MoneroQr
@@ -2476,6 +2477,56 @@ private fun SettingsScreen(
                         enabled = !state.walletId.isNullOrBlank(),
                     )
                 }
+            }
+        }
+
+        Spacer(Modifier.height(20.dp))
+
+        Text(if (palette.classic) "ABOUT" else "About", color = secondaryText)
+        Spacer(Modifier.height(8.dp))
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            color = cardBg,
+            shape = sectionShape,
+            tonalElevation = if (palette.classic) 0.dp else 1.dp,
+            shadowElevation = 0.dp,
+            border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(
+                    "NexaWal ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                    color = primaryText,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    "MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy.",
+                    color = secondaryText,
+                )
+                Spacer(Modifier.height(12.dp))
+                SecondaryActionButton(
+                    text = "Privacy policy",
+                    onClick = {
+                        val uri = android.net.Uri.parse(
+                            "https://github.com/cacaosteve/nexawal-android/blob/main/docs/PRIVACY.md",
+                        )
+                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
+                    },
+                    palette = palette,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(8.dp))
+                SecondaryActionButton(
+                    text = "Source & license (MIT)",
+                    onClick = {
+                        val uri = android.net.Uri.parse(
+                            "https://github.com/cacaosteve/nexawal-android/blob/main/LICENSE",
+                        )
+                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
+                    },
+                    palette = palette,
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
         }
 
