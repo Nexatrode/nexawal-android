@@ -41,6 +41,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.nexatrode.nexawal.BuildConfig
 import com.nexatrode.nexawal.DeviceAuthGate
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.WalletManager
@@ -51,6 +52,21 @@ import kotlinx.coroutines.withContext
 
 // Must be top-level in Kotlin (local enums are not allowed).
 private enum class WalletSetupMode { CREATE, IMPORT }
+
+/** DEBUG-only Import prefill from getenv or local.properties → BuildConfig. */
+private fun debugTestMnemonic(): String {
+    if (!BuildConfig.DEBUG) return ""
+    return System.getenv("NEXAWAL_TEST_MNEMONIC")?.trim()?.takeIf { it.isNotEmpty() }
+        ?: BuildConfig.NEXAWAL_TEST_MNEMONIC.trim()
+}
+
+private fun debugTestRestoreHeight(): String {
+    if (!BuildConfig.DEBUG) return "0"
+    val raw = System.getenv("NEXAWAL_TEST_RESTORE_HEIGHT")?.trim()?.takeIf { it.isNotEmpty() }
+        ?: BuildConfig.NEXAWAL_TEST_RESTORE_HEIGHT.trim()
+    if (raw.isEmpty()) return "0"
+    return raw.replace(",", "")
+}
 
 /**
  * WalletCreationScreen
@@ -86,8 +102,8 @@ fun WalletCreationScreen(
     val modeIndex = remember { mutableIntStateOf(1) } // default to IMPORT like iOS
     val setupMode: WalletSetupMode = if (modeIndex.intValue == 0) WalletSetupMode.CREATE else WalletSetupMode.IMPORT
 
-    val mnemonicInput = remember { mutableStateOf("") }
-    val restoreHeightInput = remember { mutableStateOf("0") }
+    val mnemonicInput = remember { mutableStateOf(debugTestMnemonic()) }
+    val restoreHeightInput = remember { mutableStateOf(debugTestRestoreHeight()) }
     val isMainnet = remember { mutableStateOf(true) }
     val requireDeviceAuth = remember { mutableStateOf(MoneroConfig.requireDeviceAuth(context)) }
 
@@ -102,6 +118,16 @@ fun WalletCreationScreen(
     val suggestedRestoreHeight = remember { mutableStateOf<Long?>(null) }
     val isFetchingSuggestedHeight = remember { mutableStateOf(false) }
     val suggestedHeightError = remember { mutableStateOf<String?>(null) }
+
+    // Pre-wallet node config (same settings.json path as Settings).
+    val nodeUrlInput = remember {
+        mutableStateOf(walletManager.nodeAddressForDisplay(state.nodeUrl ?: walletManager.defaultNodeUrl()))
+    }
+    val nodeSaveStatus = remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(state.nodeUrl) {
+        nodeUrlInput.value = walletManager.nodeAddressForDisplay(state.nodeUrl ?: walletManager.defaultNodeUrl())
+    }
 
     // CREATE mode: freshly generated mnemonic + "wrote it down" backup gate.
     val generatedMnemonic = remember { mutableStateOf("") }
@@ -195,6 +221,12 @@ fun WalletCreationScreen(
 
         scope.launch {
             try {
+                // Persist whatever is in the node field so create/import works even if Save wasn't tapped.
+                val trimmedNode = nodeUrlInput.value.trim()
+                if (trimmedNode.isNotEmpty()) {
+                    walletManager.setNodeUrl(trimmedNode)
+                }
+
                 MoneroConfig.setRequireDeviceAuth(
                     context,
                     requireDeviceAuth.value && DeviceAuthGate.isAvailable(context)
@@ -213,9 +245,8 @@ fun WalletCreationScreen(
                     replaceExisting = replaceExisting,
                 )
 
-                // iOS parity: after create/import, start refresh immediately BUT do not await it here.
-                // Use the manager-owned scope so the refresh survives removal of the setup screen.
-                walletManager.refreshWalletInBackground()
+                // Refresh is started inside openWalletFromMnemonic (manager scope) before walletId
+                // is published, so it survives disposal of this setup screen.
 
                 // After importing/replacing, refresh persisted-wallet flag
                 hasStoredWallet.value = runCatching { walletManager.hasStoredWallet() }.getOrNull()
@@ -550,13 +581,62 @@ fun WalletCreationScreen(
                 Spacer(Modifier.height(12.dp))
             }
 
+            // Network & Node (editable before create/import; same persistence as Settings)
+            Text(if (neon) "NETWORK & NODE" else "Network & Node", color = palette.primaryText)
+            Spacer(Modifier.height(6.dp))
+            Text("Daemon URL", color = palette.primaryText, fontWeight = FontWeight.SemiBold)
+            Spacer(Modifier.height(6.dp))
+            OutlinedTextField(
+                value = nodeUrlInput.value,
+                onValueChange = { nodeUrlInput.value = it },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+                placeholder = { Text(walletManager.defaultNodeUrl(), color = palette.secondaryText) },
+                colors = nexaFieldColors(palette),
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                "Type the full URL, including http:// or https://.\nPublic: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089",
+                color = palette.secondaryText,
+            )
+            Spacer(modifier.height(12.dp))
+            PrimaryActionButton(
+                text = "Save node",
+                onClick = {
+                    nodeSaveStatus.value = null
+                    scope.launch {
+                        try {
+                            walletManager.setNodeUrl(nodeUrlInput.value)
+                            nodeSaveStatus.value = "Saved node"
+                            refreshSuggestedRestoreHeightIfNeeded(
+                                setupMode = setupMode,
+                                isMainnet = isMainnet.value,
+                                nodeUrl = walletManager.currentNodeUrl(),
+                                isFetching = isFetchingSuggestedHeight,
+                                suggestedHeight = suggestedRestoreHeight,
+                                suggestedError = suggestedHeightError,
+                            )
+                        } catch (t: Throwable) {
+                            nodeSaveStatus.value = "Failed to save: ${t.message ?: t.javaClass.simpleName}"
+                        }
+                    }
+                },
+                palette = palette,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            nodeSaveStatus.value?.let { status ->
+                Spacer(modifier.height(6.dp))
+                Text(status, color = palette.secondaryText)
+            }
+
+            Spacer(modifier.height(12.dp))
+
             // Info section (iOS parity)
             Text(if (neon) "INFO" else "Info", color = palette.primaryText)
-            Spacer(Modifier.height(6.dp))
+            Spacer(modifier.height(6.dp))
             Text("WalletCore Version: ${state.version ?: "(unknown)"}", color = palette.secondaryText)
-            Text("Node Address: ${walletManager.currentNodeUrl()}", color = palette.secondaryText)
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(modifier.height(24.dp))
         }
 
         if (showReplaceConfirm.value) {

@@ -3,6 +3,7 @@ package com.nexatrode.nexawal
 import android.util.Log
 
 import android.content.Context
+import com.nexatrode.nexawal.logic.NetworkRouting
 import com.nexatrode.nexawal.logic.SendGate
 import com.nexatrode.nexawal.logic.SendSafety
 import com.nexatrode.nexawal.walletcore.WalletCore
@@ -200,22 +201,15 @@ class WalletManager(
     /**
      * Default node URL (matches iOS default behavior).
      *
-     * Public TLS node for non-local testing.
+     * Public restricted monerod RPC via Caddy + Let's Encrypt on mini.
      */
-    fun defaultNodeUrl(): String = "http://127.0.0.1:18092"
+    fun defaultNodeUrl(): String = "https://rpc.nexatrode.com"
 
     /**
      * Host:port form for Settings / status UI (iOS parity).
      * Scheme is added only when talking to the core via [normalizeNodeUrl].
      */
-    fun nodeAddressForDisplay(url: String = currentNodeUrl()): String {
-        val s = url.trim()
-        return when {
-            s.startsWith("https://", ignoreCase = true) -> s.drop(8)
-            s.startsWith("http://", ignoreCase = true) -> s.drop(7)
-            else -> s
-        }
-    }
+    fun nodeAddressForDisplay(url: String = currentNodeUrl()): String = url.trim()
 
     fun defaultNodeAddress(): String = nodeAddressForDisplay(defaultNodeUrl())
 
@@ -337,37 +331,49 @@ class WalletManager(
     }
 
     private fun migrateLegacyDefaultNodeUrl(nodeUrl: String): String {
-        return when (normalizeNodeUrl(nodeUrl)) {
+        return if (isShippedDefaultNodeUrl(nodeUrl)) defaultNodeUrl() else normalizeNodeUrl(nodeUrl)
+    }
+
+    /**
+     * Live default or a previously shipped default. These are not user overrides, so app
+     * updates can move [defaultNodeUrl] without getting stuck on the old string.
+     */
+    private fun isShippedDefaultNodeUrl(nodeUrl: String): Boolean {
+        val trimmed = nodeUrl.trim().trimEnd('/')
+        if (trimmed.isEmpty()) return true
+        val live = defaultNodeUrl().trim().trimEnd('/')
+        if (trimmed.equals(live, ignoreCase = true)) return true
+        val normalized = runCatching { normalizeNodeUrl(trimmed) }.getOrDefault(trimmed).trimEnd('/')
+        if (normalized.equals(live, ignoreCase = true)) return true
+        return when (normalized.lowercase()) {
             "https://node.sethforprivacy.com:443",
             "https://node.monerod.org:443",
-            "http://192.168.4.137:18081",
-            "http://10.0.2.2:18081" -> defaultNodeUrl()
-            else -> normalizeNodeUrl(nodeUrl)
+            "http://mini.nexatrode.com:18092",
+            "https://mini.nexatrode.com:18092",
+            "http://mini.nexatrode.com:18089",
+            "https://mini.nexatrode.com:18089",
+            "http://rpc.nexatrode.com",
+            "http://rpc.nexatrode.com:443",
+            "https://rpc.nexatrode.com",
+            "rpc.nexatrode.com" -> true
+            else -> false
         }
     }
 
     /**
      * Normalize user input into a URL string that walletcore expects.
      *
-     * Accepts:
-     * - "10.0.2.2:18092" -> "http://10.0.2.2:18092"
-     * - "node.example.com:443" -> "https://node.example.com:443"
-     * - "http://10.0.2.2:18092" (unchanged)
-     * - "https://example.com:18092" (unchanged)
+     * Accepts full URLs only for user-entered clearnet nodes:
+     * - "https://rpc.nexatrode.com"
+     * - "http://192.168.4.137:18089"
      *
      * Trims whitespace and rejects blank values.
      */
     private fun normalizeNodeUrl(raw: String): String {
         val s = raw.trim()
         require(s.isNotEmpty()) { "node URL must not be empty" }
-
-        return if (s.startsWith("http://", ignoreCase = true) || s.startsWith("https://", ignoreCase = true)) {
-            s
-        } else if (s.endsWith(":443")) {
-            "https://$s"
-        } else {
-            "http://$s"
-        }
+        return NetworkRouting.explicitNodeUrl(s)
+            ?: NetworkRouting.normalizeUrl(s)
     }
 
     /**
@@ -382,7 +388,8 @@ class WalletManager(
         }
 
         val s = runCatching { readSettings() }.getOrNull() ?: return@withContext false
-        _state.value = _state.value.copy(nodeUrl = s.nodeUrl, lastError = null, lastPersistedAtMs = s.savedAtMs)
+        val nodeUrl = migrateLegacyDefaultNodeUrl(s.nodeUrl.ifBlank { defaultNodeUrl() })
+        _state.value = _state.value.copy(nodeUrl = nodeUrl, lastError = null, lastPersistedAtMs = s.savedAtMs)
         true
     }
 
@@ -392,15 +399,19 @@ class WalletManager(
      * This is what the Settings screen should call.
      */
     suspend fun setNodeUrl(newNodeUrl: String) = withContext(ioDispatcher) {
-        val normalized = normalizeNodeUrl(newNodeUrl)
+        val explicit = NetworkRouting.explicitNodeUrl(newNodeUrl.trim())
+            ?: throw IllegalArgumentException("Start the node URL with http:// or https://")
+        val usingDefault = isShippedDefaultNodeUrl(explicit)
+        val normalized = if (usingDefault) defaultNodeUrl() else explicit
 
         // Update state immediately so UI and flows use it.
         _state.value = _state.value.copy(nodeUrl = normalized, lastError = null)
 
         // Persist to settings.json (works even before a wallet exists).
+        // Blank nodeUrl means "follow the live app default".
         persistSettings(
             StoredSettings(
-                nodeUrl = normalized,
+                nodeUrl = if (usingDefault) "" else normalized,
                 savedAtMs = System.currentTimeMillis(),
             )
         )
@@ -413,12 +424,45 @@ class WalletManager(
             val meta = readMetadata()
             persistMetadata(
                 meta.copy(
-                    nodeUrl = normalized,
+                    nodeUrl = if (usingDefault) defaultNodeUrl() else normalized,
                     savedAtMs = System.currentTimeMillis()
                 )
             )
         }.onFailure { t ->
             _state.value = _state.value.copy(lastError = "Failed to persist node URL: ${t.message ?: t.javaClass.simpleName}")
+        }
+    }
+
+    /**
+     * Persist the node URL, stop any in-flight scan, and refresh against the new daemon.
+     * Same-chain switches keep scan progress; they do not clear cache or rescan.
+     */
+    suspend fun applyNodeAndReconnect(newNodeUrl: String) {
+        setNodeUrl(newNodeUrl)
+        if (_state.value.walletId.isNullOrBlank()) return
+        if (refreshInProgress.get() || refreshJob?.isActive == true) {
+            cancelRefresh()
+            delay(400L)
+        }
+        refreshWallet()
+    }
+
+    fun applyNodeAndReconnectInBackground(newNodeUrl: String): Job = scope.launch {
+        runCatching { applyNodeAndReconnect(newNodeUrl) }
+            .onFailure { t ->
+                _state.value = _state.value.copy(lastError = t.message ?: t.javaClass.simpleName)
+            }
+    }
+
+    fun rescanFromHeightInBackground(fromHeight: Long): Job = scope.launch {
+        runCatching {
+            if (refreshInProgress.get() || refreshJob?.isActive == true) {
+                cancelRefresh()
+                delay(400L)
+            }
+            rescanFromHeight(fromHeight)
+        }.onFailure { t ->
+            _state.value = _state.value.copy(lastError = t.message ?: t.javaClass.simpleName)
         }
     }
 
@@ -580,8 +624,10 @@ class WalletManager(
             )
         }
 
-        // Derive and cache primary address for UI (iOS parity with WalletView.walletAddress).
-        // If derivation fails, log and surface it (non-fatal) instead of silently producing null.
+        // Derive primary address for UI, but do NOT publish walletId yet.
+        // MainActivity switches to AppScaffold as soon as walletId is non-null, which disposes
+        // WalletCreationScreen and cancels its coroutine — so publishing early would skip
+        // persist + refreshWalletInBackground() and leave the UI stuck at "Waiting for network height".
         val derivedAddress: String? = withContext(ioDispatcher) {
             runCatching {
                 WalletCore.derivePrimaryAddressFromMnemonic(
@@ -599,23 +645,6 @@ class WalletManager(
                 lastError = "Failed to derive primary address: ${t.message ?: t.toString()}"
             )
         }.getOrNull()
-
-        _state.value = _state.value.copy(
-            walletId = walletId,
-            nodeUrl = normalizedNodeUrl,
-            walletAddress = derivedAddress,
-            hasStoredWallet = true,
-            lastLoadedFromDiskAtMs = System.currentTimeMillis(),
-            lastError = null,
-        )
-
-        // Best-effort retry if we ended up with no address in state.
-        if (derivedAddress.isNullOrBlank()) {
-            deriveAndStorePrimaryAddressBestEffort(
-                mnemonic = mnemonic,
-                mainnet = mainnet
-            )
-        }
 
         // Best-effort: import cache from disk if present.
         withContext(ioDispatcher) {
@@ -639,7 +668,25 @@ class WalletManager(
             )
         }
 
-        _state.value = _state.value.copy(hasStoredWallet = runCatching { hasStoredWallet() }.getOrNull())
+        // Start sync on the manager-owned scope BEFORE publishing walletId (which swaps the UI).
+        refreshWalletInBackground()
+
+        _state.value = _state.value.copy(
+            walletId = walletId,
+            nodeUrl = normalizedNodeUrl,
+            walletAddress = derivedAddress,
+            hasStoredWallet = runCatching { hasStoredWallet() }.getOrNull(),
+            lastLoadedFromDiskAtMs = System.currentTimeMillis(),
+            lastError = null,
+        )
+
+        // Best-effort retry if we ended up with no address in state.
+        if (derivedAddress.isNullOrBlank()) {
+            deriveAndStorePrimaryAddressBestEffort(
+                mnemonic = mnemonic,
+                mainnet = mainnet
+            )
+        }
     }
 
 
@@ -828,7 +875,7 @@ class WalletManager(
                     }
 
                 // Poll until complete (iOS-style polling + periodic cache persistence + stall detection).
-                val st = waitForRefreshCompletion(walletId = walletId)
+                val st = waitForRefreshCompletion(walletId = walletId, nodeUrl = nodeUrl)
 
                 // Final export at end of refresh (authoritative).
                 withContext(ioDispatcher) {
@@ -1034,6 +1081,7 @@ class WalletManager(
         }
 
         refreshJob?.cancel()
+        refreshInProgress.set(false)
 
         _state.value = _state.value.copy(
             refreshInProgress = false,
@@ -1264,8 +1312,9 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            // Finish any prior prepared payload before constructing a new one (shared inputs).
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)
+            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
+                return@withContext SendJson.SendResult(txid = recovered.txid, fee = recovered.fee)
+            }
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSendJson(
@@ -1310,7 +1359,9 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)
+            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
+                return@withContext SendJson.SendResult(txid = recovered.txid, fee = recovered.fee)
+            }
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSendJsonWithFilter(
@@ -1423,7 +1474,13 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)
+            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
+                return@withContext SendJson.SweepSendResult(
+                    txid = recovered.txid,
+                    amount = recovered.amount,
+                    fee = recovered.fee,
+                )
+            }
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSweepJson(
@@ -1465,7 +1522,13 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)
+            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
+                return@withContext SendJson.SweepSendResult(
+                    txid = recovered.txid,
+                    amount = recovered.amount,
+                    fee = recovered.fee,
+                )
+            }
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSweepJsonWithFilter(
@@ -1512,6 +1575,38 @@ class WalletManager(
             normalized.contains("invalid node") ||
             normalized.contains("failed to connect daemon") ||
             normalized.contains("response wasn't the expected json")
+    }
+
+    /** Soft fetch failures that usually recover after shrinking/restarting the range batch. */
+    private fun isRecoverableBulkFetchError(message: String): Boolean {
+        val normalized = message.lowercase()
+        return normalized.contains("response body closed before all bytes were read") ||
+            normalized.contains("interface error") ||
+            normalized.contains("channelclosed") ||
+            normalized.contains("channel closed") ||
+            normalized.contains("connection reset") ||
+            normalized.contains("broken pipe") ||
+            normalized.contains("unexpected eof")
+    }
+
+    /**
+     * True when a wallet is open, behind tip, and no refresh is running.
+     * Used to auto-resume sync after stall failure / app backgrounding.
+     */
+    fun shouldAutoResumeRefresh(): Boolean {
+        if (refreshInProgress.get() || _state.value.refreshInProgress) return false
+        if (_state.value.walletId == null) return false
+        val st = _state.value.syncStatus ?: return false
+        val tipKnown = st.chainHeight > st.restoreHeight || st.chainTime > 0L
+        if (!tipKnown) return true // still waiting for tip — worth another try
+        return st.lastScanned + 3L < st.chainHeight
+    }
+
+    fun refreshWalletInBackgroundIfNeeded(reason: String = "auto-resume"): Job? {
+        if (!shouldAutoResumeRefresh()) return null
+        Log.i("WalletManager", "Auto-resuming refresh ($reason) walletId=${_state.value.walletId}")
+        _state.value = _state.value.copy(lastError = null)
+        return refreshWalletInBackground()
     }
 
     private suspend fun updateStatusSnapshot(walletId: String) {
@@ -1563,15 +1658,17 @@ class WalletManager(
      */
     private suspend fun waitForRefreshCompletion(
         walletId: String,
+        nodeUrl: String,
         pollIntervalMs: Long = 1_000L,
-        slowFetchWarningMs: Long = 45_000L,
-        hardStallTimeoutMs: Long = 180_000L,
+        slowFetchWarningMs: Long = 30_000L,
+        hardStallTimeoutMs: Long = 90_000L,
     ): WalletCore.SyncStatus = withContext(ioDispatcher) {
         var targetHeight: Long? = null
         var lastScannedSnapshot: Long = 0
         val refreshStartMs = System.currentTimeMillis()
         var lastProgressAtMs = refreshStartMs
         var slowFetchWarningLogged = false
+        var stallFallbackUsed = false
 
         // Periodic persistence while refresh is running.
         var lastPersistAtMs = 0L
@@ -1627,6 +1724,26 @@ class WalletManager(
                     if (isTerminalRefreshCoreError(coreErr)) {
                         exportCacheAndPersist(walletId)
                         throw IOException(coreErr)
+                    }
+                    // Don't wait for the full hard-stall timer on known truncated/range-fetch failures.
+                    if (!stallFallbackUsed && isRecoverableBulkFetchError(coreErr)) {
+                        stallFallbackUsed = true
+                        Log.w(
+                            "WalletManager",
+                            "↩️ Recoverable fetch error; falling back to bulk batch=$ANDROID_BULK_STALL_FALLBACK_BATCH and retrying… err=$coreErr"
+                        )
+                        exportCacheAndPersist(walletId)
+                        runCatching { WalletCore.refreshCancel(walletId) }
+                        runCatching {
+                            WalletCore.setEnv("WALLETCORE_BULK_FETCH_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
+                            WalletCore.setEnv("WALLETCORE_UPSTREAM_BLOCK_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
+                            WalletCore.setEnv("WALLETCORE_BULK_MODE", ANDROID_BULK_MODE)
+                        }
+                        delay(500L)
+                        WalletCore.refreshAsync(walletId = walletId, nodeUrl = nodeUrl)
+                        lastProgressAtMs = System.currentTimeMillis()
+                        slowFetchWarningLogged = false
+                        continue
                     }
                 }
             }
@@ -1723,6 +1840,28 @@ class WalletManager(
             if (tip != null && remaining != null && remaining > 0 && stalledForMs > hardStallTimeoutMs) {
                 val coreErr = runCatching { WalletCore.lastErrorMessage() }.getOrNull()
 
+                // iOS parity: on first stall, shrink bulk batch and restart async refresh instead of failing.
+                if (!stallFallbackUsed) {
+                    stallFallbackUsed = true
+                    Log.w(
+                        "WalletManager",
+                        "↩️ Stall detected (>${hardStallTimeoutMs}ms). Falling back to bulk batch=$ANDROID_BULK_STALL_FALLBACK_BATCH and retrying… " +
+                            "walletId=$walletId lastScanned=${st.lastScanned} remaining=$remaining lastError=${coreErr ?: "<null>"}"
+                    )
+                    exportCacheAndPersist(walletId)
+                    runCatching { WalletCore.refreshCancel(walletId) }
+                    runCatching {
+                        WalletCore.setEnv("WALLETCORE_BULK_FETCH_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
+                        WalletCore.setEnv("WALLETCORE_UPSTREAM_BLOCK_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
+                        WalletCore.setEnv("WALLETCORE_BULK_MODE", ANDROID_BULK_MODE)
+                    }
+                    delay(500L)
+                    WalletCore.refreshAsync(walletId = walletId, nodeUrl = nodeUrl)
+                    lastProgressAtMs = System.currentTimeMillis()
+                    slowFetchWarningLogged = false
+                    continue
+                }
+
                 Log.e(
                     "WalletManager",
                     "STALL: refresh appears stuck (>${hardStallTimeoutMs}ms) walletId=$walletId " +
@@ -1794,12 +1933,22 @@ class WalletManager(
         }.getOrNull()
     }
 
+    private data class RecoveredPreparedSend(
+        val txid: String,
+        val amount: Long,
+        val fee: Long,
+    )
+
     /**
-     * If a prepared payload is on disk, relay it (idempotent) before any new prepare.
+     * If a prepared payload is on disk, relay it (idempotent) and return that result.
+     * Callers must not construct a second transaction in the same user action.
      * Throws on relay failure so we do not construct a conflicting second tx.
      */
-    private fun completePendingPreparedSend(walletId: String, preferredNodeUrl: String) {
-        val pending = loadPendingPrepared(walletId) ?: return
+    private fun completePendingPreparedSend(
+        walletId: String,
+        preferredNodeUrl: String,
+    ): RecoveredPreparedSend? {
+        val pending = loadPendingPrepared(walletId) ?: return null
         applyProxyEnv(forBroadcast = true)
         val endpoint = pending.nodeUrl.ifBlank { preferredNodeUrl }
         Log.i(
@@ -1817,6 +1966,11 @@ class WalletManager(
         Log.i(
             "WalletManager",
             "Recovered pending prepared send txid=${relay.txid} status=${relay.status}",
+        )
+        return RecoveredPreparedSend(
+            txid = relay.txid,
+            amount = pending.prepared.amount,
+            fee = pending.prepared.fee,
         )
     }
 
@@ -1862,13 +2016,13 @@ class WalletManager(
     companion object {
         const val DEFAULT_WALLET_ID: String = "main_wallet"
 
-        // Android emulator pays a high fixed cost per host-bridge RPC. Larger batches keep the
-        // UI responsive while reducing round trips; walletcore clamps this env to a safe range.
-        private const val ANDROID_BULK_FETCH_BATCH = 500
-        private const val ANDROID_UPSTREAM_BLOCK_BATCH = 500
+        // Prefer smaller range batches on Android: 500-block get_blocks.bin responses
+        // frequently stall / truncate on phone networks (Cuprate or monerod). iOS falls
+        // back to 150 after a stall; start Android there so we don't hang for 3 minutes first.
+        private const val ANDROID_BULK_FETCH_BATCH = 150
+        private const val ANDROID_UPSTREAM_BLOCK_BATCH = 150
+        private const val ANDROID_BULK_STALL_FALLBACK_BATCH = 100
 
-        // Android experiment: prefer the range-style binary endpoint while Cuprate wallet2
-        // parity is still being finished.
         private const val ANDROID_BULK_MODE = "range"
     }
 
@@ -2037,9 +2191,22 @@ class WalletManager(
             )
         }.getOrNull()
 
+        val settingsNode = _state.value.nodeUrl?.takeIf { it.isNotBlank() }
+        val resolvedNode = settingsNode ?: meta.nodeUrl
+        if (settingsNode != null && meta.nodeUrl != settingsNode) {
+            runCatching {
+                persistMetadata(
+                    meta.copy(
+                        nodeUrl = settingsNode,
+                        savedAtMs = System.currentTimeMillis(),
+                    )
+                )
+            }
+        }
+
         _state.value = _state.value.copy(
             walletId = meta.walletId,
-            nodeUrl = meta.nodeUrl,
+            nodeUrl = resolvedNode,
             walletAddress = derivedAddress,
             hasStoredWallet = true,
             lastLoadedFromDiskAtMs = System.currentTimeMillis(),

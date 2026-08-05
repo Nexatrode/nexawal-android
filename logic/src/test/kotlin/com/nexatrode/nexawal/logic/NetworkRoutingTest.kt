@@ -43,9 +43,11 @@ class NetworkRoutingTest {
     }
 
     @Test
-    fun normalizeUrlAddsScheme() {
+    fun normalizeUrlKeepsExplicitSchemesAndDefaultsLegacyHostPortToHttp() {
         assertEquals("http://host:18081", NetworkRouting.normalizeUrl("host:18081"))
-        assertEquals("https://host:443", NetworkRouting.normalizeUrl("host:443"))
         assertEquals("https://host:18081", NetworkRouting.normalizeUrl("https://host:18081"))
+        assertEquals("https://rpc.nexatrode.com", NetworkRouting.normalizeUrl("https://rpc.nexatrode.com"))
+        assertEquals(null, NetworkRouting.explicitNodeUrl("rpc.nexatrode.com"))
+        assertEquals("https://rpc.nexatrode.com", NetworkRouting.explicitNodeUrl("https://rpc.nexatrode.com"))
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -18,15 +20,43 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "NEXAWAL_TEST_MNEMONIC", "\"\"")
+        buildConfigField("String", "NEXAWAL_TEST_RESTORE_HEIGHT", "\"\"")
     }
 
     buildTypes {
+        // DEBUG first-run testing: set in local.properties (gitignored), e.g.
+        //   nexawal.test.mnemonic=word1 word2 ... word25
+        //   nexawal.test.restoreHeight=3519450
+        debug {
+            val localProps = Properties()
+            val localFile = rootProject.file("local.properties")
+            if (localFile.exists()) {
+                localFile.inputStream().use { stream -> localProps.load(stream) }
+            }
+            fun escapeBuildConfig(value: String): String =
+                value.replace("\\", "\\\\").replace("\"", "\\\"")
+            val testMnemonic = localProps.getProperty("nexawal.test.mnemonic", "") ?: ""
+            val testRestoreHeight = localProps.getProperty("nexawal.test.restoreHeight", "") ?: ""
+            buildConfigField(
+                "String",
+                "NEXAWAL_TEST_MNEMONIC",
+                "\"${escapeBuildConfig(testMnemonic)}\"",
+            )
+            buildConfigField(
+                "String",
+                "NEXAWAL_TEST_RESTORE_HEIGHT",
+                "\"${escapeBuildConfig(testRestoreHeight)}\"",
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "NEXAWAL_TEST_MNEMONIC", "\"\"")
+            buildConfigField("String", "NEXAWAL_TEST_RESTORE_HEIGHT", "\"\"")
         }
     }
     compileOptions {
@@ -35,6 +65,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

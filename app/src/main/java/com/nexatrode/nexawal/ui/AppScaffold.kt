@@ -7,6 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -94,6 +98,9 @@ import com.nexatrode.nexawal.WalletManager.ReceiveSubaddressEntry
 import com.nexatrode.nexawal.SendJson
 import com.nexatrode.nexawal.TimeFormat
 import com.nexatrode.nexawal.Transfer
+import com.nexatrode.nexawal.logic.MoneroPaymentUri
+import com.nexatrode.nexawal.logic.NetworkRouting
+import com.nexatrode.nexawal.logic.XmrAmount
 import com.nexatrode.nexawal.WalletManager
 import com.nexatrode.nexawal.XmrFormat
 import com.nexatrode.nexawal.walletcore.WalletCore
@@ -119,6 +126,7 @@ internal data class NexaPalette(
     val cta: Color,
     val ctaText: Color,
     val classic: Boolean, // true == neon terminal theme
+    val isLight: Boolean,
 )
 
 @Composable
@@ -144,6 +152,7 @@ internal fun rememberNexaPalette(classicUI: Boolean): NexaPalette {
                     cta = Color(0xFF39FF14),
                     ctaText = Color(0xFF001A12),
                     classic = true,
+                    isLight = false,
                 )
             } else {
                 NexaPalette(
@@ -160,6 +169,7 @@ internal fun rememberNexaPalette(classicUI: Boolean): NexaPalette {
                     cta = Color(0xFF0A7A2F),
                     ctaText = Color(0xFFFFFFFF),
                     classic = true,
+                    isLight = true,
                 )
             }
         } else {
@@ -177,6 +187,7 @@ internal fun rememberNexaPalette(classicUI: Boolean): NexaPalette {
                 cta = Color(0xFFFF6B35),
                 ctaText = Color(0xFFFFFFFF),
                 classic = false,
+                isLight = !dark,
             )
         }
     }
@@ -273,8 +284,8 @@ internal fun PrimaryActionButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = container,
             contentColor = content,
-            disabledContainerColor = if (neon) Color(0xFF1A1F1A) else Color(0xFFFF6B35).copy(alpha = 0.4f),
-            disabledContentColor = if (neon) palette.secondaryText.copy(alpha = 0.5f) else Color.White.copy(alpha = 0.7f),
+            disabledContainerColor = if (neon) palette.cta.copy(alpha = if (palette.isLight) 0.45f else 0.35f) else Color(0xFFFF6B35).copy(alpha = 0.4f),
+            disabledContentColor = if (neon) palette.ctaText.copy(alpha = 0.7f) else Color.White.copy(alpha = 0.7f),
         )
     ) {
         Text(
@@ -295,16 +306,17 @@ internal fun SecondaryActionButton(
     enabled: Boolean = true,
 ) {
     val neon = palette.classic
+    val lightNeon = neon && palette.isLight
     Button(
         onClick = onClick,
         enabled = enabled,
         modifier = modifier.height(54.dp),
-        shape = RoundedCornerShape(if (neon) 28.dp else 14.dp),
-        border = BorderStroke(if (neon) 1.dp else 1.dp, if (neon) palette.border else palette.separator),
+        shape = RoundedCornerShape(if (lightNeon || !neon) 14.dp else 28.dp),
+        border = BorderStroke(if (lightNeon) 1.5.dp else 1.dp, if (neon) palette.border else palette.separator),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (neon) Color(0xFF121612) else palette.secondaryAction,
+            containerColor = palette.secondaryAction,
             contentColor = if (neon) palette.accent else palette.primaryText,
-            disabledContainerColor = if (neon) Color(0xFF121612) else palette.secondaryAction.copy(alpha = 0.5f),
+            disabledContainerColor = palette.secondaryAction.copy(alpha = if (lightNeon) 0.7f else 0.5f),
             disabledContentColor = if (neon) palette.secondaryText.copy(alpha = 0.45f) else palette.primaryText.copy(alpha = 0.5f),
         )
     ) {
@@ -333,12 +345,24 @@ fun AppScaffold(
     val context = LocalContext.current
     var classicUI by remember { mutableStateOf(MoneroConfig.isClassicUIEnabled(context)) }
     val palette = rememberNexaPalette(classicUI)
+    val lifecycleOwner = LocalLifecycleOwner.current
     val items = listOf(
         BottomNavItem.Wallet,
         BottomNavItem.Receive,
         BottomNavItem.Send,
         BottomNavItem.Settings,
     )
+
+    // Resume sync after backgrounding / stall failure without requiring a manual restart.
+    DisposableEffect(lifecycleOwner, walletManager) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_START) {
+                walletManager.refreshWalletInBackgroundIfNeeded(reason = "lifecycle-on-start")
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -795,10 +819,12 @@ private fun WalletScreen(
         SectionCard(palette = palette) {
             Column {
                 val hasNodeError = mergedError != null && !state.refreshInProgress && !isSynced
+                val isStallError = hasNodeError && mergedError!!.contains("Refresh stalled", ignoreCase = true)
                 // Treat sync as effectively not-complete for display when a refresh error exists,
                 // so we never imply "synced" alongside an unreachable/failed node.
                 val isSyncedEffective = isSynced && mergedError == null
                 val syncHeadlineRaw = when {
+                    isStallError -> "Sync stalled"
                     hasNodeError -> "Node unreachable"
                     isSyncedEffective -> "Wallet synced"
                     targetHeight == 0L -> "Connecting to node"
@@ -808,6 +834,7 @@ private fun WalletScreen(
                 }
                 val syncHeadline = if (palette.classic) syncHeadlineRaw.uppercase() else syncHeadlineRaw
                 val syncDetail = when {
+                    isStallError -> "Tap Refresh Wallet to continue (or reopen the app)."
                     hasNodeError -> mergedError!!.let { if (it.length > 120) it.take(120) + "…" else it }
                     isSyncedEffective -> "Scanned to block ${formatGrouped(lastScanned)}"
                     targetHeight == 0L -> "Waiting for network height"
@@ -1506,30 +1533,13 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     var showExactConfirmation by remember { mutableStateOf(false) }
     var showMaxConfirmation by remember { mutableStateOf(false) }
     var showScanner by remember { mutableStateOf(false) }
-    var sendFromSubaddressEnabled by remember { mutableStateOf(false) }
-    var fromSubaddressMinor by remember { mutableStateOf(0) }
-    var receiveEntries by remember { mutableStateOf<List<ReceiveSubaddressEntry>>(emptyList()) }
-    var subaddressUnlockedOverride by remember { mutableStateOf<Long?>(null) }
 
-    val unlockedPiconero = if (sendFromSubaddressEnabled) {
-        subaddressUnlockedOverride ?: 0L
-    } else {
-        state.balance?.unlockedPiconero ?: 0L
-    }
+    val unlockedPiconero = state.balance?.unlockedPiconero ?: 0L
     val unlockedXmr = XmrFormat.formatPiconeroAsDisplayXmr(unlockedPiconero)
     val hasWallet = !state.walletId.isNullOrBlank()
-    val configSnapshot = remember(context, state.nodeUrl) { MoneroConfig.snapshot(context) }
-    val broadcastNodeUrl = remember(context, state.nodeUrl, configSnapshot) {
-        MoneroConfig.broadcastNodeUrl(context, walletManager.currentNodeUrl())
-    }
-    val selectedSubaddressTitle = receiveEntries.firstOrNull { it.subaddressIndex == fromSubaddressMinor }
-        ?.let { entry ->
-            entry.label.trim().ifEmpty { "Subaddress ${entry.subaddressIndex}" }
-        }
-        ?: "Subaddress $fromSubaddressMinor"
 
     fun canPreviewFee(): Boolean = hasWallet && toAddress.trim().isNotEmpty() && amountXmrText.trim().isNotEmpty() && !isEstimating && !isSending
-    fun amountPiconeroOrNull(): Long? = runCatching { parseXmrToPiconero(amountXmrText) }.getOrNull()
+    fun amountPiconeroOrNull(): Long? = XmrAmount.parsePiconero(amountXmrText)
     fun hasUnlockedForExactSend(): Boolean {
         val amount = amountPiconeroOrNull() ?: return false
         val fee = estimatedFee?.fee ?: return false
@@ -1545,34 +1555,6 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
         val fee = estimatedFee ?: return null
         val amount = amountPiconeroOrNull() ?: return null
         return XmrFormat.formatPiconeroAsXmr(amount + fee.fee)
-    }
-
-    LaunchedEffect(hasWallet) {
-        if (!hasWallet) return@LaunchedEffect
-        runCatching { walletManager.loadReceiveSubaddressBook() }
-            .onSuccess { book ->
-                receiveEntries = book.entries
-                if (book.entries.none { it.subaddressIndex == fromSubaddressMinor }) {
-                    fromSubaddressMinor = 0
-                }
-            }
-            .onFailure { errorText = it.message ?: it.javaClass.simpleName }
-    }
-
-    LaunchedEffect(sendFromSubaddressEnabled, fromSubaddressMinor, hasWallet) {
-        if (!hasWallet || !sendFromSubaddressEnabled) {
-            subaddressUnlockedOverride = null
-            return@LaunchedEffect
-        }
-
-        runCatching { walletManager.getBalance(fromSubaddressMinor) }
-            .onSuccess { bal ->
-                subaddressUnlockedOverride = bal.unlockedPiconero
-            }
-            .onFailure {
-                subaddressUnlockedOverride = null
-                errorText = it.message ?: it.javaClass.simpleName
-            }
     }
 
     Column(modifier = Modifier.fillMaxSize().background(palette.background).verticalScroll(rememberScrollState()).padding(16.dp)) {
@@ -1703,32 +1685,17 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 scope.launch {
                     isEstimating = true
                     try {
-                        val amountPiconero = parseXmrToPiconero(amountXmrText)
-                        estimatedFee = if (sendFromSubaddressEnabled) {
-                            walletManager.previewFee(
-                                fromSubaddressMinor = fromSubaddressMinor,
-                                destinations = listOf(
-                                    SendJson.Destination(
-                                        address = toAddress.trim(),
-                                        amount = amountPiconero
-                                    )
+                        val amountPiconero = XmrAmount.parsePiconero(amountXmrText)
+                            ?: throw IllegalArgumentException("Invalid amount")
+                        estimatedFee = walletManager.previewFee(
+                            destinations = listOf(
+                                SendJson.Destination(
+                                    address = toAddress.trim(),
+                                    amount = amountPiconero
                                 )
                             )
-                        } else {
-                            walletManager.previewFee(
-                                destinations = listOf(
-                                    SendJson.Destination(
-                                        address = toAddress.trim(),
-                                        amount = amountPiconero
-                                    )
-                                )
-                            )
-                        }
-                        infoText = if (sendFromSubaddressEnabled) {
-                            "Fee estimated using $selectedSubaddressTitle."
-                        } else {
-                            "Fee estimated successfully."
-                        }
+                        )
+                        infoText = "Fee estimated successfully."
                     } catch (t: Throwable) {
                         errorText = t.message ?: t.javaClass.simpleName
                     } finally {
@@ -1766,19 +1733,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 scope.launch {
                     isPreviewingMax = true
                     try {
-                        sweepPreview = if (sendFromSubaddressEnabled) {
-                            walletManager.previewSweep(
-                                fromSubaddressMinor = fromSubaddressMinor,
-                                toAddress = toAddress.trim()
-                            )
-                        } else {
-                            walletManager.previewSweep(toAddress = toAddress.trim())
-                        }
-                        infoText = if (sendFromSubaddressEnabled) {
-                            "Maximum sendable amount estimated using $selectedSubaddressTitle."
-                        } else {
-                            "Maximum sendable amount estimated."
-                        }
+                        sweepPreview = walletManager.previewSweep(toAddress = toAddress.trim())
+                        infoText = "Maximum sendable amount estimated."
                     } catch (t: Throwable) {
                         errorText = t.message ?: t.javaClass.simpleName
                     } finally {
@@ -1803,87 +1759,6 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(16.dp))
-
-        SectionLabel("Advanced", palette)
-        Spacer(Modifier.height(8.dp))
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text("Send from specific subaddress", color = palette.primaryText, fontWeight = FontWeight.SemiBold)
-                Spacer(Modifier.height(4.dp))
-                Text("Constrain inputs to one receive subaddress for tighter spend control.", color = palette.secondaryText)
-            }
-            Switch(
-                checked = sendFromSubaddressEnabled,
-                onCheckedChange = {
-                    sendFromSubaddressEnabled = it
-                    estimatedFee = null
-                    sweepPreview = null
-                    sendResult = null
-                    sweepResult = null
-                    infoText = null
-                    errorText = null
-                },
-                colors = nexaSwitchColors(palette),
-            )
-        }
-        if (sendFromSubaddressEnabled) {
-            Spacer(Modifier.height(12.dp))
-            Text("Selected subaddress", color = palette.primaryText)
-            Spacer(Modifier.height(6.dp))
-            if (receiveEntries.isEmpty()) {
-                Text("Loading subaddresses…", color = palette.secondaryText)
-            } else {
-                receiveEntries.forEach { entry ->
-                    val title = entry.label.trim().ifEmpty { "Subaddress ${entry.subaddressIndex}" }
-                    SecondaryActionButton(
-                        text = if (entry.subaddressIndex == fromSubaddressMinor) "Selected: $title" else title,
-                        onClick = {
-                            fromSubaddressMinor = entry.subaddressIndex
-                            estimatedFee = null
-                            sweepPreview = null
-                            sendResult = null
-                            sweepResult = null
-                            infoText = null
-                            errorText = null
-                        },
-                        palette = palette,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(Modifier.height(4.dp))
-                }
-                Spacer(Modifier.height(8.dp))
-                Text("This constrains inputs to account 0, subaddress $fromSubaddressMinor.", color = palette.secondaryText)
-            }
-        }
-
-        Spacer(Modifier.height(12.dp))
-        KeyValueRow(
-            label = "Policy",
-            value = when (configSnapshot.networkPolicy) {
-                MoneroConfig.NetworkPolicy.CLEARNET -> "Clearnet"
-                MoneroConfig.NetworkPolicy.I2P -> "I2P only"
-                MoneroConfig.NetworkPolicy.HYBRID -> "Hybrid"
-            },
-            labelColor = palette.secondaryText,
-            valueColor = palette.primaryText
-        )
-        Spacer(Modifier.height(6.dp))
-        KeyValueRow(
-            label = "Broadcast",
-            value = broadcastNodeUrl,
-            labelColor = palette.secondaryText,
-            valueColor = palette.primaryText
-        )
-        if (!configSnapshot.i2pHttpProxyAddress.isNullOrBlank()) {
-            Spacer(Modifier.height(6.dp))
-            KeyValueRow(
-                label = "I2P Proxy",
-                value = configSnapshot.i2pHttpProxyAddress,
-                labelColor = palette.secondaryText,
-                valueColor = palette.primaryText
-            )
-        }
     }
 
     if (showExactConfirmation) {
@@ -1928,7 +1803,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         sweepResult = null
                         scope.launch {
                             try {
-                                val amountPiconeroNow = parseXmrToPiconero(amountXmrText)
+                                val amountPiconeroNow = XmrAmount.parsePiconero(amountXmrText)
+                                    ?: throw IllegalArgumentException("Invalid amount")
                                 val feePiconero = estimatedFee?.fee ?: 0L
                                 if (!com.nexatrode.nexawal.logic.SendSafety.hasUnlockedForExactSend(
                                         amountPiconero = amountPiconeroNow,
@@ -1955,23 +1831,11 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     )
                                 }
 
-                                sendResult = if (sendFromSubaddressEnabled) {
-                                    walletManager.send(
-                                        fromSubaddressMinor = fromSubaddressMinor,
-                                        toAddress = toAddress.trim(),
-                                        amountPiconero = amountPiconeroNow
-                                    )
-                                } else {
-                                    walletManager.send(
-                                        toAddress = toAddress.trim(),
-                                        amountPiconero = amountPiconeroNow
-                                    )
-                                }
-                                infoText = if (sendFromSubaddressEnabled) {
-                                    "Transaction broadcast from $selectedSubaddressTitle."
-                                } else {
-                                    "Transaction broadcast."
-                                }
+                                sendResult = walletManager.send(
+                                    toAddress = toAddress.trim(),
+                                    amountPiconero = amountPiconeroNow
+                                )
+                                infoText = "Transaction broadcast."
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: Throwable) {
                                 errorText = t.message ?: t.javaClass.simpleName
@@ -2044,19 +1908,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     )
                                 }
 
-                                sweepResult = if (sendFromSubaddressEnabled) {
-                                    walletManager.sweep(
-                                        fromSubaddressMinor = fromSubaddressMinor,
-                                        toAddress = toAddress.trim()
-                                    )
-                                } else {
-                                    walletManager.sweep(toAddress = toAddress.trim())
-                                }
-                                infoText = if (sendFromSubaddressEnabled) {
-                                    "Maximum spendable balance broadcast from $selectedSubaddressTitle."
-                                } else {
-                                    "Maximum spendable balance broadcast."
-                                }
+                                sweepResult = walletManager.sweep(toAddress = toAddress.trim())
+                                infoText = "Maximum spendable balance broadcast."
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: Throwable) {
                                 errorText = t.message ?: t.javaClass.simpleName
@@ -2089,51 +1942,22 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     }
 
     fun parseMoneroUri(uri: String) {
-        try {
-            val trimmed = uri.trim()
-            if (!trimmed.lowercase().startsWith("monero:")) {
-                errorText = "Invalid payment URI format."
-                return
-            }
-
-            // Preserve Base58 case: only treat the scheme case-insensitively.
-            var remainder = trimmed.substring(trimmed.indexOf(':') + 1)
-            if (remainder.startsWith("//")) {
-                remainder = remainder.removePrefix("//")
-            }
-
-            val address = remainder
-                .substringBefore('?')
-                .trim('/')
-                .trim()
-
-            if (!looksLikeAddress(address)) {
-                errorText = "No valid address in payment URI."
-                return
-            }
-
-            toAddress = address
-
-            if (remainder.contains('?')) {
-                val queryString = remainder.substringAfter('?')
-                val params = queryString.split("&").associate { param ->
-                    val keyValue = param.split("=", limit = 2)
-                    keyValue[0].lowercase() to (keyValue.getOrNull(1) ?: "")
-                }
-
-                val amountParam = params["amount"] ?: params["tx_amount"]
-                amountParam?.let { amountStr ->
-                    val amount = amountStr.toDoubleOrNull()
-                    if (amount != null && amount >= 0.0) {
-                        amountXmrText = String.format("%.12f", amount)
-                    }
-                }
-            }
-
-            infoText = "Payment details loaded from QR code."
-        } catch (e: Exception) {
-            errorText = "Failed to parse payment URI: ${e.message}"
+        val parsed = MoneroPaymentUri.parse(uri)
+        if (parsed == null) {
+            errorText = "Invalid payment URI format."
+            return
         }
+        if (!looksLikeAddress(parsed.address)) {
+            errorText = "No valid address in payment URI."
+            return
+        }
+
+        toAddress = parsed.address
+        val amount = parsed.amountXmr
+        if (amount != null && XmrAmount.parsePiconero(amount) != null) {
+            amountXmrText = amount.replace(',', '.')
+        }
+        infoText = "Payment details loaded from QR code."
     }
 
     fun handleScannedCode(code: String) {
@@ -2299,26 +2123,38 @@ private fun SettingsScreen(
                     onValueChange = { nodeUrlInput = it },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = { Text(walletManager.defaultNodeAddress(), color = secondaryText) },
+                    placeholder = { Text(walletManager.defaultNodeUrl(), color = secondaryText) },
                     colors = nexaFieldColors(palette),
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    "Example: 127.0.0.1:18092\n(Full URL will be: http://127.0.0.1:18092)",
+                    "Type the full URL, including http:// or https://.\nPublic: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089",
+                    color = secondaryText,
+                )
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    "Applies this daemon plus the policy below, then reconnects. Same-chain node switches do not need a rescan.",
                     color = secondaryText,
                 )
                 Spacer(Modifier.height(12.dp))
                 PrimaryActionButton(
-                    text = "Save node",
+                    text = "Use this node",
                     onClick = {
                         statusText = null
-                        scope.launch {
-                            try {
-                                walletManager.setNodeUrl(nodeUrlInput)
-                                statusText = "Saved node"
-                            } catch (t: Throwable) {
-                                statusText = "Failed to save: ${t.message ?: t.javaClass.simpleName}"
-                            }
+                        val explicit = NetworkRouting.explicitNodeUrl(nodeUrlInput)
+                        if (explicit == null) {
+                            statusText = "Start the node URL with http:// or https://"
+                            return@PrimaryActionButton
+                        }
+                        nodeUrlInput = explicit
+                        MoneroConfig.setNetworkPolicy(context, networkPolicy)
+                        MoneroConfig.setI2pRpcAddress(context, i2pRpcInput.trim().ifEmpty { null })
+                        MoneroConfig.setI2pHttpProxyAddress(context, i2pProxyInput.trim().ifEmpty { null })
+                        walletManager.applyNodeAndReconnectInBackground(explicit)
+                        statusText = if (state.walletId.isNullOrBlank()) {
+                            "Saved node"
+                        } else {
+                            "Connecting to $explicit"
                         }
                     },
                     palette = palette,
@@ -2391,17 +2227,10 @@ private fun SettingsScreen(
                     "Proxy example: 127.0.0.1:4444 (I2P HTTP proxy). Required for I2P-only and hybrid broadcast.",
                     color = secondaryText,
                 )
-                Spacer(Modifier.height(12.dp))
-                PrimaryActionButton(
-                    text = "Save I2P settings",
-                    onClick = {
-                        MoneroConfig.setNetworkPolicy(context, networkPolicy)
-                        MoneroConfig.setI2pRpcAddress(context, i2pRpcInput.trim().ifEmpty { null })
-                        MoneroConfig.setI2pHttpProxyAddress(context, i2pProxyInput.trim().ifEmpty { null })
-                        statusText = "Saved I2P settings"
-                    },
-                    palette = palette,
-                    modifier = Modifier.fillMaxWidth(),
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    "I2P and policy are applied when you tap Use this node.",
+                    color = secondaryText,
                 )
             }
         }
@@ -2449,46 +2278,6 @@ private fun SettingsScreen(
 
         Spacer(Modifier.height(20.dp))
 
-        Text(if (palette.classic) "MAINTENANCE" else "Maintenance", color = secondaryText)
-        Spacer(Modifier.height(8.dp))
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = cardBg,
-            shape = sectionShape,
-            tonalElevation = if (palette.classic) 0.dp else 1.dp,
-            shadowElevation = 0.dp,
-            border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Scan cache", color = primaryText, fontWeight = FontWeight.SemiBold)
-                Spacer(Modifier.height(6.dp))
-                Text(
-                    "Remove the persisted fast-resume cache for this network without deleting the wallet.",
-                    color = secondaryText
-                )
-                Spacer(Modifier.height(12.dp))
-                SecondaryActionButton(
-                    text = "Clear scan cache (this network)",
-                    onClick = {
-                        statusText = null
-                        scope.launch {
-                            try {
-                                walletManager.clearScanCache()
-                                statusText = "Cleared scan cache for this network"
-                            } catch (t: Throwable) {
-                                statusText = "Clear scan cache failed: ${t.message ?: t.javaClass.simpleName}"
-                            }
-                        }
-                    },
-                    palette = palette,
-                    modifier = Modifier.fillMaxWidth(),
-                    enabled = !state.walletId.isNullOrBlank(),
-                )
-            }
-        }
-
-        Spacer(Modifier.height(20.dp))
-
         Text(if (palette.classic) "RECOVERY" else "Recovery", color = secondaryText)
         Spacer(Modifier.height(8.dp))
         Surface(
@@ -2503,7 +2292,7 @@ private fun SettingsScreen(
                 Text("Restore and rescan", color = primaryText, fontWeight = FontWeight.SemiBold)
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    "Use an earlier height if funds are missing after import, or rescan from zero for a full recovery.",
+                    "Wrong node? Use this node above — you do not need a rescan.\nMissing funds? Rescan from your restore height.\nLast resort: full rescan from block 0.",
                     color = secondaryText
                 )
                 Spacer(Modifier.height(12.dp))
@@ -2530,25 +2319,29 @@ private fun SettingsScreen(
                     text = "Rescan from height",
                     onClick = {
                         statusText = null
-                        scope.launch {
-                            val height = parseRestoreHeightInput(restoreHeightInput)
-                            if (height == null) {
-                                statusText = "Enter a valid restore height"
-                                return@launch
-                            }
-
-                            try {
-                                statusText = "Rescanning from $height"
-                                walletManager.rescanFromHeight(height)
-                                statusText = "Rescan completed from $height"
-                            } catch (t: Throwable) {
-                                statusText = "Rescan failed: ${t.message ?: t.javaClass.simpleName}"
-                            }
+                        val height = parseRestoreHeightInput(restoreHeightInput)
+                        if (height == null) {
+                            statusText = "Enter a valid restore height"
+                            return@SecondaryActionButton
                         }
+                        persistScanTuning(
+                            context = context,
+                            walletId = state.walletId,
+                            gapLimitInput = gapLimitInput,
+                            accountGapInput = accountGapInput,
+                            onGapError = { gapLimitError = it },
+                            onAccountError = { accountGapError = it },
+                            onInputsClamped = { gl, ag ->
+                                gapLimitInput = gl
+                                accountGapInput = ag
+                            },
+                        )
+                        walletManager.rescanFromHeightInBackground(height)
+                        statusText = "Rescanning from $height — progress is on the Wallet tab"
                     },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = !state.walletId.isNullOrBlank() && !state.refreshInProgress,
+                    enabled = !state.walletId.isNullOrBlank(),
                 )
                 Spacer(Modifier.height(8.dp))
                 SecondaryActionButton(
@@ -2556,65 +2349,24 @@ private fun SettingsScreen(
                     onClick = {
                         restoreHeightInput = "0"
                         statusText = null
-                        scope.launch {
-                            try {
-                                statusText = "Running full rescan from 0"
-                                walletManager.rescanFromHeight(0L)
-                                statusText = "Full rescan completed"
-                            } catch (t: Throwable) {
-                                statusText = "Full rescan failed: ${t.message ?: t.javaClass.simpleName}"
-                            }
-                        }
+                        persistScanTuning(
+                            context = context,
+                            walletId = state.walletId,
+                            gapLimitInput = gapLimitInput,
+                            accountGapInput = accountGapInput,
+                            onGapError = { gapLimitError = it },
+                            onAccountError = { accountGapError = it },
+                            onInputsClamped = { gl, ag ->
+                                gapLimitInput = gl
+                                accountGapInput = ag
+                            },
+                        )
+                        walletManager.rescanFromHeightInBackground(0L)
+                        statusText = "Full rescan from 0 — progress is on the Wallet tab"
                     },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = !state.walletId.isNullOrBlank() && !state.refreshInProgress,
-                )
-                Spacer(Modifier.height(12.dp))
-                PrimaryActionButton(
-                    text = "Apply recovery settings",
-                    onClick = {
-                        statusText = null
-                        gapLimitError = null
-                        accountGapError = null
-
-                        scope.launch {
-                            try {
-                                val glRaw = gapLimitInput.trim().toIntOrNull()
-                                val agRaw = accountGapInput.trim().toIntOrNull()
-
-                                if (glRaw == null) {
-                                    gapLimitError = "Enter a whole number"
-                                    return@launch
-                                }
-                                if (agRaw == null) {
-                                    accountGapError = "Enter a whole number"
-                                    return@launch
-                                }
-
-                                val glClamped = glRaw.coerceIn(1, 100_000)
-                                val agClamped = agRaw.coerceIn(1, 1_000)
-
-                                if (glClamped != glRaw) gapLimitInput = glClamped.toString()
-                                if (agClamped != agRaw) accountGapInput = agClamped.toString()
-
-                                MoneroConfig.setGapLimit(context, glClamped)
-                                MoneroConfig.setAccountGap(context, agClamped)
-
-                                val wid = state.walletId
-                                if (!wid.isNullOrBlank()) {
-                                    runCatching { WalletCore.setGapLimit(wid, MoneroConfig.gapLimit(context)) }
-                                    runCatching { WalletCore.setAccountGap(MoneroConfig.accountGap(context)) }
-                                }
-
-                                statusText = "Saved recovery scan settings"
-                            } catch (t: Throwable) {
-                                statusText = "Failed to save recovery scan settings: ${t.message ?: t.javaClass.simpleName}"
-                            }
-                        }
-                    },
-                    palette = palette,
-                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !state.walletId.isNullOrBlank(),
                 )
 
                 Spacer(Modifier.height(12.dp))
@@ -2684,6 +2436,45 @@ private fun SettingsScreen(
                         "Effective gapLimit=${MoneroConfig.gapLimit(context)} accountGap=${MoneroConfig.accountGap(context)}",
                         color = secondaryText
                     )
+                    Spacer(Modifier.height(12.dp))
+                    SecondaryActionButton(
+                        text = "Save scan lookahead",
+                        onClick = {
+                            val ok = persistScanTuning(
+                                context = context,
+                                walletId = state.walletId,
+                                gapLimitInput = gapLimitInput,
+                                accountGapInput = accountGapInput,
+                                onGapError = { gapLimitError = it },
+                                onAccountError = { accountGapError = it },
+                                onInputsClamped = { gl, ag ->
+                                    gapLimitInput = gl
+                                    accountGapInput = ag
+                                },
+                            )
+                            statusText = if (ok) "Saved scan lookahead" else statusText
+                        },
+                        palette = palette,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    SecondaryActionButton(
+                        text = "Clear scan cache (this network)",
+                        onClick = {
+                            statusText = null
+                            scope.launch {
+                                try {
+                                    walletManager.clearScanCache()
+                                    statusText = "Cleared scan cache for this network"
+                                } catch (t: Throwable) {
+                                    statusText = "Clear scan cache failed: ${t.message ?: t.javaClass.simpleName}"
+                                }
+                            }
+                        },
+                        palette = palette,
+                        modifier = Modifier.fillMaxWidth(),
+                        enabled = !state.walletId.isNullOrBlank(),
+                    )
                 }
             }
         }
@@ -2704,23 +2495,43 @@ private fun SettingsScreen(
     }
 }
 
-/**
- * Parse a decimal XMR string into piconero (1e12).
- */
-private fun parseXmrToPiconero(xmr: String): Long {
-    val s = xmr.trim()
-    require(s.isNotEmpty()) { "amount must not be empty" }
-    val parts = s.split('.', limit = 2)
-    val whole = parts[0].ifEmpty { "0" }.toLong()
-    val frac = if (parts.size == 2) parts[1] else ""
-    require(frac.length <= 12) { "too many decimal places (max 12)" }
-    val fracPadded = frac.padEnd(12, '0')
-    val fracVal = if (fracPadded.isEmpty()) 0L else fracPadded.toLong()
-    return whole * 1_000_000_000_000L + fracVal
-}
-
 private fun parseRestoreHeightInput(raw: String): Long? {
     val trimmed = raw.trim()
     if (trimmed.isEmpty()) return null
     return trimmed.toLongOrNull()?.takeIf { it >= 0L }
+}
+
+private fun persistScanTuning(
+    context: android.content.Context,
+    walletId: String?,
+    gapLimitInput: String,
+    accountGapInput: String,
+    onGapError: (String?) -> Unit,
+    onAccountError: (String?) -> Unit,
+    onInputsClamped: (String, String) -> Unit,
+): Boolean {
+    onGapError(null)
+    onAccountError(null)
+    val glRaw = gapLimitInput.trim().toIntOrNull()
+    val agRaw = accountGapInput.trim().toIntOrNull()
+    if (glRaw == null) {
+        onGapError("Enter a whole number")
+        return false
+    }
+    if (agRaw == null) {
+        onAccountError("Enter a whole number")
+        return false
+    }
+    val glClamped = glRaw.coerceIn(1, 100_000)
+    val agClamped = agRaw.coerceIn(1, 1_000)
+    if (glClamped != glRaw || agClamped != agRaw) {
+        onInputsClamped(glClamped.toString(), agClamped.toString())
+    }
+    MoneroConfig.setGapLimit(context, glClamped)
+    MoneroConfig.setAccountGap(context, agClamped)
+    if (!walletId.isNullOrBlank()) {
+        runCatching { WalletCore.setGapLimit(walletId, MoneroConfig.gapLimit(context)) }
+        runCatching { WalletCore.setAccountGap(MoneroConfig.accountGap(context)) }
+    }
+    return true
 }

@@ -23,12 +23,19 @@ object NetworkRouting {
 
     fun normalizeUrl(raw: String): String {
         val trimmed = raw.trim()
-        if (trimmed.startsWith("http://", ignoreCase = true) ||
-            trimmed.startsWith("https://", ignoreCase = true)
-        ) {
+        explicitNodeUrl(trimmed)?.let { return it }
+        // I2P / legacy host:port values have no scheme. Default those to http.
+        return if (trimmed.isEmpty()) trimmed else "http://$trimmed"
+    }
+
+    /** Clearnet node field: user must type http:// or https://. No scheme guessing. */
+    fun explicitNodeUrl(raw: String): String? {
+        val trimmed = raw.trim()
+        val lower = trimmed.lowercase()
+        if (lower.startsWith("http://") || lower.startsWith("https://")) {
             return trimmed
         }
-        return if (trimmed.endsWith(":443")) "https://$trimmed" else "http://$trimmed"
+        return null
     }
 
     fun scanNodeUrl(policy: Policy, clearnetNodeUrl: String, i2pRpcAddress: String): String {
