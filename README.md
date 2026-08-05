@@ -57,3 +57,7 @@ Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifa
 - Android consumes the shared core through the submodule + JNI `.so` integration
 - Syncs against standard Monero nodes (local or remote), including the configured I2P RPC path when enabled
 - Feature parity target: [nexawal](https://github.com/cacaosteve/nexawal)
+
+## License
+
+[MIT](LICENSE). Downstream code such as `monero-oxide` remains under its own MIT terms; keep those notices when you redistribute.
