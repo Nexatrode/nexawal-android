@@ -4,7 +4,7 @@
 
 - Android app: this repository
 - iOS app: [nexawal](https://github.com/cacaosteve/nexawal)
-- Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI/tree/walletcore/aligned-2026-07-18) (`walletcore/aligned-2026-07-18`)
+- Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) (`main`)
 - Monero library work: [monero-oxide](https://github.com/cacaosteve/monero-oxide) (fork pin used by the core)
 
 ## Setup
@@ -21,7 +21,7 @@ If you already cloned without submodules:
 git submodule update --init --recursive
 ```
 
-To move the submodule to the tip of `walletcore/aligned-2026-07-18`:
+To move the submodule to the tip of `main`:
 
 ```bash
 git submodule update --remote MoneroWalletCoreFFI

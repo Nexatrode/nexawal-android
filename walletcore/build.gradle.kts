@@ -34,7 +34,7 @@ val syncMoneroWalletCoreSo by tasks.registering {
             val src = submoduleRoot.resolve("Artifacts/android/$abi/libmonerowalletcore.so")
             require(src.isFile) {
                 "Missing prebuilt core library: ${src.absolutePath}. " +
-                    "Init/update the MoneroWalletCoreFFI submodule (branch walletcore/aligned-2026-07-18), " +
+                    "Init/update the MoneroWalletCoreFFI submodule (branch main), " +
                     "or rebuild with INSTALL_TO_NEXAWAL_ANDROID=1 ./Scripts/build_android.sh in that repo."
             }
             val dstDir = file("src/main/jniLibs/$abi")
