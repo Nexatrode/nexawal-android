@@ -30,7 +30,7 @@ object DeviceAuthGate {
         subtitle: String,
     ) {
         if (!isAvailable(activity)) {
-            throw IllegalStateException("Biometric or device credential authentication is not available")
+            throw IllegalStateException(activity.getString(R.string.biometric_not_available_short))
         }
 
         suspendCancellableCoroutine<Unit> { continuation ->
@@ -55,7 +55,7 @@ object DeviceAuthGate {
                         override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
                             if (!continuation.isActive) return
                             continuation.resumeWithException(
-                                IllegalStateException(errString?.toString() ?: "Authentication failed")
+                                IllegalStateException(errString?.toString() ?: activity.getString(R.string.authentication_failed))
                             )
                         }
 
@@ -67,7 +67,7 @@ object DeviceAuthGate {
             } catch (t: SecurityException) {
                 if (continuation.isActive) {
                     continuation.resumeWithException(
-                        IllegalStateException("Biometric permission is missing or unavailable")
+                        IllegalStateException(activity.getString(R.string.biometric_permission_missing))
                     )
                 }
                 return@suspendCancellableCoroutine

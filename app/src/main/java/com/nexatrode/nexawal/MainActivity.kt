@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
 
                     // Load persisted app settings (e.g., node URL) before loading/opening any stored wallet.
                     walletManager.loadSettingsOnLaunch()
+                    walletManager.fiatPrices.onForeground()
 
                     // If a stored wallet exists, open it and start refresh automatically.
                     // When enabled, require device authentication first.
@@ -42,8 +43,8 @@ class MainActivity : ComponentActivity() {
                             else -> runCatching {
                                 DeviceAuthGate.authenticate(
                                     activity = this@MainActivity,
-                                    title = "Unlock wallet",
-                                    subtitle = "Authenticate to open the stored Monero wallet"
+                                    title = getString(R.string.biometric_unlock_wallet),
+                                    subtitle = getString(R.string.biometric_unlock_subtitle)
                                 )
                             }.isSuccess
                         }

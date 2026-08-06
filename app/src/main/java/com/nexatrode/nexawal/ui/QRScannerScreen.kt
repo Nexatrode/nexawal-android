@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -45,6 +46,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.nexatrode.nexawal.MoneroConfig
+import com.nexatrode.nexawal.R
 import java.util.concurrent.Executors
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -85,7 +87,7 @@ fun QRScannerScreen(
                     )
                 ) {
                     Text(
-                        "Grant Camera Permission",
+                        stringResource(R.string.grant_camera),
                         fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         fontWeight = FontWeight.SemiBold,
                     )
@@ -115,14 +117,15 @@ fun QRScannerScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = "Cancel",
+                    contentDescription = stringResource(R.string.action_cancel),
                     tint = if (neon) palette.accent else Color.White
                 )
             }
         }
 
+        val scanQrText = stringResource(R.string.scan_monero_qr)
         Text(
-            text = if (neon) "SCAN MONERO QR" else "Scan Monero QR code",
+            text = if (neon) scanQrText.uppercase() else scanQrText,
             color = if (neon) palette.accent else Color.White,
             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
             fontWeight = if (neon) FontWeight.Bold else FontWeight.Normal,

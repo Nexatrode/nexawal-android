@@ -37,6 +37,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -44,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import com.nexatrode.nexawal.BuildConfig
 import com.nexatrode.nexawal.DeviceAuthGate
 import com.nexatrode.nexawal.MoneroConfig
+import com.nexatrode.nexawal.R
 import com.nexatrode.nexawal.WalletManager
 import com.nexatrode.nexawal.walletcore.WalletCore
 import kotlinx.coroutines.Dispatchers
@@ -110,6 +112,15 @@ fun WalletCreationScreen(
     val isLoading = remember { mutableStateOf(false) }
     val errorText = remember { mutableStateOf<String?>(null) }
 
+    val deviceAuthUnavailableText = stringResource(R.string.device_auth_required_unavailable)
+    val activityContextRequiredText = stringResource(R.string.error_activity_context_required)
+    val unlockWalletTitle = stringResource(R.string.biometric_unlock_wallet)
+    val unlockWalletSubtitle = stringResource(R.string.biometric_unlock_subtitle)
+    val noStoredWalletText = stringResource(R.string.no_stored_wallet)
+    val suggestedHeightFetchFailedText = stringResource(R.string.suggested_height_fetch_failed)
+    val savedNodeText = stringResource(R.string.saved_node)
+    val failedSaveFmt = stringResource(R.string.failed_save_fmt)
+
     // Replace confirm UX (single wallet slot)
     val hasStoredWallet = remember { mutableStateOf<Boolean?>(null) }
     val showReplaceConfirm = remember { mutableStateOf(false) }
@@ -161,6 +172,7 @@ fun WalletCreationScreen(
             isFetching = isFetchingSuggestedHeight,
             suggestedHeight = suggestedRestoreHeight,
             suggestedError = suggestedHeightError,
+            fetchFailedMessage = suggestedHeightFetchFailedText,
         )
     }
 
@@ -172,6 +184,7 @@ fun WalletCreationScreen(
             isFetching = isFetchingSuggestedHeight,
             suggestedHeight = suggestedRestoreHeight,
             suggestedError = suggestedHeightError,
+            fetchFailedMessage = suggestedHeightFetchFailedText,
         )
     }
 
@@ -266,22 +279,20 @@ fun WalletCreationScreen(
             try {
                 if (MoneroConfig.requireDeviceAuth(context)) {
                     if (!DeviceAuthGate.isAvailable(context)) {
-                        throw IllegalStateException(
-                            "Device authentication is required but unavailable. Enable biometrics or a screen lock, then retry."
-                        )
+                        throw IllegalStateException(deviceAuthUnavailableText)
                     }
                     val activity = context as? ComponentActivity
-                        ?: throw IllegalStateException("Device authentication requires an activity context")
+                        ?: throw IllegalStateException(activityContextRequiredText)
                     DeviceAuthGate.authenticate(
                         activity = activity,
-                        title = "Unlock wallet",
-                        subtitle = "Authenticate to open the stored Monero wallet"
+                        title = unlockWalletTitle,
+                        subtitle = unlockWalletSubtitle
                     )
                 }
 
                 val loaded = walletManager.loadStoredWalletOnLaunch()
                 if (!loaded) {
-                    errorText.value = "No stored wallet was found"
+                    errorText.value = noStoredWalletText
                 } else {
                     walletManager.refreshWalletInBackground()
                 }
@@ -300,7 +311,7 @@ fun WalletCreationScreen(
             TopAppBar(
                 title = {
                     Text(
-                        if (neon) "NEXAWAL" else "Create Wallet",
+                        if (neon) "NEXAWAL" else stringResource(R.string.create_wallet),
                         color = palette.primaryText,
                         fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         fontWeight = if (neon) FontWeight.Bold else FontWeight.Normal,
@@ -321,25 +332,25 @@ fun WalletCreationScreen(
                 .padding(16.dp)
                 .verticalScroll(scroll)
         ) {
+            val walletSetupLabel = stringResource(R.string.section_wallet_setup)
             Text(
-                if (neon) "WALLET SETUP" else "Wallet Setup",
+                if (neon) walletSetupLabel.uppercase() else walletSetupLabel,
                 color = palette.primaryText,
                 fontWeight = FontWeight.Bold,
                 fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                "Choose whether you’re creating a brand new wallet (fast sync) or importing an existing wallet " +
-                    "(full scan unless you set a restore height).",
+                stringResource(R.string.wallet_setup_description),
                 color = palette.secondaryText,
             )
 
             if (hasStoredWallet.value == true) {
                 Spacer(Modifier.height(12.dp))
-                Text("A wallet is already stored on this device.", color = palette.secondaryText)
+                Text(stringResource(R.string.wallet_already_stored), color = palette.secondaryText)
                 Spacer(Modifier.height(8.dp))
                 PrimaryActionButton(
-                    text = if (isLoading.value) "Unlocking..." else "Unlock Existing Wallet",
+                    text = if (isLoading.value) stringResource(R.string.unlocking_ellipsis) else stringResource(R.string.unlock_existing_wallet),
                     onClick = { unlockStoredWallet() },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
@@ -366,7 +377,7 @@ fun WalletCreationScreen(
                     colors = segmentColors,
                     label = {
                         Text(
-                            "Create new wallet (fast)",
+                            stringResource(R.string.mode_create),
                             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         )
                     }
@@ -378,7 +389,7 @@ fun WalletCreationScreen(
                     colors = segmentColors,
                     label = {
                         Text(
-                            "Import existing wallet",
+                            stringResource(R.string.mode_import),
                             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         )
                     }
@@ -389,11 +400,10 @@ fun WalletCreationScreen(
 
             when (setupMode) {
                 WalletSetupMode.CREATE -> {
-                    Text("Your recovery seed:", color = palette.primaryText)
+                    Text(stringResource(R.string.recovery_seed_label), color = palette.primaryText)
                     Spacer(Modifier.height(6.dp))
                     Text(
-                        "Write these words down in order and store them somewhere safe. " +
-                            "You’ll need them to restore your wallet — they are never stored on this device.",
+                        stringResource(R.string.recovery_seed_instructions),
                         color = palette.secondaryText,
                     )
                     Spacer(Modifier.height(8.dp))
@@ -415,7 +425,7 @@ fun WalletCreationScreen(
                     Spacer(Modifier.height(8.dp))
 
                     SecondaryActionButton(
-                        text = "Generate new seed",
+                        text = stringResource(R.string.generate_new_seed),
                         onClick = { scope.launch { regenerateCreateSeed() } },
                         palette = palette,
                         modifier = Modifier.fillMaxWidth(),
@@ -425,7 +435,7 @@ fun WalletCreationScreen(
                     Spacer(Modifier.height(12.dp))
 
                     RowSwitch(
-                        label = "I wrote down my recovery seed",
+                        label = stringResource(R.string.wrote_seed_down),
                         state = wroteSeedDown,
                         enabled = generatedMnemonic.value.isNotEmpty(),
                         palette = palette,
@@ -433,9 +443,10 @@ fun WalletCreationScreen(
 
                     if (wroteSeedDown.value) {
                         Spacer(Modifier.height(12.dp))
-                        Text("Confirm your backup — enter the requested words:", color = palette.primaryText)
+                        Text(stringResource(R.string.confirm_backup_prompt), color = palette.primaryText)
                         Spacer(Modifier.height(6.dp))
 
+                        val wordNumberFmt = stringResource(R.string.word_number_fmt)
                         challengePositions.value.forEachIndexed { index, position ->
                             OutlinedTextField(
                                 value = challengeAnswers.getOrElse(index) { "" },
@@ -445,7 +456,7 @@ fun WalletCreationScreen(
                                     }
                                 },
                                 modifier = Modifier.fillMaxWidth(),
-                                label = { Text("Word #$position", color = palette.secondaryText) },
+                                label = { Text(String.format(wordNumberFmt, position), color = palette.secondaryText) },
                                 singleLine = true,
                                 colors = nexaFieldColors(palette),
                             )
@@ -455,14 +466,14 @@ fun WalletCreationScreen(
                 }
 
                 WalletSetupMode.IMPORT -> {
-                    Text("Mnemonic (paste):", color = palette.primaryText)
+                    Text(stringResource(R.string.mnemonic_paste_label), color = palette.primaryText)
                     OutlinedTextField(
                         value = mnemonicInput.value,
                         onValueChange = { mnemonicInput.value = it },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(160.dp),
-                        placeholder = { Text("Paste 25-word mnemonic…", color = palette.secondaryText) },
+                        placeholder = { Text(stringResource(R.string.mnemonic_paste_placeholder), color = palette.secondaryText) },
                         textStyle = androidx.compose.ui.text.TextStyle(
                             fontFamily = FontFamily.Monospace,
                             color = palette.primaryText,
@@ -477,20 +488,20 @@ fun WalletCreationScreen(
 
             when (setupMode) {
                 WalletSetupMode.CREATE -> {
-                    Text("Starting height (fast):", color = palette.primaryText)
+                    Text(stringResource(R.string.starting_height_fast_label), color = palette.primaryText)
                     Spacer(Modifier.height(6.dp))
 
                     when {
                         isFetchingSuggestedHeight.value -> {
-                            Text("Fetching from node…", color = palette.secondaryText)
+                            Text(stringResource(R.string.fetching_from_node), color = palette.secondaryText)
                             Spacer(Modifier.height(8.dp))
                             CircularProgressIndicator()
                         }
                         suggestedRestoreHeight.value != null -> {
-                            Text("Starting height (fast): ${suggestedRestoreHeight.value} (node target_height − 10)", color = palette.primaryText)
+                            Text(stringResource(R.string.starting_height_fast_fmt, suggestedRestoreHeight.value ?: 0L), color = palette.primaryText)
                         }
                         else -> {
-                            Text("Starting height (fast): unavailable (will use 0)", color = palette.secondaryText)
+                            Text(stringResource(R.string.starting_height_unavailable), color = palette.secondaryText)
                         }
                     }
 
@@ -501,7 +512,7 @@ fun WalletCreationScreen(
                 }
 
                 WalletSetupMode.IMPORT -> {
-                    Text("Restore Height:", color = palette.primaryText)
+                    Text(stringResource(R.string.restore_height_label), color = palette.primaryText)
                     Spacer(Modifier.height(6.dp))
 
                     OutlinedTextField(
@@ -518,9 +529,9 @@ fun WalletCreationScreen(
 
                     val height = restoreHeightInput.value.trim().toLongOrNull() ?: 0L
                     if (height == 0L) {
-                        Text("Tip: 0 scans the full chain history. This is the safest option if you’re unsure, but it can take longer to sync.", color = palette.secondaryText)
+                        Text(stringResource(R.string.restore_height_tip), color = palette.secondaryText)
                     } else {
-                        Text("Warning: If you set a restore height after your first transaction, older funds will not appear until you rescan from an earlier height.", color = palette.secondaryText)
+                        Text(stringResource(R.string.restore_height_warning), color = palette.secondaryText)
                     }
                 }
             }
@@ -528,12 +539,12 @@ fun WalletCreationScreen(
             Spacer(Modifier.height(12.dp))
 
             // Mainnet toggle (parity)
-            RowSwitch(label = "Mainnet", state = isMainnet, palette = palette)
+            RowSwitch(label = stringResource(R.string.toggle_mainnet), state = isMainnet, palette = palette)
 
             Spacer(Modifier.height(12.dp))
 
             RowSwitch(
-                label = "Require device auth",
+                label = stringResource(R.string.toggle_require_device_auth),
                 state = requireDeviceAuth,
                 enabled = DeviceAuthGate.isAvailable(context),
                 palette = palette,
@@ -543,12 +554,12 @@ fun WalletCreationScreen(
 
             if (DeviceAuthGate.isAvailable(context)) {
                 Text(
-                    "When enabled, opening the stored wallet and sending funds will require device authentication.",
+                    stringResource(R.string.device_auth_enabled_note),
                     color = palette.secondaryText,
                 )
             } else {
                 Text(
-                    "Biometric or device credential authentication is not currently available on this device.",
+                    stringResource(R.string.device_auth_unavailable),
                     color = palette.secondaryText,
                 )
             }
@@ -556,9 +567,14 @@ fun WalletCreationScreen(
             Spacer(Modifier.height(12.dp))
 
             // Submit button (Import / Create)
-            val primaryLabel = if (setupMode == WalletSetupMode.IMPORT) "Import Wallet" else "Create Wallet"
+            val importWalletLabel = stringResource(R.string.import_wallet)
+            val createWalletLabel = stringResource(R.string.create_wallet)
+            val importingWalletLabel = stringResource(R.string.importing_wallet)
+            val creatingWalletLabel = stringResource(R.string.creating_wallet)
+            val primaryLabel = if (setupMode == WalletSetupMode.IMPORT) importWalletLabel else createWalletLabel
+            val loadingLabel = if (setupMode == WalletSetupMode.IMPORT) importingWalletLabel else creatingWalletLabel
             PrimaryActionButton(
-                text = if (isLoading.value) "${primaryLabel}…" else primaryLabel,
+                text = if (isLoading.value) loadingLabel else primaryLabel,
                 enabled = canSubmit(),
                 onClick = {
                     val stored = hasStoredWallet.value == true
@@ -577,14 +593,15 @@ fun WalletCreationScreen(
             // Error section
             val mergedError = errorText.value ?: state.lastError
             if (mergedError != null) {
-                Text("Error: $mergedError", color = palette.danger)
+                Text(stringResource(R.string.error_prefix_fmt, mergedError), color = palette.danger)
                 Spacer(Modifier.height(12.dp))
             }
 
             // Network & Node (editable before create/import; same persistence as Settings)
-            Text(if (neon) "NETWORK & NODE" else "Network & Node", color = palette.primaryText)
+            val networkNodeLabel = stringResource(R.string.section_network_node)
+            Text(if (neon) networkNodeLabel.uppercase() else networkNodeLabel, color = palette.primaryText)
             Spacer(Modifier.height(6.dp))
-            Text("Daemon URL", color = palette.primaryText, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.daemon_url_label), color = palette.primaryText, fontWeight = FontWeight.SemiBold)
             Spacer(Modifier.height(6.dp))
             OutlinedTextField(
                 value = nodeUrlInput.value,
@@ -596,18 +613,18 @@ fun WalletCreationScreen(
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                "Type the full URL, including http:// or https://.\nPublic: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089",
+                stringResource(R.string.node_url_help),
                 color = palette.secondaryText,
             )
             Spacer(modifier.height(12.dp))
             PrimaryActionButton(
-                text = "Save node",
+                text = stringResource(R.string.save_node),
                 onClick = {
                     nodeSaveStatus.value = null
                     scope.launch {
                         try {
                             walletManager.setNodeUrl(nodeUrlInput.value)
-                            nodeSaveStatus.value = "Saved node"
+                            nodeSaveStatus.value = savedNodeText
                             refreshSuggestedRestoreHeightIfNeeded(
                                 setupMode = setupMode,
                                 isMainnet = isMainnet.value,
@@ -615,9 +632,10 @@ fun WalletCreationScreen(
                                 isFetching = isFetchingSuggestedHeight,
                                 suggestedHeight = suggestedRestoreHeight,
                                 suggestedError = suggestedHeightError,
+                                fetchFailedMessage = suggestedHeightFetchFailedText,
                             )
                         } catch (t: Throwable) {
-                            nodeSaveStatus.value = "Failed to save: ${t.message ?: t.javaClass.simpleName}"
+                            nodeSaveStatus.value = String.format(failedSaveFmt, t.message ?: t.javaClass.simpleName)
                         }
                     }
                 },
@@ -632,9 +650,10 @@ fun WalletCreationScreen(
             Spacer(modifier.height(12.dp))
 
             // Info section (iOS parity)
-            Text(if (neon) "INFO" else "Info", color = palette.primaryText)
+            val infoLabel = stringResource(R.string.section_info)
+            Text(if (neon) infoLabel.uppercase() else infoLabel, color = palette.primaryText)
             Spacer(modifier.height(6.dp))
-            Text("WalletCore Version: ${state.version ?: "(unknown)"}", color = palette.secondaryText)
+            Text(stringResource(R.string.walletcore_version_fmt, state.version ?: "(unknown)"), color = palette.secondaryText)
 
             Spacer(modifier.height(24.dp))
         }
@@ -660,19 +679,15 @@ private fun ReplaceWalletConfirmDialog(
 ) {
     AlertDialog(
         onDismissRequest = onCancel,
-        title = { Text("Replace existing wallet?") },
+        title = { Text(stringResource(R.string.replace_wallet_title)) },
         text = {
-            Text(
-                "This will replace the existing wallet on this device.\n\n" +
-                    "If you continue, the currently stored mnemonic and scan state will be removed. " +
-                    "Make sure you have your mnemonic backed up before proceeding."
-            )
+            Text(stringResource(R.string.replace_wallet_message))
         },
         confirmButton = {
-            PrimaryActionButton(text = "Replace", onClick = onReplace, palette = palette)
+            PrimaryActionButton(text = stringResource(R.string.action_replace), onClick = onReplace, palette = palette)
         },
         dismissButton = {
-            SecondaryActionButton(text = "Cancel", onClick = onCancel, palette = palette)
+            SecondaryActionButton(text = stringResource(R.string.action_cancel), onClick = onCancel, palette = palette)
         }
     )
 }
@@ -711,6 +726,7 @@ private suspend fun refreshSuggestedRestoreHeightIfNeeded(
     isFetching: MutableState<Boolean>,
     suggestedHeight: MutableState<Long?>,
     suggestedError: MutableState<String?>,
+    fetchFailedMessage: String,
 ) {
     // Only for create mode
     if (setupMode != WalletSetupMode.CREATE) {
@@ -733,7 +749,7 @@ private suspend fun refreshSuggestedRestoreHeightIfNeeded(
     } catch (t: Throwable) {
         // Non-fatal: this is only used to suggest a fast height.
         suggestedHeight.value = null
-        suggestedError.value = "Couldn’t fetch a fast restore height from the node. Leaving restore height as 0."
+        suggestedError.value = fetchFailedMessage
     } finally {
         isFetching.value = false
     }

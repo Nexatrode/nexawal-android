@@ -66,16 +66,6 @@ data class Transfer(
      * Fee formatted as XMR with 12 fractional digits (if present).
      */
     fun feeXmr(): String? = fee?.let(XmrFormat::formatPiconeroAsXmr)
-
-    /**
-     * Direction label normalization helper.
-     */
-    fun directionLabel(): String = when (direction.lowercase()) {
-        "in" -> "Received"
-        "out" -> "Sent"
-        "self" -> "Self"
-        else -> direction
-    }
 }
 
 /**

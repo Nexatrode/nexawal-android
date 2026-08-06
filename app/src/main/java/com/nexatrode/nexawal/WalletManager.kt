@@ -56,6 +56,7 @@ class WalletManager(
     private val appContext: Context,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
+    val fiatPrices = FiatPriceService(appContext)
     @Serializable
     data class ReceiveSubaddressEntry(
         val accountIndex: Int = 0,
@@ -284,7 +285,7 @@ class WalletManager(
 
     private suspend fun <T> withSendLock(block: suspend () -> T): T {
         if (!sendGate.tryBegin()) {
-            throw IllegalStateException(SendGate.ALREADY_IN_PROGRESS)
+            throw IllegalStateException(appContext.getString(R.string.send_already_in_progress))
         }
         return try {
             block()
@@ -400,7 +401,7 @@ class WalletManager(
      */
     suspend fun setNodeUrl(newNodeUrl: String) = withContext(ioDispatcher) {
         val explicit = NetworkRouting.explicitNodeUrl(newNodeUrl.trim())
-            ?: throw IllegalArgumentException("Start the node URL with http:// or https://")
+            ?: throw IllegalArgumentException(appContext.getString(R.string.node_url_scheme_error))
         val usingDefault = isShippedDefaultNodeUrl(explicit)
         val normalized = if (usingDefault) defaultNodeUrl() else explicit
 
@@ -429,7 +430,7 @@ class WalletManager(
                 )
             )
         }.onFailure { t ->
-            _state.value = _state.value.copy(lastError = "Failed to persist node URL: ${t.message ?: t.javaClass.simpleName}")
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_persist_node_fmt, t.message ?: t.javaClass.simpleName))
         }
     }
 
@@ -505,7 +506,7 @@ class WalletManager(
             )
             Log.w("WalletManager", "derivePrimaryAddressFromMnemonic throwable=$t")
             _state.value = _state.value.copy(
-                lastError = "Failed to derive primary address: ${t.message ?: t.toString()}"
+                lastError = appContext.getString(R.string.failed_derive_addr_fmt, t.message ?: t.toString())
             )
         }.getOrNull()
 
@@ -522,13 +523,13 @@ class WalletManager(
         scope.launch(ioDispatcher) {
             val f = metadataFile()
             if (!f.exists()) {
-                _state.value = _state.value.copy(lastError = "No stored wallet metadata found")
+                _state.value = _state.value.copy(lastError = appContext.getString(R.string.no_stored_metadata))
                 return@launch
             }
 
             val meta = runCatching { readMetadata() }.getOrNull()
             if (meta == null) {
-                _state.value = _state.value.copy(lastError = "Failed to read stored wallet metadata")
+                _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_read_metadata))
                 return@launch
             }
 
@@ -642,7 +643,7 @@ class WalletManager(
             )
             Log.w("WalletManager", "derivePrimaryAddressFromMnemonic (openWalletFromMnemonic) throwable=$t")
             _state.value = _state.value.copy(
-                lastError = "Failed to derive primary address: ${t.message ?: t.toString()}"
+                lastError = appContext.getString(R.string.failed_derive_addr_fmt, t.message ?: t.toString())
             )
         }.getOrNull()
 
@@ -702,7 +703,7 @@ class WalletManager(
      *   - exports cache periodically and at the end (best-effort)
      */
     suspend fun refreshWallet(): WalletCore.SyncStatus {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveScanNodeUrl()
         applyProxyEnv(forBroadcast = false)
 
@@ -970,7 +971,7 @@ class WalletManager(
     suspend fun rescanFromHeight(fromHeight: Long): WalletCore.SyncStatus {
         require(fromHeight >= 0L) { "fromHeight must be >= 0" }
 
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val currentStatus = _state.value.syncStatus
 
         withContext(ioDispatcher) {
@@ -1034,7 +1035,7 @@ class WalletManager(
      * It intentionally does not mutate the in-memory wallet state.
      */
     suspend fun clearScanCache() {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
 
         withContext(ioDispatcher) {
             val cache = cacheFile(walletId, mainnet = true)
@@ -1074,7 +1075,7 @@ class WalletManager(
                     WalletCore.refreshCancel(walletId)
                 }.onFailure { t ->
                     // Don't block cancellation on this.
-                    _state.value = _state.value.copy(lastError = "refreshCancel failed: ${t.message ?: t.javaClass.simpleName}")
+                    _state.value = _state.value.copy(lastError = appContext.getString(R.string.refresh_cancel_failed_fmt, t.message ?: t.javaClass.simpleName))
                 }
                 exportCacheAndPersist(walletId)
             }
@@ -1163,6 +1164,9 @@ class WalletManager(
                 transfersParseError = parseErr,
                 lastTransfersRefreshAtMs = System.currentTimeMillis(),
             )
+            fiatPrices.recordSeenTransfers(
+                parsed.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp?.takeIf { ts -> ts > 0L }) },
+            )
         }
     }
 
@@ -1226,7 +1230,7 @@ class WalletManager(
         destinations: List<SendJson.Destination>,
         ringLen: Int = 16,
     ): SendJson.FeeResult {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         return withContext(ioDispatcher) {
@@ -1253,7 +1257,7 @@ class WalletManager(
 
     suspend fun getBalance(fromSubaddressMinor: Int): WalletCore.Balance {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
 
         return withContext(ioDispatcher) {
             WalletCore.getBalanceWithFilter(
@@ -1269,7 +1273,7 @@ class WalletManager(
         ringLen: Int = 16,
     ): SendJson.FeeResult {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         return withContext(ioDispatcher) {
@@ -1307,7 +1311,7 @@ class WalletManager(
         amountPiconero: Long,
         ringLen: Int = 16,
     ): SendJson.SendResult = withSendLock {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         val res = withContext(ioDispatcher) {
@@ -1340,6 +1344,7 @@ class WalletManager(
             lastError = null,
             lastSendOrSweepAtMs = System.currentTimeMillis(),
         )
+        fiatPrices.recordSend(res.txid)
 
         // Best-effort: refresh visible data snapshots (balance/transfers) after send.
         refreshWalletDataSnapshotsNow(walletId)
@@ -1354,7 +1359,7 @@ class WalletManager(
         ringLen: Int = 16,
     ): SendJson.SendResult = withSendLock {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         val res = withContext(ioDispatcher) {
@@ -1392,6 +1397,7 @@ class WalletManager(
             lastError = null,
             lastSendOrSweepAtMs = System.currentTimeMillis(),
         )
+        fiatPrices.recordSend(res.txid)
 
         refreshWalletDataSnapshotsNow(walletId)
 
@@ -1405,7 +1411,7 @@ class WalletManager(
         toAddress: String,
         ringLen: Int = 16,
     ): SendJson.SweepPreviewResult {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         return withContext(ioDispatcher) {
@@ -1435,7 +1441,7 @@ class WalletManager(
         ringLen: Int = 16,
     ): SendJson.SweepPreviewResult {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         return withContext(ioDispatcher) {
@@ -1469,7 +1475,7 @@ class WalletManager(
         toAddress: String,
         ringLen: Int = 16,
     ): SendJson.SweepSendResult = withSendLock {
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         val res = withContext(ioDispatcher) {
@@ -1505,6 +1511,7 @@ class WalletManager(
             lastError = null,
             lastSendOrSweepAtMs = System.currentTimeMillis(),
         )
+        fiatPrices.recordSend(res.txid)
 
         refreshWalletDataSnapshotsNow(walletId)
 
@@ -1517,7 +1524,7 @@ class WalletManager(
         ringLen: Int = 16,
     ): SendJson.SweepSendResult = withSendLock {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
-        val walletId = _state.value.walletId ?: throw IllegalStateException("No wallet open")
+        val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
         val res = withContext(ioDispatcher) {
@@ -1554,6 +1561,7 @@ class WalletManager(
             lastError = null,
             lastSendOrSweepAtMs = System.currentTimeMillis(),
         )
+        fiatPrices.recordSend(res.txid)
 
         refreshWalletDataSnapshotsNow(walletId)
 
@@ -2054,7 +2062,7 @@ class WalletManager(
             // Best-effort only: don't fail opening wallet due to bad cache.
             val msg = "cache import failed: ${t.message ?: t.javaClass.simpleName}"
             Log.w("WalletManager", "CACHE_IMPORT error walletId=$walletId bytes=${bytes.size} err=$msg")
-            _state.value = _state.value.copy(lastError = msg)
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.cache_import_failed_fmt, t.message ?: t.javaClass.simpleName))
             return
         }
 
@@ -2121,7 +2129,7 @@ class WalletManager(
         }.onFailure { t ->
             val msg = "cache export failed: ${t.message ?: t.javaClass.simpleName}"
             Log.w("WalletManager", "CACHE_EXPORT error walletId=$walletId file=${f.absolutePath} bytes=${cache.size} err=$msg")
-            _state.value = _state.value.copy(lastError = msg)
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.cache_export_failed_fmt, t.message ?: t.javaClass.simpleName))
         }
     }
 
@@ -2142,7 +2150,7 @@ class WalletManager(
         val meta = runCatching { readMetadata() }.getOrElse { t ->
             _state.value = _state.value.copy(
                 hasStoredWallet = true,
-                lastError = "Failed to read stored wallet metadata: ${t.message ?: t.javaClass.simpleName}"
+                lastError = appContext.getString(R.string.failed_read_metadata_fmt, t.message ?: t.javaClass.simpleName)
             )
             return@withContext false
         }
@@ -2162,7 +2170,7 @@ class WalletManager(
         }.onFailure { t ->
             _state.value = _state.value.copy(
                 hasStoredWallet = true,
-                lastError = "Failed to open stored wallet: ${t.message ?: t.javaClass.simpleName}"
+                lastError = appContext.getString(R.string.failed_open_wallet_fmt, t.message ?: t.javaClass.simpleName)
             )
             return@withContext false
         }
@@ -2187,7 +2195,7 @@ class WalletManager(
             )
             Log.w("WalletManager", "derivePrimaryAddressFromMnemonic (loadStoredWalletOnLaunch) throwable=$t")
             _state.value = _state.value.copy(
-                lastError = "Failed to derive primary address: ${t.message ?: t.toString()}"
+                lastError = appContext.getString(R.string.failed_derive_addr_fmt, t.message ?: t.toString())
             )
         }.getOrNull()
 
@@ -2290,7 +2298,7 @@ class WalletManager(
             f.writeText(json.toString(2))
             _state.value = _state.value.copy(lastPersistedAtMs = System.currentTimeMillis(), hasStoredWallet = true)
         }.onFailure { t ->
-            _state.value = _state.value.copy(lastError = "Failed to persist metadata: ${t.message ?: t.javaClass.simpleName}")
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_persist_metadata_fmt, t.message ?: t.javaClass.simpleName))
         }
     }
 
@@ -2317,7 +2325,7 @@ class WalletManager(
         } else {
             val plaintextMnemonic = json.optString("mnemonic", "").trim()
             if (plaintextMnemonic.isEmpty()) {
-                throw IllegalStateException("Stored metadata does not contain a mnemonic")
+                throw IllegalStateException(appContext.getString(R.string.stored_metadata_no_mnemonic))
             }
 
             // Transparent migration from legacy plaintext metadata.
@@ -2377,7 +2385,7 @@ class WalletManager(
             f.writeText(json)
             _state.value = _state.value.copy(lastPersistedAtMs = System.currentTimeMillis())
         }.onFailure { t ->
-            _state.value = _state.value.copy(lastError = "Failed to persist settings: ${t.message ?: t.javaClass.simpleName}")
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_persist_settings_fmt, t.message ?: t.javaClass.simpleName))
         }
     }
 
@@ -2447,7 +2455,7 @@ class WalletManager(
             ensureParentDirExists(f)
             f.writeText(receiveBookJson.encodeToString(book))
         }.onFailure { t ->
-            _state.value = _state.value.copy(lastError = "Failed to persist receive addresses: ${t.message ?: t.javaClass.simpleName}")
+            _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_persist_addrs_fmt, t.message ?: t.javaClass.simpleName))
         }
     }
 

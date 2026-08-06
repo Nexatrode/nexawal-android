@@ -2,7 +2,11 @@ package com.nexatrode.nexawal
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.nexatrode.nexawal.logic.FiatEstimate
+import com.nexatrode.nexawal.logic.FiatRate
 import com.nexatrode.nexawal.logic.NetworkRouting
+import java.util.Currency
+import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
 
@@ -38,6 +42,14 @@ object MoneroConfig {
     private const val KEY_I2P_RPC_ADDRESS: String = "monero_i2p_rpc_address"
     private const val KEY_I2P_HTTP_PROXY: String = "monero_i2p_http_proxy"
     private const val KEY_CLASSIC_UI: String = "ui_classic_mode"
+    private const val KEY_FIAT_ESTIMATES_ENABLED: String = "fiat_estimates_enabled"
+    private const val KEY_FIAT_ESTIMATES_ENABLED_AT: String = "fiat_estimates_enabled_at_ms"
+    private const val KEY_FIAT_CURRENCY: String = "fiat_currency"
+    private const val KEY_FIAT_CURRENCY_INITIALIZED: String = "fiat_currency_initialized"
+    private const val KEY_FIAT_RATE_CURRENCY: String = "fiat_rate_currency"
+    private const val KEY_FIAT_RATE_PER_XMR: String = "fiat_rate_per_xmr"
+    private const val KEY_FIAT_RATE_FETCHED_AT: String = "fiat_rate_fetched_at_ms"
+    private const val KEY_FIAT_RATE_SOURCE: String = "fiat_rate_source"
 
     // Defaults (match iOS MoneroConfig.swift).
     const val DEFAULT_GAP_LIMIT: Int = 50
@@ -46,9 +58,6 @@ object MoneroConfig {
     /** Classic UI ON = standard non-neon look; OFF (default) = neon terminal theme. */
     const val DEFAULT_CLASSIC_UI: Boolean = false
     private const val DEFAULT_NETWORK_POLICY_RAW: String = "clearnet"
-    const val DEFAULT_I2P_RPC_ADDRESS: String =
-        "cvxtgqjorfif6i5x5fenys6fj7hzddbgavpyutps6gphywnlklqa.b32.i2p:18081"
-
     // Safety clamps.
     private const val GAP_LIMIT_MIN: Int = 1
     private const val GAP_LIMIT_MAX: Int = 100_000
@@ -142,6 +151,88 @@ object MoneroConfig {
     }
 
     @JvmStatic
+    fun fiatEstimatesEnabled(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_FIAT_ESTIMATES_ENABLED, false)
+    }
+
+    @JvmStatic
+    fun fiatCurrencyInitialized(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_FIAT_CURRENCY_INITIALIZED, false)
+    }
+
+    @JvmStatic
+    fun fiatCurrency(context: Context): String {
+        val raw = prefs(context).getString(KEY_FIAT_CURRENCY, null).orEmpty()
+        if (FiatEstimate.isSupported(raw)) return raw.uppercase()
+        return FiatEstimate.hintedCurrency(localeCurrencyCode())
+    }
+
+    @JvmStatic
+    fun setFiatCurrency(context: Context, code: String) {
+        val normalized = if (FiatEstimate.isSupported(code)) code.uppercase() else "USD"
+        prefs(context).edit()
+            .putString(KEY_FIAT_CURRENCY, normalized)
+            .putBoolean(KEY_FIAT_CURRENCY_INITIALIZED, true)
+            .apply()
+    }
+
+    @JvmStatic
+    fun fiatEstimatesEnabledAtMs(context: Context): Long {
+        return prefs(context).getLong(KEY_FIAT_ESTIMATES_ENABLED_AT, 0L)
+    }
+
+    @JvmStatic
+    fun setFiatEstimatesEnabled(context: Context, enabled: Boolean) {
+        if (enabled && !fiatCurrencyInitialized(context)) {
+            setFiatCurrency(context, FiatEstimate.hintedCurrency(localeCurrencyCode()))
+        }
+        val edit = prefs(context).edit().putBoolean(KEY_FIAT_ESTIMATES_ENABLED, enabled)
+        if (enabled && fiatEstimatesEnabledAtMs(context) <= 0L) {
+            edit.putLong(KEY_FIAT_ESTIMATES_ENABLED_AT, System.currentTimeMillis())
+        }
+        edit.apply()
+    }
+
+    @JvmStatic
+    fun ensureFiatEstimatesEnabledAtMs(context: Context): Long {
+        val stored = fiatEstimatesEnabledAtMs(context)
+        if (stored > 0L) return stored
+        if (!fiatEstimatesEnabled(context)) return 0L
+        val now = System.currentTimeMillis()
+        prefs(context).edit().putLong(KEY_FIAT_ESTIMATES_ENABLED_AT, now).apply()
+        return now
+    }
+
+    @JvmStatic
+    fun cachedFiatRate(context: Context): FiatRate? {
+        val p = prefs(context)
+        val currency = p.getString(KEY_FIAT_RATE_CURRENCY, null) ?: return null
+        if (!FiatEstimate.isSupported(currency)) return null
+        val raw = p.getString(KEY_FIAT_RATE_PER_XMR, null) ?: return null
+        val perXmr = FiatEstimate.decimalOrNull(raw) ?: return null
+        val fetchedAt = p.getLong(KEY_FIAT_RATE_FETCHED_AT, 0L)
+        val source = p.getString(KEY_FIAT_RATE_SOURCE, "kraken") ?: "kraken"
+        return FiatRate(currency, perXmr, fetchedAt, source)
+    }
+
+    @JvmStatic
+    fun setCachedFiatRate(context: Context, rate: FiatRate?) {
+        val edit = prefs(context).edit()
+        if (rate == null) {
+            edit.remove(KEY_FIAT_RATE_CURRENCY)
+                .remove(KEY_FIAT_RATE_PER_XMR)
+                .remove(KEY_FIAT_RATE_FETCHED_AT)
+                .remove(KEY_FIAT_RATE_SOURCE)
+        } else {
+            edit.putString(KEY_FIAT_RATE_CURRENCY, rate.currency)
+                .putString(KEY_FIAT_RATE_PER_XMR, rate.fiatPerXmr.stripTrailingZeros().toPlainString())
+                .putLong(KEY_FIAT_RATE_FETCHED_AT, rate.fetchedAtMs)
+                .putString(KEY_FIAT_RATE_SOURCE, rate.source)
+        }
+        edit.apply()
+    }
+
+    @JvmStatic
     fun networkPolicy(context: Context): NetworkPolicy {
         val raw = prefs(context).getString(KEY_NETWORK_POLICY, DEFAULT_NETWORK_POLICY_RAW)
         return NetworkPolicy.fromRaw(raw)
@@ -152,11 +243,19 @@ object MoneroConfig {
         prefs(context).edit().putString(KEY_NETWORK_POLICY, policy.raw).apply()
     }
 
+    private val legacyDefaultI2pRpcAddresses: Set<String> = setOf(
+        "cvxtgqjorfif6i5x5fenys6fj7hzddbgavpyutps6gphywnlklqa.b32.i2p:18081",
+    )
+
     @JvmStatic
     fun i2pRpcAddress(context: Context): String {
-        return prefs(context).getString(KEY_I2P_RPC_ADDRESS, DEFAULT_I2P_RPC_ADDRESS)
-            ?.takeIf { it.isNotBlank() }
-            ?: DEFAULT_I2P_RPC_ADDRESS
+        val saved = prefs(context).getString(KEY_I2P_RPC_ADDRESS, null)?.trim().orEmpty()
+        if (saved.isEmpty()) return ""
+        if (legacyDefaultI2pRpcAddresses.contains(saved.lowercase())) {
+            prefs(context).edit().remove(KEY_I2P_RPC_ADDRESS).apply()
+            return ""
+        }
+        return saved
     }
 
     @JvmStatic
@@ -265,5 +364,9 @@ object MoneroConfig {
     )
 
     private fun clamp(v: Int, lo: Int, hi: Int): Int = max(lo, min(v, hi))
+
+    private fun localeCurrencyCode(): String? {
+        return runCatching { Currency.getInstance(Locale.getDefault()).currencyCode }.getOrNull()
+    }
 
 }
