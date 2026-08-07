@@ -107,6 +107,7 @@ fun QRScannerScreen(
                 onClick = onDismiss,
                 modifier = Modifier
                     .size(56.dp)
+                    .a11yMinTouchTarget()
                     .clip(CircleShape)
                     .background(
                         if (neon) palette.border.copy(alpha = 0.25f)

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -35,6 +36,8 @@ object A11yTags {
     const val SYNC_PROGRESS = "a11y_sync_progress"
     const val STATUS_LIVE = "a11y_status_live"
     const val ERROR_LIVE = "a11y_error_live"
+    const val NETWORK_POLICY = "a11y_network_policy"
+    const val DEVICE_AUTH_SWITCH = "a11y_device_auth_switch"
 }
 
 fun Modifier.a11yPoliteStatus(): Modifier =
@@ -125,4 +128,16 @@ fun Modifier.a11ySelectableOption(selected: Boolean): Modifier =
     semantics {
         this.selected = selected
         role = Role.RadioButton
+    }
+
+/** Prefer Material minimum touch target for icon-only controls. */
+fun Modifier.a11yMinTouchTarget(): Modifier =
+    this.then(Modifier.sizeIn(minWidth = 48.dp, minHeight = 48.dp))
+
+/**
+ * Merge a visible label + value into one spoken node for TalkBack.
+ */
+fun Modifier.a11yKeyValue(label: String, value: String): Modifier =
+    semantics(mergeDescendants = true) {
+        contentDescription = "$label: $value"
     }

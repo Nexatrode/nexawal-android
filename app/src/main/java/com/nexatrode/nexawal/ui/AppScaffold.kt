@@ -454,7 +454,7 @@ fun AppScaffold(
                         icon = {
                             Icon(
                                 imageVector = item.icon,
-                                contentDescription = label,
+                                contentDescription = null,
                                 tint = if (selected) palette.accent else palette.secondaryText
                             )
                         },
@@ -865,23 +865,25 @@ private fun WalletScreen(
                     else -> stringResource(R.string.blocks_remaining_fmt, formatGrouped(remainingBlocks))
                 }
 
-                Row {
-                    Icon(
-                        imageVector = if (isSyncedEffective) Icons.Filled.CheckCircle else Icons.Filled.Sync,
-                        contentDescription = null,
-                        tint = if (isSyncedEffective) palette.success else palette.accent
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        syncHeadline,
-                        color = iosPrimaryText,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp,
-                        fontFamily = chromeFont,
-                    )
+                Column(modifier = Modifier.a11yPoliteStatus()) {
+                    Row {
+                        Icon(
+                            imageVector = if (isSyncedEffective) Icons.Filled.CheckCircle else Icons.Filled.Sync,
+                            contentDescription = null,
+                            tint = if (isSyncedEffective) palette.success else palette.accent
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            syncHeadline,
+                            color = iosPrimaryText,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 18.sp,
+                            fontFamily = chromeFont,
+                        )
+                    }
+                    Spacer(Modifier.height(4.dp))
+                    Text(syncDetail, color = iosSecondary)
                 }
-                Spacer(Modifier.height(4.dp))
-                Text(syncDetail, color = iosSecondary)
                 Spacer(Modifier.height(10.dp))
 
                 val nodeLabel = stringResource(R.string.label_node)
@@ -1044,7 +1046,9 @@ private fun KeyValueRow(
     valueColor: Color = Color.Unspecified,
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .a11yKeyValue(label, value),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -1703,7 +1707,9 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             trailingIcon = {
                 androidx.compose.material3.IconButton(
                     onClick = { showScanner = true },
-                    modifier = Modifier.semantics { testTag = A11yTags.SCAN_QR },
+                    modifier = Modifier
+                        .a11yMinTouchTarget()
+                        .semantics { testTag = A11yTags.SCAN_QR },
                 ) {
                     Icon(
                         imageVector = Icons.Default.QrCodeScanner,
@@ -2301,21 +2307,23 @@ private fun SettingsScreen(
                     color = secondaryText,
                 )
                 Spacer(Modifier.height(10.dp))
-                listOf(
-                    MoneroConfig.NetworkPolicy.CLEARNET to stringResource(R.string.network_policy_clearnet),
-                    MoneroConfig.NetworkPolicy.I2P to stringResource(R.string.network_policy_i2p),
-                    MoneroConfig.NetworkPolicy.HYBRID to stringResource(R.string.network_policy_hybrid),
-                ).forEach { (policy, label) ->
-                    val selected = networkPolicy == policy
-                    SecondaryActionButton(
-                        text = if (selected) stringResource(R.string.network_selected_fmt, label) else label,
-                        onClick = { applyNetworkSettings(policy) },
-                        palette = palette,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .a11yRadioOption(selected = selected, label = label),
-                    )
-                    Spacer(Modifier.height(6.dp))
+                Column(modifier = Modifier.semantics { testTag = A11yTags.NETWORK_POLICY }) {
+                    listOf(
+                        MoneroConfig.NetworkPolicy.CLEARNET to stringResource(R.string.network_policy_clearnet),
+                        MoneroConfig.NetworkPolicy.I2P to stringResource(R.string.network_policy_i2p),
+                        MoneroConfig.NetworkPolicy.HYBRID to stringResource(R.string.network_policy_hybrid),
+                    ).forEach { (policy, label) ->
+                        val selected = networkPolicy == policy
+                        SecondaryActionButton(
+                            text = if (selected) stringResource(R.string.network_selected_fmt, label) else label,
+                            onClick = { applyNetworkSettings(policy) },
+                            palette = palette,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .a11yRadioOption(selected = selected, label = label),
+                        )
+                        Spacer(Modifier.height(6.dp))
+                    }
                 }
             }
         }
@@ -2341,6 +2349,7 @@ private fun SettingsScreen(
                         onValueChange = { nodeUrlInput = it },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
+                        label = { Text(stringResource(R.string.clearnet_node_url_label)) },
                         placeholder = { Text(walletManager.defaultNodeUrl(), color = secondaryText) },
                         colors = nexaFieldColors(palette),
                         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
@@ -2382,6 +2391,7 @@ private fun SettingsScreen(
                         onValueChange = { i2pRpcInput = it },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
+                        label = { Text(stringResource(R.string.i2p_node_placeholder)) },
                         placeholder = { Text("hostname.b32.i2p:18081", color = secondaryText) },
                         colors = nexaFieldColors(palette),
                         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
@@ -2395,6 +2405,7 @@ private fun SettingsScreen(
                         onValueChange = { i2pProxyInput = it },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
+                        label = { Text(stringResource(R.string.i2p_proxy_placeholder)) },
                         placeholder = { Text("127.0.0.1:4444", color = secondaryText) },
                         colors = nexaFieldColors(palette),
                         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
@@ -2583,6 +2594,7 @@ private fun SettingsScreen(
                         modifier = Modifier.fillMaxWidth(),
                         isError = gapLimitError != null,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        label = { Text(stringResource(R.string.gap_limit_android)) },
                         placeholder = { Text(MoneroConfig.DEFAULT_GAP_LIMIT.toString(), color = secondaryText) },
                         colors = nexaFieldColors(palette),
                     )
@@ -2605,6 +2617,7 @@ private fun SettingsScreen(
                         modifier = Modifier.fillMaxWidth(),
                         isError = accountGapError != null,
                         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        label = { Text(stringResource(R.string.account_gap_android)) },
                         placeholder = { Text(MoneroConfig.DEFAULT_ACCOUNT_GAP.toString(), color = secondaryText) },
                         colors = nexaFieldColors(palette),
                     )

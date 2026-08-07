@@ -58,6 +58,10 @@ class AccessibilitySemanticsTest {
                 // Mainnet defaults on.
                 composeRule.onNodeWithTag(A11yTags.CREATE_MAINNET_SWITCH).assertIsOn()
 
+                composeRule.onNodeWithTag(A11yTags.DEVICE_AUTH_SWITCH)
+                    .assertIsDisplayed()
+                    .assertIsToggleable()
+
                 // Visible create/import chrome still labeled for TalkBack.
                 composeRule.onNode(
                     hasText(composeRule.activity.getString(R.string.section_wallet_setup), substring = true)
@@ -88,6 +92,11 @@ class AccessibilitySemanticsTest {
         composeRule.onNodeWithTag(A11yTags.CLASSIC_UI_SWITCH)
             .assertIsDisplayed()
             .assertIsToggleable()
+
+        composeRule.waitUntil(timeoutMillis = 5_000) {
+            hasTag(A11yTags.NETWORK_POLICY)
+        }
+        composeRule.onNodeWithTag(A11yTags.NETWORK_POLICY).assertIsDisplayed()
     }
 
     @Test

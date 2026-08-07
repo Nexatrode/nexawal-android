@@ -36,6 +36,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -493,9 +495,14 @@ fun WalletCreationScreen(
 
                     when {
                         isFetchingSuggestedHeight.value -> {
-                            Text(stringResource(R.string.fetching_from_node), color = palette.secondaryText)
+                            val fetchingFromNodeText = stringResource(R.string.fetching_from_node)
+                            Text(fetchingFromNodeText, color = palette.secondaryText)
                             Spacer(Modifier.height(8.dp))
-                            CircularProgressIndicator()
+                            CircularProgressIndicator(
+                                modifier = Modifier.semantics {
+                                    contentDescription = fetchingFromNodeText
+                                }
+                            )
                         }
                         suggestedRestoreHeight.value != null -> {
                             Text(stringResource(R.string.starting_height_fast_fmt, suggestedRestoreHeight.value ?: 0L), color = palette.primaryText)
@@ -554,6 +561,7 @@ fun WalletCreationScreen(
                 state = requireDeviceAuth,
                 enabled = DeviceAuthGate.isAvailable(context),
                 palette = palette,
+                testTag = A11yTags.DEVICE_AUTH_SWITCH,
             )
 
             Spacer(Modifier.height(6.dp))
