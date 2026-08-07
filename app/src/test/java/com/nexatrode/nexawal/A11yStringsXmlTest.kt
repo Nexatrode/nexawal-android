@@ -14,7 +14,16 @@ import javax.xml.parsers.DocumentBuilderFactory
 class A11yStringsXmlTest {
 
     private val valuesDir = File("src/main/res/values")
-    private val valuesEsDir = File("src/main/res/values-es")
+
+    private val localeDirs = listOf(
+        "values-es",
+        "values-pt-rBR",
+        "values-zh-rCN",
+        "values-ru",
+        "values-de",
+        "values-fr",
+        "values-ja",
+    )
 
     private val requiredA11yKeys = listOf(
         "a11y_sync_progress_fmt",
@@ -36,28 +45,36 @@ class A11yStringsXmlTest {
     )
 
     @Test
-    fun enAndEs_haveMatchingKeys() {
+    fun allLocales_haveMatchingKeys() {
         val en = loadStringNames(File(valuesDir, "strings.xml"))
-        val es = loadStringNames(File(valuesEsDir, "strings.xml"))
-        assertEquals("values and values-es must have the same string names", en, es)
-    }
-
-    @Test
-    fun requiredA11yKeys_presentInBothLocales() {
-        val en = loadStringNames(File(valuesDir, "strings.xml"))
-        val es = loadStringNames(File(valuesEsDir, "strings.xml"))
-        for (key in requiredA11yKeys) {
-            assertTrue("missing EN key: $key", key in en)
-            assertTrue("missing ES key: $key", key in es)
+        for (dir in localeDirs) {
+            val locale = loadStringNames(File("src/main/res/$dir", "strings.xml"))
+            assertEquals("values and $dir must have the same string names", en, locale)
         }
     }
 
     @Test
-    fun a11yKeys_haveNonBlankSpanishValues() {
-        val esValues = loadStringValues(File(valuesEsDir, "strings.xml"))
+    fun requiredA11yKeys_presentInAllLocales() {
+        val en = loadStringNames(File(valuesDir, "strings.xml"))
         for (key in requiredA11yKeys) {
-            val value = esValues[key]
-            assertTrue("blank ES value for $key", !value.isNullOrBlank())
+            assertTrue("missing EN key: $key", key in en)
+        }
+        for (dir in localeDirs) {
+            val locale = loadStringNames(File("src/main/res/$dir", "strings.xml"))
+            for (key in requiredA11yKeys) {
+                assertTrue("missing $dir key: $key", key in locale)
+            }
+        }
+    }
+
+    @Test
+    fun a11yKeys_haveNonBlankTranslatedValues() {
+        for (dir in localeDirs) {
+            val values = loadStringValues(File("src/main/res/$dir", "strings.xml"))
+            for (key in requiredA11yKeys) {
+                val value = values[key]
+                assertTrue("blank $dir value for $key", !value.isNullOrBlank())
+            }
         }
     }
 
