@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">환율 통화, 접힘</string>
     <string name="a11y_on">켜짐</string>
     <string name="a11y_off">꺼짐</string>
+    <string name="a11y_swap_amount_unit">XMR과 %1$s 전환</string>
 </resources>

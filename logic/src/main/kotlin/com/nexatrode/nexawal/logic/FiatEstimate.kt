@@ -155,6 +155,34 @@ object FiatEstimate {
         return BigDecimal.valueOf(piconero).divide(piconeroPerXmr, 18, RoundingMode.DOWN).multiply(fiatPerXmr)
     }
 
+    fun symbol(currency: String): String? = symbols[currency.uppercase()]
+
+    /**
+     * Convert a typed fiat amount to piconero using the live rate.
+     * Rounds **down** so send never exceeds the typed fiat value.
+     */
+    fun piconeroFromFiat(fiatText: String, rate: FiatRate): Long? {
+        if (rate.fiatPerXmr.signum() <= 0) return null
+        val fiat = decimalOrNull(fiatText.replace(',', '.')) ?: return null
+        if (fiat.signum() < 0) return null
+        if (fiat.signum() == 0) return 0L
+        val xmr = fiat.divide(rate.fiatPerXmr, 18, RoundingMode.DOWN)
+        val pico = xmr.multiply(piconeroPerXmr).setScale(0, RoundingMode.DOWN)
+        return runCatching { pico.longValueExact() }.getOrNull()
+    }
+
+    /** Fiat amount string for the input field (no ≈ prefix). */
+    fun formatFiatForInput(piconero: Long, rate: FiatRate): String {
+        val places = decimalPlaces(rate.currency)
+        val amount = fiatAmount(piconero, rate.fiatPerXmr).setScale(places, RoundingMode.HALF_UP)
+        return formatPlainNumber(amount, places)
+    }
+
+    fun formatXmrForInput(piconero: Long): String = XmrAmount.formatForInput(piconero)
+
+    /** Secondary line when the user is typing fiat: `≈ 0.123456 XMR`. */
+    fun formatXmrApprox(piconero: Long): String = "≈ ${formatXmrForInput(piconero)} XMR"
+
     fun formatApprox(amount: BigDecimal, currency: String): String {
         val code = currency.uppercase()
         val places = decimalPlaces(code)
@@ -180,6 +208,27 @@ object FiatEstimate {
         val trimmed = raw.trim()
         if (trimmed.isEmpty()) return null
         return runCatching { BigDecimal(trimmed) }.getOrNull()
+    }
+
+    private fun formatPlainNumber(value: BigDecimal, decimals: Int): String {
+        val negative = value.signum() < 0
+        val abs = value.abs()
+        val plain = abs.toPlainString()
+        val parts = plain.split('.', limit = 2)
+        val whole = parts[0].filter { it.isDigit() }.ifEmpty { "0" }
+        if (decimals == 0) {
+            return if (negative) "-$whole" else whole
+        }
+        var frac = if (parts.size > 1) parts[1].filter { it.isDigit() } else ""
+        if (frac.length > decimals) frac = frac.substring(0, decimals)
+        while (frac.length < decimals) frac += "0"
+        while (frac.length > 1 && frac.endsWith('0')) {
+            frac = frac.dropLast(1)
+        }
+        if (frac.all { it == '0' }) {
+            return if (negative) "-$whole" else whole
+        }
+        return "${if (negative) "-" else ""}$whole.$frac"
     }
 
     private fun formatNumber(value: BigDecimal, decimals: Int): String {

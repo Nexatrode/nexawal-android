@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">Fiat-Währung, eingeklappt</string>
     <string name="a11y_on">Ein</string>
     <string name="a11y_off">Aus</string>
+    <string name="a11y_swap_amount_unit">Zwischen XMR und %1$s wechseln</string>
 </resources>

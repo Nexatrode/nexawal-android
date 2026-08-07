@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">Moeda fiduciária, recolhida</string>
     <string name="a11y_on">Ativado</string>
     <string name="a11y_off">Desativado</string>
+    <string name="a11y_swap_amount_unit">Alternar entre XMR e %1$s</string>
 </resources>

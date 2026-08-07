@@ -367,4 +367,5 @@
     <string name="a11y_currency_menu_collapsed">Moneda fiat, contraído</string>
     <string name="a11y_on">Activado</string>
     <string name="a11y_off">Desactivado</string>
+    <string name="a11y_swap_amount_unit">Cambiar entre XMR y %1$s</string>
 </resources>

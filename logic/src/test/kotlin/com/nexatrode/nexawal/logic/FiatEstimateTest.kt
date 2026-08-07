@@ -65,6 +65,21 @@ class FiatEstimateTest {
     }
 
     @Test
+    fun piconeroFromFiatRoundsDown() {
+        val usdRate = FiatRate("USD", BigDecimal("100"), 10L, "test")
+        assertEquals(500_000_000_000L, FiatEstimate.piconeroFromFiat("50", usdRate))
+        assertEquals(500_000_000_000L, FiatEstimate.piconeroFromFiat("50.000000000001", usdRate))
+        assertEquals(0L, FiatEstimate.piconeroFromFiat("0", usdRate))
+        assertNull(FiatEstimate.piconeroFromFiat("", usdRate))
+        assertNull(FiatEstimate.piconeroFromFiat("abc", usdRate))
+
+        assertEquals("50", FiatEstimate.formatFiatForInput(500_000_000_000L, usdRate))
+        assertEquals("0.5", FiatEstimate.formatXmrForInput(500_000_000_000L))
+        assertEquals("≈ 0.5 XMR", FiatEstimate.formatXmrApprox(500_000_000_000L))
+        assertEquals("$", FiatEstimate.symbol("USD"))
+    }
+
+    @Test
     fun localeHint() {
         assertEquals("EUR", FiatEstimate.hintedCurrency("eur"))
         assertEquals("USD", FiatEstimate.hintedCurrency("UAH"))

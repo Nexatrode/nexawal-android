@@ -23,4 +23,16 @@ object XmrAmount {
         val scaled = runCatching { Math.multiplyExact(whole, PICONERO_PER_XMR) }.getOrNull() ?: return null
         return runCatching { Math.addExact(scaled, frac) }.getOrNull()
     }
+
+    /** Format piconero as an XMR decimal string for amount text fields (trim trailing zeros). */
+    fun formatForInput(piconero: Long): String {
+        val whole = piconero / PICONERO_PER_XMR
+        val frac = piconero % PICONERO_PER_XMR
+        if (frac == 0L) return whole.toString()
+        var fracStr = frac.toString().padStart(12, '0')
+        while (fracStr.endsWith('0')) {
+            fracStr = fracStr.dropLast(1)
+        }
+        return "$whole.$fracStr"
+    }
 }

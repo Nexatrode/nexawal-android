@@ -17,6 +17,13 @@ class XmrAmountTest {
     }
 
     @Test
+    fun formatForInput() {
+        assertEquals("1", XmrAmount.formatForInput(1_000_000_000_000L))
+        assertEquals("0.5", XmrAmount.formatForInput(500_000_000_000L))
+        assertEquals("0.000000000001", XmrAmount.formatForInput(1L))
+    }
+
+    @Test
     fun overflowRejected() {
         assertNull(XmrAmount.parsePiconero("18446745"))
         assertNull(XmrAmount.parsePiconero("18446744073710.0"))

@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">現地通貨、折りたたみ済み</string>
     <string name="a11y_on">オン</string>
     <string name="a11y_off">オフ</string>
+    <string name="a11y_swap_amount_unit">XMR と %1$s を切り替え</string>
 </resources>

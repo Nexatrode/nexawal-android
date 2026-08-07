@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">Фиатная валюта, свёрнуто</string>
     <string name="a11y_on">Включено</string>
     <string name="a11y_off">Отключено</string>
+    <string name="a11y_swap_amount_unit">Переключить между XMR и %1$s</string>
 </resources>

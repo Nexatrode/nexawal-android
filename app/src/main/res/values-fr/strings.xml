@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">Devise fiduciaire, réduite</string>
     <string name="a11y_on">Activé</string>
     <string name="a11y_off">Désactivé</string>
+    <string name="a11y_swap_amount_unit">Basculer entre XMR et %1$s</string>
 </resources>

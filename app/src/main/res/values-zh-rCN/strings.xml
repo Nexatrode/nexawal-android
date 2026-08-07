@@ -365,4 +365,5 @@
     <string name="a11y_currency_menu_collapsed">法定货币,已收起</string>
     <string name="a11y_on">开</string>
     <string name="a11y_off">关</string>
+    <string name="a11y_swap_amount_unit">在 XMR 和 %1$s 之间切换</string>
 </resources>

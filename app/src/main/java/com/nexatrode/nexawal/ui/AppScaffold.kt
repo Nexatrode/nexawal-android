@@ -1297,6 +1297,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
     var selectedSubaddressIndex by remember { mutableStateOf(0) }
     var receiveAddress by remember { mutableStateOf("") }
     var amountXmr by remember { mutableStateOf("") }
+    var amountInputMode by remember { mutableStateOf(AmountInputMode.XMR) }
     var description by remember { mutableStateOf("") }
     var statusText by remember { mutableStateOf<String?>(null) }
     var showCreatePrompt by remember { mutableStateOf(false) }
@@ -1326,7 +1327,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
     val paymentUri = if (receiveAddress.isNotBlank()) {
         MoneroQr.buildUri(
             address = receiveAddress,
-            amountXmr = amountXmr.trim().takeIf { it.isNotEmpty() },
+            amountXmr = AmountUnitParsing.xmrAmountForUri(amountXmr, amountInputMode, fiatRate),
             description = description.trim().takeIf { it.isNotEmpty() },
         )
     } else {
@@ -1416,7 +1417,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
 
         Spacer(Modifier.height(12.dp))
 
-        val hasPaymentAmount = amountXmr.trim().isNotEmpty()
+        val hasPaymentAmount = AmountUnitParsing.xmrAmountForUri(amountXmr, amountInputMode, fiatRate) != null
         val addressCopiedText = stringResource(R.string.address_copied_short)
         val paymentUriCopiedText = stringResource(R.string.payment_uri_copied_short)
         val nothingToShareText = stringResource(R.string.nothing_to_share)
@@ -1540,16 +1541,16 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
         SectionLabel(stringResource(R.string.payment_request_optional_android), palette)
         Spacer(Modifier.height(6.dp))
 
-        OutlinedTextField(
-            value = amountXmr,
-            onValueChange = { amountXmr = it },
-            singleLine = true,
+        AmountUnitField(
+            text = amountXmr,
+            onTextChange = { amountXmr = it },
+            mode = amountInputMode,
+            onModeChange = { amountInputMode = it },
+            rate = fiatRate,
+            palette = palette,
+            label = stringResource(R.string.label_amount),
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(stringResource(R.string.amount_xmr_label)) },
-            placeholder = { Text(stringResource(R.string.receive_amount_ph), color = palette.secondaryText) },
-            colors = nexaFieldColors(palette),
         )
-        ApproxFiatLine(XmrAmount.parsePiconero(amountXmr), fiatRate, palette.secondaryText)
 
         Spacer(Modifier.height(8.dp))
 
@@ -1630,6 +1631,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
 
     var toAddress by remember { mutableStateOf("") }
     var amountXmrText by remember { mutableStateOf("") }
+    var amountInputMode by remember { mutableStateOf(AmountInputMode.XMR) }
     var isEstimating by remember { mutableStateOf(false) }
     var isSending by remember { mutableStateOf(false) }
     var isPreviewingMax by remember { mutableStateOf(false) }
@@ -1662,8 +1664,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     val addressFromQrText = stringResource(R.string.info_address_from_qr)
     val invalidQrText = stringResource(R.string.error_invalid_qr)
 
-    fun canPreviewFee(): Boolean = hasWallet && toAddress.trim().isNotEmpty() && amountXmrText.trim().isNotEmpty() && !isEstimating && !isSending
-    fun amountPiconeroOrNull(): Long? = XmrAmount.parsePiconero(amountXmrText)
+    fun amountPiconeroOrNull(): Long? = AmountUnitParsing.piconero(amountXmrText, amountInputMode, fiatRate)
+    fun canPreviewFee(): Boolean = hasWallet && toAddress.trim().isNotEmpty() && amountPiconeroOrNull() != null && !isEstimating && !isSending
     fun hasUnlockedForExactSend(): Boolean {
         val amount = amountPiconeroOrNull() ?: return false
         val fee = estimatedFee?.fee ?: return false
@@ -1729,10 +1731,10 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             }
         )
 
-        Text(stringResource(R.string.amount_xmr_label), color = palette.primaryText)
-        OutlinedTextField(
-            value = amountXmrText,
-            onValueChange = {
+        Text(stringResource(R.string.label_amount), color = palette.primaryText)
+        AmountUnitField(
+            text = amountXmrText,
+            onTextChange = {
                 amountXmrText = it
                 estimatedFee = null
                 sendResult = null
@@ -1740,14 +1742,15 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 errorText = null
                 infoText = null
             },
-            singleLine = true,
+            mode = amountInputMode,
+            onModeChange = { amountInputMode = it },
+            rate = fiatRate,
+            palette = palette,
+            label = stringResource(R.string.label_amount),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp),
-            label = { Text(stringResource(R.string.amount_xmr_label)) },
-            colors = nexaFieldColors(palette),
         )
-        ApproxFiatLine(amountPiconeroOrNull(), fiatRate, palette.secondaryText)
 
         val mergedError = errorText ?: state.lastError
         if (mergedError != null) {
@@ -1828,7 +1831,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 scope.launch {
                     isEstimating = true
                     try {
-                        val amountPiconero = XmrAmount.parsePiconero(amountXmrText)
+                        val amountPiconero = amountPiconeroOrNull()
                             ?: throw IllegalArgumentException(invalidAmountText)
                         estimatedFee = walletManager.previewFee(
                             destinations = listOf(
@@ -1954,7 +1957,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         sweepResult = null
                         scope.launch {
                             try {
-                                val amountPiconeroNow = XmrAmount.parsePiconero(amountXmrText)
+                                val amountPiconeroNow = amountPiconeroOrNull()
                                     ?: throw IllegalArgumentException(invalidAmountText)
                                 val feePiconero = estimatedFee?.fee ?: 0L
                                 if (!com.nexatrode.nexawal.logic.SendSafety.hasUnlockedForExactSend(
@@ -2103,8 +2106,9 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
 
         toAddress = parsed.address
         val amount = parsed.amountXmr
-        if (amount != null && XmrAmount.parsePiconero(amount) != null) {
-            amountXmrText = amount.replace(',', '.')
+        val pico = amount?.let { XmrAmount.parsePiconero(it) }
+        if (pico != null) {
+            AmountUnitParsing.setXmrPiconero(pico, { amountXmrText = it }, { amountInputMode = it })
         }
         infoText = paymentFromQrText
     }
