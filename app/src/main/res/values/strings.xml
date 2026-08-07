@@ -357,4 +357,14 @@
     <string name="failed_persist_addrs_fmt">Failed to persist receive addresses: %1$s</string>
     <string name="failed_open_wallet_fmt">Failed to open stored wallet: %1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_sync_progress_fmt">Sync progress %1$d percent</string>
+    <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
+    <string name="a11y_camera_preview">Camera preview for scanning Monero QR codes</string>
+    <string name="a11y_currency_menu">Fiat currency</string>
+    <string name="a11y_currency_menu_expanded">Fiat currency, expanded</string>
+    <string name="a11y_currency_menu_collapsed">Fiat currency, collapsed</string>
+    <string name="a11y_on">On</string>
+    <string name="a11y_off">Off</string>
 </resources>

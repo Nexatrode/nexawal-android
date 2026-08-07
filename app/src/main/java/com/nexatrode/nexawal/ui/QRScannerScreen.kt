@@ -33,6 +33,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -133,6 +135,7 @@ fun QRScannerScreen(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(top = 100.dp)
+                .a11yHeading()
         )
     }
 }
@@ -148,6 +151,7 @@ private fun CameraPreview(
     val executor = remember { Executors.newSingleThreadExecutor() }
 
     val barcodeScanner = remember { BarcodeScanning.getClient() }
+    val cameraPreviewDescription = stringResource(R.string.a11y_camera_preview)
 
     DisposableEffect(Unit) {
         onDispose {
@@ -214,6 +218,8 @@ private fun CameraPreview(
 
             previewView
         },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .semantics { contentDescription = cameraPreviewDescription }
     )
 }

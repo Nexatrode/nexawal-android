@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -75,6 +76,11 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
@@ -417,6 +423,7 @@ fun AppScaffold(
         containerColor = palette.background,
         bottomBar = {
             NavigationBar(
+                modifier = Modifier.semantics { testTag = A11yTags.BOTTOM_NAV },
                 containerColor = palette.card,
                 contentColor = palette.secondaryText
             ) {
@@ -861,7 +868,7 @@ private fun WalletScreen(
                 Row {
                     Icon(
                         imageVector = if (isSyncedEffective) Icons.Filled.CheckCircle else Icons.Filled.Sync,
-                        contentDescription = syncHeadline,
+                        contentDescription = null,
                         tint = if (isSyncedEffective) palette.success else palette.accent
                     )
                     Spacer(Modifier.width(8.dp))
@@ -900,7 +907,9 @@ private fun WalletScreen(
 
                 LinearProgressIndicator(
                     progress = { progress },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .a11ySyncProgress(progress, stringResource(R.string.a11y_sync_progress_fmt, (progress * 100).toInt())),
                     color = iosBlue,
                     trackColor = iosSeparator,
                 )
@@ -996,7 +1005,7 @@ private fun WalletScreen(
 
         statusText?.let {
             Spacer(Modifier.height(12.dp))
-            Text(it, color = Color.Gray)
+            Text(it, color = Color.Gray, modifier = Modifier.a11yPoliteStatus())
         }
 
         mergedError?.let {
@@ -1008,6 +1017,7 @@ private fun WalletScreen(
                     .fillMaxWidth()
                     .background(Color(0x1AB00020))
                     .padding(12.dp)
+                    .a11yAssertiveError()
             )
         }
 
@@ -1087,17 +1097,22 @@ private fun TransferRow(
         else -> Icons.Filled.Sync
     }
     val amountText = XmrFormat.formatPiconeroAsDisplayXmr(t.amount)
+    val summary = stringResource(R.string.a11y_transfer_row_fmt, directionRaw, amountText, statusText)
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .clickable(role = Role.Button, onClick = onClick)
+            .semantics(mergeDescendants = true) {
+                contentDescription = summary
+                testTag = A11yTags.TRANSFER_ROW
+            }
             .padding(vertical = 12.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Icon(
                 imageVector = directionIcon,
-                contentDescription = direction,
+                contentDescription = null,
                 tint = amountColor,
                 modifier = Modifier.padding(top = 2.dp)
             )
@@ -1344,6 +1359,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .aspectRatio(1f)
+                    .semantics { testTag = A11yTags.RECEIVE_QR }
                     .background(
                         if (palette.classic) palette.background else Color.White,
                         RoundedCornerShape(if (palette.classic) 4.dp else 12.dp),
@@ -1489,7 +1505,9 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
                     text = if (entry.subaddressIndex == selectedSubaddressIndex) String.format(selectedLabelFmt, title) else title,
                     onClick = { selectedSubaddressIndex = entry.subaddressIndex },
                     palette = palette,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .a11ySelectableOption(entry.subaddressIndex == selectedSubaddressIndex)
                 )
                 Spacer(Modifier.height(4.dp))
             }
@@ -1514,6 +1532,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             onValueChange = { amountXmr = it },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
+            label = { Text(stringResource(R.string.amount_xmr_label)) },
             placeholder = { Text(stringResource(R.string.receive_amount_ph), color = palette.secondaryText) },
             colors = nexaFieldColors(palette),
         )
@@ -1526,13 +1545,14 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             onValueChange = { description = it },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
+            label = { Text(stringResource(R.string.description_label)) },
             placeholder = { Text(stringResource(R.string.receive_desc_ph), color = palette.secondaryText) },
             colors = nexaFieldColors(palette),
         )
 
         statusText?.let {
             Spacer(Modifier.height(12.dp))
-            Text(it, color = palette.primaryText)
+            Text(it, color = palette.primaryText, modifier = Modifier.a11yPoliteStatus())
         }
     }
 
@@ -1546,6 +1566,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
                     onValueChange = { newLabel = it },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
+                    label = { Text(stringResource(R.string.optional_label)) },
                     placeholder = { Text(stringResource(R.string.optional_label), color = palette.secondaryText) },
                     colors = nexaFieldColors(palette),
                 )
@@ -1677,9 +1698,13 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp),
+            label = { Text(stringResource(R.string.to_address)) },
             colors = nexaFieldColors(palette),
             trailingIcon = {
-                androidx.compose.material3.IconButton(onClick = { showScanner = true }) {
+                androidx.compose.material3.IconButton(
+                    onClick = { showScanner = true },
+                    modifier = Modifier.semantics { testTag = A11yTags.SCAN_QR },
+                ) {
                     Icon(
                         imageVector = Icons.Default.QrCodeScanner,
                         contentDescription = stringResource(R.string.scan_qr_cd),
@@ -1704,18 +1729,19 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp),
+            label = { Text(stringResource(R.string.amount_xmr_label)) },
             colors = nexaFieldColors(palette),
         )
         ApproxFiatLine(amountPiconeroOrNull(), fiatRate, palette.secondaryText)
 
         val mergedError = errorText ?: state.lastError
         if (mergedError != null) {
-            Text(mergedError, color = palette.danger)
+            Text(mergedError, color = palette.danger, modifier = Modifier.a11yAssertiveError())
             Spacer(Modifier.height(12.dp))
         }
 
         infoText?.let {
-            Text(it)
+            Text(it, modifier = Modifier.a11yPoliteStatus())
             Spacer(Modifier.height(12.dp))
         }
 
@@ -1732,7 +1758,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             }
             if (!hasUnlockedForExactSend()) {
                 Spacer(Modifier.height(6.dp))
-                Text(stringResource(R.string.error_insufficient_amount_fee), color = palette.danger)
+                Text(stringResource(R.string.error_insufficient_amount_fee), color = palette.danger, modifier = Modifier.a11yAssertiveError())
             }
             Text(
                 toAddress.trim(),
@@ -2240,26 +2266,19 @@ private fun SettingsScreen(
             border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(stringResource(R.string.toggle_classic_ui), color = primaryText, fontWeight = FontWeight.SemiBold)
-                        Spacer(Modifier.height(4.dp))
-                        Text(
-                            stringResource(R.string.classic_ui_help),
-                            color = secondaryText
-                        )
-                    }
-                    val classicUiEnabledText = stringResource(R.string.classic_ui_enabled)
-                    val classicUiDisabledText = stringResource(R.string.classic_ui_disabled)
-                    Switch(
-                        checked = classicUI,
-                        onCheckedChange = {
-                            onClassicUIChange(it)
-                            statusText = if (it) classicUiEnabledText else classicUiDisabledText
-                        },
-                        colors = nexaSwitchColors(palette),
-                    )
-                }
+                val classicUiEnabledText = stringResource(R.string.classic_ui_enabled)
+                val classicUiDisabledText = stringResource(R.string.classic_ui_disabled)
+                LabeledSwitchRow(
+                    label = stringResource(R.string.toggle_classic_ui),
+                    description = stringResource(R.string.classic_ui_help),
+                    checked = classicUI,
+                    onCheckedChange = {
+                        onClassicUIChange(it)
+                        statusText = if (it) classicUiEnabledText else classicUiDisabledText
+                    },
+                    palette = palette,
+                    testTag = A11yTags.CLASSIC_UI_SWITCH,
+                )
             }
         }
 
@@ -2292,7 +2311,9 @@ private fun SettingsScreen(
                         text = if (selected) stringResource(R.string.network_selected_fmt, label) else label,
                         onClick = { applyNetworkSettings(policy) },
                         palette = palette,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .a11yRadioOption(selected = selected, label = label),
                     )
                     Spacer(Modifier.height(6.dp))
                 }
@@ -2409,24 +2430,19 @@ private fun SettingsScreen(
             border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(stringResource(R.string.toggle_require_device_auth), color = primaryText, fontWeight = FontWeight.SemiBold)
-                        Spacer(Modifier.height(4.dp))
-                        Text(stringResource(R.string.require_device_auth_description), color = secondaryText)
-                    }
-                    val deviceAuthEnabledText = stringResource(R.string.device_auth_enabled_status)
-                    val deviceAuthDisabledText = stringResource(R.string.device_auth_disabled_status)
-                    Switch(
-                        checked = requireDeviceAuth,
-                        onCheckedChange = {
-                            requireDeviceAuth = it
-                            MoneroConfig.setRequireDeviceAuth(context, it)
-                            statusText = if (it) deviceAuthEnabledText else deviceAuthDisabledText
-                        },
-                        colors = nexaSwitchColors(palette),
-                    )
-                }
+                val deviceAuthEnabledText = stringResource(R.string.device_auth_enabled_status)
+                val deviceAuthDisabledText = stringResource(R.string.device_auth_disabled_status)
+                LabeledSwitchRow(
+                    label = stringResource(R.string.toggle_require_device_auth),
+                    description = stringResource(R.string.require_device_auth_description),
+                    checked = requireDeviceAuth,
+                    onCheckedChange = {
+                        requireDeviceAuth = it
+                        MoneroConfig.setRequireDeviceAuth(context, it)
+                        statusText = if (it) deviceAuthEnabledText else deviceAuthDisabledText
+                    },
+                    palette = palette,
+                )
                 Spacer(Modifier.height(10.dp))
                 Text(
                     if (DeviceAuthGate.isAvailable(context)) {
@@ -2665,44 +2681,37 @@ private fun SettingsScreen(
             Column(modifier = Modifier.padding(16.dp)) {
                 val fiatEnabledText = stringResource(R.string.fiat_enabled)
                 val fiatDisabledText = stringResource(R.string.fiat_disabled)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        stringResource(R.string.toggle_show_fiat),
-                        color = primaryText,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.weight(1f),
-                    )
-                    Switch(
-                        checked = fiatEnabled,
-                        onCheckedChange = {
-                            fiatEnabled = it
-                            MoneroConfig.setFiatEstimatesEnabled(context, it)
-                            fiatCurrency = MoneroConfig.fiatCurrency(context)
-                            walletManager.fiatPrices.settingsDidChange()
-                            statusText = if (it) fiatEnabledText else fiatDisabledText
-                        },
-                        colors = nexaSwitchColors(palette),
-                    )
-                }
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    stringResource(R.string.fiat_help),
-                    color = secondaryText,
+                LabeledSwitchRow(
+                    label = stringResource(R.string.toggle_show_fiat),
+                    description = stringResource(R.string.fiat_help),
+                    checked = fiatEnabled,
+                    onCheckedChange = {
+                        fiatEnabled = it
+                        MoneroConfig.setFiatEstimatesEnabled(context, it)
+                        fiatCurrency = MoneroConfig.fiatCurrency(context)
+                        walletManager.fiatPrices.settingsDidChange()
+                        statusText = if (it) fiatEnabledText else fiatDisabledText
+                    },
+                    palette = palette,
                 )
                 if (fiatEnabled) {
                     Spacer(Modifier.height(12.dp))
                     Text(stringResource(R.string.fiat_currency_label), color = primaryText, fontWeight = FontWeight.SemiBold)
                     Spacer(Modifier.height(6.dp))
                     val currencyCodeNameFmt = stringResource(R.string.currency_code_name_fmt)
+                    val currencyMenuExpandedText = stringResource(R.string.a11y_currency_menu_expanded)
+                    val currencyMenuCollapsedText = stringResource(R.string.a11y_currency_menu_collapsed)
                     Box {
                         SecondaryActionButton(
                             text = String.format(currencyCodeNameFmt, fiatCurrency, FiatEstimate.currencyNames[fiatCurrency] ?: fiatCurrency),
                             onClick = { fiatCurrencyMenuOpen = true },
                             palette = palette,
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .semantics {
+                                    role = Role.DropdownList
+                                    contentDescription = if (fiatCurrencyMenuOpen) currencyMenuExpandedText else currencyMenuCollapsedText
+                                },
                         )
                         androidx.compose.material3.DropdownMenu(
                             expanded = fiatCurrencyMenuOpen,
@@ -2785,6 +2794,7 @@ private fun SettingsScreen(
                     .fillMaxWidth()
                     .background(cardBg, RoundedCornerShape(12.dp))
                     .padding(12.dp)
+                    .a11yPoliteStatus()
             )
         }
 

@@ -3,7 +3,6 @@ package com.nexatrode.nexawal.ui
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +20,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -414,6 +412,7 @@ fun WalletCreationScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(160.dp),
+                        label = { Text(stringResource(R.string.recovery_seed_label)) },
                         textStyle = androidx.compose.ui.text.TextStyle(
                             fontFamily = FontFamily.Monospace,
                             color = palette.primaryText,
@@ -473,6 +472,7 @@ fun WalletCreationScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(160.dp),
+                        label = { Text(stringResource(R.string.mnemonic_paste_label)) },
                         placeholder = { Text(stringResource(R.string.mnemonic_paste_placeholder), color = palette.secondaryText) },
                         textStyle = androidx.compose.ui.text.TextStyle(
                             fontFamily = FontFamily.Monospace,
@@ -507,7 +507,7 @@ fun WalletCreationScreen(
 
                     suggestedHeightError.value?.let {
                         Spacer(Modifier.height(6.dp))
-                        Text(it, color = palette.danger)
+                        Text(it, color = palette.danger, modifier = Modifier.a11yAssertiveError())
                     }
                 }
 
@@ -519,6 +519,7 @@ fun WalletCreationScreen(
                         value = restoreHeightInput.value,
                         onValueChange = { restoreHeightInput.value = it },
                         modifier = Modifier.fillMaxWidth(),
+                        label = { Text(stringResource(R.string.restore_height_label)) },
                         placeholder = { Text("0", color = palette.secondaryText) },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         singleLine = true,
@@ -539,7 +540,12 @@ fun WalletCreationScreen(
             Spacer(Modifier.height(12.dp))
 
             // Mainnet toggle (parity)
-            RowSwitch(label = stringResource(R.string.toggle_mainnet), state = isMainnet, palette = palette)
+            RowSwitch(
+                label = stringResource(R.string.toggle_mainnet),
+                state = isMainnet,
+                palette = palette,
+                testTag = A11yTags.CREATE_MAINNET_SWITCH,
+            )
 
             Spacer(Modifier.height(12.dp))
 
@@ -593,7 +599,7 @@ fun WalletCreationScreen(
             // Error section
             val mergedError = errorText.value ?: state.lastError
             if (mergedError != null) {
-                Text(stringResource(R.string.error_prefix_fmt, mergedError), color = palette.danger)
+                Text(stringResource(R.string.error_prefix_fmt, mergedError), color = palette.danger, modifier = Modifier.a11yAssertiveError())
                 Spacer(Modifier.height(12.dp))
             }
 
@@ -608,6 +614,7 @@ fun WalletCreationScreen(
                 onValueChange = { nodeUrlInput.value = it },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(),
+                label = { Text(stringResource(R.string.daemon_url_label)) },
                 placeholder = { Text(walletManager.defaultNodeUrl(), color = palette.secondaryText) },
                 colors = nexaFieldColors(palette),
             )
@@ -644,7 +651,7 @@ fun WalletCreationScreen(
             )
             nodeSaveStatus.value?.let { status ->
                 Spacer(modifier.height(6.dp))
-                Text(status, color = palette.secondaryText)
+                Text(status, color = palette.secondaryText, modifier = Modifier.a11yPoliteStatus())
             }
 
             Spacer(modifier.height(12.dp))
@@ -698,16 +705,16 @@ private fun RowSwitch(
     state: MutableState<Boolean>,
     enabled: Boolean = true,
     palette: NexaPalette,
+    testTag: String? = null,
 ) {
-    Row(modifier = Modifier.fillMaxWidth()) {
-        Text(label, modifier = Modifier.weight(1f), color = palette.primaryText)
-        Switch(
-            checked = state.value,
-            onCheckedChange = { state.value = it },
-            enabled = enabled,
-            colors = nexaSwitchColors(palette),
-        )
-    }
+    LabeledSwitchRow(
+        label = label,
+        checked = state.value,
+        onCheckedChange = { state.value = it },
+        palette = palette,
+        enabled = enabled,
+        testTag = testTag,
+    )
 }
 
 /**

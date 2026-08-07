@@ -357,4 +357,14 @@
     <string name="failed_persist_addrs_fmt">No se pudieron guardar las direcciones: %1$s</string>
     <string name="failed_open_wallet_fmt">No se pudo abrir la cartera guardada: %1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
+
+    <!-- Accessibility -->
+    <string name="a11y_sync_progress_fmt">Progreso de sincronización %1$d por ciento</string>
+    <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
+    <string name="a11y_camera_preview">Vista previa de la cámara para escanear códigos QR de Monero</string>
+    <string name="a11y_currency_menu">Moneda fiat</string>
+    <string name="a11y_currency_menu_expanded">Moneda fiat, expandido</string>
+    <string name="a11y_currency_menu_collapsed">Moneda fiat, contraído</string>
+    <string name="a11y_on">Activado</string>
+    <string name="a11y_off">Desactivado</string>
 </resources>
