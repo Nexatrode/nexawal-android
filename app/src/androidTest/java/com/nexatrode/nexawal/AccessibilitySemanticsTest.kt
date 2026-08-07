@@ -77,7 +77,7 @@ class AccessibilitySemanticsTest {
     }
 
     @Test
-    fun openWallet_settingsClassicSwitch_isToggleable_whenReachable() {
+    fun openWallet_settingsTechnoThemeSwitch_isToggleable_whenReachable() {
         composeRule.waitUntil(timeoutMillis = 15_000) {
             hasTag(A11yTags.CREATE_MAINNET_SWITCH) || hasTag(A11yTags.BOTTOM_NAV)
         }
@@ -87,9 +87,9 @@ class AccessibilitySemanticsTest {
         composeRule.onNodeWithText(settings, substring = true).performClick()
 
         composeRule.waitUntil(timeoutMillis = 5_000) {
-            hasTag(A11yTags.CLASSIC_UI_SWITCH)
+            hasTag(A11yTags.TECHNO_THEME_SWITCH)
         }
-        composeRule.onNodeWithTag(A11yTags.CLASSIC_UI_SWITCH)
+        composeRule.onNodeWithTag(A11yTags.TECHNO_THEME_SWITCH)
             .assertIsDisplayed()
             .assertIsToggleable()
 

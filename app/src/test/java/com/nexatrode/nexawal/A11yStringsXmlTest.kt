@@ -46,7 +46,7 @@ class A11yStringsXmlTest {
         "nav_send",
         "nav_receive",
         "nav_settings",
-        "toggle_classic_ui",
+        "toggle_techno_theme",
         "toggle_mainnet",
     )
 

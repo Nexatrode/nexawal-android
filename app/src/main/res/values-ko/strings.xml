@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">저장된 지갑을 찾을 수 없습니다</string>
     <string name="device_auth_required_unavailable">기기 인증이 필요하지만 사용할 수 없습니다. 생체 인증 또는 화면 잠금을 활성화한 후 다시 시도하세요.</string>
     <string name="section_appearance">화면</string>
-    <string name="toggle_classic_ui">클래식 UI</string>
-    <string name="classic_ui_help">표준적인 비네온 스타일입니다. 끄면 네온 터미널 테마(기본값)가 적용됩니다.</string>
+    <string name="toggle_techno_theme">테크노 테마</string>
+    <string name="techno_theme_help">네온 터미널 스타일입니다. 끄면 표준 테마(기본값)가 적용됩니다.</string>
     <string name="section_how_to_connect">연결 방법</string>
     <string name="network_policy_clearnet">클리어넷만</string>
     <string name="network_policy_i2p">I2P만</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">I2P로 연결 중</string>
     <string name="connecting_hybrid">연결 중 (클리어넷 스캔, I2P 브로드캐스트)</string>
     <string name="could_not_update_face_id">Face ID 설정을 업데이트할 수 없습니다</string>
-    <string name="classic_ui_enabled">클래식 UI 활성화됨</string>
-    <string name="classic_ui_disabled">클래식 UI 비활성화됨</string>
+    <string name="techno_theme_enabled">테크노 테마 활성화됨</string>
+    <string name="techno_theme_disabled">테크노 테마 비활성화됨</string>
     <string name="device_auth_enabled_status">기기 인증 활성화됨</string>
     <string name="device_auth_disabled_status">기기 인증 비활성화됨</string>
     <string name="fiat_enabled">환율 추정치 활성화됨</string>

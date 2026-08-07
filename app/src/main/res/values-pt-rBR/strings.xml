@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Nenhuma carteira armazenada foi encontrada</string>
     <string name="device_auth_required_unavailable">A autenticação do dispositivo é necessária, mas está indisponível. Ative a biometria ou um bloqueio de tela e tente novamente.</string>
     <string name="section_appearance">Aparência</string>
-    <string name="toggle_classic_ui">Interface Clássica</string>
-    <string name="classic_ui_help">Visual padrão sem neon. Deixe desativado para o tema de terminal neon (padrão).</string>
+    <string name="toggle_techno_theme">Tema Techno</string>
+    <string name="techno_theme_help">Visual de terminal neon. Deixe desativado para o tema padrão (padrão).</string>
     <string name="section_how_to_connect">Como conectar</string>
     <string name="network_policy_clearnet">Somente Clearnet</string>
     <string name="network_policy_i2p">Somente I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Conectando via I2P</string>
     <string name="connecting_hybrid">Conectando (varredura via clearnet, transmissão via I2P)</string>
     <string name="could_not_update_face_id">Não foi possível atualizar a configuração do Face ID</string>
-    <string name="classic_ui_enabled">Interface Clássica ativada</string>
-    <string name="classic_ui_disabled">Interface Clássica desativada</string>
+    <string name="techno_theme_enabled">Tema Techno ativado</string>
+    <string name="techno_theme_disabled">Tema Techno desativado</string>
     <string name="device_auth_enabled_status">Autenticação do dispositivo ativada</string>
     <string name="device_auth_disabled_status">Autenticação do dispositivo desativada</string>
     <string name="fiat_enabled">Estimativas em moeda fiduciária ativadas</string>

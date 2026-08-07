@@ -96,8 +96,8 @@ fun WalletCreationScreen(
     val state by walletManager.state.collectAsState()
     val scroll = rememberScrollState()
     val context = LocalContext.current
-    val classicUI = remember { MoneroConfig.isClassicUIEnabled(context) }
-    val palette = rememberNexaPalette(classicUI)
+    val technoTheme = remember { MoneroConfig.isTechnoThemeEnabled(context) }
+    val palette = rememberNexaPalette(technoTheme)
     val neon = palette.classic
 
     // UI state

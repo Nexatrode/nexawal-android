@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Сохранённый кошелёк не найден</string>
     <string name="device_auth_required_unavailable">Требуется аутентификация устройства, но она недоступна. Включите биометрию или блокировку экрана и попробуйте снова.</string>
     <string name="section_appearance">Внешний вид</string>
-    <string name="toggle_classic_ui">Классический интерфейс</string>
-    <string name="classic_ui_help">Стандартный вид без неона. Оставьте выключенным, чтобы использовать неоновую терминальную тему (по умолчанию).</string>
+    <string name="toggle_techno_theme">Тема Techno</string>
+    <string name="techno_theme_help">Неоновый терминальный вид. Оставьте выключенным для стандартной темы (по умолчанию).</string>
     <string name="section_how_to_connect">Как подключиться</string>
     <string name="network_policy_clearnet">Только Clearnet</string>
     <string name="network_policy_i2p">Только I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Подключение через I2P</string>
     <string name="connecting_hybrid">Подключение (сканирование Clearnet, отправка I2P)</string>
     <string name="could_not_update_face_id">Не удалось обновить настройку Face ID</string>
-    <string name="classic_ui_enabled">Классический интерфейс включён</string>
-    <string name="classic_ui_disabled">Классический интерфейс отключён</string>
+    <string name="techno_theme_enabled">Тема Techno включена</string>
+    <string name="techno_theme_disabled">Тема Techno отключена</string>
     <string name="device_auth_enabled_status">Аутентификация устройства включена</string>
     <string name="device_auth_disabled_status">Аутентификация устройства отключена</string>
     <string name="fiat_enabled">Оценка в фиате включена</string>

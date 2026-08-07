@@ -41,7 +41,8 @@ object MoneroConfig {
     private const val KEY_NETWORK_POLICY: String = "monero_network_policy"
     private const val KEY_I2P_RPC_ADDRESS: String = "monero_i2p_rpc_address"
     private const val KEY_I2P_HTTP_PROXY: String = "monero_i2p_http_proxy"
-    private const val KEY_CLASSIC_UI: String = "ui_classic_mode"
+    private const val KEY_TECHNO_THEME: String = "ui_techno_theme"
+    private const val KEY_CLASSIC_UI_LEGACY: String = "ui_classic_mode"
     private const val KEY_FIAT_ESTIMATES_ENABLED: String = "fiat_estimates_enabled"
     private const val KEY_FIAT_ESTIMATES_ENABLED_AT: String = "fiat_estimates_enabled_at_ms"
     private const val KEY_FIAT_CURRENCY: String = "fiat_currency"
@@ -55,8 +56,8 @@ object MoneroConfig {
     const val DEFAULT_GAP_LIMIT: Int = 50
     const val DEFAULT_ACCOUNT_GAP: Int = 1
     const val DEFAULT_REQUIRE_DEVICE_AUTH: Boolean = false
-    /** Classic UI ON = standard non-neon look; OFF (default) = neon terminal theme. */
-    const val DEFAULT_CLASSIC_UI: Boolean = false
+    /** Techno Theme ON = neon terminal look; OFF (default) = standard look. */
+    const val DEFAULT_TECHNO_THEME: Boolean = false
     private const val DEFAULT_NETWORK_POLICY_RAW: String = "clearnet"
     // Safety clamps.
     private const val GAP_LIMIT_MIN: Int = 1
@@ -141,13 +142,29 @@ object MoneroConfig {
     }
 
     @JvmStatic
-    fun isClassicUIEnabled(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_CLASSIC_UI, DEFAULT_CLASSIC_UI)
+    fun isTechnoThemeEnabled(context: Context): Boolean {
+        val prefs = prefs(context)
+        if (prefs.contains(KEY_TECHNO_THEME)) {
+            return prefs.getBoolean(KEY_TECHNO_THEME, DEFAULT_TECHNO_THEME)
+        }
+        // Migrate inverted legacy Classic UI preference (classic ON meant non-neon).
+        if (prefs.contains(KEY_CLASSIC_UI_LEGACY)) {
+            val techno = !prefs.getBoolean(KEY_CLASSIC_UI_LEGACY, false)
+            prefs.edit()
+                .putBoolean(KEY_TECHNO_THEME, techno)
+                .remove(KEY_CLASSIC_UI_LEGACY)
+                .apply()
+            return techno
+        }
+        return DEFAULT_TECHNO_THEME
     }
 
     @JvmStatic
-    fun setClassicUIEnabled(context: Context, enabled: Boolean) {
-        prefs(context).edit().putBoolean(KEY_CLASSIC_UI, enabled).apply()
+    fun setTechnoThemeEnabled(context: Context, enabled: Boolean) {
+        prefs(context).edit()
+            .putBoolean(KEY_TECHNO_THEME, enabled)
+            .remove(KEY_CLASSIC_UI_LEGACY)
+            .apply()
     }
 
     @JvmStatic
@@ -332,7 +349,8 @@ object MoneroConfig {
             .putInt(KEY_GAP_LIMIT, DEFAULT_GAP_LIMIT)
             .putInt(KEY_ACCOUNT_GAP, DEFAULT_ACCOUNT_GAP)
             .putBoolean(KEY_REQUIRE_DEVICE_AUTH, DEFAULT_REQUIRE_DEVICE_AUTH)
-            .putBoolean(KEY_CLASSIC_UI, DEFAULT_CLASSIC_UI)
+            .putBoolean(KEY_TECHNO_THEME, DEFAULT_TECHNO_THEME)
+            .remove(KEY_CLASSIC_UI_LEGACY)
             .putString(KEY_NETWORK_POLICY, DEFAULT_NETWORK_POLICY_RAW)
             .remove(KEY_I2P_RPC_ADDRESS)
             .remove(KEY_I2P_HTTP_PROXY)

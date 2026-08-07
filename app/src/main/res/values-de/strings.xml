@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Es wurde keine gespeicherte Wallet gefunden</string>
     <string name="device_auth_required_unavailable">Die Geräteauthentifizierung ist erforderlich, aber nicht verfügbar. Aktiviere Biometrie oder eine Bildschirmsperre und versuche es erneut.</string>
     <string name="section_appearance">Erscheinungsbild</string>
-    <string name="toggle_classic_ui">Klassische Oberfläche</string>
-    <string name="classic_ui_help">Standardansicht ohne Neon-Look. Lass diese Option deaktiviert für das Neon-Terminal-Design (Standard).</string>
+    <string name="toggle_techno_theme">Techno-Design</string>
+    <string name="techno_theme_help">Neon-Terminal-Look. Lass diese Option deaktiviert für das Standarddesign (Standard).</string>
     <string name="section_how_to_connect">Verbindungsart</string>
     <string name="network_policy_clearnet">Nur Clearnet</string>
     <string name="network_policy_i2p">Nur I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Verbinde über I2P</string>
     <string name="connecting_hybrid">Verbinde (Clearnet-Scan, I2P-Übertragung)</string>
     <string name="could_not_update_face_id">Face-ID-Einstellung konnte nicht aktualisiert werden</string>
-    <string name="classic_ui_enabled">Klassische Oberfläche aktiviert</string>
-    <string name="classic_ui_disabled">Klassische Oberfläche deaktiviert</string>
+    <string name="techno_theme_enabled">Techno-Design aktiviert</string>
+    <string name="techno_theme_disabled">Techno-Design deaktiviert</string>
     <string name="device_auth_enabled_status">Geräteauthentifizierung aktiviert</string>
     <string name="device_auth_disabled_status">Geräteauthentifizierung deaktiviert</string>
     <string name="fiat_enabled">Fiat-Schätzungen aktiviert</string>

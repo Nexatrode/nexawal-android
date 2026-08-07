@@ -31,7 +31,7 @@ object A11yTags {
     const val TRANSFER_ROW = "a11y_transfer_row"
     const val SCAN_QR = "a11y_scan_qr"
     const val RECEIVE_QR = "a11y_receive_qr"
-    const val CLASSIC_UI_SWITCH = "a11y_classic_ui_switch"
+    const val TECHNO_THEME_SWITCH = "a11y_techno_theme_switch"
     const val CREATE_MAINNET_SWITCH = "a11y_create_mainnet_switch"
     const val SYNC_PROGRESS = "a11y_sync_progress"
     const val STATUS_LIVE = "a11y_status_live"

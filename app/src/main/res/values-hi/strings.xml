@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">कोई संग्रहीत वॉलेट नहीं मिला</string>
     <string name="device_auth_required_unavailable">डिवाइस ऑथेंटिकेशन आवश्यक है लेकिन उपलब्ध नहीं है। बायोमेट्रिक्स या स्क्रीन लॉक सक्षम करें, फिर पुनः प्रयास करें।</string>
     <string name="section_appearance">दिखावट</string>
-    <string name="toggle_classic_ui">क्लासिक UI</string>
-    <string name="classic_ui_help">स्टैंडर्ड नॉन-नियॉन लुक। नियॉन टर्मिनल थीम (डिफ़ॉल्ट) के लिए इसे बंद रखें।</string>
+    <string name="toggle_techno_theme">टेक्नो थीम</string>
+    <string name="techno_theme_help">नियॉन टर्मिनल लुक। मानक थीम (डिफ़ॉल्ट) के लिए इसे बंद रखें।</string>
     <string name="section_how_to_connect">कनेक्ट कैसे करें</string>
     <string name="network_policy_clearnet">केवल क्लियरनेट</string>
     <string name="network_policy_i2p">केवल I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">I2P पर कनेक्ट हो रहा है</string>
     <string name="connecting_hybrid">कनेक्ट हो रहा है (क्लियरनेट स्कैन, I2P ब्रॉडकास्ट)</string>
     <string name="could_not_update_face_id">Face ID सेटिंग अपडेट नहीं हो सकी</string>
-    <string name="classic_ui_enabled">क्लासिक UI सक्षम किया गया</string>
-    <string name="classic_ui_disabled">क्लासिक UI अक्षम किया गया</string>
+    <string name="techno_theme_enabled">टेक्नो थीम सक्षम किया गया</string>
+    <string name="techno_theme_disabled">टेक्नो थीम अक्षम किया गया</string>
     <string name="device_auth_enabled_status">डिवाइस ऑथ सक्षम किया गया</string>
     <string name="device_auth_disabled_status">डिवाइस ऑथ अक्षम किया गया</string>
     <string name="fiat_enabled">फिएट अनुमान सक्षम किए गए</string>

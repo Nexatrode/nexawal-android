@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Geen opgeslagen portemonnee gevonden</string>
     <string name="device_auth_required_unavailable">Apparaatverificatie is vereist maar niet beschikbaar. Schakel biometrie of een schermvergrendeling in en probeer het opnieuw.</string>
     <string name="section_appearance">Weergave</string>
-    <string name="toggle_classic_ui">Klassieke UI</string>
-    <string name="classic_ui_help">Standaard, niet-neon uiterlijk. Laat uit voor het neon terminalthema (standaard).</string>
+    <string name="toggle_techno_theme">Techno-thema</string>
+    <string name="techno_theme_help">Neon-terminaluiterlijk. Laat uit voor het standaardthema (standaard).</string>
     <string name="section_how_to_connect">Hoe te verbinden</string>
     <string name="network_policy_clearnet">Alleen clearnet</string>
     <string name="network_policy_i2p">Alleen I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Verbinden via I2P</string>
     <string name="connecting_hybrid">Verbinden (scannen via clearnet, uitzenden via I2P)</string>
     <string name="could_not_update_face_id">Kon Face ID-instelling niet bijwerken</string>
-    <string name="classic_ui_enabled">Klassieke UI ingeschakeld</string>
-    <string name="classic_ui_disabled">Klassieke UI uitgeschakeld</string>
+    <string name="techno_theme_enabled">Techno-thema ingeschakeld</string>
+    <string name="techno_theme_disabled">Techno-thema uitgeschakeld</string>
     <string name="device_auth_enabled_status">Apparaatverificatie ingeschakeld</string>
     <string name="device_auth_disabled_status">Apparaatverificatie uitgeschakeld</string>
     <string name="fiat_enabled">Fiat-schattingen ingeschakeld</string>

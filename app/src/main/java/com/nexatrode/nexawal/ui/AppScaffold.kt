@@ -144,11 +144,11 @@ internal data class NexaPalette(
 )
 
 @Composable
-internal fun rememberNexaPalette(classicUI: Boolean): NexaPalette {
+internal fun rememberNexaPalette(technoTheme: Boolean): NexaPalette {
     val dark = isSystemInDarkTheme()
-    // Classic UI setting ON = non-neon standard look.
-    // Setting OFF (default) = neon terminal theme (`palette.classic == true`).
-    val neon = !classicUI
+    // Techno Theme ON = neon terminal look (`palette.classic == true`).
+    // OFF (default) = standard non-neon look.
+    val neon = technoTheme
     return remember(dark, neon) {
         if (neon) {
             if (dark) {
@@ -247,8 +247,8 @@ private fun SectionCard(
 private fun formatGrouped(value: Long): String = NumberFormat.getIntegerInstance().format(value)
 
 @Composable
-internal fun rememberAppPalette(classicUI: Boolean = MoneroConfig.isClassicUIEnabled(LocalContext.current)): NexaPalette {
-    return rememberNexaPalette(classicUI)
+internal fun rememberAppPalette(technoTheme: Boolean = MoneroConfig.isTechnoThemeEnabled(LocalContext.current)): NexaPalette {
+    return rememberNexaPalette(technoTheme)
 }
 
 @Composable
@@ -358,8 +358,8 @@ fun AppScaffold(
 ) {
     val navController = rememberNavController()
     val context = LocalContext.current
-    var classicUI by remember { mutableStateOf(MoneroConfig.isClassicUIEnabled(context)) }
-    val palette = rememberNexaPalette(classicUI)
+    var technoTheme by remember { mutableStateOf(MoneroConfig.isTechnoThemeEnabled(context)) }
+    val palette = rememberNexaPalette(technoTheme)
     val lifecycleOwner = LocalLifecycleOwner.current
     val items = listOf(
         BottomNavItem.Wallet,
@@ -495,10 +495,10 @@ fun AppScaffold(
             composable(BottomNavItem.Settings.route) {
                 SettingsScreen(
                     walletManager = walletManager,
-                    classicUI = classicUI,
-                    onClassicUIChange = { enabled ->
-                        classicUI = enabled
-                        MoneroConfig.setClassicUIEnabled(context, enabled)
+                    technoTheme = technoTheme,
+                    onTechnoThemeChange = { enabled ->
+                        technoTheme = enabled
+                        MoneroConfig.setTechnoThemeEnabled(context, enabled)
                     },
                 )
             }
@@ -2148,13 +2148,13 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
 @Composable
 private fun SettingsScreen(
     walletManager: WalletManager,
-    classicUI: Boolean,
-    onClassicUIChange: (Boolean) -> Unit,
+    technoTheme: Boolean,
+    onTechnoThemeChange: (Boolean) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
     val state by walletManager.state.collectAsState()
     val context = LocalContext.current
-    val palette = rememberNexaPalette(classicUI)
+    val palette = rememberNexaPalette(technoTheme)
 
     val groupedBg = palette.background
     val cardBg = palette.card
@@ -2285,18 +2285,18 @@ private fun SettingsScreen(
             border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                val classicUiEnabledText = stringResource(R.string.classic_ui_enabled)
-                val classicUiDisabledText = stringResource(R.string.classic_ui_disabled)
+                val technoThemeEnabledText = stringResource(R.string.techno_theme_enabled)
+                val technoThemeDisabledText = stringResource(R.string.techno_theme_disabled)
                 LabeledSwitchRow(
-                    label = stringResource(R.string.toggle_classic_ui),
-                    description = stringResource(R.string.classic_ui_help),
-                    checked = classicUI,
+                    label = stringResource(R.string.toggle_techno_theme),
+                    description = stringResource(R.string.techno_theme_help),
+                    checked = technoTheme,
                     onCheckedChange = {
-                        onClassicUIChange(it)
-                        statusText = if (it) classicUiEnabledText else classicUiDisabledText
+                        onTechnoThemeChange(it)
+                        statusText = if (it) technoThemeEnabledText else technoThemeDisabledText
                     },
                     palette = palette,
-                    testTag = A11yTags.CLASSIC_UI_SWITCH,
+                    testTag = A11yTags.TECHNO_THEME_SWITCH,
                 )
             }
         }

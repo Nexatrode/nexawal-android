@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">No se encontró una cartera guardada</string>
     <string name="device_auth_required_unavailable">Se requiere autenticación del dispositivo, pero no está disponible. Activa la biometría o un bloqueo de pantalla e inténtalo de nuevo.</string>
     <string name="section_appearance">Apariencia</string>
-    <string name="toggle_classic_ui">IU clásica</string>
-    <string name="classic_ui_help">Aspecto estándar sin neón. Déjalo desactivado para el tema de terminal neón (predeterminado).</string>
+    <string name="toggle_techno_theme">Tema Techno</string>
+    <string name="techno_theme_help">Aspecto de terminal neón. Déjalo desactivado para el tema estándar (predeterminado).</string>
     <string name="section_how_to_connect">Cómo conectar</string>
     <string name="network_policy_clearnet">Solo clearnet</string>
     <string name="network_policy_i2p">Solo I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Conectando por I2P</string>
     <string name="connecting_hybrid">Conectando (escaneo clearnet, transmisión I2P)</string>
     <string name="could_not_update_face_id">No se pudo actualizar el ajuste de Face ID</string>
-    <string name="classic_ui_enabled">IU clásica activada</string>
-    <string name="classic_ui_disabled">IU clásica desactivada</string>
+    <string name="techno_theme_enabled">Tema Techno activado</string>
+    <string name="techno_theme_disabled">Tema Techno desactivado</string>
     <string name="device_auth_enabled_status">Autenticación del dispositivo activada</string>
     <string name="device_auth_disabled_status">Autenticación del dispositivo desactivada</string>
     <string name="fiat_enabled">Estimaciones fiat activadas</string>

@@ -58,8 +58,8 @@ fun QRScannerScreen(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
-    val classicUI = remember { MoneroConfig.isClassicUIEnabled(context) }
-    val palette = rememberNexaPalette(classicUI)
+    val technoTheme = remember { MoneroConfig.isTechnoThemeEnabled(context) }
+    val palette = rememberNexaPalette(technoTheme)
     val neon = palette.classic
     val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
 

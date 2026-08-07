@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">No stored wallet was found</string>
     <string name="device_auth_required_unavailable">Device authentication is required but unavailable. Enable biometrics or a screen lock, then retry.</string>
     <string name="section_appearance">Appearance</string>
-    <string name="toggle_classic_ui">Classic UI</string>
-    <string name="classic_ui_help">Standard non-neon look. Leave off for the neon terminal theme (default).</string>
+    <string name="toggle_techno_theme">Techno Theme</string>
+    <string name="techno_theme_help">Neon terminal look. Leave off for the standard theme (default).</string>
     <string name="section_how_to_connect">How to connect</string>
     <string name="network_policy_clearnet">Clearnet only</string>
     <string name="network_policy_i2p">I2P only</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Connecting over I2P</string>
     <string name="connecting_hybrid">Connecting (clearnet scan, I2P broadcast)</string>
     <string name="could_not_update_face_id">Could not update Face ID setting</string>
-    <string name="classic_ui_enabled">Enabled Classic UI</string>
-    <string name="classic_ui_disabled">Disabled Classic UI</string>
+    <string name="techno_theme_enabled">Enabled Techno Theme</string>
+    <string name="techno_theme_disabled">Disabled Techno Theme</string>
     <string name="device_auth_enabled_status">Enabled device auth</string>
     <string name="device_auth_disabled_status">Disabled device auth</string>
     <string name="fiat_enabled">Enabled fiat estimates</string>

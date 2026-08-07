@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Kayıtlı cüzdan bulunamadı</string>
     <string name="device_auth_required_unavailable">Cihaz kimlik doğrulaması gerekli ama kullanılamıyor. Biyometriği veya ekran kilidini etkinleştirip tekrar dene.</string>
     <string name="section_appearance">Görünüm</string>
-    <string name="toggle_classic_ui">Klasik Arayüz</string>
-    <string name="classic_ui_help">Standart, neon olmayan görünüm. Neon terminal temasını (varsayılan) kullanmak için kapalı bırak.</string>
+    <string name="toggle_techno_theme">Techno Teması</string>
+    <string name="techno_theme_help">Neon terminal görünümü. Standart tema (varsayılan) için kapalı bırak.</string>
     <string name="section_how_to_connect">Nasıl bağlanılır</string>
     <string name="network_policy_clearnet">Sadece clearnet</string>
     <string name="network_policy_i2p">Sadece I2P</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">I2P üzerinden bağlanıyor</string>
     <string name="connecting_hybrid">Bağlanıyor (clearnet tarama, I2P yayın)</string>
     <string name="could_not_update_face_id">Face ID ayarı güncellenemedi</string>
-    <string name="classic_ui_enabled">Klasik Arayüz etkinleştirildi</string>
-    <string name="classic_ui_disabled">Klasik Arayüz devre dışı bırakıldı</string>
+    <string name="techno_theme_enabled">Techno Teması etkinleştirildi</string>
+    <string name="techno_theme_disabled">Techno Teması devre dışı bırakıldı</string>
     <string name="device_auth_enabled_status">Cihaz kimlik doğrulaması etkinleştirildi</string>
     <string name="device_auth_disabled_status">Cihaz kimlik doğrulaması devre dışı bırakıldı</string>
     <string name="fiat_enabled">Fiat tahminleri etkinleştirildi</string>

@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Tidak ada dompet tersimpan yang ditemukan</string>
     <string name="device_auth_required_unavailable">Autentikasi perangkat diperlukan tetapi tidak tersedia. Aktifkan biometrik atau kunci layar, lalu coba lagi.</string>
     <string name="section_appearance">Tampilan</string>
-    <string name="toggle_classic_ui">UI Klasik</string>
-    <string name="classic_ui_help">Tampilan standar non-neon. Biarkan nonaktif untuk tema terminal neon (default).</string>
+    <string name="toggle_techno_theme">Tema Techno</string>
+    <string name="techno_theme_help">Tampilan terminal neon. Biarkan nonaktif untuk tema standar (default).</string>
     <string name="section_how_to_connect">Cara terhubung</string>
     <string name="network_policy_clearnet">Clearnet saja</string>
     <string name="network_policy_i2p">I2P saja</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Menghubungkan lewat I2P</string>
     <string name="connecting_hybrid">Menghubungkan (pindai clearnet, siarkan I2P)</string>
     <string name="could_not_update_face_id">Tidak dapat memperbarui pengaturan Face ID</string>
-    <string name="classic_ui_enabled">UI Klasik diaktifkan</string>
-    <string name="classic_ui_disabled">UI Klasik dinonaktifkan</string>
+    <string name="techno_theme_enabled">Tema Techno diaktifkan</string>
+    <string name="techno_theme_disabled">Tema Techno dinonaktifkan</string>
     <string name="device_auth_enabled_status">Autentikasi perangkat diaktifkan</string>
     <string name="device_auth_disabled_status">Autentikasi perangkat dinonaktifkan</string>
     <string name="fiat_enabled">Estimasi fiat diaktifkan</string>

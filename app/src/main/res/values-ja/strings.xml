@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">保存されたウォレットが見つかりません</string>
     <string name="device_auth_required_unavailable">デバイス認証が必要ですが利用できません。生体認証または画面ロックを有効にしてから再試行してください。</string>
     <string name="section_appearance">外観</string>
-    <string name="toggle_classic_ui">クラシックUI</string>
-    <string name="classic_ui_help">標準的なネオンなしの見た目です。オフにするとネオンターミナルテーマ(デフォルト)になります。</string>
+    <string name="toggle_techno_theme">テクノテーマ</string>
+    <string name="techno_theme_help">ネオンターミナルの見た目です。オフにすると標準テーマ(デフォルト)になります。</string>
     <string name="section_how_to_connect">接続方法</string>
     <string name="network_policy_clearnet">Clearnetのみ</string>
     <string name="network_policy_i2p">I2Pのみ</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">I2P経由で接続中</string>
     <string name="connecting_hybrid">接続中(Clearnetでスキャン、I2Pでブロードキャスト)</string>
     <string name="could_not_update_face_id">Face ID設定を更新できませんでした</string>
-    <string name="classic_ui_enabled">クラシックUIを有効にしました</string>
-    <string name="classic_ui_disabled">クラシックUIを無効にしました</string>
+    <string name="techno_theme_enabled">テクノテーマを有効にしました</string>
+    <string name="techno_theme_disabled">テクノテーマを無効にしました</string>
     <string name="device_auth_enabled_status">デバイス認証を有効にしました</string>
     <string name="device_auth_disabled_status">デバイス認証を無効にしました</string>
     <string name="fiat_enabled">現地通貨換算を有効にしました</string>

@@ -108,8 +108,8 @@
     <string name="no_stored_wallet">Aucun portefeuille enregistré trouvé</string>
     <string name="device_auth_required_unavailable">L\'authentification de l\'appareil est requise mais indisponible. Active la biométrie ou un verrouillage d\'écran, puis réessaie.</string>
     <string name="section_appearance">Apparence</string>
-    <string name="toggle_classic_ui">Interface classique</string>
-    <string name="classic_ui_help">Apparence standard sans néon. Laisse désactivé pour garder le thème terminal néon (par défaut).</string>
+    <string name="toggle_techno_theme">Thème Techno</string>
+    <string name="techno_theme_help">Apparence terminal néon. Laisse désactivé pour le thème standard (par défaut).</string>
     <string name="section_how_to_connect">Comment se connecter</string>
     <string name="network_policy_clearnet">Clearnet uniquement</string>
     <string name="network_policy_i2p">I2P uniquement</string>
@@ -162,8 +162,8 @@
     <string name="connecting_over_i2p">Connexion via I2P</string>
     <string name="connecting_hybrid">Connexion (analyse Clearnet, diffusion I2P)</string>
     <string name="could_not_update_face_id">Impossible de mettre à jour le paramètre Face ID</string>
-    <string name="classic_ui_enabled">Interface classique activée</string>
-    <string name="classic_ui_disabled">Interface classique désactivée</string>
+    <string name="techno_theme_enabled">Thème Techno activé</string>
+    <string name="techno_theme_disabled">Thème Techno désactivé</string>
     <string name="device_auth_enabled_status">Authentification de l\'appareil activée</string>
     <string name="device_auth_disabled_status">Authentification de l\'appareil désactivée</string>
     <string name="fiat_enabled">Estimations fiduciaires activées</string>
