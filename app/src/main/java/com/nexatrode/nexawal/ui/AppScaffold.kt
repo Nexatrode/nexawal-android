@@ -631,32 +631,31 @@ private fun WalletScreen(
     val isSynced =
         !state.refreshInProgress && targetHeight > 0L && lastScanned + syncTolerance >= targetHeight
 
-    // iOS-like blocks/sec:
-    // - compute instantaneous rate from lastScanned deltas
-    // - smooth via exponential moving average (EMA) to avoid spiky UI
-    var lastRateSampleAtMs by remember { mutableStateOf(System.currentTimeMillis()) }
-    var lastRateSampleScanned by remember { mutableStateOf(lastScanned) }
-    var blocksPerSecInstant by remember { mutableStateOf(0.0) }
-    var blocksPerSecSmoothed by remember { mutableStateOf(0.0) }
+    // Session-average blocks/sec for this refresh:
+    // (lastScanned - baseline at refresh start) / wall time since refresh start.
+    // Avoids EMA/burst spikes when a large get_blocks batch lands at once.
+    var sessionRateStartMs by remember { mutableStateOf<Long?>(null) }
+    var sessionRateStartScanned by remember { mutableStateOf(0L) }
+    var blocksPerSecSession by remember { mutableStateOf(0.0) }
 
-    LaunchedEffect(state.refreshInProgress, lastScanned) {
-        val now = System.currentTimeMillis()
-        val dtMs = (now - lastRateSampleAtMs).coerceAtLeast(1L)
-        val dScanned = (lastScanned - lastRateSampleScanned).coerceAtLeast(0L)
-
-        blocksPerSecInstant = (dScanned.toDouble() * 1000.0) / dtMs.toDouble()
-
-        // EMA smoothing:
-        // Higher alpha -> reacts faster; lower alpha -> smoother.
-        val alpha = 0.25
-        blocksPerSecSmoothed = if (blocksPerSecSmoothed <= 0.0) {
-            blocksPerSecInstant
-        } else {
-            (alpha * blocksPerSecInstant) + ((1.0 - alpha) * blocksPerSecSmoothed)
+    LaunchedEffect(state.refreshInProgress, state.refreshStartedAtMs) {
+        if (state.refreshInProgress) {
+            sessionRateStartMs = state.refreshStartedAtMs ?: System.currentTimeMillis()
+            sessionRateStartScanned = lastScanned
+            blocksPerSecSession = 0.0
         }
+        // Keep final session average after refresh completes until the next refresh starts.
+    }
 
-        lastRateSampleAtMs = now
-        lastRateSampleScanned = lastScanned
+    LaunchedEffect(state.refreshInProgress, lastScanned, sessionRateStartMs, sessionRateStartScanned) {
+        val startMs = sessionRateStartMs ?: return@LaunchedEffect
+        if (!state.refreshInProgress && blocksPerSecSession > 0.0) return@LaunchedEffect
+        val now = System.currentTimeMillis()
+        val elapsedMs = (now - startMs).coerceAtLeast(1L)
+        val scanned = (lastScanned - sessionRateStartScanned).coerceAtLeast(0L)
+        if (scanned > 0L && elapsedMs >= 500L) {
+            blocksPerSecSession = (scanned.toDouble() * 1000.0) / elapsedMs.toDouble()
+        }
     }
 
     // iOS-like theme-aware colors (approximate).
@@ -854,7 +853,7 @@ private fun WalletScreen(
                     isSyncedEffective -> stringResource(R.string.sync_wallet_synced)
                     targetHeight == 0L -> stringResource(R.string.sync_connecting)
                     state.refreshInProgress && lastScanned == restoreHeight -> stringResource(R.string.sync_scanning)
-                    state.refreshInProgress && blocksPerSecSmoothed <= 0.0 -> stringResource(R.string.sync_syncing)
+                    state.refreshInProgress && blocksPerSecSession <= 0.0 -> stringResource(R.string.sync_syncing)
                     else -> stringResource(R.string.sync_syncing)
                 }
                 val syncHeadline = if (palette.classic) syncHeadlineRaw.uppercase() else syncHeadlineRaw
@@ -903,8 +902,8 @@ private fun WalletScreen(
                 if (!isSyncedEffective) {
                     KeyValueRow(if (palette.classic) remainingLabel.uppercase() else remainingLabel, stringResource(R.string.blocks_value_fmt, formatGrouped(remainingBlocks)), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 }
-                if (state.refreshInProgress && blocksPerSecSmoothed > 0.0) {
-                    KeyValueRow(if (palette.classic) throughputLabel.uppercase() else throughputLabel, stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSmoothed), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                if (blocksPerSecSession > 0.0) {
+                    KeyValueRow(if (palette.classic) throughputLabel.uppercase() else throughputLabel, stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 }
 
                 Spacer(Modifier.height(10.dp))
