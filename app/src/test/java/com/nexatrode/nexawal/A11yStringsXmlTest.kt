@@ -42,6 +42,18 @@ class A11yStringsXmlTest {
         "values-nb",
         "values-ar",
         "values-he",
+        "values-yo",
+        "values-tl",
+        "values-my",
+        "values-ms",
+        "values-az",
+        "values-bn",
+        "values-sl",
+        "values-hu",
+        "values-lt",
+        "values-lv",
+        "values-ur",
+        "values-fi",
     )
 
     private val requiredA11yKeys = listOf(
