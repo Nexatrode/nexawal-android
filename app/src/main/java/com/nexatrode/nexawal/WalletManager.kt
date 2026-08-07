@@ -52,6 +52,8 @@ import java.util.concurrent.atomic.AtomicBoolean
  *     - metadata.json (Keystore-encrypted mnemonic + restore height + network flag + node URL)
  *     - <walletId>.cache — walletcore cache blob
  */
+class RefreshStalledException(message: String) : IOException(message)
+
 class WalletManager(
     private val appContext: Context,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
@@ -96,6 +98,13 @@ class WalletManager(
         val refreshStartedAtMs: Long? = null,
         val refreshLastProgressAtMs: Long? = null,
         val lastError: String? = null,
+
+        /**
+         * True when [lastError] is caused by [RefreshStalledException] (refresh made no progress
+         * for too long). Lets the UI detect the "stalled" state without doing English string
+         * matching on [lastError].
+         */
+        val syncStalled: Boolean = false,
         val version: String? = null,
         val syncStatus: WalletCore.SyncStatus? = null,
 
@@ -792,6 +801,7 @@ class WalletManager(
             refreshStartedAtMs = System.currentTimeMillis(),
             refreshLastProgressAtMs = null,
             lastError = null,
+            syncStalled = false,
             refreshTargetHeight = initialTargetHeight,
             gapLimit = gapLimit,
             accountGap = accountGap,
@@ -889,6 +899,7 @@ class WalletManager(
                     refreshLastProgressAtMs = null,
                     syncStatus = st,
                     lastError = null,
+                    syncStalled = false,
                     refreshTargetHeight = null,
                     gapLimit = null,
                     accountGap = null,
@@ -909,6 +920,7 @@ class WalletManager(
                     refreshInProgress = false,
                     refreshStartedAtMs = null,
                     refreshLastProgressAtMs = null,
+                    syncStalled = false,
                     refreshTargetHeight = null,
                     gapLimit = null,
                     accountGap = null,
@@ -924,6 +936,7 @@ class WalletManager(
                     refreshStartedAtMs = null,
                     refreshLastProgressAtMs = null,
                     lastError = msg,
+                    syncStalled = t is RefreshStalledException,
                     refreshTargetHeight = null,
                     gapLimit = null,
                     accountGap = null,
@@ -1086,6 +1099,7 @@ class WalletManager(
 
         _state.value = _state.value.copy(
             refreshInProgress = false,
+            syncStalled = false,
             refreshTargetHeight = null,
             gapLimit = null,
             accountGap = null,
@@ -1613,7 +1627,7 @@ class WalletManager(
     fun refreshWalletInBackgroundIfNeeded(reason: String = "auto-resume"): Job? {
         if (!shouldAutoResumeRefresh()) return null
         Log.i("WalletManager", "Auto-resuming refresh ($reason) walletId=${_state.value.walletId}")
-        _state.value = _state.value.copy(lastError = null)
+        _state.value = _state.value.copy(lastError = null, syncStalled = false)
         return refreshWalletInBackground()
     }
 
@@ -1882,7 +1896,7 @@ class WalletManager(
                 }
 
                 exportCacheAndPersist(walletId)
-                throw IOException(
+                throw RefreshStalledException(
                     "Refresh stalled (>${hardStallTimeoutMs}ms) lastScanned=${st.lastScanned} chainHeight=${st.chainHeight}" +
                         (if (!coreErr.isNullOrBlank()) " coreErr=$coreErr" else "")
                 )

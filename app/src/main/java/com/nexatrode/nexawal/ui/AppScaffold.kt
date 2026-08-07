@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -291,7 +292,7 @@ internal fun PrimaryActionButton(
     Button(
         onClick = onClick,
         enabled = enabled,
-        modifier = modifier.height(54.dp),
+        modifier = modifier.heightIn(min = 54.dp),
         shape = RoundedCornerShape(if (neon) 28.dp else 14.dp),
         border = if (neon) BorderStroke(1.dp, palette.border.copy(alpha = 0.35f)) else null,
         colors = ButtonDefaults.buttonColors(
@@ -323,14 +324,15 @@ internal fun SecondaryActionButton(
     Button(
         onClick = onClick,
         enabled = enabled,
-        modifier = modifier.height(54.dp),
+        modifier = modifier.heightIn(min = 54.dp),
         shape = RoundedCornerShape(if (lightNeon || !neon) 14.dp else 28.dp),
         border = BorderStroke(if (lightNeon) 1.5.dp else 1.dp, if (neon) palette.border else palette.separator),
         colors = ButtonDefaults.buttonColors(
             containerColor = palette.secondaryAction,
             contentColor = if (neon) palette.accent else palette.primaryText,
             disabledContainerColor = palette.secondaryAction.copy(alpha = if (lightNeon) 0.7f else 0.5f),
-            disabledContentColor = if (neon) palette.secondaryText.copy(alpha = 0.45f) else palette.primaryText.copy(alpha = 0.5f),
+            // Neon disabled text: bumped from ~0.45 to improve contrast against secondaryAction background.
+            disabledContentColor = if (neon) palette.secondaryText.copy(alpha = 0.65f) else palette.primaryText.copy(alpha = 0.5f),
         )
     ) {
         Text(
@@ -338,7 +340,7 @@ internal fun SecondaryActionButton(
             color = if (enabled) {
                 if (neon) palette.accent else palette.primaryText
             } else {
-                if (neon) palette.secondaryText.copy(alpha = 0.45f) else palette.primaryText.copy(alpha = 0.5f)
+                if (neon) palette.secondaryText.copy(alpha = 0.65f) else palette.primaryText.copy(alpha = 0.5f)
             },
             fontWeight = FontWeight.Medium,
             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
@@ -842,7 +844,9 @@ private fun WalletScreen(
         SectionCard(palette = palette) {
             Column {
                 val hasNodeError = mergedError != null && !state.refreshInProgress && !isSynced
-                val isStallError = hasNodeError && mergedError!!.contains("Refresh stalled", ignoreCase = true)
+                // Substring match is a fallback for old in-flight errors predating the typed syncStalled flag,
+                // so it's only consulted when hasNodeError is true (mirrors previous behavior).
+                val isStallError = isSyncStallError(state.syncStalled, mergedError.takeIf { hasNodeError })
                 // Treat sync as effectively not-complete for display when a refresh error exists,
                 // so we never imply "synced" alongside an unreachable/failed node.
                 val isSyncedEffective = isSynced && mergedError == null
@@ -1101,7 +1105,15 @@ private fun TransferRow(
         else -> Icons.Filled.Sync
     }
     val amountText = XmrFormat.formatPiconeroAsDisplayXmr(t.amount)
-    val summary = stringResource(R.string.a11y_transfer_row_fmt, directionRaw, amountText, statusText)
+    // Direction must not be conveyed by color alone: prefix the amount with a sign glyph
+    // (in addition to the icon + direction label already shown).
+    val amountSign = when (t.direction.lowercase()) {
+        "in" -> "+ "
+        "out" -> "\u2212 " // unicode minus, visually distinct from a hyphen
+        else -> ""
+    }
+    val signedAmountText = "$amountSign$amountText"
+    val summary = stringResource(R.string.a11y_transfer_row_fmt, directionRaw, signedAmountText, statusText)
 
     Column(
         modifier = Modifier
@@ -1155,7 +1167,7 @@ private fun TransferRow(
 
             Column {
                 Text(
-                    stringResource(R.string.xmr_unit_fmt, amountText),
+                    stringResource(R.string.xmr_unit_fmt, signedAmountText),
                     fontFamily = FontFamily.Monospace,
                     color = amountColor,
                     fontWeight = FontWeight.SemiBold,
