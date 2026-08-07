@@ -25,6 +25,7 @@ class A11yStringsXmlTest {
         "values-ja",
         "values-ko",
         "values-it",
+        "values-nl",
     )
 
     private val requiredA11yKeys = listOf(
