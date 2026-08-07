@@ -28,6 +28,7 @@ class A11yStringsXmlTest {
         "values-nl",
         "values-in",
         "values-tr",
+        "values-hi",
     )
 
     private val requiredA11yKeys = listOf(
