@@ -844,9 +844,7 @@ private fun WalletScreen(
         SectionCard(palette = palette) {
             Column {
                 val hasNodeError = mergedError != null && !state.refreshInProgress && !isSynced
-                // Substring match is a fallback for old in-flight errors predating the typed syncStalled flag,
-                // so it's only consulted when hasNodeError is true (mirrors previous behavior).
-                val isStallError = isSyncStallError(state.syncStalled, mergedError.takeIf { hasNodeError })
+                val isStallError = hasNodeError && isSyncStallError(state.syncStalled)
                 // Treat sync as effectively not-complete for display when a refresh error exists,
                 // so we never imply "synced" alongside an unreachable/failed node.
                 val isSyncedEffective = isSynced && mergedError == null

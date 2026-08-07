@@ -7,19 +7,12 @@ import org.junit.Test
 class SyncStallDetectionTest {
 
     @Test
-    fun stallFlag_or_legacyMessage() {
-        assertTrue(isSyncStallError(syncStalled = true, errorMessage = null))
-        assertTrue(isSyncStallError(syncStalled = false, errorMessage = "Refresh stalled (>90s)"))
-        assertFalse(isSyncStallError(syncStalled = false, errorMessage = "Network error"))
+    fun stallFlag_true() {
+        assertTrue(isSyncStallError(syncStalled = true))
     }
 
     @Test
-    fun stallFlag_takesPrecedenceEvenWithoutLegacyMessage() {
-        assertTrue(isSyncStallError(syncStalled = true, errorMessage = "Unrelated error"))
-    }
-
-    @Test
-    fun noStall_whenNeitherFlagNorMessageIndicatesIt() {
-        assertFalse(isSyncStallError(syncStalled = false, errorMessage = null))
+    fun stallFlag_false() {
+        assertFalse(isSyncStallError(syncStalled = false))
     }
 }
