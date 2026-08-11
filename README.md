@@ -3,14 +3,16 @@
 `nexawal-android` is the Android version of the NexaWal Monero wallet, built on top of `monero-oxide` and the shared wallet core.
 
 - Android app: this repository
-- iOS app: [nexawal](https://github.com/cacaosteve/nexawal)
+- iOS app: [nexawal](https://github.com/Nexatrode/nexawal)
 - Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) (`main`)
 - Monero library work: [monero-oxide](https://github.com/cacaosteve/monero-oxide) (fork pin used by the core)
+- Website: [nexatrode.com](https://nexatrode.com)
+- Reproducible builds / Wallet Scrutiny notes: [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md)
 
 ## Setup
 
 ```bash
-git clone --recurse-submodules https://github.com/cacaosteve/nexawal-android.git
+git clone --recurse-submodules https://github.com/Nexatrode/nexawal-android.git
 cd nexawal-android
 ./gradlew :app:assembleDebug
 ```
@@ -69,7 +71,7 @@ Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifa
 - Android consumes the shared core through the submodule + JNI `.so` integration
 - Syncs against standard Monero nodes (local or remote), including the configured I2P RPC path when enabled
 - Default daemon is `https://rpc.nexatrode.com` (type a full `http://` or `https://` URL to override)
-- Feature parity target: [nexawal](https://github.com/cacaosteve/nexawal)
+- Feature parity target: [nexawal](https://github.com/Nexatrode/nexawal)
 - Unaudited software. You are responsible for backups and funds. A remote node can see your IP and sync queries.
 
 ## Privacy

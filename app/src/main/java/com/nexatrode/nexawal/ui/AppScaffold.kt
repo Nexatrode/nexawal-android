@@ -2796,7 +2796,7 @@ private fun SettingsScreen(
                     text = stringResource(R.string.source_license),
                     onClick = {
                         val uri = android.net.Uri.parse(
-                            "https://github.com/cacaosteve/nexawal-android/blob/main/LICENSE",
+                            "https://github.com/Nexatrode/nexawal-android/blob/main/LICENSE",
                         )
                         runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
                     },
