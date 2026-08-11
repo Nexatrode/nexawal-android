@@ -2771,10 +2771,20 @@ private fun SettingsScreen(
                 )
                 Spacer(Modifier.height(12.dp))
                 SecondaryActionButton(
+                    text = stringResource(R.string.terms_of_use),
+                    onClick = {
+                        val uri = android.net.Uri.parse(MoneroConfig.TERMS_URL)
+                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
+                    },
+                    palette = palette,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(8.dp))
+                SecondaryActionButton(
                     text = stringResource(R.string.privacy_policy),
                     onClick = {
                         val uri = android.net.Uri.parse(
-                            "https://github.com/cacaosteve/nexawal-android/blob/main/docs/PRIVACY.md",
+                            "https://nexatrode.com/privacy/nexawal/",
                         )
                         runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
                     },

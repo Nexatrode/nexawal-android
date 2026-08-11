@@ -10,6 +10,9 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.LocalView
 import androidx.lifecycle.Lifecycle
@@ -18,6 +21,7 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import com.nexatrode.nexawal.ui.AppScaffold
+import com.nexatrode.nexawal.ui.TermsAcceptanceScreen
 import com.nexatrode.nexawal.ui.WalletCreationScreen
 import com.nexatrode.nexawal.ui.theme.NexawalTheme
 
@@ -32,6 +36,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NexawalTheme {
+                var termsAccepted by remember {
+                    mutableStateOf(!MoneroConfig.needsTermsAcceptance(applicationContext))
+                }
+
+                if (!termsAccepted) {
+                    TermsAcceptanceScreen(
+                        onAccepted = { termsAccepted = true },
+                    )
+                    return@NexawalTheme
+                }
+
                 val state by walletManager.state.collectAsState()
 
                 SyncLifecycleEffects(walletManager = walletManager, refreshInProgress = state.refreshInProgress)

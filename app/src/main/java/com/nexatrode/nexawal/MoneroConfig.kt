@@ -51,6 +51,7 @@ object MoneroConfig {
     private const val KEY_FIAT_RATE_PER_XMR: String = "fiat_rate_per_xmr"
     private const val KEY_FIAT_RATE_FETCHED_AT: String = "fiat_rate_fetched_at_ms"
     private const val KEY_FIAT_RATE_SOURCE: String = "fiat_rate_source"
+    private const val KEY_ACCEPTED_TERMS_VERSION: String = "nexawal_accepted_terms_version"
 
     // Defaults (match iOS MoneroConfig.swift).
     const val DEFAULT_GAP_LIMIT: Int = 50
@@ -59,6 +60,10 @@ object MoneroConfig {
     /** Techno Theme ON = neon terminal look; OFF (default) = standard look. */
     const val DEFAULT_TECHNO_THEME: Boolean = false
     private const val DEFAULT_NETWORK_POLICY_RAW: String = "clearnet"
+
+    /** Bump when summary or full ToS changes so users must re-accept. */
+    const val CURRENT_TERMS_VERSION: Int = 1
+    const val TERMS_URL: String = "https://nexatrode.com/terms"
     // Safety clamps.
     private const val GAP_LIMIT_MIN: Int = 1
     private const val GAP_LIMIT_MAX: Int = 100_000
@@ -380,6 +385,20 @@ object MoneroConfig {
         val i2pRpcAddress: String,
         val i2pHttpProxyAddress: String?,
     )
+
+    // Terms acceptance
+    @JvmStatic
+    fun acceptedTermsVersion(context: Context): Int =
+        prefs(context).getInt(KEY_ACCEPTED_TERMS_VERSION, 0)
+
+    @JvmStatic
+    fun needsTermsAcceptance(context: Context): Boolean =
+        acceptedTermsVersion(context) < CURRENT_TERMS_VERSION
+
+    @JvmStatic
+    fun acceptCurrentTerms(context: Context) {
+        prefs(context).edit().putInt(KEY_ACCEPTED_TERMS_VERSION, CURRENT_TERMS_VERSION).apply()
+    }
 
     private fun clamp(v: Int, lo: Int, hi: Int): Int = max(lo, min(v, hi))
 

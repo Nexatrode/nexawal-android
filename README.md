@@ -31,13 +31,25 @@ Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifa
 
 ## Screenshots
 
+### Light
+
 | Wallet | Receive |
 | --- | --- |
-| ![Android wallet](docs/screenshots/android1.png) | ![Android receive](docs/screenshots/android2.png) |
+| ![Android wallet light](docs/screenshots/android-wallet-light.png) | ![Android receive light](docs/screenshots/android-receive-light.png) |
 
 | Send | Settings |
 | --- | --- |
-| ![Android send](docs/screenshots/android3.png) | ![Android settings](docs/screenshots/android4.png) |
+| ![Android send light](docs/screenshots/android-send-light.png) | ![Android settings light](docs/screenshots/android-settings-light.png) |
+
+### Dark
+
+| Wallet | Receive |
+| --- | --- |
+| ![Android wallet dark](docs/screenshots/android-wallet-dark.png) | ![Android receive dark](docs/screenshots/android-receive-dark.png) |
+
+| Send | Settings |
+| --- | --- |
+| ![Android send dark](docs/screenshots/android-send-dark.png) | ![Android settings dark](docs/screenshots/android-settings-dark.png) |
 
 ## Features
 
