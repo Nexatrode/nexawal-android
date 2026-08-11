@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Kuɗi</string>
     <string name="section_about">Game da</string>
     <string name="about_disclaimer">Software mai lasisin MIT, wanda ba a bincika ba. Kai ne ke da alhakin kalmomin dawowarka da kuɗaɗenka. Node na tsohuwa mai nisa na iya ganin IP ɗinka da tambayoyin daidaitawar walat — yi amfani da node naka don ƙarin sirri. Ƙiyasin kuɗin fiat, na zaɓi, idan an kunna, suna tuntuɓar api.kraken.com da api.frankfurter.dev.</string>
+    <string name="terms_of_use">Sharuɗan Amfani</string>
+    <string name="terms_title">Sharuɗan Amfani</string>
+    <string name="terms_body_custody">NexaWal na Nexatrode LLC interface ne na kula da kai don sarrafa kadarorin dijital. Kai ne kaɗai ke da alhakin maɓallan sirri da jimlar iri ta kalmomi 25.</string>
+    <string name="terms_body_as_is">Ana bayar da app ɗin yadda yake, ba tare da wani garantin bayyane ko na ciki ba. Amfani yana kan haɗarin ku. Nexatrode LLC ba ta da alhakin kadarorin da suka ɓace, kuskuren mai amfani, katsewa, ko matsalolin sabis ko node na waje.</string>
+    <string name="terms_body_node">Ana ba da shawarar gudanar da ko haɗawa da naku na Monero. Tsohuwar jama\'a don sauƙi ne kawai.</string>
+    <string name="terms_review_full">Duba cikakkun sharuɗa a gidan yanar gizon Nexatrode LLC</string>
+    <string name="terms_checkbox">Na karanta kuma na yarda da Sharuɗan Amfani</string>
+    <string name="terms_agree">Na yarda</string>
+    <string name="terms_quit">Fita</string>
     <string name="privacy_policy">Manufar sirri</string>
     <string name="source_license">Tushen lambar da lasisi (MIT)</string>
     <string name="saved_clearnet">An ajiye clearnet</string>

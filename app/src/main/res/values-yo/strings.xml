@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Owó</string>
     <string name="section_about">Nípa</string>
     <string name="about_disclaimer">Ẹ̀rọ software tí a ní ìwé-àṣẹ MIT, tí a kò tíì ṣàyẹ̀wò rẹ̀ ní kíkún. Ìwọ ni ó ní ẹ̀rí fún ọ̀rọ̀ ìpadàbọ̀ àti owó rẹ. Node àdánwò tí ó jẹ́ ìpilẹ̀ṣẹ̀ lè rí IP rẹ àti àwọn ìbéèrè ìṣọ̀kan àpamọ́wọ́ rẹ — sáré node tìrẹ fún ààbò tí ó ga jùlọ. Ìṣírò owó ìlú àṣàyàn, bí a bá gbé e ṣíṣẹ́, máa ń kàn sí api.kraken.com àti api.frankfurter.dev.</string>
+    <string name="terms_of_use">Àwọn Òfin Lílò</string>
+    <string name="terms_title">Àwọn Òfin Lílò</string>
+    <string name="terms_body_custody">NexaWal láti ọwọ́ Nexatrode LLC jẹ́ ìfojúṣe ìtọ́jú ara ẹni fún ṣíṣàkóso àwọn ohun-ìní oníṣirò. Ìdájọ́ dúró lórí rẹ nìkan fún àwọn kọ́kọ́rọ́ àdáni àti ọ̀rọ̀ irúgbìn ọ̀rọ̀ 25.</string>
+    <string name="terms_body_as_is">A pèsè app náà gẹ́gẹ́ bí ó ṣe wà, láìsí èròǹgbà àti ìdúróṣinṣin kankan. Lílo wà lórí ewu tirẹ. Nexatrode LLC kò ní ẹjọ́ fún ohun-ìní tí ó sọnù, àṣìṣe olùlò, ìdádúró, tàbí ìṣòro pẹ̀lú iṣẹ́ tàbí node ẹni kẹta.</string>
+    <string name="terms_body_node">A dábàá pé kí o ṣiṣẹ́ tàbí so mọ́ node Monero tirẹ. Àwọn àìyípadà gbogbogbòò jẹ́ fún ìrọ̀rùn nìkan.</string>
+    <string name="terms_review_full">Ṣàtúnyẹ̀wò àwọn òfin níkún lórí ojú òpó wẹ́ẹ̀bù Nexatrode LLC</string>
+    <string name="terms_checkbox">Mo ti ka Àwọn Òfin Lílò, mo sì gbà</string>
+    <string name="terms_agree">Mo gbà</string>
+    <string name="terms_quit">Jáde</string>
     <string name="privacy_policy">Ìlànà àṣírí</string>
     <string name="source_license">Orísun &amp; ìwé-àṣẹ (MIT)</string>
     <string name="saved_clearnet">Clearnet ti di fífi pamọ́</string>

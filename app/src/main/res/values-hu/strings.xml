@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Pénznem</string>
     <string name="section_about">Névjegy</string>
     <string name="about_disclaimer">MIT licencű, nem auditált szoftver. Te vagy felelős a seededért és a pénzeszközeidért. Az alapértelmezett távoli csomópont láthatja az IP-címedet és a pénztárca szinkronizálási lekérdezéseit — futtass saját csomópontot az erősebb adatvédelemért. Az opcionális fiat becslések, ha bekapcsolva vannak, az api.kraken.com és api.frankfurter.dev szolgáltatásokkal lépnek kapcsolatba.</string>
+    <string name="terms_of_use">Felhasználási feltételek</string>
+    <string name="terms_title">Felhasználási feltételek</string>
+    <string name="terms_body_custody">A Nexatrode LLC NexaWal alkalmazása önőrzésű felület digitális eszközök kezeléséhez. A privát kulcsokért és a 25 szavas seed kifejezésért kizárólag Ön felel.</string>
+    <string name="terms_body_as_is">Az alkalmazás „ahogy van” állapotban kerül biztosításra, kifejezett vagy hallgatólagos garancia nélkül. A használat saját felelősségre történik. A Nexatrode LLC nem felel elveszett eszközökért, felhasználói hibákért, kiesésekért vagy harmadik felek szolgáltatásainak/node-jainak problémáiért.</string>
+    <string name="terms_body_node">Ajánlott saját Monero node futtatása vagy ahhoz csatlakozás. A nyilvános alapértelmezések csak a kényelemért vannak.</string>
+    <string name="terms_review_full">A teljes feltételek megtekintése a Nexatrode LLC webhelyén</string>
+    <string name="terms_checkbox">Elolvastam és elfogadom a Felhasználási feltételeket</string>
+    <string name="terms_agree">Elfogadom</string>
+    <string name="terms_quit">Kilépés</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="source_license">Forráskód és licenc (MIT)</string>
     <string name="saved_clearnet">Clearnet elmentve</string>

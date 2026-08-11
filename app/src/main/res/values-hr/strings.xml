@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valuta</string>
     <string name="section_about">O aplikaciji</string>
     <string name="about_disclaimer">Softver s MIT licencom, bez revizije. Sami ste odgovorni za svoj sjemenski kod i sredstva. Zadani udaljeni čvor može vidjeti vašu IP adresu i upite sinkronizacije novčanika — pokrenite svoj vlastiti čvor za veću privatnost. Neobavezne fiat procjene, ako su omogućene, kontaktiraju api.kraken.com i api.frankfurter.dev.</string>
+    <string name="terms_of_use">Uvjeti korištenja</string>
+    <string name="terms_title">Uvjeti korištenja</string>
+    <string name="terms_body_custody">NexaWal tvrtke Nexatrode LLC samostalno je skrbničko sučelje za upravljanje digitalnom imovinom. Isključivo ste odgovorni za svoje privatne ključeve i seed frazu od 25 riječi.</string>
+    <string name="terms_body_as_is">Aplikacija se pruža kakva jest, bez izričitih ili podrazumijevanih jamstava. Korištenje je na vlastiti rizik. Nexatrode LLC nije odgovoran za izgubljenu imovinu, greške korisnika, zastoje ili probleme s uslugama ili čvorovima trećih strana.</string>
+    <string name="terms_body_node">Preporučuje se pokretanje ili povezivanje s vlastitim Monero čvorom. Javne zadane vrijednosti služe samo radi praktičnosti.</string>
+    <string name="terms_review_full">Pregledajte potpune uvjete na web-stranici Nexatrode LLC</string>
+    <string name="terms_checkbox">Pročitao/la sam i slažem se s Uvjetima korištenja</string>
+    <string name="terms_agree">Slažem se</string>
+    <string name="terms_quit">Izlaz</string>
     <string name="privacy_policy">Pravila privatnosti</string>
     <string name="source_license">Izvorni kod i licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet spremljen</string>

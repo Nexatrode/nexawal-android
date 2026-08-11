@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Moneta</string>
     <string name="section_about">Honi buruz</string>
     <string name="about_disclaimer">MIT lizentziako software da, auditatu gabea. Zure hazia eta funtsak zure ardura dira. Lehenetsitako urruneko nodoak zure IPa eta zorroaren sinkronizazio-kontsultak ikus ditzake — pribatutasun handiagoa nahi izanez gero, exekutatu zure nodo propioa. Fiat kalkulu aukerakoak, aktibatuta badaude, api.kraken.com eta api.frankfurter.dev-ekin kontaktatzen dute.</string>
+    <string name="terms_of_use">Erabilera-baldintzak</string>
+    <string name="terms_title">Erabilera-baldintzak</string>
+    <string name="terms_body_custody">Nexatrode LLC-ren NexaWal auto-zaintzako interfazea da aktibo digitalak kudeatzeko. Zure gako pribatuen eta 25 hitzeko seed esaldiaren erantzukizun esklusiboa duzu.</string>
+    <string name="terms_body_as_is">Aplikazioa dagoen bezala ematen da, bermerik gabe, esplizitu edo inplizitu. Erabilera zure arriskuan da. Nexatrode LLC ez da arduratzen galdutako aktiboez, erabiltzaile-erroreez, eteneeaz edo hirugarrenen zerbitzuen/nodoen arazoez.</string>
+    <string name="terms_body_node">Gomendagarria da zure Monero nodoa exekutatzea edo konektatzea. Publiko lehenetsiak erosotasunerako soilik dira.</string>
+    <string name="terms_review_full">Ikusi baldintza osoak Nexatrode LLC webgunean</string>
+    <string name="terms_checkbox">Erabilera-baldintzak irakurri ditut eta onartzen ditut</string>
+    <string name="terms_agree">Onartzen dut</string>
+    <string name="terms_quit">Irten</string>
     <string name="privacy_policy">Pribatutasun politika</string>
     <string name="source_license">Iturburua eta lizentzia (MIT)</string>
     <string name="saved_clearnet">Clearnet gordeta</string>

@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Moneda</string>
     <string name="section_about">Ko App Rehegua</string>
     <string name="about_disclaimer">Software licencia MIT-gua, ndojeexaminái porãha. Nde\'ỹ ha\'e responsable nde frase mnemónica ha nde viru rehe. Nodo remoto default ikatu ohecha nde IP ha consulta de sincronización — eiporúke nde nodo teete privacidad porãve g̃uarã. Techapyrã fiat opcional, oñemyendýrõ, oñondive api.kraken.com ha api.frankfurter.dev.</string>
+    <string name="terms_of_use">Jeporu ñe\'ẽme\'ẽ</string>
+    <string name="terms_title">Jeporu ñe\'ẽme\'ẽ</string>
+    <string name="terms_body_custody">NexaWal Nexatrode LLC mba\'éva ha\'e peteĩ interface autocustodia oñangareko hag̃ua mba\'e rehegua digital-pe. Ndévoi reñangarekóta ne llave privada ha ne semilla ñe\'ẽ 25-pe.</string>
+    <string name="terms_body_as_is">Ko app ome\'ẽva oĩháicha, ndaipóri garantía. Reiporu ne riesgópe. Nexatrode LLC ndojapói cargo mba\'e oñehundíva, usuario jejavy, oñepytỹhague térã servicio térã nodo ambuéva apañuãi rehe.</string>
+    <string name="terms_body_node">Ojejerure ehechauka térã eike ne nodo Monero-pe. Oĩva público oĩ confortoñguaránte.</string>
+    <string name="terms_review_full">Ehecha ñe\'ẽme\'ẽ tuicháva Nexatrode LLC ñanduti renda-pe</string>
+    <string name="terms_checkbox">Amoñe\'ẽ ha amoneĩ Jeporu ñe\'ẽme\'ẽ</string>
+    <string name="terms_agree">Amoneĩ</string>
+    <string name="terms_quit">Sẽ</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="source_license">Código &amp; licencia (MIT)</string>
     <string name="saved_clearnet">Clearnet ñeñongatupyre</string>

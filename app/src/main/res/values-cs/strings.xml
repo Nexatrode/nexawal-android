@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Měna</string>
     <string name="section_about">O aplikaci</string>
     <string name="about_disclaimer">Software s licencí MIT, bez bezpečnostního auditu. Za svou frázi pro obnovení a prostředky nesete odpovědnost sami. Výchozí vzdálený uzel může vidět vaši IP adresu a dotazy synchronizace peněženky — pro silnější soukromí provozujte svůj vlastní uzel. Volitelné odhady fiat měny, pokud jsou zapnuté, kontaktují api.kraken.com a api.frankfurter.dev.</string>
+    <string name="terms_of_use">Podmínky použití</string>
+    <string name="terms_title">Podmínky použití</string>
+    <string name="terms_body_custody">NexaWal od Nexatrode LLC je self-custodial rozhraní pro správu digitálních aktiv. Výhradní odpovědnost za soukromé klíče a 25slovnou seed frázi neseš ty.</string>
+    <string name="terms_body_as_is">Aplikace je poskytována tak, jak je, bez výslovných či předpokládaných záruk. Použití je na vlastní riziko. Nexatrode LLC neodpovídá za ztracená aktiva, chyby uživatele, výpadky ani problémy se službami či nody třetích stran.</string>
+    <string name="terms_body_node">Doporučuje se provozovat nebo se připojit k vlastnímu Monero nodu. Veřejné výchozí hodnoty jsou pouze pro pohodlí.</string>
+    <string name="terms_review_full">Zobrazit úplné podmínky na webu Nexatrode LLC</string>
+    <string name="terms_checkbox">Přečetl(a) jsem si Podmínky použití a souhlasím s nimi</string>
+    <string name="terms_agree">Souhlasím</string>
+    <string name="terms_quit">Ukončit</string>
     <string name="privacy_policy">Zásady ochrany soukromí</string>
     <string name="source_license">Zdrojový kód a licence (MIT)</string>
     <string name="saved_clearnet">Clearnet uloženo</string>

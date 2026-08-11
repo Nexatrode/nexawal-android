@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Monedă</string>
     <string name="section_about">Despre</string>
     <string name="about_disclaimer">Software licențiat MIT, neauditat. Ești responsabil pentru cheia ta de recuperare și fondurile tale. Nodul remote implicit poate vedea adresa ta IP și cererile de sincronizare ale portofelului — rulează propriul nod pentru o confidențialitate mai puternică. Estimările fiat opționale, dacă sunt activate, contactează api.kraken.com și api.frankfurter.dev.</string>
+    <string name="terms_of_use">Termeni de utilizare</string>
+    <string name="terms_title">Termeni de utilizare</string>
+    <string name="terms_body_custody">NexaWal de la Nexatrode LLC este o interfață cu auto-custodie pentru gestionarea activelor digitale. Aveți responsabilitatea exclusivă pentru cheile private și fraza seed de 25 de cuvinte.</string>
+    <string name="terms_body_as_is">Aplicația este furnizată ca atare, fără garanții exprese sau implicite. Utilizarea este pe propriul risc. Nexatrode LLC nu răspunde pentru active pierdute, erori ale utilizatorului, întreruperi sau probleme cu servicii ori noduri terțe.</string>
+    <string name="terms_body_node">Se recomandă rularea sau conectarea la propriul nod Monero. Valorile publice implicite sunt doar pentru comoditate.</string>
+    <string name="terms_review_full">Consultați termenii compleți pe site-ul Nexatrode LLC</string>
+    <string name="terms_checkbox">Am citit și sunt de acord cu Termenii de utilizare</string>
+    <string name="terms_agree">Sunt de acord</string>
+    <string name="terms_quit">Ieșire</string>
     <string name="privacy_policy">Politica de confidențialitate</string>
     <string name="source_license">Sursă și licență (MIT)</string>
     <string name="saved_clearnet">Clearnet salvat</string>

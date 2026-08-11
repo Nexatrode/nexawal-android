@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Νόμισμα</string>
     <string name="section_about">Σχετικά</string>
     <string name="about_disclaimer">Λογισμικό με άδεια MIT, χωρίς έλεγχο ασφαλείας. Είστε υπεύθυνοι για τη φράση ανάκτησης και τα κεφάλαιά σας. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει την IP σας και τα ερωτήματα συγχρονισμού του πορτοφολιού — εκτελέστε τον δικό σας κόμβο για μεγαλύτερο απόρρητο. Οι προαιρετικές εκτιμήσεις fiat, εάν ενεργοποιηθούν, επικοινωνούν με τα api.kraken.com και api.frankfurter.dev.</string>
+    <string name="terms_of_use">Όροι χρήσης</string>
+    <string name="terms_title">Όροι χρήσης</string>
+    <string name="terms_body_custody">Το NexaWal της Nexatrode LLC είναι μια διεπαφή αυτοφύλαξης για τη διαχείριση ψηφιακών περιουσιακών στοιχείων. Έχετε αποκλειστική ευθύνη για τα ιδιωτικά σας κλειδιά και τη φράση seed 25 λέξεων.</string>
+    <string name="terms_body_as_is">Η εφαρμογή παρέχεται ως έχει, χωρίς ρητές ή σιωπηρές εγγυήσεις. Η χρήση γίνεται με δική σας ευθύνη. Η Nexatrode LLC δεν ευθύνεται για χαμένα περιουσιακά στοιχεία, σφάλματα χρήστη, διακοπές ή προβλήματα με υπηρεσίες ή κόμβους τρίτων.</string>
+    <string name="terms_body_node">Συνιστάται να εκτελείτε ή να συνδέεστε στον δικό σας κόμβο Monero. Οι δημόσιες προεπιλογές είναι μόνο για ευκολία.</string>
+    <string name="terms_review_full">Δείτε τους πλήρεις όρους στον ιστότοπο της Nexatrode LLC</string>
+    <string name="terms_checkbox">Έχω διαβάσει και συμφωνώ με τους Όρους χρήσης</string>
+    <string name="terms_agree">Συμφωνώ</string>
+    <string name="terms_quit">Έξοδος</string>
     <string name="privacy_policy">Πολιτική απορρήτου</string>
     <string name="source_license">Πηγαίος κώδικας &amp; άδεια (MIT)</string>
     <string name="saved_clearnet">Το Clearnet αποθηκεύτηκε</string>

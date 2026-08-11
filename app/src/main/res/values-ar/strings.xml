@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">العملة</string>
     <string name="section_about">حول</string>
     <string name="about_disclaimer">برنامج مرخّص بموجب MIT وغير مُدقَّق. أنت المسؤول عن عبارتك التذكيرية وأموالك. يمكن للعقدة البعيدة الافتراضية رؤية عنوان IP الخاص بك واستعلامات مزامنة المحفظة — شغّل عقدتك الخاصة لخصوصية أقوى. التقديرات النقدية الاختيارية، إن تم تفعيلها، تتصل بـ api.kraken.com و api.frankfurter.dev.</string>
+    <string name="terms_of_use">شروط الاستخدام</string>
+    <string name="terms_title">شروط الاستخدام</string>
+    <string name="terms_body_custody">NexaWal من Nexatrode LLC واجهة ذاتية الحفظ لإدارة الأصول الرقمية. أنت تتحمل المسؤولية الحصرية عن مفاتيحك الخاصة وعبارة الاسترداد المكوّنة من 25 كلمة.</string>
+    <string name="terms_body_as_is">يُقدَّم التطبيق كما هو، دون ضمانات صريحة أو ضمنية. الاستخدام على مسؤوليتك الخاصة. لا تتحمل Nexatrode LLC المسؤولية عن الأصول المفقودة أو أخطاء المستخدم أو التوقف أو مشكلات خدمات أو عُقد جهات خارجية.</string>
+    <string name="terms_body_node">يُنصح بتشغيل عقدة Monero الخاصة بك أو الاتصال بها. القيم العامة الافتراضية للراحة فقط.</string>
+    <string name="terms_review_full">راجع الشروط الكاملة على موقع Nexatrode LLC</string>
+    <string name="terms_checkbox">لقد قرأت وأوافق على شروط الاستخدام</string>
+    <string name="terms_agree">أوافق</string>
+    <string name="terms_quit">خروج</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="source_license">المصدر والترخيص (MIT)</string>
     <string name="saved_clearnet">تم حفظ Clearnet</string>

@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Loại tiền</string>
     <string name="section_about">Giới thiệu</string>
     <string name="about_disclaimer">Phần mềm theo giấy phép MIT, chưa được kiểm toán. Bạn chịu trách nhiệm về cụm từ khôi phục và tiền của mình. Node từ xa mặc định có thể thấy địa chỉ IP và các truy vấn đồng bộ ví của bạn — hãy chạy node riêng để bảo mật tốt hơn. Ước tính tiền pháp định (tùy chọn), nếu được bật, sẽ liên hệ với api.kraken.com và api.frankfurter.dev.</string>
+    <string name="terms_of_use">Điều khoản sử dụng</string>
+    <string name="terms_title">Điều khoản sử dụng</string>
+    <string name="terms_body_custody">NexaWal của Nexatrode LLC là giao diện tự lưu ký để quản lý tài sản số. Bạn chịu trách nhiệm duy nhất về khóa riêng và cụm từ khôi phục 25 từ.</string>
+    <string name="terms_body_as_is">Ứng dụng được cung cấp nguyên trạng, không có bảo đảm rõ ràng hoặc ngụ ý. Việc sử dụng do bạn tự chịu rủi ro. Nexatrode LLC không chịu trách nhiệm về tài sản bị mất, lỗi người dùng, thời gian ngừng hoạt động hoặc sự cố với dịch vụ/nút của bên thứ ba.</string>
+    <string name="terms_body_node">Nên chạy hoặc kết nối với nút Monero của riêng bạn. Các mặc định công khai chỉ nhằm tiện lợi.</string>
+    <string name="terms_review_full">Xem đầy đủ điều khoản trên trang web Nexatrode LLC</string>
+    <string name="terms_checkbox">Tôi đã đọc và đồng ý với Điều khoản sử dụng</string>
+    <string name="terms_agree">Tôi đồng ý</string>
+    <string name="terms_quit">Thoát</string>
     <string name="privacy_policy">Chính sách quyền riêng tư</string>
     <string name="source_license">Mã nguồn và giấy phép (MIT)</string>
     <string name="saved_clearnet">Đã lưu clearnet</string>

@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">สกุลเงิน</string>
     <string name="section_about">เกี่ยวกับ</string>
     <string name="about_disclaimer">ซอฟต์แวร์ภายใต้สัญญาอนุญาต MIT ที่ยังไม่ได้รับการตรวจสอบ คุณต้องรับผิดชอบวลีกู้คืนและเงินทุนของคุณเอง โหนดระยะไกลเริ่มต้นสามารถเห็นที่อยู่ IP และคำขอซิงค์กระเป๋าเงินของคุณได้ — เพื่อความเป็นส่วนตัวที่มากขึ้น ควรรันโหนดของคุณเอง การประมาณค่าเงินเฟียต (ถ้าเปิดใช้) จะติดต่อกับ api.kraken.com และ api.frankfurter.dev</string>
+    <string name="terms_of_use">ข้อกำหนดการใช้งาน</string>
+    <string name="terms_title">ข้อกำหนดการใช้งาน</string>
+    <string name="terms_body_custody">NexaWal โดย Nexatrode LLC เป็นอินเทอร์เฟซแบบดูแลเองสำหรับจัดการสินทรัพย์ดิจิทัล คุณรับผิดชอบแต่เพียงผู้เดียวต่อคีย์ส่วนตัวและวลีซีด 25 คำ</string>
+    <string name="terms_body_as_is">แอปให้บริการตามสภาพ โดยไม่มีการรับประกันใด ๆ ทั้งโดยชัดแจ้งหรือโดยนัย การใช้งานเป็นความเสี่ยงของคุณเอง Nexatrode LLC ไม่รับผิดชอบต่อสินทรัพย์ที่สูญหาย ข้อผิดพลาดของผู้ใช้ ช่วงเวลาหยุดทำงาน หรือปัญหาของบริการ/โหนดบุคคลที่สาม</string>
+    <string name="terms_body_node">แนะนำให้รันหรือเชื่อมต่อโหนด Monero ของคุณเอง ค่าเริ่มต้นสาธารณะมีไว้เพื่อความสะดวกเท่านั้น</string>
+    <string name="terms_review_full">ดูข้อกำหนดฉบับเต็มบนเว็บไซต์ Nexatrode LLC</string>
+    <string name="terms_checkbox">ฉันได้อ่านและยอมรับข้อกำหนดการใช้งานแล้ว</string>
+    <string name="terms_agree">ฉันยอมรับ</string>
+    <string name="terms_quit">ออก</string>
     <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
     <string name="source_license">ซอร์สโค้ดและสัญญาอนุญาต (MIT)</string>
     <string name="saved_clearnet">บันทึก clearnet แล้ว</string>

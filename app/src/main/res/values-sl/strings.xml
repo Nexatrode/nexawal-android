@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valuta</string>
     <string name="section_about">O aplikaciji</string>
     <string name="about_disclaimer">Programska oprema z licenco MIT, brez revizije. Sam si odgovoren za svoj seed in sredstva. Privzeto oddaljeno vozlišče lahko vidi tvoj IP naslov in poizvedbe sinhronizacije denarnice — za večjo zasebnost poganjaj svoje lastno vozlišče. Neobvezne ocene fiat vrednosti, če so omogočene, komunicirajo z api.kraken.com in api.frankfurter.dev.</string>
+    <string name="terms_of_use">Pogoji uporabe</string>
+    <string name="terms_title">Pogoji uporabe</string>
+    <string name="terms_body_custody">NexaWal podjetja Nexatrode LLC je vmesnik s samostojnim skrbništvom za upravljanje digitalnih sredstev. Izključno ste odgovorni za zasebne ključe in 25-besedno seed frazo.</string>
+    <string name="terms_body_as_is">Aplikacija je na voljo takšna, kakršna je, brez izrecnih ali implicitnih jamstev. Uporaba je na lastno odgovornost. Nexatrode LLC ni odgovoren za izgubljena sredstva, napake uporabnika, izpade ali težave s storitvami ali vozlišči tretjih oseb.</string>
+    <string name="terms_body_node">Priporočeno je zagnati ali se povezati z lastnim vozliščem Monero. Javne privzete vrednosti so le zaradi udobja.</string>
+    <string name="terms_review_full">Preglejte celotne pogoje na spletnem mestu Nexatrode LLC</string>
+    <string name="terms_checkbox">Prebral/a sem in se strinjam s Pogoji uporabe</string>
+    <string name="terms_agree">Strinjam se</string>
+    <string name="terms_quit">Izhod</string>
     <string name="privacy_policy">Politika zasebnosti</string>
     <string name="source_license">Vir in licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet shranjen</string>

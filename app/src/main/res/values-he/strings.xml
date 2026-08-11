@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">מטבע</string>
     <string name="section_about">אודות</string>
     <string name="about_disclaimer">תוכנה מורשית ברישיון MIT ולא מבוקרת. אתה אחראי לביטוי השחזור ולכספים שלך. הצומת המרוחקת שמוגדרת כברירת מחדל יכולה לראות את כתובת ה-IP שלך ואת שאילתות הסנכרון של הארנק — הפעל צומת משלך לפרטיות חזקה יותר. אומדני פיאט אופציונליים, אם מופעלים, פונים ל-api.kraken.com ול-api.frankfurter.dev.</string>
+    <string name="terms_of_use">תנאי השימוש</string>
+    <string name="terms_title">תנאי השימוש</string>
+    <string name="terms_body_custody">NexaWal של Nexatrode LLC הוא ממשק בשמירה עצמית לניהול נכסים דיגיטליים. האחריות הבלעדית למפתחות הפרטיים ולביטוי הזרע בן 25 המילים היא שלך.</string>
+    <string name="terms_body_as_is">האפליקציה מסופקת כפי שהיא, ללא אחריות מפורשת או משתמעת. השימוש על אחריותך בלבד. Nexatrode LLC אינה אחראית לאובדן נכסים, טעויות משתמש, השבתות או בעיות בשירותים או צמתים של צד שלישי.</string>
+    <string name="terms_body_node">מומלץ להפעיל או להתחבר לצומת Monero משלך. ברירות המחדל הציבוריות נועדו לנוחות בלבד.</string>
+    <string name="terms_review_full">עיין בתנאים המלאים באתר של Nexatrode LLC</string>
+    <string name="terms_checkbox">קראתי ואני מסכים/ה לתנאי השימוש</string>
+    <string name="terms_agree">אני מסכים/ה</string>
+    <string name="terms_quit">יציאה</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
     <string name="source_license">קוד מקור ורישיון (MIT)</string>
     <string name="saved_clearnet">Clearnet נשמרה</string>

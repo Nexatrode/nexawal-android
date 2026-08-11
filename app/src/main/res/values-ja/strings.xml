@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">通貨</string>
     <string name="section_about">このアプリについて</string>
     <string name="about_disclaimer">MITライセンスの、未監査のソフトウェアです。シードと資金の管理はご自身の責任となります。デフォルトのリモートノードはあなたのIPとウォレット同期の問い合わせを見ることができます — より高いプライバシーのためにはご自身のノードを運用してください。任意の現地通貨換算機能を有効にした場合、api.kraken.comとapi.frankfurter.devに接続します。</string>
+    <string name="terms_of_use">利用規約</string>
+    <string name="terms_title">利用規約</string>
+    <string name="terms_body_custody">Nexatrode LLC の NexaWal は、デジタル資産を管理するためのセルフカストディ型インターフェースです。秘密鍵および 25 語のシードフレーズについて、あなたが単独で責任を負います。</string>
+    <string name="terms_body_as_is">本アプリは現状のまま提供され、明示または黙示を問わず一切の保証はありません。利用は自己責任です。Nexatrode LLC は、資産の損失、ユーザーエラー、ダウンタイム、または第三者のサービスやノードに関する問題について責任を負いません。</string>
+    <string name="terms_body_node">独自の Monero ノードを運用するか接続することを推奨します。公開の既定値は利便性のためのみです。</string>
+    <string name="terms_review_full">Nexatrode LLC のウェブサイトで利用規約全文を確認</string>
+    <string name="terms_checkbox">利用規約を読み、同意します</string>
+    <string name="terms_agree">同意する</string>
+    <string name="terms_quit">終了</string>
     <string name="privacy_policy">プライバシーポリシー</string>
     <string name="source_license">ソースとライセンス(MIT)</string>
     <string name="saved_clearnet">Clearnet設定を保存しました</string>

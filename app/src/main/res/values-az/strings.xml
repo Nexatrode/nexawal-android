@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valyuta</string>
     <string name="section_about">Haqqında</string>
     <string name="about_disclaimer">MIT lisenziyalı, auditdən keçməmiş proqram təminatı. Seed-iniz və vəsaitiniz üçün siz məsuliyyət daşıyırsınız. Defolt uzaq node IP ünvanınızı və pulqabı sinxronizasiya sorğularınızı görə bilər — daha güclü məxfilik üçün öz node-unuzu işlədin. İstəyə bağlı fiat qiymətləndirmələri aktiv olduqda api.kraken.com və api.frankfurter.dev ilə əlaqə saxlayır.</string>
+    <string name="terms_of_use">İstifadə Şərtləri</string>
+    <string name="terms_title">İstifadə Şərtləri</string>
+    <string name="terms_body_custody">Nexatrode LLC-nin NexaWal-ı rəqəmsal aktivləri idarə etmək üçün özünə saxlama interfeysidir. Şəxsi açarlarınız və 25 sözlük seed ifadəniz üçün müstəsna məsuliyyət sizə aiddir.</string>
+    <string name="terms_body_as_is">Tətbiq olduğu kimi, açıq və ya nəzərdə tutulan zəmanət olmadan təqdim olunur. İstifadə öz riskinizədir. Nexatrode LLC itirilmiş aktivlər, istifadəçi səhvləri, dayanmalar və ya üçüncü tərəf xidmət/node problemlərinə görə məsuliyyət daşımır.</string>
+    <string name="terms_body_node">Öz Monero node-unuzu işə salmaq və ya ona qoşulmaq tövsiyə olunur. İctimai standartlar yalnız rahatlıq üçündür.</string>
+    <string name="terms_review_full">Tam şərtlərə Nexatrode LLC saytında baxın</string>
+    <string name="terms_checkbox">İstifadə Şərtlərini oxudum və razıyam</string>
+    <string name="terms_agree">Razıyam</string>
+    <string name="terms_quit">Çıxış</string>
     <string name="privacy_policy">Məxfilik siyasəti</string>
     <string name="source_license">Mənbə və lisenziya (MIT)</string>
     <string name="saved_clearnet">Clearnet yadda saxlanıldı</string>

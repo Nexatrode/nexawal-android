@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valuto</string>
     <string name="section_about">Pri</string>
     <string name="about_disclaimer">MIT-licencita, ne-aŭdita programaro. Vi respondecas pri via semo kaj fondusoj. La defaŭlta defora nodo povas vidi vian IP-on kaj demandojn de monuj-sinkronigo — funkciigu vian propran nodon por pli forta privateco. Nedevigaj fiat-taksoj, se ebligitaj, kontaktas api.kraken.com kaj api.frankfurter.dev.</string>
+    <string name="terms_of_use">Uzokondiĉoj</string>
+    <string name="terms_title">Uzokondiĉoj</string>
+    <string name="terms_body_custody">NexaWal de Nexatrode LLC estas mem-garda interfaco por administri ciferecajn aktivojn. Vi sole respondecas pri viaj privataj ŝlosiloj kaj 25-vorta semfrazo.</string>
+    <string name="terms_body_as_is">La apo estas provizita kiel estas, sen esprimitaj aŭ implicaj garantioj. Uzo estas je via propra risko. Nexatrode LLC ne respondecas pri perditaj aktivoj, uzantaj eraroj, malfunkcioj aŭ problemoj kun triaj servoj aŭ nodoj.</string>
+    <string name="terms_body_node">Oni rekomendas ruli aŭ konekti al via propra Monero-nodo. Publikaj defaŭltoj estas nur por komforto.</string>
+    <string name="terms_review_full">Reviziu la plenajn kondiĉojn ĉe la retejo de Nexatrode LLC</string>
+    <string name="terms_checkbox">Mi legis kaj konsentas pri la Uzokondiĉoj</string>
+    <string name="terms_agree">Mi konsentas</string>
+    <string name="terms_quit">Forlasi</string>
     <string name="privacy_policy">Privateca politiko</string>
     <string name="source_license">Fonto &amp; licenco (MIT)</string>
     <string name="saved_clearnet">Clearnet konservita</string>

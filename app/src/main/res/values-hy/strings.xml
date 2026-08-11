@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Արժույթ</string>
     <string name="section_about">Մասին</string>
     <string name="about_disclaimer">MIT լիցենզիայով, չաուդիտավորված ծրագրակազմ։ Դուք եք պատասխանատու ձեր վերականգնման բառերի և միջոցների համար։ Կանխադրված հեռավոր հանգույցը կարող է տեսնել ձեր IP-ն և դրամապանակի համաժամացման հայցերը — ավելի ուժեղ գաղտնիության համար գործարկեք ձեր սեփական հանգույցը։ Ընտրովի ֆիաթ գնահատականները, եթե միացված են, կապվում են api.kraken.com և api.frankfurter.dev հետ։</string>
+    <string name="terms_of_use">Օգտագործման պայմաններ</string>
+    <string name="terms_title">Օգտագործման պայմաններ</string>
+    <string name="terms_body_custody">Nexatrode LLC-ի NexaWal-ը ինքնապահպանման միջերես է թվային ակտիվները կառավարելու համար։ Դուք կրում եք բացառիկ պատասխանատվություն ձեր մասնավոր բանալիների և 25 բառանոց seed արտահայտության համար։</string>
+    <string name="terms_body_as_is">Հավելվածը տրամադրվում է «ինչպես կա»՝ առանց բացահայտ կամ ենթադրյալ երաշխիքների։ Օգտագործումը ձեր ռիսկով է։ Nexatrode LLC-ն պատասխանատու չէ կորած ակտիվների, օգտատիրոջ սխալների, պարապուրդների կամ երրորդ կողմի ծառայությունների/հանգույցների խնդիրների համար։</string>
+    <string name="terms_body_node">Խորհուրդ է տրվում գործարկել կամ միանալ ձեր սեփական Monero հանգույցին։ Հանրային լռելյայնները միայն հարմարության համար են։</string>
+    <string name="terms_review_full">Դիտեք ամբողջական պայմանները Nexatrode LLC կայքում</string>
+    <string name="terms_checkbox">Կարդացել եմ և համաձայն եմ Օգտագործման պայմաններին</string>
+    <string name="terms_agree">Համաձայն եմ</string>
+    <string name="terms_quit">Ելք</string>
     <string name="privacy_policy">Գաղտնիության քաղաքականություն</string>
     <string name="source_license">Կոդի աղբյուր և լիցենզիա (MIT)</string>
     <string name="saved_clearnet">Clearnet-ը պահվեց</string>

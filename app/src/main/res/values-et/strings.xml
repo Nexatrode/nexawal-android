@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Vääring</string>
     <string name="section_about">Rakenduse kohta</string>
     <string name="about_disclaimer">MIT-litsentsiga, auditeerimata tarkvara. Vastutate oma taastefraasi ja vahendite eest. Vaikimisi kaugsõlm võib näha teie IP-aadressi ja rahakoti sünkroonimispäringuid — käitage tugevama privaatsuse jaoks oma sõlme. Valikulised fiat-hinnangud, kui need on lubatud, võtavad ühendust api.kraken.com ja api.frankfurter.dev-ga.</string>
+    <string name="terms_of_use">Kasutustingimused</string>
+    <string name="terms_title">Kasutustingimused</string>
+    <string name="terms_body_custody">Nexatrode LLC NexaWal on isehoidlik liides digitaalse vara haldamiseks. Kannate ainuisikulist vastutust privaatvõtmete ja 25-sõnalise seemnelause eest.</string>
+    <string name="terms_body_as_is">Rakendus esitatakse nii nagu on, ilma otseste või kaudsete garantiideta. Kasutamine on omal riisikol. Nexatrode LLC ei vastuta kaotatud vara, kasutajavigade, seisakute ega kolmandate osapoolte teenuste või nodede probleemide eest.</string>
+    <string name="terms_body_node">Soovitatav on käivitada või ühenduda oma Monero node’iga. Avalikud vaikeväärtused on ainult mugavuseks.</string>
+    <string name="terms_review_full">Vaadake täielikke tingimusi Nexatrode LLC veebisaidil</string>
+    <string name="terms_checkbox">Olen lugenud ja nõustun Kasutustingimustega</string>
+    <string name="terms_agree">Nõustun</string>
+    <string name="terms_quit">Välju</string>
     <string name="privacy_policy">Privaatsuspoliitika</string>
     <string name="source_license">Lähtekood ja litsents (MIT)</string>
     <string name="saved_clearnet">Clearnet salvestatud</string>

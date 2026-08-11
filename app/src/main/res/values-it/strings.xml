@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valuta</string>
     <string name="section_about">Informazioni</string>
     <string name="about_disclaimer">Software con licenza MIT, non sottoposto ad audit. Sei responsabile della tua frase di recupero e dei tuoi fondi. Il nodo remoto predefinito può vedere il tuo IP e le richieste di sincronizzazione del wallet — usa un tuo nodo per una maggiore privacy. Le stime fiat opzionali, se attivate, contattano api.kraken.com e api.frankfurter.dev.</string>
+    <string name="terms_of_use">Termini di utilizzo</string>
+    <string name="terms_title">Termini di utilizzo</string>
+    <string name="terms_body_custody">NexaWal di Nexatrode LLC è un’interfaccia self-custodial per gestire asset digitali. Hai la responsabilità esclusiva delle tue chiavi private e della frase seed di 25 parole.</string>
+    <string name="terms_body_as_is">L\'app è fornita così com\'è, senza garanzie espresse o implicite. L\'uso è a tuo rischio. Nexatrode LLC non è responsabile per asset persi, errori dell\'utente, interruzioni o problemi con servizi o nodi di terze parti.</string>
+    <string name="terms_body_node">Si raccomanda di eseguire o collegarsi al proprio nodo Monero. I valori pubblici predefiniti sono solo per comodità.</string>
+    <string name="terms_review_full">Consulta i termini completi sul sito di Nexatrode LLC</string>
+    <string name="terms_checkbox">Ho letto e accetto i Termini di utilizzo</string>
+    <string name="terms_agree">Accetto</string>
+    <string name="terms_quit">Esci</string>
     <string name="privacy_policy">Informativa sulla privacy</string>
     <string name="source_license">Codice sorgente e licenza (MIT)</string>
     <string name="saved_clearnet">Clearnet salvata</string>

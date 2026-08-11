@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Valūta</string>
     <string name="section_about">Par programmu</string>
     <string name="about_disclaimer">MIT licencēta, neauditēta programmatūra. Jūs esat atbildīgs par savu sēklu un līdzekļiem. Noklusējuma attālais mezgls var redzēt jūsu IP adresi un maka sinhronizācijas pieprasījumus — palaidiet savu mezglu lielākai privātumam. Neobligātās fiat aplēses, ja iespējotas, sazinās ar api.kraken.com un api.frankfurter.dev.</string>
+    <string name="terms_of_use">Lietošanas noteikumi</string>
+    <string name="terms_title">Lietošanas noteikumi</string>
+    <string name="terms_body_custody">NexaWal no Nexatrode LLC ir pašpārvaldības saskarne digitālo aktīvu pārvaldībai. Jūs uzņematies ekskluzīvu atbildību par privātajām atslēgām un 25 vārdu seed frāzi.</string>
+    <string name="terms_body_as_is">Lietotne tiek nodrošināta “kā ir”, bez izteiktām vai netiešām garantijām. Lietošana ir uz jūsu pašu risku. Nexatrode LLC nav atbildīgs par zaudētiem aktīviem, lietotāja kļūdām, dīkstāvi vai trešo pušu pakalpojumu vai mezglu problēmām.</string>
+    <string name="terms_body_node">Ieteicams palaist vai savienoties ar savu Monero mezglu. Publiskās noklusējuma vērtības ir tikai ērtībai.</string>
+    <string name="terms_review_full">Skatiet pilnos noteikumus Nexatrode LLC vietnē</string>
+    <string name="terms_checkbox">Esmu izlasījis/-usi un piekrītu Lietošanas noteikumiem</string>
+    <string name="terms_agree">Piekrītu</string>
+    <string name="terms_quit">Iziet</string>
     <string name="privacy_policy">Privātuma politika</string>
     <string name="source_license">Kods un licence (MIT)</string>
     <string name="saved_clearnet">Clearnet saglabāts</string>

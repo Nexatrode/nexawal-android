@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">মুদ্রা</string>
     <string name="section_about">সম্পর্কে</string>
     <string name="about_disclaimer">MIT-লাইসেন্সপ্রাপ্ত, অনিরীক্ষিত সফটওয়্যার। আপনার সিড এবং ফান্ডের জন্য আপনি দায়ী। ডিফল্ট রিমোট নোড আপনার IP এবং ওয়ালেট সিঙ্ক কোয়েরি দেখতে পারে — আরও শক্তিশালী প্রাইভেসির জন্য আপনার নিজের নোড চালান। ঐচ্ছিক ফিয়াট অনুমান, চালু থাকলে, api.kraken.com এবং api.frankfurter.dev-এর সাথে যোগাযোগ করে।</string>
+    <string name="terms_of_use">ব্যবহারের শর্তাবলী</string>
+    <string name="terms_title">ব্যবহারের শর্তাবলী</string>
+    <string name="terms_body_custody">Nexatrode LLC-এর NexaWal ডিজিটাল সম্পদ পরিচালনার জন্য একটি স্ব-অভিভাবক ইন্টারফেস। আপনার প্রাইভেট কী এবং ২৫-শব্দের সিড বাক্যাংশের সম্পূর্ণ দায়িত্ব আপনার।</string>
+    <string name="terms_body_as_is">অ্যাপটি যেমন আছে তেমনই প্রদান করা হয়, কোনো প্রকাশ্য বা উহ্য ওয়ারেন্টি ছাড়াই। ব্যবহার আপনার নিজস্ব ঝুঁকিতে। হারানো সম্পদ, ব্যবহারকারীর ত্রুটি, ডাউনটাইম বা তৃতীয় পক্ষের সেবা/নোডের সমস্যার জন্য Nexatrode LLC দায়ী নয়।</string>
+    <string name="terms_body_node">নিজের Monero নোড চালানো বা সংযুক্ত হওয়ার পরামর্শ দেওয়া হয়। পাবলিক ডিফল্ট কেবল সুবিধার জন্য।</string>
+    <string name="terms_review_full">Nexatrode LLC ওয়েবসাইটে সম্পূর্ণ শর্তাবলী দেখুন</string>
+    <string name="terms_checkbox">আমি ব্যবহারের শর্তাবলী পড়েছি এবং সম্মত</string>
+    <string name="terms_agree">আমি সম্মত</string>
+    <string name="terms_quit">প্রস্থান</string>
     <string name="privacy_policy">প্রাইভেসি পলিসি</string>
     <string name="source_license">সোর্স ও লাইসেন্স (MIT)</string>
     <string name="saved_clearnet">ক্লিয়ারনেট সংরক্ষিত হয়েছে</string>

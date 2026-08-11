@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">货币</string>
     <string name="section_about">关于</string>
     <string name="about_disclaimer">本软件基于 MIT 许可,未经审计。您需自行负责您的种子和资金安全。默认的远程节点可以看到您的 IP 和钱包同步请求 — 运行您自己的节点可获得更强的隐私保护。若启用可选的法币估算功能,将会连接 api.kraken.com 和 api.frankfurter.dev。</string>
+    <string name="terms_of_use">使用条款</string>
+    <string name="terms_title">使用条款</string>
+    <string name="terms_body_custody">Nexatrode LLC 的 NexaWal 是用于管理数字资产的自托管界面。您对私钥和 25 词助记词负有全部责任。</string>
+    <string name="terms_body_as_is">本应用按“现状”提供，不作任何明示或暗示的保证。使用风险自负。Nexatrode LLC 不对资产丢失、用户错误、停机或第三方服务/节点问题承担责任。</string>
+    <string name="terms_body_node">建议运行或连接您自己的 Monero 节点。公开默认设置仅图方便。</string>
+    <string name="terms_review_full">在 Nexatrode LLC 网站查看完整条款</string>
+    <string name="terms_checkbox">我已阅读并同意使用条款</string>
+    <string name="terms_agree">我同意</string>
+    <string name="terms_quit">退出</string>
     <string name="privacy_policy">隐私政策</string>
     <string name="source_license">源代码与许可(MIT)</string>
     <string name="saved_clearnet">已保存 Clearnet 设置</string>

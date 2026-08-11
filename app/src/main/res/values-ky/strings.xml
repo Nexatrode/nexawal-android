@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Валюта</string>
     <string name="section_about">Программа жөнүндө</string>
     <string name="about_disclaimer">MIT лицензиясы менен, аудити жок программа. Сиз өз калыбына келтирүү сөздөрүңүз жана каражаттарыңыз үчүн жооптуусуз. Демейки алыскы түйүн сиздин IP дарегиңизди жана капчыктын синхрондоштуруу сурамдарын көрө алат — купуялуулукту күчөтүү үчүн өз түйүнүңүздү иштетиңиз. Кошумча фиат баалоолору, иштетилсе, api.kraken.com жана api.frankfurter.dev менен байланышат.</string>
+    <string name="terms_of_use">Колдонуу шарттары</string>
+    <string name="terms_title">Колдонуу шарттары</string>
+    <string name="terms_body_custody">Nexatrode LLC’нин NexaWal’ы — санарип активдерди башкаруу үчүн өзүнчө сактоо интерфейси. Жеке ачкычтарыңыз жана 25 сөздүк seed фразаңыз үчүн жоопкерчилик сизде.</string>
+    <string name="terms_body_as_is">Колдонмо «кандай болсо ошондой» берилет, ачык же кыйыр кепилдиктерсиз. Колдонуу өз тобокелиңизде. Nexatrode LLC жоголгон активдер, колдонуучу каталары, иштебөө же үчүнчү тараптын кызмат/нод көйгөйлөрү үчүн жооп бербейт.</string>
+    <string name="terms_body_node">Өз Monero нодуңузду иштетүү же ага туташуу сунушталат. Коомдук демейкилер ыңгайлуулук үчүн гана.</string>
+    <string name="terms_review_full">Толук шарттарды Nexatrode LLC сайтынан караңыз</string>
+    <string name="terms_checkbox">Колдонуу шарттарын окуп, макулмун</string>
+    <string name="terms_agree">Макулмун</string>
+    <string name="terms_quit">Чыгуу</string>
     <string name="privacy_policy">Купуялуулук саясаты</string>
     <string name="source_license">Баштапкы код &amp; лицензия (MIT)</string>
     <string name="saved_clearnet">Clearnet сакталды</string>

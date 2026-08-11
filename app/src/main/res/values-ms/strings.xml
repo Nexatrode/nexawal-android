@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Mata Wang</string>
     <string name="section_about">Tentang</string>
     <string name="about_disclaimer">Perisian berlesen MIT, belum diaudit. Anda bertanggungjawab atas benih dan wang anda. Node jarak jauh lalai boleh melihat IP anda dan pertanyaan penyelarasan dompet — jalankan node anda sendiri untuk privasi yang lebih kukuh. Anggaran fiat pilihan, jika didayakan, akan menghubungi api.kraken.com dan api.frankfurter.dev.</string>
+    <string name="terms_of_use">Syarat Penggunaan</string>
+    <string name="terms_title">Syarat Penggunaan</string>
+    <string name="terms_body_custody">NexaWal oleh Nexatrode LLC ialah antara muka penjagaan sendiri untuk mengurus aset digital. Anda memegang tanggungjawab eksklusif ke atas kunci peribadi dan frasa benih 25 perkataan.</string>
+    <string name="terms_body_as_is">Aplikasi disediakan seperti sedia ada, tanpa waranti nyata atau tersirat. Penggunaan adalah atas risiko anda sendiri. Nexatrode LLC tidak bertanggungjawab atas aset hilang, ralat pengguna, masa henti, atau isu dengan perkhidmatan/nod pihak ketiga.</string>
+    <string name="terms_body_node">Disyorkan menjalankan atau menyambung ke nod Monero anda sendiri. Lalai awam hanya untuk kemudahan.</string>
+    <string name="terms_review_full">Semak syarat penuh di tapak web Nexatrode LLC</string>
+    <string name="terms_checkbox">Saya telah membaca dan bersetuju dengan Syarat Penggunaan</string>
+    <string name="terms_agree">Saya Setuju</string>
+    <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Dasar privasi</string>
     <string name="source_license">Sumber &amp; lesen (MIT)</string>
     <string name="saved_clearnet">Clearnet disimpan</string>

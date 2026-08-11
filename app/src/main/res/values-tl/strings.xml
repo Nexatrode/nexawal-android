@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Currency</string>
     <string name="section_about">Tungkol dito</string>
     <string name="about_disclaimer">MIT-licensed, hindi awdit na software. Ikaw ang may pananagutan sa iyong seed at pondo. Ang default na remote node ay makikita ang iyong IP at mga query sa sync ng wallet — patakbuhin ang iyong sariling node para sa mas matibay na privacy. Ang opsyonal na mga tantiya sa fiat, kung pinagana, kumokontak sa api.kraken.com at api.frankfurter.dev.</string>
+    <string name="terms_of_use">Mga Tuntunin ng Paggamit</string>
+    <string name="terms_title">Mga Tuntunin ng Paggamit</string>
+    <string name="terms_body_custody">Ang NexaWal ng Nexatrode LLC ay isang self-custodial na interface para sa pamamahala ng digital na asset. Ikaw ang may eksklusibong responsibilidad sa iyong mga private key at 25-salitang seed phrase.</string>
+    <string name="terms_body_as_is">Ang app ay ibinibigay nang gaya ng kasalukuyan, nang walang tahasan o ipinahiwatig na warranty. Ang paggamit ay sa iyong sariling panganib. Hindi mananagot ang Nexatrode LLC sa nawalang asset, error ng user, downtime, o isyu sa serbisyo o node ng third party.</string>
+    <string name="terms_body_node">Inirerekomenda ang pagpapatakbo o pagkonekta sa sarili mong Monero node. Ang mga pampublikong default ay para lamang sa kaginhawahan.</string>
+    <string name="terms_review_full">Suriin ang buong mga tuntunin sa website ng Nexatrode LLC</string>
+    <string name="terms_checkbox">Nabasa ko at sumasang-ayon ako sa Mga Tuntunin ng Paggamit</string>
+    <string name="terms_agree">Sumasang-ayon ako</string>
+    <string name="terms_quit">Lumabas</string>
     <string name="privacy_policy">Patakaran sa privacy</string>
     <string name="source_license">Source at lisensya (MIT)</string>
     <string name="saved_clearnet">Na-save ang clearnet</string>

@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Mata Uang</string>
     <string name="section_about">Tentang</string>
     <string name="about_disclaimer">Perangkat lunak berlisensi MIT, belum diaudit. Anda bertanggung jawab atas seed dan dana Anda. Node jarak jauh default dapat melihat IP dan kueri sinkronisasi dompet Anda — jalankan node Anda sendiri untuk privasi yang lebih kuat. Estimasi fiat opsional, jika diaktifkan, akan menghubungi api.kraken.com dan api.frankfurter.dev.</string>
+    <string name="terms_of_use">Ketentuan Penggunaan</string>
+    <string name="terms_title">Ketentuan Penggunaan</string>
+    <string name="terms_body_custody">NexaWal oleh Nexatrode LLC adalah antarmuka self-custodial untuk mengelola aset digital. Anda memegang tanggung jawab penuh atas kunci pribadi dan frasa seed 25 kata.</string>
+    <string name="terms_body_as_is">Aplikasi disediakan apa adanya, tanpa jaminan tersurat maupun tersirat. Penggunaan menjadi risiko Anda sendiri. Nexatrode LLC tidak bertanggung jawab atas aset yang hilang, kesalahan pengguna, downtime, atau masalah layanan/node pihak ketiga.</string>
+    <string name="terms_body_node">Disarankan menjalankan atau terhubung ke node Monero Anda sendiri. Default publik hanya untuk kenyamanan.</string>
+    <string name="terms_review_full">Tinjau ketentuan lengkap di situs Nexatrode LLC</string>
+    <string name="terms_checkbox">Saya telah membaca dan menyetujui Ketentuan Penggunaan</string>
+    <string name="terms_agree">Saya Setuju</string>
+    <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Kebijakan privasi</string>
     <string name="source_license">Sumber &amp; lisensi (MIT)</string>
     <string name="saved_clearnet">Clearnet disimpan</string>

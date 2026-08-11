@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">ارز</string>
     <string name="section_about">درباره</string>
     <string name="about_disclaimer">نرم‌افزاری با مجوز MIT و بدون بازرسی امنیتی رسمی. شما مسئول عبارت بازیابی و وجوه خود هستید. گره راه دور پیش‌فرض می‌تواند IP و درخواست‌های همگام‌سازی کیف پول شما را ببیند — برای حریم خصوصی قوی‌تر، گره خودتان را اجرا کنید. تخمین‌های ارز فیات اختیاری، اگر فعال باشند، با api.kraken.com و api.frankfurter.dev ارتباط برقرار می‌کنند.</string>
+    <string name="terms_of_use">شرایط استفاده</string>
+    <string name="terms_title">شرایط استفاده</string>
+    <string name="terms_body_custody">NexaWal از Nexatrode LLC یک رابط خودنگهدار برای مدیریت دارایی‌های دیجیتال است. مسئولیت انحصاری کلیدهای خصوصی و عبارت بازیابی ۲۵ کلمه‌ای بر عهده شماست.</string>
+    <string name="terms_body_as_is">برنامه به‌صورت «همان‌گونه که هست» و بدون هرگونه ضمانت صریح یا ضمنی ارائه می‌شود. استفاده بر عهده خود شماست. Nexatrode LLC مسئول دارایی‌های ازدست‌رفته، خطای کاربر، قطعی یا مشکلات خدمات یا نودهای شخص ثالث نیست.</string>
+    <string name="terms_body_node">اجرا یا اتصال به نود Monero خودتان توصیه می‌شود. مقادیر پیش‌فرض عمومی فقط برای راحتی هستند.</string>
+    <string name="terms_review_full">شرایط کامل را در وب‌سایت Nexatrode LLC ببینید</string>
+    <string name="terms_checkbox">شرایط استفاده را خوانده‌ام و موافقم</string>
+    <string name="terms_agree">موافقم</string>
+    <string name="terms_quit">خروج</string>
     <string name="privacy_policy">سیاست حریم خصوصی</string>
     <string name="source_license">کد منبع و مجوز (MIT)</string>
     <string name="saved_clearnet">Clearnet ذخیره شد</string>

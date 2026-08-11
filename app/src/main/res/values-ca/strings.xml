@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Moneda</string>
     <string name="section_about">Quant a</string>
     <string name="about_disclaimer">Programari amb llicència MIT, sense auditar. Tu ets responsable de la teva llavor i dels teus fons. El node remot per defecte pot veure la teva IP i les consultes de sincronització de la cartera — executa el teu propi node per a una privadesa més forta. Les estimacions fiat opcionals, si estan activades, contacten amb api.kraken.com i api.frankfurter.dev.</string>
+    <string name="terms_of_use">Condicions d\'ús</string>
+    <string name="terms_title">Condicions d\'ús</string>
+    <string name="terms_body_custody">NexaWal de Nexatrode LLC és una interfície d’autocustòdia per gestionar actius digitals. Teniu la responsabilitat exclusiva de les claus privades i de la frase llavor de 25 paraules.</string>
+    <string name="terms_body_as_is">L\'aplicació es proporciona tal com és, sense garanties expresses o implícites. L\'ús és sota la vostra responsabilitat. Nexatrode LLC no respon d\'actius perduts, errors de l\'usuari, interrupcions o problemes amb serveis o nodes de tercers.</string>
+    <string name="terms_body_node">Es recomana executar o connectar-vos al vostre propi node de Monero. Els valors públics per defecte són només per comoditat.</string>
+    <string name="terms_review_full">Reviseu les condicions completes al lloc web de Nexatrode LLC</string>
+    <string name="terms_checkbox">He llegit i accepto les Condicions d\'ús</string>
+    <string name="terms_agree">Accepto</string>
+    <string name="terms_quit">Surt</string>
     <string name="privacy_policy">Política de privadesa</string>
     <string name="source_license">Codi font i llicència (MIT)</string>
     <string name="saved_clearnet">Clearnet desat</string>

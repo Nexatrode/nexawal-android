@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">करेंसी</string>
     <string name="section_about">बारे में</string>
     <string name="about_disclaimer">MIT-लाइसेंस्ड, अनऑडिटेड सॉफ़्टवेयर। अपने सीड और फंड के लिए आप स्वयं ज़िम्मेदार हैं। डिफ़ॉल्ट रिमोट नोड आपका IP और वॉलेट सिंक क्वेरी देख सकता है — बेहतर प्राइवेसी के लिए अपना नोड चलाएं। सक्षम होने पर, वैकल्पिक फिएट अनुमान api.kraken.com और api.frankfurter.dev से संपर्क करते हैं।</string>
+    <string name="terms_of_use">उपयोग की शर्तें</string>
+    <string name="terms_title">उपयोग की शर्तें</string>
+    <string name="terms_body_custody">Nexatrode LLC का NexaWal डिजिटल संपत्तियों के प्रबंधन के लिए एक स्व-अभिरक्षा इंटरफ़ेस है। आपकी निजी कुंजियों और 25-शब्द सीड वाक्यांश की पूरी ज़िम्मेदारी आपकी है।</string>
+    <string name="terms_body_as_is">ऐप जैसा है वैसा प्रदान किया जाता है, बिना किसी व्यक्त या निहित वारंटी के। उपयोग आपके अपने जोखिम पर है। Nexatrode LLC खोई संपत्ति, उपयोगकर्ता त्रुटियों, डाउनटाइम, या तृतीय-पक्ष सेवाओं/नोड्स की समस्याओं के लिए उत्तरदायी नहीं है।</string>
+    <string name="terms_body_node">अपना स्वयं का Monero नोड चलाना या उससे कनेक्ट करना अनुशंसित है। सार्वजनिक डिफ़ॉल्ट केवल सुविधा के लिए हैं।</string>
+    <string name="terms_review_full">Nexatrode LLC वेबसाइट पर पूर्ण शर्तें देखें</string>
+    <string name="terms_checkbox">मैंने उपयोग की शर्तें पढ़ ली हैं और उनसे सहमत हूँ</string>
+    <string name="terms_agree">मैं सहमत हूँ</string>
+    <string name="terms_quit">बाहर निकलें</string>
     <string name="privacy_policy">प्राइवेसी पॉलिसी</string>
     <string name="source_license">सोर्स और लाइसेंस (MIT)</string>
     <string name="saved_clearnet">क्लियरनेट सेव हो गया</string>

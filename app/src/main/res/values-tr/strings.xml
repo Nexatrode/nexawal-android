@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Para Birimi</string>
     <string name="section_about">Hakkında</string>
     <string name="about_disclaimer">MIT lisanslı, denetlenmemiş yazılım. Tohumundan ve fonlarından sen sorumlusun. Varsayılan uzak düğüm, IP adresini ve cüzdan senkronizasyon sorgularını görebilir — daha güçlü gizlilik için kendi düğümünü çalıştır. Etkinleştirilirse, isteğe bağlı fiat tahminleri api.kraken.com ve api.frankfurter.dev ile iletişime geçer.</string>
+    <string name="terms_of_use">Kullanım Koşulları</string>
+    <string name="terms_title">Kullanım Koşulları</string>
+    <string name="terms_body_custody">Nexatrode LLC’nin NexaWal’ı, dijital varlıkları yönetmek için bir öz-saklama arayüzüdür. Özel anahtarlarınız ve 25 kelimelik tohum ifadeniz için münhasır sorumluluk size aittir.</string>
+    <string name="terms_body_as_is">Uygulama açık veya zımni hiçbir garanti olmaksızın olduğu gibi sağlanır. Kullanım kendi riskinizdedir. Nexatrode LLC kayıp varlıklar, kullanıcı hataları, kesintiler veya üçüncü taraf hizmet/düğüm sorunlarından sorumlu değildir.</string>
+    <string name="terms_body_node">Kendi Monero düğümünüzü çalıştırmanız veya bağlanmanız önerilir. Genel varsayılanlar yalnızca kolaylık içindir.</string>
+    <string name="terms_review_full">Tam koşulları Nexatrode LLC web sitesinde inceleyin</string>
+    <string name="terms_checkbox">Kullanım Koşullarını okudum ve kabul ediyorum</string>
+    <string name="terms_agree">Kabul ediyorum</string>
+    <string name="terms_quit">Çıkış</string>
     <string name="privacy_policy">Gizlilik politikası</string>
     <string name="source_license">Kaynak kod ve lisans (MIT)</string>
     <string name="saved_clearnet">Clearnet kaydedildi</string>

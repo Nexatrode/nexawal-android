@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Airgeadra</string>
     <string name="section_about">Maidir Leis</string>
     <string name="about_disclaimer">Bogearra ceadúnaithe faoi MIT, gan iniúchadh. Tá tú féin freagrach as do shíol agus do chistí. Is féidir leis an nód cianda réamhshocraithe do sheoladh IP agus do cheisteanacha sioncronaithe sparáin a fheiceáil — rith do nód féin le haghaidh príobháideachta níos fearr. Déanann meastacháin roghnach fiat, má tá siad cumasaithe, teagmháil le api.kraken.com agus api.frankfurter.dev.</string>
+    <string name="terms_of_use">Téarmaí Úsáide</string>
+    <string name="terms_title">Téarmaí Úsáide</string>
+    <string name="terms_body_custody">Is comhéadan féinchoimeádta é NexaWal ó Nexatrode LLC chun sócmhainní digiteacha a bhainistiú. Tá freagracht eisiach ort as do phríomheochracha agus as an bhfrása síl 25 focal.</string>
+    <string name="terms_body_as_is">Cuirtear an aip ar fáil mar atá, gan barántais shainráite nó intuigthe. Is ar do phriacal féin an úsáid. Níl Nexatrode LLC freagrach as sócmhainní caillte, earráidí úsáideora, aga neamhfhónaimh, ná fadhbanna le seirbhísí nó nóid tríú páirtí.</string>
+    <string name="terms_body_node">Moltar do nód Monero féin a rith nó ceangal leis. Níl na réamhshocruithe poiblí ach ar mhaithe le háisiúlacht.</string>
+    <string name="terms_review_full">Athbhreithnigh na téarmaí iomlána ar shuíomh Gréasáin Nexatrode LLC</string>
+    <string name="terms_checkbox">Tá na Téarmaí Úsáide léite agam agus aontaím leo</string>
+    <string name="terms_agree">Aontaím</string>
+    <string name="terms_quit">Scoir</string>
     <string name="privacy_policy">Polasaí Príobháideachta</string>
     <string name="source_license">Foinse &amp; ceadúnas (MIT)</string>
     <string name="saved_clearnet">Clearnet sábháilte</string>

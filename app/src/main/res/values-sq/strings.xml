@@ -154,6 +154,15 @@
     <string name="fiat_currency_label">Monedha</string>
     <string name="section_about">Rreth</string>
     <string name="about_disclaimer">Software i licencuar MIT, i pa-audituar. Ti je përgjegjës për fjalën tënde të rikuperimit dhe fondet. Nyja e largët e parazgjedhur mund të shohë IP-në tënde dhe kërkimet e sinkronizimit të portofolit — xhiro nyjen tënde për privatësi më të fortë. Vlerësimet opsionale fiat, nëse aktivizohen, kontaktojnë api.kraken.com dhe api.frankfurter.dev.</string>
+    <string name="terms_of_use">Kushtet e përdorimit</string>
+    <string name="terms_title">Kushtet e përdorimit</string>
+    <string name="terms_body_custody">NexaWal nga Nexatrode LLC është një ndërfaqe vetë-ruajtëse për menaxhimin e aseteve digjitale. Ju mbani përgjegjësi ekskluzive për çelësat tuaj privatë dhe frazën seed me 25 fjalë.</string>
+    <string name="terms_body_as_is">Aplikacioni ofrohet ashtu si është, pa garanci të shprehura ose të nënkuptuara. Përdorimi është në rrezikun tuaj. Nexatrode LLC nuk është përgjegjës për asete të humbura, gabime të përdoruesit, ndërprerje ose probleme me shërbime apo nyje të palëve të treta.</string>
+    <string name="terms_body_node">Rekomandohet të ekzekutoni ose të lidheni me nyjen tuaj Monero. Vlerat e parazgjedhura publike janë vetëm për lehtësi.</string>
+    <string name="terms_review_full">Rishikoni kushtet e plota në faqen e Nexatrode LLC</string>
+    <string name="terms_checkbox">I kam lexuar dhe pranoj Kushtet e përdorimit</string>
+    <string name="terms_agree">Pranoj</string>
+    <string name="terms_quit">Dil</string>
     <string name="privacy_policy">Politika e privatësisë</string>
     <string name="source_license">Burimi &amp; licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet u ruajt</string>
