@@ -59,6 +59,33 @@ class SendSafetyTest {
             SendSafety.shouldRetryViaSiblingMonerod("connection refused", "", cuprate),
         )
     }
+
+    @Test
+    fun siblingRetryMapsPublicCuprateHostsToMonero() {
+        assertEquals(
+            "https://monero.nexatrode.com",
+            SendSafety.shouldRetryViaSiblingMonerod(
+                "fee_rate failed",
+                "",
+                "https://rpc.nexatrode.com",
+            ),
+        )
+        assertEquals(
+            "https://monero.nexatrode.com",
+            SendSafety.shouldRetryViaSiblingMonerod(
+                "fee_rate failed",
+                "",
+                "https://cuprate.nexatrode.com/",
+            ),
+        )
+        assertNull(
+            SendSafety.shouldRetryViaSiblingMonerod(
+                "fee_rate failed",
+                "",
+                "https://monero.nexatrode.com",
+            ),
+        )
+    }
 }
 
 class SendGateTest {

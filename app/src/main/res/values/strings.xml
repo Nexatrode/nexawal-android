@@ -84,7 +84,7 @@
     <string name="replace_wallet_title">Replace existing wallet?</string>
     <string name="replace_wallet_message">This will replace the existing wallet on this device.\n\nIf you continue, the currently stored mnemonic and scan state will be removed. Make sure you have your mnemonic backed up before proceeding.</string>
     <string name="section_network_node">Network &amp; Node</string>
-    <string name="node_url_help">Type the full URL, including http:// or https://.\nPublic: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Type the full URL, including http:// or https://.\nPublic (Cuprate): https://rpc.nexatrode.com\nPublic (monerod): https://monero.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
     <string name="save_node">Save node</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore Version:</string>

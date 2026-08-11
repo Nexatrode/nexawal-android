@@ -34,10 +34,17 @@ object SendSafety {
     }
 
     /**
-     * Cuprate (18092) sibling Monero RPC (18081) fallback URL, or null if not applicable.
+     * Cuprate sibling Monero RPC fallback URL, or null if not applicable.
+     *
+     * - LAN/dev: `*:18092` → same host on `18081`
+     * - Public HTTPS: `rpc.nexatrode.com` / `cuprate.nexatrode.com` → `https://monero.nexatrode.com`
      */
     fun siblingMonerodUrlIfNeeded(endpoint: String): String? {
         val uri = runCatching { java.net.URI(endpoint) }.getOrNull() ?: return null
+        val host = uri.host?.lowercase() ?: return null
+        if (host == "rpc.nexatrode.com" || host == "cuprate.nexatrode.com") {
+            return "https://monero.nexatrode.com"
+        }
         if (uri.port != 18092) return null
         return java.net.URI(
             uri.scheme,
