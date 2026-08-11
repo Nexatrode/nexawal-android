@@ -1,12 +1,22 @@
 package com.nexatrode.nexawal
 
+import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 import com.nexatrode.nexawal.ui.AppScaffold
 import com.nexatrode.nexawal.ui.WalletCreationScreen
 import com.nexatrode.nexawal.ui.theme.NexawalTheme
@@ -17,12 +27,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        walletManager = WalletManager(applicationContext)
+        walletManager = (application as NexaWalApp).walletManager
 
         enableEdgeToEdge()
         setContent {
             NexawalTheme {
                 val state by walletManager.state.collectAsState()
+
+                SyncLifecycleEffects(walletManager = walletManager, refreshInProgress = state.refreshInProgress)
 
                 LaunchedEffect(Unit) {
                     walletManager.loadVersion()
@@ -68,5 +80,45 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+}
+
+@OptIn(ExperimentalPermissionsApi::class)
+@Composable
+private fun SyncLifecycleEffects(
+    walletManager: WalletManager,
+    refreshInProgress: Boolean,
+) {
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val notificationPermission = rememberPermissionState(Manifest.permission.POST_NOTIFICATIONS)
+    val view = LocalView.current
+
+    DisposableEffect(lifecycleOwner, walletManager) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> {
+                    walletManager.refreshWalletInBackgroundIfNeeded(reason = "lifecycle-on-start")
+                    walletManager.fiatPrices.onForeground()
+                }
+                Lifecycle.Event.ON_STOP -> {
+                    walletManager.snapshotState()
+                }
+                else -> Unit
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    LaunchedEffect(refreshInProgress, notificationPermission.status.isGranted) {
+        if (refreshInProgress && !notificationPermission.status.isGranted) {
+            notificationPermission.launchPermissionRequest()
+        }
+    }
+
+    DisposableEffect(refreshInProgress) {
+        val previous = view.keepScreenOn
+        view.keepScreenOn = refreshInProgress
+        onDispose { view.keepScreenOn = previous }
     }
 }

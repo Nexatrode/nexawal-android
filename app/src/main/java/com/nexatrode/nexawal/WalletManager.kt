@@ -806,6 +806,7 @@ class WalletManager(
             gapLimit = gapLimit,
             accountGap = accountGap,
         )
+        startSyncForegroundService()
 
         val job = scope.launch(ioDispatcher) {
             try {
@@ -943,6 +944,7 @@ class WalletManager(
                 )
             } finally {
                 refreshInProgress.set(false)
+                stopSyncForegroundService()
             }
         }
 
@@ -1096,6 +1098,7 @@ class WalletManager(
 
         refreshJob?.cancel()
         refreshInProgress.set(false)
+        stopSyncForegroundService()
 
         _state.value = _state.value.copy(
             refreshInProgress = false,
@@ -1117,6 +1120,47 @@ class WalletManager(
             withContext(ioDispatcher) {
                 exportCacheAndPersist(walletId)
             }
+        }
+    }
+
+    private fun startSyncForegroundService() {
+        val detail = appContext.getString(R.string.sync_notification_progress_fmt, 0)
+        runCatching {
+            WalletSyncForegroundService.start(appContext, percent = 0, detail = detail)
+        }.onFailure { t ->
+            Log.w(
+                "WalletManager",
+                "Failed to start sync foreground service: ${t.message ?: t.javaClass.simpleName}",
+            )
+        }
+    }
+
+    private fun stopSyncForegroundService() {
+        runCatching {
+            WalletSyncForegroundService.stop(appContext)
+        }.onFailure { t ->
+            Log.w(
+                "WalletManager",
+                "Failed to stop sync foreground service: ${t.message ?: t.javaClass.simpleName}",
+            )
+        }
+    }
+
+    private fun updateSyncForegroundService(st: WalletCore.SyncStatus) {
+        val target = _state.value.refreshTargetHeight?.takeIf { it > 0L }
+            ?: st.chainHeight.takeIf { it > st.restoreHeight }
+            ?: 0L
+        val restore = st.restoreHeight
+        val percent = if (target > restore) {
+            val span = (target - restore).toDouble()
+            val done = (st.lastScanned - restore).toDouble().coerceAtLeast(0.0)
+            ((done / span) * 100.0).toInt().coerceIn(0, 99)
+        } else {
+            0
+        }
+        val detail = appContext.getString(R.string.sync_notification_progress_fmt, percent)
+        runCatching {
+            WalletSyncForegroundService.update(appContext, percent, detail)
         }
     }
 
@@ -1823,6 +1867,7 @@ class WalletManager(
                     syncStatus = st,
                     refreshLastProgressAtMs = if (lastScannedSnapshot > 0L) lastProgressAtMs else null,
                 )
+                updateSyncForegroundService(st)
             }
 
             // Periodic cache persistence.

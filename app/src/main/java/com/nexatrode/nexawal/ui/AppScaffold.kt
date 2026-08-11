@@ -7,10 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -360,7 +356,6 @@ fun AppScaffold(
     val context = LocalContext.current
     var technoTheme by remember { mutableStateOf(MoneroConfig.isTechnoThemeEnabled(context)) }
     val palette = rememberNexaPalette(technoTheme)
-    val lifecycleOwner = LocalLifecycleOwner.current
     val items = listOf(
         BottomNavItem.Wallet,
         BottomNavItem.Receive,
@@ -368,17 +363,7 @@ fun AppScaffold(
         BottomNavItem.Settings,
     )
 
-    // Resume sync after backgrounding / stall failure without requiring a manual restart.
-    DisposableEffect(lifecycleOwner, walletManager) {
-        val observer = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_START) {
-                walletManager.refreshWalletInBackgroundIfNeeded(reason = "lifecycle-on-start")
-                walletManager.fiatPrices.onForeground()
-            }
-        }
-        lifecycleOwner.lifecycle.addObserver(observer)
-        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
-    }
+    val scaffoldModifier = modifier.fillMaxSize()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -421,7 +406,7 @@ fun AppScaffold(
 
     val scaffoldContent = @Composable {
     Scaffold(
-        modifier = modifier.fillMaxSize(),
+        modifier = scaffoldModifier,
         containerColor = palette.background,
         bottomBar = {
             NavigationBar(
@@ -885,6 +870,16 @@ private fun WalletScreen(
                     Spacer(Modifier.height(4.dp))
                     Text(syncDetail, color = iosSecondary)
                 }
+                // Match iOS: progress bar sits under the status copy, above the stats rows.
+                Spacer(Modifier.height(8.dp))
+                LinearProgressIndicator(
+                    progress = { progress },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .a11ySyncProgress(progress, stringResource(R.string.a11y_sync_progress_fmt, (progress * 100).toInt())),
+                    color = iosBlue,
+                    trackColor = iosSeparator,
+                )
                 Spacer(Modifier.height(10.dp))
 
                 val nodeLabel = stringResource(R.string.label_node)
@@ -906,16 +901,6 @@ private fun WalletScreen(
                     KeyValueRow(if (palette.classic) throughputLabel.uppercase() else throughputLabel, stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 }
 
-                Spacer(Modifier.height(10.dp))
-
-                LinearProgressIndicator(
-                    progress = { progress },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .a11ySyncProgress(progress, stringResource(R.string.a11y_sync_progress_fmt, (progress * 100).toInt())),
-                    color = iosBlue,
-                    trackColor = iosSeparator,
-                )
             }
         }
         Spacer(Modifier.height(16.dp))
