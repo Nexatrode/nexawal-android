@@ -187,6 +187,7 @@ class WalletManager(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     private var refreshJob: Job? = null
+    private var catchUpJob: Job? = null
     private val refreshCancelRequested = AtomicBoolean(false)
     private val refreshInProgress = AtomicBoolean(false)
     private val sendGate = SendGate()
@@ -1675,6 +1676,68 @@ class WalletManager(
         return refreshWalletInBackground()
     }
 
+    /**
+     * While the UI is visible, periodically probe the daemon tip and start a refresh if we are
+     * behind. Covers sitting on the wallet screen after tip advances — not a closed-app timer.
+     */
+    fun startForegroundCatchUp() {
+        if (catchUpJob?.isActive == true) return
+        catchUpJob = scope.launch {
+            while (isActive) {
+                runCatching {
+                    checkTipAndAutoResume(reason = "foreground-catch-up")
+                }.onFailure { t ->
+                    Log.w(
+                        "WalletManager",
+                        "Foreground catch-up failed: ${t.message ?: t.javaClass.simpleName}",
+                    )
+                }
+                delay(FOREGROUND_CATCH_UP_INTERVAL_MS)
+            }
+        }
+    }
+
+    fun stopForegroundCatchUp() {
+        catchUpJob?.cancel()
+        catchUpJob = null
+    }
+
+    /**
+     * Probe daemon height, fold a higher tip into [UiState.syncStatus], then auto-resume if behind.
+     */
+    suspend fun checkTipAndAutoResume(reason: String) {
+        if (refreshInProgress.get() || _state.value.refreshInProgress) return
+        val walletId = _state.value.walletId ?: return
+        val nodeUrl = _state.value.nodeUrl?.trim()?.takeIf { it.isNotEmpty() } ?: return
+
+        val tip = withContext(ioDispatcher) {
+            runCatching { probeDaemonHeightViaOkHttp(nodeUrl) }.getOrNull()
+        }
+        if (tip != null && tip > 0L) {
+            val current = _state.value.syncStatus
+            if (current != null && tip > current.chainHeight) {
+                Log.i(
+                    "WalletManager",
+                    "Catch-up tip advanced: chainHeight ${current.chainHeight} -> $tip ($reason)",
+                )
+                _state.value = _state.value.copy(
+                    syncStatus = current.copy(chainHeight = tip),
+                )
+            } else if (current == null) {
+                val seeded = withContext(ioDispatcher) {
+                    runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
+                }
+                if (seeded != null) {
+                    _state.value = _state.value.copy(
+                        syncStatus = seeded.copy(chainHeight = maxOf(seeded.chainHeight, tip)),
+                    )
+                }
+            }
+        }
+
+        refreshWalletInBackgroundIfNeeded(reason = reason)
+    }
+
     private suspend fun updateStatusSnapshot(walletId: String) {
         val st = withContext(ioDispatcher) {
             runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
@@ -2091,6 +2154,9 @@ class WalletManager(
         private const val ANDROID_BULK_STALL_FALLBACK_BATCH = 100
 
         private const val ANDROID_BULK_MODE = "range"
+
+        /** How often to re-probe tip and auto-resume while the app is in the foreground. */
+        private const val FOREGROUND_CATCH_UP_INTERVAL_MS = 60_000L
     }
 
     private fun importCacheIfPresent(walletId: String) {

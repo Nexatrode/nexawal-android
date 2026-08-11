@@ -97,10 +97,11 @@ private fun SyncLifecycleEffects(
         val observer = LifecycleEventObserver { _, event ->
             when (event) {
                 Lifecycle.Event.ON_START -> {
-                    walletManager.refreshWalletInBackgroundIfNeeded(reason = "lifecycle-on-start")
                     walletManager.fiatPrices.onForeground()
+                    walletManager.startForegroundCatchUp()
                 }
                 Lifecycle.Event.ON_STOP -> {
+                    walletManager.stopForegroundCatchUp()
                     walletManager.snapshotState()
                 }
                 else -> Unit
