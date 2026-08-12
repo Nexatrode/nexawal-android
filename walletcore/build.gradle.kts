@@ -1,6 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
 import java.util.Properties
+import org.gradle.process.ExecOperations
+import javax.inject.Inject
 
 plugins {
     alias(libs.plugins.android.library)
@@ -9,15 +11,100 @@ plugins {
 val cmakeListsPath = file("src/main/cpp/CMakeLists.txt").absolutePath
 
 /**
+ * When `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`, rebuild `libmonerowalletcore.so` with Rust/NDK
+ * via `MoneroWalletCoreFFI/Scripts/build_android.sh` instead of trusting committed Artifacts.
+ *
+ * This is the F-Droid / Wallet Scrutiny path. Default local/Play builds still copy Artifacts.
+ */
+val buildNativeFromSource: Boolean =
+    System.getenv("NEXAWAL_BUILD_NATIVE_FROM_SOURCE")
+        ?.equals("1", ignoreCase = true) == true
+        || System.getenv("NEXAWAL_BUILD_NATIVE_FROM_SOURCE")
+            ?.equals("true", ignoreCase = true) == true
+
+abstract class BuildMoneroWalletCoreFromSource @Inject constructor(
+    private val execOperations: ExecOperations,
+) : DefaultTask() {
+    @get:Input
+    abstract val submoduleRootPath: Property<String>
+
+    @get:Input
+    abstract val androidApi: Property<String>
+
+    @get:Input
+    abstract val cargoFeatures: Property<String>
+
+    @get:Input
+    abstract val abis: Property<String>
+
+    @get:Input
+    abstract val nexawalAndroidDir: Property<String>
+
+    @TaskAction
+    fun run() {
+        val submoduleRoot = project.file(submoduleRootPath.get())
+        val script = submoduleRoot.resolve("Scripts/build_android.sh")
+        require(script.isFile) {
+            "Missing ${script.absolutePath}. Init the MoneroWalletCoreFFI submodule."
+        }
+
+        val ndkHome = System.getenv("ANDROID_NDK_HOME")
+            ?: System.getenv("ANDROID_NDK_ROOT")
+            ?: project.rootProject.file("local.properties").takeIf { it.exists() }?.let { propsFile ->
+                Properties().apply { propsFile.inputStream().use { load(it) } }.getProperty("ndk.dir")
+            }
+
+        require(!ndkHome.isNullOrBlank()) {
+            "NEXAWAL_BUILD_NATIVE_FROM_SOURCE requires ANDROID_NDK_HOME/ANDROID_NDK_ROOT or ndk.dir in local.properties"
+        }
+
+        logger.lifecycle(
+            "Building libmonerowalletcore.so from source " +
+                "(NDK=$ndkHome features=${cargoFeatures.get()} abis=${abis.get()})"
+        )
+
+        // Override keys only — do not replace the full process environment (PATH must remain).
+        execOperations.exec {
+            workingDir = submoduleRoot
+            executable = "bash"
+            args(script.absolutePath)
+            environment("ANDROID_NDK_HOME", ndkHome)
+            environment("ANDROID_API", androidApi.get())
+            environment("PROFILE", "release")
+            environment("CARGO_FEATURES", cargoFeatures.get())
+            environment("ABIS", abis.get())
+            environment("INSTALL_TO_NEXAWAL_ANDROID", "1")
+            environment("NEXAWAL_ANDROID_DIR", nexawalAndroidDir.get())
+            isIgnoreExitValue = false
+        }
+    }
+}
+
+val buildMoneroWalletCoreFromSource by tasks.registering(BuildMoneroWalletCoreFromSource::class) {
+    group = "walletcore"
+    description =
+        "Rebuilds libmonerowalletcore.so from the MoneroWalletCoreFFI submodule (Rust + NDK)."
+    onlyIf { buildNativeFromSource }
+    submoduleRootPath.set(rootProject.file("MoneroWalletCoreFFI").absolutePath)
+    androidApi.set(System.getenv("ANDROID_API") ?: "26")
+    cargoFeatures.set(System.getenv("CARGO_FEATURES") ?: "compile-time-generators")
+    abis.set(System.getenv("ABIS") ?: "arm64-v8a,x86_64")
+    nexawalAndroidDir.set(rootProject.projectDir.absolutePath)
+}
+
+/**
  * Sync prebuilt libmonerowalletcore.so from the MoneroWalletCoreFFI git submodule.
  *
  * Clone with: git clone --recurse-submodules …
  * Or later:   git submodule update --init --recursive
  * Float tip:  git submodule update --remote MoneroWalletCoreFFI
+ *
+ * Skipped when [buildNativeFromSource] is enabled — that path installs into jniLibs itself.
  */
 val syncMoneroWalletCoreSo by tasks.registering {
     group = "walletcore"
     description = "Copies prebuilt libmonerowalletcore.so from the MoneroWalletCoreFFI submodule Artifacts/android."
+    onlyIf { !buildNativeFromSource }
 
     val abis = listOf("arm64-v8a", "x86_64")
     val submoduleRoot = rootProject.file("MoneroWalletCoreFFI")
@@ -35,7 +122,8 @@ val syncMoneroWalletCoreSo by tasks.registering {
             require(src.isFile) {
                 "Missing prebuilt core library: ${src.absolutePath}. " +
                     "Init/update the MoneroWalletCoreFFI submodule (branch main), " +
-                    "or rebuild with INSTALL_TO_NEXAWAL_ANDROID=1 ./Scripts/build_android.sh in that repo."
+                    "or rebuild with NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 ./gradlew :walletcore:assembleDebug " +
+                    "(or INSTALL_TO_NEXAWAL_ANDROID=1 ./Scripts/build_android.sh in that submodule)."
             }
             val dstDir = file("src/main/jniLibs/$abi")
             if (!dstDir.exists()) dstDir.mkdirs()
@@ -113,6 +201,7 @@ val ensureLibcxxShared by tasks.registering {
 }
 
 tasks.matching { it.name == "preBuild" }.configureEach {
+    dependsOn(buildMoneroWalletCoreFromSource)
     dependsOn(syncMoneroWalletCoreSo)
     dependsOn(ensureLibcxxShared)
 }

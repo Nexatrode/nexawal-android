@@ -81,10 +81,49 @@ ndk.dir=/path/to/Android/sdk/ndk/<version>
 
 Or export `ANDROID_NDK_HOME` / `ANDROID_NDK_ROOT`.
 
+### Default (local / Play): copy committed Artifacts
+
 ```bash
 ./gradlew :app:assembleRelease
 # optional Play upload artifact:
 ./gradlew :app:bundleRelease
+```
+
+Fast path: no Rust required. Gradle copies submodule `Artifacts/` into `jniLibs`.
+
+### F-Droid / Wallet Scrutiny: rebuild native from source
+
+Do **not** trust the committed `.so` blobs. Force Gradle to run the submodule’s
+`Scripts/build_android.sh` (Rust + NDK) before packaging:
+
+```bash
+# Rust stable with Android targets + NDK required
+export ANDROID_NDK_HOME=/path/to/ndk
+export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
+# optional overrides (defaults match CI):
+# export ANDROID_API=26
+# export CARGO_FEATURES=compile-time-generators
+# export ABIS=arm64-v8a,x86_64
+
+./gradlew :app:assembleRelease
+```
+
+`true` is also accepted for the env flag. When set, `:walletcore` skips the
+Artifacts copy task and rebuilds + installs `libmonerowalletcore.so` into
+`walletcore/src/main/jniLibs/` via `INSTALL_TO_NEXAWAL_ANDROID=1`.
+
+Suggested **fdroiddata** / recipe sketch (exact metadata file is a separate MR):
+
+```yaml
+# In the build recipe:
+sudo: false
+# Install JDK 17, Android SDK/NDK, Rust (aarch64-linux-android, x86_64-linux-android)
+# Then:
+build:
+  - export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
+  - export ANDROID_NDK_HOME=$$NDK
+  - ./gradlew :app:assembleRelease
+output: app/build/outputs/apk/release/app-release-unsigned.apk
 ```
 
 Outputs (typical):
@@ -97,40 +136,40 @@ Outputs (typical):
 
 On each build, the `:walletcore` module:
 
-1. Copies prebuilt `libmonerowalletcore.so` from  
-   `MoneroWalletCoreFFI/Artifacts/android/{arm64-v8a,x86_64}/`  
-   into `walletcore/src/main/jniLibs/`.
+1. **Either** rebuilds `libmonerowalletcore.so` from the submodule
+   (`NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`), **or** copies prebuilt
+   `MoneroWalletCoreFFI/Artifacts/android/{arm64-v8a,x86_64}/` into
+   `walletcore/src/main/jniLibs/`.
 2. Copies `libc++_shared.so` from the configured **NDK**.
 3. Builds `libwalletcore_jni.so` via CMake (`walletcore/src/main/cpp`).
 
-A normal app build does **not** recompile Rust/`monero-oxide`. Reproducibility of
-the prebuilt `.so` files is therefore tied to the **MoneroWalletCoreFFI**
-submodule commit (and however those artifacts were produced upstream).
-
-To rebuild the core artifacts from that submodule (when needed):
+Manual rebuild without Gradle (same script):
 
 ```bash
 cd MoneroWalletCoreFFI
-# See that repo’s Scripts/build_android.sh (INSTALL_TO_NEXAWAL_ANDROID=1, etc.)
-PROFILE=release CARGO_FEATURES="compile-time-generators" ./Scripts/build_android.sh
+PROFILE=release CARGO_FEATURES="compile-time-generators" \
+  INSTALL_TO_NEXAWAL_ANDROID=1 NEXAWAL_ANDROID_DIR=.. \
+  ./Scripts/build_android.sh
 ```
 
-### CI from-source rebuild (Wallet Scrutiny)
+### CI from-source rebuild (Wallet Scrutiny / F-Droid path)
 
 GitHub Actions workflow [`.github/workflows/native-android.yml`](../.github/workflows/native-android.yml)
-rebuilds `libmonerowalletcore.so` for `arm64-v8a` and `x86_64` from the pinned
-submodule using the same script, with:
+runs the **F-Droid path end-to-end**:
 
-- Rust stable + Android NDK **r27b**
-- `CARGO_FEATURES=compile-time-generators`
-- Uploaded artifacts + `native-android-SHA256SUMS.txt` (app commit, FFI commit, NDK)
+- Rust stable + Android NDK **r27b** + JDK 17
+- `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 ./gradlew :app:assembleRelease`
+- Uploaded unsigned APK, `.so` files, and `native-android-SHA256SUMS.txt`
+  (app commit, FFI commit, NDK)
 
 Trigger: `workflow_dispatch`, or pushes/PRs that touch `MoneroWalletCoreFFI/**` /
-the workflow file. Local `./gradlew` builds still consume the submodule’s
-committed `Artifacts/` unless you reinstall with `INSTALL_TO_NEXAWAL_ANDROID=1`.
+the workflow file / `walletcore/build.gradle.kts`.
+
+Local Play/debug builds still default to copying committed `Artifacts/` unless
+you set the env flag.
 
 For a Scrutiny note on a Play upload, attach the workflow’s SHA256SUMS (or a
-matching local rebuild) alongside the app/FFI commit SHAs.
+matching local from-source rebuild) alongside the app/FFI commit SHAs.
 
 ## Fingerprints useful for reviewers
 
@@ -151,9 +190,9 @@ git -C MoneroWalletCoreFFI rev-parse HEAD
 Call these out so Wallet Scrutiny is not surprised:
 
 1. **Play App Signing** — installable APK signature ≠ developer upload signature.
-2. **Prebuilt `libmonerowalletcore.so`** — local Gradle copies submodule
-   `Artifacts/`. Prefer CI / local `Scripts/build_android.sh` rebuild hashes in
-   release notes so reviewers are not limited to “trust the committed blob.”
+2. **Prebuilt `libmonerowalletcore.so`** — default local Gradle still copies
+   submodule `Artifacts/` for speed. F-Droid / Scrutiny must use
+   `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` (or the native CI workflow).
    Byte-identical match vs committed Artifacts is best-effort until release
    artifacts are produced by that same workflow.
 3. **NDK host path / NDK version** — `libc++_shared.so` and the JNI shim can

@@ -1,8 +1,8 @@
 name: Native Android (from source)
 
-# Rebuild libmonerowalletcore.so from the MoneroWalletCoreFFI submodule so
-# Wallet Scrutiny / F-Droid reviewers can verify a from-source path.
-# Local app builds still copy the submodule's Artifacts/ by default.
+# F-Droid / Wallet Scrutiny path: rebuild libmonerowalletcore.so via Gradle
+# (NEXAWAL_BUILD_NATIVE_FROM_SOURCE) and assemble an unsigned release APK.
+# Local/Play builds still copy the submodule's Artifacts/ by default.
 
 on:
   workflow_dispatch:
@@ -10,21 +10,24 @@ on:
     branches: [main]
     paths:
       - "MoneroWalletCoreFFI/**"
+      - "walletcore/build.gradle.kts"
       - ".github/workflows/native-android.yml"
       - "docs/REPRODUCIBLE_BUILD.md"
   pull_request:
     paths:
       - "MoneroWalletCoreFFI/**"
+      - "walletcore/build.gradle.kts"
       - ".github/workflows/native-android.yml"
 
 env:
   ANDROID_API: "26"
   CARGO_FEATURES: "compile-time-generators"
   CARGO_TERM_COLOR: always
+  NEXAWAL_BUILD_NATIVE_FROM_SOURCE: "1"
 
 jobs:
-  build-walletcore-so:
-    name: Build libmonerowalletcore.so
+  build-from-source:
+    name: From-source native + assembleRelease
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -56,6 +59,15 @@ jobs:
             echo "(no committed .so artifacts to compare)" | tee /tmp/committed-SHA256SUMS.txt
           fi
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -68,23 +80,26 @@ jobs:
           ndk-version: r27b
           link-to-sdk: true
 
-      - name: Build Android .so from source
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Assemble release (rebuild .so from source)
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
           ANDROID_API: ${{ env.ANDROID_API }}
-          PROFILE: release
           CARGO_FEATURES: ${{ env.CARGO_FEATURES }}
           ABIS: arm64-v8a,x86_64
+          NEXAWAL_BUILD_NATIVE_FROM_SOURCE: "1"
         run: |
           chmod +x MoneroWalletCoreFFI/Scripts/build_android.sh
-          MoneroWalletCoreFFI/Scripts/build_android.sh
+          ./gradlew :app:assembleRelease --no-daemon
 
       - name: Write SHA256SUMS (Scrutiny / release notes)
         run: |
           OUT=MoneroWalletCoreFFI/Artifacts/android
           NDK_PATH="${{ steps.setup-ndk.outputs.ndk-path }}"
           {
-            echo "# nexawal-android native rebuild"
+            echo "# nexawal-android native rebuild (NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1)"
             echo "# app_commit=${{ steps.pins.outputs.app_commit }}"
             echo "# ffi_commit=${{ steps.pins.outputs.ffi_commit }}"
             echo "# ndk_path=${NDK_PATH}"
@@ -127,11 +142,12 @@ jobs:
             echo "::warning::CI rebuild hashes differ from committed submodule Artifacts (common until release builds are produced in this workflow). Prefer the CI SHA256SUMS for Wallet Scrutiny notes."
           fi
 
-      - name: Upload .so + checksums
+      - name: Upload APK + .so + checksums
         uses: actions/upload-artifact@v4
         with:
-          name: libmonerowalletcore-android-${{ steps.pins.outputs.ffi_commit }}
+          name: from-source-android-${{ steps.pins.outputs.app_commit }}
           path: |
+            app/build/outputs/apk/release/*.apk
             MoneroWalletCoreFFI/Artifacts/android/**/libmonerowalletcore.so
             native-android-SHA256SUMS.txt
           if-no-files-found: error

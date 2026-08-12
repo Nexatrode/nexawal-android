@@ -29,7 +29,17 @@ To move the submodule to the tip of `main`:
 git submodule update --remote MoneroWalletCoreFFI
 ```
 
-Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifacts/android/` into `walletcore/src/main/jniLibs/` on each build (no Rust required for a normal app build). You still need an Android NDK for `libc++_shared.so` and the JNI shim.
+By default, Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifacts/android/` into `walletcore/src/main/jniLibs/` (no Rust required for a normal app build). You still need an Android NDK for `libc++_shared.so` and the JNI shim.
+
+For F-Droid / from-source verification, rebuild the core instead of copying Artifacts:
+
+```bash
+export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
+export ANDROID_NDK_HOME=/path/to/ndk   # or ndk.dir in local.properties
+./gradlew :app:assembleRelease
+```
+
+See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md).
 
 ## Screenshots
 
