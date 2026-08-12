@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Saya Setuju</string>
     <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Kebijakan privasi</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Sumber &amp; lisensi (MIT)</string>
     <string name="saved_clearnet">Clearnet disimpan</string>
     <string name="saved_i2p">I2P disimpan</string>

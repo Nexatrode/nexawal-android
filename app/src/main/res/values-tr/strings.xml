@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Kabul ediyorum</string>
     <string name="terms_quit">Çıkış</string>
     <string name="privacy_policy">Gizlilik politikası</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Kaynak kod ve lisans (MIT)</string>
     <string name="saved_clearnet">Clearnet kaydedildi</string>
     <string name="saved_i2p">I2P kaydedildi</string>

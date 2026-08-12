@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Slažem se</string>
     <string name="terms_quit">Izlaz</string>
     <string name="privacy_policy">Pravila privatnosti</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Izvorni kod i licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet spremljen</string>
     <string name="saved_i2p">I2P spremljen</string>

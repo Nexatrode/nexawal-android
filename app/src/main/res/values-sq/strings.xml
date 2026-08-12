@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Pranoj</string>
     <string name="terms_quit">Dil</string>
     <string name="privacy_policy">Politika e privatësisë</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Burimi &amp; licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet u ruajt</string>
     <string name="saved_i2p">I2P u ruajt</string>

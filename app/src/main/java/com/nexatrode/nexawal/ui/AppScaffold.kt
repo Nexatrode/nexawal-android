@@ -2220,6 +2220,7 @@ private fun SettingsScreen(
     var accountGapError by remember { mutableStateOf<String?>(null) }
 
     var statusText by remember { mutableStateOf<String?>(null) }
+    var legalDocument by remember { mutableStateOf<LegalDocument?>(null) }
     val nodeUrlSchemeErrorText = stringResource(R.string.node_url_scheme_error)
     val savedClearnetText = stringResource(R.string.saved_clearnet)
     val savedI2pText = stringResource(R.string.saved_i2p)
@@ -2272,6 +2273,19 @@ private fun SettingsScreen(
     var fiatEnabled by remember { mutableStateOf(MoneroConfig.fiatEstimatesEnabled(context)) }
     var fiatCurrency by remember { mutableStateOf(MoneroConfig.fiatCurrency(context)) }
     var fiatCurrencyMenuOpen by remember { mutableStateOf(false) }
+
+    legalDocument?.let { doc ->
+        androidx.compose.ui.window.Dialog(
+            onDismissRequest = { legalDocument = null },
+            properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false),
+        ) {
+            LegalDocumentScreen(
+                document = doc,
+                onClose = { legalDocument = null },
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -2807,22 +2821,14 @@ private fun SettingsScreen(
                 Spacer(Modifier.height(12.dp))
                 SecondaryActionButton(
                     text = stringResource(R.string.terms_of_use),
-                    onClick = {
-                        val uri = android.net.Uri.parse(MoneroConfig.TERMS_URL)
-                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
-                    },
+                    onClick = { legalDocument = LegalDocument.Terms },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
                 )
                 Spacer(Modifier.height(8.dp))
                 SecondaryActionButton(
                     text = stringResource(R.string.privacy_policy),
-                    onClick = {
-                        val uri = android.net.Uri.parse(
-                            "https://nexatrode.com/privacy/nexawal/",
-                        )
-                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
-                    },
+                    onClick = { legalDocument = LegalDocument.Privacy },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
                 )

@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">သဘောတူသည်</string>
     <string name="terms_quit">ထွက်ရန်</string>
     <string name="privacy_policy">ကိုယ်ရေးလုံခြုံမှု မူဝါဒ</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Source &amp; လိုင်စင် (MIT)</string>
     <string name="saved_clearnet">Clearnet ကို သိမ်းပြီးပါပြီ</string>
     <string name="saved_i2p">I2P ကို သိမ်းပြီးပါပြီ</string>

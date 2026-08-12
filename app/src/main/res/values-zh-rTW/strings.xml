@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">我同意</string>
     <string name="terms_quit">結束</string>
     <string name="privacy_policy">隱私政策</string>
+    <string name="legal_close">關閉</string>
+    <string name="legal_load_error">無法載入離線文件。</string>
     <string name="source_license">源代碼與許可(MIT)</string>
     <string name="saved_clearnet">已保存 Clearnet 設置</string>
     <string name="saved_i2p">已保存 I2P 設置</string>

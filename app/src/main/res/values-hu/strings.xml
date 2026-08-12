@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Elfogadom</string>
     <string name="terms_quit">Kilépés</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Forráskód és licenc (MIT)</string>
     <string name="saved_clearnet">Clearnet elmentve</string>
     <string name="saved_i2p">I2P elmentve</string>

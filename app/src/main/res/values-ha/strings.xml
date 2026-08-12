@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Na yarda</string>
     <string name="terms_quit">Fita</string>
     <string name="privacy_policy">Manufar sirri</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Tushen lambar da lasisi (MIT)</string>
     <string name="saved_clearnet">An ajiye clearnet</string>
     <string name="saved_i2p">An Ajiye I2P</string>

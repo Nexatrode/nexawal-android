@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Akceptuję</string>
     <string name="terms_quit">Wyjdź</string>
     <string name="privacy_policy">Polityka prywatności</string>
+    <string name="legal_close">Close</string>
+    <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Kod źródłowy i licencja (MIT)</string>
     <string name="saved_clearnet">Zapisano clearnet</string>
     <string name="saved_i2p">Zapisano I2P</string>

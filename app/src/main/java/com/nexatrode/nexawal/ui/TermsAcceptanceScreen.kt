@@ -1,7 +1,6 @@
 package com.nexatrode.nexawal.ui
 
 import android.app.Activity
-import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -27,6 +26,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.R
 import kotlin.system.exitProcess
@@ -45,7 +46,21 @@ fun TermsAcceptanceScreen(
     val palette = rememberNexaPalette(technoTheme)
     val neon = palette.classic
     val hasCheckedAgree = remember { mutableStateOf(false) }
+    val showFullTerms = remember { mutableStateOf(false) }
     val scroll = rememberScrollState()
+
+    if (showFullTerms.value) {
+        Dialog(
+            onDismissRequest = { showFullTerms.value = false },
+            properties = DialogProperties(usePlatformDefaultWidth = false),
+        ) {
+            LegalDocumentScreen(
+                document = LegalDocument.Terms,
+                onClose = { showFullTerms.value = false },
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+    }
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -76,25 +91,20 @@ fun TermsAcceptanceScreen(
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
-                Spacer(Modifier.height(12.dp))
+                Spacer(modifier.height(12.dp))
                 Text(
                     text = stringResource(R.string.terms_body_as_is),
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
-                Spacer(Modifier.height(12.dp))
+                Spacer(modifier.height(12.dp))
                 Text(
                     text = stringResource(R.string.terms_body_node),
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
                 Spacer(Modifier.height(16.dp))
-                TextButton(
-                    onClick = {
-                        val uri = android.net.Uri.parse(MoneroConfig.TERMS_URL)
-                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
-                    },
-                ) {
+                TextButton(onClick = { showFullTerms.value = true }) {
                     Text(
                         text = stringResource(R.string.terms_review_full),
                         color = palette.accent,
@@ -102,7 +112,7 @@ fun TermsAcceptanceScreen(
                         fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                     )
                 }
-                Spacer(Modifier.height(8.dp))
+                Spacer(modifier.height(8.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(),
@@ -125,7 +135,7 @@ fun TermsAcceptanceScreen(
                 }
             }
 
-            Spacer(Modifier.height(12.dp))
+            Spacer(modifier.height(12.dp))
             PrimaryActionButton(
                 text = stringResource(R.string.terms_agree),
                 onClick = {
@@ -136,7 +146,7 @@ fun TermsAcceptanceScreen(
                 enabled = hasCheckedAgree.value,
                 modifier = Modifier.fillMaxWidth(),
             )
-            Spacer(Modifier.height(8.dp))
+            Spacer(modifier.height(8.dp))
             SecondaryActionButton(
                 text = stringResource(R.string.terms_quit),
                 onClick = {

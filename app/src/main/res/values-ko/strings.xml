@@ -168,6 +168,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">동의합니다</string>
     <string name="terms_quit">종료</string>
     <string name="privacy_policy">개인정보 보호정책</string>
+    <string name="legal_close">닫기</string>
+    <string name="legal_load_error">오프라인 문서를 불러올 수 없습니다.</string>
     <string name="source_license">소스 및 라이선스 (MIT)</string>
     <string name="saved_clearnet">클리어넷 저장됨</string>
     <string name="saved_i2p">I2P 저장됨</string>

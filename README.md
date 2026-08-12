@@ -9,6 +9,8 @@
 - Website: [nexatrode.com](https://nexatrode.com)
 - Reproducible builds / Wallet Scrutiny: [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md)
 - F-Droid packaging: [docs/FDROID.md](docs/FDROID.md)
+- Privacy (also bundled offline in-app): [docs/PRIVACY.md](docs/PRIVACY.md)
+- Terms of Use (also bundled offline in-app): [docs/TERMS.md](docs/TERMS.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 ## Setup
 
@@ -95,7 +97,7 @@ See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md
 
 ## Privacy
 
-See [docs/PRIVACY.md](docs/PRIVACY.md). Play Console data-safety / privacy policy can use that GitHub URL.
+See [docs/PRIVACY.md](docs/PRIVACY.md) (bundled offline in the app under Settings → Privacy policy). Play Console can still use the HTTPS URL on nexatrode.com if required by the store form.
 
 ## License
 
