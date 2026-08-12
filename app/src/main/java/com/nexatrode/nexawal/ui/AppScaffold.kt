@@ -908,7 +908,8 @@ private fun WalletScreen(
                 val networkHeightLabel = stringResource(R.string.label_network_height)
                 val progressLabel = stringResource(R.string.label_progress)
                 val remainingLabel = stringResource(R.string.label_remaining)
-                val throughputLabel = stringResource(R.string.label_throughput)
+                val avgThroughputLabel = stringResource(R.string.label_throughput_avg)
+                val recentThroughputLabel = stringResource(R.string.label_throughput_recent)
                 KeyValueRow(if (palette.classic) nodeLabel.uppercase() else nodeLabel, walletManager.nodeAddressForDisplay(state.nodeUrl ?: walletManager.defaultNodeUrl()), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 KeyValueRow(if (palette.classic) scannedLabel.uppercase() else scannedLabel, formatGrouped(lastScanned), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 if (targetHeight > 0L) {
@@ -919,18 +920,17 @@ private fun WalletScreen(
                     KeyValueRow(if (palette.classic) remainingLabel.uppercase() else remainingLabel, stringResource(R.string.blocks_value_fmt, formatGrouped(remainingBlocks)), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 }
                 if (blocksPerSecSession > 0.0) {
-                    val throughputValue = if (blocksPerSecRecent > 0.0) {
-                        stringResource(
-                            R.string.blocks_per_sec_avg_recent_fmt,
-                            blocksPerSecSession,
-                            blocksPerSecRecent,
-                        )
-                    } else {
-                        stringResource(R.string.blocks_per_sec_avg_fmt, blocksPerSecSession)
-                    }
                     KeyValueRow(
-                        if (palette.classic) throughputLabel.uppercase() else throughputLabel,
-                        throughputValue,
+                        if (palette.classic) avgThroughputLabel.uppercase() else avgThroughputLabel,
+                        stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession),
+                        labelColor = iosSecondary,
+                        valueColor = iosPrimaryText,
+                    )
+                }
+                if (blocksPerSecRecent > 0.0) {
+                    KeyValueRow(
+                        if (palette.classic) recentThroughputLabel.uppercase() else recentThroughputLabel,
+                        stringResource(R.string.blocks_per_sec_fmt, blocksPerSecRecent),
                         labelColor = iosSecondary,
                         valueColor = iosPrimaryText,
                     )

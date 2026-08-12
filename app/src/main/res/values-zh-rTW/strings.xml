@@ -26,6 +26,8 @@
     <string name="label_network_height">網絡高度</string>
     <string name="label_remaining">剩餘</string>
     <string name="label_throughput">吞吐量</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">進度</string>
     <string name="recent_transactions">最近交易</string>
     <string name="no_transactions_yet">暫無交易記錄。</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">正在從 %1$s 獲取初始區塊</string>
     <string name="blocks_remaining_fmt">剩餘 %1$s 個區塊</string>
     <string name="blocks_per_sec_fmt">%1$.1f 區塊/秒</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s 次確認</string>
     <string name="fee_value_fmt">手續費 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">清除掃描緩存失敗:%1$s</string>

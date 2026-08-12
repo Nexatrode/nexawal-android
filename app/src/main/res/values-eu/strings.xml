@@ -26,6 +26,8 @@
     <string name="label_network_height">Sarearen altuera</string>
     <string name="label_remaining">Geratzen dena</string>
     <string name="label_throughput">Abiadura</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Aurrerapena</string>
     <string name="recent_transactions">Azken transakzioak</string>
     <string name="no_transactions_yet">Oraindik ez dago transakziorik.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Hasierako blokeak eskuratzen: %1$s</string>
     <string name="blocks_remaining_fmt">%1$s bloke geratzen dira</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s berrespen</string>
     <string name="fee_value_fmt">Komisioa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Eskaneo-cachea garbitzeak huts egin du: %1$s</string>

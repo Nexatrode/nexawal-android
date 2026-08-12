@@ -26,6 +26,8 @@
     <string name="label_network_height">Visina mreže</string>
     <string name="label_remaining">Preostalo</string>
     <string name="label_throughput">Protok</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Napredak</string>
     <string name="recent_transactions">Nedavne transakcije</string>
     <string name="no_transactions_yet">Još nema transakcija.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Dohvaćanje početnih blokova od %1$s</string>
     <string name="blocks_remaining_fmt">Preostalo %1$s blokova</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s potvrda</string>
     <string name="fee_value_fmt">Naknada %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Čišćenje predmemorije skeniranja nije uspjelo: %1$s</string>

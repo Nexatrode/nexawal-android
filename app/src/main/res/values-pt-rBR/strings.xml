@@ -26,6 +26,8 @@
     <string name="label_network_height">Altura da Rede</string>
     <string name="label_remaining">Restante</string>
     <string name="label_throughput">Taxa de transferência</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Progresso</string>
     <string name="recent_transactions">Transações Recentes</string>
     <string name="no_transactions_yet">Ainda não há transações.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Buscando blocos iniciais a partir de %1$s</string>
     <string name="blocks_remaining_fmt">%1$s blocos restantes</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s conf</string>
     <string name="fee_value_fmt">Taxa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Falha ao limpar o cache de varredura: %1$s</string>

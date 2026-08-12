@@ -26,6 +26,8 @@
     <string name="label_network_height">ความสูงเครือข่าย</string>
     <string name="label_remaining">เหลืออีก</string>
     <string name="label_throughput">ปริมาณงานที่ประมวลผล</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">ความคืบหน้า</string>
     <string name="recent_transactions">ธุรกรรมล่าสุด</string>
     <string name="no_transactions_yet">ยังไม่มีธุรกรรม</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">กำลังดึงบล็อกเริ่มต้นจาก %1$s</string>
     <string name="blocks_remaining_fmt">เหลืออีก %1$s บล็อก</string>
     <string name="blocks_per_sec_fmt">%1$.1f บล็อก/วิ</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s การยืนยัน</string>
     <string name="fee_value_fmt">ค่าธรรมเนียม %1$s</string>
     <string name="clear_scan_cache_failed_fmt">ล้างแคชการสแกนล้มเหลว: %1$s</string>

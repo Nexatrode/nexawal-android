@@ -26,6 +26,8 @@
     <string name="label_network_height">Ipele Nẹ́tíwọ́ọ̀kì</string>
     <string name="label_remaining">Tí ó Kù</string>
     <string name="label_throughput">Ìyára Sísàn</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Ìlọsíwájú</string>
     <string name="recent_transactions">Àwọn Ìṣòwò Tuntun</string>
     <string name="no_transactions_yet">Kò sí ìṣòwò kankan síbẹ̀.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Ń gbé àwọn bulọ́ọ̀kì àkọ́kọ́ wọlé láti %1$s</string>
     <string name="blocks_remaining_fmt">Bulọ́ọ̀kì %1$s tí ó ṣẹ́ kù</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">Ìjẹ́rìí %1$s</string>
     <string name="fee_value_fmt">Ọya %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Yíyọ ìfipamọ́ yíyẹ̀wò kùnà: %1$s</string>

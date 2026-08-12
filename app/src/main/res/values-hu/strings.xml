@@ -26,6 +26,8 @@
     <string name="label_network_height">Hálózati magasság</string>
     <string name="label_remaining">Hátralévő</string>
     <string name="label_throughput">Átviteli sebesség</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Folyamat</string>
     <string name="recent_transactions">Legutóbbi tranzakciók</string>
     <string name="no_transactions_yet">Még nincsenek tranzakciók.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Kezdeti blokkok lekérése innen: %1$s</string>
     <string name="blocks_remaining_fmt">%1$s blokk maradt</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s megerősítés</string>
     <string name="fee_value_fmt">Díj %1$s</string>
     <string name="clear_scan_cache_failed_fmt">A szkennelési gyorsítótár törlése sikertelen: %1$s</string>

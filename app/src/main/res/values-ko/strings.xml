@@ -26,6 +26,8 @@
     <string name="label_network_height">네트워크 높이</string>
     <string name="label_remaining">남음</string>
     <string name="label_throughput">처리량</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">진행률</string>
     <string name="recent_transactions">최근 거래</string>
     <string name="no_transactions_yet">아직 거래가 없습니다.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">%1$s에서 초기 블록을 가져오는 중</string>
     <string name="blocks_remaining_fmt">%1$s 블록 남음</string>
     <string name="blocks_per_sec_fmt">%1$.1f 블록/초</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">확인 %1$s회</string>
     <string name="fee_value_fmt">수수료 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">스캔 캐시 지우기 실패: %1$s</string>

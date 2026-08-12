@@ -26,6 +26,8 @@
     <string name="label_network_height">Výška siete</string>
     <string name="label_remaining">Zostáva</string>
     <string name="label_throughput">Rýchlosť spracovania</string>
+    <string name="label_throughput_avg">Avg throughput</string>
+    <string name="label_throughput_recent">Recent throughput</string>
     <string name="label_progress">Priebeh</string>
     <string name="recent_transactions">Nedávne transakcie</string>
     <string name="no_transactions_yet">Zatiaľ žiadne transakcie.</string>
@@ -321,8 +323,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Získavanie počiatočných blokov od %1$s</string>
     <string name="blocks_remaining_fmt">Zostáva %1$s blokov</string>
     <string name="blocks_per_sec_fmt">%1$.1f bl./s</string>
-    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
-    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s potvrd.</string>
     <string name="fee_value_fmt">Poplatok %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Vymazanie vyrovnávacej pamäte skenovania sa nepodarilo: %1$s</string>
