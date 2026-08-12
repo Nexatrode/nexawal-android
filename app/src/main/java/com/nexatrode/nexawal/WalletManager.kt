@@ -1806,8 +1806,12 @@ class WalletManager(
         var stallFallbackUsed = false
 
         // Periodic persistence while refresh is running.
+        // Match iOS: exportCache is expensive (wallet lock + large alloc + disk write), so avoid a
+        // short wall-clock cadence. Require both elapsed time and meaningful scan progress.
         var lastPersistAtMs = 0L
-        val persistIntervalMs = 30_000L
+        var lastPersistedScannedHeight = 0L
+        val persistIntervalMs = 120_000L
+        val persistBlockDelta = 1_000L
 
         // Mirror iOS: sample core error state periodically even if progress is happening.
         var lastCoreErrSampleAtMs = 0L
@@ -1939,10 +1943,18 @@ class WalletManager(
                 updateSyncForegroundService(st)
             }
 
-            // Periodic cache persistence.
-            if (st.lastScanned > 0 && nowMs - lastPersistAtMs >= persistIntervalMs) {
+            // Periodic cache persistence (iOS parity: 120s + 1000 blocks).
+            if (st.lastScanned > 0 &&
+                nowMs - lastPersistAtMs >= persistIntervalMs &&
+                st.lastScanned >= lastPersistedScannedHeight + persistBlockDelta
+            ) {
                 exportCacheAndPersist(walletId)
+                Log.i(
+                    "WalletManager",
+                    "CACHE_EXPORT reason: periodic walletId=$walletId scanned=${st.lastScanned}",
+                )
                 lastPersistAtMs = nowMs
+                lastPersistedScannedHeight = st.lastScanned
             }
 
             // Completion condition.
