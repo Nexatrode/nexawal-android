@@ -4,6 +4,7 @@ import android.Manifest
 import android.util.Size
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -44,12 +45,17 @@ import androidx.core.content.ContextCompat
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.barcode.common.Barcode
-import com.google.mlkit.vision.common.InputImage
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.DecodeHintType
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.NotFoundException
+import com.google.zxing.PlanarYUVLuminanceSource
+import com.google.zxing.common.HybridBinarizer
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.R
 import java.util.concurrent.Executors
+import java.util.concurrent.atomic.AtomicBoolean
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -150,13 +156,26 @@ private fun CameraPreview(
 
     val cameraProviderFuture = remember { ProcessCameraProvider.getInstance(context) }
     val executor = remember { Executors.newSingleThreadExecutor() }
-
-    val barcodeScanner = remember { BarcodeScanning.getClient() }
+    val reader = remember {
+        MultiFormatReader().apply {
+            setHints(
+                mapOf(
+                    DecodeHintType.POSSIBLE_FORMATS to listOf(BarcodeFormat.QR_CODE),
+                    DecodeHintType.TRY_HARDER to true,
+                    DecodeHintType.CHARACTER_SET to "UTF-8",
+                )
+            )
+        }
+    }
+    val handled = remember { AtomicBoolean(false) }
     val cameraPreviewDescription = stringResource(R.string.a11y_camera_preview)
 
     DisposableEffect(Unit) {
         onDispose {
-            barcodeScanner.close()
+            executor.shutdown()
+            runCatching {
+                cameraProviderFuture.get().unbindAll()
+            }
         }
     }
 
@@ -168,32 +187,17 @@ private fun CameraPreview(
             val imageAnalysis = ImageAnalysis.Builder()
                 .setTargetResolution(Size(1280, 720))
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .setOutputImageFormat(ImageAnalysis.OUTPUT_IMAGE_FORMAT_YUV_420_888)
                 .build()
 
             imageAnalysis.setAnalyzer(executor) { imageProxy ->
-                @androidx.camera.core.ExperimentalGetImage
-                val mediaImage = imageProxy.image
-                if (mediaImage != null) {
-                    val image = InputImage.fromMediaImage(
-                        mediaImage,
-                        imageProxy.imageInfo.rotationDegrees
-                    )
-                    barcodeScanner.process(image)
-                        .addOnSuccessListener { barcodes ->
-                            for (barcode in barcodes) {
-                                if (barcode.valueType == Barcode.TYPE_TEXT ||
-                                    barcode.valueType == Barcode.TYPE_UNKNOWN
-                                ) {
-                                    barcode.rawValue?.let { value ->
-                                        onScan(value)
-                                    }
-                                }
-                            }
-                        }
-                        .addOnCompleteListener {
-                            imageProxy.close()
-                        }
-                } else {
+                try {
+                    if (handled.get()) return@setAnalyzer
+                    val text = decodeQr(imageProxy, reader) ?: return@setAnalyzer
+                    if (handled.compareAndSet(false, true)) {
+                        onScan(text)
+                    }
+                } finally {
                     imageProxy.close()
                 }
             }
@@ -223,4 +227,98 @@ private fun CameraPreview(
             .fillMaxSize()
             .semantics { contentDescription = cameraPreviewDescription }
     )
+}
+
+/**
+ * Decode a QR payload from a CameraX YUV frame using FOSS ZXing (no ML Kit).
+ */
+private fun decodeQr(imageProxy: ImageProxy, reader: MultiFormatReader): String? {
+    val luminance = yPlaneLuminance(imageProxy) ?: return null
+    val (data, width, height) = luminance
+    val source = PlanarYUVLuminanceSource(
+        data,
+        width,
+        height,
+        0,
+        0,
+        width,
+        height,
+        false,
+    )
+    return try {
+        reader.decodeWithState(BinaryBitmap(HybridBinarizer(source))).text
+    } catch (_: NotFoundException) {
+        // Try inverted (light-on-dark codes).
+        try {
+            reader.decodeWithState(BinaryBitmap(HybridBinarizer(source.invert()))).text
+        } catch (_: NotFoundException) {
+            null
+        }
+    } finally {
+        reader.reset()
+    }
+}
+
+/**
+ * Copy the Y plane into a tightly packed buffer, applying CameraX rotation so
+ * ZXing sees an upright image.
+ */
+private fun yPlaneLuminance(imageProxy: ImageProxy): Triple<ByteArray, Int, Int>? {
+    val plane = imageProxy.planes.firstOrNull() ?: return null
+    val rowStride = plane.rowStride
+    val pixelStride = plane.pixelStride
+    val width = imageProxy.width
+    val height = imageProxy.height
+    val buffer = plane.buffer.duplicate()
+    buffer.rewind()
+
+    val packed = ByteArray(width * height)
+    if (pixelStride == 1 && rowStride == width) {
+        buffer.get(packed, 0, packed.size.coerceAtMost(buffer.remaining()))
+    } else {
+        var out = 0
+        for (row in 0 until height) {
+            val rowStart = row * rowStride
+            for (col in 0 until width) {
+                packed[out++] = buffer.get(rowStart + col * pixelStride)
+            }
+        }
+    }
+
+    return when (imageProxy.imageInfo.rotationDegrees) {
+        90 -> Triple(rotate90(packed, width, height), height, width)
+        180 -> Triple(rotate180(packed, width, height), width, height)
+        270 -> Triple(rotate270(packed, width, height), height, width)
+        else -> Triple(packed, width, height)
+    }
+}
+
+private fun rotate90(src: ByteArray, width: Int, height: Int): ByteArray {
+    val dst = ByteArray(src.size)
+    var i = 0
+    for (x in 0 until width) {
+        for (y in height - 1 downTo 0) {
+            dst[i++] = src[y * width + x]
+        }
+    }
+    return dst
+}
+
+private fun rotate180(src: ByteArray, @Suppress("UNUSED_PARAMETER") width: Int, @Suppress("UNUSED_PARAMETER") height: Int): ByteArray {
+    val dst = ByteArray(src.size)
+    for (i in src.indices) {
+        dst[dst.lastIndex - i] = src[i]
+    }
+    return dst
+}
+
+private fun rotate270(src: ByteArray, width: Int, height: Int): ByteArray {
+    val dst = ByteArray(src.size)
+    var i = 0
+    for (x in width - 1 downTo 0) {
+        for (y in 0 until height) {
+            dst[i++] = src[y * width + x]
+        }
+    }
+    return dst
 }

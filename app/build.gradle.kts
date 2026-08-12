@@ -24,6 +24,35 @@ android {
         buildConfigField("String", "NEXAWAL_TEST_RESTORE_HEIGHT", "\"\"")
     }
 
+    val localSigningProps = Properties().apply {
+        val localFile = rootProject.file("local.properties")
+        if (localFile.exists()) {
+            localFile.inputStream().use { load(it) }
+        }
+    }
+    val releaseStoreFile = localSigningProps.getProperty("nexawal.store.file")
+        ?.trim()
+        ?.takeIf { it.isNotEmpty() }
+        ?.let { path ->
+            val asRoot = rootProject.file(path)
+            when {
+                asRoot.isFile -> asRoot
+                file(path).isFile -> file(path)
+                else -> null
+            }
+        }
+
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = releaseStoreFile
+                storePassword = localSigningProps.getProperty("nexawal.store.password", "")
+                keyAlias = localSigningProps.getProperty("nexawal.key.alias", "")
+                keyPassword = localSigningProps.getProperty("nexawal.key.password", "")
+            }
+        }
+    }
+
     buildTypes {
         // DEBUG first-run testing: set in local.properties (gitignored), e.g.
         //   nexawal.test.mnemonic=word1 word2 ... word25
@@ -57,6 +86,9 @@ android {
             )
             buildConfigField("String", "NEXAWAL_TEST_MNEMONIC", "\"\"")
             buildConfigField("String", "NEXAWAL_TEST_RESTORE_HEIGHT", "\"\"")
+            if (releaseStoreFile != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {
@@ -96,11 +128,8 @@ dependencies {
     // JSON parsing (transfers list)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
-    // QR code generation (Receive flow)
+    // QR encode (Receive) + decode (Send camera). ZXing is FOSS; no ML Kit / GMS.
     implementation("com.google.zxing:core:3.5.3")
-
-    // QR code scanning (Send flow)
-    implementation("com.google.mlkit:barcode-scanning:17.3.0")
     implementation("androidx.camera:camera-camera2:1.4.1")
     implementation("androidx.camera:camera-lifecycle:1.4.1")
     implementation("androidx.camera:camera-view:1.4.1")
