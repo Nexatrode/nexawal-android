@@ -112,7 +112,25 @@ To rebuild the core artifacts from that submodule (when needed):
 ```bash
 cd MoneroWalletCoreFFI
 # See that repo’s Scripts/build_android.sh (INSTALL_TO_NEXAWAL_ANDROID=1, etc.)
+PROFILE=release CARGO_FEATURES="compile-time-generators" ./Scripts/build_android.sh
 ```
+
+### CI from-source rebuild (Wallet Scrutiny)
+
+GitHub Actions workflow [`.github/workflows/native-android.yml`](../.github/workflows/native-android.yml)
+rebuilds `libmonerowalletcore.so` for `arm64-v8a` and `x86_64` from the pinned
+submodule using the same script, with:
+
+- Rust stable + Android NDK **r27b**
+- `CARGO_FEATURES=compile-time-generators`
+- Uploaded artifacts + `native-android-SHA256SUMS.txt` (app commit, FFI commit, NDK)
+
+Trigger: `workflow_dispatch`, or pushes/PRs that touch `MoneroWalletCoreFFI/**` /
+the workflow file. Local `./gradlew` builds still consume the submodule’s
+committed `Artifacts/` unless you reinstall with `INSTALL_TO_NEXAWAL_ANDROID=1`.
+
+For a Scrutiny note on a Play upload, attach the workflow’s SHA256SUMS (or a
+matching local rebuild) alongside the app/FFI commit SHAs.
 
 ## Fingerprints useful for reviewers
 
@@ -133,9 +151,11 @@ git -C MoneroWalletCoreFFI rev-parse HEAD
 Call these out so Wallet Scrutiny is not surprised:
 
 1. **Play App Signing** — installable APK signature ≠ developer upload signature.
-2. **Prebuilt `libmonerowalletcore.so`** — verified as “same submodule artifacts,”
-   not “rebuilt from Rust on every app CI run” unless you document and pin that
-   rebuild path for the release.
+2. **Prebuilt `libmonerowalletcore.so`** — local Gradle copies submodule
+   `Artifacts/`. Prefer CI / local `Scripts/build_android.sh` rebuild hashes in
+   release notes so reviewers are not limited to “trust the committed blob.”
+   Byte-identical match vs committed Artifacts is best-effort until release
+   artifacts are produced by that same workflow.
 3. **NDK host path / NDK version** — `libc++_shared.so` and the JNI shim can
    differ across NDK releases; pin the NDK version used for production tags in
    Release notes.

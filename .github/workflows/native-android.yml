@@ -1,0 +1,138 @@
+name: Native Android (from source)
+
+# Rebuild libmonerowalletcore.so from the MoneroWalletCoreFFI submodule so
+# Wallet Scrutiny / F-Droid reviewers can verify a from-source path.
+# Local app builds still copy the submodule's Artifacts/ by default.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "MoneroWalletCoreFFI/**"
+      - ".github/workflows/native-android.yml"
+      - "docs/REPRODUCIBLE_BUILD.md"
+  pull_request:
+    paths:
+      - "MoneroWalletCoreFFI/**"
+      - ".github/workflows/native-android.yml"
+
+env:
+  ANDROID_API: "26"
+  CARGO_FEATURES: "compile-time-generators"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-walletcore-so:
+    name: Build libmonerowalletcore.so
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout (with submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Record source pins
+        id: pins
+        run: |
+          echo "app_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "ffi_commit=$(git -C MoneroWalletCoreFFI rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "app=$(git rev-parse HEAD)"
+          echo "ffi=$(git -C MoneroWalletCoreFFI rev-parse HEAD)"
+
+      - name: Snapshot committed Artifacts checksums
+        run: |
+          mkdir -p /tmp/committed-so
+          for abi in arm64-v8a x86_64; do
+            src="MoneroWalletCoreFFI/Artifacts/android/${abi}/libmonerowalletcore.so"
+            if [[ -f "$src" ]]; then
+              cp -f "$src" "/tmp/committed-so/${abi}-libmonerowalletcore.so"
+            fi
+          done
+          if compgen -G "/tmp/committed-so/*.so" > /dev/null; then
+            (cd /tmp/committed-so && sha256sum *.so | tee /tmp/committed-SHA256SUMS.txt)
+          else
+            echo "(no committed .so artifacts to compare)" | tee /tmp/committed-SHA256SUMS.txt
+          fi
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,x86_64-linux-android
+
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r27b
+          link-to-sdk: true
+
+      - name: Build Android .so from source
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+          ANDROID_API: ${{ env.ANDROID_API }}
+          PROFILE: release
+          CARGO_FEATURES: ${{ env.CARGO_FEATURES }}
+          ABIS: arm64-v8a,x86_64
+        run: |
+          chmod +x MoneroWalletCoreFFI/Scripts/build_android.sh
+          MoneroWalletCoreFFI/Scripts/build_android.sh
+
+      - name: Write SHA256SUMS (Scrutiny / release notes)
+        run: |
+          OUT=MoneroWalletCoreFFI/Artifacts/android
+          NDK_PATH="${{ steps.setup-ndk.outputs.ndk-path }}"
+          {
+            echo "# nexawal-android native rebuild"
+            echo "# app_commit=${{ steps.pins.outputs.app_commit }}"
+            echo "# ffi_commit=${{ steps.pins.outputs.ffi_commit }}"
+            echo "# ndk_path=${NDK_PATH}"
+            echo "# ndk_setup=r27b"
+            echo "# android_api=${{ env.ANDROID_API }}"
+            echo "# cargo_features=${{ env.CARGO_FEATURES }}"
+            echo "# profile=release"
+            echo "# abis=arm64-v8a,x86_64"
+            echo "#"
+            (cd "$OUT" && find . -name 'libmonerowalletcore.so' -print0 | sort -z | xargs -0 sha256sum)
+          } | tee native-android-SHA256SUMS.txt
+
+      - name: Compare CI rebuild vs committed Artifacts
+        continue-on-error: true
+        run: |
+          echo "=== committed ==="
+          cat /tmp/committed-SHA256SUMS.txt
+          echo "=== rebuilt ==="
+          cat native-android-SHA256SUMS.txt
+          mismatch=0
+          for abi in arm64-v8a x86_64; do
+            committed="/tmp/committed-so/${abi}-libmonerowalletcore.so"
+            rebuilt="MoneroWalletCoreFFI/Artifacts/android/${abi}/libmonerowalletcore.so"
+            if [[ ! -f "$committed" ]]; then
+              echo "SKIP $abi: no committed artifact"
+              continue
+            fi
+            c="$(sha256sum "$committed" | awk '{print $1}')"
+            r="$(sha256sum "$rebuilt" | awk '{print $1}')"
+            if [[ "$c" == "$r" ]]; then
+              echo "MATCH $abi"
+            else
+              echo "DIFF  $abi"
+              echo "  committed=$c"
+              echo "  rebuilt  =$r"
+              mismatch=1
+            fi
+          done
+          if [[ "$mismatch" -ne 0 ]]; then
+            echo "::warning::CI rebuild hashes differ from committed submodule Artifacts (common until release builds are produced in this workflow). Prefer the CI SHA256SUMS for Wallet Scrutiny notes."
+          fi
+
+      - name: Upload .so + checksums
+        uses: actions/upload-artifact@v4
+        with:
+          name: libmonerowalletcore-android-${{ steps.pins.outputs.ffi_commit }}
+          path: |
+            MoneroWalletCoreFFI/Artifacts/android/**/libmonerowalletcore.so
+            native-android-SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 90
