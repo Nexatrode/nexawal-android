@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Aizstāt esošo maku?</string>
     <string name="replace_wallet_message">Tas aizstās esošo maku šajā ierīcē.\n\nJa turpināsiet, pašreiz saglabātā mnemonika un skenēšanas statuss tiks noņemti. Pirms turpināt, pārliecinieties, ka jūsu mnemonika ir dublēta.</string>
     <string name="section_network_node">Tīkls un mezgls</string>
-    <string name="node_url_help">Ierakstiet pilnu URL, ieskaitot http:// vai https://.\nPubliskais: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Ierakstiet pilnu URL, ieskaitot http:// vai https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Saglabāt mezglu</string>
     <string name="section_info">Informācija</string>
     <string name="walletcore_version_label">WalletCore versija:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Abi (skenēt Clearnet, pārraidīt I2P)</string>
     <string name="network_policy_help">Tikai Clearnet izmanto clearnet mezglu. Tikai I2P izmanto I2P mezglu un starpniekserveri. Abi skenē, izmantojot Clearnet, un pārraida, izmantojot I2P.</string>
     <string name="section_clearnet_node">Clearnet mezgls</string>
-    <string name="clearnet_node_url_help">Ierakstiet pilnu URL, ieskaitot http:// vai https://.</string>
+    <string name="clearnet_node_url_help">Ierakstiet pilnu URL, ieskaitot http:// vai https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Izmantot šo mezglu</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P mezgls (resursdators:ports)</string>

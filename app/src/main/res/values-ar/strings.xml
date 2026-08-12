@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">استبدال المحفظة الموجودة؟</string>
     <string name="replace_wallet_message">سيؤدي ذلك إلى استبدال المحفظة الموجودة على هذا الجهاز.\n\nإذا استمررت، ستُحذف العبارة التذكيرية المحفوظة وحالة المسح الحاليتان. تأكد من أنك قد نسخت العبارة التذكيرية احتياطيًا قبل الاستمرار.</string>
     <string name="section_network_node">الشبكة والعقدة</string>
-    <string name="node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.\nعام: https://rpc.nexatrode.com\nشبكة محلية: http://192.168.4.137:18089</string>
+    <string name="node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">حفظ العقدة</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">إصدار WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">كلاهما (مسح عبر Clearnet، وبث عبر I2P)</string>
     <string name="network_policy_help">يستخدم Clearnet فقط عقدة على الإنترنت العادي. يستخدم I2P فقط عقدة ووكيل I2P. يقوم كلاهما بالمسح عبر Clearnet والبث عبر I2P.</string>
     <string name="section_clearnet_node">عقدة Clearnet</string>
-    <string name="clearnet_node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.</string>
+    <string name="clearnet_node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">استخدام هذه العقدة</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">عقدة I2P (المضيف:المنفذ)</string>

@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">แทนที่กระเป๋าเงินที่มีอยู่หรือไม่?</string>
     <string name="replace_wallet_message">การทำเช่นนี้จะแทนที่กระเป๋าเงินที่มีอยู่บนอุปกรณ์นี้\n\nหากคุณดำเนินการต่อ วลีช่วยจำและสถานะการสแกนที่จัดเก็บไว้ในปัจจุบันจะถูกลบออก โปรดตรวจสอบให้แน่ใจว่าคุณได้สำรองวลีช่วยจำไว้แล้วก่อนดำเนินการต่อ</string>
     <string name="section_network_node">เครือข่ายและโหนด</string>
-    <string name="node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://\nสาธารณะ: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">บันทึกโหนด</string>
     <string name="section_info">ข้อมูล</string>
     <string name="walletcore_version_label">เวอร์ชัน WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">ทั้งสองอย่าง (สแกนผ่าน clearnet กระจายผ่าน I2P)</string>
     <string name="network_policy_help">clearnet เท่านั้นจะใช้โหนด clearnet ส่วน I2P เท่านั้นจะใช้โหนดและพร็อกซี I2P ทั้งสองอย่างจะสแกนผ่าน clearnet และกระจายผ่าน I2P</string>
     <string name="section_clearnet_node">โหนด clearnet</string>
-    <string name="clearnet_node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://</string>
+    <string name="clearnet_node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">ใช้โหนดนี้</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">โหนด I2P (host:port)</string>

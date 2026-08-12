@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">להחליף את הארנק הקיים?</string>
     <string name="replace_wallet_message">פעולה זו תחליף את הארנק הקיים במכשיר זה.\n\nאם תמשיך, המנמוניקה השמורה ומצב הסריקה יימחקו. הקפד שיש לך גיבוי של המנמוניקה לפני שתמשיך.</string>
     <string name="section_network_node">רשת וצומת</string>
-    <string name="node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.\nציבורי: https://rpc.nexatrode.com\nרשת מקומית (LAN): http://192.168.4.137:18089</string>
+    <string name="node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">שמירת צומת</string>
     <string name="section_info">מידע</string>
     <string name="walletcore_version_label">גרסת WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">שניהם (סריקה ב-Clearnet, שידור ב-I2P)</string>
     <string name="network_policy_help">האפשרות Clearnet בלבד משתמשת בצומת Clearnet. האפשרות I2P בלבד משתמשת בצומת ובפרוקסי I2P. שניהם סורקים ב-Clearnet ומשדרים באמצעות I2P.</string>
     <string name="section_clearnet_node">צומת Clearnet</string>
-    <string name="clearnet_node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.</string>
+    <string name="clearnet_node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">שימוש בצומת זו</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">צומת I2P (מארח:פורט)</string>

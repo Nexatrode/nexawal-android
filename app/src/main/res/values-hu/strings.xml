@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Lecseréled a meglévő pénztárcát?</string>
     <string name="replace_wallet_message">Ez lecseréli a jelenlegi eszközön tárolt pénztárcát.\n\nHa folytatod, a jelenleg tárolt mnemonika és a szkennelési állapot törlődik. Győződj meg róla, hogy mentetted a mnemonikádat, mielőtt folytatod.</string>
     <string name="section_network_node">Hálózat és csomópont</string>
-    <string name="node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.\nNyilvános: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Csomópont mentése</string>
     <string name="section_info">Infó</string>
     <string name="walletcore_version_label">WalletCore verzió:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Mindkettő (clearnet szkennelés, I2P közvetítés)</string>
     <string name="network_policy_help">A Csak Clearnet egy clearnet csomópontot használ. A Csak I2P egy I2P csomópontot és proxyt használ. A Mindkettő clearneten szkennel, és I2P-n keresztül közvetít.</string>
     <string name="section_clearnet_node">Clearnet csomópont</string>
-    <string name="clearnet_node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.</string>
+    <string name="clearnet_node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Ezt a csomópontot használom</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P csomópont (host:port)</string>

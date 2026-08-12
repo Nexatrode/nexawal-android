@@ -305,7 +305,7 @@ class WalletManager(
     }
 
     /**
-     * Cuprate (:18092) sibling Monero RPC (:18081) retry for fee_rate failures that clearly
+     * Optional sibling-daemon retry for fee_rate failures that clearly
      * happened before spend/broadcast (mirrors iOS WalletManager).
      */
     private fun <T> withOptionalSiblingFeeRetry(nodeUrl: String, op: (String) -> T): T {
@@ -328,7 +328,7 @@ class WalletManager(
             ) ?: throw t
             Log.i(
                 "WalletManager",
-                "Cuprate fee RPC unavailable at $nodeUrl; retrying via sibling Monero RPC $fallback",
+                "Fee RPC unavailable at $nodeUrl; retrying via sibling Monero RPC $fallback",
             )
             Pair(op(fallback), fallback)
         }
@@ -366,7 +366,13 @@ class WalletManager(
             "http://rpc.nexatrode.com",
             "http://rpc.nexatrode.com:443",
             "https://rpc.nexatrode.com",
-            "rpc.nexatrode.com" -> true
+            "rpc.nexatrode.com",
+            "http://cuprate.nexatrode.com",
+            "https://cuprate.nexatrode.com",
+            "cuprate.nexatrode.com",
+            "http://monero.nexatrode.com",
+            "https://monero.nexatrode.com",
+            "monero.nexatrode.com" -> true
             else -> false
         }
     }
@@ -376,7 +382,7 @@ class WalletManager(
      *
      * Accepts full URLs only for user-entered clearnet nodes:
      * - "https://rpc.nexatrode.com"
-     * - "http://192.168.4.137:18089"
+     * - "http://127.0.0.1:18089"
      *
      * Trims whitespace and rejects blank values.
      */
@@ -2147,7 +2153,7 @@ class WalletManager(
         const val DEFAULT_WALLET_ID: String = "main_wallet"
 
         // Prefer smaller range batches on Android: 500-block get_blocks.bin responses
-        // frequently stall / truncate on phone networks (Cuprate or monerod). iOS falls
+        // frequently stall / truncate on phone networks. iOS falls
         // back to 150 after a stall; start Android there so we don't hang for 3 minutes first.
         private const val ANDROID_BULK_FETCH_BATCH = 150
         private const val ANDROID_UPSTREAM_BLOCK_BATCH = 150

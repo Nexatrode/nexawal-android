@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Remplacer le portefeuille existant ?</string>
     <string name="replace_wallet_message">Cela remplacera le portefeuille existant sur cet appareil.\n\nSi tu continues, la phrase mnémonique enregistrée et l\'état d\'analyse seront supprimés. Assure-toi d\'avoir sauvegardé ta phrase mnémonique avant de continuer.</string>
     <string name="section_network_node">Réseau et nœud</string>
-    <string name="node_url_help">Saisis l\'URL complète, y compris http:// ou https://.\nPublique : https://rpc.nexatrode.com\nLAN : http://192.168.4.137:18089</string>
+    <string name="node_url_help">Saisis l\'URL complète, y compris http:// ou https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Enregistrer le nœud</string>
     <string name="section_info">Infos</string>
     <string name="walletcore_version_label">Version de WalletCore :</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Les deux (analyse Clearnet, diffusion I2P)</string>
     <string name="network_policy_help">« Clearnet uniquement » utilise un nœud Clearnet. « I2P uniquement » utilise un nœud et un proxy I2P. « Les deux » analyse via Clearnet et diffuse via I2P.</string>
     <string name="section_clearnet_node">Nœud Clearnet</string>
-    <string name="clearnet_node_url_help">Saisis l\'URL complète, y compris http:// ou https://.</string>
+    <string name="clearnet_node_url_help">Saisis l\'URL complète, y compris http:// ou https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Utiliser ce nœud</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nœud I2P (hôte:port)</string>

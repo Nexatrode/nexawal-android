@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Înlocuiești portofelul existent?</string>
     <string name="replace_wallet_message">Această acțiune va înlocui portofelul existent pe acest dispozitiv.\n\nDacă continui, mnemonicul salvat și starea de scanare vor fi eliminate. Asigură-te că ai o copie de siguranță a mnemonicului înainte de a continua.</string>
     <string name="section_network_node">Rețea și nod</string>
-    <string name="node_url_help">Introdu URL-ul complet, inclusiv http:// sau https://.\nPublic: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Introdu URL-ul complet, inclusiv http:// sau https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salvează nodul</string>
     <string name="section_info">Informații</string>
     <string name="walletcore_version_label">Versiune WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Ambele (scanare clearnet, difuzare I2P)</string>
     <string name="network_policy_help">Doar Clearnet folosește un nod clearnet. Doar I2P folosește un nod și un proxy I2P. Ambele scanează pe clearnet și difuzează prin I2P.</string>
     <string name="section_clearnet_node">Nod clearnet</string>
-    <string name="clearnet_node_url_help">Introdu URL-ul complet, inclusiv http:// sau https://.</string>
+    <string name="clearnet_node_url_help">Introdu URL-ul complet, inclusiv http:// sau https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Folosește acest nod</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nod I2P (host:port)</string>

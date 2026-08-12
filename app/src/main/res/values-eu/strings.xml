@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Lehendik dagoen zorroa ordeztu?</string>
     <string name="replace_wallet_message">Honek gailu honetan dagoen zorroa ordeztuko du.\n\nJarraitzen baduzu, gordetako esaldi mnemoteknikoa eta eskaneo-egoera ezabatuko dira. Ziurtatu esaldi mnemotekniko horren babeskopia egin duzula jarraitu aurretik.</string>
     <string name="section_network_node">Sarea eta nodoa</string>
-    <string name="node_url_help">Idatzi URL osoa, http:// edo https:// barne.\nPublikoa: https://rpc.nexatrode.com\nLANa: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Idatzi URL osoa, http:// edo https:// barne.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Gorde nodoa</string>
     <string name="section_info">Informazioa</string>
     <string name="walletcore_version_label">WalletCore bertsioa:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Biak (eskaneatu clearneten, hedatu I2Pn)</string>
     <string name="network_policy_help">Clearnet soilik aukerak clearnet nodo bat erabiltzen du. I2P soilik aukerak I2P nodo eta proxy bat erabiltzen du. Biak aukerak clearneten eskaneatzen du eta I2Pren bidez hedatzen du.</string>
     <string name="section_clearnet_node">Clearnet nodoa</string>
-    <string name="clearnet_node_url_help">Idatzi URL osoa, http:// edo https:// barne.</string>
+    <string name="clearnet_node_url_help">Idatzi URL osoa, http:// edo https:// barne.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Erabili nodo hau</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P nodoa (host:port)</string>

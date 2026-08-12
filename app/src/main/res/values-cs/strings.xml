@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Nahradit existující peněženku?</string>
     <string name="replace_wallet_message">Tímto se nahradí existující peněženka v tomto zařízení.\n\nBudete-li pokračovat, aktuálně uložená mnemonická fráze a stav skenování budou odstraněny. Než budete pokračovat, ujistěte se, že máte mnemonickou frázi zálohovanou.</string>
     <string name="section_network_node">Síť a uzel</string>
-    <string name="node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.\nVeřejná: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Uložit uzel</string>
     <string name="section_info">Informace</string>
     <string name="walletcore_version_label">Verze WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Obojí (skenovat clearnet, vysílat přes I2P)</string>
     <string name="network_policy_help">Pouze Clearnet používá uzel Clearnet. Pouze I2P používá uzel a proxy I2P. Obojí skenuje na Clearnet a vysílá přes I2P.</string>
     <string name="section_clearnet_node">Uzel Clearnet</string>
-    <string name="clearnet_node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.</string>
+    <string name="clearnet_node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Použít tento uzel</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Uzel I2P (host:port)</string>

@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Заменить существующий кошелёк?</string>
     <string name="replace_wallet_message">Это заменит существующий кошелёк на этом устройстве.\n\nЕсли вы продолжите, сохранённая мнемоническая фраза и состояние сканирования будут удалены. Убедитесь, что у вас есть резервная копия мнемонической фразы, перед тем как продолжить.</string>
     <string name="section_network_node">Сеть и узел</string>
-    <string name="node_url_help">Введите полный URL, включая http:// или https://.\nПубличный: https://rpc.nexatrode.com\nЛокальный: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Введите полный URL, включая http:// или https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Сохранить узел</string>
     <string name="section_info">Информация</string>
     <string name="walletcore_version_label">Версия WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Оба (сканирование через Clearnet, отправка через I2P)</string>
     <string name="network_policy_help">«Только Clearnet» использует обычный узел Clearnet. «Только I2P» использует узел и прокси I2P. «Оба» сканирует через Clearnet и отправляет через I2P.</string>
     <string name="section_clearnet_node">Узел Clearnet</string>
-    <string name="clearnet_node_url_help">Введите полный URL, включая http:// или https://.</string>
+    <string name="clearnet_node_url_help">Введите полный URL, включая http:// или https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Использовать этот узел</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Узел I2P (хост:порт)</string>

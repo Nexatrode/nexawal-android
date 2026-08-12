@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">موجودہ والٹ کو تبدیل کریں؟</string>
     <string name="replace_wallet_message">یہ اس ڈیوائس پر موجودہ والٹ کو تبدیل کر دے گا۔\n\nاگر آپ جاری رکھتے ہیں تو موجودہ محفوظ منیمونک اور اسکین کی حالت ہٹا دی جائے گی۔ آگے بڑھنے سے پہلے یقینی بنائیں کہ آپ کے منیمونک کا بیک اپ موجود ہے۔</string>
     <string name="section_network_node">نیٹ ورک اور نوڈ</string>
-    <string name="node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔\nعوامی: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">نوڈ محفوظ کریں</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">WalletCore ورژن:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">دونوں (Clearnet اسکین کریں، I2P پر براڈکاسٹ کریں)</string>
     <string name="network_policy_help">صرف Clearnet ایک Clearnet نوڈ استعمال کرتا ہے۔ صرف I2P ایک I2P نوڈ اور پراکسی استعمال کرتا ہے۔ دونوں Clearnet پر اسکین اور I2P پر براڈکاسٹ کرتے ہیں۔</string>
     <string name="section_clearnet_node">Clearnet نوڈ</string>
-    <string name="clearnet_node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔</string>
+    <string name="clearnet_node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">یہ نوڈ استعمال کریں</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P نوڈ (host:port)</string>

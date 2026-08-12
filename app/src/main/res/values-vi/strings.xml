@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Thay thế ví hiện có?</string>
     <string name="replace_wallet_message">Việc này sẽ thay thế ví hiện có trên thiết bị này.\n\nNếu bạn tiếp tục, cụm từ mnemonic và trạng thái quét đang lưu sẽ bị xóa. Hãy đảm bảo bạn đã sao lưu cụm từ mnemonic trước khi tiếp tục.</string>
     <string name="section_network_node">Mạng và node</string>
-    <string name="node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.\nCông khai: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Lưu node</string>
     <string name="section_info">Thông tin</string>
     <string name="walletcore_version_label">Phiên bản WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Cả hai (quét clearnet, phát qua I2P)</string>
     <string name="network_policy_help">Chỉ clearnet sử dụng node clearnet. Chỉ I2P sử dụng node và proxy I2P. Cả hai sẽ quét trên clearnet và phát qua I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
-    <string name="clearnet_node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.</string>
+    <string name="clearnet_node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Dùng node này</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (host:port)</string>

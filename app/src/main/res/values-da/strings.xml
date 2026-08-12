@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Erstat eksisterende tegnebog?</string>
     <string name="replace_wallet_message">Dette vil erstatte den eksisterende tegnebog på denne enhed.\n\nHvis du fortsætter, fjernes den nuværende gemte mnemonic-sætning og scanningstilstand. Sørg for, at du har sikkerhedskopieret din mnemonic-sætning, før du fortsætter.</string>
     <string name="section_network_node">Netværk &amp; node</string>
-    <string name="node_url_help">Indtast den fulde URL, inklusive http:// eller https://.\nOffentlig: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Indtast den fulde URL, inklusive http:// eller https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Gem node</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore-version:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Begge (scan clearnet, udsend via I2P)</string>
     <string name="network_policy_help">Kun clearnet bruger en clearnet-node. Kun I2P bruger en I2P-node og proxy. Begge scanner på clearnet og udsender via I2P.</string>
     <string name="section_clearnet_node">Clearnet-node</string>
-    <string name="clearnet_node_url_help">Indtast den fulde URL, inklusive http:// eller https://.</string>
+    <string name="clearnet_node_url_help">Indtast den fulde URL, inklusive http:// eller https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Brug denne node</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-node (host:port)</string>

@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Ĉu anstataŭigi la ekzistantan monujon?</string>
     <string name="replace_wallet_message">Tio anstataŭigos la ekzistantan monujon sur ĉi tiu aparato.\n\nSe vi daŭrigas, la nuntempe konservita mnemoniko kaj skan-stato estos forigitaj. Certiĝu, ke vi havas vian mnemonikon sekurkopiitan antaŭ ol daŭrigi.</string>
     <string name="section_network_node">Reto &amp; Nodo</string>
-    <string name="node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.\nPublika: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Konservi nodon</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore-Versio:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Ambaŭ (skani per clearnet, elsendi per I2P)</string>
     <string name="network_policy_help">Nur Clearnet uzas nodon de clearnet. Nur I2P uzas nodon kaj prokurilon de I2P. Ambaŭ skanas per clearnet kaj elsendas per I2P.</string>
     <string name="section_clearnet_node">Nodo de Clearnet</string>
-    <string name="clearnet_node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.</string>
+    <string name="clearnet_node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Uzi ĉi tiun nodon</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo de I2P (gastigo:pordo)</string>

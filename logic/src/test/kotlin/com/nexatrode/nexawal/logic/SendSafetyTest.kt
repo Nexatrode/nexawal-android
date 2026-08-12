@@ -39,50 +39,19 @@ class SendSafetyTest {
     }
 
     @Test
-    fun siblingRetryOnlyForPreBroadcastFeeRateOnCupratePort() {
-        val cuprate = "http://127.0.0.1:18092"
-        assertEquals(
-            "http://127.0.0.1:18081",
-            SendSafety.shouldRetryViaSiblingMonerod("fee_rate failed", "", cuprate),
-        )
+    fun siblingRetryDisabledForSinglePublicEndpoint() {
         assertNull(
-            SendSafety.shouldRetryViaSiblingMonerod(
-                "fee_rate failed",
-                "key image already spent",
-                cuprate,
-            ),
-        )
-        assertNull(
-            SendSafety.shouldRetryViaSiblingMonerod("fee_rate failed", "", "http://127.0.0.1:18081"),
-        )
-        assertNull(
-            SendSafety.shouldRetryViaSiblingMonerod("connection refused", "", cuprate),
-        )
-    }
-
-    @Test
-    fun siblingRetryMapsPublicCuprateHostsToMonero() {
-        assertEquals(
-            "https://monero.nexatrode.com",
             SendSafety.shouldRetryViaSiblingMonerod(
                 "fee_rate failed",
                 "",
                 "https://rpc.nexatrode.com",
             ),
         )
-        assertEquals(
-            "https://monero.nexatrode.com",
-            SendSafety.shouldRetryViaSiblingMonerod(
-                "fee_rate failed",
-                "",
-                "https://cuprate.nexatrode.com/",
-            ),
-        )
         assertNull(
             SendSafety.shouldRetryViaSiblingMonerod(
                 "fee_rate failed",
                 "",
-                "https://monero.nexatrode.com",
+                "http://127.0.0.1:18092",
             ),
         )
     }

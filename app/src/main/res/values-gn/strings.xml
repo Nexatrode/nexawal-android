@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">¿Emyengovia pe ñongatuha oĩmava?</string>
     <string name="replace_wallet_message">Kóva omyengoviáta pe ñongatuha oĩma ko dispositivo-pe.\n\nEmbohapéramo, oñembogue\'íta pe frase mnemónica ha estado de escaneo ñeñongatupyre. Ehecha porã oĩmbaite hag̃ua nde frase mnemónica ñeñongatupyre eñepyrũ mboyve.</string>
     <string name="section_network_node">Red &amp; Nodo</string>
-    <string name="node_url_help">Ehai pe URL tuichaháicha, oike hag̃ua http:// térã https://.\nPública: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Ehai pe URL tuichaháicha, oike hag̃ua http:// térã https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Eñongatu nodo</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">Versión WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Mokõivéva (skanea clearnet-pe, moherakuã I2P rupi)</string>
     <string name="network_policy_help">Clearnet año oiporu peteĩ nodo clearnet-gua. I2P año oiporu peteĩ nodo ha proxy I2P-gua. Mokõivéva oskanea clearnet-pe ha omoherakuã I2P rupi.</string>
     <string name="section_clearnet_node">Nodo Clearnet</string>
-    <string name="clearnet_node_url_help">Ehai pe URL tuichaháicha, oike hag̃ua http:// térã https://.</string>
+    <string name="clearnet_node_url_help">Ehai pe URL tuichaháicha, oike hag̃ua http:// térã https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Eiporu ko nodo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo I2P (host:port)</string>

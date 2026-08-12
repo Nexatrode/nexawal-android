@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Palitan ang umiiral na wallet?</string>
     <string name="replace_wallet_message">Papalitan nito ang umiiral na wallet sa device na ito.\n\nKung magpapatuloy ka, matatanggal ang kasalukuyang naimbak na mnemonic at scan state. Siguraduhing na-back up mo na ang iyong mnemonic bago magpatuloy.</string>
     <string name="section_network_node">Network at Node</string>
-    <string name="node_url_help">I-type ang buong URL, kasama ang http:// o https://.\nPubliko: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">I-type ang buong URL, kasama ang http:// o https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">I-save ang node</string>
     <string name="section_info">Impormasyon</string>
     <string name="walletcore_version_label">Bersyon ng WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Pareho (i-scan sa clearnet, i-broadcast sa I2P)</string>
     <string name="network_policy_help">Gumagamit lang ang Clearnet ng clearnet node. Gumagamit lang ang I2P ng I2P node at proxy. Ang Pareho ay nag-scan sa clearnet at nag-broadcast sa I2P.</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">I-type ang buong URL, kasama ang http:// o https://.</string>
+    <string name="clearnet_node_url_help">I-type ang buong URL, kasama ang http:// o https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Gamitin ang node na ito</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>

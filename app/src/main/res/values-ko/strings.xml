@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">기존 지갑을 교체하시겠습니까?</string>
     <string name="replace_wallet_message">이 작업은 이 기기에 저장된 기존 지갑을 교체합니다.\n\n계속하면 저장된 니모닉과 스캔 상태가 삭제됩니다. 진행하기 전에 니모닉을 반드시 백업해 두세요.</string>
     <string name="section_network_node">네트워크 및 노드</string>
-    <string name="node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.\n공개: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">노드 저장</string>
     <string name="section_info">정보</string>
     <string name="walletcore_version_label">WalletCore 버전:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">둘 다 (클리어넷으로 스캔, I2P로 브로드캐스트)</string>
     <string name="network_policy_help">클리어넷만은 클리어넷 노드를 사용합니다. I2P만은 I2P 노드와 프록시를 사용합니다. 둘 다는 클리어넷으로 스캔하고 I2P로 브로드캐스트합니다.</string>
     <string name="section_clearnet_node">클리어넷 노드</string>
-    <string name="clearnet_node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.</string>
+    <string name="clearnet_node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">이 노드 사용</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P 노드 (호스트:포트)</string>

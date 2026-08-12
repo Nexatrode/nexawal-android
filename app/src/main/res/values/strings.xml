@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Replace existing wallet?</string>
     <string name="replace_wallet_message">This will replace the existing wallet on this device.\n\nIf you continue, the currently stored mnemonic and scan state will be removed. Make sure you have your mnemonic backed up before proceeding.</string>
     <string name="section_network_node">Network &amp; Node</string>
-    <string name="node_url_help">Type the full URL, including http:// or https://.\nPublic (Cuprate): https://rpc.nexatrode.com\nPublic (monerod): https://monero.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Type the full URL, including http:// or https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Save node</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore Version:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Both (scan clearnet, broadcast I2P)</string>
     <string name="network_policy_help">Clearnet only uses a clearnet node. I2P only uses an I2P node and proxy. Both scans on clearnet and broadcasts over I2P.</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">Type the full URL, including http:// or https://.</string>
+    <string name="clearnet_node_url_help">Type the full URL, including http:// or https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Use this node</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>

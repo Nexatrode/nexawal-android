@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Mövcud pulqabı əvəz edilsin?</string>
     <string name="replace_wallet_message">Bu, cihazda saxlanılan mövcud pulqabını əvəz edəcək.\n\nDavam etsəniz, hazırda saxlanılan mnemonik və skan vəziyyəti silinəcək. Davam etməzdən əvvəl mnemonikinizin ehtiyat nüsxəsinin olduğuna əmin olun.</string>
     <string name="section_network_node">Şəbəkə və Node</string>
-    <string name="node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.\nİctimai: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node-u yadda saxla</string>
     <string name="section_info">Məlumat</string>
     <string name="walletcore_version_label">WalletCore versiyası:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Hər ikisi (clearnet skan, I2P yayım)</string>
     <string name="network_policy_help">Yalnız Clearnet clearnet node-dan istifadə edir. Yalnız I2P I2P node və proksi istifadə edir. Hər ikisi clearnet-də skan edir və I2P üzərindən yayımlayır.</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.</string>
+    <string name="clearnet_node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Bu node-dan istifadə et</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>

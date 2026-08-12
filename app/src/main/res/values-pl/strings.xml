@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Zamienić istniejący portfel?</string>
     <string name="replace_wallet_message">To zastąpi istniejący portfel na tym urządzeniu.\n\nJeśli będziesz kontynuować, aktualnie zapisana fraza mnemoniczna i stan skanowania zostaną usunięte. Zanim przejdziesz dalej, upewnij się, że masz zapisaną kopię swojej frazy mnemonicznej.</string>
     <string name="section_network_node">Sieć i węzeł</string>
-    <string name="node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.\nPubliczny: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Zapisz węzeł</string>
     <string name="section_info">Informacje</string>
     <string name="walletcore_version_label">Wersja WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Oba (skanowanie clearnet, transmisja I2P)</string>
     <string name="network_policy_help">Tylko clearnet używa węzła clearnet. Tylko I2P używa węzła i proxy I2P. Oba: skanowanie w clearnet, transmisja przez I2P.</string>
     <string name="section_clearnet_node">Węzeł clearnet</string>
-    <string name="clearnet_node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.</string>
+    <string name="clearnet_node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Użyj tego węzła</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Węzeł I2P (host:port)</string>

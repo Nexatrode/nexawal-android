@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Αντικατάσταση υπάρχοντος πορτοφολιού;</string>
     <string name="replace_wallet_message">Αυτό θα αντικαταστήσει το υπάρχον πορτοφόλι σε αυτή τη συσκευή.\n\nΑν συνεχίσετε, η αποθηκευμένη μνημονική φράση και η κατάσταση σάρωσης θα αφαιρεθούν. Βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας της μνημονικής φράσης σας πριν προχωρήσετε.</string>
     <string name="section_network_node">Δίκτυο &amp; κόμβος</string>
-    <string name="node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΔημόσιος: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Αποθήκευση κόμβου</string>
     <string name="section_info">Πληροφορίες</string>
     <string name="walletcore_version_label">Έκδοση WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Και τα δύο (σάρωση Clearnet, μετάδοση I2P)</string>
     <string name="network_policy_help">Το «Μόνο Clearnet» χρησιμοποιεί κόμβο Clearnet. Το «Μόνο I2P» χρησιμοποιεί κόμβο και διαμεσολαβητή I2P. Το «Και τα δύο» σαρώνει στο Clearnet και μεταδίδει μέσω I2P.</string>
     <string name="section_clearnet_node">Κόμβος Clearnet</string>
-    <string name="clearnet_node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.</string>
+    <string name="clearnet_node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Χρήση αυτού του κόμβου</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Κόμβος I2P (host:port)</string>

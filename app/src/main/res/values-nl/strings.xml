@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Bestaande portemonnee vervangen?</string>
     <string name="replace_wallet_message">Dit vervangt de bestaande portemonnee op dit apparaat.\n\nAls je doorgaat, worden de opgeslagen mnemonic en scanstatus verwijderd. Zorg dat je een back-up van je mnemonic hebt voordat je doorgaat.</string>
     <string name="section_network_node">Netwerk &amp; Node</string>
-    <string name="node_url_help">Typ de volledige URL, inclusief http:// of https://.\nPubliek: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Typ de volledige URL, inclusief http:// of https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node opslaan</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore-versie:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Beide (scannen via clearnet, uitzenden via I2P)</string>
     <string name="network_policy_help">Alleen clearnet gebruikt een clearnet-node. Alleen I2P gebruikt een I2P-node en -proxy. Beide scant via clearnet en zendt uit via I2P.</string>
     <string name="section_clearnet_node">Clearnet-node</string>
-    <string name="clearnet_node_url_help">Typ de volledige URL, inclusief http:// of https://.</string>
+    <string name="clearnet_node_url_help">Typ de volledige URL, inclusief http:// of https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Deze node gebruiken</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-node (host:poort)</string>

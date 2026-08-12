@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Korvataanko olemassa oleva lompakko?</string>
     <string name="replace_wallet_message">Tämä korvaa olemassa olevan lompakon tällä laitteella.\n\nJos jatkat, nykyinen tallennettu muistisana ja skannaustila poistetaan. Varmista, että olet varmuuskopioinut muistisanasi ennen jatkamista.</string>
     <string name="section_network_node">Verkko ja solmu</string>
-    <string name="node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.\nJulkinen: https://rpc.nexatrode.com\nLähiverkko: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Tallenna solmu</string>
     <string name="section_info">Tietoja</string>
     <string name="walletcore_version_label">WalletCore-versio:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Molemmat (skannaa Clearnet, lähetä I2P)</string>
     <string name="network_policy_help">Vain Clearnet käyttää clearnet-solmua. Vain I2P käyttää I2P-solmua ja välityspalvelinta. Molemmat skannaavat Clearnetin kautta ja lähettävät I2P:n kautta.</string>
     <string name="section_clearnet_node">Clearnet-solmu</string>
-    <string name="clearnet_node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.</string>
+    <string name="clearnet_node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Käytä tätä solmua</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-solmu (isäntä:portti)</string>

@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Ionadaigh an sparán atá ann?</string>
     <string name="replace_wallet_message">Ionadóidh sé seo an sparán atá ar an ghléas seo cheana.\n\nMá leanann tú ar aghaidh, bainfear an síol agus staid an scanta atá stóráilte faoi láthair. Bí cinnte go bhfuil cúltaca de do shíol agat sula leanann tú ar aghaidh.</string>
     <string name="section_network_node">Líonra agus Nód</string>
-    <string name="node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.\nPoiblí: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Sábháil an nód</string>
     <string name="section_info">Eolas</string>
     <string name="walletcore_version_label">Leagan WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">An Dá Cheann (scan Clearnet, craol I2P)</string>
     <string name="network_policy_help">Úsáideann Clearnet amháin nód Clearnet. Úsáideann I2P amháin nód agus seachfhreastalaí I2P. Scanann An Dá Cheann ar Clearnet agus craolann trí I2P.</string>
     <string name="section_clearnet_node">Nód Clearnet</string>
-    <string name="clearnet_node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.</string>
+    <string name="clearnet_node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Úsáid an nód seo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nód I2P (óstach:port)</string>

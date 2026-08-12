@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Zamijeniti postojeći novčanik?</string>
     <string name="replace_wallet_message">Time će se zamijeniti postojeći novčanik na ovom uređaju.\n\nAko nastavite, trenutno spremljeni mnemonik i stanje skeniranja bit će uklonjeni. Provjerite imate li sigurnosnu kopiju mnemonika prije nego što nastavite.</string>
     <string name="section_network_node">Mreža i čvor</string>
-    <string name="node_url_help">Upišite cijeli URL, uključujući http:// ili https://.\nJavni: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Upišite cijeli URL, uključujući http:// ili https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Spremi čvor</string>
     <string name="section_info">Informacije</string>
     <string name="walletcore_version_label">Verzija WalletCorea:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Oboje (skeniranje na clearnetu, emitiranje putem I2P-a)</string>
     <string name="network_policy_help">Samo Clearnet koristi clearnet čvor. Samo I2P koristi I2P čvor i proxy. Oboje skenira na clearnetu i emitira putem I2P-a.</string>
     <string name="section_clearnet_node">Clearnet čvor</string>
-    <string name="clearnet_node_url_help">Upišite cijeli URL, uključujući http:// ili https://.</string>
+    <string name="clearnet_node_url_help">Upišite cijeli URL, uključujući http:// ili https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Koristi ovaj čvor</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P čvor (host:port)</string>

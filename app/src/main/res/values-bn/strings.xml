@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">বিদ্যমান ওয়ালেট প্রতিস্থাপন করবেন?</string>
     <string name="replace_wallet_message">এটি এই ডিভাইসে থাকা বিদ্যমান ওয়ালেট প্রতিস্থাপন করবে।\n\nআপনি চালিয়ে গেলে, বর্তমানে সংরক্ষিত নিমোনিক এবং স্ক্যান স্টেট মুছে যাবে। এগিয়ে যাওয়ার আগে নিশ্চিত করুন যে আপনার নিমোনিকের ব্যাকআপ আছে।</string>
     <string name="section_network_node">নেটওয়ার্ক ও নোড</string>
-    <string name="node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।\nপাবলিক: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">নোড সংরক্ষণ করুন</string>
     <string name="section_info">তথ্য</string>
     <string name="walletcore_version_label">WalletCore সংস্করণ:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">উভয়টি (ক্লিয়ারনেটে স্ক্যান, I2P-তে ব্রডকাস্ট)</string>
     <string name="network_policy_help">শুধু ক্লিয়ারনেট একটি ক্লিয়ারনেট নোড ব্যবহার করে। শুধু I2P একটি I2P নোড এবং প্রক্সি ব্যবহার করে। উভয়টি ক্লিয়ারনেটে স্ক্যান করে এবং I2P-এর মাধ্যমে ব্রডকাস্ট করে।</string>
     <string name="section_clearnet_node">ক্লিয়ারনেট নোড</string>
-    <string name="clearnet_node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।</string>
+    <string name="clearnet_node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">এই নোড ব্যবহার করুন</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P নোড (host:port)</string>

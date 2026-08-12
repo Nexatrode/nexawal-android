@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Mevcut cüzdan değiştirilsin mi?</string>
     <string name="replace_wallet_message">Bu, bu cihazdaki mevcut cüzdanın yerini alacaktır.\n\nDevam edersen, şu anda kayıtlı olan anımsatıcı ve tarama durumu silinecektir. Devam etmeden önce anımsatıcının bir yedeğini aldığından emin ol.</string>
     <string name="section_network_node">Ağ ve Düğüm</string>
-    <string name="node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.\nHerkese açık: https://rpc.nexatrode.com\nYerel ağ (LAN): http://192.168.4.137:18089</string>
+    <string name="node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Düğümü kaydet</string>
     <string name="section_info">Bilgi</string>
     <string name="walletcore_version_label">WalletCore Sürümü:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">İkisi de (clearnet ile tara, I2P ile yayınla)</string>
     <string name="network_policy_help">Sadece clearnet, bir clearnet düğümü kullanır. Sadece I2P, bir I2P düğümü ve proxy kullanır. İkisi de clearnet üzerinden tarar ve I2P üzerinden yayınlar.</string>
     <string name="section_clearnet_node">Clearnet düğümü</string>
-    <string name="clearnet_node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.</string>
+    <string name="clearnet_node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Bu düğümü kullan</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P düğümü (host:port)</string>

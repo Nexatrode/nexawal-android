@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Zamenjaš obstoječo denarnico?</string>
     <string name="replace_wallet_message">S tem boš zamenjal obstoječo denarnico na tej napravi.\n\nČe nadaljuješ, bosta trenutno shranjena mnemonika in stanje preiskovanja odstranjena. Prepričaj se, da imaš varnostno kopijo mnemonike, preden nadaljuješ.</string>
     <string name="section_network_node">Omrežje in vozlišče</string>
-    <string name="node_url_help">Vnesi celoten URL, vključno s http:// ali https://.\nJavno: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Vnesi celoten URL, vključno s http:// ali https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Shrani vozlišče</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">Različica WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Oboje (preiskovanje clearnet, oddajanje I2P)</string>
     <string name="network_policy_help">Samo Clearnet uporablja clearnet vozlišče. Samo I2P uporablja I2P vozlišče in proxy. Oboje preiskuje na clearnetu in oddaja prek I2P.</string>
     <string name="section_clearnet_node">Vozlišče Clearnet</string>
-    <string name="clearnet_node_url_help">Vnesi celoten URL, vključno s http:// ali https://.</string>
+    <string name="clearnet_node_url_help">Vnesi celoten URL, vključno s http:// ali https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Uporabi to vozlišče</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Vozlišče I2P (gostitelj:vrata)</string>

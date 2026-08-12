@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Бар болгон капчыкты алмаштырасызбы?</string>
     <string name="replace_wallet_message">Бул бул түзмөктөгү бар болгон капчыкты алмаштырат.\n\nЭгер улантсаңыз, учурда сакталган калыбына келтирүү сөздөрү жана скандоо абалы алынып салынат. Улантуудан мурун калыбына келтирүү сөздөрүңүздүн камдык көчүрмөсү бар экенине ынаныңыз.</string>
     <string name="section_network_node">Тармак &amp; Түйүн</string>
-    <string name="node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.\nЖалпыга ачык: https://rpc.nexatrode.com\nЖергиликтүү тармак (LAN): http://192.168.4.137:18089</string>
+    <string name="node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Түйүндү сактоо</string>
     <string name="section_info">Маалымат</string>
     <string name="walletcore_version_label">WalletCore версиясы:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Экөө тең (clearnet аркылуу скандоо, I2P аркылуу таратуу)</string>
     <string name="network_policy_help">«Жалгыз Clearnet» clearnet түйүнүн колдонот. «Жалгыз I2P» I2P түйүнү менен проксисин колдонот. «Экөө тең» clearnet аркылуу скандап, I2P аркылуу таратат.</string>
     <string name="section_clearnet_node">Clearnet түйүнү</string>
-    <string name="clearnet_node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.</string>
+    <string name="clearnet_node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Бул түйүндү колдонуу</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P түйүнү (хост:порт)</string>

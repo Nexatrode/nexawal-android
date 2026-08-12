@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Vols substituir la cartera existent?</string>
     <string name="replace_wallet_message">Això substituirà la cartera existent en aquest dispositiu.\n\nSi continues, el mnemònic desat actualment i l\'estat d\'escaneig s\'eliminaran. Assegura\'t que tens una còpia de seguretat del teu mnemònic abans de continuar.</string>
     <string name="section_network_node">Xarxa i node</string>
-    <string name="node_url_help">Escriu l\'URL completa, inclòs http:// o https://.\nPública: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Escriu l\'URL completa, inclòs http:// o https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Desa el node</string>
     <string name="section_info">Informació</string>
     <string name="walletcore_version_label">Versió de WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Ambdós (escaneja Clearnet, emet per I2P)</string>
     <string name="network_policy_help">Només Clearnet utilitza un node de Clearnet. Només I2P utilitza un node i un servidor intermediari d\'I2P. Ambdós escaneja per Clearnet i emet per I2P.</string>
     <string name="section_clearnet_node">Node Clearnet</string>
-    <string name="clearnet_node_url_help">Escriu l\'URL completa, inclòs http:// o https://.</string>
+    <string name="clearnet_node_url_help">Escriu l\'URL completa, inclòs http:// o https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Utilitza aquest node</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (amfitrió:port)</string>

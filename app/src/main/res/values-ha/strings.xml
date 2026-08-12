@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Maye da walat da ya kasance?</string>
     <string name="replace_wallet_message">Wannan zai maye da walat da ke akwai a wannan na\'urar.\n\nIdan ka ci gaba, kalmomin dawowa da halin bincike da ake ajiye a yanzu za su goge. Tabbata kana da madadin kalmomin dawowarka kafin ci gaba.</string>
     <string name="section_network_node">Hanyar Sadarwa &amp; Node</string>
-    <string name="node_url_help">Shigar da cikakken URL, tare da http:// ko https://.\nNa Jama\'a: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Shigar da cikakken URL, tare da http:// ko https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Ajiye node</string>
     <string name="section_info">Bayani</string>
     <string name="walletcore_version_label">Sigar WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Duka biyu (bincika ta clearnet, watsa ta I2P)</string>
     <string name="network_policy_help">Clearnet kawai yana amfani da node na clearnet. I2P kawai yana amfani da node da proxy na I2P. Duka biyu suna bincike ta clearnet suna watsawa ta I2P.</string>
     <string name="section_clearnet_node">Node na Clearnet</string>
-    <string name="clearnet_node_url_help">Shigar da cikakken URL, tare da http:// ko https://.</string>
+    <string name="clearnet_node_url_help">Shigar da cikakken URL, tare da http:// ko https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Yi amfani da wannan node</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node na I2P (host:port)</string>

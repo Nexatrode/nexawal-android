@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Rọ́pò àpamọ́wọ́ tí ó ti wà?</string>
     <string name="replace_wallet_message">Èyí yóò rọ́pò àpamọ́wọ́ tí ó ti wà lórí ẹ̀rọ yìí.\n\nBí o bá tẹ̀síwájú, ọ̀rọ̀ ìpadàbọ̀ tí a fi pamọ́ báyìí àti ipò yíyẹ̀wò yóò di yíyọ. Rí i dájú pé o ti fi ọ̀rọ̀ ìpadàbọ̀ rẹ pamọ́sí ṣáájú kí o tẹ̀síwájú.</string>
     <string name="section_network_node">Nẹ́tíwọ́ọ̀kì &amp; Node</string>
-    <string name="node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.\nFún Gbogbo Ènìyàn: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Fi node pamọ́</string>
     <string name="section_info">Ìròyìn</string>
     <string name="walletcore_version_label">Ẹ̀dà WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Àwọn méjèèjì (yẹ̀wò clearnet, tan I2P jáde)</string>
     <string name="network_policy_help">Clearnet nìkan máa ń lo node clearnet kan. I2P nìkan máa ń lo node I2P àti proxy kan. Àwọn méjèèjì máa ń yẹ̀wò lórí clearnet, á sì tan jáde lórí I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
-    <string name="clearnet_node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.</string>
+    <string name="clearnet_node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Lo node yìí</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (host:port)</string>

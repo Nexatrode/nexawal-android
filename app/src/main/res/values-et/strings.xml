@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Asendada olemasolev rahakott?</string>
     <string name="replace_wallet_message">Sellega asendatakse selles seadmes olev rahakott.\n\nKui jätkate, eemaldatakse praegu salvestatud mnemooniline fraas ja skannimise olek. Veenduge, et olete oma mnemoonilise fraasi varundanud enne jätkamist.</string>
     <string name="section_network_node">Võrk ja sõlm</string>
-    <string name="node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nAvalik: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salvesta sõlm</string>
     <string name="section_info">Teave</string>
     <string name="walletcore_version_label">WalletCore versioon:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Mõlemad (skanni Clearnetis, saada I2P kaudu)</string>
     <string name="network_policy_help">Ainult Clearnet kasutab Clearnet-sõlme. Ainult I2P kasutab I2P sõlme ja puhverserverit. Mõlemad skannib Clearnetis ja saadab I2P kaudu.</string>
     <string name="section_clearnet_node">Clearnet sõlm</string>
-    <string name="clearnet_node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.</string>
+    <string name="clearnet_node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Kasuta seda sõlme</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P sõlm (host:port)</string>

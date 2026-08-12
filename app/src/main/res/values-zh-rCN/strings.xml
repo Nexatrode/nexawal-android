@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">替换现有钱包?</string>
     <string name="replace_wallet_message">这将替换此设备上的现有钱包。\n\n如果继续,当前存储的助记词和扫描状态将被删除。请确保在继续之前已备份好您的助记词。</string>
     <string name="section_network_node">网络与节点</string>
-    <string name="node_url_help">请输入完整网址,包括 http:// 或 https://。\n公共节点:https://rpc.nexatrode.com\n局域网:http://192.168.4.137:18089</string>
+    <string name="node_url_help">请输入完整网址,包括 http:// 或 https://。
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">保存节点</string>
     <string name="section_info">信息</string>
     <string name="walletcore_version_label">WalletCore 版本:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">两者(Clearnet 扫描,I2P 广播)</string>
     <string name="network_policy_help">“仅 Clearnet”使用 Clearnet 节点。“仅 I2P”使用 I2P 节点和代理。“两者”会通过 Clearnet 扫描,并经 I2P 广播。</string>
     <string name="section_clearnet_node">Clearnet 节点</string>
-    <string name="clearnet_node_url_help">请输入完整网址,包括 http:// 或 https://。</string>
+    <string name="clearnet_node_url_help">请输入完整网址,包括 http:// 或 https://。
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">使用此节点</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P 节点(主机:端口)</string>

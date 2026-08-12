@@ -34,28 +34,11 @@ object SendSafety {
     }
 
     /**
-     * Cuprate sibling Monero RPC fallback URL, or null if not applicable.
-     *
-     * - LAN/dev: `*:18092` → same host on `18081`
-     * - Public HTTPS: `rpc.nexatrode.com` / `cuprate.nexatrode.com` → `https://monero.nexatrode.com`
+     * Historical sibling-daemon fee fallback. Always null: the default public node is a
+     * single endpoint (`https://rpc.nexatrode.com`) with no alternate host/port remap.
      */
-    fun siblingMonerodUrlIfNeeded(endpoint: String): String? {
-        val uri = runCatching { java.net.URI(endpoint) }.getOrNull() ?: return null
-        val host = uri.host?.lowercase() ?: return null
-        if (host == "rpc.nexatrode.com" || host == "cuprate.nexatrode.com") {
-            return "https://monero.nexatrode.com"
-        }
-        if (uri.port != 18092) return null
-        return java.net.URI(
-            uri.scheme,
-            uri.userInfo,
-            uri.host,
-            18081,
-            uri.path,
-            uri.query,
-            uri.fragment,
-        ).toString()
-    }
+    @Suppress("UNUSED_PARAMETER")
+    fun siblingMonerodUrlIfNeeded(endpoint: String): String? = null
 
     /**
      * Only retry on fee_rate failures that clearly happened before spend/broadcast signals.

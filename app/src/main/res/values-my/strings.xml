@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">ရှိပြီးသား ပိုက်ဆံအိတ်ကို အစားထိုးမလား?</string>
     <string name="replace_wallet_message">ဤသည်က ဤစက်ပစ္စည်းရှိ ရှိပြီးသား ပိုက်ဆံအိတ်ကို အစားထိုးမည်။\n\nဆက်လက်လုပ်ဆောင်ပါက၊ လက်ရှိ သိမ်းဆည်းထားသော mnemonic နှင့် စကင်ဖတ်မှု အခြေအနေကို ဖျက်ပစ်မည်။ ဆက်လက်လုပ်ဆောင်ခြင်းမပြုမီ mnemonic ကို backup ယူထားကြောင်း သေချာပါစေ။</string>
     <string name="section_network_node">ကွန်ရက် &amp; Node</string>
-    <string name="node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။\nအများပြည်သူအတွက်: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node ကို သိမ်းမည်</string>
     <string name="section_info">အချက်အလက်</string>
     <string name="walletcore_version_label">WalletCore ဗားရှင်း:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">နှစ်မျိုးစလုံး (clearnet ဖြင့် စကင်ဖတ်၊ I2P ဖြင့် ပျံ့နှံ့စေမည်)</string>
     <string name="network_policy_help">Clearnet သာ သည် clearnet node ကို အသုံးပြုသည်။ I2P သာ သည် I2P node နှင့် proxy ကို အသုံးပြုသည်။ နှစ်မျိုးစလုံး သည် clearnet ဖြင့် စကင်ဖတ်ပြီး I2P ဖြင့် ပျံ့နှံ့စေသည်။</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။</string>
+    <string name="clearnet_node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">ဤ node ကို အသုံးပြုမည်</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>

@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">کیف پول موجود جایگزین شود؟</string>
     <string name="replace_wallet_message">این کار کیف پول موجود روی این دستگاه را جایگزین می‌کند.\n\nاگر ادامه دهید، عبارت بازیابی و وضعیت اسکن ذخیره‌شده کنونی حذف خواهند شد. پیش از ادامه، مطمئن شوید که از عبارت بازیابی خود پشتیبان گرفته‌اید.</string>
     <string name="section_network_node">شبکه و گره</string>
-    <string name="node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nعمومی: https://rpc.nexatrode.com\nشبکه محلی: http://192.168.4.137:18089</string>
+    <string name="node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">ذخیره گره</string>
     <string name="section_info">اطلاعات</string>
     <string name="walletcore_version_label">نسخه WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">هر دو (اسکن در Clearnet، ارسال از طریق I2P)</string>
     <string name="network_policy_help">فقط Clearnet از یک گره Clearnet استفاده می‌کند. فقط I2P از یک گره و پراکسی I2P استفاده می‌کند. هر دو، اسکن را روی Clearnet انجام می‌دهد و از طریق I2P ارسال می‌کند.</string>
     <string name="section_clearnet_node">گره Clearnet</string>
-    <string name="clearnet_node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.</string>
+    <string name="clearnet_node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">استفاده از این گره</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">گره I2P (host:port)</string>

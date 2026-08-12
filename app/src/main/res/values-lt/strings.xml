@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Pakeisti esamą piniginę?</string>
     <string name="replace_wallet_message">Tai pakeis esamą piniginę šiame įrenginyje.\n\nJei tęsite, dabartinė saugoma mnemoninė frazė ir skenavimo būsena bus pašalinti. Prieš tęsdami įsitikinkite, kad turite atsarginę mnemoninės frazės kopiją.</string>
     <string name="section_network_node">Tinklas ir tinklo taškas</string>
-    <string name="node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.\nViešas: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Išsaugoti tinklo tašką</string>
     <string name="section_info">Informacija</string>
     <string name="walletcore_version_label">WalletCore versija:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Abu (skenuoti Clearnet, transliuoti I2P)</string>
     <string name="network_policy_help">Tik Clearnet naudoja clearnet tinklo tašką. Tik I2P naudoja I2P tinklo tašką ir tarpinį serverį. Abu skenuoja per Clearnet ir transliuoja per I2P.</string>
     <string name="section_clearnet_node">Clearnet tinklo taškas</string>
-    <string name="clearnet_node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.</string>
+    <string name="clearnet_node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Naudoti šį tinklo tašką</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P tinklo taškas (host:port)</string>

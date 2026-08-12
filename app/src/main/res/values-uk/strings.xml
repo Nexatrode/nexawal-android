@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Замінити наявний гаманець?</string>
     <string name="replace_wallet_message">Це замінить наявний гаманець на цьому пристрої.\n\nЯкщо ви продовжите, поточну збережену мнемонічну фразу та стан сканування буде видалено. Перш ніж продовжити, переконайтеся, що маєте резервну копію мнемонічної фрази.</string>
     <string name="section_network_node">Мережа і вузол</string>
-    <string name="node_url_help">Введіть повну URL-адресу, включно з http:// або https://.\nПублічний: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Введіть повну URL-адресу, включно з http:// або https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Зберегти вузол</string>
     <string name="section_info">Інформація</string>
     <string name="walletcore_version_label">Версія WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Обидва (сканування в clearnet, трансляція через I2P)</string>
     <string name="network_policy_help">Лише clearnet використовує вузол clearnet. Лише I2P використовує вузол і проксі I2P. Обидва: сканування в clearnet, трансляція через I2P.</string>
     <string name="section_clearnet_node">Вузол clearnet</string>
-    <string name="clearnet_node_url_help">Введіть повну URL-адресу, включно з http:// або https://.</string>
+    <string name="clearnet_node_url_help">Введіть повну URL-адресу, включно з http:// або https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Використати цей вузол</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Вузол I2P (хост:порт)</string>

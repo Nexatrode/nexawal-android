@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Të zëvendësohet portofoli ekzistues?</string>
     <string name="replace_wallet_message">Kjo do të zëvendësojë portofolin ekzistues në këtë pajisje.\n\nNëse vazhdon, mnemoniku i ruajtur aktualisht dhe gjendja e skanimit do të hiqen. Sigurohu që e ke bërë kopje rezervë të mnemonikut para se të vazhdosh.</string>
     <string name="section_network_node">Rrjeti &amp; Nyja</string>
-    <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nPublik: https://rpc.nexatrode.com\nLAN: http://192.168.4.137:18089</string>
+    <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Ruaj nyjen</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">Versioni i WalletCore:</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Të dyja (skano clearnet, transmeto I2P)</string>
     <string name="network_policy_help">Vetëm Clearnet përdor një nyje clearnet. Vetëm I2P përdor një nyje dhe proxy I2P. Të dyja skanon në clearnet dhe transmeton përmes I2P.</string>
     <string name="section_clearnet_node">Nyja Clearnet</string>
-    <string name="clearnet_node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.</string>
+    <string name="clearnet_node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Përdor këtë nyje</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nyja I2P (host:port)</string>

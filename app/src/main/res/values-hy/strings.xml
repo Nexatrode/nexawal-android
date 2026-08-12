@@ -84,7 +84,8 @@
     <string name="replace_wallet_title">Փոխարինել առկա դրամապանակը?</string>
     <string name="replace_wallet_message">Սա կփոխարինի առկա դրամապանակը այս սարքում։\n\nԵթե շարունակեք, ընթացիկ պահված վերականգնման բառերը և սկանավորման վիճակը կհեռացվեն։ Համոզվեք, որ ունեք ձեր վերականգնման բառերի պահուստային պատճենը, նախքան շարունակելը։</string>
     <string name="section_network_node">Ցանց և հանգույց</string>
-    <string name="node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։\nՀրապարակային՝ https://rpc.nexatrode.com\nՏեղական ցանց (LAN)՝ http://192.168.4.137:18089</string>
+    <string name="node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։
+Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Պահել հանգույցը</string>
     <string name="section_info">Տեղեկություններ</string>
     <string name="walletcore_version_label">WalletCore տարբերակ՝</string>
@@ -116,7 +117,8 @@
     <string name="network_policy_hybrid">Երկուսը (սկանավորում clearnet-ով, հեռարձակում I2P-ով)</string>
     <string name="network_policy_help">«Միայն Clearnet»-ը օգտագործում է clearnet հանգույց։ «Միայն I2P»-ը օգտագործում է I2P հանգույց և պրոքսի։ «Երկուսը»՝ սկանավորում է clearnet-ով և հեռարձակում I2P-ով։</string>
     <string name="section_clearnet_node">Clearnet հանգույց</string>
-    <string name="clearnet_node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։</string>
+    <string name="clearnet_node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։
+Default: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Օգտագործել այս հանգույցը</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P հանգույց (հանգույց:պորտ)</string>
