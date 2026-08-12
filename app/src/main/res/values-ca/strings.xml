@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Obtenint els blocs inicials des de %1$s</string>
     <string name="blocks_remaining_fmt">Queden %1$s blocs</string>
     <string name="blocks_per_sec_fmt">%1$.1f blocs/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s conf.</string>
     <string name="fee_value_fmt">Comissió %1$s</string>
     <string name="clear_scan_cache_failed_fmt">No s\'ha pogut netejar la memòria cau d\'escaneig: %1$s</string>

@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Esialgsete plokkide laadimine alates %1$s</string>
     <string name="blocks_remaining_fmt">%1$s plokki jäänud</string>
     <string name="blocks_per_sec_fmt">%1$.1f pl/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s kinnit.</string>
     <string name="fee_value_fmt">Tasu %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Skannimise vahemälu tühjendamine ebaõnnestus: %1$s</string>

@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Ag fáil na bloic tosaigh ó %1$s</string>
     <string name="blocks_remaining_fmt">%1$s bloc fanta</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s conf</string>
     <string name="fee_value_fmt">Táille %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Theip ar ghlanadh na taisce scanta: %1$s</string>

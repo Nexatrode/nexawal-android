@@ -619,15 +619,21 @@ private fun WalletScreen(
     // Session-average blocks/sec for this refresh:
     // (lastScanned - baseline at refresh start) / wall time since refresh start.
     // Avoids EMA/burst spikes when a large get_blocks batch lands at once.
+    // Also track a trailing ~30s window so mid-sync stalls are visible as "recent".
     var sessionRateStartMs by remember { mutableStateOf<Long?>(null) }
     var sessionRateStartScanned by remember { mutableStateOf(0L) }
     var blocksPerSecSession by remember { mutableStateOf(0.0) }
+    var recentRateSamples by remember { mutableStateOf(listOf<Pair<Long, Long>>()) }
+    var blocksPerSecRecent by remember { mutableStateOf(0.0) }
+    val recentRateWindowMs = 30_000L
 
     LaunchedEffect(state.refreshInProgress, state.refreshStartedAtMs) {
         if (state.refreshInProgress) {
             sessionRateStartMs = state.refreshStartedAtMs ?: System.currentTimeMillis()
             sessionRateStartScanned = lastScanned
             blocksPerSecSession = 0.0
+            recentRateSamples = emptyList()
+            blocksPerSecRecent = 0.0
         }
         // Keep final session average after refresh completes until the next refresh starts.
     }
@@ -640,6 +646,21 @@ private fun WalletScreen(
         val scanned = (lastScanned - sessionRateStartScanned).coerceAtLeast(0L)
         if (scanned > 0L && elapsedMs >= 500L) {
             blocksPerSecSession = (scanned.toDouble() * 1000.0) / elapsedMs.toDouble()
+        }
+
+        if (state.refreshInProgress && scanned > 0L) {
+            val pruned = (recentRateSamples + (now to lastScanned))
+                .filter { now - it.first <= recentRateWindowMs }
+            recentRateSamples = pruned
+            if (pruned.size >= 2) {
+                val first = pruned.first()
+                val last = pruned.last()
+                val dtMs = (last.first - first.first).coerceAtLeast(1L)
+                val db = (last.second - first.second).coerceAtLeast(0L)
+                if (db > 0L && dtMs >= 500L) {
+                    blocksPerSecRecent = (db.toDouble() * 1000.0) / dtMs.toDouble()
+                }
+            }
         }
     }
 
@@ -898,7 +919,21 @@ private fun WalletScreen(
                     KeyValueRow(if (palette.classic) remainingLabel.uppercase() else remainingLabel, stringResource(R.string.blocks_value_fmt, formatGrouped(remainingBlocks)), labelColor = iosSecondary, valueColor = iosPrimaryText)
                 }
                 if (blocksPerSecSession > 0.0) {
-                    KeyValueRow(if (palette.classic) throughputLabel.uppercase() else throughputLabel, stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                    val throughputValue = if (blocksPerSecRecent > 0.0) {
+                        stringResource(
+                            R.string.blocks_per_sec_avg_recent_fmt,
+                            blocksPerSecSession,
+                            blocksPerSecRecent,
+                        )
+                    } else {
+                        stringResource(R.string.blocks_per_sec_avg_fmt, blocksPerSecSession)
+                    }
+                    KeyValueRow(
+                        if (palette.classic) throughputLabel.uppercase() else throughputLabel,
+                        throughputValue,
+                        labelColor = iosSecondary,
+                        valueColor = iosPrimaryText,
+                    )
                 }
 
             }

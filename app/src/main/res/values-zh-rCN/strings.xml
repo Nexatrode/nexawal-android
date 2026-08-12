@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">正在从 %1$s 获取初始区块</string>
     <string name="blocks_remaining_fmt">剩余 %1$s 个区块</string>
     <string name="blocks_per_sec_fmt">%1$.1f 区块/秒</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s 次确认</string>
     <string name="fee_value_fmt">手续费 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">清除扫描缓存失败:%1$s</string>

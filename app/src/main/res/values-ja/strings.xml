@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">%1$s から初期ブロックを取得中</string>
     <string name="blocks_remaining_fmt">残り%1$sブロック</string>
     <string name="blocks_per_sec_fmt">%1$.1f ブロック/秒</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">確認%1$s回</string>
     <string name="fee_value_fmt">手数料 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">スキャンキャッシュの消去に失敗しました:%1$s</string>

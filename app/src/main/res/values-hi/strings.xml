@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">%1$s से प्रारंभिक ब्लॉक प्राप्त किए जा रहे हैं</string>
     <string name="blocks_remaining_fmt">%1$s ब्लॉक शेष</string>
     <string name="blocks_per_sec_fmt">%1$.1f ब्लॉक/सेकंड</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s कन्फर्मेशन</string>
     <string name="fee_value_fmt">फ़ीस %1$s</string>
     <string name="clear_scan_cache_failed_fmt">स्कैन कैश साफ़ करना विफल: %1$s</string>

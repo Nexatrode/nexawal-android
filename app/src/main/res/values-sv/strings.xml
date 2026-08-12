@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Hämtar initiala block från %1$s</string>
     <string name="blocks_remaining_fmt">%1$s block kvar</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s bekr.</string>
     <string name="fee_value_fmt">Avgift %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Rensning av skanningscache misslyckades: %1$s</string>

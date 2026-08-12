@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Hasierako blokeak eskuratzen: %1$s</string>
     <string name="blocks_remaining_fmt">%1$s bloke geratzen dira</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s berrespen</string>
     <string name="fee_value_fmt">Komisioa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Eskaneo-cachea garbitzeak huts egin du: %1$s</string>

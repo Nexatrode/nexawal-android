@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">در حال دریافت بلوک‌های اولیه از %1$s</string>
     <string name="blocks_remaining_fmt">%1$s بلوک باقی‌مانده</string>
     <string name="blocks_per_sec_fmt">%1$.1f بلوک/ثانیه</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s تأیید</string>
     <string name="fee_value_fmt">کارمزد %1$s</string>
     <string name="clear_scan_cache_failed_fmt">پاک کردن حافظه موقت اسکن ناموفق بود: %1$s</string>

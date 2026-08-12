@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Získavanie počiatočných blokov od %1$s</string>
     <string name="blocks_remaining_fmt">Zostáva %1$s blokov</string>
     <string name="blocks_per_sec_fmt">%1$.1f bl./s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s potvrd.</string>
     <string name="fee_value_fmt">Poplatok %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Vymazanie vyrovnávacej pamäte skenovania sa nepodarilo: %1$s</string>

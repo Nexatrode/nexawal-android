@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">Duke marrë blloqet fillestare nga %1$s</string>
     <string name="blocks_remaining_fmt">%1$s blloqe të mbetura</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">%1$s konf.</string>
     <string name="fee_value_fmt">Tarifa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Pastrimi i cache-it të skanimit dështoi: %1$s</string>

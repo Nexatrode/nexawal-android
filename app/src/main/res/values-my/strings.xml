@@ -321,6 +321,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="fetching_initial_fmt">%1$s မှ အစပိုင်း block များကို ရယူနေသည်</string>
     <string name="blocks_remaining_fmt">Block %1$s ခု ကျန်ရှိသည်</string>
     <string name="blocks_per_sec_fmt">%1$.1f blk/s</string>
+    <string name="blocks_per_sec_avg_fmt">%1$.1f avg blk/s</string>
+    <string name="blocks_per_sec_avg_recent_fmt">%1$.1f avg · %2$.1f recent blk/s</string>
     <string name="confirmations_fmt">အတည်ပြုချက် %1$s</string>
     <string name="fee_value_fmt">အခကြေးငွေ %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Scan cache ရှင်းလင်းမှု မအောင်မြင်ပါ: %1$s</string>
