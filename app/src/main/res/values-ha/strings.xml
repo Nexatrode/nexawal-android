@@ -379,4 +379,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_on">A Kunne</string>
     <string name="a11y_off">A Kashe</string>
     <string name="a11y_swap_amount_unit">Canza tsakanin XMR da %1$s</string>
+
+    <string name="sync_notification_channel">Wallet sync</string>
+    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
+    <string name="sync_notification_title">Syncing wallet</string>
+    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
+    <string name="sync_notification_stop">Stop</string>
 </resources>
