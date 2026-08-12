@@ -7,8 +7,9 @@
 - Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) (`main`)
 - Monero library work: [monero-oxide](https://github.com/cacaosteve/monero-oxide) (fork pin used by the core)
 - Website: [nexatrode.com](https://nexatrode.com)
-- Reproducible builds / Wallet Scrutiny notes: [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md)
-
+- Reproducible builds / Wallet Scrutiny: [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md)
+- F-Droid packaging: [docs/FDROID.md](docs/FDROID.md)
+- Changelog: [CHANGELOG.md](CHANGELOG.md)
 ## Setup
 
 ```bash
@@ -39,7 +40,15 @@ export ANDROID_NDK_HOME=/path/to/ndk   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease
 ```
 
-See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md).
+See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md](docs/FDROID.md).
+
+## F-Droid / Wallet Scrutiny
+
+- **FOSS:** MIT app + MIT native core submodule; no Play services / ML Kit.
+- **From-source native:** set `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` (F-Droid / Scrutiny path).
+- **Store copy:** [fastlane/metadata/android/](fastlane/metadata/android/)
+- **fdroiddata draft:** [docs/fdroid/com.nexatrode.nexawal.yml](docs/fdroid/com.nexatrode.nexawal.yml)
+- **Release tags:** `v<versionName>` (current `versionName` is `1.0.0`).
 
 ## Screenshots
 

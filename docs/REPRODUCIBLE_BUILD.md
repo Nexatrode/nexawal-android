@@ -28,7 +28,7 @@ A useful verification today:
 | --- | --- |
 | `versionName` | `app/build.gradle.kts` → `defaultConfig.versionName` |
 | `versionCode` | `app/build.gradle.kts` → `defaultConfig.versionCode` |
-| Release tag | Prefer `v<versionName>` (e.g. `v1.0.0` for `1.0`) on the commit uploaded to Play |
+| Release tag | Prefer `v<versionName>` (e.g. `v1.0.0`) on the commit uploaded to Play / F-Droid |
 | Native core | Git submodule `MoneroWalletCoreFFI` at a **specific commit** (recorded in the parent repo) |
 
 Before tagging a Play release:
@@ -203,18 +203,28 @@ Call these out so Wallet Scrutiny is not surprised:
 5. **Release minify** — currently `isMinifyEnabled = false` for release; keep that
    stable or document changes.
 
-## Provider checklist for each Play upload
+## Provider checklist for each Play / Scrutiny upload
 
-- [ ] `versionName` / `versionCode` bumped as needed  
+- [ ] `versionName` / `versionCode` bumped as needed (`1.0.0` / `1` for first cut)  
+- [ ] [CHANGELOG.md](../CHANGELOG.md) + Fastlane `changelogs/<versionCode>.txt` updated  
 - [ ] Clean git tree; submodule commit intentional  
-- [ ] Tag `v…` on the uploaded commit  
+- [ ] Tag `v…` on the uploaded commit (`git tag -a v1.0.0 -m "…"` && `git push origin v1.0.0`)  
 - [ ] GitHub Release lists: commit SHA, submodule SHA, NDK version, AGP/Gradle  
+- [ ] Attach or link native CI `native-android-SHA256SUMS.txt` (from-source rebuild)  
+- [ ] Build path used for Scrutiny notes: `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`  
 - [ ] nexatrode.com / Play listing point at https://github.com/Nexatrode/nexawal-android  
 - [ ] Privacy: https://nexatrode.com/privacy/nexawal/  
 - [ ] Terms: https://nexatrode.com/terms/
 
+## F-Droid
+
+See [FDROID.md](FDROID.md) and the draft fdroiddata recipe
+[`fdroid/com.nexatrode.nexawal.yml`](fdroid/com.nexatrode.nexawal.yml).
+
 ## Related
 
 - App README setup: [../README.md](../README.md)
+- Changelog: [../CHANGELOG.md](../CHANGELOG.md)
+- Fastlane store copy: [../fastlane/metadata/android/](../fastlane/metadata/android/)
 - iOS sibling: https://github.com/Nexatrode/nexawal
 - Shared core: submodule `MoneroWalletCoreFFI` (see `.gitmodules`)

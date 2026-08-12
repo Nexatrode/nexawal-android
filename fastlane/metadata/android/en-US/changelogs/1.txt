@@ -1,0 +1,3 @@
+First public release.
+
+MIT-licensed Monero wallet with from-source native rebuild support for F-Droid and Wallet Scrutiny. Default daemon https://rpc.nexatrode.com (user-replaceable). No Google Play services.

@@ -1,0 +1,17 @@
+NexaWal is a free and open-source (MIT) Monero wallet for Android.
+
+• Create or import a single wallet; seed stays on your device
+• Sync against a Monero daemon you choose (default https://rpc.nexatrode.com)
+• Clearnet, I2P, or hybrid node routing
+• Receive with QR / payment URI and subaddresses
+• Send with fee preview
+• Optional device biometrics / screen lock for unlock and send
+• Optional fiat estimates (off by default)
+
+No Google Play services, no ML Kit, no third-party analytics.
+
+Source: https://github.com/Nexatrode/nexawal-android
+Privacy: https://nexatrode.com/privacy/nexawal/
+Reproducible builds: see docs/REPRODUCIBLE_BUILD.md in the repository.
+
+Unaudited software. You are responsible for backups and funds. A remote node can see your IP and sync queries.

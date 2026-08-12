@@ -1,0 +1,66 @@
+# Draft metadata for https://gitlab.com/fdroid/fdroiddata
+# Copy/adapt into metadata/com.nexatrode.nexawal.yml in an fdroiddata MR.
+# F-Droid maintainers will likely adjust sudo:/NDK/Rust paths for the buildserver.
+#
+# App repo docs: docs/FDROID.md
+
+Categories:
+  - Money
+License: MIT
+AuthorName: Nexatrode
+AuthorWebSite: https://nexatrode.com
+WebSite: https://nexatrode.com
+SourceCode: https://github.com/Nexatrode/nexawal-android
+IssueTracker: https://github.com/Nexatrode/nexawal-android/issues
+Changelog: https://github.com/Nexatrode/nexawal-android/blob/HEAD/CHANGELOG.md
+Donate: https://nexatrode.com
+PrivacyPolicy: https://nexatrode.com/privacy/nexawal/
+
+AutoName: NexaWal
+Name: NexaWal
+
+RepoType: git
+Repo: https://github.com/Nexatrode/nexawal-android.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    submodules: true
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y build-essential protobuf-compiler
+    # Install Rust + Android NDK on the buildserver as required by current F-Droid
+    # practice (paths vary). Then:
+    init: git submodule update --init --recursive
+    gradle:
+      - yes
+    rm:
+      - app/release
+    scandelete:
+      - MoneroWalletCoreFFI/Artifacts
+    build:
+      - export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
+      - export CARGO_FEATURES=compile-time-generators
+      - export ABIS=arm64-v8a,x86_64
+      - export ANDROID_API=26
+      - export ANDROID_NDK_HOME=$$NDK
+      - ./gradlew :app:assembleRelease --no-daemon
+    ndk: 27.1.12297006
+    output: app/build/outputs/apk/release/app-release-unsigned.apk
+
+# Default remote node + optional fiat HTTP when enabled.
+AntiFeatures:
+  - NonFreeNet
+
+MaintainerNotes: |
+  Native Monero core is rebuilt from the MoneroWalletCoreFFI submodule when
+  NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 (do not package committed .so Artifacts).
+  See docs/FDROID.md and docs/REPRODUCIBLE_BUILD.md in the app repo.
+  minSdk is 34.
+
+ArchivePolicy: 2 versions
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1
