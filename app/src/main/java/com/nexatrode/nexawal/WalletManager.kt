@@ -2164,12 +2164,11 @@ class WalletManager(
     companion object {
         const val DEFAULT_WALLET_ID: String = "main_wallet"
 
-        // Prefer smaller range batches on Android: 500-block get_blocks.bin responses
-        // frequently stall / truncate on phone networks. iOS falls
-        // back to 150 after a stall; start Android there so we don't hang for 3 minutes first.
-        private const val ANDROID_BULK_FETCH_BATCH = 150
-        private const val ANDROID_UPSTREAM_BLOCK_BATCH = 150
-        private const val ANDROID_BULK_STALL_FALLBACK_BATCH = 100
+        // Match iOS: start at 500-block range batches for fewer RPC round-trips.
+        // On stall / truncated fetch, fall back to 150 (same as iOS post-stall).
+        private const val ANDROID_BULK_FETCH_BATCH = 500
+        private const val ANDROID_UPSTREAM_BLOCK_BATCH = 500
+        private const val ANDROID_BULK_STALL_FALLBACK_BATCH = 150
 
         private const val ANDROID_BULK_MODE = "range"
 
