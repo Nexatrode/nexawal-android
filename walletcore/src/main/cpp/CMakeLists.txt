@@ -37,3 +37,9 @@ target_link_libraries(walletcore_jni
     monerowalletcore
     ${log-lib}
 )
+
+# Android 15+ devices may use 16 KB memory pages; align ELF LOAD segments accordingly.
+# https://developer.android.com/guide/practices/page-sizes
+if(ANDROID)
+    target_link_options(walletcore_jni PRIVATE "-Wl,-z,max-page-size=16384")
+endif()
