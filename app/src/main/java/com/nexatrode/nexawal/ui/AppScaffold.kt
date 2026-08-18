@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,18 +30,27 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Sync
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.ui.draw.rotate
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -69,6 +80,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -85,6 +98,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -206,12 +220,14 @@ internal fun rememberNexaPalette(technoTheme: Boolean): NexaPalette {
 @Composable
 private fun ScreenHeading(
     title: String,
-    subtitle: String,
     palette: NexaPalette,
+    subtitle: String? = null,
 ) {
     Text(title, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = palette.primaryText)
-    Spacer(Modifier.height(6.dp))
-    Text(subtitle, color = palette.secondaryText, fontSize = 15.sp, lineHeight = 21.sp)
+    if (!subtitle.isNullOrBlank()) {
+        Spacer(Modifier.height(6.dp))
+        Text(subtitle, color = palette.secondaryText, fontSize = 15.sp, lineHeight = 21.sp)
+    }
 }
 
 @Composable
@@ -281,6 +297,7 @@ internal fun PrimaryActionButton(
     palette: NexaPalette,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    icon: ImageVector? = null,
 ) {
     val neon = palette.classic
     val container = if (neon) palette.cta else Color(0xFFFF6B35)
@@ -298,9 +315,14 @@ internal fun PrimaryActionButton(
             disabledContentColor = if (neon) palette.ctaText.copy(alpha = 0.7f) else Color.White.copy(alpha = 0.7f),
         )
     ) {
+        val textColor = if (enabled) content else (if (neon) palette.secondaryText.copy(alpha = 0.5f) else Color.White.copy(alpha = 0.7f))
+        if (icon != null) {
+            Icon(icon, contentDescription = null, tint = textColor, modifier = Modifier.size(20.dp))
+            Spacer(Modifier.width(8.dp))
+        }
         Text(
             text,
-            color = if (enabled) content else (if (neon) palette.secondaryText.copy(alpha = 0.5f) else Color.White.copy(alpha = 0.7f)),
+            color = textColor,
             fontWeight = FontWeight.SemiBold,
             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
         )
@@ -314,6 +336,7 @@ internal fun SecondaryActionButton(
     palette: NexaPalette,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    icon: ImageVector? = null,
 ) {
     val neon = palette.classic
     val lightNeon = neon && palette.isLight
@@ -331,14 +354,100 @@ internal fun SecondaryActionButton(
             disabledContentColor = if (neon) palette.secondaryText.copy(alpha = 0.65f) else palette.primaryText.copy(alpha = 0.5f),
         )
     ) {
+        val textColor = if (enabled) {
+            if (neon) palette.accent else palette.primaryText
+        } else {
+            if (neon) palette.secondaryText.copy(alpha = 0.65f) else palette.primaryText.copy(alpha = 0.5f)
+        }
+        if (icon != null) {
+            Icon(icon, contentDescription = null, tint = textColor, modifier = Modifier.size(20.dp))
+            Spacer(Modifier.width(8.dp))
+        }
         Text(
             text,
-            color = if (enabled) {
-                if (neon) palette.accent else palette.primaryText
-            } else {
-                if (neon) palette.secondaryText.copy(alpha = 0.65f) else palette.primaryText.copy(alpha = 0.5f)
-            },
+            color = textColor,
             fontWeight = FontWeight.Medium,
+            fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+        )
+    }
+}
+
+@Composable
+internal fun DangerActionButton(
+    text: String,
+    onClick: () -> Unit,
+    palette: NexaPalette,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    icon: ImageVector? = null,
+) {
+    val neon = palette.classic
+    val lightNeon = neon && palette.isLight
+    Button(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = modifier.height(52.dp),
+        shape = RoundedCornerShape(if (neon) 4.dp else 12.dp),
+        border = if (neon) BorderStroke(if (lightNeon) 1.5.dp else 2.dp, palette.danger) else null,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = if (neon) Color.Transparent else palette.danger.copy(alpha = 0.9f),
+            contentColor = if (neon) palette.danger else Color.White,
+            disabledContainerColor = if (neon) Color.Transparent else palette.danger.copy(alpha = 0.4f),
+            disabledContentColor = if (neon) palette.danger.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f),
+        )
+    ) {
+        val textColor = if (enabled) {
+            if (neon) palette.danger else Color.White
+        } else {
+            if (neon) palette.danger.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f)
+        }
+        if (icon != null) {
+            Icon(icon, contentDescription = null, tint = textColor, modifier = Modifier.size(18.dp))
+            Spacer(Modifier.width(8.dp))
+        }
+        Text(
+            text,
+            color = textColor,
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+            maxLines = 1,
+        )
+    }
+}
+
+/**
+ * Wallet home Send / Receive — matches iOS WalletView:
+ * - Techno: clear fill, neon border box (4dp), accent label
+ * - Standard: filled (Send orange / Receive green), 12dp corners, white label
+ */
+@Composable
+private fun WalletHomeActionButton(
+    text: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
+    palette: NexaPalette,
+    modifier: Modifier = Modifier,
+    fillColor: Color,
+) {
+    val neon = palette.classic
+    val container = if (neon) Color.Transparent else fillColor
+    val content = if (neon) palette.accent else Color.White
+    Button(
+        onClick = onClick,
+        modifier = modifier.heightIn(min = 52.dp),
+        shape = RoundedCornerShape(if (neon) 4.dp else 12.dp),
+        border = if (neon) BorderStroke(2.dp, palette.border) else null,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = container,
+            contentColor = content,
+        ),
+    ) {
+        Icon(icon, contentDescription = null, tint = content, modifier = Modifier.size(20.dp))
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text,
+            color = content,
+            fontWeight = FontWeight.SemiBold,
             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
         )
     }
@@ -543,12 +652,16 @@ private fun WalletScreen(
     onOpenSend: () -> Unit,
     onOpenReceive: () -> Unit,
 ) {
+    val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val state by walletManager.state.collectAsState()
     val fiatRate by walletManager.fiatPrices.displayRate.collectAsState()
     val scroll = rememberScrollState()
     var errorText by remember { mutableStateOf<String?>(null) }
     var statusText by remember { mutableStateOf<String?>(null) }
+    var syncDetailsExpanded by remember {
+        mutableStateOf(MoneroConfig.syncDetailsExpanded(context))
+    }
 
     // iOS-like incremental UI updates:
     // While a refresh is running, periodically refresh balance/transfers so the UI updates
@@ -613,8 +726,22 @@ private fun WalletScreen(
 
     val remainingBlocks = if (targetHeight > 0L) (targetHeight - lastScanned).coerceAtLeast(0L) else 0L
     val syncTolerance = 3L
+    val scanInterrupted = remember(state.refreshInProgress, lastScanned, targetHeight) {
+        MoneroConfig.scanInterrupted(context)
+    }
+    val trustedScanned = remember(state.refreshInProgress, lastScanned, targetHeight, scanInterrupted) {
+        MoneroConfig.trustedScannedHeight(context)
+    }
+    // Match iOS: near tip alone is not enough after cancel/quit — require a clean checkpoint.
+    val emptyHistoryAtTip =
+        targetHeight > restoreHeight + 10_000L && state.transfers.isEmpty()
     val isSynced =
-        !state.refreshInProgress && targetHeight > 0L && lastScanned + syncTolerance >= targetHeight
+        !state.refreshInProgress &&
+            !scanInterrupted &&
+            targetHeight > 0L &&
+            lastScanned + syncTolerance >= targetHeight &&
+            lastScanned <= trustedScanned + syncTolerance &&
+            !emptyHistoryAtTip
 
     // Session-average blocks/sec for this refresh:
     // (lastScanned - baseline at refresh start) / wall time since refresh start.
@@ -710,7 +837,7 @@ private fun WalletScreen(
             val at = a.timestamp ?: 0L
             val bt = b.timestamp ?: 0L
             if (at != bt) return@sortedWith if (at > bt) -1 else 1
-            // Stable tie-breaker
+            // Same-height tie-break: txid A→Z (matches iOS).
             a.txid.compareTo(b.txid)
         }
     }
@@ -738,7 +865,7 @@ private fun WalletScreen(
                 }
                 Column(modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        if (palette.classic) "NEXAWAL" else stringResource(R.string.total_balance),
+                        if (palette.classic) "nexawal" else stringResource(R.string.total_balance),
                         color = if (palette.classic) iosPrimaryText else iosSecondary,
                         fontFamily = chromeFont,
                         fontWeight = if (palette.classic) FontWeight.Bold else FontWeight.Normal,
@@ -807,45 +934,45 @@ private fun WalletScreen(
                         )
                         ApproxFiatLine(unlockedPiconero, fiatRate, iosSecondary)
                     }
+
+                    if (state.balanceIsStaleWhileSyncing) {
+                        Spacer(Modifier.height(10.dp))
+                        Text(
+                            stringResource(R.string.balance_updating),
+                            color = iosSecondary
+                        )
+                    }
+
+                    Spacer(Modifier.height(16.dp))
+
+                    val sendLabel = stringResource(R.string.nav_send)
+                    val receiveLabel = stringResource(R.string.nav_receive)
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        WalletHomeActionButton(
+                            text = if (palette.classic) sendLabel.uppercase() else sendLabel,
+                            icon = Icons.AutoMirrored.Filled.Send,
+                            onClick = onOpenSend,
+                            palette = palette,
+                            fillColor = Color(0xFFE67E22).copy(alpha = 0.9f),
+                            modifier = Modifier.weight(1f),
+                        )
+                        Spacer(Modifier.width(12.dp))
+                        WalletHomeActionButton(
+                            text = if (palette.classic) receiveLabel.uppercase() else receiveLabel,
+                            icon = Icons.Filled.QrCode,
+                            onClick = onOpenReceive,
+                            palette = palette,
+                            fillColor = Color(0xFF34C759).copy(alpha = 0.9f),
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
                 }
             }
         }
 
         Spacer(Modifier.height(16.dp))
 
-        val sendLabel = stringResource(R.string.nav_send)
-        val receiveLabel = stringResource(R.string.nav_receive)
-        Row(modifier = Modifier.fillMaxWidth()) {
-            PrimaryActionButton(
-                text = if (palette.classic) sendLabel.uppercase() else sendLabel,
-                onClick = onOpenSend,
-                palette = palette,
-                modifier = Modifier.weight(1f)
-            )
-            Spacer(Modifier.width(12.dp))
-            SecondaryActionButton(
-                text = if (palette.classic) receiveLabel.uppercase() else receiveLabel,
-                onClick = onOpenReceive,
-                palette = palette,
-                modifier = Modifier.weight(1f)
-            )
-        }
-
-        if (state.balanceIsStaleWhileSyncing) {
-            Spacer(Modifier.height(10.dp))
-            Text(
-                stringResource(R.string.balance_updating),
-                color = iosSecondary
-            )
-        }
-
-        Spacer(Modifier.height(16.dp))
-
-        // Sync Status (iOS-like, theme-aware)
-        val statusLabel = stringResource(R.string.label_status)
-        SectionLabel(if (palette.classic) statusLabel.uppercase() else statusLabel, palette)
-        Spacer(Modifier.height(8.dp))
-
+        // Sync details (no STATUS section title)
         SectionCard(palette = palette) {
             Column {
                 val hasNodeError = mergedError != null && !state.refreshInProgress && !isSynced
@@ -853,6 +980,7 @@ private fun WalletScreen(
                 // Treat sync as effectively not-complete for display when a refresh error exists,
                 // so we never imply "synced" alongside an unreachable/failed node.
                 val isSyncedEffective = isSynced && mergedError == null
+                val showSyncProgress = !isSyncedEffective || state.refreshInProgress
                 val syncHeadlineRaw = when {
                     isStallError -> stringResource(R.string.sync_stalled)
                     hasNodeError -> stringResource(R.string.sync_node_unreachable)
@@ -872,86 +1000,128 @@ private fun WalletScreen(
                     else -> stringResource(R.string.blocks_remaining_fmt, formatGrouped(remainingBlocks))
                 }
 
-                Column(modifier = Modifier.a11yPoliteStatus()) {
-                    Row {
-                        Icon(
-                            imageVector = if (isSyncedEffective) Icons.Filled.CheckCircle else Icons.Filled.Sync,
-                            contentDescription = null,
-                            tint = if (isSyncedEffective) palette.success else palette.accent
-                        )
-                        Spacer(Modifier.width(8.dp))
-                        Text(
-                            syncHeadline,
-                            color = iosPrimaryText,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 18.sp,
-                            fontFamily = chromeFont,
-                        )
-                    }
-                    Spacer(Modifier.height(4.dp))
-                    Text(syncDetail, color = iosSecondary)
-                }
-                // Match iOS: progress bar sits under the status copy, above the stats rows.
-                Spacer(Modifier.height(8.dp))
-                LinearProgressIndicator(
-                    progress = { progress },
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .a11ySyncProgress(progress, stringResource(R.string.a11y_sync_progress_fmt, (progress * 100).toInt())),
-                    color = iosBlue,
-                    trackColor = iosSeparator,
-                )
-                Spacer(Modifier.height(10.dp))
+                        .clickable {
+                            val next = !syncDetailsExpanded
+                            syncDetailsExpanded = next
+                            MoneroConfig.setSyncDetailsExpanded(context, next)
+                        }
+                        .a11yPoliteStatus(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = if (isSyncedEffective) Icons.Filled.CheckCircle else Icons.Filled.Sync,
+                        contentDescription = null,
+                        tint = if (isSyncedEffective) palette.success else palette.accent
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        syncHeadline,
+                        color = iosPrimaryText,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 18.sp,
+                        fontFamily = chromeFont,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = if (syncDetailsExpanded) {
+                            stringResource(R.string.a11y_hide_sync_details)
+                        } else {
+                            stringResource(R.string.a11y_show_sync_details)
+                        },
+                        tint = palette.accent,
+                        modifier = Modifier.rotate(if (syncDetailsExpanded) 90f else 0f),
+                    )
+                }
 
-                val nodeLabel = stringResource(R.string.label_node)
-                val scannedLabel = stringResource(R.string.label_scanned)
-                val networkHeightLabel = stringResource(R.string.label_network_height)
-                val progressLabel = stringResource(R.string.label_progress)
-                val remainingLabel = stringResource(R.string.label_remaining)
-                val avgThroughputLabel = stringResource(R.string.label_throughput_avg)
-                val recentThroughputLabel = stringResource(R.string.label_throughput_recent)
-                KeyValueRow(if (palette.classic) nodeLabel.uppercase() else nodeLabel, walletManager.nodeAddressForDisplay(state.nodeUrl ?: walletManager.defaultNodeUrl()), labelColor = iosSecondary, valueColor = iosPrimaryText)
-                KeyValueRow(if (palette.classic) scannedLabel.uppercase() else scannedLabel, formatGrouped(lastScanned), labelColor = iosSecondary, valueColor = iosPrimaryText)
-                if (targetHeight > 0L) {
-                    KeyValueRow(if (palette.classic) networkHeightLabel.uppercase() else networkHeightLabel, formatGrouped(targetHeight), labelColor = iosSecondary, valueColor = iosPrimaryText)
-                    KeyValueRow(if (palette.classic) progressLabel.uppercase() else progressLabel, progressPercentText, labelColor = iosSecondary, valueColor = iosPrimaryText)
+                AnimatedVisibility(visible = syncDetailsExpanded) {
+                    Column {
+                        Spacer(Modifier.height(4.dp))
+                        Text(syncDetail, color = iosSecondary)
+                    }
                 }
-                if (!isSyncedEffective) {
-                    KeyValueRow(if (palette.classic) remainingLabel.uppercase() else remainingLabel, stringResource(R.string.blocks_value_fmt, formatGrouped(remainingBlocks)), labelColor = iosSecondary, valueColor = iosPrimaryText)
-                }
-                if (blocksPerSecSession > 0.0) {
-                    KeyValueRow(
-                        if (palette.classic) avgThroughputLabel.uppercase() else avgThroughputLabel,
-                        stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession),
-                        labelColor = iosSecondary,
-                        valueColor = iosPrimaryText,
+
+                if (showSyncProgress) {
+                    Spacer(Modifier.height(8.dp))
+                    LinearProgressIndicator(
+                        progress = { progress },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .a11ySyncProgress(progress, stringResource(R.string.a11y_sync_progress_fmt, (progress * 100).toInt())),
+                        color = iosBlue,
+                        trackColor = iosSeparator,
                     )
                 }
-                if (blocksPerSecRecent > 0.0) {
-                    KeyValueRow(
-                        if (palette.classic) recentThroughputLabel.uppercase() else recentThroughputLabel,
-                        stringResource(R.string.blocks_per_sec_fmt, blocksPerSecRecent),
-                        labelColor = iosSecondary,
-                        valueColor = iosPrimaryText,
-                    )
+
+                AnimatedVisibility(visible = syncDetailsExpanded) {
+                    Column {
+                        Spacer(Modifier.height(10.dp))
+
+                        val nodeLabel = stringResource(R.string.label_node)
+                        val scannedLabel = stringResource(R.string.label_scanned)
+                        val networkHeightLabel = stringResource(R.string.label_network_height)
+                        val progressLabel = stringResource(R.string.label_progress)
+                        val remainingLabel = stringResource(R.string.label_remaining)
+                        val avgThroughputLabel = stringResource(R.string.label_throughput_avg)
+                        val recentThroughputLabel = stringResource(R.string.label_throughput_recent)
+                        KeyValueRow(if (palette.classic) nodeLabel.uppercase() else nodeLabel, walletManager.nodeAddressForDisplay(state.nodeUrl ?: walletManager.defaultNodeUrl()), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                        KeyValueRow(if (palette.classic) scannedLabel.uppercase() else scannedLabel, formatGrouped(lastScanned), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                        if (targetHeight > 0L) {
+                            KeyValueRow(if (palette.classic) networkHeightLabel.uppercase() else networkHeightLabel, formatGrouped(targetHeight), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                            KeyValueRow(if (palette.classic) progressLabel.uppercase() else progressLabel, progressPercentText, labelColor = iosSecondary, valueColor = iosPrimaryText)
+                        }
+                        if (!isSyncedEffective) {
+                            KeyValueRow(if (palette.classic) remainingLabel.uppercase() else remainingLabel, stringResource(R.string.blocks_value_fmt, formatGrouped(remainingBlocks)), labelColor = iosSecondary, valueColor = iosPrimaryText)
+                        }
+                        if (blocksPerSecSession > 0.0) {
+                            KeyValueRow(
+                                if (palette.classic) avgThroughputLabel.uppercase() else avgThroughputLabel,
+                                stringResource(R.string.blocks_per_sec_fmt, blocksPerSecSession),
+                                labelColor = iosSecondary,
+                                valueColor = iosPrimaryText,
+                            )
+                        }
+                        if (blocksPerSecRecent > 0.0) {
+                            KeyValueRow(
+                                if (palette.classic) recentThroughputLabel.uppercase() else recentThroughputLabel,
+                                stringResource(R.string.blocks_per_sec_fmt, blocksPerSecRecent),
+                                labelColor = iosSecondary,
+                                valueColor = iosPrimaryText,
+                            )
+                        }
+                    }
                 }
 
             }
         }
         Spacer(Modifier.height(16.dp))
 
-        val recentTransactionsLabel = stringResource(R.string.recent_transactions)
-        Text(
-            if (palette.classic) recentTransactionsLabel.uppercase() else recentTransactionsLabel,
-            color = iosPrimaryText,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 20.sp,
-            fontFamily = chromeFont,
-        )
-        Spacer(Modifier.height(8.dp))
-
         SectionCard(palette = palette) {
             Column {
+                val recentTransactionsLabel = stringResource(R.string.recent_transactions)
+                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        if (palette.classic) recentTransactionsLabel.uppercase() else recentTransactionsLabel,
+                        color = iosPrimaryText,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 18.sp,
+                        fontFamily = chromeFont,
+                        modifier = Modifier.weight(1f),
+                    )
+                    if (transfersSorted.isNotEmpty()) {
+                        Text(
+                            transfersSorted.size.toString(),
+                            color = iosSecondary,
+                            fontFamily = chromeFont,
+                            fontSize = 13.sp,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+
                 if (transfersSorted.isEmpty()) {
                     Text(stringResource(R.string.no_transactions_yet), color = iosSecondary)
                 } else {
@@ -976,34 +1146,17 @@ private fun WalletScreen(
 
         Spacer(Modifier.height(16.dp))
 
-        // Actions row
-        if (state.refreshInProgress) {
-            val cancelRequestedText = stringResource(R.string.cancel_requested)
-            Row(modifier = Modifier.fillMaxWidth()) {
-                SecondaryActionButton(
-                    text = stringResource(R.string.refreshing_ellipsis),
-                    onClick = { },
-                    palette = palette,
-                    enabled = false,
-                    modifier = Modifier.weight(1f)
-                )
-                Spacer(Modifier.width(12.dp))
-                SecondaryActionButton(
-                    text = stringResource(R.string.action_cancel),
-                    onClick = {
-                        walletManager.cancelRefresh()
-                        statusText = cancelRequestedText
-                    },
-                    palette = palette,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-        } else {
-            val refreshWalletLabel = stringResource(R.string.refresh_wallet)
-            val refreshedText = stringResource(R.string.refreshed)
-            PrimaryActionButton(
-                text = if (palette.classic) refreshWalletLabel.uppercase() else refreshWalletLabel,
+        // Refresh / cancel — match iOS boxed outline + red cancel, equal height
+        val cancelRequestedText = stringResource(R.string.cancel_requested)
+        val refreshWalletLabel = stringResource(R.string.refresh_wallet)
+        val refreshingLabel = stringResource(R.string.refreshing)
+        val refreshedText = stringResource(R.string.refreshed)
+        val actionHeight = 52.dp
+        Row(modifier = Modifier.fillMaxWidth()) {
+            val refreshShape = RoundedCornerShape(if (palette.classic) 4.dp else 12.dp)
+            Button(
                 onClick = {
+                    if (state.refreshInProgress) return@Button
                     errorText = null
                     scope.launch {
                         try {
@@ -1017,16 +1170,76 @@ private fun WalletScreen(
                         }
                     }
                 },
-                palette = palette,
-                modifier = Modifier.fillMaxWidth()
-            )
+                enabled = !state.refreshInProgress,
+                modifier = Modifier
+                    .weight(1f)
+                    .height(actionHeight),
+                shape = refreshShape,
+                border = if (palette.classic) {
+                    BorderStroke(2.dp, palette.border.copy(alpha = if (state.refreshInProgress) 0.4f else 1f))
+                } else {
+                    null
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (palette.classic) Color.Transparent else Color(0xFF007AFF),
+                    contentColor = if (palette.classic) palette.accent else Color.White,
+                    disabledContainerColor = if (palette.classic) Color.Transparent else Color(0xFF007AFF).copy(alpha = 0.45f),
+                    disabledContentColor = if (palette.classic) palette.accent.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f),
+                ),
+            ) {
+                val refreshContent = if (state.refreshInProgress) {
+                    if (palette.classic) palette.accent.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f)
+                } else {
+                    if (palette.classic) palette.accent else Color.White
+                }
+                if (state.refreshInProgress) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(16.dp),
+                        strokeWidth = 2.dp,
+                        color = refreshContent,
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Filled.Refresh,
+                        contentDescription = null,
+                        tint = refreshContent,
+                        modifier = Modifier.size(18.dp),
+                    )
+                }
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    if (state.refreshInProgress) {
+                        if (palette.classic) refreshingLabel.uppercase() else refreshingLabel
+                    } else {
+                        if (palette.classic) refreshWalletLabel.uppercase() else refreshWalletLabel
+                    },
+                    color = refreshContent,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                    maxLines = 1,
+                )
+            }
 
-            Spacer(Modifier.height(8.dp))
-
-            Text(stringResource(R.string.send_receive_hint), color = iosSecondary)
+            if (state.refreshInProgress) {
+                Spacer(Modifier.width(12.dp))
+                DangerActionButton(
+                    text = if (palette.classic) {
+                        stringResource(R.string.action_cancel).uppercase()
+                    } else {
+                        stringResource(R.string.action_cancel)
+                    },
+                    icon = Icons.Filled.Cancel,
+                    onClick = {
+                        walletManager.cancelRefresh()
+                        statusText = cancelRequestedText
+                    },
+                    palette = palette,
+                    modifier = Modifier.weight(1f),
+                )
+            }
         }
 
-        statusText?.let {
+                statusText?.let {
             Spacer(Modifier.height(12.dp))
             Text(it, color = Color.Gray, modifier = Modifier.a11yPoliteStatus())
         }
@@ -1322,6 +1535,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
     var statusText by remember { mutableStateOf<String?>(null) }
     var showCreatePrompt by remember { mutableStateOf(false) }
     var newLabel by remember { mutableStateOf("") }
+    var addressMenuOpen by remember { mutableStateOf(false) }
 
     suspend fun refreshAddressBook() {
         val book = walletManager.loadReceiveSubaddressBook()
@@ -1354,7 +1568,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
         ""
     }
 
-    val qrBitmap = remember(paymentUri, palette.classic, palette.accent, palette.background) {
+    val qrBitmap = remember(paymentUri, palette.classic, palette.isLight, palette.accent, palette.background, palette.primaryText) {
         runCatching {
             if (paymentUri.isEmpty()) {
                 null
@@ -1363,6 +1577,13 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
                     paymentUri,
                     sizePx = 640,
                     foreground = palette.accent.toArgb(),
+                    background = palette.background.toArgb(),
+                )
+            } else if (!palette.isLight) {
+                MoneroQr.qrBitmap(
+                    paymentUri,
+                    sizePx = 640,
+                    foreground = palette.primaryText.toArgb(),
                     background = palette.background.toArgb(),
                 )
             } else {
@@ -1378,11 +1599,10 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {
-        val receiveTitle = stringResource(R.string.nav_receive)
+        val receiveTitle = stringResource(R.string.receive_xmr_title)
         ScreenHeading(
             title = if (palette.classic) receiveTitle.uppercase() else receiveTitle,
-            subtitle = stringResource(R.string.receive_hero),
-            palette = palette
+            palette = palette,
         )
         Spacer(Modifier.height(12.dp))
 
@@ -1390,12 +1610,18 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             Image(
                 bitmap = qrBitmap.asImageBitmap(),
                 contentDescription = stringResource(R.string.receive_qr_cd),
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .wrapContentWidth(Alignment.CenterHorizontally)
+                    .widthIn(max = 320.dp)
                     .aspectRatio(1f)
                     .semantics { testTag = A11yTags.RECEIVE_QR }
                     .background(
-                        if (palette.classic) palette.background else Color.White,
+                        when {
+                            palette.classic || !palette.isLight -> palette.background
+                            else -> Color.White
+                        },
                         RoundedCornerShape(if (palette.classic) 4.dp else 12.dp),
                     )
                     .then(
@@ -1412,71 +1638,73 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
 
         Spacer(Modifier.height(12.dp))
 
-        SectionLabel(stringResource(R.string.address_heading), palette)
-        Spacer(Modifier.height(6.dp))
+        val uriShape = RoundedCornerShape(if (palette.classic) 4.dp else 8.dp)
         SelectionContainer {
             Text(
-                receiveAddress.ifBlank { stringResource(R.string.address_unavailable) },
+                paymentUri.ifBlank { stringResource(R.string.address_unavailable) },
                 fontFamily = FontFamily.Monospace,
                 color = palette.primaryText,
+                fontSize = 13.sp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(palette.card, uriShape)
+                    .then(
+                        if (palette.classic) {
+                            Modifier.border(1.dp, palette.border, uriShape)
+                        } else {
+                            Modifier
+                        }
+                    )
+                    .padding(12.dp),
             )
         }
 
-        if (paymentUri.isNotBlank() && paymentUri.startsWith("monero:")) {
+        Spacer(Modifier.height(16.dp))
+
+        SectionCard(palette = palette) {
+            val paymentRequestTitle = stringResource(R.string.payment_request_optional)
+            Text(
+                if (palette.classic) paymentRequestTitle.uppercase() else paymentRequestTitle,
+                color = palette.primaryText,
+                fontWeight = FontWeight.Bold,
+                fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+            )
             Spacer(Modifier.height(12.dp))
-            SectionLabel(stringResource(R.string.payment_uri_label), palette)
-            Spacer(Modifier.height(6.dp))
-            SelectionContainer {
-                Text(
-                    paymentUri, 
-                    fontFamily = FontFamily.Monospace, 
-                    style = androidx.compose.material3.MaterialTheme.typography.bodySmall
-                )
-            }
+
+            AmountUnitField(
+                text = amountXmr,
+                onTextChange = { amountXmr = it },
+                mode = amountInputMode,
+                onModeChange = { amountInputMode = it },
+                rate = fiatRate,
+                palette = palette,
+                label = stringResource(R.string.label_amount),
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            Spacer(Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = description,
+                onValueChange = { description = it },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text(stringResource(R.string.description_label)) },
+                placeholder = { Text(stringResource(R.string.receive_desc_ph), color = palette.secondaryText) },
+                colors = nexaFieldColors(palette),
+            )
         }
 
         Spacer(Modifier.height(12.dp))
 
-        val hasPaymentAmount = AmountUnitParsing.xmrAmountForUri(amountXmr, amountInputMode, fiatRate) != null
         val addressCopiedText = stringResource(R.string.address_copied_short)
-        val paymentUriCopiedText = stringResource(R.string.payment_uri_copied_short)
         val nothingToShareText = stringResource(R.string.nothing_to_share)
-        val shareChooserTitle = stringResource(R.string.action_share)
+        val shareChooserTitle = stringResource(R.string.share_payment_link)
         val shareFailedFmt = stringResource(R.string.share_failed_fmt)
 
-        PrimaryActionButton(
-            text = stringResource(R.string.copy_address),
-            palette = palette,
-            onClick = {
-                scope.launch {
-                    ClipboardCompat.setText(clipboard, receiveAddress)
-                    statusText = addressCopiedText
-                }
-            },
-            enabled = receiveAddress.isNotBlank(),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        if (hasPaymentAmount && paymentUri.isNotBlank()) {
-            Spacer(Modifier.height(8.dp))
-            SecondaryActionButton(
-                text = stringResource(R.string.copy_payment_uri),
-                onClick = {
-                    scope.launch {
-                        ClipboardCompat.setText(clipboard, paymentUri)
-                        statusText = paymentUriCopiedText
-                    }
-                },
-                enabled = paymentUri.isNotBlank(),
-                palette = palette,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-
-        Spacer(Modifier.height(8.dp))
-
         SecondaryActionButton(
-            text = stringResource(R.string.action_share),
+            text = stringResource(R.string.share_payment_link),
+            icon = Icons.Filled.Share,
             onClick = {
                 if (paymentUri.isBlank() || qrBitmap == null) {
                     statusText = nothingToShareText
@@ -1512,77 +1740,80 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             modifier = Modifier.fillMaxWidth()
         )
 
+        Spacer(Modifier.height(8.dp))
+
+        PrimaryActionButton(
+            text = stringResource(R.string.copy_address),
+            icon = Icons.Filled.ContentCopy,
+            palette = palette,
+            onClick = {
+                scope.launch {
+                    ClipboardCompat.setText(clipboard, receiveAddress)
+                    statusText = addressCopiedText
+                }
+            },
+            enabled = receiveAddress.isNotBlank(),
+            modifier = Modifier.fillMaxWidth()
+        )
+
         Spacer(Modifier.height(16.dp))
 
-        SectionLabel(stringResource(R.string.receive_address_label), palette)
-        Spacer(Modifier.height(6.dp))
+        val receiveAddressHeading = stringResource(R.string.receive_address_heading)
+        Text(
+            if (palette.classic) receiveAddressHeading.uppercase() else receiveAddressHeading,
+            color = palette.primaryText,
+            fontWeight = FontWeight.Bold,
+            fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+        )
+        Spacer(Modifier.height(8.dp))
 
         if (receiveEntries.isEmpty()) {
-            Text(stringResource(R.string.loading_receive_addresses), color = Color.Gray)
+            Text(stringResource(R.string.loading_receive_addresses), color = palette.secondaryText)
         } else {
             val subaddressFmt = stringResource(R.string.subaddress_fmt)
-            val selectedSubaddressFmt = stringResource(R.string.selected_subaddress_fmt)
-            val selectedLabelFmt = stringResource(R.string.selected_label_fmt)
-            Text(
-                receiveEntries.firstOrNull { it.subaddressIndex == selectedSubaddressIndex }?.let {
-                    val label = it.label.trim()
-                    if (label.isEmpty()) String.format(selectedSubaddressFmt, it.subaddressIndex) else String.format(selectedLabelFmt, label)
-                } ?: String.format(selectedSubaddressFmt, selectedSubaddressIndex),
-                color = palette.primaryText,
-            )
+            val selectedEntry = receiveEntries.firstOrNull { it.subaddressIndex == selectedSubaddressIndex }
+            val selectedTitle = selectedEntry?.label?.trim().orEmpty().ifEmpty {
+                String.format(subaddressFmt, selectedSubaddressIndex)
+            }
 
-            Spacer(Modifier.height(8.dp))
-
-            receiveEntries.forEach { entry ->
-                val title = entry.label.trim().ifEmpty { String.format(subaddressFmt, entry.subaddressIndex) }
+            Box {
                 SecondaryActionButton(
-                    text = if (entry.subaddressIndex == selectedSubaddressIndex) String.format(selectedLabelFmt, title) else title,
-                    onClick = { selectedSubaddressIndex = entry.subaddressIndex },
+                    text = selectedTitle,
+                    onClick = { addressMenuOpen = true },
                     palette = palette,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .a11ySelectableOption(entry.subaddressIndex == selectedSubaddressIndex)
+                        .semantics {
+                            role = Role.DropdownList
+                        },
                 )
-                Spacer(Modifier.height(4.dp))
+                androidx.compose.material3.DropdownMenu(
+                    expanded = addressMenuOpen,
+                    onDismissRequest = { addressMenuOpen = false },
+                ) {
+                    receiveEntries.forEach { entry ->
+                        val title = entry.label.trim().ifEmpty { String.format(subaddressFmt, entry.subaddressIndex) }
+                        androidx.compose.material3.DropdownMenuItem(
+                            text = { Text(title) },
+                            onClick = {
+                                selectedSubaddressIndex = entry.subaddressIndex
+                                addressMenuOpen = false
+                            },
+                        )
+                    }
+                }
             }
 
             Spacer(Modifier.height(8.dp))
 
-            PrimaryActionButton(
-                text = stringResource(R.string.new_receive_address),
+            SecondaryActionButton(
+                text = stringResource(R.string.new_address),
+                icon = Icons.Filled.AddCircle,
                 onClick = { showCreatePrompt = true },
                 palette = palette,
                 modifier = Modifier.fillMaxWidth()
             )
         }
-
-        Spacer(Modifier.height(16.dp))
-
-        SectionLabel(stringResource(R.string.payment_request_optional_android), palette)
-        Spacer(Modifier.height(6.dp))
-
-        AmountUnitField(
-            text = amountXmr,
-            onTextChange = { amountXmr = it },
-            mode = amountInputMode,
-            onModeChange = { amountInputMode = it },
-            rate = fiatRate,
-            palette = palette,
-            label = stringResource(R.string.label_amount),
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        OutlinedTextField(
-            value = description,
-            onValueChange = { description = it },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(stringResource(R.string.description_label)) },
-            placeholder = { Text(stringResource(R.string.receive_desc_ph), color = palette.secondaryText) },
-            colors = nexaFieldColors(palette),
-        )
 
         statusText?.let {
             Spacer(Modifier.height(12.dp))
@@ -1704,11 +1935,10 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     }
 
     Column(modifier = Modifier.fillMaxSize().background(palette.background).verticalScroll(rememberScrollState()).padding(16.dp)) {
-        val sendTitle = stringResource(R.string.nav_send)
+        val sendTitle = stringResource(R.string.send_xmr_title)
         ScreenHeading(
             title = if (palette.classic) sendTitle.uppercase() else sendTitle,
-            subtitle = stringResource(R.string.send_subtitle),
-            palette = palette
+            palette = palette,
         )
         Spacer(Modifier.height(8.dp))
 
@@ -2174,6 +2404,7 @@ private fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val state by walletManager.state.collectAsState()
     val context = LocalContext.current
+    val clipboard = ClipboardCompat.current()
     val palette = rememberNexaPalette(technoTheme)
 
     val groupedBg = palette.background
@@ -2302,8 +2533,6 @@ private fun SettingsScreen(
             color = primaryText,
             fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
         )
-        Spacer(Modifier.height(6.dp))
-        Text(stringResource(R.string.settings_subtitle), color = secondaryText)
 
         Spacer(Modifier.height(20.dp))
 
@@ -2323,7 +2552,6 @@ private fun SettingsScreen(
                 val technoThemeDisabledText = stringResource(R.string.techno_theme_disabled)
                 LabeledSwitchRow(
                     label = stringResource(R.string.toggle_techno_theme),
-                    description = stringResource(R.string.techno_theme_help),
                     checked = technoTheme,
                     onCheckedChange = {
                         onTechnoThemeChange(it)
@@ -2349,11 +2577,6 @@ private fun SettingsScreen(
             border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    stringResource(R.string.how_to_connect_desc),
-                    color = secondaryText,
-                )
-                Spacer(Modifier.height(10.dp))
                 Column(modifier = Modifier.semantics { testTag = A11yTags.NETWORK_POLICY }) {
                     listOf(
                         MoneroConfig.NetworkPolicy.CLEARNET to stringResource(R.string.network_policy_clearnet),
@@ -2389,23 +2612,15 @@ private fun SettingsScreen(
                 border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text(stringResource(R.string.clearnet_node_url_label), color = primaryText, fontWeight = FontWeight.SemiBold)
-                    Spacer(Modifier.height(6.dp))
                     OutlinedTextField(
                         value = nodeUrlInput,
                         onValueChange = { nodeUrlInput = it },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth(),
-                        label = { Text(stringResource(R.string.clearnet_node_url_label)) },
                         placeholder = { Text(walletManager.defaultNodeUrl(), color = secondaryText) },
                         colors = nexaFieldColors(palette),
                         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
                         keyboardActions = KeyboardActions(onDone = { applyNetworkSettings() }),
-                    )
-                    Spacer(Modifier.height(6.dp))
-                    Text(
-                        stringResource(R.string.clearnet_node_url_help),
-                        color = secondaryText,
                     )
                     Spacer(Modifier.height(12.dp))
                     PrimaryActionButton(
@@ -2458,11 +2673,6 @@ private fun SettingsScreen(
                         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
                         keyboardActions = KeyboardActions(onDone = { applyNetworkSettings() }),
                     )
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                        stringResource(R.string.i2p_help),
-                        color = secondaryText,
-                    )
                     Spacer(Modifier.height(12.dp))
                     PrimaryActionButton(
                         text = stringResource(R.string.apply_i2p_settings),
@@ -2492,7 +2702,6 @@ private fun SettingsScreen(
                 val deviceAuthDisabledText = stringResource(R.string.device_auth_disabled_status)
                 LabeledSwitchRow(
                     label = stringResource(R.string.toggle_require_device_auth),
-                    description = stringResource(R.string.require_device_auth_description),
                     checked = requireDeviceAuth,
                     onCheckedChange = {
                         requireDeviceAuth = it
@@ -2500,15 +2709,6 @@ private fun SettingsScreen(
                         statusText = if (it) deviceAuthEnabledText else deviceAuthDisabledText
                     },
                     palette = palette,
-                )
-                Spacer(Modifier.height(10.dp))
-                Text(
-                    if (DeviceAuthGate.isAvailable(context)) {
-                        stringResource(R.string.device_auth_available_note)
-                    } else {
-                        stringResource(R.string.device_auth_unavailable)
-                    },
-                    color = secondaryText
                 )
             }
         }
@@ -2527,13 +2727,6 @@ private fun SettingsScreen(
             border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(stringResource(R.string.restore_and_rescan), color = primaryText, fontWeight = FontWeight.SemiBold)
-                Spacer(Modifier.height(6.dp))
-                Text(
-                    stringResource(R.string.recovery_help),
-                    color = secondaryText
-                )
-                Spacer(Modifier.height(12.dp))
                 OutlinedTextField(
                     value = restoreHeightInput,
                     onValueChange = {
@@ -2546,11 +2739,6 @@ private fun SettingsScreen(
                     placeholder = { Text((state.syncStatus?.restoreHeight ?: 0L).toString(), color = secondaryText) },
                     label = { Text(stringResource(R.string.restore_height_placeholder)) },
                     colors = nexaFieldColors(palette),
-                )
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    stringResource(R.string.restore_height_reset_note),
-                    color = secondaryText
                 )
                 Spacer(Modifier.height(12.dp))
                 val enterValidRestoreHeightText = stringResource(R.string.enter_valid_restore_height)
@@ -2615,8 +2803,6 @@ private fun SettingsScreen(
                 Row(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(stringResource(R.string.advanced_recovery_android), color = primaryText, fontWeight = FontWeight.SemiBold)
-                        Spacer(Modifier.height(4.dp))
-                        Text(stringResource(R.string.advanced_recovery_desc_android), color = secondaryText)
                     }
                     SecondaryActionButton(
                         text = if (showAdvancedRecovery) stringResource(R.string.action_hide) else stringResource(R.string.action_show),
@@ -2834,15 +3020,34 @@ private fun SettingsScreen(
                 )
                 Spacer(Modifier.height(8.dp))
                 SecondaryActionButton(
-                    text = stringResource(R.string.source_license),
-                    onClick = {
-                        val uri = android.net.Uri.parse(
-                            "https://github.com/Nexatrode/nexawal-android/blob/main/LICENSE",
-                        )
-                        runCatching { context.startActivity(Intent(Intent.ACTION_VIEW, uri)) }
-                    },
+                    text = stringResource(R.string.mit_license),
+                    onClick = { legalDocument = LegalDocument.License },
                     palette = palette,
                     modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    stringResource(R.string.source_on_github),
+                    color = secondaryText,
+                    fontSize = 13.sp,
+                    fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                )
+                Spacer(Modifier.height(4.dp))
+                val sourceRepoUrl = "https://github.com/nexatrode/nexawal-android"
+                val linkCopiedText = stringResource(R.string.link_copied)
+                Text(
+                    sourceRepoUrl,
+                    color = palette.accent,
+                    fontFamily = FontFamily.Monospace,
+                    textDecoration = TextDecoration.Underline,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            scope.launch {
+                                ClipboardCompat.setText(clipboard, sourceRepoUrl)
+                                statusText = linkCopiedText
+                            }
+                        },
                 )
             }
         }

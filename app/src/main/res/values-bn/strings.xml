@@ -6,7 +6,7 @@
     <string name="nav_send">পাঠান</string>
     <string name="nav_settings">সেটিংস</string>
     <string name="total_balance">মোট ব্যালেন্স</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">বাতিল করুন</string>
     <string name="action_replace">প্রতিস্থাপন করুন</string>
     <string name="action_close">বন্ধ করুন</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">এই নেটওয়ার্কের জন্য স্ক্যান ক্যাশ পরিষ্কার করা হয়েছে</string>
     <string name="section_fiat">ফিয়াট অনুমান</string>
     <string name="toggle_show_fiat">ফিয়াট অনুমান দেখান</string>
-    <string name="fiat_help">ঐচ্ছিক। চালু থাকলে, NexaWal Kraken (api.kraken.com) থেকে একটি পাবলিক XMR মূল্য এবং প্রয়োজনে Frankfurter (api.frankfurter.dev) থেকে ফিয়াট এফএক্স আনে। এই সার্ভারগুলো আপনার IP দেখতে পায়। পরিমাণ এবং ঠিকানা পাঠানো হয় না। ফিয়াট লুকআপ ক্লিয়ারনেট HTTPS ব্যবহার করে এবং নোড / I2P প্রক্সি সেটিংস থেকে আলাদা। শুধুমাত্র অনুমান — XMR হলো যা আপনি পাঠান এবং রাখেন।</string>
+    <string name="fiat_help">ঐচ্ছিক। চালু থাকলে, nexawal Kraken (api.kraken.com) থেকে একটি পাবলিক XMR মূল্য এবং প্রয়োজনে Frankfurter (api.frankfurter.dev) থেকে ফিয়াট এফএক্স আনে। এই সার্ভারগুলো আপনার IP দেখতে পায়। পরিমাণ এবং ঠিকানা পাঠানো হয় না। ফিয়াট লুকআপ ক্লিয়ারনেট HTTPS ব্যবহার করে এবং নোড / I2P প্রক্সি সেটিংস থেকে আলাদা। শুধুমাত্র অনুমান — XMR হলো যা আপনি পাঠান এবং রাখেন।</string>
     <string name="fiat_currency_label">মুদ্রা</string>
     <string name="section_about">সম্পর্কে</string>
     <string name="about_disclaimer">MIT-লাইসেন্সপ্রাপ্ত, অনিরীক্ষিত সফটওয়্যার। আপনার সিড এবং ফান্ডের জন্য আপনি দায়ী। ডিফল্ট রিমোট নোড আপনার IP এবং ওয়ালেট সিঙ্ক কোয়েরি দেখতে পারে — আরও শক্তিশালী প্রাইভেসির জন্য আপনার নিজের নোড চালান। ঐচ্ছিক ফিয়াট অনুমান, চালু থাকলে, api.kraken.com এবং api.frankfurter.dev-এর সাথে যোগাযোগ করে।</string>
     <string name="terms_of_use">ব্যবহারের শর্তাবলী</string>
     <string name="terms_title">ব্যবহারের শর্তাবলী</string>
-    <string name="terms_body_custody">Nexatrode LLC-এর NexaWal ডিজিটাল সম্পদ পরিচালনার জন্য একটি স্ব-অভিভাবক ইন্টারফেস। আপনার প্রাইভেট কী এবং ২৫-শব্দের সিড বাক্যাংশের সম্পূর্ণ দায়িত্ব আপনার।</string>
+    <string name="terms_body_custody">Nexatrode LLC-এর nexawal ডিজিটাল সম্পদ পরিচালনার জন্য একটি স্ব-অভিভাবক ইন্টারফেস। আপনার প্রাইভেট কী এবং ২৫-শব্দের সিড বাক্যাংশের সম্পূর্ণ দায়িত্ব আপনার।</string>
     <string name="terms_body_as_is">অ্যাপটি যেমন আছে তেমনই প্রদান করা হয়, কোনো প্রকাশ্য বা উহ্য ওয়ারেন্টি ছাড়াই। ব্যবহার আপনার নিজস্ব ঝুঁকিতে। হারানো সম্পদ, ব্যবহারকারীর ত্রুটি, ডাউনটাইম বা তৃতীয় পক্ষের সেবা/নোডের সমস্যার জন্য Nexatrode LLC দায়ী নয়।</string>
     <string name="terms_body_node">নিজের Monero নোড চালানো বা সংযুক্ত হওয়ার পরামর্শ দেওয়া হয়। পাবলিক ডিফল্ট কেবল সুবিধার জন্য।</string>
     <string name="terms_review_full">Nexatrode LLC ওয়েবসাইটে সম্পূর্ণ শর্তাবলী দেখুন</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">আমি সম্মত</string>
     <string name="terms_quit">প্রস্থান</string>
     <string name="privacy_policy">প্রাইভেসি পলিসি</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">সোর্স ও লাইসেন্স (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Face ID প্রোটেকশন বন্ধ করতে প্রমাণীকরণ করুন</string>
     <string name="error_mnemonic_empty">নিমোনিক খালি থাকতে পারে না।</string>
     <string name="error_rescan_no_mnemonic">পুনরায় স্ক্যান ব্যর্থ হয়েছে: নিমোনিক উপলব্ধ নেই।</string>
-    <string name="biometric_unlock_nexawal">NexaWal আনলক করতে প্রমাণীকরণ করুন</string>
+    <string name="biometric_unlock_nexawal">nexawal আনলক করতে প্রমাণীকরণ করুন</string>
     <string name="biometric_unlock_wallet">ওয়ালেট আনলক করুন</string>
     <string name="biometric_unlock_subtitle">সংরক্ষিত Monero ওয়ালেট খুলতে প্রমাণীকরণ করুন</string>
     <string name="unlock_your_wallet">আপনার ওয়ালেট আনলক করুন</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s নিশ্চিতকরণ</string>
     <string name="fee_value_fmt">ফি %1$s</string>
     <string name="clear_scan_cache_failed_fmt">স্ক্যান ক্যাশ পরিষ্কার করা ব্যর্থ হয়েছে: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">%1$s-এর সাথে সংযোগ করা হচ্ছে</string>
     <string name="rescanning_from_fmt">%1$s থেকে পুনরায় স্ক্যান করা হচ্ছে — অগ্রগতি ওয়ালেট ট্যাবে আছে</string>
     <string name="subaddress_fmt">উপ-ঠিকানা %1$d</string>

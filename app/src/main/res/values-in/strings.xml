@@ -6,7 +6,7 @@
     <string name="nav_send">Kirim</string>
     <string name="nav_settings">Pengaturan</string>
     <string name="total_balance">Total Saldo</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Batal</string>
     <string name="action_replace">Ganti</string>
     <string name="action_close">Tutup</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cache pemindaian untuk jaringan ini dihapus</string>
     <string name="section_fiat">Estimasi fiat</string>
     <string name="toggle_show_fiat">Tampilkan estimasi fiat</string>
-    <string name="fiat_help">Opsional. Jika diaktifkan, NexaWal mengambil harga XMR publik dari Kraken (api.kraken.com) dan, jika perlu, kurs fiat dari Frankfurter (api.frankfurter.dev). Server-server tersebut dapat melihat IP Anda. Jumlah dan alamat tidak dikirim. Pencarian fiat menggunakan HTTPS clearnet dan terpisah dari pengaturan node / proxy I2P. Hanya estimasi — XMR adalah yang Anda kirim dan simpan.</string>
+    <string name="fiat_help">Opsional. Jika diaktifkan, nexawal mengambil harga XMR publik dari Kraken (api.kraken.com) dan, jika perlu, kurs fiat dari Frankfurter (api.frankfurter.dev). Server-server tersebut dapat melihat IP Anda. Jumlah dan alamat tidak dikirim. Pencarian fiat menggunakan HTTPS clearnet dan terpisah dari pengaturan node / proxy I2P. Hanya estimasi — XMR adalah yang Anda kirim dan simpan.</string>
     <string name="fiat_currency_label">Mata Uang</string>
     <string name="section_about">Tentang</string>
     <string name="about_disclaimer">Perangkat lunak berlisensi MIT, belum diaudit. Anda bertanggung jawab atas seed dan dana Anda. Node jarak jauh default dapat melihat IP dan kueri sinkronisasi dompet Anda — jalankan node Anda sendiri untuk privasi yang lebih kuat. Estimasi fiat opsional, jika diaktifkan, akan menghubungi api.kraken.com dan api.frankfurter.dev.</string>
     <string name="terms_of_use">Ketentuan Penggunaan</string>
     <string name="terms_title">Ketentuan Penggunaan</string>
-    <string name="terms_body_custody">NexaWal oleh Nexatrode LLC adalah antarmuka self-custodial untuk mengelola aset digital. Anda memegang tanggung jawab penuh atas kunci pribadi dan frasa seed 25 kata.</string>
+    <string name="terms_body_custody">nexawal oleh Nexatrode LLC adalah antarmuka self-custodial untuk mengelola aset digital. Anda memegang tanggung jawab penuh atas kunci pribadi dan frasa seed 25 kata.</string>
     <string name="terms_body_as_is">Aplikasi disediakan apa adanya, tanpa jaminan tersurat maupun tersirat. Penggunaan menjadi risiko Anda sendiri. Nexatrode LLC tidak bertanggung jawab atas aset yang hilang, kesalahan pengguna, downtime, atau masalah layanan/node pihak ketiga.</string>
     <string name="terms_body_node">Disarankan menjalankan atau terhubung ke node Monero Anda sendiri. Default publik hanya untuk kenyamanan.</string>
     <string name="terms_review_full">Tinjau ketentuan lengkap di situs Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Saya Setuju</string>
     <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Kebijakan privasi</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Sumber &amp; lisensi (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentikasi untuk mematikan perlindungan Face ID</string>
     <string name="error_mnemonic_empty">Mnemonic tidak boleh kosong.</string>
     <string name="error_rescan_no_mnemonic">Pindai ulang gagal: mnemonic tidak tersedia.</string>
-    <string name="biometric_unlock_nexawal">Autentikasi untuk membuka NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentikasi untuk membuka nexawal</string>
     <string name="biometric_unlock_wallet">Buka dompet</string>
     <string name="biometric_unlock_subtitle">Autentikasi untuk membuka dompet Monero yang tersimpan</string>
     <string name="unlock_your_wallet">Buka dompet Anda</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s konf</string>
     <string name="fee_value_fmt">Biaya %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Gagal menghapus cache pemindaian: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Menghubungkan ke %1$s</string>
     <string name="rescanning_from_fmt">Memindai ulang dari %1$s — progres ada di tab Dompet</string>
     <string name="subaddress_fmt">Subalamat %1$d</string>

@@ -6,7 +6,7 @@
     <string name="nav_send">Send</string>
     <string name="nav_settings">Innstillinger</string>
     <string name="total_balance">Totalsaldo</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Avbryt</string>
     <string name="action_replace">Erstatt</string>
     <string name="action_close">Lukk</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Skannebuffer for dette nettverket tømt</string>
     <string name="section_fiat">Fiat-estimater</string>
     <string name="toggle_show_fiat">Vis fiat-estimater</string>
-    <string name="fiat_help">Valgfritt. Når dette er på, henter NexaWal en offentlig XMR-pris fra Kraken (api.kraken.com) og, hvis nødvendig, fiat-valutakurs fra Frankfurter (api.frankfurter.dev). Disse serverne ser IP-adressen din. Beløp og adresser sendes ikke. Fiat-oppslag bruker clearnet HTTPS og er separate fra node-/I2P-proxy-innstillinger. Kun estimater — XMR er det du sender og oppbevarer.</string>
+    <string name="fiat_help">Valgfritt. Når dette er på, henter nexawal en offentlig XMR-pris fra Kraken (api.kraken.com) og, hvis nødvendig, fiat-valutakurs fra Frankfurter (api.frankfurter.dev). Disse serverne ser IP-adressen din. Beløp og adresser sendes ikke. Fiat-oppslag bruker clearnet HTTPS og er separate fra node-/I2P-proxy-innstillinger. Kun estimater — XMR er det du sender og oppbevarer.</string>
     <string name="fiat_currency_label">Valuta</string>
     <string name="section_about">Om</string>
     <string name="about_disclaimer">MIT-lisensiert, ikke revidert programvare. Du er ansvarlig for frasen og midlene dine. Standard eksternnode kan se IP-adressen din og lommebokens synkroniseringsforespørsler — kjør din egen node for sterkere personvern. Valgfrie fiat-estimater, hvis aktivert, kontakter api.kraken.com og api.frankfurter.dev.</string>
     <string name="terms_of_use">Bruksvilkår</string>
     <string name="terms_title">Bruksvilkår</string>
-    <string name="terms_body_custody">NexaWal fra Nexatrode LLC er et self-custodial-grensesnitt for å administrere digitale eiendeler. Du har eneansvar for dine private nøkler og 25-ords seed-frase.</string>
+    <string name="terms_body_custody">nexawal fra Nexatrode LLC er et self-custodial-grensesnitt for å administrere digitale eiendeler. Du har eneansvar for dine private nøkler og 25-ords seed-frase.</string>
     <string name="terms_body_as_is">Appen leveres som den er, uten uttrykte eller underforståtte garantier. Bruk skjer på egen risiko. Nexatrode LLC er ikke ansvarlig for tapte eiendeler, brukerfeil, nedetid eller problemer med tredjepartstjenester eller noder.</string>
     <string name="terms_body_node">Det anbefales å kjøre eller koble til din egen Monero-node. Offentlige standardverdier er kun for bekvemmelighet.</string>
     <string name="terms_review_full">Se fullstendige vilkår på Nexatrode LLC sitt nettsted</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Jeg godtar</string>
     <string name="terms_quit">Avslutt</string>
     <string name="privacy_policy">Personvernerklæring</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Kildekode og lisens (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentiser for å slå av Face ID-beskyttelse</string>
     <string name="error_mnemonic_empty">Mnemonic kan ikke være tom.</string>
     <string name="error_rescan_no_mnemonic">Skanning på nytt mislyktes: mnemonic er utilgjengelig.</string>
-    <string name="biometric_unlock_nexawal">Autentiser for å låse opp NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentiser for å låse opp nexawal</string>
     <string name="biometric_unlock_wallet">Lås opp lommebok</string>
     <string name="biometric_unlock_subtitle">Autentiser for å åpne den lagrede Monero-lommeboken</string>
     <string name="unlock_your_wallet">Lås opp lommeboken din</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s bekr.</string>
     <string name="fee_value_fmt">Avgift %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Tømming av skannebuffer mislyktes: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Kobler til %1$s</string>
     <string name="rescanning_from_fmt">Skanner på nytt fra %1$s — fremdriften vises i Lommebok-fanen</string>
     <string name="subaddress_fmt">Underadresse %1$d</string>

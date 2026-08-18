@@ -6,7 +6,7 @@
     <string name="nav_send">שליחה</string>
     <string name="nav_settings">הגדרות</string>
     <string name="total_balance">יתרה כוללת</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">ביטול</string>
     <string name="action_replace">החלפה</string>
     <string name="action_close">סגירה</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">מטמון הסריקה לרשת זו נוקה</string>
     <string name="section_fiat">אומדני פיאט</string>
     <string name="toggle_show_fiat">הצגת אומדני פיאט</string>
-    <string name="fiat_help">אופציונלי. כשמופעל, NexaWal מביא מחיר XMR ציבורי מ-Kraken (api.kraken.com) ובמידת הצורך שער מטבע פיאט מ-Frankfurter (api.frankfurter.dev). שרתים אלה רואים את כתובת ה-IP שלך. סכומים וכתובות אינם נשלחים. שאילתות הפיאט משתמשות ב-HTTPS ברשת הפתוחה (Clearnet) והן נפרדות מהגדרות הצומת / הפרוקסי של I2P. אומדנים בלבד — XMR הוא מה שאתה שולח ומחזיק.</string>
+    <string name="fiat_help">אופציונלי. כשמופעל, nexawal מביא מחיר XMR ציבורי מ-Kraken (api.kraken.com) ובמידת הצורך שער מטבע פיאט מ-Frankfurter (api.frankfurter.dev). שרתים אלה רואים את כתובת ה-IP שלך. סכומים וכתובות אינם נשלחים. שאילתות הפיאט משתמשות ב-HTTPS ברשת הפתוחה (Clearnet) והן נפרדות מהגדרות הצומת / הפרוקסי של I2P. אומדנים בלבד — XMR הוא מה שאתה שולח ומחזיק.</string>
     <string name="fiat_currency_label">מטבע</string>
     <string name="section_about">אודות</string>
     <string name="about_disclaimer">תוכנה מורשית ברישיון MIT ולא מבוקרת. אתה אחראי לביטוי השחזור ולכספים שלך. הצומת המרוחקת שמוגדרת כברירת מחדל יכולה לראות את כתובת ה-IP שלך ואת שאילתות הסנכרון של הארנק — הפעל צומת משלך לפרטיות חזקה יותר. אומדני פיאט אופציונליים, אם מופעלים, פונים ל-api.kraken.com ול-api.frankfurter.dev.</string>
     <string name="terms_of_use">תנאי השימוש</string>
     <string name="terms_title">תנאי השימוש</string>
-    <string name="terms_body_custody">NexaWal של Nexatrode LLC הוא ממשק בשמירה עצמית לניהול נכסים דיגיטליים. האחריות הבלעדית למפתחות הפרטיים ולביטוי הזרע בן 25 המילים היא שלך.</string>
+    <string name="terms_body_custody">nexawal של Nexatrode LLC הוא ממשק בשמירה עצמית לניהול נכסים דיגיטליים. האחריות הבלעדית למפתחות הפרטיים ולביטוי הזרע בן 25 המילים היא שלך.</string>
     <string name="terms_body_as_is">האפליקציה מסופקת כפי שהיא, ללא אחריות מפורשת או משתמעת. השימוש על אחריותך בלבד. Nexatrode LLC אינה אחראית לאובדן נכסים, טעויות משתמש, השבתות או בעיות בשירותים או צמתים של צד שלישי.</string>
     <string name="terms_body_node">מומלץ להפעיל או להתחבר לצומת Monero משלך. ברירות המחדל הציבוריות נועדו לנוחות בלבד.</string>
     <string name="terms_review_full">עיין בתנאים המלאים באתר של Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">אני מסכים/ה</string>
     <string name="terms_quit">יציאה</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">קוד מקור ורישיון (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">אמת כדי לכבות את הגנת Face ID</string>
     <string name="error_mnemonic_empty">המנמוניקה לא יכולה להיות ריקה.</string>
     <string name="error_rescan_no_mnemonic">הסריקה החוזרת נכשלה: המנמוניקה אינה זמינה.</string>
-    <string name="biometric_unlock_nexawal">אמת כדי לפתוח את NexaWal</string>
+    <string name="biometric_unlock_nexawal">אמת כדי לפתוח את nexawal</string>
     <string name="biometric_unlock_wallet">פתיחת הארנק</string>
     <string name="biometric_unlock_subtitle">אמת כדי לפתוח את ארנק ה-Monero השמור</string>
     <string name="unlock_your_wallet">פתח את הארנק שלך</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s אישורים</string>
     <string name="fee_value_fmt">עמלה %1$s</string>
     <string name="clear_scan_cache_failed_fmt">ניקוי מטמון הסריקה נכשל: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">מתחבר ל-%1$s</string>
     <string name="rescanning_from_fmt">סורק מחדש מ-%1$s — ההתקדמות מוצגת בלשונית הארנק</string>
     <string name="subaddress_fmt">כתובת משנה %1$d</string>

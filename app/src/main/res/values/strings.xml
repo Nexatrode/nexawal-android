@@ -6,7 +6,7 @@
     <string name="nav_send">Send</string>
     <string name="nav_settings">Settings</string>
     <string name="total_balance">Total Balance</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_replace">Replace</string>
     <string name="action_close">Close</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cleared scan cache for this network</string>
     <string name="section_fiat">Fiat estimates</string>
     <string name="toggle_show_fiat">Show fiat estimates</string>
-    <string name="fiat_help">Optional. When on, NexaWal fetches a public XMR price from Kraken (api.kraken.com) and, if needed, fiat FX from Frankfurter (api.frankfurter.dev). Those servers see your IP. Amounts and addresses are not sent. Fiat lookups use clearnet HTTPS and are separate from node / I2P proxy settings. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help">Optional. When on, nexawal fetches a public XMR price from Kraken (api.kraken.com) and, if needed, fiat FX from Frankfurter (api.frankfurter.dev). Those servers see your IP. Amounts and addresses are not sent. Fiat lookups use clearnet HTTPS and are separate from node / I2P proxy settings. Estimates only — XMR is what you send and hold.</string>
     <string name="fiat_currency_label">Currency</string>
     <string name="section_about">About</string>
     <string name="about_disclaimer">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact api.kraken.com and api.frankfurter.dev.</string>
     <string name="terms_of_use">Terms of Use</string>
     <string name="terms_title">Terms of Use</string>
-    <string name="terms_body_custody">NexaWal by Nexatrode LLC is a self-custodial interface for managing digital assets. You hold exclusive responsibility for your private keys and 25-word seed phrase.</string>
+    <string name="terms_body_custody">nexawal by Nexatrode LLC is a self-custodial interface for managing digital assets. You hold exclusive responsibility for your private keys and 25-word seed phrase.</string>
     <string name="terms_body_as_is">The app is provided as is, with no warranties express or implied. Use is at your own risk. Nexatrode LLC is not liable for lost assets, user errors, downtime, or issues with third-party services or nodes.</string>
     <string name="terms_body_node">Running or connecting to your own Monero node is recommended. Public defaults are for convenience only.</string>
     <string name="terms_review_full">Review full Terms of Use</string>
@@ -168,8 +168,11 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">I Agree</string>
     <string name="terms_quit">Quit</string>
     <string name="privacy_policy">Privacy policy</string>
+    <string name="mit_license">MIT License</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="source_license">Source &amp; license (MIT)</string>
     <string name="saved_clearnet">Saved clearnet</string>
     <string name="saved_i2p">Saved I2P</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Authenticate to turn off Face ID protection</string>
     <string name="error_mnemonic_empty">Mnemonic cannot be empty.</string>
     <string name="error_rescan_no_mnemonic">Rescan failed: mnemonic is unavailable.</string>
-    <string name="biometric_unlock_nexawal">Authenticate to unlock NexaWal</string>
+    <string name="biometric_unlock_nexawal">Authenticate to unlock nexawal</string>
     <string name="biometric_unlock_wallet">Unlock wallet</string>
     <string name="biometric_unlock_subtitle">Authenticate to open the stored Monero wallet</string>
     <string name="unlock_your_wallet">Unlock your wallet</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s conf</string>
     <string name="fee_value_fmt">Fee %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Clear scan cache failed: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Connecting to %1$s</string>
     <string name="rescanning_from_fmt">Rescanning from %1$s — progress is on the Wallet tab</string>
     <string name="subaddress_fmt">Subaddress %1$d</string>
@@ -375,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">Sync progress %1$d percent</string>
+    <string name="a11y_show_sync_details">Show sync details</string>
+    <string name="a11y_hide_sync_details">Hide sync details</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Camera preview for scanning Monero QR codes</string>
     <string name="a11y_currency_menu">Fiat currency</string>

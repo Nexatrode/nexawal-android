@@ -6,7 +6,7 @@
     <string name="nav_send">Trimite</string>
     <string name="nav_settings">Setări</string>
     <string name="total_balance">Sold total</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Anulează</string>
     <string name="action_replace">Înlocuiește</string>
     <string name="action_close">Închide</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Memoria cache de scanare pentru această rețea a fost ștearsă</string>
     <string name="section_fiat">Estimări fiat</string>
     <string name="toggle_show_fiat">Afișează estimări fiat</string>
-    <string name="fiat_help">Opțional. Când este activată, NexaWal preia un preț public XMR de la Kraken (api.kraken.com) și, dacă este necesar, cursul valutar fiat de la Frankfurter (api.frankfurter.dev). Acele servere văd adresa ta IP. Sumele și adresele nu sunt trimise. Consultările fiat folosesc HTTPS pe clearnet și sunt separate de setările nodului / proxy-ului I2P. Sunt doar estimări — XMR este ceea ce trimiți și deții.</string>
+    <string name="fiat_help">Opțional. Când este activată, nexawal preia un preț public XMR de la Kraken (api.kraken.com) și, dacă este necesar, cursul valutar fiat de la Frankfurter (api.frankfurter.dev). Acele servere văd adresa ta IP. Sumele și adresele nu sunt trimise. Consultările fiat folosesc HTTPS pe clearnet și sunt separate de setările nodului / proxy-ului I2P. Sunt doar estimări — XMR este ceea ce trimiți și deții.</string>
     <string name="fiat_currency_label">Monedă</string>
     <string name="section_about">Despre</string>
     <string name="about_disclaimer">Software licențiat MIT, neauditat. Ești responsabil pentru cheia ta de recuperare și fondurile tale. Nodul remote implicit poate vedea adresa ta IP și cererile de sincronizare ale portofelului — rulează propriul nod pentru o confidențialitate mai puternică. Estimările fiat opționale, dacă sunt activate, contactează api.kraken.com și api.frankfurter.dev.</string>
     <string name="terms_of_use">Termeni de utilizare</string>
     <string name="terms_title">Termeni de utilizare</string>
-    <string name="terms_body_custody">NexaWal de la Nexatrode LLC este o interfață cu auto-custodie pentru gestionarea activelor digitale. Aveți responsabilitatea exclusivă pentru cheile private și fraza seed de 25 de cuvinte.</string>
+    <string name="terms_body_custody">nexawal de la Nexatrode LLC este o interfață cu auto-custodie pentru gestionarea activelor digitale. Aveți responsabilitatea exclusivă pentru cheile private și fraza seed de 25 de cuvinte.</string>
     <string name="terms_body_as_is">Aplicația este furnizată ca atare, fără garanții exprese sau implicite. Utilizarea este pe propriul risc. Nexatrode LLC nu răspunde pentru active pierdute, erori ale utilizatorului, întreruperi sau probleme cu servicii ori noduri terțe.</string>
     <string name="terms_body_node">Se recomandă rularea sau conectarea la propriul nod Monero. Valorile publice implicite sunt doar pentru comoditate.</string>
     <string name="terms_review_full">Consultați termenii compleți pe site-ul Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Sunt de acord</string>
     <string name="terms_quit">Ieșire</string>
     <string name="privacy_policy">Politica de confidențialitate</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Sursă și licență (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentifică-te pentru a dezactiva protecția Face ID</string>
     <string name="error_mnemonic_empty">Mnemonicul nu poate fi gol.</string>
     <string name="error_rescan_no_mnemonic">Rescanarea a eșuat: mnemonicul nu este disponibil.</string>
-    <string name="biometric_unlock_nexawal">Autentifică-te pentru a debloca NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentifică-te pentru a debloca nexawal</string>
     <string name="biometric_unlock_wallet">Deblochează portofelul</string>
     <string name="biometric_unlock_subtitle">Autentifică-te pentru a deschide portofelul Monero salvat</string>
     <string name="unlock_your_wallet">Deblochează-ți portofelul</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s conf.</string>
     <string name="fee_value_fmt">Comision %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Ștergerea memoriei cache de scanare a eșuat: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Se conectează la %1$s</string>
     <string name="rescanning_from_fmt">Se rescanează de la %1$s — progresul este afișat în tab-ul Portofel</string>
     <string name="subaddress_fmt">Subadresa %1$d</string>

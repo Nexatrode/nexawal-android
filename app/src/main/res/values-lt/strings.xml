@@ -6,7 +6,7 @@
     <string name="nav_send">Siųsti</string>
     <string name="nav_settings">Nustatymai</string>
     <string name="total_balance">Bendras likutis</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Atšaukti</string>
     <string name="action_replace">Pakeisti</string>
     <string name="action_close">Uždaryti</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Šio tinklo skenavimo talpykla išvalyta</string>
     <string name="section_fiat">Fiat įverčiai</string>
     <string name="toggle_show_fiat">Rodyti fiat įverčius</string>
-    <string name="fiat_help">Nebūtina. Kai įjungta, NexaWal gauna viešą XMR kainą iš Kraken (api.kraken.com) ir, jei reikia, fiat valiutų kursą iš Frankfurter (api.frankfurter.dev). Šie serveriai mato jūsų IP adresą. Sumos ir adresai nesiunčiami. Fiat užklausoms naudojamas clearnet HTTPS, ir jos nepriklauso nuo tinklo taško / I2P tarpinio serverio nustatymų. Tai tik įverčiai — jūs siunčiate ir laikote XMR.</string>
+    <string name="fiat_help">Nebūtina. Kai įjungta, nexawal gauna viešą XMR kainą iš Kraken (api.kraken.com) ir, jei reikia, fiat valiutų kursą iš Frankfurter (api.frankfurter.dev). Šie serveriai mato jūsų IP adresą. Sumos ir adresai nesiunčiami. Fiat užklausoms naudojamas clearnet HTTPS, ir jos nepriklauso nuo tinklo taško / I2P tarpinio serverio nustatymų. Tai tik įverčiai — jūs siunčiate ir laikote XMR.</string>
     <string name="fiat_currency_label">Valiuta</string>
     <string name="section_about">Apie</string>
     <string name="about_disclaimer">MIT licencijos, neaudituota programinė įranga. Jūs patys atsakote už savo sėklą ir lėšas. Numatytasis nuotolinis tinklo taškas gali matyti jūsų IP adresą ir piniginės sinchronizavimo užklausas — norėdami didesnio privatumo, paleiskite savo tinklo tašką. Pasirinktinai įjungti fiat įverčiai susisiekia su api.kraken.com ir api.frankfurter.dev.</string>
     <string name="terms_of_use">Naudojimo sąlygos</string>
     <string name="terms_title">Naudojimo sąlygos</string>
-    <string name="terms_body_custody">NexaWal iš Nexatrode LLC yra savarankiškos saugojimo sąsaja skaitmeniniam turtui valdyti. Jūs vieninteliai atsakingi už privačius raktus ir 25 žodžių seed frazę.</string>
+    <string name="terms_body_custody">nexawal iš Nexatrode LLC yra savarankiškos saugojimo sąsaja skaitmeniniam turtui valdyti. Jūs vieninteliai atsakingi už privačius raktus ir 25 žodžių seed frazę.</string>
     <string name="terms_body_as_is">Programa pateikiama tokia, kokia yra, be jokių išreikštų ar numanomų garantijų. Naudojimasis – jūsų rizika. Nexatrode LLC neatsako už prarastą turtą, vartotojo klaidas, prastovas ar trečiųjų šalių paslaugų ar mazgų problemas.</string>
     <string name="terms_body_node">Rekomenduojama paleisti arba prisijungti prie savo Monero mazgo. Viešosios numatytosios reikšmės skirtos tik patogumui.</string>
     <string name="terms_review_full">Peržiūrėkite visas sąlygas Nexatrode LLC svetainėje</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Sutinku</string>
     <string name="terms_quit">Išeiti</string>
     <string name="privacy_policy">Privatumo politika</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Šaltinis ir licencija (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Patvirtinkite tapatybę, kad išjungtumėte Face ID apsaugą</string>
     <string name="error_mnemonic_empty">Mnemoninė frazė negali būti tuščia.</string>
     <string name="error_rescan_no_mnemonic">Pakartotinis skenavimas nepavyko: mnemoninė frazė nepasiekiama.</string>
-    <string name="biometric_unlock_nexawal">Patvirtinkite tapatybę, kad atrakintumėte NexaWal</string>
+    <string name="biometric_unlock_nexawal">Patvirtinkite tapatybę, kad atrakintumėte nexawal</string>
     <string name="biometric_unlock_wallet">Atrakinti piniginę</string>
     <string name="biometric_unlock_subtitle">Patvirtinkite tapatybę, kad atidarytumėte saugomą Monero piniginę</string>
     <string name="unlock_your_wallet">Atrakinkite savo piniginę</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s patv.</string>
     <string name="fee_value_fmt">Mokestis %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Skenavimo talpyklos išvalymas nepavyko: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Jungiamasi prie %1$s</string>
     <string name="rescanning_from_fmt">Skenuojama pakartotinai nuo %1$s — eiga rodoma skirtuke „Piniginė“</string>
     <string name="subaddress_fmt">Subadresas %1$d</string>

@@ -6,7 +6,7 @@
     <string name="nav_send">Bidali</string>
     <string name="nav_settings">Ezarpenak</string>
     <string name="total_balance">Saldo osoa</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Utzi</string>
     <string name="action_replace">Ordeztu</string>
     <string name="action_close">Itxi</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Sare honentzako eskaneo-cachea garbituta</string>
     <string name="section_fiat">Fiat kalkuluak</string>
     <string name="toggle_show_fiat">Erakutsi fiat kalkuluak</string>
-    <string name="fiat_help">Aukerakoa. Aktibatuta dagoenean, NexaWal-ek XMRren prezio publiko bat eskuratzen du Krakenetik (api.kraken.com) eta, behar izanez gero, fiat truke-tasak Frankfurterretik (api.frankfurter.dev). Zerbitzari horiek zure IPa ikusten dute. Ez da kopururik edo helbiderik bidaltzen. Fiat kontsultek clearnet HTTPS erabiltzen dute eta nodo / I2P proxy ezarpenetatik bereiz daude. Kalkuluak soilik dira — XMR da bidaltzen eta gordetzen duzuna.</string>
+    <string name="fiat_help">Aukerakoa. Aktibatuta dagoenean, nexawal-ek XMRren prezio publiko bat eskuratzen du Krakenetik (api.kraken.com) eta, behar izanez gero, fiat truke-tasak Frankfurterretik (api.frankfurter.dev). Zerbitzari horiek zure IPa ikusten dute. Ez da kopururik edo helbiderik bidaltzen. Fiat kontsultek clearnet HTTPS erabiltzen dute eta nodo / I2P proxy ezarpenetatik bereiz daude. Kalkuluak soilik dira — XMR da bidaltzen eta gordetzen duzuna.</string>
     <string name="fiat_currency_label">Moneta</string>
     <string name="section_about">Honi buruz</string>
     <string name="about_disclaimer">MIT lizentziako software da, auditatu gabea. Zure hazia eta funtsak zure ardura dira. Lehenetsitako urruneko nodoak zure IPa eta zorroaren sinkronizazio-kontsultak ikus ditzake — pribatutasun handiagoa nahi izanez gero, exekutatu zure nodo propioa. Fiat kalkulu aukerakoak, aktibatuta badaude, api.kraken.com eta api.frankfurter.dev-ekin kontaktatzen dute.</string>
     <string name="terms_of_use">Erabilera-baldintzak</string>
     <string name="terms_title">Erabilera-baldintzak</string>
-    <string name="terms_body_custody">Nexatrode LLC-ren NexaWal auto-zaintzako interfazea da aktibo digitalak kudeatzeko. Zure gako pribatuen eta 25 hitzeko seed esaldiaren erantzukizun esklusiboa duzu.</string>
+    <string name="terms_body_custody">Nexatrode LLC-ren nexawal auto-zaintzako interfazea da aktibo digitalak kudeatzeko. Zure gako pribatuen eta 25 hitzeko seed esaldiaren erantzukizun esklusiboa duzu.</string>
     <string name="terms_body_as_is">Aplikazioa dagoen bezala ematen da, bermerik gabe, esplizitu edo inplizitu. Erabilera zure arriskuan da. Nexatrode LLC ez da arduratzen galdutako aktiboez, erabiltzaile-erroreez, eteneeaz edo hirugarrenen zerbitzuen/nodoen arazoez.</string>
     <string name="terms_body_node">Gomendagarria da zure Monero nodoa exekutatzea edo konektatzea. Publiko lehenetsiak erosotasunerako soilik dira.</string>
     <string name="terms_review_full">Ikusi baldintza osoak Nexatrode LLC webgunean</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Onartzen dut</string>
     <string name="terms_quit">Irten</string>
     <string name="privacy_policy">Pribatutasun politika</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Iturburua eta lizentzia (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentifikatu Face ID babesa desaktibatzeko</string>
     <string name="error_mnemonic_empty">Esaldi mnemoteknikoa ez da hutsik egon behar.</string>
     <string name="error_rescan_no_mnemonic">Berreskaneoa huts egin du: esaldi mnemoteknikoa ez dago eskuragarri.</string>
-    <string name="biometric_unlock_nexawal">Autentifikatu NexaWal desblokeatzeko</string>
+    <string name="biometric_unlock_nexawal">Autentifikatu nexawal desblokeatzeko</string>
     <string name="biometric_unlock_wallet">Desblokeatu zorroa</string>
     <string name="biometric_unlock_subtitle">Autentifikatu gordetako Monero zorroa irekitzeko</string>
     <string name="unlock_your_wallet">Desblokeatu zure zorroa</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s berrespen</string>
     <string name="fee_value_fmt">Komisioa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Eskaneo-cachea garbitzeak huts egin du: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Konektatzen: %1$s</string>
     <string name="rescanning_from_fmt">Berreskaneatzen: %1$s — aurrerapena Zorroa fitxan dago</string>
     <string name="subaddress_fmt">Azpihelbidea %1$d</string>

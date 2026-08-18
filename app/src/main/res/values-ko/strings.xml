@@ -6,7 +6,7 @@
     <string name="nav_send">보내기</string>
     <string name="nav_settings">설정</string>
     <string name="total_balance">총 잔액</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">취소</string>
     <string name="action_replace">교체</string>
     <string name="action_close">닫기</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">이 네트워크의 스캔 캐시가 삭제되었습니다</string>
     <string name="section_fiat">환율 추정치</string>
     <string name="toggle_show_fiat">환율 추정치 표시</string>
-    <string name="fiat_help">선택 사항입니다. 켜면 NexaWal이 Kraken(api.kraken.com)에서 공개 XMR 가격을 가져오고, 필요한 경우 Frankfurter(api.frankfurter.dev)에서 환율을 가져옵니다. 이 서버들은 회원님의 IP를 볼 수 있습니다. 금액과 주소는 전송되지 않습니다. 환율 조회는 클리어넷 HTTPS를 사용하며 노드 / I2P 프록시 설정과는 별개입니다. 참고용 추정치일 뿐이며 — 실제로 보내고 보유하는 것은 XMR입니다.</string>
+    <string name="fiat_help">선택 사항입니다. 켜면 nexawal이 Kraken(api.kraken.com)에서 공개 XMR 가격을 가져오고, 필요한 경우 Frankfurter(api.frankfurter.dev)에서 환율을 가져옵니다. 이 서버들은 회원님의 IP를 볼 수 있습니다. 금액과 주소는 전송되지 않습니다. 환율 조회는 클리어넷 HTTPS를 사용하며 노드 / I2P 프록시 설정과는 별개입니다. 참고용 추정치일 뿐이며 — 실제로 보내고 보유하는 것은 XMR입니다.</string>
     <string name="fiat_currency_label">통화</string>
     <string name="section_about">정보</string>
     <string name="about_disclaimer">MIT 라이선스가 적용된 감사받지 않은 소프트웨어입니다. 시드와 자금에 대한 책임은 사용자에게 있습니다. 기본 원격 노드는 회원님의 IP와 지갑 동기화 조회를 볼 수 있습니다 — 더 강력한 프라이버시를 위해 직접 노드를 운영하세요. 선택적 환율 추정치를 활성화하면 api.kraken.com 및 api.frankfurter.dev와 통신합니다.</string>
     <string name="terms_of_use">이용 약관</string>
     <string name="terms_title">이용 약관</string>
-    <string name="terms_body_custody">Nexatrode LLC의 NexaWal은 디지털 자산을 관리하기 위한 셀프 커스터디 인터페이스입니다. 개인 키와 25단어 시드 구문에 대한 전적인 책임은 사용자에게 있습니다.</string>
+    <string name="terms_body_custody">Nexatrode LLC의 nexawal은 디지털 자산을 관리하기 위한 셀프 커스터디 인터페이스입니다. 개인 키와 25단어 시드 구문에 대한 전적인 책임은 사용자에게 있습니다.</string>
     <string name="terms_body_as_is">앱은 명시적 또는 묵시적 보증 없이 있는 그대로 제공됩니다. 사용은 사용자 본인 책임입니다. Nexatrode LLC는 자산 손실, 사용자 오류, 다운타임 또는 제3자 서비스/노드 문제에 대해 책임지지 않습니다.</string>
     <string name="terms_body_node">자체 Monero 노드를 실행하거나 연결하는 것을 권장합니다. 공개 기본값은 편의용일 뿐입니다.</string>
     <string name="terms_review_full">Nexatrode LLC 웹사이트에서 전체 약관 확인</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">동의합니다</string>
     <string name="terms_quit">종료</string>
     <string name="privacy_policy">개인정보 보호정책</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">닫기</string>
     <string name="legal_load_error">오프라인 문서를 불러올 수 없습니다.</string>
     <string name="source_license">소스 및 라이선스 (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Face ID 보호를 끄려면 인증하세요</string>
     <string name="error_mnemonic_empty">니모닉은 비워둘 수 없습니다.</string>
     <string name="error_rescan_no_mnemonic">재스캔 실패: 니모닉을 사용할 수 없습니다.</string>
-    <string name="biometric_unlock_nexawal">NexaWal의 잠금을 해제하려면 인증하세요</string>
+    <string name="biometric_unlock_nexawal">nexawal의 잠금을 해제하려면 인증하세요</string>
     <string name="biometric_unlock_wallet">지갑 잠금 해제</string>
     <string name="biometric_unlock_subtitle">저장된 Monero 지갑을 열려면 인증하세요</string>
     <string name="unlock_your_wallet">지갑 잠금 해제</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">확인 %1$s회</string>
     <string name="fee_value_fmt">수수료 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">스캔 캐시 지우기 실패: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">%1$s에 연결 중</string>
     <string name="rescanning_from_fmt">%1$s부터 재스캔 중 — 진행 상황은 지갑 탭에서 확인하세요</string>
     <string name="subaddress_fmt">서브주소 %1$d</string>

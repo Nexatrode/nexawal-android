@@ -6,7 +6,7 @@
     <string name="nav_send">Αποστολή</string>
     <string name="nav_settings">Ρυθμίσεις</string>
     <string name="total_balance">Συνολικό υπόλοιπο</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Ακύρωση</string>
     <string name="action_replace">Αντικατάσταση</string>
     <string name="action_close">Κλείσιμο</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Η προσωρινή μνήμη σάρωσης εκκαθαρίστηκε για αυτό το δίκτυο</string>
     <string name="section_fiat">Εκτιμήσεις fiat</string>
     <string name="toggle_show_fiat">Εμφάνιση εκτιμήσεων fiat</string>
-    <string name="fiat_help">Προαιρετικό. Όταν είναι ενεργό, το NexaWal λαμβάνει μια δημόσια τιμή XMR από το Kraken (api.kraken.com) και, αν χρειάζεται, ισοτιμίες fiat από το Frankfurter (api.frankfurter.dev). Αυτοί οι διακομιστές βλέπουν την IP σας. Τα ποσά και οι διευθύνσεις δεν αποστέλλονται. Οι αναζητήσεις fiat χρησιμοποιούν HTTPS μέσω clearnet και είναι ανεξάρτητες από τις ρυθμίσεις κόμβου / διαμεσολαβητή I2P. Μόνο εκτιμήσεις — το XMR είναι αυτό που στέλνετε και κατέχετε.</string>
+    <string name="fiat_help">Προαιρετικό. Όταν είναι ενεργό, το nexawal λαμβάνει μια δημόσια τιμή XMR από το Kraken (api.kraken.com) και, αν χρειάζεται, ισοτιμίες fiat από το Frankfurter (api.frankfurter.dev). Αυτοί οι διακομιστές βλέπουν την IP σας. Τα ποσά και οι διευθύνσεις δεν αποστέλλονται. Οι αναζητήσεις fiat χρησιμοποιούν HTTPS μέσω clearnet και είναι ανεξάρτητες από τις ρυθμίσεις κόμβου / διαμεσολαβητή I2P. Μόνο εκτιμήσεις — το XMR είναι αυτό που στέλνετε και κατέχετε.</string>
     <string name="fiat_currency_label">Νόμισμα</string>
     <string name="section_about">Σχετικά</string>
     <string name="about_disclaimer">Λογισμικό με άδεια MIT, χωρίς έλεγχο ασφαλείας. Είστε υπεύθυνοι για τη φράση ανάκτησης και τα κεφάλαιά σας. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει την IP σας και τα ερωτήματα συγχρονισμού του πορτοφολιού — εκτελέστε τον δικό σας κόμβο για μεγαλύτερο απόρρητο. Οι προαιρετικές εκτιμήσεις fiat, εάν ενεργοποιηθούν, επικοινωνούν με τα api.kraken.com και api.frankfurter.dev.</string>
     <string name="terms_of_use">Όροι χρήσης</string>
     <string name="terms_title">Όροι χρήσης</string>
-    <string name="terms_body_custody">Το NexaWal της Nexatrode LLC είναι μια διεπαφή αυτοφύλαξης για τη διαχείριση ψηφιακών περιουσιακών στοιχείων. Έχετε αποκλειστική ευθύνη για τα ιδιωτικά σας κλειδιά και τη φράση seed 25 λέξεων.</string>
+    <string name="terms_body_custody">Το nexawal της Nexatrode LLC είναι μια διεπαφή αυτοφύλαξης για τη διαχείριση ψηφιακών περιουσιακών στοιχείων. Έχετε αποκλειστική ευθύνη για τα ιδιωτικά σας κλειδιά και τη φράση seed 25 λέξεων.</string>
     <string name="terms_body_as_is">Η εφαρμογή παρέχεται ως έχει, χωρίς ρητές ή σιωπηρές εγγυήσεις. Η χρήση γίνεται με δική σας ευθύνη. Η Nexatrode LLC δεν ευθύνεται για χαμένα περιουσιακά στοιχεία, σφάλματα χρήστη, διακοπές ή προβλήματα με υπηρεσίες ή κόμβους τρίτων.</string>
     <string name="terms_body_node">Συνιστάται να εκτελείτε ή να συνδέεστε στον δικό σας κόμβο Monero. Οι δημόσιες προεπιλογές είναι μόνο για ευκολία.</string>
     <string name="terms_review_full">Δείτε τους πλήρεις όρους στον ιστότοπο της Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Συμφωνώ</string>
     <string name="terms_quit">Έξοδος</string>
     <string name="privacy_policy">Πολιτική απορρήτου</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Πηγαίος κώδικας &amp; άδεια (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Ελέγξτε την ταυτότητά σας για να απενεργοποιήσετε την προστασία Face ID</string>
     <string name="error_mnemonic_empty">Η μνημονική φράση δεν μπορεί να είναι κενή.</string>
     <string name="error_rescan_no_mnemonic">Η επανασάρωση απέτυχε: η μνημονική φράση δεν είναι διαθέσιμη.</string>
-    <string name="biometric_unlock_nexawal">Ελέγξτε την ταυτότητά σας για να ξεκλειδώσετε το NexaWal</string>
+    <string name="biometric_unlock_nexawal">Ελέγξτε την ταυτότητά σας για να ξεκλειδώσετε το nexawal</string>
     <string name="biometric_unlock_wallet">Ξεκλείδωμα πορτοφολιού</string>
     <string name="biometric_unlock_subtitle">Ελέγξτε την ταυτότητά σας για να ανοίξετε το αποθηκευμένο πορτοφόλι Monero</string>
     <string name="unlock_your_wallet">Ξεκλειδώστε το πορτοφόλι σας</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s επιβ.</string>
     <string name="fee_value_fmt">Προμήθεια %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Η εκκαθάριση της προσωρινής μνήμης σάρωσης απέτυχε: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Σύνδεση με %1$s</string>
     <string name="rescanning_from_fmt">Επανασάρωση από %1$s — η πρόοδος εμφανίζεται στην καρτέλα «Πορτοφόλι»</string>
     <string name="subaddress_fmt">Υποδιεύθυνση %1$d</string>

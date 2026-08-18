@@ -6,7 +6,7 @@
     <string name="nav_send">Lähetä</string>
     <string name="nav_settings">Asetukset</string>
     <string name="total_balance">Kokonaissaldo</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Peruuta</string>
     <string name="action_replace">Korvaa</string>
     <string name="action_close">Sulje</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Tämän verkon skannausvälimuisti tyhjennetty</string>
     <string name="section_fiat">Fiat-arviot</string>
     <string name="toggle_show_fiat">Näytä fiat-arviot</string>
-    <string name="fiat_help">Valinnainen. Kun käytössä, NexaWal hakee julkisen XMR-hinnan Krakenilta (api.kraken.com) ja tarvittaessa fiat-valuuttakurssin Frankfurterilta (api.frankfurter.dev). Nämä palvelimet näkevät IP-osoitteesi. Määriä ja osoitteita ei lähetetä. Fiat-haut käyttävät clearnet HTTPS:ää ja ovat erillisiä solmu- / I2P-välityspalvelinasetuksista. Kyseessä on vain arvio — XMR on se, mitä lähetät ja säilytät.</string>
+    <string name="fiat_help">Valinnainen. Kun käytössä, nexawal hakee julkisen XMR-hinnan Krakenilta (api.kraken.com) ja tarvittaessa fiat-valuuttakurssin Frankfurterilta (api.frankfurter.dev). Nämä palvelimet näkevät IP-osoitteesi. Määriä ja osoitteita ei lähetetä. Fiat-haut käyttävät clearnet HTTPS:ää ja ovat erillisiä solmu- / I2P-välityspalvelinasetuksista. Kyseessä on vain arvio — XMR on se, mitä lähetät ja säilytät.</string>
     <string name="fiat_currency_label">Valuutta</string>
     <string name="section_about">Tietoja</string>
     <string name="about_disclaimer">MIT-lisensoitu, auditoimaton ohjelmisto. Olet itse vastuussa siemenestäsi ja varoistasi. Oletusarvoinen etäsolmu voi nähdä IP-osoitteesi ja lompakon synkronointikyselyt — käytä omaa solmua paremman yksityisyyden saamiseksi. Valinnaiset fiat-arviot, jos käytössä, ottavat yhteyttä osoitteisiin api.kraken.com ja api.frankfurter.dev.</string>
     <string name="terms_of_use">Käyttöehdot</string>
     <string name="terms_title">Käyttöehdot</string>
-    <string name="terms_body_custody">Nexatrode LLC:n NexaWal on itsehallinnollinen käyttöliittymä digitaalisten varojen hallintaan. Olet yksin vastuussa yksityisavaimistasi ja 25 sanan siemenlauseesta.</string>
+    <string name="terms_body_custody">Nexatrode LLC:n nexawal on itsehallinnollinen käyttöliittymä digitaalisten varojen hallintaan. Olet yksin vastuussa yksityisavaimistasi ja 25 sanan siemenlauseesta.</string>
     <string name="terms_body_as_is">Sovellus tarjotaan sellaisenaan ilman nimenomaisia tai oletettuja takuita. Käyttö on omalla vastuullasi. Nexatrode LLC ei ole vastuussa menetetyistä varoista, käyttäjävirheistä, käyttökatkoista tai kolmansien osapuolten palveluiden tai nodien ongelmista.</string>
     <string name="terms_body_node">Suosittelemme oman Monero-noden käyttämistä tai siihen yhdistämistä. Julkiset oletukset ovat vain mukavuutta varten.</string>
     <string name="terms_review_full">Tutustu täydellisiin ehtoihin Nexatrode LLC:n verkkosivustolla</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Hyväksyn</string>
     <string name="terms_quit">Lopeta</string>
     <string name="privacy_policy">Tietosuojakäytäntö</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Lähdekoodi ja lisenssi (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Todenna poistaaksesi Face ID -suojauksen käytöstä</string>
     <string name="error_mnemonic_empty">Muistisana ei voi olla tyhjä.</string>
     <string name="error_rescan_no_mnemonic">Uudelleenskannaus epäonnistui: muistisana ei ole käytettävissä.</string>
-    <string name="biometric_unlock_nexawal">Todenna avataksesi NexaWalin lukituksen</string>
+    <string name="biometric_unlock_nexawal">Todenna avataksesi nexawalin lukituksen</string>
     <string name="biometric_unlock_wallet">Avaa lompakon lukitus</string>
     <string name="biometric_unlock_subtitle">Todenna avataksesi tallennetun Monero-lompakon</string>
     <string name="unlock_your_wallet">Avaa lompakkosi lukitus</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s vahv.</string>
     <string name="fee_value_fmt">Maksu %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Skannausvälimuistin tyhjennys epäonnistui: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Yhdistetään %1$s</string>
     <string name="rescanning_from_fmt">Skannataan uudelleen korkeudesta %1$s — edistyminen näkyy Lompakko-välilehdellä</string>
     <string name="subaddress_fmt">Aliosoite %1$d</string>

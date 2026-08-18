@@ -6,7 +6,7 @@
     <string name="nav_send">Pošiljanje</string>
     <string name="nav_settings">Nastavitve</string>
     <string name="total_balance">Skupno stanje</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Prekliči</string>
     <string name="action_replace">Zamenjaj</string>
     <string name="action_close">Zapri</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Predpomnilnik preiskovanja za to omrežje počiščen</string>
     <string name="section_fiat">Ocene fiat vrednosti</string>
     <string name="toggle_show_fiat">Prikaži ocene fiat vrednosti</string>
-    <string name="fiat_help">Neobvezno. Ko je vklopljeno, NexaWal pridobi javno ceno XMR od Kraken (api.kraken.com) in, če je potrebno, fiat menjalni tečaj od Frankfurter (api.frankfurter.dev). Ti strežniki vidijo tvoj IP naslov. Zneski in naslovi se ne pošiljajo. Poizvedbe za fiat vrednosti uporabljajo clearnet HTTPS in so ločene od nastavitev vozlišča / proxyja I2P. Le ocene — XMR je tisto, kar pošiljaš in imaš.</string>
+    <string name="fiat_help">Neobvezno. Ko je vklopljeno, nexawal pridobi javno ceno XMR od Kraken (api.kraken.com) in, če je potrebno, fiat menjalni tečaj od Frankfurter (api.frankfurter.dev). Ti strežniki vidijo tvoj IP naslov. Zneski in naslovi se ne pošiljajo. Poizvedbe za fiat vrednosti uporabljajo clearnet HTTPS in so ločene od nastavitev vozlišča / proxyja I2P. Le ocene — XMR je tisto, kar pošiljaš in imaš.</string>
     <string name="fiat_currency_label">Valuta</string>
     <string name="section_about">O aplikaciji</string>
     <string name="about_disclaimer">Programska oprema z licenco MIT, brez revizije. Sam si odgovoren za svoj seed in sredstva. Privzeto oddaljeno vozlišče lahko vidi tvoj IP naslov in poizvedbe sinhronizacije denarnice — za večjo zasebnost poganjaj svoje lastno vozlišče. Neobvezne ocene fiat vrednosti, če so omogočene, komunicirajo z api.kraken.com in api.frankfurter.dev.</string>
     <string name="terms_of_use">Pogoji uporabe</string>
     <string name="terms_title">Pogoji uporabe</string>
-    <string name="terms_body_custody">NexaWal podjetja Nexatrode LLC je vmesnik s samostojnim skrbništvom za upravljanje digitalnih sredstev. Izključno ste odgovorni za zasebne ključe in 25-besedno seed frazo.</string>
+    <string name="terms_body_custody">nexawal podjetja Nexatrode LLC je vmesnik s samostojnim skrbništvom za upravljanje digitalnih sredstev. Izključno ste odgovorni za zasebne ključe in 25-besedno seed frazo.</string>
     <string name="terms_body_as_is">Aplikacija je na voljo takšna, kakršna je, brez izrecnih ali implicitnih jamstev. Uporaba je na lastno odgovornost. Nexatrode LLC ni odgovoren za izgubljena sredstva, napake uporabnika, izpade ali težave s storitvami ali vozlišči tretjih oseb.</string>
     <string name="terms_body_node">Priporočeno je zagnati ali se povezati z lastnim vozliščem Monero. Javne privzete vrednosti so le zaradi udobja.</string>
     <string name="terms_review_full">Preglejte celotne pogoje na spletnem mestu Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Strinjam se</string>
     <string name="terms_quit">Izhod</string>
     <string name="privacy_policy">Politika zasebnosti</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Vir in licenca (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Preveri se za izklop zaščite Face ID</string>
     <string name="error_mnemonic_empty">Mnemonika ne more biti prazna.</string>
     <string name="error_rescan_no_mnemonic">Ponovno preiskovanje ni uspelo: mnemonika ni na voljo.</string>
-    <string name="biometric_unlock_nexawal">Preveri se za odklep NexaWal</string>
+    <string name="biometric_unlock_nexawal">Preveri se za odklep nexawal</string>
     <string name="biometric_unlock_wallet">Odkleni denarnico</string>
     <string name="biometric_unlock_subtitle">Preveri se za odprtje shranjene denarnice Monero</string>
     <string name="unlock_your_wallet">Odkleni svojo denarnico</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s potrditev</string>
     <string name="fee_value_fmt">Provizija %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Čiščenje predpomnilnika preiskovanja ni uspelo: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Povezovanje z %1$s</string>
     <string name="rescanning_from_fmt">Ponovno preiskovanje od %1$s — napredek je na zavihku Denarnica</string>
     <string name="subaddress_fmt">Podnaslov %1$d</string>

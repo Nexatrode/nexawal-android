@@ -6,7 +6,7 @@
     <string name="nav_send">Ուղարկել</string>
     <string name="nav_settings">Կարգավորումներ</string>
     <string name="total_balance">Ընդհանուր հաշվեկշիռ</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Չեղարկել</string>
     <string name="action_replace">Փոխարինել</string>
     <string name="action_close">Փակել</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Այս ցանցի սկանավորման կեշը մաքրվեց</string>
     <string name="section_fiat">Ֆիաթ գնահատականներ</string>
     <string name="toggle_show_fiat">Ցուցադրել ֆիաթ գնահատականները</string>
-    <string name="fiat_help">Ընտրովի է։ Երբ միացված է, NexaWal-ը Kraken-ից (api.kraken.com) ստանում է XMR-ի հրապարակային գինը և, անհրաժեշտության դեպքում, ֆիաթ փոխարժեքը Frankfurter-ից (api.frankfurter.dev)։ Այս սերվերները տեսնում են ձեր IP-ն։ Գումարներ և հասցեներ չեն ուղարկվում։ Ֆիաթ որոնումները օգտագործում են clearnet HTTPS և առանձին են հանգույցի / I2P պրոքսիի կարգավորումներից։ Միայն գնահատականներ են — XMR-ն է այն, ինչ դուք ուղարկում և պահում եք։</string>
+    <string name="fiat_help">Ընտրովի է։ Երբ միացված է, nexawal-ը Kraken-ից (api.kraken.com) ստանում է XMR-ի հրապարակային գինը և, անհրաժեշտության դեպքում, ֆիաթ փոխարժեքը Frankfurter-ից (api.frankfurter.dev)։ Այս սերվերները տեսնում են ձեր IP-ն։ Գումարներ և հասցեներ չեն ուղարկվում։ Ֆիաթ որոնումները օգտագործում են clearnet HTTPS և առանձին են հանգույցի / I2P պրոքսիի կարգավորումներից։ Միայն գնահատականներ են — XMR-ն է այն, ինչ դուք ուղարկում և պահում եք։</string>
     <string name="fiat_currency_label">Արժույթ</string>
     <string name="section_about">Մասին</string>
     <string name="about_disclaimer">MIT լիցենզիայով, չաուդիտավորված ծրագրակազմ։ Դուք եք պատասխանատու ձեր վերականգնման բառերի և միջոցների համար։ Կանխադրված հեռավոր հանգույցը կարող է տեսնել ձեր IP-ն և դրամապանակի համաժամացման հայցերը — ավելի ուժեղ գաղտնիության համար գործարկեք ձեր սեփական հանգույցը։ Ընտրովի ֆիաթ գնահատականները, եթե միացված են, կապվում են api.kraken.com և api.frankfurter.dev հետ։</string>
     <string name="terms_of_use">Օգտագործման պայմաններ</string>
     <string name="terms_title">Օգտագործման պայմաններ</string>
-    <string name="terms_body_custody">Nexatrode LLC-ի NexaWal-ը ինքնապահպանման միջերես է թվային ակտիվները կառավարելու համար։ Դուք կրում եք բացառիկ պատասխանատվություն ձեր մասնավոր բանալիների և 25 բառանոց seed արտահայտության համար։</string>
+    <string name="terms_body_custody">Nexatrode LLC-ի nexawal-ը ինքնապահպանման միջերես է թվային ակտիվները կառավարելու համար։ Դուք կրում եք բացառիկ պատասխանատվություն ձեր մասնավոր բանալիների և 25 բառանոց seed արտահայտության համար։</string>
     <string name="terms_body_as_is">Հավելվածը տրամադրվում է «ինչպես կա»՝ առանց բացահայտ կամ ենթադրյալ երաշխիքների։ Օգտագործումը ձեր ռիսկով է։ Nexatrode LLC-ն պատասխանատու չէ կորած ակտիվների, օգտատիրոջ սխալների, պարապուրդների կամ երրորդ կողմի ծառայությունների/հանգույցների խնդիրների համար։</string>
     <string name="terms_body_node">Խորհուրդ է տրվում գործարկել կամ միանալ ձեր սեփական Monero հանգույցին։ Հանրային լռելյայնները միայն հարմարության համար են։</string>
     <string name="terms_review_full">Դիտեք ամբողջական պայմանները Nexatrode LLC կայքում</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Համաձայն եմ</string>
     <string name="terms_quit">Ելք</string>
     <string name="privacy_policy">Գաղտնիության քաղաքականություն</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Կոդի աղբյուր և լիցենզիա (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Նույնականացրեք, որպեսզի անջատեք Face ID պաշտպանությունը</string>
     <string name="error_mnemonic_empty">Վերականգնման բառերը չեն կարող դատարկ լինել։</string>
     <string name="error_rescan_no_mnemonic">Վերասկանավորումը ձախողվեց՝ վերականգնման բառերը հասանելի չեն։</string>
-    <string name="biometric_unlock_nexawal">Նույնականացրեք, որպեսզի բացեք NexaWal-ը</string>
+    <string name="biometric_unlock_nexawal">Նույնականացրեք, որպեսզի բացեք nexawal-ը</string>
     <string name="biometric_unlock_wallet">Բացակողպել դրամապանակը</string>
     <string name="biometric_unlock_subtitle">Նույնականացրեք, որպեսզի բացեք պահված Monero դրամապանակը</string>
     <string name="unlock_your_wallet">Բացակողպեք ձեր դրամապանակը</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s հաստ.</string>
     <string name="fee_value_fmt">Միջնորդավճար %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Սկանավորման կեշի մաքրումը ձախողվեց՝ %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Միանում է %1$s-ին</string>
     <string name="rescanning_from_fmt">Վերասկանավորում է %1$s-ից — ընթացքը երևում է Դրամապանակ ներդիրում</string>
     <string name="subaddress_fmt">Ենթահասցե %1$d</string>

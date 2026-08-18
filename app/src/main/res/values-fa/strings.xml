@@ -6,7 +6,7 @@
     <string name="nav_send">ارسال</string>
     <string name="nav_settings">تنظیمات</string>
     <string name="total_balance">موجودی کل</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">لغو</string>
     <string name="action_replace">جایگزینی</string>
     <string name="action_close">بستن</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">حافظه موقت اسکن برای این شبکه پاک شد</string>
     <string name="section_fiat">تخمین‌های ارز فیات</string>
     <string name="toggle_show_fiat">نمایش تخمین‌های ارز فیات</string>
-    <string name="fiat_help">اختیاری. وقتی روشن باشد، NexaWal قیمت عمومی XMR را از Kraken (api.kraken.com) و در صورت نیاز، نرخ تبدیل ارز فیات را از Frankfurter (api.frankfurter.dev) دریافت می‌کند. آن سرورها IP شما را می‌بینند. مقادیر و آدرس‌ها ارسال نمی‌شوند. جستجوهای ارز فیات از HTTPS در Clearnet استفاده می‌کنند و مستقل از تنظیمات گره / پراکسی I2P هستند. فقط تخمین — چیزی که ارسال و نگه‌داری می‌کنید XMR است.</string>
+    <string name="fiat_help">اختیاری. وقتی روشن باشد، nexawal قیمت عمومی XMR را از Kraken (api.kraken.com) و در صورت نیاز، نرخ تبدیل ارز فیات را از Frankfurter (api.frankfurter.dev) دریافت می‌کند. آن سرورها IP شما را می‌بینند. مقادیر و آدرس‌ها ارسال نمی‌شوند. جستجوهای ارز فیات از HTTPS در Clearnet استفاده می‌کنند و مستقل از تنظیمات گره / پراکسی I2P هستند. فقط تخمین — چیزی که ارسال و نگه‌داری می‌کنید XMR است.</string>
     <string name="fiat_currency_label">ارز</string>
     <string name="section_about">درباره</string>
     <string name="about_disclaimer">نرم‌افزاری با مجوز MIT و بدون بازرسی امنیتی رسمی. شما مسئول عبارت بازیابی و وجوه خود هستید. گره راه دور پیش‌فرض می‌تواند IP و درخواست‌های همگام‌سازی کیف پول شما را ببیند — برای حریم خصوصی قوی‌تر، گره خودتان را اجرا کنید. تخمین‌های ارز فیات اختیاری، اگر فعال باشند، با api.kraken.com و api.frankfurter.dev ارتباط برقرار می‌کنند.</string>
     <string name="terms_of_use">شرایط استفاده</string>
     <string name="terms_title">شرایط استفاده</string>
-    <string name="terms_body_custody">NexaWal از Nexatrode LLC یک رابط خودنگهدار برای مدیریت دارایی‌های دیجیتال است. مسئولیت انحصاری کلیدهای خصوصی و عبارت بازیابی ۲۵ کلمه‌ای بر عهده شماست.</string>
+    <string name="terms_body_custody">nexawal از Nexatrode LLC یک رابط خودنگهدار برای مدیریت دارایی‌های دیجیتال است. مسئولیت انحصاری کلیدهای خصوصی و عبارت بازیابی ۲۵ کلمه‌ای بر عهده شماست.</string>
     <string name="terms_body_as_is">برنامه به‌صورت «همان‌گونه که هست» و بدون هرگونه ضمانت صریح یا ضمنی ارائه می‌شود. استفاده بر عهده خود شماست. Nexatrode LLC مسئول دارایی‌های ازدست‌رفته، خطای کاربر، قطعی یا مشکلات خدمات یا نودهای شخص ثالث نیست.</string>
     <string name="terms_body_node">اجرا یا اتصال به نود Monero خودتان توصیه می‌شود. مقادیر پیش‌فرض عمومی فقط برای راحتی هستند.</string>
     <string name="terms_review_full">شرایط کامل را در وب‌سایت Nexatrode LLC ببینید</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">موافقم</string>
     <string name="terms_quit">خروج</string>
     <string name="privacy_policy">سیاست حریم خصوصی</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">کد منبع و مجوز (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">برای خاموش کردن محافظت Face ID احراز هویت کنید</string>
     <string name="error_mnemonic_empty">عبارت بازیابی نمی‌تواند خالی باشد.</string>
     <string name="error_rescan_no_mnemonic">اسکن مجدد ناموفق بود: عبارت بازیابی در دسترس نیست.</string>
-    <string name="biometric_unlock_nexawal">برای باز کردن قفل NexaWal احراز هویت کنید</string>
+    <string name="biometric_unlock_nexawal">برای باز کردن قفل nexawal احراز هویت کنید</string>
     <string name="biometric_unlock_wallet">باز کردن قفل کیف پول</string>
     <string name="biometric_unlock_subtitle">برای باز کردن کیف پول Monero ذخیره‌شده احراز هویت کنید</string>
     <string name="unlock_your_wallet">قفل کیف پول خود را باز کنید</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s تأیید</string>
     <string name="fee_value_fmt">کارمزد %1$s</string>
     <string name="clear_scan_cache_failed_fmt">پاک کردن حافظه موقت اسکن ناموفق بود: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">در حال اتصال به %1$s</string>
     <string name="rescanning_from_fmt">در حال اسکن مجدد از %1$s — پیشرفت در تب کیف پول نمایش داده می‌شود</string>
     <string name="subaddress_fmt">زیرآدرس %1$d</string>

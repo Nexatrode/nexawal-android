@@ -311,7 +311,7 @@ fun WalletCreationScreen(
             TopAppBar(
                 title = {
                     Text(
-                        if (neon) "NEXAWAL" else stringResource(R.string.create_wallet),
+                        if (neon) "nexawal" else stringResource(R.string.create_wallet),
                         color = palette.primaryText,
                         fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         fontWeight = if (neon) FontWeight.Bold else FontWeight.Normal,

@@ -6,7 +6,7 @@
     <string name="nav_send">Seol</string>
     <string name="nav_settings">Socruithe</string>
     <string name="total_balance">Iarmhéid Iomlán</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Cealaigh</string>
     <string name="action_replace">Ionadaigh</string>
     <string name="action_close">Dún</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Taisce scanta glanta don líonra seo</string>
     <string name="section_fiat">Meastacháin Fiat</string>
     <string name="toggle_show_fiat">Taispeáin meastacháin fiat</string>
-    <string name="fiat_help">Roghnach. Nuair a bhíonn sé ar siúl, faigheann NexaWal praghas poiblí XMR ó Kraken (api.kraken.com) agus, más gá, malartán fiat ó Frankfurter (api.frankfurter.dev). Feiceann na freastalaithe sin do sheoladh IP. Ní sheoltar méideanna ná seoltaí. Úsáideann cuardaigh fiat HTTPS Clearnet agus tá siad ar leithligh ó shocruithe an nóid / seachfhreastalaí I2P. Meastacháin amháin iad seo — is é XMR an rud a sheolann agus a shealbhaíonn tú.</string>
+    <string name="fiat_help">Roghnach. Nuair a bhíonn sé ar siúl, faigheann nexawal praghas poiblí XMR ó Kraken (api.kraken.com) agus, más gá, malartán fiat ó Frankfurter (api.frankfurter.dev). Feiceann na freastalaithe sin do sheoladh IP. Ní sheoltar méideanna ná seoltaí. Úsáideann cuardaigh fiat HTTPS Clearnet agus tá siad ar leithligh ó shocruithe an nóid / seachfhreastalaí I2P. Meastacháin amháin iad seo — is é XMR an rud a sheolann agus a shealbhaíonn tú.</string>
     <string name="fiat_currency_label">Airgeadra</string>
     <string name="section_about">Maidir Leis</string>
     <string name="about_disclaimer">Bogearra ceadúnaithe faoi MIT, gan iniúchadh. Tá tú féin freagrach as do shíol agus do chistí. Is féidir leis an nód cianda réamhshocraithe do sheoladh IP agus do cheisteanacha sioncronaithe sparáin a fheiceáil — rith do nód féin le haghaidh príobháideachta níos fearr. Déanann meastacháin roghnach fiat, má tá siad cumasaithe, teagmháil le api.kraken.com agus api.frankfurter.dev.</string>
     <string name="terms_of_use">Téarmaí Úsáide</string>
     <string name="terms_title">Téarmaí Úsáide</string>
-    <string name="terms_body_custody">Is comhéadan féinchoimeádta é NexaWal ó Nexatrode LLC chun sócmhainní digiteacha a bhainistiú. Tá freagracht eisiach ort as do phríomheochracha agus as an bhfrása síl 25 focal.</string>
+    <string name="terms_body_custody">Is comhéadan féinchoimeádta é nexawal ó Nexatrode LLC chun sócmhainní digiteacha a bhainistiú. Tá freagracht eisiach ort as do phríomheochracha agus as an bhfrása síl 25 focal.</string>
     <string name="terms_body_as_is">Cuirtear an aip ar fáil mar atá, gan barántais shainráite nó intuigthe. Is ar do phriacal féin an úsáid. Níl Nexatrode LLC freagrach as sócmhainní caillte, earráidí úsáideora, aga neamhfhónaimh, ná fadhbanna le seirbhísí nó nóid tríú páirtí.</string>
     <string name="terms_body_node">Moltar do nód Monero féin a rith nó ceangal leis. Níl na réamhshocruithe poiblí ach ar mhaithe le háisiúlacht.</string>
     <string name="terms_review_full">Athbhreithnigh na téarmaí iomlána ar shuíomh Gréasáin Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Aontaím</string>
     <string name="terms_quit">Scoir</string>
     <string name="privacy_policy">Polasaí Príobháideachta</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Foinse &amp; ceadúnas (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Fíordheimhnigh chun cosaint Face ID a chur as</string>
     <string name="error_mnemonic_empty">Ní féidir leis an síol a bheith bán.</string>
     <string name="error_rescan_no_mnemonic">Theip ar an athscanadh: níl an síol ar fáil.</string>
-    <string name="biometric_unlock_nexawal">Fíordheimhnigh chun NexaWal a dhíghlasáil</string>
+    <string name="biometric_unlock_nexawal">Fíordheimhnigh chun nexawal a dhíghlasáil</string>
     <string name="biometric_unlock_wallet">Díghlasáil sparán</string>
     <string name="biometric_unlock_subtitle">Fíordheimhnigh chun an sparán Monero stóráilte a oscailt</string>
     <string name="unlock_your_wallet">Díghlasáil do sparán</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s conf</string>
     <string name="fee_value_fmt">Táille %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Theip ar ghlanadh na taisce scanta: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Ag ceangal le %1$s</string>
     <string name="rescanning_from_fmt">Ag athscanadh ó %1$s — tá an dul chun cinn ar an táb Sparán</string>
     <string name="subaddress_fmt">Fo-sheoladh %1$d</string>

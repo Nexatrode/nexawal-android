@@ -6,7 +6,7 @@
     <string name="nav_send">Sūtīt</string>
     <string name="nav_settings">Iestatījumi</string>
     <string name="total_balance">Kopējais atlikums</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Atcelt</string>
     <string name="action_replace">Aizstāt</string>
     <string name="action_close">Aizvērt</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Šī tīkla skenēšanas kešatmiņa notīrīta</string>
     <string name="section_fiat">Fiat aplēses</string>
     <string name="toggle_show_fiat">Rādīt fiat aplēses</string>
-    <string name="fiat_help">Neobligāti. Ja ieslēgts, NexaWal saņem publisko XMR cenu no Kraken (api.kraken.com) un, ja nepieciešams, fiat valūtas kursu no Frankfurter (api.frankfurter.dev). Šie serveri redz jūsu IP adresi. Summas un adreses netiek nosūtītas. Fiat pieprasījumi izmanto clearnet HTTPS un ir atsevišķi no mezgla / I2P starpniekservera iestatījumiem. Tās ir tikai aplēses — jūs sūtāt un glabājat XMR.</string>
+    <string name="fiat_help">Neobligāti. Ja ieslēgts, nexawal saņem publisko XMR cenu no Kraken (api.kraken.com) un, ja nepieciešams, fiat valūtas kursu no Frankfurter (api.frankfurter.dev). Šie serveri redz jūsu IP adresi. Summas un adreses netiek nosūtītas. Fiat pieprasījumi izmanto clearnet HTTPS un ir atsevišķi no mezgla / I2P starpniekservera iestatījumiem. Tās ir tikai aplēses — jūs sūtāt un glabājat XMR.</string>
     <string name="fiat_currency_label">Valūta</string>
     <string name="section_about">Par programmu</string>
     <string name="about_disclaimer">MIT licencēta, neauditēta programmatūra. Jūs esat atbildīgs par savu sēklu un līdzekļiem. Noklusējuma attālais mezgls var redzēt jūsu IP adresi un maka sinhronizācijas pieprasījumus — palaidiet savu mezglu lielākai privātumam. Neobligātās fiat aplēses, ja iespējotas, sazinās ar api.kraken.com un api.frankfurter.dev.</string>
     <string name="terms_of_use">Lietošanas noteikumi</string>
     <string name="terms_title">Lietošanas noteikumi</string>
-    <string name="terms_body_custody">NexaWal no Nexatrode LLC ir pašpārvaldības saskarne digitālo aktīvu pārvaldībai. Jūs uzņematies ekskluzīvu atbildību par privātajām atslēgām un 25 vārdu seed frāzi.</string>
+    <string name="terms_body_custody">nexawal no Nexatrode LLC ir pašpārvaldības saskarne digitālo aktīvu pārvaldībai. Jūs uzņematies ekskluzīvu atbildību par privātajām atslēgām un 25 vārdu seed frāzi.</string>
     <string name="terms_body_as_is">Lietotne tiek nodrošināta “kā ir”, bez izteiktām vai netiešām garantijām. Lietošana ir uz jūsu pašu risku. Nexatrode LLC nav atbildīgs par zaudētiem aktīviem, lietotāja kļūdām, dīkstāvi vai trešo pušu pakalpojumu vai mezglu problēmām.</string>
     <string name="terms_body_node">Ieteicams palaist vai savienoties ar savu Monero mezglu. Publiskās noklusējuma vērtības ir tikai ērtībai.</string>
     <string name="terms_review_full">Skatiet pilnos noteikumus Nexatrode LLC vietnē</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Piekrītu</string>
     <string name="terms_quit">Iziet</string>
     <string name="privacy_policy">Privātuma politika</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Kods un licence (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentificējieties, lai izslēgtu Face ID aizsardzību</string>
     <string name="error_mnemonic_empty">Mnemonika nevar būt tukša.</string>
     <string name="error_rescan_no_mnemonic">Atkārtota skenēšana neizdevās: mnemonika nav pieejama.</string>
-    <string name="biometric_unlock_nexawal">Autentificējieties, lai atbloķētu NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentificējieties, lai atbloķētu nexawal</string>
     <string name="biometric_unlock_wallet">Atbloķēt maku</string>
     <string name="biometric_unlock_subtitle">Autentificējieties, lai atvērtu saglabāto Monero maku</string>
     <string name="unlock_your_wallet">Atbloķējiet savu maku</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s apst.</string>
     <string name="fee_value_fmt">Maksa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Skenēšanas kešatmiņas notīrīšana neizdevās: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Savienojas ar %1$s</string>
     <string name="rescanning_from_fmt">Skenē atkārtoti no %1$s — progresu skatiet cilnē „Maks”</string>
     <string name="subaddress_fmt">Subadrese %1$d</string>

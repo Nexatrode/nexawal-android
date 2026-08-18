@@ -27,6 +27,7 @@ import com.nexatrode.nexawal.R
 enum class LegalDocument {
     Terms,
     Privacy,
+    License,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,10 +44,12 @@ fun LegalDocumentScreen(
     val assetPath = when (document) {
         LegalDocument.Terms -> "legal/terms.md"
         LegalDocument.Privacy -> "legal/privacy.md"
+        LegalDocument.License -> "legal/license.md"
     }
     val title = when (document) {
         LegalDocument.Terms -> stringResource(R.string.terms_of_use)
         LegalDocument.Privacy -> stringResource(R.string.privacy_policy)
+        LegalDocument.License -> stringResource(R.string.mit_license)
     }
     val markdown = remember(assetPath) {
         runCatching {

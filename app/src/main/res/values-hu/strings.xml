@@ -6,7 +6,7 @@
     <string name="nav_send">Küldés</string>
     <string name="nav_settings">Beállítások</string>
     <string name="total_balance">Teljes egyenleg</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Mégse</string>
     <string name="action_replace">Csere</string>
     <string name="action_close">Bezárás</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Szkennelési gyorsítótár törölve ehhez a hálózathoz</string>
     <string name="section_fiat">Fiat becslések</string>
     <string name="toggle_show_fiat">Fiat becslések megjelenítése</string>
-    <string name="fiat_help">Opcionális. Ha be van kapcsolva, a NexaWal lekér egy nyilvános XMR árfolyamot a Krakentől (api.kraken.com), és ha szükséges, fiat devizaárfolyamot a Frankfurtertől (api.frankfurter.dev). Ezek a szerverek látják az IP-címedet. Összegeket és címeket nem küldünk el. A fiat lekérések clearnet HTTPS-t használnak, és függetlenek a csomópont / I2P proxy beállításoktól. Csak becslés — az XMR az, amit küldesz és tartasz.</string>
+    <string name="fiat_help">Opcionális. Ha be van kapcsolva, a nexawal lekér egy nyilvános XMR árfolyamot a Krakentől (api.kraken.com), és ha szükséges, fiat devizaárfolyamot a Frankfurtertől (api.frankfurter.dev). Ezek a szerverek látják az IP-címedet. Összegeket és címeket nem küldünk el. A fiat lekérések clearnet HTTPS-t használnak, és függetlenek a csomópont / I2P proxy beállításoktól. Csak becslés — az XMR az, amit küldesz és tartasz.</string>
     <string name="fiat_currency_label">Pénznem</string>
     <string name="section_about">Névjegy</string>
     <string name="about_disclaimer">MIT licencű, nem auditált szoftver. Te vagy felelős a seededért és a pénzeszközeidért. Az alapértelmezett távoli csomópont láthatja az IP-címedet és a pénztárca szinkronizálási lekérdezéseit — futtass saját csomópontot az erősebb adatvédelemért. Az opcionális fiat becslések, ha bekapcsolva vannak, az api.kraken.com és api.frankfurter.dev szolgáltatásokkal lépnek kapcsolatba.</string>
     <string name="terms_of_use">Felhasználási feltételek</string>
     <string name="terms_title">Felhasználási feltételek</string>
-    <string name="terms_body_custody">A Nexatrode LLC NexaWal alkalmazása önőrzésű felület digitális eszközök kezeléséhez. A privát kulcsokért és a 25 szavas seed kifejezésért kizárólag Ön felel.</string>
+    <string name="terms_body_custody">A Nexatrode LLC nexawal alkalmazása önőrzésű felület digitális eszközök kezeléséhez. A privát kulcsokért és a 25 szavas seed kifejezésért kizárólag Ön felel.</string>
     <string name="terms_body_as_is">Az alkalmazás „ahogy van” állapotban kerül biztosításra, kifejezett vagy hallgatólagos garancia nélkül. A használat saját felelősségre történik. A Nexatrode LLC nem felel elveszett eszközökért, felhasználói hibákért, kiesésekért vagy harmadik felek szolgáltatásainak/node-jainak problémáiért.</string>
     <string name="terms_body_node">Ajánlott saját Monero node futtatása vagy ahhoz csatlakozás. A nyilvános alapértelmezések csak a kényelemért vannak.</string>
     <string name="terms_review_full">A teljes feltételek megtekintése a Nexatrode LLC webhelyén</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Elfogadom</string>
     <string name="terms_quit">Kilépés</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Forráskód és licenc (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Hitelesítsd magad a Face ID védelem kikapcsolásához</string>
     <string name="error_mnemonic_empty">A mnemonika nem lehet üres.</string>
     <string name="error_rescan_no_mnemonic">Újraszkennelés sikertelen: a mnemonika nem elérhető.</string>
-    <string name="biometric_unlock_nexawal">Hitelesítsd magad a NexaWal feloldásához</string>
+    <string name="biometric_unlock_nexawal">Hitelesítsd magad a nexawal feloldásához</string>
     <string name="biometric_unlock_wallet">Pénztárca feloldása</string>
     <string name="biometric_unlock_subtitle">Hitelesítsd magad a tárolt Monero pénztárca megnyitásához</string>
     <string name="unlock_your_wallet">Oldd fel a pénztárcádat</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s megerősítés</string>
     <string name="fee_value_fmt">Díj %1$s</string>
     <string name="clear_scan_cache_failed_fmt">A szkennelési gyorsítótár törlése sikertelen: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Kapcsolódás: %1$s</string>
     <string name="rescanning_from_fmt">Újraszkennelés innen: %1$s — a folyamat a Pénztárca fülön látható</string>
     <string name="subaddress_fmt">%1$d. alcím</string>

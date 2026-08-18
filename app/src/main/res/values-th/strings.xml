@@ -6,7 +6,7 @@
     <string name="nav_send">ส่ง</string>
     <string name="nav_settings">การตั้งค่า</string>
     <string name="total_balance">ยอดคงเหลือทั้งหมด</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">ยกเลิก</string>
     <string name="action_replace">แทนที่</string>
     <string name="action_close">ปิด</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">ล้างแคชการสแกนสำหรับเครือข่ายนี้แล้ว</string>
     <string name="section_fiat">การประมาณค่าเงินเฟียต</string>
     <string name="toggle_show_fiat">แสดงการประมาณค่าเงินเฟียต</string>
-    <string name="fiat_help">ไม่บังคับ เมื่อเปิดใช้ NexaWal จะดึงราคา XMR สาธารณะจาก Kraken (api.kraken.com) และหากจำเป็นจะดึงอัตราแลกเปลี่ยนเงินเฟียตจาก Frankfurter (api.frankfurter.dev) เซิร์ฟเวอร์เหล่านั้นจะเห็นที่อยู่ IP ของคุณ จำนวนเงินและที่อยู่จะไม่ถูกส่งไป การค้นหาข้อมูลเฟียตใช้ HTTPS แบบ clearnet และแยกจากการตั้งค่าโหนด/พร็อกซี I2P เป็นเพียงการประมาณค่าเท่านั้น — XMR คือสิ่งที่คุณส่งและถือครองจริง</string>
+    <string name="fiat_help">ไม่บังคับ เมื่อเปิดใช้ nexawal จะดึงราคา XMR สาธารณะจาก Kraken (api.kraken.com) และหากจำเป็นจะดึงอัตราแลกเปลี่ยนเงินเฟียตจาก Frankfurter (api.frankfurter.dev) เซิร์ฟเวอร์เหล่านั้นจะเห็นที่อยู่ IP ของคุณ จำนวนเงินและที่อยู่จะไม่ถูกส่งไป การค้นหาข้อมูลเฟียตใช้ HTTPS แบบ clearnet และแยกจากการตั้งค่าโหนด/พร็อกซี I2P เป็นเพียงการประมาณค่าเท่านั้น — XMR คือสิ่งที่คุณส่งและถือครองจริง</string>
     <string name="fiat_currency_label">สกุลเงิน</string>
     <string name="section_about">เกี่ยวกับ</string>
     <string name="about_disclaimer">ซอฟต์แวร์ภายใต้สัญญาอนุญาต MIT ที่ยังไม่ได้รับการตรวจสอบ คุณต้องรับผิดชอบวลีกู้คืนและเงินทุนของคุณเอง โหนดระยะไกลเริ่มต้นสามารถเห็นที่อยู่ IP และคำขอซิงค์กระเป๋าเงินของคุณได้ — เพื่อความเป็นส่วนตัวที่มากขึ้น ควรรันโหนดของคุณเอง การประมาณค่าเงินเฟียต (ถ้าเปิดใช้) จะติดต่อกับ api.kraken.com และ api.frankfurter.dev</string>
     <string name="terms_of_use">ข้อกำหนดการใช้งาน</string>
     <string name="terms_title">ข้อกำหนดการใช้งาน</string>
-    <string name="terms_body_custody">NexaWal โดย Nexatrode LLC เป็นอินเทอร์เฟซแบบดูแลเองสำหรับจัดการสินทรัพย์ดิจิทัล คุณรับผิดชอบแต่เพียงผู้เดียวต่อคีย์ส่วนตัวและวลีซีด 25 คำ</string>
+    <string name="terms_body_custody">nexawal โดย Nexatrode LLC เป็นอินเทอร์เฟซแบบดูแลเองสำหรับจัดการสินทรัพย์ดิจิทัล คุณรับผิดชอบแต่เพียงผู้เดียวต่อคีย์ส่วนตัวและวลีซีด 25 คำ</string>
     <string name="terms_body_as_is">แอปให้บริการตามสภาพ โดยไม่มีการรับประกันใด ๆ ทั้งโดยชัดแจ้งหรือโดยนัย การใช้งานเป็นความเสี่ยงของคุณเอง Nexatrode LLC ไม่รับผิดชอบต่อสินทรัพย์ที่สูญหาย ข้อผิดพลาดของผู้ใช้ ช่วงเวลาหยุดทำงาน หรือปัญหาของบริการ/โหนดบุคคลที่สาม</string>
     <string name="terms_body_node">แนะนำให้รันหรือเชื่อมต่อโหนด Monero ของคุณเอง ค่าเริ่มต้นสาธารณะมีไว้เพื่อความสะดวกเท่านั้น</string>
     <string name="terms_review_full">ดูข้อกำหนดฉบับเต็มบนเว็บไซต์ Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">ฉันยอมรับ</string>
     <string name="terms_quit">ออก</string>
     <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">ซอร์สโค้ดและสัญญาอนุญาต (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">ยืนยันตัวตนเพื่อปิดการป้องกัน Face ID</string>
     <string name="error_mnemonic_empty">วลีช่วยจำต้องไม่เป็นค่าว่าง</string>
     <string name="error_rescan_no_mnemonic">การสแกนซ้ำล้มเหลว: ไม่มีวลีช่วยจำ</string>
-    <string name="biometric_unlock_nexawal">ยืนยันตัวตนเพื่อปลดล็อก NexaWal</string>
+    <string name="biometric_unlock_nexawal">ยืนยันตัวตนเพื่อปลดล็อก nexawal</string>
     <string name="biometric_unlock_wallet">ปลดล็อกกระเป๋าเงิน</string>
     <string name="biometric_unlock_subtitle">ยืนยันตัวตนเพื่อเปิดกระเป๋าเงิน Monero ที่จัดเก็บไว้</string>
     <string name="unlock_your_wallet">ปลดล็อกกระเป๋าเงินของคุณ</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s การยืนยัน</string>
     <string name="fee_value_fmt">ค่าธรรมเนียม %1$s</string>
     <string name="clear_scan_cache_failed_fmt">ล้างแคชการสแกนล้มเหลว: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">กำลังเชื่อมต่อกับ %1$s</string>
     <string name="rescanning_from_fmt">กำลังสแกนซ้ำจาก %1$s — ดูความคืบหน้าได้ที่แท็บกระเป๋าเงิน</string>
     <string name="subaddress_fmt">ที่อยู่ย่อย %1$d</string>

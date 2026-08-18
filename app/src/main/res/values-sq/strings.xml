@@ -6,7 +6,7 @@
     <string name="nav_send">Dërgo</string>
     <string name="nav_settings">Cilësimet</string>
     <string name="total_balance">Bilanci Total</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Anulo</string>
     <string name="action_replace">Zëvendëso</string>
     <string name="action_close">Mbyll</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cache-i i skanimit u pastrua për këtë rrjet</string>
     <string name="section_fiat">Vlerësimet fiat</string>
     <string name="toggle_show_fiat">Shfaq vlerësimet fiat</string>
-    <string name="fiat_help">Opsionale. Kur është aktiv, NexaWal merr një çmim publik të XMR nga Kraken (api.kraken.com) dhe, nëse nevojitet, kursin fiat nga Frankfurter (api.frankfurter.dev). Këto servera shohin IP-në tënde. Shumat dhe adresat nuk dërgohen. Kërkimet fiat përdorin clearnet HTTPS dhe janë të veçuara nga cilësimet e nyjes / proxy-t I2P. Vetëm vlerësime — XMR është ajo që dërgon dhe mban.</string>
+    <string name="fiat_help">Opsionale. Kur është aktiv, nexawal merr një çmim publik të XMR nga Kraken (api.kraken.com) dhe, nëse nevojitet, kursin fiat nga Frankfurter (api.frankfurter.dev). Këto servera shohin IP-në tënde. Shumat dhe adresat nuk dërgohen. Kërkimet fiat përdorin clearnet HTTPS dhe janë të veçuara nga cilësimet e nyjes / proxy-t I2P. Vetëm vlerësime — XMR është ajo që dërgon dhe mban.</string>
     <string name="fiat_currency_label">Monedha</string>
     <string name="section_about">Rreth</string>
     <string name="about_disclaimer">Software i licencuar MIT, i pa-audituar. Ti je përgjegjës për fjalën tënde të rikuperimit dhe fondet. Nyja e largët e parazgjedhur mund të shohë IP-në tënde dhe kërkimet e sinkronizimit të portofolit — xhiro nyjen tënde për privatësi më të fortë. Vlerësimet opsionale fiat, nëse aktivizohen, kontaktojnë api.kraken.com dhe api.frankfurter.dev.</string>
     <string name="terms_of_use">Kushtet e përdorimit</string>
     <string name="terms_title">Kushtet e përdorimit</string>
-    <string name="terms_body_custody">NexaWal nga Nexatrode LLC është një ndërfaqe vetë-ruajtëse për menaxhimin e aseteve digjitale. Ju mbani përgjegjësi ekskluzive për çelësat tuaj privatë dhe frazën seed me 25 fjalë.</string>
+    <string name="terms_body_custody">nexawal nga Nexatrode LLC është një ndërfaqe vetë-ruajtëse për menaxhimin e aseteve digjitale. Ju mbani përgjegjësi ekskluzive për çelësat tuaj privatë dhe frazën seed me 25 fjalë.</string>
     <string name="terms_body_as_is">Aplikacioni ofrohet ashtu si është, pa garanci të shprehura ose të nënkuptuara. Përdorimi është në rrezikun tuaj. Nexatrode LLC nuk është përgjegjës për asete të humbura, gabime të përdoruesit, ndërprerje ose probleme me shërbime apo nyje të palëve të treta.</string>
     <string name="terms_body_node">Rekomandohet të ekzekutoni ose të lidheni me nyjen tuaj Monero. Vlerat e parazgjedhura publike janë vetëm për lehtësi.</string>
     <string name="terms_review_full">Rishikoni kushtet e plota në faqen e Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Pranoj</string>
     <string name="terms_quit">Dil</string>
     <string name="privacy_policy">Politika e privatësisë</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Burimi &amp; licenca (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentikohu për të fikur mbrojtjen Face ID</string>
     <string name="error_mnemonic_empty">Mnemoniku nuk mund të jetë bosh.</string>
     <string name="error_rescan_no_mnemonic">Riskanimi dështoi: mnemoniku nuk është i disponueshëm.</string>
-    <string name="biometric_unlock_nexawal">Autentikohu për të zhbllokuar NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentikohu për të zhbllokuar nexawal</string>
     <string name="biometric_unlock_wallet">Zhblloko portofolin</string>
     <string name="biometric_unlock_subtitle">Autentikohu për të hapur portofolin e ruajtur të Monero</string>
     <string name="unlock_your_wallet">Zhblloko portofolin tënd</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s konf.</string>
     <string name="fee_value_fmt">Tarifa %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Pastrimi i cache-it të skanimit dështoi: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Duke u lidhur me %1$s</string>
     <string name="rescanning_from_fmt">Duke riskanuar nga %1$s — progresi është në skedën Portofoli</string>
     <string name="subaddress_fmt">Nën-adresa %1$d</string>

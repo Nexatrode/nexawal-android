@@ -6,7 +6,7 @@
     <string name="nav_send">Ipadala</string>
     <string name="nav_settings">Mga Setting</string>
     <string name="total_balance">Kabuuang Balanse</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Kanselahin</string>
     <string name="action_replace">Palitan</string>
     <string name="action_close">Isara</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Na-clear ang scan cache para sa network na ito</string>
     <string name="section_fiat">Mga tantiya sa fiat</string>
     <string name="toggle_show_fiat">Ipakita ang mga tantiya sa fiat</string>
-    <string name="fiat_help">Opsyonal. Kapag naka-on, kinukuha ng NexaWal ang pampublikong presyo ng XMR mula sa Kraken (api.kraken.com) at, kung kinakailangan, fiat FX mula sa Frankfurter (api.frankfurter.dev). Nakikita ng mga server na iyon ang iyong IP. Hindi ipinapadala ang mga halaga at address. Ang fiat lookup ay gumagamit ng clearnet HTTPS at hiwalay ito sa mga setting ng node / I2P proxy. Mga tantiya lamang — ang XMR ang iyong ipinapadala at hinahawakan.</string>
+    <string name="fiat_help">Opsyonal. Kapag naka-on, kinukuha ng nexawal ang pampublikong presyo ng XMR mula sa Kraken (api.kraken.com) at, kung kinakailangan, fiat FX mula sa Frankfurter (api.frankfurter.dev). Nakikita ng mga server na iyon ang iyong IP. Hindi ipinapadala ang mga halaga at address. Ang fiat lookup ay gumagamit ng clearnet HTTPS at hiwalay ito sa mga setting ng node / I2P proxy. Mga tantiya lamang — ang XMR ang iyong ipinapadala at hinahawakan.</string>
     <string name="fiat_currency_label">Currency</string>
     <string name="section_about">Tungkol dito</string>
     <string name="about_disclaimer">MIT-licensed, hindi awdit na software. Ikaw ang may pananagutan sa iyong seed at pondo. Ang default na remote node ay makikita ang iyong IP at mga query sa sync ng wallet — patakbuhin ang iyong sariling node para sa mas matibay na privacy. Ang opsyonal na mga tantiya sa fiat, kung pinagana, kumokontak sa api.kraken.com at api.frankfurter.dev.</string>
     <string name="terms_of_use">Mga Tuntunin ng Paggamit</string>
     <string name="terms_title">Mga Tuntunin ng Paggamit</string>
-    <string name="terms_body_custody">Ang NexaWal ng Nexatrode LLC ay isang self-custodial na interface para sa pamamahala ng digital na asset. Ikaw ang may eksklusibong responsibilidad sa iyong mga private key at 25-salitang seed phrase.</string>
+    <string name="terms_body_custody">Ang nexawal ng Nexatrode LLC ay isang self-custodial na interface para sa pamamahala ng digital na asset. Ikaw ang may eksklusibong responsibilidad sa iyong mga private key at 25-salitang seed phrase.</string>
     <string name="terms_body_as_is">Ang app ay ibinibigay nang gaya ng kasalukuyan, nang walang tahasan o ipinahiwatig na warranty. Ang paggamit ay sa iyong sariling panganib. Hindi mananagot ang Nexatrode LLC sa nawalang asset, error ng user, downtime, o isyu sa serbisyo o node ng third party.</string>
     <string name="terms_body_node">Inirerekomenda ang pagpapatakbo o pagkonekta sa sarili mong Monero node. Ang mga pampublikong default ay para lamang sa kaginhawahan.</string>
     <string name="terms_review_full">Suriin ang buong mga tuntunin sa website ng Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Sumasang-ayon ako</string>
     <string name="terms_quit">Lumabas</string>
     <string name="privacy_policy">Patakaran sa privacy</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Source at lisensya (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Mag-authenticate para i-off ang proteksyon ng Face ID</string>
     <string name="error_mnemonic_empty">Hindi maaaring walang lamang ang mnemonic.</string>
     <string name="error_rescan_no_mnemonic">Nabigo ang rescan: hindi available ang mnemonic.</string>
-    <string name="biometric_unlock_nexawal">Mag-authenticate para i-unlock ang NexaWal</string>
+    <string name="biometric_unlock_nexawal">Mag-authenticate para i-unlock ang nexawal</string>
     <string name="biometric_unlock_wallet">I-unlock ang wallet</string>
     <string name="biometric_unlock_subtitle">Mag-authenticate para buksan ang nakaimbak na wallet ng Monero</string>
     <string name="unlock_your_wallet">I-unlock ang iyong wallet</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s kumpirmasyon</string>
     <string name="fee_value_fmt">Bayad %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Nabigo ang pag-clear ng scan cache: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Kumokonekta sa %1$s</string>
     <string name="rescanning_from_fmt">Nag-rescan mula sa %1$s — ang progreso ay nasa tab ng Wallet</string>
     <string name="subaddress_fmt">Subaddress %1$d</string>

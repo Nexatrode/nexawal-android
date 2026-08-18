@@ -1,12 +1,14 @@
 package com.nexatrode.nexawal.ui
 
 import android.app.Activity
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -22,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -70,6 +73,7 @@ fun TermsAcceptanceScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
+                .navigationBarsPadding()
                 .padding(horizontal = 24.dp)
                 .padding(top = 24.dp, bottom = 16.dp),
         ) {
@@ -91,51 +95,59 @@ fun TermsAcceptanceScreen(
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
-                Spacer(modifier.height(12.dp))
+                Spacer(Modifier.height(12.dp))
                 Text(
                     text = stringResource(R.string.terms_body_as_is),
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
-                Spacer(modifier.height(12.dp))
+                Spacer(Modifier.height(12.dp))
                 Text(
                     text = stringResource(R.string.terms_body_node),
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
-                Spacer(Modifier.height(16.dp))
-                TextButton(onClick = { showFullTerms.value = true }) {
-                    Text(
-                        text = stringResource(R.string.terms_review_full),
-                        color = palette.accent,
-                        fontWeight = FontWeight.SemiBold,
-                        fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                    )
-                }
-                Spacer(modifier.height(8.dp))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Checkbox(
-                        checked = hasCheckedAgree.value,
-                        onCheckedChange = { hasCheckedAgree.value = it },
-                        colors = CheckboxDefaults.colors(
-                            checkedColor = palette.accent,
-                            uncheckedColor = palette.separator,
-                            checkmarkColor = palette.ctaText,
-                        ),
-                    )
-                    Text(
-                        text = stringResource(R.string.terms_checkbox),
-                        color = palette.primaryText,
-                        fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                        modifier = Modifier.weight(1f),
-                    )
-                }
             }
 
-            Spacer(modifier.height(12.dp))
+            Spacer(Modifier.height(8.dp))
+            TextButton(
+                onClick = { showFullTerms.value = true },
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    text = stringResource(R.string.terms_review_full),
+                    color = palette.accent,
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                )
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(
+                        role = Role.Checkbox,
+                        onClick = { hasCheckedAgree.value = !hasCheckedAgree.value },
+                    )
+                    .padding(vertical = 4.dp),
+            ) {
+                Checkbox(
+                    checked = hasCheckedAgree.value,
+                    onCheckedChange = { hasCheckedAgree.value = it },
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = palette.accent,
+                        uncheckedColor = palette.separator,
+                        checkmarkColor = palette.ctaText,
+                    ),
+                )
+                Text(
+                    text = stringResource(R.string.terms_checkbox),
+                    color = palette.primaryText,
+                    fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                    modifier = Modifier.weight(1f),
+                )
+            }
+            Spacer(Modifier.height(12.dp))
             PrimaryActionButton(
                 text = stringResource(R.string.terms_agree),
                 onClick = {
@@ -146,7 +158,7 @@ fun TermsAcceptanceScreen(
                 enabled = hasCheckedAgree.value,
                 modifier = Modifier.fillMaxWidth(),
             )
-            Spacer(modifier.height(8.dp))
+            Spacer(Modifier.height(8.dp))
             SecondaryActionButton(
                 text = stringResource(R.string.terms_quit),
                 onClick = {

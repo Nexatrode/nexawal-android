@@ -114,6 +114,13 @@ private fun SyncLifecycleEffects(
                 Lifecycle.Event.ON_START -> {
                     walletManager.fiatPrices.onForeground()
                     walletManager.startForegroundCatchUp()
+                    // If we already look synced (common after interruptions), still refresh
+                    // balance/transfers from core — history lives in walletcore/cache, not UI state.
+                    if (!walletManager.state.value.refreshInProgress &&
+                        walletManager.state.value.walletId != null
+                    ) {
+                        walletManager.refreshWalletDataSnapshots()
+                    }
                 }
                 Lifecycle.Event.ON_STOP -> {
                     walletManager.stopForegroundCatchUp()

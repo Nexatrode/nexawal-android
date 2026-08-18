@@ -6,7 +6,7 @@
     <string name="nav_send">Жөнөтүү</string>
     <string name="nav_settings">Жөндөөлөр</string>
     <string name="total_balance">Жалпы баланс</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Жокко чыгаруу</string>
     <string name="action_replace">Алмаштыруу</string>
     <string name="action_close">Жабуу</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Бул тармактын скандоо кэши тазаланды</string>
     <string name="section_fiat">Фиат баалоолору</string>
     <string name="toggle_show_fiat">Фиат баалоолорун көрсөтүү</string>
-    <string name="fiat_help">Милдеттүү эмес. Иштетилгенде, NexaWal Kraken-ден (api.kraken.com) XMR-дин ачык баасын, ал эми зарыл болсо, Frankfurter-ден (api.frankfurter.dev) фиат курсун алат. Бул серверлер сиздин IP дарегиңизди көрөт. Суммалар жана даректер жөнөтүлбөйт. Фиат сурамдары clearnet HTTPS колдонот жана түйүн / I2P проксиси жөндөөлөрүнөн бөлек. Бул жөн эле болжол — сиз жөнөтүп, сактап жатканыңыз XMR.</string>
+    <string name="fiat_help">Милдеттүү эмес. Иштетилгенде, nexawal Kraken-ден (api.kraken.com) XMR-дин ачык баасын, ал эми зарыл болсо, Frankfurter-ден (api.frankfurter.dev) фиат курсун алат. Бул серверлер сиздин IP дарегиңизди көрөт. Суммалар жана даректер жөнөтүлбөйт. Фиат сурамдары clearnet HTTPS колдонот жана түйүн / I2P проксиси жөндөөлөрүнөн бөлек. Бул жөн эле болжол — сиз жөнөтүп, сактап жатканыңыз XMR.</string>
     <string name="fiat_currency_label">Валюта</string>
     <string name="section_about">Программа жөнүндө</string>
     <string name="about_disclaimer">MIT лицензиясы менен, аудити жок программа. Сиз өз калыбына келтирүү сөздөрүңүз жана каражаттарыңыз үчүн жооптуусуз. Демейки алыскы түйүн сиздин IP дарегиңизди жана капчыктын синхрондоштуруу сурамдарын көрө алат — купуялуулукту күчөтүү үчүн өз түйүнүңүздү иштетиңиз. Кошумча фиат баалоолору, иштетилсе, api.kraken.com жана api.frankfurter.dev менен байланышат.</string>
     <string name="terms_of_use">Колдонуу шарттары</string>
     <string name="terms_title">Колдонуу шарттары</string>
-    <string name="terms_body_custody">Nexatrode LLC’нин NexaWal’ы — санарип активдерди башкаруу үчүн өзүнчө сактоо интерфейси. Жеке ачкычтарыңыз жана 25 сөздүк seed фразаңыз үчүн жоопкерчилик сизде.</string>
+    <string name="terms_body_custody">Nexatrode LLC’нин nexawal’ы — санарип активдерди башкаруу үчүн өзүнчө сактоо интерфейси. Жеке ачкычтарыңыз жана 25 сөздүк seed фразаңыз үчүн жоопкерчилик сизде.</string>
     <string name="terms_body_as_is">Колдонмо «кандай болсо ошондой» берилет, ачык же кыйыр кепилдиктерсиз. Колдонуу өз тобокелиңизде. Nexatrode LLC жоголгон активдер, колдонуучу каталары, иштебөө же үчүнчү тараптын кызмат/нод көйгөйлөрү үчүн жооп бербейт.</string>
     <string name="terms_body_node">Өз Monero нодуңузду иштетүү же ага туташуу сунушталат. Коомдук демейкилер ыңгайлуулук үчүн гана.</string>
     <string name="terms_review_full">Толук шарттарды Nexatrode LLC сайтынан караңыз</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Макулмун</string>
     <string name="terms_quit">Чыгуу</string>
     <string name="privacy_policy">Купуялуулук саясаты</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Баштапкы код &amp; лицензия (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Face ID корголуусун өчүрүү үчүн аутентификациядан өтүңүз</string>
     <string name="error_mnemonic_empty">Калыбына келтирүү сөздөрү бош болушу мүмкүн эмес.</string>
     <string name="error_rescan_no_mnemonic">Кайра скандоо ишке ашпады: калыбына келтирүү сөздөрү жеткиликсиз.</string>
-    <string name="biometric_unlock_nexawal">NexaWal-ды ачуу үчүн аутентификациядан өтүңүз</string>
+    <string name="biometric_unlock_nexawal">nexawal-ды ачуу үчүн аутентификациядан өтүңүз</string>
     <string name="biometric_unlock_wallet">Капчыкты ачуу</string>
     <string name="biometric_unlock_subtitle">Сакталган Monero капчыгын ачуу үчүн аутентификациядан өтүңүз</string>
     <string name="unlock_your_wallet">Капчыгыңызды ачыңыз</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s ырас.</string>
     <string name="fee_value_fmt">Комиссия %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Скандоо кэшин тазалоо ишке ашпады: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">%1$s-ге туташуу</string>
     <string name="rescanning_from_fmt">%1$s-дан кайра скандалып жатат — жүрүшү Капчык бетинде көрүнөт</string>
     <string name="subaddress_fmt">Кошумча дарек %1$d</string>

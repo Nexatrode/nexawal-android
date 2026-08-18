@@ -6,7 +6,7 @@
     <string name="nav_send">Enviar</string>
     <string name="nav_settings">Configuració</string>
     <string name="total_balance">Saldo total</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Cancel·la</string>
     <string name="action_replace">Substitueix</string>
     <string name="action_close">Tanca</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Memòria cau d\'escaneig d\'aquesta xarxa netejada</string>
     <string name="section_fiat">Estimacions fiat</string>
     <string name="toggle_show_fiat">Mostra estimacions fiat</string>
-    <string name="fiat_help">Opcional. Quan estigui activat, NexaWal obté un preu públic d\'XMR de Kraken (api.kraken.com) i, si cal, el canvi fiat de Frankfurter (api.frankfurter.dev). Aquests servidors veuen la teva IP. No s\'envien imports ni adreces. Les consultes fiat utilitzen HTTPS de Clearnet i són independents de la configuració del node / servidor intermediari d\'I2P. Només són estimacions — el que envies i mantens és XMR.</string>
+    <string name="fiat_help">Opcional. Quan estigui activat, nexawal obté un preu públic d\'XMR de Kraken (api.kraken.com) i, si cal, el canvi fiat de Frankfurter (api.frankfurter.dev). Aquests servidors veuen la teva IP. No s\'envien imports ni adreces. Les consultes fiat utilitzen HTTPS de Clearnet i són independents de la configuració del node / servidor intermediari d\'I2P. Només són estimacions — el que envies i mantens és XMR.</string>
     <string name="fiat_currency_label">Moneda</string>
     <string name="section_about">Quant a</string>
     <string name="about_disclaimer">Programari amb llicència MIT, sense auditar. Tu ets responsable de la teva llavor i dels teus fons. El node remot per defecte pot veure la teva IP i les consultes de sincronització de la cartera — executa el teu propi node per a una privadesa més forta. Les estimacions fiat opcionals, si estan activades, contacten amb api.kraken.com i api.frankfurter.dev.</string>
     <string name="terms_of_use">Condicions d\'ús</string>
     <string name="terms_title">Condicions d\'ús</string>
-    <string name="terms_body_custody">NexaWal de Nexatrode LLC és una interfície d’autocustòdia per gestionar actius digitals. Teniu la responsabilitat exclusiva de les claus privades i de la frase llavor de 25 paraules.</string>
+    <string name="terms_body_custody">nexawal de Nexatrode LLC és una interfície d’autocustòdia per gestionar actius digitals. Teniu la responsabilitat exclusiva de les claus privades i de la frase llavor de 25 paraules.</string>
     <string name="terms_body_as_is">L\'aplicació es proporciona tal com és, sense garanties expresses o implícites. L\'ús és sota la vostra responsabilitat. Nexatrode LLC no respon d\'actius perduts, errors de l\'usuari, interrupcions o problemes amb serveis o nodes de tercers.</string>
     <string name="terms_body_node">Es recomana executar o connectar-vos al vostre propi node de Monero. Els valors públics per defecte són només per comoditat.</string>
     <string name="terms_review_full">Reviseu les condicions completes al lloc web de Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Accepto</string>
     <string name="terms_quit">Surt</string>
     <string name="privacy_policy">Política de privadesa</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Codi font i llicència (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Autentica\'t per desactivar la protecció de Face ID</string>
     <string name="error_mnemonic_empty">El mnemònic no pot estar buit.</string>
     <string name="error_rescan_no_mnemonic">L\'escaneig ha fallat: el mnemònic no està disponible.</string>
-    <string name="biometric_unlock_nexawal">Autentica\'t per desbloquejar NexaWal</string>
+    <string name="biometric_unlock_nexawal">Autentica\'t per desbloquejar nexawal</string>
     <string name="biometric_unlock_wallet">Desbloqueja la cartera</string>
     <string name="biometric_unlock_subtitle">Autentica\'t per obrir la cartera de Monero desada</string>
     <string name="unlock_your_wallet">Desbloqueja la teva cartera</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s conf.</string>
     <string name="fee_value_fmt">Comissió %1$s</string>
     <string name="clear_scan_cache_failed_fmt">No s\'ha pogut netejar la memòria cau d\'escaneig: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Connectant a %1$s</string>
     <string name="rescanning_from_fmt">Tornant a escanejar des de %1$s — el progrés és a la pestanya Cartera</string>
     <string name="subaddress_fmt">Subadreça %1$d</string>

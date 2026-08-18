@@ -6,7 +6,7 @@
     <string name="nav_send">Odeslat</string>
     <string name="nav_settings">Nastavení</string>
     <string name="total_balance">Celkový zůstatek</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Zrušit</string>
     <string name="action_replace">Nahradit</string>
     <string name="action_close">Zavřít</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Mezipaměť skenování pro tuto síť vymazána</string>
     <string name="section_fiat">Odhady fiat měny</string>
     <string name="toggle_show_fiat">Zobrazovat odhady fiat měny</string>
-    <string name="fiat_help">Volitelné. Když je zapnuto, NexaWal získává veřejnou cenu XMR z Kraken (api.kraken.com) a v případě potřeby kurz fiat měny z Frankfurter (api.frankfurter.dev). Tyto servery vidí vaši IP adresu. Částky a adresy se neodesílají. Dotazy na fiat měnu používají clearnet HTTPS a jsou nezávislé na nastavení uzlu / proxy I2P. Jde pouze o odhady — odesíláte a držíte XMR.</string>
+    <string name="fiat_help">Volitelné. Když je zapnuto, nexawal získává veřejnou cenu XMR z Kraken (api.kraken.com) a v případě potřeby kurz fiat měny z Frankfurter (api.frankfurter.dev). Tyto servery vidí vaši IP adresu. Částky a adresy se neodesílají. Dotazy na fiat měnu používají clearnet HTTPS a jsou nezávislé na nastavení uzlu / proxy I2P. Jde pouze o odhady — odesíláte a držíte XMR.</string>
     <string name="fiat_currency_label">Měna</string>
     <string name="section_about">O aplikaci</string>
     <string name="about_disclaimer">Software s licencí MIT, bez bezpečnostního auditu. Za svou frázi pro obnovení a prostředky nesete odpovědnost sami. Výchozí vzdálený uzel může vidět vaši IP adresu a dotazy synchronizace peněženky — pro silnější soukromí provozujte svůj vlastní uzel. Volitelné odhady fiat měny, pokud jsou zapnuté, kontaktují api.kraken.com a api.frankfurter.dev.</string>
     <string name="terms_of_use">Podmínky použití</string>
     <string name="terms_title">Podmínky použití</string>
-    <string name="terms_body_custody">NexaWal od Nexatrode LLC je self-custodial rozhraní pro správu digitálních aktiv. Výhradní odpovědnost za soukromé klíče a 25slovnou seed frázi neseš ty.</string>
+    <string name="terms_body_custody">nexawal od Nexatrode LLC je self-custodial rozhraní pro správu digitálních aktiv. Výhradní odpovědnost za soukromé klíče a 25slovnou seed frázi neseš ty.</string>
     <string name="terms_body_as_is">Aplikace je poskytována tak, jak je, bez výslovných či předpokládaných záruk. Použití je na vlastní riziko. Nexatrode LLC neodpovídá za ztracená aktiva, chyby uživatele, výpadky ani problémy se službami či nody třetích stran.</string>
     <string name="terms_body_node">Doporučuje se provozovat nebo se připojit k vlastnímu Monero nodu. Veřejné výchozí hodnoty jsou pouze pro pohodlí.</string>
     <string name="terms_review_full">Zobrazit úplné podmínky na webu Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Souhlasím</string>
     <string name="terms_quit">Ukončit</string>
     <string name="privacy_policy">Zásady ochrany soukromí</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Zdrojový kód a licence (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Ověřte se pro vypnutí ochrany Face ID</string>
     <string name="error_mnemonic_empty">Mnemonická fráze nemůže být prázdná.</string>
     <string name="error_rescan_no_mnemonic">Přeskenování se nezdařilo: mnemonická fráze není k dispozici.</string>
-    <string name="biometric_unlock_nexawal">Ověřte se pro odemknutí NexaWal</string>
+    <string name="biometric_unlock_nexawal">Ověřte se pro odemknutí nexawal</string>
     <string name="biometric_unlock_wallet">Odemknout peněženku</string>
     <string name="biometric_unlock_subtitle">Ověřte se pro otevření uložené peněženky Monero</string>
     <string name="unlock_your_wallet">Odemkněte svou peněženku</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s potvrz.</string>
     <string name="fee_value_fmt">Poplatek %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Vymazání mezipaměti skenování se nezdařilo: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Připojování k %1$s</string>
     <string name="rescanning_from_fmt">Přeskenování od %1$s — průběh je na kartě Peněženka</string>
     <string name="subaddress_fmt">Podadresa %1$d</string>

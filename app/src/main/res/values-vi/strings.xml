@@ -6,7 +6,7 @@
     <string name="nav_send">Gửi</string>
     <string name="nav_settings">Cài đặt</string>
     <string name="total_balance">Tổng số dư</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Hủy</string>
     <string name="action_replace">Thay thế</string>
     <string name="action_close">Đóng</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Đã xóa bộ nhớ đệm quét cho mạng này</string>
     <string name="section_fiat">Ước tính tiền pháp định</string>
     <string name="toggle_show_fiat">Hiện ước tính tiền pháp định</string>
-    <string name="fiat_help">Không bắt buộc. Khi được bật, NexaWal sẽ lấy giá XMR công khai từ Kraken (api.kraken.com) và, nếu cần, tỷ giá tiền pháp định từ Frankfurter (api.frankfurter.dev). Các máy chủ đó sẽ thấy địa chỉ IP của bạn. Số tiền và địa chỉ không được gửi đi. Các truy vấn tiền pháp định dùng HTTPS clearnet và tách biệt với cài đặt node / proxy I2P. Đây chỉ là ước tính — XMR mới là thứ bạn gửi và giữ.</string>
+    <string name="fiat_help">Không bắt buộc. Khi được bật, nexawal sẽ lấy giá XMR công khai từ Kraken (api.kraken.com) và, nếu cần, tỷ giá tiền pháp định từ Frankfurter (api.frankfurter.dev). Các máy chủ đó sẽ thấy địa chỉ IP của bạn. Số tiền và địa chỉ không được gửi đi. Các truy vấn tiền pháp định dùng HTTPS clearnet và tách biệt với cài đặt node / proxy I2P. Đây chỉ là ước tính — XMR mới là thứ bạn gửi và giữ.</string>
     <string name="fiat_currency_label">Loại tiền</string>
     <string name="section_about">Giới thiệu</string>
     <string name="about_disclaimer">Phần mềm theo giấy phép MIT, chưa được kiểm toán. Bạn chịu trách nhiệm về cụm từ khôi phục và tiền của mình. Node từ xa mặc định có thể thấy địa chỉ IP và các truy vấn đồng bộ ví của bạn — hãy chạy node riêng để bảo mật tốt hơn. Ước tính tiền pháp định (tùy chọn), nếu được bật, sẽ liên hệ với api.kraken.com và api.frankfurter.dev.</string>
     <string name="terms_of_use">Điều khoản sử dụng</string>
     <string name="terms_title">Điều khoản sử dụng</string>
-    <string name="terms_body_custody">NexaWal của Nexatrode LLC là giao diện tự lưu ký để quản lý tài sản số. Bạn chịu trách nhiệm duy nhất về khóa riêng và cụm từ khôi phục 25 từ.</string>
+    <string name="terms_body_custody">nexawal của Nexatrode LLC là giao diện tự lưu ký để quản lý tài sản số. Bạn chịu trách nhiệm duy nhất về khóa riêng và cụm từ khôi phục 25 từ.</string>
     <string name="terms_body_as_is">Ứng dụng được cung cấp nguyên trạng, không có bảo đảm rõ ràng hoặc ngụ ý. Việc sử dụng do bạn tự chịu rủi ro. Nexatrode LLC không chịu trách nhiệm về tài sản bị mất, lỗi người dùng, thời gian ngừng hoạt động hoặc sự cố với dịch vụ/nút của bên thứ ba.</string>
     <string name="terms_body_node">Nên chạy hoặc kết nối với nút Monero của riêng bạn. Các mặc định công khai chỉ nhằm tiện lợi.</string>
     <string name="terms_review_full">Xem đầy đủ điều khoản trên trang web Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Tôi đồng ý</string>
     <string name="terms_quit">Thoát</string>
     <string name="privacy_policy">Chính sách quyền riêng tư</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Mã nguồn và giấy phép (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Xác thực để tắt bảo vệ Face ID</string>
     <string name="error_mnemonic_empty">Cụm từ mnemonic không được để trống.</string>
     <string name="error_rescan_no_mnemonic">Quét lại thất bại: cụm từ mnemonic không khả dụng.</string>
-    <string name="biometric_unlock_nexawal">Xác thực để mở khóa NexaWal</string>
+    <string name="biometric_unlock_nexawal">Xác thực để mở khóa nexawal</string>
     <string name="biometric_unlock_wallet">Mở khóa ví</string>
     <string name="biometric_unlock_subtitle">Xác thực để mở ví Monero đã lưu</string>
     <string name="unlock_your_wallet">Mở khóa ví của bạn</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s xác nhận</string>
     <string name="fee_value_fmt">Phí %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Xóa bộ nhớ đệm quét thất bại: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Đang kết nối tới %1$s</string>
     <string name="rescanning_from_fmt">Đang quét lại từ %1$s — tiến trình hiển thị ở tab Ví</string>
     <string name="subaddress_fmt">Địa chỉ phụ %1$d</string>

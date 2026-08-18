@@ -6,7 +6,7 @@
     <string name="nav_send">Gönder</string>
     <string name="nav_settings">Ayarlar</string>
     <string name="total_balance">Toplam Bakiye</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">İptal</string>
     <string name="action_replace">Değiştir</string>
     <string name="action_close">Kapat</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Bu ağ için tarama önbelleği temizlendi</string>
     <string name="section_fiat">Fiat tahminleri</string>
     <string name="toggle_show_fiat">Fiat tahminlerini göster</string>
-    <string name="fiat_help">İsteğe bağlı. Açık olduğunda, NexaWal Kraken\'den (api.kraken.com) genel bir XMR fiyatı ve gerekirse Frankfurter\'den (api.frankfurter.dev) fiat döviz kuru alır. Bu sunucular IP adresini görür. Tutarlar ve adresler gönderilmez. Fiat sorguları clearnet HTTPS kullanır ve düğüm / I2P proxy ayarlarından bağımsızdır. Sadece tahmindir — gönderdiğin ve elinde tuttuğun şey XMR\'dir.</string>
+    <string name="fiat_help">İsteğe bağlı. Açık olduğunda, nexawal Kraken\'den (api.kraken.com) genel bir XMR fiyatı ve gerekirse Frankfurter\'den (api.frankfurter.dev) fiat döviz kuru alır. Bu sunucular IP adresini görür. Tutarlar ve adresler gönderilmez. Fiat sorguları clearnet HTTPS kullanır ve düğüm / I2P proxy ayarlarından bağımsızdır. Sadece tahmindir — gönderdiğin ve elinde tuttuğun şey XMR\'dir.</string>
     <string name="fiat_currency_label">Para Birimi</string>
     <string name="section_about">Hakkında</string>
     <string name="about_disclaimer">MIT lisanslı, denetlenmemiş yazılım. Tohumundan ve fonlarından sen sorumlusun. Varsayılan uzak düğüm, IP adresini ve cüzdan senkronizasyon sorgularını görebilir — daha güçlü gizlilik için kendi düğümünü çalıştır. Etkinleştirilirse, isteğe bağlı fiat tahminleri api.kraken.com ve api.frankfurter.dev ile iletişime geçer.</string>
     <string name="terms_of_use">Kullanım Koşulları</string>
     <string name="terms_title">Kullanım Koşulları</string>
-    <string name="terms_body_custody">Nexatrode LLC’nin NexaWal’ı, dijital varlıkları yönetmek için bir öz-saklama arayüzüdür. Özel anahtarlarınız ve 25 kelimelik tohum ifadeniz için münhasır sorumluluk size aittir.</string>
+    <string name="terms_body_custody">Nexatrode LLC’nin nexawal’ı, dijital varlıkları yönetmek için bir öz-saklama arayüzüdür. Özel anahtarlarınız ve 25 kelimelik tohum ifadeniz için münhasır sorumluluk size aittir.</string>
     <string name="terms_body_as_is">Uygulama açık veya zımni hiçbir garanti olmaksızın olduğu gibi sağlanır. Kullanım kendi riskinizdedir. Nexatrode LLC kayıp varlıklar, kullanıcı hataları, kesintiler veya üçüncü taraf hizmet/düğüm sorunlarından sorumlu değildir.</string>
     <string name="terms_body_node">Kendi Monero düğümünüzü çalıştırmanız veya bağlanmanız önerilir. Genel varsayılanlar yalnızca kolaylık içindir.</string>
     <string name="terms_review_full">Tam koşulları Nexatrode LLC web sitesinde inceleyin</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Kabul ediyorum</string>
     <string name="terms_quit">Çıkış</string>
     <string name="privacy_policy">Gizlilik politikası</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Kaynak kod ve lisans (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Face ID korumasını kapatmak için kimlik doğrula</string>
     <string name="error_mnemonic_empty">Anımsatıcı boş olamaz.</string>
     <string name="error_rescan_no_mnemonic">Yeniden tarama başarısız: anımsatıcı kullanılamıyor.</string>
-    <string name="biometric_unlock_nexawal">NexaWal\'ın kilidini açmak için kimlik doğrula</string>
+    <string name="biometric_unlock_nexawal">nexawal\'ın kilidini açmak için kimlik doğrula</string>
     <string name="biometric_unlock_wallet">Cüzdanın kilidini aç</string>
     <string name="biometric_unlock_subtitle">Kayıtlı Monero cüzdanını açmak için kimlik doğrula</string>
     <string name="unlock_your_wallet">Cüzdanının kilidini aç</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s onay</string>
     <string name="fee_value_fmt">Ücret %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Tarama önbelleği temizleme başarısız: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">%1$s\'e bağlanıyor</string>
     <string name="rescanning_from_fmt">%1$s\'den yeniden taranıyor — ilerleme Cüzdan sekmesinde</string>
     <string name="subaddress_fmt">Alt adres %1$d</string>

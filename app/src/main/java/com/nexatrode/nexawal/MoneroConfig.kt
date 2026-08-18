@@ -43,6 +43,7 @@ object MoneroConfig {
     private const val KEY_I2P_HTTP_PROXY: String = "monero_i2p_http_proxy"
     private const val KEY_TECHNO_THEME: String = "ui_techno_theme"
     private const val KEY_CLASSIC_UI_LEGACY: String = "ui_classic_mode"
+    private const val KEY_SYNC_DETAILS_EXPANDED: String = "ui_sync_details_expanded"
     private const val KEY_FIAT_ESTIMATES_ENABLED: String = "fiat_estimates_enabled"
     private const val KEY_FIAT_ESTIMATES_ENABLED_AT: String = "fiat_estimates_enabled_at_ms"
     private const val KEY_FIAT_CURRENCY: String = "fiat_currency"
@@ -52,6 +53,8 @@ object MoneroConfig {
     private const val KEY_FIAT_RATE_FETCHED_AT: String = "fiat_rate_fetched_at_ms"
     private const val KEY_FIAT_RATE_SOURCE: String = "fiat_rate_source"
     private const val KEY_ACCEPTED_TERMS_VERSION: String = "nexawal_accepted_terms_version"
+    private const val KEY_SCAN_INTERRUPTED: String = "nexawal_scan_interrupted"
+    private const val KEY_TRUSTED_SCANNED_HEIGHT: String = "nexawal_trusted_scanned_height"
 
     // Defaults (match iOS MoneroConfig.swift).
     const val DEFAULT_GAP_LIMIT: Int = 50
@@ -170,6 +173,16 @@ object MoneroConfig {
             .putBoolean(KEY_TECHNO_THEME, enabled)
             .remove(KEY_CLASSIC_UI_LEGACY)
             .apply()
+    }
+
+    @JvmStatic
+    fun syncDetailsExpanded(context: Context): Boolean {
+        return prefs(context).getBoolean(KEY_SYNC_DETAILS_EXPANDED, false)
+    }
+
+    @JvmStatic
+    fun setSyncDetailsExpanded(context: Context, expanded: Boolean) {
+        prefs(context).edit().putBoolean(KEY_SYNC_DETAILS_EXPANDED, expanded).apply()
     }
 
     @JvmStatic
@@ -398,6 +411,24 @@ object MoneroConfig {
     @JvmStatic
     fun acceptCurrentTerms(context: Context) {
         prefs(context).edit().putInt(KEY_ACCEPTED_TERMS_VERSION, CURRENT_TERMS_VERSION).apply()
+    }
+
+    @JvmStatic
+    fun scanInterrupted(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_SCAN_INTERRUPTED, false)
+
+    @JvmStatic
+    fun setScanInterrupted(context: Context, value: Boolean) {
+        prefs(context).edit().putBoolean(KEY_SCAN_INTERRUPTED, value).apply()
+    }
+
+    @JvmStatic
+    fun trustedScannedHeight(context: Context): Long =
+        prefs(context).getLong(KEY_TRUSTED_SCANNED_HEIGHT, 0L)
+
+    @JvmStatic
+    fun setTrustedScannedHeight(context: Context, height: Long) {
+        prefs(context).edit().putLong(KEY_TRUSTED_SCANNED_HEIGHT, height.coerceAtLeast(0L)).apply()
     }
 
     private fun clamp(v: Int, lo: Int, hi: Int): Int = max(lo, min(v, hi))

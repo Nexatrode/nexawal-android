@@ -6,7 +6,7 @@
     <string name="nav_send">Jemondo</string>
     <string name="nav_settings">Ñemboheko</string>
     <string name="total_balance">Saldo Total</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Heja</string>
     <string name="action_replace">Myengovia</string>
     <string name="action_close">Mboty</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cache de escaneo mboguepyre ko red-pe g̃uarã</string>
     <string name="section_fiat">Techapyrã Fiat</string>
     <string name="toggle_show_fiat">Ehechauka techapyrã fiat</string>
-    <string name="fiat_help">Opcional. Oñemyendýrõ, NexaWal oheka precio público XMR-gua Kraken-gui (api.kraken.com) ha, tekotevẽramo, tipo de cambio fiat Frankfurter-gui (api.frankfurter.dev). Umi servidor ohecha nde IP. Ndojejapói cantidad térã dirección ñemondo. Consulta fiat oiporu HTTPS clearnet ha oĩ hendaguáre ñemboheko nodo / proxy I2P-gui. Techapyrã año — XMR ha\'e emondóva ha eñongatúva.</string>
+    <string name="fiat_help">Opcional. Oñemyendýrõ, nexawal oheka precio público XMR-gua Kraken-gui (api.kraken.com) ha, tekotevẽramo, tipo de cambio fiat Frankfurter-gui (api.frankfurter.dev). Umi servidor ohecha nde IP. Ndojejapói cantidad térã dirección ñemondo. Consulta fiat oiporu HTTPS clearnet ha oĩ hendaguáre ñemboheko nodo / proxy I2P-gui. Techapyrã año — XMR ha\'e emondóva ha eñongatúva.</string>
     <string name="fiat_currency_label">Moneda</string>
     <string name="section_about">Ko App Rehegua</string>
     <string name="about_disclaimer">Software licencia MIT-gua, ndojeexaminái porãha. Nde\'ỹ ha\'e responsable nde frase mnemónica ha nde viru rehe. Nodo remoto default ikatu ohecha nde IP ha consulta de sincronización — eiporúke nde nodo teete privacidad porãve g̃uarã. Techapyrã fiat opcional, oñemyendýrõ, oñondive api.kraken.com ha api.frankfurter.dev.</string>
     <string name="terms_of_use">Jeporu ñe\'ẽme\'ẽ</string>
     <string name="terms_title">Jeporu ñe\'ẽme\'ẽ</string>
-    <string name="terms_body_custody">NexaWal Nexatrode LLC mba\'éva ha\'e peteĩ interface autocustodia oñangareko hag̃ua mba\'e rehegua digital-pe. Ndévoi reñangarekóta ne llave privada ha ne semilla ñe\'ẽ 25-pe.</string>
+    <string name="terms_body_custody">nexawal Nexatrode LLC mba\'éva ha\'e peteĩ interface autocustodia oñangareko hag̃ua mba\'e rehegua digital-pe. Ndévoi reñangarekóta ne llave privada ha ne semilla ñe\'ẽ 25-pe.</string>
     <string name="terms_body_as_is">Ko app ome\'ẽva oĩháicha, ndaipóri garantía. Reiporu ne riesgópe. Nexatrode LLC ndojapói cargo mba\'e oñehundíva, usuario jejavy, oñepytỹhague térã servicio térã nodo ambuéva apañuãi rehe.</string>
     <string name="terms_body_node">Ojejerure ehechauka térã eike ne nodo Monero-pe. Oĩva público oĩ confortoñguaránte.</string>
     <string name="terms_review_full">Ehecha ñe\'ẽme\'ẽ tuicháva Nexatrode LLC ñanduti renda-pe</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Amoneĩ</string>
     <string name="terms_quit">Sẽ</string>
     <string name="privacy_policy">Política de privacidad</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Código &amp; licencia (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Eñemoha\'ãnga embogue hag̃ua protección Face ID</string>
     <string name="error_mnemonic_empty">Frase mnemónica ndaikatúi opyta nandi.</string>
     <string name="error_rescan_no_mnemonic">Escaneo mbykymby ndoikói: frase mnemónica ndaipóri.</string>
-    <string name="biometric_unlock_nexawal">Eñemoha\'ãnga eipe\'a hag̃ua NexaWal</string>
+    <string name="biometric_unlock_nexawal">Eñemoha\'ãnga eipe\'a hag̃ua nexawal</string>
     <string name="biometric_unlock_wallet">Eipe\'a ñongatuha</string>
     <string name="biometric_unlock_subtitle">Eñemoha\'ãnga eipe\'a hag̃ua ñongatuha Monero ñeñongatupyre</string>
     <string name="unlock_your_wallet">Eipe\'a nde ñongatuha</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s conf</string>
     <string name="fee_value_fmt">Comisión %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Ndaikatúi oñemboguete cache de escaneo: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Oñekonektahína %1$s-pe</string>
     <string name="rescanning_from_fmt">Oñeskaneahína jey %1$s guive — progreso oĩ pestaña Ñongatuha-pe</string>
     <string name="subaddress_fmt">Subdirección %1$d</string>

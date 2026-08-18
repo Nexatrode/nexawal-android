@@ -6,7 +6,7 @@
     <string name="nav_send">Sendi</string>
     <string name="nav_settings">Agordoj</string>
     <string name="total_balance">Totala Saldo</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Nuligi</string>
     <string name="action_replace">Anstataŭigi</string>
     <string name="action_close">Fermi</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Skan-kaŝmemoro vakigita por ĉi tiu reto</string>
     <string name="section_fiat">Fiat-taksoj</string>
     <string name="toggle_show_fiat">Montri fiat-taksojn</string>
-    <string name="fiat_help">Nedeviga. Kiam ŝaltita, NexaWal prenas publikan XMR-prezon de Kraken (api.kraken.com) kaj, se necese, fiat-kurzon de Frankfurter (api.frankfurter.dev). Tiuj serviloj vidas vian IP-on. Sumoj kaj adresoj ne estas senditaj. Fiat-serĉoj uzas clearnet-HTTPS kaj estas apartaj de la agordoj de nodo / I2P-prokurilo. Nur taksoj — XMR estas tio, kion vi sendas kaj tenas.</string>
+    <string name="fiat_help">Nedeviga. Kiam ŝaltita, nexawal prenas publikan XMR-prezon de Kraken (api.kraken.com) kaj, se necese, fiat-kurzon de Frankfurter (api.frankfurter.dev). Tiuj serviloj vidas vian IP-on. Sumoj kaj adresoj ne estas senditaj. Fiat-serĉoj uzas clearnet-HTTPS kaj estas apartaj de la agordoj de nodo / I2P-prokurilo. Nur taksoj — XMR estas tio, kion vi sendas kaj tenas.</string>
     <string name="fiat_currency_label">Valuto</string>
     <string name="section_about">Pri</string>
     <string name="about_disclaimer">MIT-licencita, ne-aŭdita programaro. Vi respondecas pri via semo kaj fondusoj. La defaŭlta defora nodo povas vidi vian IP-on kaj demandojn de monuj-sinkronigo — funkciigu vian propran nodon por pli forta privateco. Nedevigaj fiat-taksoj, se ebligitaj, kontaktas api.kraken.com kaj api.frankfurter.dev.</string>
     <string name="terms_of_use">Uzokondiĉoj</string>
     <string name="terms_title">Uzokondiĉoj</string>
-    <string name="terms_body_custody">NexaWal de Nexatrode LLC estas mem-garda interfaco por administri ciferecajn aktivojn. Vi sole respondecas pri viaj privataj ŝlosiloj kaj 25-vorta semfrazo.</string>
+    <string name="terms_body_custody">nexawal de Nexatrode LLC estas mem-garda interfaco por administri ciferecajn aktivojn. Vi sole respondecas pri viaj privataj ŝlosiloj kaj 25-vorta semfrazo.</string>
     <string name="terms_body_as_is">La apo estas provizita kiel estas, sen esprimitaj aŭ implicaj garantioj. Uzo estas je via propra risko. Nexatrode LLC ne respondecas pri perditaj aktivoj, uzantaj eraroj, malfunkcioj aŭ problemoj kun triaj servoj aŭ nodoj.</string>
     <string name="terms_body_node">Oni rekomendas ruli aŭ konekti al via propra Monero-nodo. Publikaj defaŭltoj estas nur por komforto.</string>
     <string name="terms_review_full">Reviziu la plenajn kondiĉojn ĉe la retejo de Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Mi konsentas</string>
     <string name="terms_quit">Forlasi</string>
     <string name="privacy_policy">Privateca politiko</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Fonto &amp; licenco (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Aŭtentigu por malŝalti la protekton de Face ID</string>
     <string name="error_mnemonic_empty">Mnemoniko ne povas esti malplena.</string>
     <string name="error_rescan_no_mnemonic">Reskano malsukcesis: mnemoniko ne estas atingebla.</string>
-    <string name="biometric_unlock_nexawal">Aŭtentigu por malŝlosi NexaWal</string>
+    <string name="biometric_unlock_nexawal">Aŭtentigu por malŝlosi nexawal</string>
     <string name="biometric_unlock_wallet">Malŝlosi monujon</string>
     <string name="biometric_unlock_subtitle">Aŭtentigu por malfermi la konservitan Monero-monujon</string>
     <string name="unlock_your_wallet">Malŝlosu vian monujon</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s konf.</string>
     <string name="fee_value_fmt">Krompago %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Vakigo de skan-kaŝmemoro malsukcesis: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Konektante al %1$s</string>
     <string name="rescanning_from_fmt">Reskanante de %1$s — progreso estas en la langeto Monujo</string>
     <string name="subaddress_fmt">Subadreso %1$d</string>

@@ -6,7 +6,7 @@
     <string name="nav_send">發送</string>
     <string name="nav_settings">設置</string>
     <string name="total_balance">總餘額</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">取消</string>
     <string name="action_replace">替換</string>
     <string name="action_close">關閉</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">已清除此網絡的掃描緩存</string>
     <string name="section_fiat">法幣估算</string>
     <string name="toggle_show_fiat">顯示法幣估算</string>
-    <string name="fiat_help">可選功能。啓用後,NexaWal 會從 Kraken(api.kraken.com)獲取公開的 XMR 價格,並在需要時從 Frankfurter(api.frankfurter.dev)獲取法幣匯率。這些服務器會看到您的 IP。金額和地址不會被髮送。法幣查詢使用 Clearnet HTTPS,與節點 / I2P 代理設置無關。僅供估算 — 您實際發送和持有的是 XMR。</string>
+    <string name="fiat_help">可選功能。啓用後,nexawal 會從 Kraken(api.kraken.com)獲取公開的 XMR 價格,並在需要時從 Frankfurter(api.frankfurter.dev)獲取法幣匯率。這些服務器會看到您的 IP。金額和地址不會被髮送。法幣查詢使用 Clearnet HTTPS,與節點 / I2P 代理設置無關。僅供估算 — 您實際發送和持有的是 XMR。</string>
     <string name="fiat_currency_label">貨幣</string>
     <string name="section_about">關於</string>
     <string name="about_disclaimer">本軟件基於 MIT 許可,未經審計。您需自行負責您的種子和資金安全。預設的遠程節點可以看到您的 IP 和錢包同步請求 — 運行您自己的節點可獲得更強的隱私保護。若啓用可選的法幣估算功能,將會連接 api.kraken.com 和 api.frankfurter.dev。</string>
     <string name="terms_of_use">使用條款</string>
     <string name="terms_title">使用條款</string>
-    <string name="terms_body_custody">Nexatrode LLC 的 NexaWal 是用於管理數位資產的自託管介面。您對私鑰與 25 詞助記詞負有全部責任。</string>
+    <string name="terms_body_custody">Nexatrode LLC 的 nexawal 是用於管理數位資產的自託管介面。您對私鑰與 25 詞助記詞負有全部責任。</string>
     <string name="terms_body_as_is">本應用程式依「現況」提供，不作任何明示或暗示保證。使用風險自負。Nexatrode LLC 不對資產遺失、使用者錯誤、停機或第三方服務／節點問題負責。</string>
     <string name="terms_body_node">建議執行或連線至您自己的 Monero 節點。公開預設值僅為方便之用。</string>
     <string name="terms_review_full">於 Nexatrode LLC 網站檢視完整條款</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">我同意</string>
     <string name="terms_quit">結束</string>
     <string name="privacy_policy">隱私政策</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">關閉</string>
     <string name="legal_load_error">無法載入離線文件。</string>
     <string name="source_license">源代碼與許可(MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">請進行身份驗證以關閉 Face ID 保護</string>
     <string name="error_mnemonic_empty">助記詞不能爲空。</string>
     <string name="error_rescan_no_mnemonic">重新掃描失敗:助記詞不可用。</string>
-    <string name="biometric_unlock_nexawal">請進行身份驗證以解鎖 NexaWal</string>
+    <string name="biometric_unlock_nexawal">請進行身份驗證以解鎖 nexawal</string>
     <string name="biometric_unlock_wallet">解鎖錢包</string>
     <string name="biometric_unlock_subtitle">請進行身份驗證以打開已保存的 Monero 錢包</string>
     <string name="unlock_your_wallet">解鎖您的錢包</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s 次確認</string>
     <string name="fee_value_fmt">手續費 %1$s</string>
     <string name="clear_scan_cache_failed_fmt">清除掃描緩存失敗:%1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">正在連接到 %1$s</string>
     <string name="rescanning_from_fmt">正在從 %1$s 重新掃描 — 進度顯示在“錢包”標籤頁</string>
     <string name="subaddress_fmt">子地址 %1$d</string>

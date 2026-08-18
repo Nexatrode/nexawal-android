@@ -6,7 +6,7 @@
     <string name="nav_send">إرسال</string>
     <string name="nav_settings">الإعدادات</string>
     <string name="total_balance">الرصيد الإجمالي</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">إلغاء</string>
     <string name="action_replace">استبدال</string>
     <string name="action_close">إغلاق</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">تم مسح ذاكرة التخزين المؤقت للمسح لهذه الشبكة</string>
     <string name="section_fiat">التقديرات النقدية</string>
     <string name="toggle_show_fiat">إظهار التقديرات النقدية</string>
-    <string name="fiat_help">اختياري. عند التفعيل، يجلب NexaWal سعر XMR العام من Kraken (api.kraken.com)، وعند الحاجة، سعر صرف العملة النقدية من Frankfurter (api.frankfurter.dev). تلك الخوادم ترى عنوان IP الخاص بك. لا يتم إرسال المبالغ أو العناوين. تستخدم استعلامات العملة النقدية بروتوكول HTTPS عبر Clearnet وهي منفصلة عن إعدادات العقدة / وكيل I2P. تقديرات فقط — XMR هو ما تُرسله وتحتفظ به.</string>
+    <string name="fiat_help">اختياري. عند التفعيل، يجلب nexawal سعر XMR العام من Kraken (api.kraken.com)، وعند الحاجة، سعر صرف العملة النقدية من Frankfurter (api.frankfurter.dev). تلك الخوادم ترى عنوان IP الخاص بك. لا يتم إرسال المبالغ أو العناوين. تستخدم استعلامات العملة النقدية بروتوكول HTTPS عبر Clearnet وهي منفصلة عن إعدادات العقدة / وكيل I2P. تقديرات فقط — XMR هو ما تُرسله وتحتفظ به.</string>
     <string name="fiat_currency_label">العملة</string>
     <string name="section_about">حول</string>
     <string name="about_disclaimer">برنامج مرخّص بموجب MIT وغير مُدقَّق. أنت المسؤول عن عبارتك التذكيرية وأموالك. يمكن للعقدة البعيدة الافتراضية رؤية عنوان IP الخاص بك واستعلامات مزامنة المحفظة — شغّل عقدتك الخاصة لخصوصية أقوى. التقديرات النقدية الاختيارية، إن تم تفعيلها، تتصل بـ api.kraken.com و api.frankfurter.dev.</string>
     <string name="terms_of_use">شروط الاستخدام</string>
     <string name="terms_title">شروط الاستخدام</string>
-    <string name="terms_body_custody">NexaWal من Nexatrode LLC واجهة ذاتية الحفظ لإدارة الأصول الرقمية. أنت تتحمل المسؤولية الحصرية عن مفاتيحك الخاصة وعبارة الاسترداد المكوّنة من 25 كلمة.</string>
+    <string name="terms_body_custody">nexawal من Nexatrode LLC واجهة ذاتية الحفظ لإدارة الأصول الرقمية. أنت تتحمل المسؤولية الحصرية عن مفاتيحك الخاصة وعبارة الاسترداد المكوّنة من 25 كلمة.</string>
     <string name="terms_body_as_is">يُقدَّم التطبيق كما هو، دون ضمانات صريحة أو ضمنية. الاستخدام على مسؤوليتك الخاصة. لا تتحمل Nexatrode LLC المسؤولية عن الأصول المفقودة أو أخطاء المستخدم أو التوقف أو مشكلات خدمات أو عُقد جهات خارجية.</string>
     <string name="terms_body_node">يُنصح بتشغيل عقدة Monero الخاصة بك أو الاتصال بها. القيم العامة الافتراضية للراحة فقط.</string>
     <string name="terms_review_full">راجع الشروط الكاملة على موقع Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">أوافق</string>
     <string name="terms_quit">خروج</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">المصدر والترخيص (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">صادق لإيقاف حماية Face ID</string>
     <string name="error_mnemonic_empty">لا يمكن أن تكون العبارة التذكيرية فارغة.</string>
     <string name="error_rescan_no_mnemonic">فشلت إعادة المسح: العبارة التذكيرية غير متاحة.</string>
-    <string name="biometric_unlock_nexawal">صادق لفتح NexaWal</string>
+    <string name="biometric_unlock_nexawal">صادق لفتح nexawal</string>
     <string name="biometric_unlock_wallet">فتح المحفظة</string>
     <string name="biometric_unlock_subtitle">صادق لفتح محفظة Monero المحفوظة</string>
     <string name="unlock_your_wallet">افتح محفظتك</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s تأكيد</string>
     <string name="fee_value_fmt">الرسوم %1$s</string>
     <string name="clear_scan_cache_failed_fmt">فشل مسح ذاكرة التخزين المؤقت للمسح: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">جارٍ الاتصال بـ %1$s</string>
     <string name="rescanning_from_fmt">جارٍ إعادة المسح من %1$s — التقدم يظهر في تبويب المحفظة</string>
     <string name="subaddress_fmt">العنوان الفرعي %1$d</string>

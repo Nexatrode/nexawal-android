@@ -6,7 +6,7 @@
     <string name="nav_send">Aika</string>
     <string name="nav_settings">Saituna</string>
     <string name="total_balance">Jimillar Ma\'auni</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Soke</string>
     <string name="action_replace">Maye da</string>
     <string name="action_close">Rufe</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">An share adanan bincike na wannan hanyar sadarwa</string>
     <string name="section_fiat">Ƙiyasin Kuɗin Fiat</string>
     <string name="toggle_show_fiat">Nuna ƙiyasin kuɗin fiat</string>
-    <string name="fiat_help">Na zaɓi. Idan an kunna, NexaWal na samo farashin XMR na jama\'a daga Kraken (api.kraken.com) kuma, idan ana buƙata, canjin kuɗin fiat daga Frankfurter (api.frankfurter.dev). Waɗannan sabar suna ganin IP ɗinka. Ba a aika adadi ko adireshi ba. Neman kuɗin fiat yana amfani da HTTPS na clearnet kuma ba shi da alaƙa da saitunan node / proxy na I2P. Ƙiyasi ne kawai — XMR shi ne abin da kake aikawa da riƙewa.</string>
+    <string name="fiat_help">Na zaɓi. Idan an kunna, nexawal na samo farashin XMR na jama\'a daga Kraken (api.kraken.com) kuma, idan ana buƙata, canjin kuɗin fiat daga Frankfurter (api.frankfurter.dev). Waɗannan sabar suna ganin IP ɗinka. Ba a aika adadi ko adireshi ba. Neman kuɗin fiat yana amfani da HTTPS na clearnet kuma ba shi da alaƙa da saitunan node / proxy na I2P. Ƙiyasi ne kawai — XMR shi ne abin da kake aikawa da riƙewa.</string>
     <string name="fiat_currency_label">Kuɗi</string>
     <string name="section_about">Game da</string>
     <string name="about_disclaimer">Software mai lasisin MIT, wanda ba a bincika ba. Kai ne ke da alhakin kalmomin dawowarka da kuɗaɗenka. Node na tsohuwa mai nisa na iya ganin IP ɗinka da tambayoyin daidaitawar walat — yi amfani da node naka don ƙarin sirri. Ƙiyasin kuɗin fiat, na zaɓi, idan an kunna, suna tuntuɓar api.kraken.com da api.frankfurter.dev.</string>
     <string name="terms_of_use">Sharuɗan Amfani</string>
     <string name="terms_title">Sharuɗan Amfani</string>
-    <string name="terms_body_custody">NexaWal na Nexatrode LLC interface ne na kula da kai don sarrafa kadarorin dijital. Kai ne kaɗai ke da alhakin maɓallan sirri da jimlar iri ta kalmomi 25.</string>
+    <string name="terms_body_custody">nexawal na Nexatrode LLC interface ne na kula da kai don sarrafa kadarorin dijital. Kai ne kaɗai ke da alhakin maɓallan sirri da jimlar iri ta kalmomi 25.</string>
     <string name="terms_body_as_is">Ana bayar da app ɗin yadda yake, ba tare da wani garantin bayyane ko na ciki ba. Amfani yana kan haɗarin ku. Nexatrode LLC ba ta da alhakin kadarorin da suka ɓace, kuskuren mai amfani, katsewa, ko matsalolin sabis ko node na waje.</string>
     <string name="terms_body_node">Ana ba da shawarar gudanar da ko haɗawa da naku na Monero. Tsohuwar jama\'a don sauƙi ne kawai.</string>
     <string name="terms_review_full">Duba cikakkun sharuɗa a gidan yanar gizon Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Na yarda</string>
     <string name="terms_quit">Fita</string>
     <string name="privacy_policy">Manufar sirri</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Tushen lambar da lasisi (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Tantance kai don kashe kariyar Face ID</string>
     <string name="error_mnemonic_empty">Kalmomin dawowa ba za su iya zama babu kome ba.</string>
     <string name="error_rescan_no_mnemonic">Sake bincike ta kasa: kalmomin dawowa babu su.</string>
-    <string name="biometric_unlock_nexawal">Tantance kai don buɗe NexaWal</string>
+    <string name="biometric_unlock_nexawal">Tantance kai don buɗe nexawal</string>
     <string name="biometric_unlock_wallet">Buɗe walat</string>
     <string name="biometric_unlock_subtitle">Tantance kai don buɗe walat na Monero da ajiye</string>
     <string name="unlock_your_wallet">Buɗe walatinku</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">%1$s tabb.</string>
     <string name="fee_value_fmt">Kuɗin Caji %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Share adanan bincike ta kasa: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Ana haɗawa da %1$s</string>
     <string name="rescanning_from_fmt">Ana sake bincika daga %1$s — ana ci gaba a shafin Walat</string>
     <string name="subaddress_fmt">Sab-adireshi %1$d</string>

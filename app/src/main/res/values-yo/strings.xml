@@ -6,7 +6,7 @@
     <string name="nav_send">Fi Ránṣẹ́</string>
     <string name="nav_settings">Ètò</string>
     <string name="total_balance">Àpapọ̀ Iye Owó</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">Fagilé</string>
     <string name="action_replace">Rọ́pò</string>
     <string name="action_close">Ti</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Ìfipamọ́ yíyẹ̀wò fún nẹ́tíwọ́ọ̀kì yìí ti di fífò</string>
     <string name="section_fiat">Ìṣírò owó ìlú</string>
     <string name="toggle_show_fiat">Fi ìṣírò owó ìlú hàn</string>
-    <string name="fiat_help">Àṣàyàn. Bí a bá gbé e ṣíṣẹ́, NexaWal máa ń gba iye owó XMR gbogbogbò lọ́wọ́ Kraken (api.kraken.com) àti, bí ó bá yẹ, ìdíwọ̀n owó ìlú lọ́wọ́ Frankfurter (api.frankfurter.dev). Àwọn sáfà náà máa ń rí IP rẹ. A kò fi iye owó àti àwọn àdírẹ́sì ránṣẹ́. Wíwá ìṣírò owó ìlú máa ń lo clearnet HTTPS, ó sì yàtọ̀ sí ètò node / proxy I2P. Ìṣírò nìkan — XMR ni ohun tí o ń fi ránṣẹ́ tí o sì ń mú dání.</string>
+    <string name="fiat_help">Àṣàyàn. Bí a bá gbé e ṣíṣẹ́, nexawal máa ń gba iye owó XMR gbogbogbò lọ́wọ́ Kraken (api.kraken.com) àti, bí ó bá yẹ, ìdíwọ̀n owó ìlú lọ́wọ́ Frankfurter (api.frankfurter.dev). Àwọn sáfà náà máa ń rí IP rẹ. A kò fi iye owó àti àwọn àdírẹ́sì ránṣẹ́. Wíwá ìṣírò owó ìlú máa ń lo clearnet HTTPS, ó sì yàtọ̀ sí ètò node / proxy I2P. Ìṣírò nìkan — XMR ni ohun tí o ń fi ránṣẹ́ tí o sì ń mú dání.</string>
     <string name="fiat_currency_label">Owó</string>
     <string name="section_about">Nípa</string>
     <string name="about_disclaimer">Ẹ̀rọ software tí a ní ìwé-àṣẹ MIT, tí a kò tíì ṣàyẹ̀wò rẹ̀ ní kíkún. Ìwọ ni ó ní ẹ̀rí fún ọ̀rọ̀ ìpadàbọ̀ àti owó rẹ. Node àdánwò tí ó jẹ́ ìpilẹ̀ṣẹ̀ lè rí IP rẹ àti àwọn ìbéèrè ìṣọ̀kan àpamọ́wọ́ rẹ — sáré node tìrẹ fún ààbò tí ó ga jùlọ. Ìṣírò owó ìlú àṣàyàn, bí a bá gbé e ṣíṣẹ́, máa ń kàn sí api.kraken.com àti api.frankfurter.dev.</string>
     <string name="terms_of_use">Àwọn Òfin Lílò</string>
     <string name="terms_title">Àwọn Òfin Lílò</string>
-    <string name="terms_body_custody">NexaWal láti ọwọ́ Nexatrode LLC jẹ́ ìfojúṣe ìtọ́jú ara ẹni fún ṣíṣàkóso àwọn ohun-ìní oníṣirò. Ìdájọ́ dúró lórí rẹ nìkan fún àwọn kọ́kọ́rọ́ àdáni àti ọ̀rọ̀ irúgbìn ọ̀rọ̀ 25.</string>
+    <string name="terms_body_custody">nexawal láti ọwọ́ Nexatrode LLC jẹ́ ìfojúṣe ìtọ́jú ara ẹni fún ṣíṣàkóso àwọn ohun-ìní oníṣirò. Ìdájọ́ dúró lórí rẹ nìkan fún àwọn kọ́kọ́rọ́ àdáni àti ọ̀rọ̀ irúgbìn ọ̀rọ̀ 25.</string>
     <string name="terms_body_as_is">A pèsè app náà gẹ́gẹ́ bí ó ṣe wà, láìsí èròǹgbà àti ìdúróṣinṣin kankan. Lílo wà lórí ewu tirẹ. Nexatrode LLC kò ní ẹjọ́ fún ohun-ìní tí ó sọnù, àṣìṣe olùlò, ìdádúró, tàbí ìṣòro pẹ̀lú iṣẹ́ tàbí node ẹni kẹta.</string>
     <string name="terms_body_node">A dábàá pé kí o ṣiṣẹ́ tàbí so mọ́ node Monero tirẹ. Àwọn àìyípadà gbogbogbòò jẹ́ fún ìrọ̀rùn nìkan.</string>
     <string name="terms_review_full">Ṣàtúnyẹ̀wò àwọn òfin níkún lórí ojú òpó wẹ́ẹ̀bù Nexatrode LLC</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">Mo gbà</string>
     <string name="terms_quit">Jáde</string>
     <string name="privacy_policy">Ìlànà àṣírí</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Orísun &amp; ìwé-àṣẹ (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Fi ẹ̀rí ara múdájú láti pa ààbò Face ID</string>
     <string name="error_mnemonic_empty">Mnemonic kò lè jẹ́ òfìfo.</string>
     <string name="error_rescan_no_mnemonic">Tún yíyẹ̀wò kùnà: mnemonic kò sí.</string>
-    <string name="biometric_unlock_nexawal">Fi ẹ̀rí ara múdájú láti ṣí NexaWal sílẹ̀</string>
+    <string name="biometric_unlock_nexawal">Fi ẹ̀rí ara múdájú láti ṣí nexawal sílẹ̀</string>
     <string name="biometric_unlock_wallet">Ṣí àpamọ́wọ́ sílẹ̀</string>
     <string name="biometric_unlock_subtitle">Fi ẹ̀rí ara múdájú láti ṣí àpamọ́wọ́ Monero tí a fi pamọ́ sílẹ̀</string>
     <string name="unlock_your_wallet">Ṣí àpamọ́wọ́ rẹ sílẹ̀</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">Ìjẹ́rìí %1$s</string>
     <string name="fee_value_fmt">Ọya %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Yíyọ ìfipamọ́ yíyẹ̀wò kùnà: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">Ń so pọ̀ mọ́ %1$s</string>
     <string name="rescanning_from_fmt">Ń tún yẹ̀wò láti %1$s — ìlọsíwájú wà lórí tab Àpamọ́wọ́</string>
     <string name="subaddress_fmt">Sub-àdírẹ́sì %1$d</string>

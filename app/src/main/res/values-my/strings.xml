@@ -6,7 +6,7 @@
     <string name="nav_send">ပို့မည်</string>
     <string name="nav_settings">ဆက်တင်များ</string>
     <string name="total_balance">စုစုပေါင်း လက်ကျန်ငွေ</string>
-    <string name="app_brand">NEXAWAL</string>
+    <string name="app_brand">nexawal</string>
     <string name="action_cancel">ပယ်ဖျက်မည်</string>
     <string name="action_replace">အစားထိုးမည်</string>
     <string name="action_close">ပိတ်မည်</string>
@@ -154,13 +154,13 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">ဤကွန်ရက်အတွက် Scan cache ကို ရှင်းလင်းပြီးပါပြီ</string>
     <string name="section_fiat">ငွေကြေး ခန့်မှန်းချက်များ</string>
     <string name="toggle_show_fiat">ငွေကြေး ခန့်မှန်းချက်များကို ပြမည်</string>
-    <string name="fiat_help">ရွေးချယ်နိုင်သည်။ ဖွင့်ထားပါက NexaWal သည် Kraken (api.kraken.com) မှ အများသိ XMR စျေးနှုန်းနှင့်၊ လိုအပ်ပါက Frankfurter (api.frankfurter.dev) မှ ငွေကြေးလဲလှယ်နှုန်းကို ရယူသည်။ ထို server များသည် သင့် IP ကို မြင်နိုင်သည်။ ပမာဏနှင့် လိပ်စာများကို ပေးပို့မည် မဟုတ်ပါ။ ငွေကြေး ရှာဖွေမှုများသည် clearnet HTTPS ကို အသုံးပြုပြီး node / I2P proxy ဆက်တင်များနှင့် သီးခြားဖြစ်သည်။ ခန့်မှန်းချက်သာဖြစ်သည် — သင်ပို့ပြီး ကိုင်ဆောင်ရမည်မှာ XMR ဖြစ်သည်။</string>
+    <string name="fiat_help">ရွေးချယ်နိုင်သည်။ ဖွင့်ထားပါက nexawal သည် Kraken (api.kraken.com) မှ အများသိ XMR စျေးနှုန်းနှင့်၊ လိုအပ်ပါက Frankfurter (api.frankfurter.dev) မှ ငွေကြေးလဲလှယ်နှုန်းကို ရယူသည်။ ထို server များသည် သင့် IP ကို မြင်နိုင်သည်။ ပမာဏနှင့် လိပ်စာများကို ပေးပို့မည် မဟုတ်ပါ။ ငွေကြေး ရှာဖွေမှုများသည် clearnet HTTPS ကို အသုံးပြုပြီး node / I2P proxy ဆက်တင်များနှင့် သီးခြားဖြစ်သည်။ ခန့်မှန်းချက်သာဖြစ်သည် — သင်ပို့ပြီး ကိုင်ဆောင်ရမည်မှာ XMR ဖြစ်သည်။</string>
     <string name="fiat_currency_label">ငွေကြေး</string>
     <string name="section_about">အကြောင်း</string>
     <string name="about_disclaimer">MIT လိုင်စင်ရ၊ စစ်ဆေးခြင်း မခံရသေးသော software ဖြစ်သည်။ သင်၏ မျိုးစေ့နှင့် ငွေကြေးအတွက် သင်ပင် တာဝန်ရှိသည်။ Default remote node သည် သင့် IP နှင့် ပိုက်ဆံအိတ် ထပ်တူညှိမှု query များကို မြင်နိုင်သည် — ပိုမိုခိုင်မာသော ကိုယ်ရေးလုံခြုံမှုအတွက် သင့်ကိုယ်ပိုင် node ကို run ပါ။ ရွေးချယ်နိုင်သော ငွေကြေး ခန့်မှန်းချက်များကို ဖွင့်ထားပါက api.kraken.com နှင့် api.frankfurter.dev ကို ဆက်သွယ်သည်။</string>
     <string name="terms_of_use">အသုံးပြုမှု စည်းကမ်းများ</string>
     <string name="terms_title">အသုံးပြုမှု စည်းကမ်းများ</string>
-    <string name="terms_body_custody">Nexatrode LLC ၏ NexaWal သည် ဒစ်ဂျစ်တယ် ပိုင်ဆိုင်မှုများကို စီမံရန် ကိုယ်တိုင်ထိန်းသိမ်းသည့် အင်တာဖေ့စ်ဖြစ်သည်။ သင့်ပုဂ္ဂလိက သော့များနှင့် စကားလုံး ၂၅ လုံးပါ seed စကားစုအတွက် တာဝန်အားလုံး သင့်အပေါ်တွင်သာရှိသည်။</string>
+    <string name="terms_body_custody">Nexatrode LLC ၏ nexawal သည် ဒစ်ဂျစ်တယ် ပိုင်ဆိုင်မှုများကို စီမံရန် ကိုယ်တိုင်ထိန်းသိမ်းသည့် အင်တာဖေ့စ်ဖြစ်သည်။ သင့်ပုဂ္ဂလိက သော့များနှင့် စကားလုံး ၂၅ လုံးပါ seed စကားစုအတွက် တာဝန်အားလုံး သင့်အပေါ်တွင်သာရှိသည်။</string>
     <string name="terms_body_as_is">အက်ပ်ကို အာမခံမှု မရှိဘဲ ရှိသည့်အတိုင်း ပေးသည်။ အသုံးပြုမှုသည် သင့်အန္တရာယ်တွင်သာဖြစ်သည်။ ပိုင်ဆိုင်မှု ဆုံးရှုံးမှု၊ အသုံးပြုသူ အမှား၊ ရပ်နားချိန် သို့မဟုတ် ပြင်ပ ဝန်ဆောင်မှု/node ပြဿနာများအတွက် Nexatrode LLC တာဝန်မယူပါ။</string>
     <string name="terms_body_node">ကိုယ်ပိုင် Monero node ကို ဖွင့်ရန် သို့မဟုတ် ချိတ်ဆက်ရန် အကြံပြုသည်။ အများသုံး မူရင်းတန်ဖိုးများသည် အဆင်ပြေစေရန်သာဖြစ်သည်။</string>
     <string name="terms_review_full">Nexatrode LLC ဝဘ်ဆိုက်တွင် စည်းကမ်းအပြည့်အစုံကို ကြည့်ပါ</string>
@@ -168,6 +168,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_agree">သဘောတူသည်</string>
     <string name="terms_quit">ထွက်ရန်</string>
     <string name="privacy_policy">ကိုယ်ရေးလုံခြုံမှု မူဝါဒ</string>
+    <string name="mit_license">MIT License</string>
+    <string name="source_on_github">Source on GitHub</string>
+    <string name="link_copied">Link copied</string>
     <string name="legal_close">Close</string>
     <string name="legal_load_error">Could not load the offline document.</string>
     <string name="source_license">Source &amp; လိုင်စင် (MIT)</string>
@@ -298,7 +301,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="biometric_disable_face_id">Face ID ကာကွယ်မှုကို ပိတ်ရန် အထောက်အထားစိစစ်ပါ</string>
     <string name="error_mnemonic_empty">Mnemonic ကို အလွတ်ချန်ထား၍ မရပါ။</string>
     <string name="error_rescan_no_mnemonic">ပြန်စကင်ဖတ်မှု မအောင်မြင်ပါ: mnemonic မရရှိနိုင်ပါ။</string>
-    <string name="biometric_unlock_nexawal">NexaWal ကို ဖွင့်ရန် အထောက်အထားစိစစ်ပါ</string>
+    <string name="biometric_unlock_nexawal">nexawal ကို ဖွင့်ရန် အထောက်အထားစိစစ်ပါ</string>
     <string name="biometric_unlock_wallet">ပိုက်ဆံအိတ် ဖွင့်မည်</string>
     <string name="biometric_unlock_subtitle">သိမ်းဆည်းထားသော Monero ပိုက်ဆံအိတ်ကို ဖွင့်ရန် အထောက်အထားစိစစ်ပါ</string>
     <string name="unlock_your_wallet">သင့် ပိုက်ဆံအိတ်ကို ဖွင့်ပါ</string>
@@ -328,7 +331,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="confirmations_fmt">အတည်ပြုချက် %1$s</string>
     <string name="fee_value_fmt">အခကြေးငွေ %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Scan cache ရှင်းလင်းမှု မအောင်မြင်ပါ: %1$s</string>
-    <string name="app_version_fmt">NexaWal %1$s (%2$s)</string>
+    <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
     <string name="connecting_to_fmt">%1$s နှင့် ဆက်သွယ်နေသည်</string>
     <string name="rescanning_from_fmt">%1$s မှ ပြန်စကင်ဖတ်နေသည် — တိုးတက်မှုကို ပိုက်ဆံအိတ် tab တွင် ကြည့်နိုင်သည်</string>
     <string name="subaddress_fmt">Subaddress %1$d</string>

@@ -1,6 +1,6 @@
 # nexawal-android
 
-`nexawal-android` is the Android version of the NexaWal Monero wallet, built on top of `monero-oxide` and the shared wallet core.
+`nexawal-android` is the Android version of the nexawal Monero wallet, built on top of `monero-oxide` and the shared wallet core.
 
 - Android app: this repository
 - iOS app: [nexawal](https://github.com/Nexatrode/nexawal)

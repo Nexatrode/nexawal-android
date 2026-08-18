@@ -198,6 +198,7 @@ class WalletManager(
     @Volatile private var lastExportCacheHash: Int? = null
     @Volatile private var lastExportCacheLen: Int? = null
     @Volatile private var lastExportAtMs: Long = 0L
+    @Volatile private var didRewindEmptyHistory: Boolean = false
 
     private val transfersJsonParser: Json = Json {
         ignoreUnknownKeys = true
@@ -369,10 +370,8 @@ class WalletManager(
             "rpc.nexatrode.com",
             "http://cuprate.nexatrode.com",
             "https://cuprate.nexatrode.com",
-            "cuprate.nexatrode.com",
-            "http://monero.nexatrode.com",
-            "https://monero.nexatrode.com",
-            "monero.nexatrode.com" -> true
+            "cuprate.nexatrode.com" -> true
+            // monero.nexatrode.com is a valid alternate endpoint — do not remap to the live default.
             else -> false
         }
     }
@@ -630,7 +629,17 @@ class WalletManager(
 
         if (replaceExisting) {
             clearStoredWallet()
+        } else {
+            // Constant wallet id can still have a leftover cache from a prior seed.
+            runCatching {
+                val cache = cacheFile(walletId, mainnet = mainnet)
+                if (cache.exists()) cache.delete()
+            }
         }
+
+        MoneroConfig.setTrustedScannedHeight(appContext, 0L)
+        MoneroConfig.setScanInterrupted(appContext, true)
+        didRewindEmptyHistory = false
 
         withContext(ioDispatcher) {
             WalletCore.openFromMnemonic(
@@ -639,6 +648,8 @@ class WalletManager(
                 restoreHeight = restoreHeight,
                 mainnet = mainnet,
             )
+            // Constant wallet id leaves Occupied in-memory last_scanned at tip after replace.
+            WalletCore.forceRescanFromHeight(walletId, restoreHeight)
         }
 
         // Derive primary address for UI, but do NOT publish walletId yet.
@@ -663,9 +674,9 @@ class WalletManager(
             )
         }.getOrNull()
 
-        // Best-effort: import cache from disk if present.
+        // Create/replace always starts a fresh scan. Do not import leftover cache for the
+        // constant wallet id (that was the Mac empty-history-at-tip path).
         withContext(ioDispatcher) {
-            importCacheIfPresent(walletId)
             recoverPendingPreparedSendBestEffort(walletId)
         }
         // Refresh status snapshot after open/import.
@@ -813,10 +824,12 @@ class WalletManager(
             gapLimit = gapLimit,
             accountGap = accountGap,
         )
+        MoneroConfig.setScanInterrupted(appContext, true)
         startSyncForegroundService()
 
         val job = scope.launch(ioDispatcher) {
             try {
+                maybeRewindInterruptedScan(walletId)
                 withContext(ioDispatcher) {
                     // iOS parity: apply scan tuning knobs before starting refresh.
                     // Note: these are process-wide (accountGap via env var) and per-wallet (gapLimit).
@@ -913,6 +926,21 @@ class WalletManager(
                     accountGap = null,
                 )
                 refreshWalletDataSnapshotsNow(walletId)
+                val emptyHistoryAtTip =
+                    st.chainHeight > st.restoreHeight + 10_000L &&
+                        _state.value.transfers.isEmpty()
+                if (emptyHistoryAtTip) {
+                    MoneroConfig.setTrustedScannedHeight(appContext, st.restoreHeight)
+                    MoneroConfig.setScanInterrupted(appContext, true)
+                    Log.w(
+                        "WalletManager",
+                        "scan complete but history empty; keeping interrupted and trusted=${st.restoreHeight}",
+                    )
+                } else {
+                    MoneroConfig.setTrustedScannedHeight(appContext, st.lastScanned)
+                    MoneroConfig.setScanInterrupted(appContext, false)
+                    Log.i("WalletManager", "scan checkpoint trusted=${st.lastScanned} interrupted=false")
+                }
             } catch (ce: CancellationException) {
                 // Kotlin-side cancellation (we still request core cancel in cancelRefresh()).
                 val st = withContext(ioDispatcher) {
@@ -937,6 +965,9 @@ class WalletManager(
                 // Best-effort: persist progress even on failure.
                 withContext(ioDispatcher) {
                     exportCacheAndPersist(walletId)
+                }
+                if (t !is CancellationException) {
+                    MoneroConfig.setScanInterrupted(appContext, true)
                 }
                 val msg = t.message ?: t.javaClass.simpleName
                 _state.value = _state.value.copy(
@@ -1032,6 +1063,7 @@ class WalletManager(
         lastExportCacheHash = null
         lastExportCacheLen = null
         lastExportAtMs = 0L
+        didRewindEmptyHistory = false
 
         _state.value = _state.value.copy(
             syncStatus = currentStatus?.copy(
@@ -1040,6 +1072,8 @@ class WalletManager(
                 restoreHeight = fromHeight,
             ),
             balance = WalletCore.Balance(0L, 0L),
+            transfers = emptyList(),
+            transfersJson = null,
             balanceIsStaleWhileSyncing = false,
             lastError = null,
         )
@@ -1089,6 +1123,9 @@ class WalletManager(
         val walletId = _state.value.walletId ?: return
         if (!refreshInProgress.get()) return
 
+        // Keep interrupted=true so a cancelled/partial cache is never treated as a clean sync.
+        // (Previously this cleared the flag, which made "WALLET SYNCED" + incomplete history common.)
+        MoneroConfig.setScanInterrupted(appContext, true)
         refreshCancelRequested.set(true)
 
         scope.launch {
@@ -1123,6 +1160,9 @@ class WalletManager(
      */
     fun snapshotState() {
         val walletId = _state.value.walletId ?: return
+        if (refreshInProgress.get() || _state.value.refreshInProgress) {
+            MoneroConfig.setScanInterrupted(appContext, true)
+        }
         scope.launch {
             withContext(ioDispatcher) {
                 exportCacheAndPersist(walletId)
@@ -1232,6 +1272,9 @@ class WalletManager(
             fiatPrices.recordSeenTransfers(
                 parsed.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp?.takeIf { ts -> ts > 0L }) },
             )
+            if (parsed.isNotEmpty()) {
+                didRewindEmptyHistory = false
+            }
         }
     }
 
@@ -1252,9 +1295,14 @@ class WalletManager(
 
     private fun isZeroBalanceAuthoritative(state: UiState): Boolean {
         val st = state.syncStatus ?: return false
+        if (MoneroConfig.scanInterrupted(appContext) || state.refreshInProgress) return false
         val observedNetworkTip = st.chainHeight > st.restoreHeight || st.chainTime > 0
         val syncedWithinTolerance = st.chainHeight > 0 && st.lastScanned + 3 >= st.chainHeight
-        return observedNetworkTip && syncedWithinTolerance && !state.refreshInProgress
+        val trusted = MoneroConfig.trustedScannedHeight(appContext)
+        val checkpointOk = st.lastScanned <= trusted + 3L
+        if (!observedNetworkTip || !syncedWithinTolerance || !checkpointOk) return false
+        if (st.chainHeight > st.restoreHeight + 10_000L && state.transfers.isEmpty()) return false
+        return true
     }
 
     private fun applyBalanceSnapshot(
@@ -1653,13 +1701,22 @@ class WalletManager(
     /** Soft fetch failures that usually recover after shrinking/restarting the range batch. */
     private fun isRecoverableBulkFetchError(message: String): Boolean {
         val normalized = message.lowercase()
-        return normalized.contains("response body closed before all bytes were read") ||
+        return normalized.contains("429") ||
+            normalized.contains("too many requests") ||
+            normalized.contains("rate limit") ||
+            normalized.contains("timeout") ||
+            normalized.contains("timed out") ||
+            normalized.contains("response body closed before all bytes were read") ||
             normalized.contains("interface error") ||
             normalized.contains("channelclosed") ||
             normalized.contains("channel closed") ||
             normalized.contains("connection reset") ||
             normalized.contains("broken pipe") ||
-            normalized.contains("unexpected eof")
+            normalized.contains("unexpected eof") ||
+            normalized.contains("http 4") ||
+            normalized.contains("http 5") ||
+            normalized.contains("status code 4") ||
+            normalized.contains("status code 5")
     }
 
     /**
@@ -1669,10 +1726,53 @@ class WalletManager(
     fun shouldAutoResumeRefresh(): Boolean {
         if (refreshInProgress.get() || _state.value.refreshInProgress) return false
         if (_state.value.walletId == null) return false
+        if (MoneroConfig.scanInterrupted(appContext)) return true
         val st = _state.value.syncStatus ?: return false
+        val trusted = MoneroConfig.trustedScannedHeight(appContext)
+        // Cursor ran ahead of the last clean checkpoint (cancel/quit partial scan).
+        if (st.lastScanned > trusted + 3L) return true
         val tipKnown = st.chainHeight > st.restoreHeight || st.chainTime > 0L
         if (!tipKnown) return true // still waiting for tip — worth another try
+        if (st.lastScanned + 3L >= st.chainHeight &&
+            st.chainHeight > st.restoreHeight + 10_000L &&
+            _state.value.transfers.isEmpty()
+        ) {
+            return true
+        }
         return st.lastScanned + 3L < st.chainHeight
+    }
+
+    /** If a killed refresh left lastScanned ≈ tip, rewind to the last completed checkpoint. */
+    private fun maybeRewindInterruptedScan(walletId: String) {
+        val st = _state.value.syncStatus
+            ?: runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
+            ?: return
+        val tipKnown = st.chainHeight > st.restoreHeight || st.chainTime > 0L
+        if (!tipKnown) return
+        if (st.lastScanned + 3L < st.chainHeight) return
+        val trusted = MoneroConfig.trustedScannedHeight(appContext)
+        val aheadOfCheckpoint = st.lastScanned > trusted + 3L
+        val emptyHistoryAtTip =
+            !didRewindEmptyHistory &&
+                st.chainHeight > st.restoreHeight + 10_000L &&
+                _state.value.transfers.isEmpty()
+        if (!MoneroConfig.scanInterrupted(appContext) && !aheadOfCheckpoint && !emptyHistoryAtTip) return
+        val rewind = if (emptyHistoryAtTip) st.restoreHeight else maxOf(st.restoreHeight, trusted)
+        if (emptyHistoryAtTip) {
+            didRewindEmptyHistory = true
+        }
+        Log.w(
+            "WalletManager",
+            "incomplete scan looks at tip; rewinding cursor from $rewind (lastScanned=${st.lastScanned} tip=${st.chainHeight} trusted=$trusted interrupted=${MoneroConfig.scanInterrupted(appContext)})",
+        )
+        runCatching {
+            WalletCore.forceRescanFromHeight(walletId, rewind)
+        }.onFailure { t ->
+            Log.w(
+                "WalletManager",
+                "rewindScanCursor failed: ${t.message ?: t.javaClass.simpleName}",
+            )
+        }
     }
 
     fun refreshWalletInBackgroundIfNeeded(reason: String = "auto-resume"): Job? {
@@ -2214,6 +2314,13 @@ class WalletManager(
             "CACHE_IMPORT ok walletId=$walletId importedBytes=${bytes.size} " +
                 "syncStatusAfter(chainHeight=${stAfter?.chainHeight} lastScanned=${stAfter?.lastScanned} restoreHeight=${stAfter?.restoreHeight})"
         )
+        // Re-apply after import so subaddress lookahead is registered on the restored scanner.
+        val gap = MoneroConfig.gapLimit(appContext)
+        runCatching {
+            WalletCore.setGapLimit(walletId = walletId, gapLimit = gap)
+        }.onFailure { t ->
+            Log.w("WalletManager", "setGapLimit after cache import failed: ${t.message ?: t.javaClass.simpleName}")
+        }
     }
 
     private fun exportCacheAndPersist(walletId: String) {
@@ -2420,6 +2527,9 @@ class WalletManager(
             hasStoredWallet = false,
             lastPersistedAtMs = System.currentTimeMillis(),
         )
+        MoneroConfig.setTrustedScannedHeight(appContext, 0L)
+        MoneroConfig.setScanInterrupted(appContext, true)
+        didRewindEmptyHistory = false
     }
 
     private fun persistMetadata(meta: StoredWalletMetadata) {
