@@ -376,6 +376,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="failed_open_wallet_fmt">Không thể mở ví đã lưu: %1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
     <string name="a11y_sync_progress_fmt">Tiến trình đồng bộ %1$d phần trăm</string>
+    <string name="a11y_show_sync_details">Hiện chi tiết đồng bộ</string>
+    <string name="a11y_hide_sync_details">Ẩn chi tiết đồng bộ</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Xem trước camera để quét mã QR Monero</string>
     <string name="a11y_currency_menu">Tiền pháp định</string>

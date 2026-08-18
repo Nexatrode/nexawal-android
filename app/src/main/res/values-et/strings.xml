@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">Sünkroonimise edenemine %1$d protsenti</string>
+    <string name="a11y_show_sync_details">Näita sünkroonimise üksikasju</string>
+    <string name="a11y_hide_sync_details">Peida sünkroonimise üksikasjad</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Kaamera eelvaade Monero QR-koodide skannimiseks</string>
     <string name="a11y_currency_menu">Fiat-vääring</string>

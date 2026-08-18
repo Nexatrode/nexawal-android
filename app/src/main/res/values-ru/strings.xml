@@ -376,6 +376,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="failed_open_wallet_fmt">Не удалось открыть сохранённый кошелёк: %1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
     <string name="a11y_sync_progress_fmt">Прогресс синхронизации %1$d процентов</string>
+    <string name="a11y_show_sync_details">Показать сведения о синхронизации</string>
+    <string name="a11y_hide_sync_details">Скрыть сведения о синхронизации</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Изображение с камеры для сканирования QR-кодов Monero</string>
     <string name="a11y_currency_menu">Фиатная валюта</string>

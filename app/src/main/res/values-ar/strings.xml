@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">تقدم المزامنة %1$d بالمئة</string>
+    <string name="a11y_show_sync_details">إظهار تفاصيل المزامنة</string>
+    <string name="a11y_hide_sync_details">إخفاء تفاصيل المزامنة</string>
     <string name="a11y_transfer_row_fmt">%1$s، %2$s XMR، %3$s</string>
     <string name="a11y_camera_preview">معاينة الكاميرا لمسح رموز QR لـ Monero</string>
     <string name="a11y_currency_menu">العملة النقدية</string>

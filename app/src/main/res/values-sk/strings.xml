@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">Priebeh synchronizácie %1$d percent</string>
+    <string name="a11y_show_sync_details">Zobraziť podrobnosti synchronizácie</string>
+    <string name="a11y_hide_sync_details">Skryť podrobnosti synchronizácie</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Náhľad kamery na skenovanie QR kódov Monero</string>
     <string name="a11y_currency_menu">Fiat mena</string>

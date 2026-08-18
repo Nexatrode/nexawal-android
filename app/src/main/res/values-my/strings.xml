@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">ထပ်တူညှိမှု တိုးတက်မှု %1$d ရာခိုင်နှုန်း</string>
+    <string name="a11y_show_sync_details">စင့်ခ််အသေးစိတ်ကို ပြရန်</string>
+    <string name="a11y_hide_sync_details">စင့်ခ််အသေးစိတ်ကို ဝှက်ရန်</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Monero QR code များ စကင်ဖတ်ရန် ကင်မရာ အစမ်းကြည့်ရှုမှု</string>
     <string name="a11y_currency_menu">ငွေကြေး</string>

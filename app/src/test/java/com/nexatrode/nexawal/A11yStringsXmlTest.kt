@@ -73,6 +73,8 @@ class A11yStringsXmlTest {
 
     private val requiredA11yKeys = listOf(
         "a11y_sync_progress_fmt",
+        "a11y_show_sync_details",
+        "a11y_hide_sync_details",
         "a11y_transfer_row_fmt",
         "a11y_camera_preview",
         "a11y_currency_menu",

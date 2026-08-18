@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">Progresi i sinkronizimit %1$d përqind</string>
+    <string name="a11y_show_sync_details">Shfaq detajet e sinkronizimit</string>
+    <string name="a11y_hide_sync_details">Fshih detajet e sinkronizimit</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Pamja e kamerës për skanimin e kodeve QR të Monero</string>
     <string name="a11y_currency_menu">Monedha fiat</string>

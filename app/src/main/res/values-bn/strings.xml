@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">সিঙ্ক অগ্রগতি %1$d শতাংশ</string>
+    <string name="a11y_show_sync_details">সিঙ্ক বিবরণ দেখান</string>
+    <string name="a11y_hide_sync_details">সিঙ্ক বিবরণ লুকান</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Monero QR কোড স্ক্যান করার জন্য ক্যামেরা প্রিভিউ</string>
     <string name="a11y_currency_menu">ফিয়াট মুদ্রা</string>

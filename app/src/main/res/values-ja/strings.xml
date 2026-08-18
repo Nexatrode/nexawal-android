@@ -376,6 +376,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="failed_open_wallet_fmt">保存されたウォレットのオープンに失敗しました:%1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
     <string name="a11y_sync_progress_fmt">同期進行状況 %1$d パーセント</string>
+    <string name="a11y_show_sync_details">同期の詳細を表示</string>
+    <string name="a11y_hide_sync_details">同期の詳細を非表示</string>
     <string name="a11y_transfer_row_fmt">%1$s、%2$s XMR、%3$s</string>
     <string name="a11y_camera_preview">Monero QRコードをスキャンするためのカメラプレビュー</string>
     <string name="a11y_currency_menu">現地通貨</string>

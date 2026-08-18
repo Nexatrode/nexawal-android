@@ -376,6 +376,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="failed_open_wallet_fmt">저장된 지갑 열기 실패: %1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
     <string name="a11y_sync_progress_fmt">동기화 진행률 %1$d퍼센트</string>
+    <string name="a11y_show_sync_details">동기화 세부정보 표시</string>
+    <string name="a11y_hide_sync_details">동기화 세부정보 숨기기</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Monero QR 코드 스캔을 위한 카메라 미리보기</string>
     <string name="a11y_currency_menu">환율 통화</string>

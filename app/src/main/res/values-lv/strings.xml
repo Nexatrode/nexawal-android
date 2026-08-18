@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">Sinhronizācijas progress %1$d procenti</string>
+    <string name="a11y_show_sync_details">Rādīt sinhronizācijas informāciju</string>
+    <string name="a11y_hide_sync_details">Paslēpt sinhronizācijas informāciju</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">Kameras priekšskatījums Monero QR kodu skenēšanai</string>
     <string name="a11y_currency_menu">Fiat valūta</string>

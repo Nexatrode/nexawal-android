@@ -378,6 +378,8 @@ Default: https://rpc.nexatrode.com</string>
 
     <!-- Accessibility -->
     <string name="a11y_sync_progress_fmt">התקדמות סנכרון %1$d אחוזים</string>
+    <string name="a11y_show_sync_details">הצגת פרטי סנכרון</string>
+    <string name="a11y_hide_sync_details">הסתרת פרטי סנכרון</string>
     <string name="a11y_transfer_row_fmt">%1$s, %2$s XMR, %3$s</string>
     <string name="a11y_camera_preview">תצוגה מקדימה של המצלמה לסריקת קודי QR של Monero</string>
     <string name="a11y_currency_menu">מטבע פיאט</string>

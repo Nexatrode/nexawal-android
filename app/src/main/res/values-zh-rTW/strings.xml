@@ -376,6 +376,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="failed_open_wallet_fmt">打開已存儲的錢包失敗:%1$s</string>
     <string name="button_loading_fmt">%1$s…</string>
     <string name="a11y_sync_progress_fmt">同步進度 %1$d%</string>
+    <string name="a11y_show_sync_details">顯示同步詳細資料</string>
+    <string name="a11y_hide_sync_details">隱藏同步詳細資料</string>
     <string name="a11y_transfer_row_fmt">%1$s,%2$s XMR,%3$s</string>
     <string name="a11y_camera_preview">用於掃描 Monero QR 碼的相機預覽</string>
     <string name="a11y_currency_menu">法定貨幣</string>
