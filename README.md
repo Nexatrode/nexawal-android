@@ -3,7 +3,8 @@
 `nexawal-android` is the Android version of the nexawal Monero wallet, built on top of `monero-oxide` and the shared wallet core.
 
 - Android app: this repository
-- iOS app: [nexawal](https://github.com/Nexatrode/nexawal)
+- iOS / Mac Catalyst app: [nexawal](https://github.com/Nexatrode/nexawal)
+- Desktop (macOS, Windows, Linux): [nexawal-gpui](https://github.com/Nexatrode/nexawal-gpui)
 - Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) (`main`)
 - Monero library work: [monero-oxide](https://github.com/cacaosteve/monero-oxide) (fork pin used by the core)
 - Website: [nexatrode.com](https://nexatrode.com)
@@ -92,7 +93,7 @@ See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md
 - Android consumes the shared core through the submodule + JNI `.so` integration
 - Syncs against standard Monero nodes (local or remote), including the configured I2P RPC path when enabled
 - Default daemon is `https://rpc.nexatrode.com` (type a full `http://` or `https://` URL to override)
-- Feature parity target: [nexawal](https://github.com/Nexatrode/nexawal)
+- Feature parity targets: [nexawal](https://github.com/Nexatrode/nexawal) and [nexawal-gpui](https://github.com/Nexatrode/nexawal-gpui)
 - Unaudited software. You are responsible for backups and funds. A remote node can see your IP and sync queries.
 
 ## Privacy
