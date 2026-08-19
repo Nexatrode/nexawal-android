@@ -831,8 +831,9 @@ class WalletManager(
             try {
                 maybeRewindInterruptedScan(walletId)
                 withContext(ioDispatcher) {
-                    // iOS parity: apply scan tuning knobs before starting refresh.
-                    // Note: these are process-wide (accountGap via env var) and per-wallet (gapLimit).
+                    // Apply per-wallet tuning before starting refresh. Scan request sizing is
+                    // controlled by WalletCore's shared range/75/75 defaults unless explicitly
+                    // overridden through WalletCore environment variables.
                     runCatching {
                         WalletCore.setGapLimit(walletId = walletId, gapLimit = gapLimit)
                     }.onFailure { t ->
@@ -846,33 +847,6 @@ class WalletManager(
                     }
 
                     runCatching {
-                        WalletCore.setEnv("WALLETCORE_BULK_MODE", ANDROID_BULK_MODE)
-                    }.onFailure { t ->
-                        Log.w(
-                            "WalletManager",
-                            "Failed to apply WALLETCORE_BULK_MODE=$ANDROID_BULK_MODE: ${t.message ?: t.javaClass.simpleName}"
-                        )
-                    }
-
-                    runCatching {
-                        WalletCore.setEnv("WALLETCORE_BULK_FETCH_BATCH", ANDROID_BULK_FETCH_BATCH.toString())
-                    }.onFailure { t ->
-                        Log.w(
-                            "WalletManager",
-                            "Failed to apply WALLETCORE_BULK_FETCH_BATCH=$ANDROID_BULK_FETCH_BATCH: ${t.message ?: t.javaClass.simpleName}"
-                        )
-                    }
-
-                    runCatching {
-                        WalletCore.setEnv("WALLETCORE_UPSTREAM_BLOCK_BATCH", ANDROID_UPSTREAM_BLOCK_BATCH.toString())
-                    }.onFailure { t ->
-                        Log.w(
-                            "WalletManager",
-                            "Failed to apply WALLETCORE_UPSTREAM_BLOCK_BATCH=$ANDROID_UPSTREAM_BLOCK_BATCH: ${t.message ?: t.javaClass.simpleName}"
-                        )
-                    }
-
-                    runCatching {
                         WalletCore.setEnv("WALLETCORE_SCAN_LOG", "0")
                     }.onFailure { t ->
                         Log.w(
@@ -883,7 +857,7 @@ class WalletManager(
 
                     Log.i(
                         "WalletManager",
-                        "Refresh tuning applied: gapLimit=$gapLimit accountGap=$accountGap bulkMode=$ANDROID_BULK_MODE bulkFetchBatch=$ANDROID_BULK_FETCH_BATCH upstreamBlockBatch=$ANDROID_UPSTREAM_BLOCK_BATCH scanLog=0"
+                        "Refresh tuning applied: gapLimit=$gapLimit accountGap=$accountGap walletCoreScanDefaults=range/75/75 scanLog=0"
                     )
 
                     // Mirror iOS: start async refresh in the core, then poll `syncStatus` until completion.
@@ -1698,27 +1672,6 @@ class WalletManager(
             normalized.contains("response wasn't the expected json")
     }
 
-    /** Soft fetch failures that usually recover after shrinking/restarting the range batch. */
-    private fun isRecoverableBulkFetchError(message: String): Boolean {
-        val normalized = message.lowercase()
-        return normalized.contains("429") ||
-            normalized.contains("too many requests") ||
-            normalized.contains("rate limit") ||
-            normalized.contains("timeout") ||
-            normalized.contains("timed out") ||
-            normalized.contains("response body closed before all bytes were read") ||
-            normalized.contains("interface error") ||
-            normalized.contains("channelclosed") ||
-            normalized.contains("channel closed") ||
-            normalized.contains("connection reset") ||
-            normalized.contains("broken pipe") ||
-            normalized.contains("unexpected eof") ||
-            normalized.contains("http 4") ||
-            normalized.contains("http 5") ||
-            normalized.contains("status code 4") ||
-            normalized.contains("status code 5")
-    }
-
     /**
      * True when a wallet is open, behind tip, and no refresh is running.
      * Used to auto-resume sync after stall failure / app backgrounding.
@@ -1903,7 +1856,6 @@ class WalletManager(
         val refreshStartMs = System.currentTimeMillis()
         var lastProgressAtMs = refreshStartMs
         var slowFetchWarningLogged = false
-        var stallFallbackUsed = false
 
         // Periodic persistence while refresh is running.
         // Match iOS: exportCache is expensive (wallet lock + large alloc + disk write), so avoid a
@@ -1963,26 +1915,6 @@ class WalletManager(
                     if (isTerminalRefreshCoreError(coreErr)) {
                         exportCacheAndPersist(walletId)
                         throw IOException(coreErr)
-                    }
-                    // Don't wait for the full hard-stall timer on known truncated/range-fetch failures.
-                    if (!stallFallbackUsed && isRecoverableBulkFetchError(coreErr)) {
-                        stallFallbackUsed = true
-                        Log.w(
-                            "WalletManager",
-                            "↩️ Recoverable fetch error; falling back to bulk batch=$ANDROID_BULK_STALL_FALLBACK_BATCH and retrying… err=$coreErr"
-                        )
-                        exportCacheAndPersist(walletId)
-                        runCatching { WalletCore.refreshCancel(walletId) }
-                        runCatching {
-                            WalletCore.setEnv("WALLETCORE_BULK_FETCH_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
-                            WalletCore.setEnv("WALLETCORE_UPSTREAM_BLOCK_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
-                            WalletCore.setEnv("WALLETCORE_BULK_MODE", ANDROID_BULK_MODE)
-                        }
-                        delay(500L)
-                        WalletCore.refreshAsync(walletId = walletId, nodeUrl = nodeUrl)
-                        lastProgressAtMs = System.currentTimeMillis()
-                        slowFetchWarningLogged = false
-                        continue
                     }
                 }
             }
@@ -2088,31 +2020,10 @@ class WalletManager(
             if (tip != null && remaining != null && remaining > 0 && stalledForMs > hardStallTimeoutMs) {
                 val coreErr = runCatching { WalletCore.lastErrorMessage() }.getOrNull()
 
-                // iOS parity: on first stall, shrink bulk batch and restart async refresh instead of failing.
-                if (!stallFallbackUsed) {
-                    stallFallbackUsed = true
-                    Log.w(
-                        "WalletManager",
-                        "↩️ Stall detected (>${hardStallTimeoutMs}ms). Falling back to bulk batch=$ANDROID_BULK_STALL_FALLBACK_BATCH and retrying… " +
-                            "walletId=$walletId lastScanned=${st.lastScanned} remaining=$remaining lastError=${coreErr ?: "<null>"}"
-                    )
-                    exportCacheAndPersist(walletId)
-                    runCatching { WalletCore.refreshCancel(walletId) }
-                    runCatching {
-                        WalletCore.setEnv("WALLETCORE_BULK_FETCH_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
-                        WalletCore.setEnv("WALLETCORE_UPSTREAM_BLOCK_BATCH", ANDROID_BULK_STALL_FALLBACK_BATCH.toString())
-                        WalletCore.setEnv("WALLETCORE_BULK_MODE", ANDROID_BULK_MODE)
-                    }
-                    delay(500L)
-                    WalletCore.refreshAsync(walletId = walletId, nodeUrl = nodeUrl)
-                    lastProgressAtMs = System.currentTimeMillis()
-                    slowFetchWarningLogged = false
-                    continue
-                }
-
                 Log.e(
                     "WalletManager",
-                    "STALL: refresh appears stuck (>${hardStallTimeoutMs}ms) walletId=$walletId " +
+                    "STALL: refresh appears stuck (>${hardStallTimeoutMs}ms); keeping WalletCore scan profile unchanged " +
+                        "walletId=$walletId " +
                         "lastScanned=${st.lastScanned} restoreHeight=${st.restoreHeight} chainHeight=${st.chainHeight} " +
                         "target=$tip remaining=$remaining lastError=${coreErr ?: "<null>"}"
                 )
@@ -2264,13 +2175,7 @@ class WalletManager(
     companion object {
         const val DEFAULT_WALLET_ID: String = "main_wallet"
 
-        // Match iOS: start at 500-block range batches for fewer RPC round-trips.
-        // On stall / truncated fetch, fall back to 150 (same as iOS post-stall).
-        private const val ANDROID_BULK_FETCH_BATCH = 500
-        private const val ANDROID_UPSTREAM_BLOCK_BATCH = 500
-        private const val ANDROID_BULK_STALL_FALLBACK_BATCH = 150
-
-        private const val ANDROID_BULK_MODE = "range"
+        // Scan request sizing is provided by WalletCore's shared range/75/75 defaults.
 
         /** How often to re-probe tip and auto-resume while the app is in the foreground. */
         private const val FOREGROUND_CATCH_UP_INTERVAL_MS = 60_000L
