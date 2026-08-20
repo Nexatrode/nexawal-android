@@ -33,9 +33,13 @@ To move the submodule to the tip of `main`:
 git submodule update --remote MoneroWalletCoreFFI
 ```
 
-By default, Gradle copies prebuilt `libmonerowalletcore.so` from `MoneroWalletCoreFFI/Artifacts/android/` into `walletcore/src/main/jniLibs/` (no Rust required for a normal app build). You still need an Android NDK for `libc++_shared.so` and the JNI shim.
+By default, Gradle builds `libmonerowalletcore.so` from the pinned WalletCore
+source with Rust + the Android NDK, then installs it into
+`walletcore/src/main/jniLibs/`. This is the same auditable path used for F-Droid
+and Wallet Scrutiny. You still need an Android NDK for the native build,
+`libc++_shared.so`, and the JNI shim.
 
-For F-Droid / from-source verification, rebuild the core instead of copying Artifacts:
+Existing recipes may keep the explicit source flag (it is now the default):
 
 ```bash
 export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
@@ -43,12 +47,23 @@ export ANDROID_NDK_HOME=/path/to/ndk   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease
 ```
 
+For a quick local smoke build, an extracted `MoneroWalletCore-android.zip`
+release asset can be used instead of compiling Rust:
+
+```bash
+export NEXAWAL_USE_PREBUILT=1
+export NEXAWAL_PREBUILT_DIR=/path/to/extracted/android
+./gradlew :app:assembleDebug
+```
+
 See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md](docs/FDROID.md).
 
 ## F-Droid / Wallet Scrutiny
 
 - **FOSS:** MIT app + MIT native core submodule; no Play services / ML Kit.
-- **From-source native:** set `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` (F-Droid / Scrutiny path).
+- **From-source native:** the default Gradle path (and the explicit
+  `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` compatibility flag) is the F-Droid /
+  Scrutiny path.
 - **Store copy:** [fastlane/metadata/android/](fastlane/metadata/android/)
 - **fdroiddata draft:** [docs/fdroid/com.nexatrode.nexawal.yml](docs/fdroid/com.nexatrode.nexawal.yml)
 - **Release tags:** `v<versionName>` (current `versionName` is `1.0.0`).

@@ -81,7 +81,7 @@ ndk.dir=/path/to/Android/sdk/ndk/<version>
 
 Or export `ANDROID_NDK_HOME` / `ANDROID_NDK_ROOT`.
 
-### Default (local / Play): copy committed Artifacts
+### Default: rebuild native core from source
 
 ```bash
 ./gradlew :app:assembleRelease
@@ -89,28 +89,25 @@ Or export `ANDROID_NDK_HOME` / `ANDROID_NDK_ROOT`.
 ./gradlew :app:bundleRelease
 ```
 
-Fast path: no Rust required. Gradle copies submodule `Artifacts/` into `jniLibs`.
+Gradle builds the pinned WalletCore source with Rust + NDK and installs the
+result into `jniLibs`. This is the default local, Play, F-Droid, and Wallet
+Scrutiny path.
 
-### F-Droid / Wallet Scrutiny: rebuild native from source
+### Optional prebuilt smoke path
 
-Do **not** trust the committed `.so` blobs. Force Gradle to run the submodule’s
-`Scripts/build_android.sh` (Rust + NDK) before packaging:
+For a fast local smoke build only, download the matching
+`MoneroWalletCore-android.zip` from the WalletCore GitHub Release, extract its
+`android/` directory, and opt in explicitly:
 
 ```bash
-# Rust stable with Android targets + NDK required
-export ANDROID_NDK_HOME=/path/to/ndk
-export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
-# optional overrides (defaults match CI):
-# export ANDROID_API=26
-# export CARGO_FEATURES=compile-time-generators
-# export ABIS=arm64-v8a,x86_64
-
-./gradlew :app:assembleRelease
+export NEXAWAL_USE_PREBUILT=1
+export NEXAWAL_PREBUILT_DIR=/path/to/extracted/android
+./gradlew :app:assembleDebug
 ```
 
-`true` is also accepted for the env flag. When set, `:walletcore` skips the
-Artifacts copy task and rebuilds + installs `libmonerowalletcore.so` into
-`walletcore/src/main/jniLibs/` via `INSTALL_TO_NEXAWAL_ANDROID=1`.
+`NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` remains accepted for older F-Droid
+recipes, but is redundant because source builds are already the default.
+`NEXAWAL_USE_PREBUILT` and the source flag may not be enabled together.
 
 Suggested **fdroiddata** / recipe sketch (exact metadata file is a separate MR):
 
@@ -136,10 +133,9 @@ Outputs (typical):
 
 On each build, the `:walletcore` module:
 
-1. **Either** rebuilds `libmonerowalletcore.so` from the submodule
-   (`NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`), **or** copies prebuilt
-   `MoneroWalletCoreFFI/Artifacts/android/{arm64-v8a,x86_64}/` into
-   `walletcore/src/main/jniLibs/`.
+1. **By default**, rebuilds `libmonerowalletcore.so` from the submodule using
+   the pinned Rust/NDK toolchain. With `NEXAWAL_USE_PREBUILT=1`, it instead
+   copies an extracted release asset from `NEXAWAL_PREBUILT_DIR`.
 2. Copies `libc++_shared.so` from the configured **NDK**.
 3. Builds `libwalletcore_jni.so` via CMake (`walletcore/src/main/cpp`).
 
@@ -165,8 +161,9 @@ runs the **F-Droid path end-to-end**:
 Trigger: `workflow_dispatch`, or pushes/PRs that touch `MoneroWalletCoreFFI/**` /
 the workflow file / `walletcore/build.gradle.kts`.
 
-Local Play/debug builds still default to copying committed `Artifacts/` unless
-you set the env flag.
+Local Play/debug builds use the same from-source path by default. The optional
+prebuilt path is intentionally explicit and is not suitable for F-Droid or
+Wallet Scrutiny verification.
 
 For a Scrutiny note on a Play upload, attach the workflow’s SHA256SUMS (or a
 matching local from-source rebuild) alongside the app/FFI commit SHAs.
@@ -190,11 +187,9 @@ git -C MoneroWalletCoreFFI rev-parse HEAD
 Call these out so Wallet Scrutiny is not surprised:
 
 1. **Play App Signing** — installable APK signature ≠ developer upload signature.
-2. **Prebuilt `libmonerowalletcore.so`** — default local Gradle still copies
-   submodule `Artifacts/` for speed. F-Droid / Scrutiny must use
-   `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` (or the native CI workflow).
-   Byte-identical match vs committed Artifacts is best-effort until release
-   artifacts are produced by that same workflow.
+2. **Prebuilt `libmonerowalletcore.so`** — an extracted WalletCore release zip
+   is available only as an explicit smoke-build opt-in. Verification builds
+   should use the default from-source path (or the native CI workflow).
 3. **NDK host path / NDK version** — `libc++_shared.so` and the JNI shim can
    differ across NDK releases; pin the NDK version used for production tags in
    Release notes.

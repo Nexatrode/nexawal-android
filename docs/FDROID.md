@@ -5,7 +5,8 @@ License: MIT
 Source: https://github.com/Nexatrode/nexawal-android  
 
 This repo is set up so F-Droid can **rebuild** `libmonerowalletcore.so` from the
-pinned `MoneroWalletCoreFFI` submodule instead of trusting committed Artifacts.
+pinned `MoneroWalletCoreFFI` submodule. Native binaries are not committed to
+the app or WalletCore repositories.
 
 Companion docs:
 - Wallet Scrutiny / reproducible builds: [REPRODUCIBLE_BUILD.md](REPRODUCIBLE_BUILD.md)
@@ -29,7 +30,8 @@ No proprietary Google SDKs ship in the APK.
 - Android SDK (compileSdk **36**), NDK (**r27b** recommended; pin in recipe)
 - Rust **stable** with targets `aarch64-linux-android`, `x86_64-linux-android`
 - Git submodules initialized
-- Env: `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`
+- Source build is the Gradle default. `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` is
+  still accepted for older recipes.
 - Env: `ANDROID_NDK_HOME` pointing at the NDK used for the build
 - Optional: `CARGO_FEATURES=compile-time-generators`, `ABIS=arm64-v8a,x86_64`, `ANDROID_API=26`
 
@@ -61,7 +63,6 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
 ```bash
 git checkout v1.0.0
 git submodule update --init --recursive
-export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon
 ```

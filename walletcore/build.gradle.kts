@@ -11,16 +11,31 @@ plugins {
 val cmakeListsPath = file("src/main/cpp/CMakeLists.txt").absolutePath
 
 /**
- * When `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1`, rebuild `libmonerowalletcore.so` with Rust/NDK
- * via `MoneroWalletCoreFFI/Scripts/build_android.sh` instead of trusting committed Artifacts.
+ * Build the native wallet core from source by default. This keeps local, F-Droid,
+ * and Wallet Scrutiny builds on the same auditable path. A prebuilt release asset
+ * is still available as an explicit opt-in for quick smoke builds.
  *
- * This is the F-Droid / Wallet Scrutiny path. Default local/Play builds still copy Artifacts.
+ * `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` remains accepted for existing recipes and
+ * is now redundant. Set `NEXAWAL_USE_PREBUILT=1` to copy an extracted
+ * `MoneroWalletCore-android.zip` instead.
  */
-val buildNativeFromSource: Boolean =
+val forceSource: Boolean =
     System.getenv("NEXAWAL_BUILD_NATIVE_FROM_SOURCE")
         ?.equals("1", ignoreCase = true) == true
         || System.getenv("NEXAWAL_BUILD_NATIVE_FROM_SOURCE")
             ?.equals("true", ignoreCase = true) == true
+
+val usePrebuilt: Boolean =
+    System.getenv("NEXAWAL_USE_PREBUILT")
+        ?.equals("1", ignoreCase = true) == true
+        || System.getenv("NEXAWAL_USE_PREBUILT")
+            ?.equals("true", ignoreCase = true) == true
+
+require(!(forceSource && usePrebuilt)) {
+    "NEXAWAL_BUILD_NATIVE_FROM_SOURCE and NEXAWAL_USE_PREBUILT cannot both be enabled"
+}
+
+val buildNativeFromSource: Boolean = !usePrebuilt
 
 abstract class BuildMoneroWalletCoreFromSource @Inject constructor(
     private val execOperations: ExecOperations,
@@ -99,17 +114,21 @@ val buildMoneroWalletCoreFromSource by tasks.registering(BuildMoneroWalletCoreFr
  * Or later:   git submodule update --init --recursive
  * Float tip:  git submodule update --remote MoneroWalletCoreFFI
  *
- * Skipped when [buildNativeFromSource] is enabled — that path installs into jniLibs itself.
+ * Skipped unless [usePrebuilt] is enabled — source builds install into jniLibs themselves.
  */
 val syncMoneroWalletCoreSo by tasks.registering {
     group = "walletcore"
-    description = "Copies prebuilt libmonerowalletcore.so from the MoneroWalletCoreFFI submodule Artifacts/android."
-    onlyIf { !buildNativeFromSource }
+    description = "Copies prebuilt libmonerowalletcore.so from an extracted WalletCore Android release."
+    onlyIf { usePrebuilt }
 
     val abis = listOf("arm64-v8a", "x86_64")
     val submoduleRoot = rootProject.file("MoneroWalletCoreFFI")
+    val prebuiltRoot = System.getenv("NEXAWAL_PREBUILT_DIR")
+        ?.takeIf { it.isNotBlank() }
+        ?.let { rootProject.file(it) }
+        ?: submoduleRoot.resolve(".build/artifacts/android")
 
-    inputs.files(abis.map { submoduleRoot.resolve("Artifacts/android/$it/libmonerowalletcore.so") })
+    inputs.files(abis.map { prebuiltRoot.resolve("$it/libmonerowalletcore.so") })
     outputs.files(abis.map { layout.projectDirectory.file("src/main/jniLibs/$it/libmonerowalletcore.so") })
 
     doLast {
@@ -118,12 +137,11 @@ val syncMoneroWalletCoreSo by tasks.registering {
                 "Run: git submodule update --init --recursive"
         }
         abis.forEach { abi ->
-            val src = submoduleRoot.resolve("Artifacts/android/$abi/libmonerowalletcore.so")
+            val src = prebuiltRoot.resolve("$abi/libmonerowalletcore.so")
             require(src.isFile) {
                 "Missing prebuilt core library: ${src.absolutePath}. " +
-                    "Init/update the MoneroWalletCoreFFI submodule (branch main), " +
-                    "or rebuild with NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 ./gradlew :walletcore:assembleDebug " +
-                    "(or INSTALL_TO_NEXAWAL_ANDROID=1 ./Scripts/build_android.sh in that submodule)."
+                    "Extract MoneroWalletCore-android.zip and set NEXAWAL_PREBUILT_DIR, " +
+                    "or run the default from-source build (./gradlew :walletcore:assembleDebug)."
             }
             val dstDir = file("src/main/jniLibs/$abi")
             if (!dstDir.exists()) dstDir.mkdirs()

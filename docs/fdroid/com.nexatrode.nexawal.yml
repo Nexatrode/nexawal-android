@@ -37,10 +37,7 @@ Builds:
       - yes
     rm:
       - app/release
-    scandelete:
-      - MoneroWalletCoreFFI/Artifacts
     build:
-      - export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
       - export CARGO_FEATURES=compile-time-generators
       - export ABIS=arm64-v8a,x86_64
       - export ANDROID_API=26
@@ -54,8 +51,8 @@ AntiFeatures:
   - NonFreeNet
 
 MaintainerNotes: |
-  Native Monero core is rebuilt from the MoneroWalletCoreFFI submodule when
-  NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 (do not package committed .so Artifacts).
+  Native Monero core is rebuilt from the MoneroWalletCoreFFI submodule by the
+  default Gradle path (do not package committed .so files).
   See docs/FDROID.md and docs/REPRODUCIBLE_BUILD.md in the app repo.
   minSdk is 34.
 

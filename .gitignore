@@ -9,6 +9,8 @@
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build
+/walletcore/build/
+/walletcore-api/build/
 /logic/build
 /captures
 .externalNativeBuild
@@ -18,6 +20,10 @@ local.properties
 # Synced from MoneroWalletCoreFFI submodule on each Gradle build
 /walletcore/src/main/jniLibs/*/libmonerowalletcore.so
 /walletcore/src/main/jniLibs/*/libc++_shared.so
+
+# Local native build products produced by source builds.
+/logic/bin/
+/walletcore-api/bin/
 
 # Signing / release binaries (never commit)
 *.jks
