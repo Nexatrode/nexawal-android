@@ -3,7 +3,9 @@ package com.nexatrode.nexawal
 import android.util.Log
 
 import android.content.Context
+import com.nexatrode.nexawal.logic.BalanceSnapshotPolicy
 import com.nexatrode.nexawal.logic.NetworkRouting
+import com.nexatrode.nexawal.logic.ScanRecoveryPolicy
 import com.nexatrode.nexawal.logic.SendGate
 import com.nexatrode.nexawal.logic.SendSafety
 import com.nexatrode.nexawal.walletcore.WalletCore
@@ -804,6 +806,10 @@ class WalletManager(
             return _state.value.syncStatus ?: withContext(ioDispatcher) { WalletCore.syncStatus(walletId) }
         }
 
+        // Capture the marker left by the previous run before marking this new refresh active.
+        // Recovery must never treat the marker for the refresh being started as evidence that the
+        // previous refresh was interrupted.
+        val previousScanInterrupted = MoneroConfig.scanInterrupted(appContext)
         refreshCancelRequested.set(false)
         refreshInProgress.set(true)
         val initialTargetHeight = probedDaemonHeight?.takeIf { it > 0L }
@@ -829,7 +835,7 @@ class WalletManager(
 
         val job = scope.launch(ioDispatcher) {
             try {
-                maybeRewindInterruptedScan(walletId)
+                maybeRewindInterruptedScan(walletId, previousScanInterrupted)
                 withContext(ioDispatcher) {
                     // Apply per-wallet tuning before starting refresh. Scan request sizing is
                     // controlled by WalletCore's shared range/75/75 defaults unless explicitly
@@ -899,7 +905,9 @@ class WalletManager(
                     gapLimit = null,
                     accountGap = null,
                 )
-                refreshWalletDataSnapshotsNow(walletId)
+                // Finalize history and the clean checkpoint before accepting a zero balance. A
+                // mid-scan balance can be transient until later spends have been processed.
+                refreshTransfersSnapshotNow(walletId)
                 val emptyHistoryAtTip =
                     st.chainHeight > st.restoreHeight + 10_000L &&
                         _state.value.transfers.isEmpty()
@@ -915,6 +923,10 @@ class WalletManager(
                     MoneroConfig.setScanInterrupted(appContext, false)
                     Log.i("WalletManager", "scan checkpoint trusted=${st.lastScanned} interrupted=false")
                 }
+                refreshBalanceSnapshotNow(
+                    walletId = walletId,
+                    allowAuthoritativeZero = !emptyHistoryAtTip,
+                )
             } catch (ce: CancellationException) {
                 // Kotlin-side cancellation (we still request core cancel in cancelRefresh()).
                 val st = withContext(ioDispatcher) {
@@ -1207,14 +1219,18 @@ class WalletManager(
         }
     }
 
-    private suspend fun refreshBalanceSnapshotNow(walletId: String) {
+    private suspend fun refreshBalanceSnapshotNow(
+        walletId: String,
+        allowAuthoritativeZero: Boolean = false,
+    ) {
         val bal = withContext(ioDispatcher) {
             runCatching { WalletCore.getBalance(walletId) }.getOrNull()
         }
         if (bal != null) {
             applyBalanceSnapshot(
                 balance = bal,
-                allowAuthoritativeZero = isZeroBalanceAuthoritative(_state.value)
+                allowAuthoritativeZero =
+                    allowAuthoritativeZero || isZeroBalanceAuthoritative(_state.value),
             )
         }
     }
@@ -1286,10 +1302,17 @@ class WalletManager(
         val current = _state.value
         val knownTotal = maxOf(current.balance?.totalPiconero ?: 0L, 0L)
         val knownUnlocked = maxOf(current.balance?.unlockedPiconero ?: 0L, 0L)
-        val hasKnownNonZero = knownTotal > 0L || knownUnlocked > 0L
-        val proposedZero = balance.totalPiconero == 0L && balance.unlockedPiconero == 0L
+        val decision = BalanceSnapshotPolicy.decide(
+            knownTotal = knownTotal,
+            knownUnlocked = knownUnlocked,
+            proposedTotal = balance.totalPiconero,
+            proposedUnlocked = balance.unlockedPiconero,
+            refreshInProgress = current.refreshInProgress,
+            scanInterrupted = MoneroConfig.scanInterrupted(appContext),
+            allowAuthoritativeZero = allowAuthoritativeZero,
+        )
 
-        if (proposedZero && hasKnownNonZero && !allowAuthoritativeZero) {
+        if (!decision.apply) {
             Log.i(
                 "WalletManager",
                 "BALANCE_GUARD preserve-known-nonzero knownTotal=$knownTotal proposedTotal=0 refreshInProgress=${current.refreshInProgress}"
@@ -1303,7 +1326,7 @@ class WalletManager(
 
         _state.value = current.copy(
             balance = balance,
-            balanceIsStaleWhileSyncing = false,
+            balanceIsStaleWhileSyncing = decision.staleWhileSyncing,
             lastBalanceRefreshAtMs = System.currentTimeMillis(),
         )
     }
@@ -1696,30 +1719,41 @@ class WalletManager(
     }
 
     /** If a killed refresh left lastScanned ≈ tip, rewind to the last completed checkpoint. */
-    private fun maybeRewindInterruptedScan(walletId: String) {
+    private fun maybeRewindInterruptedScan(
+        walletId: String,
+        previousScanInterrupted: Boolean,
+    ) {
         val st = _state.value.syncStatus
             ?: runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
             ?: return
-        val tipKnown = st.chainHeight > st.restoreHeight || st.chainTime > 0L
-        if (!tipKnown) return
-        if (st.lastScanned + 3L < st.chainHeight) return
         val trusted = MoneroConfig.trustedScannedHeight(appContext)
-        val aheadOfCheckpoint = st.lastScanned > trusted + 3L
-        val emptyHistoryAtTip =
-            !didRewindEmptyHistory &&
-                st.chainHeight > st.restoreHeight + 10_000L &&
-                _state.value.transfers.isEmpty()
-        if (!MoneroConfig.scanInterrupted(appContext) && !aheadOfCheckpoint && !emptyHistoryAtTip) return
-        val rewind = if (emptyHistoryAtTip) st.restoreHeight else maxOf(st.restoreHeight, trusted)
-        if (emptyHistoryAtTip) {
+        // Metadata is the user's durable restore choice. A cache produced by the old refresh bug
+        // may have raised the core's internal restore height to the tip while leaving metadata
+        // untouched, so prefer the earlier of the two for recovery.
+        val persistedRestoreHeight = persistedRestoreHeightOrNull()
+        val recoveryRestoreHeight = ScanRecoveryPolicy.recoveryRestoreHeight(
+            coreRestoreHeight = st.restoreHeight,
+            persistedRestoreHeight = persistedRestoreHeight,
+        )
+        val decision = ScanRecoveryPolicy.decide(
+            previousScanInterrupted = previousScanInterrupted,
+            lastScanned = st.lastScanned,
+            chainHeight = st.chainHeight,
+            chainTime = st.chainTime,
+            restoreHeight = recoveryRestoreHeight,
+            trustedScannedHeight = trusted,
+            transfersEmpty = _state.value.transfers.isEmpty(),
+            didRewindEmptyHistory = didRewindEmptyHistory,
+        ) ?: return
+        if (decision.emptyHistoryAtTip) {
             didRewindEmptyHistory = true
         }
         Log.w(
             "WalletManager",
-            "incomplete scan looks at tip; rewinding cursor from $rewind (lastScanned=${st.lastScanned} tip=${st.chainHeight} trusted=$trusted interrupted=${MoneroConfig.scanInterrupted(appContext)})",
+            "incomplete scan looks at tip; rewinding cursor from ${st.lastScanned} to ${decision.rewindHeight} (tip=${st.chainHeight} coreRestore=${st.restoreHeight} persistedRestore=$persistedRestoreHeight trusted=$trusted previousInterrupted=$previousScanInterrupted emptyHistory=${decision.emptyHistoryAtTip})",
         )
         runCatching {
-            WalletCore.forceRescanFromHeight(walletId, rewind)
+            WalletCore.forceRescanFromHeight(walletId, decision.rewindHeight)
         }.onFailure { t ->
             Log.w(
                 "WalletManager",
@@ -2513,6 +2547,15 @@ class WalletManager(
         val dir = File(appContext.filesDir, "WalletSlot")
         return File(dir, "metadata.json")
     }
+
+    /** Reads only the non-secret restore height without decrypting the mnemonic. */
+    private fun persistedRestoreHeightOrNull(): Long? = runCatching {
+        val file = metadataFile()
+        if (!file.exists()) return@runCatching null
+        val json = JSONObject(file.readText())
+        if (!json.has("restoreHeight")) return@runCatching null
+        json.optLong("restoreHeight", 0L).takeIf { it >= 0L }
+    }.getOrNull()
 
     private fun receiveSubaddressesFile(): File {
         val dir = File(appContext.filesDir, "WalletSlot")
