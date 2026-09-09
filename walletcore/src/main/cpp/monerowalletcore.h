@@ -246,6 +246,7 @@ char* wallet_export_outputs_json(
  *   ...
  * ]
  */
+char* wallet_query_transfers_json(const char* wallet_id, const char* query_json);
 char* wallet_list_transfers_json(
     const char* wallet_id
 );

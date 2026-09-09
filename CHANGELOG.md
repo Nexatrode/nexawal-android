@@ -14,7 +14,7 @@ Correctness and recovery update for the first public release.
 - Update WalletCore for reorg recovery, cache identity checks, exact fees, and timestamps
 
 ### Build / FOSS
-- Pin the WalletCore source submodule to the audited 0.1.7 release revision
+- Pin the WalletCore source submodule to the audited 0.1.9 release revision
 - Keep the default F-Droid / Wallet Scrutiny path rebuilding native code from source
 
 ## [1.0.0] — 2026-08-12

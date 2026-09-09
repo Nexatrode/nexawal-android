@@ -20,11 +20,19 @@ static jstring cstr_to_jstring_and_free(JNIEnv* env, char* cstr) {
 }
 
 static void wc_logi(const std::string& msg) {
+#if !defined(NDEBUG)
+    const char* enabled = std::getenv("NEXAWAL_DIAGNOSTICS");
+    if (enabled == nullptr || std::string(enabled) != "1") return;
     __android_log_write(4 /* ANDROID_LOG_INFO */, "walletcore-jni", msg.c_str());
+#endif
 }
 
 static void wc_logw(const std::string& msg) {
+#if !defined(NDEBUG)
+    const char* enabled = std::getenv("NEXAWAL_DIAGNOSTICS");
+    if (enabled == nullptr || std::string(enabled) != "1") return;
     __android_log_write(5 /* ANDROID_LOG_WARN */, "walletcore-jni", msg.c_str());
+#endif
 }
 
 static std::string jstring_to_std_string(JNIEnv* env, jstring s) {
@@ -614,6 +622,20 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_listTransfersJson(
     if (json == nullptr) {
         // Treat null as error (core should set last error message).
         throw_walletcore_exception(env, "wallet_list_transfers_json", -1);
+        return nullptr;
+    }
+    return cstr_to_jstring_and_free(env, json);
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_queryTransfersJson(
+    JNIEnv* env, jclass, jstring walletId, jstring queryJson
+) {
+    const auto wid = jstring_to_std_string(env, walletId);
+    const auto query = jstring_to_std_string(env, queryJson);
+    char* json = wallet_query_transfers_json(wid.c_str(), query.c_str());
+    if (!json) {
+        throw_walletcore_exception(env, "wallet_query_transfers_json", -1);
         return nullptr;
     }
     return cstr_to_jstring_and_free(env, json);

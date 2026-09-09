@@ -63,6 +63,8 @@ object SendJson {
         val fee: Long,
         @kotlinx.serialization.SerialName("signed_tx_hex")
         val signedTxHex: String,
+        @kotlinx.serialization.SerialName("wallet_binding")
+        val walletBinding: String? = null,
     )
 
     @Serializable

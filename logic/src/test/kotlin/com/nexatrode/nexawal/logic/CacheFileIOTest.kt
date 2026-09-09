@@ -11,6 +11,15 @@ import org.junit.Test
 
 class CacheFileIOTest {
     @Test
+    fun boundedReadsAcceptExactLimitAndRejectOversize() = withTempDirectory { directory ->
+        val file = directory.resolve("bounded.cache")
+        file.writeBytes(byteArrayOf(1, 2, 3, 4))
+        assertEquals(4, CacheFileIO.readBounded(file, 4).size)
+        assertTrue(runCatching { CacheFileIO.readBounded(file, 3) }.isFailure)
+        assertTrue(runCatching { CacheFileIO.readBounded(directory, 4) }.isFailure)
+    }
+
+    @Test
     fun textLoadDistinguishesMissingValidAndUnreadableFiles() = withTempDirectory { directory ->
         val journal = directory.resolve("pending.json")
         assertEquals(null, CacheFileIO.readTextIfPresent(journal))

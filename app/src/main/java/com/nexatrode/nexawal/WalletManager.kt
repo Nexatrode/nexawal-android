@@ -1,6 +1,6 @@
 package com.nexatrode.nexawal
 
-import android.util.Log
+import com.nexatrode.nexawal.WalletDiagnostics as Log
 
 import android.content.Context
 import com.nexatrode.nexawal.logic.BalanceSnapshotPolicy
@@ -23,6 +23,7 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -139,6 +140,11 @@ class WalletManager(
         // Transfers
         val transfersJson: String? = null,
         val transfers: List<Transfer> = emptyList(),
+        val totalHistoryCount: Int = 0,
+        val pendingHistoryCount: Int = 0,
+        val historyRevision: String? = null,
+        val historySession: String = java.util.UUID.randomUUID().toString(),
+        val snapshotEpoch: String = java.util.UUID.randomUUID().toString(),
         val transfersParseError: String? = null,
 
         val lastBalanceRefreshAtMs: Long? = null,
@@ -638,6 +644,7 @@ class WalletManager(
             }
         }
 
+        _state.value = _state.value.copy(historySession = java.util.UUID.randomUUID().toString())
         MoneroConfig.setTrustedScannedHeight(appContext, 0L)
         MoneroConfig.setScanInterrupted(appContext, true)
         didRewindEmptyHistory = false
@@ -814,6 +821,7 @@ class WalletManager(
 
                 _state.value = _state.value.copy(
                     refreshInProgress = true,
+                    snapshotEpoch = java.util.UUID.randomUUID().toString(),
                     refreshStartedAtMs = System.currentTimeMillis(),
                     refreshLastProgressAtMs = null,
                     lastError = null,
@@ -896,39 +904,7 @@ class WalletManager(
                     exportCacheAndPersist(walletId)
                 }
 
-                _state.value = _state.value.copy(
-                    refreshInProgress = false,
-                    refreshStartedAtMs = null,
-                    refreshLastProgressAtMs = null,
-                    syncStatus = st,
-                    lastError = null,
-                    syncStalled = false,
-                    refreshTargetHeight = null,
-                    gapLimit = null,
-                    accountGap = null,
-                )
-                // Finalize history and the clean checkpoint before accepting a zero balance. A
-                // mid-scan balance can be transient until later spends have been processed.
-                refreshTransfersSnapshotNow(walletId)
-                val emptyHistoryAtTip =
-                    st.chainHeight > st.restoreHeight + 10_000L &&
-                        _state.value.transfers.isEmpty()
-                if (emptyHistoryAtTip) {
-                    MoneroConfig.setTrustedScannedHeight(appContext, st.restoreHeight)
-                    MoneroConfig.setScanInterrupted(appContext, true)
-                    Log.w(
-                        "WalletManager",
-                        "scan complete but history empty; keeping interrupted and trusted=${st.restoreHeight}",
-                    )
-                } else {
-                    MoneroConfig.setTrustedScannedHeight(appContext, st.lastScanned)
-                    MoneroConfig.setScanInterrupted(appContext, false)
-                    Log.i("WalletManager", "scan checkpoint trusted=${st.lastScanned} interrupted=false")
-                }
-                refreshBalanceSnapshotNow(
-                    walletId = walletId,
-                    allowAuthoritativeZero = !emptyHistoryAtTip,
-                )
+                publishCompletedRefresh(walletId, st)
             } catch (ce: CancellationException) {
                 // A coordinated cancellation remains visibly active until cancelRefreshAndWait()
                 // observes that the native worker is terminal. Exporting or advertising idle here
@@ -1017,6 +993,7 @@ class WalletManager(
 
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val currentStatus = _state.value.syncStatus
+        _state.value = _state.value.copy(historySession = java.util.UUID.randomUUID().toString())
 
         withContext(ioDispatcher) {
             WalletCore.forceRescanFromHeight(walletId, fromHeight)
@@ -1065,6 +1042,7 @@ class WalletManager(
             ),
             balance = WalletCore.Balance(0L, 0L),
             transfers = emptyList(),
+            totalHistoryCount = 0, pendingHistoryCount = 0, historyRevision = null, historySession = java.util.UUID.randomUUID().toString(),
             transfersJson = null,
             balanceIsStaleWhileSyncing = false,
             lastError = null,
@@ -1264,22 +1242,22 @@ class WalletManager(
         walletId: String,
         allowAuthoritativeZero: Boolean = false,
     ) {
+        val readState = _state.value
+        if (readState.walletId != walletId) return
         val bal = withContext(ioDispatcher) {
             runCatching { WalletCore.getBalance(walletId) }.getOrNull()
         }
         if (bal != null) {
             applyBalanceSnapshot(
                 balance = bal,
-                allowAuthoritativeZero =
-                    allowAuthoritativeZero || isZeroBalanceAuthoritative(_state.value),
+                allowAuthoritativeZero = allowAuthoritativeZero,
+                readState = readState,
             )
         }
     }
 
     /**
-     * Refresh and store transfers JSON in state (best-effort).
-     *
-     * This returns raw JSON for now; parsing/rendering can be layered on in UI.
+     * Refresh the bounded recent-history preview and full-ledger counters locally.
      */
     fun refreshTransfersSnapshot() {
         val walletId = _state.value.walletId ?: return
@@ -1289,39 +1267,62 @@ class WalletManager(
     }
 
     private suspend fun refreshTransfersSnapshotNow(walletId: String) {
-        val json = withContext(ioDispatcher) {
-            runCatching { WalletCore.listTransfersJson(walletId) }.getOrNull()
-        }
-        if (json != null) {
-            val previous = _state.value
-            val decision = LastKnownGoodPolicy.choose(
-                previous.transfers,
-                runCatching { TransferHistoryJson.decode(json, walletId).transfers },
-            )
-            if (decision.accepted) {
-                val parsed = decision.value
-                _state.value = previous.copy(
-                    transfersJson = json,
-                    transfers = parsed,
-                    transfersParseError = null,
-                    lastTransfersRefreshAtMs = System.currentTimeMillis(),
-                )
-                fiatPrices.recordSeenTransfers(
-                    parsed.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp?.takeIf { ts -> ts > 0L }) },
-                )
-                if (parsed.isNotEmpty()) {
-                    didRewindEmptyHistory = false
-                }
-            } else {
-                _state.value = previous.copy(
-                    transfersParseError = decision.errorMessage,
-                    lastTransfersRefreshAtMs = System.currentTimeMillis(),
-                )
-                Log.w(
-                    "WalletManager",
-                    "Keeping last-known-good transaction history after parse failure: ${decision.errorMessage}",
+        val readState = _state.value
+        if (readState.walletId != walletId) return
+        try {
+            val page = HistoryPaging.query(walletId, HistoryQuery(limit = 10))
+            _state.update { previous ->
+                if (previous.walletId != walletId || !WalletSnapshotPublication.sameReadSession(readState, previous)) return@update previous
+                val st = previous.syncStatus
+                val authoritative = !previous.refreshInProgress && !MoneroConfig.scanInterrupted(appContext) &&
+                    st != null && st.chainHeight > 0 && st.lastScanned + 3 >= st.chainHeight &&
+                    st.lastScanned <= MoneroConfig.trustedScannedHeight(appContext) + 3
+                if (page.totalCount == 0 && previous.totalHistoryCount > 0 && !authoritative) return@update previous
+                previous.copy(
+                    transfersJson = null, transfers = page.transfers, totalHistoryCount = page.totalCount,
+                    pendingHistoryCount = page.pendingCount, historyRevision = page.revision,
+                    transfersParseError = null, lastTransfersRefreshAtMs = System.currentTimeMillis(),
                 )
             }
+            if (!WalletSnapshotPublication.sameReadSession(readState, _state.value)) return
+            fiatPrices.recordSeenTransfers(page.transfers.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp) })
+            if (page.totalCount > 0) didRewindEmptyHistory = false
+        } catch (e: CancellationException) { throw e
+        } catch (e: Exception) {
+            _state.update { previous ->
+                if (WalletSnapshotPublication.sameReadSession(readState, previous)) previous.copy(transfersParseError = e.message)
+                else previous
+            }
+        }
+    }
+
+    private suspend fun publishCompletedRefresh(walletId: String, completed: WalletCore.SyncStatus) {
+        val readState = _state.value
+        if (readState.walletId != walletId) throw CancellationException()
+        val (status, history, balance) = withContext(ioDispatcher) {
+            check(WalletCore.refreshJobStatus(walletId).state == WalletCore.RefreshJobState.IDLE)
+            val status = WalletCore.syncStatus(walletId)
+            check(status.lastScanned >= completed.lastScanned) { "Scan changed before final publication" }
+            val history = HistoryPaging.query(walletId, HistoryQuery(limit = 10))
+            val balance = WalletCore.getBalance(walletId)
+            check(WalletCore.refreshJobStatus(walletId).state == WalletCore.RefreshJobState.IDLE)
+            Triple(status, history, balance)
+        }
+        // No suspension between checkpoint and UI publication. A final epoch also prevents
+        // a slow, earlier balance/history poll from resurrecting an orphaned receive.
+        withContext(Dispatchers.Main.immediate) {
+            if (!WalletSnapshotPublication.sameReadSession(readState, _state.value)) throw CancellationException()
+            val now = System.currentTimeMillis()
+            // Validate before changing the persisted checkpoint.
+            WalletSnapshotPublication.completed(_state.value, status, history, balance, now)
+            MoneroConfig.setTrustedScannedHeight(appContext, status.lastScanned)
+            MoneroConfig.setScanInterrupted(appContext, false)
+            _state.update { previous ->
+                if (!WalletSnapshotPublication.sameReadSession(readState, previous)) throw CancellationException()
+                WalletSnapshotPublication.completed(previous, status, history, balance, now)
+            }
+            didRewindEmptyHistory = history.totalCount == 0
+            fiatPrices.recordSeenTransfers(history.transfers.map { FiatSeenTransfer(it.txid, it.timestamp) })
         }
     }
 
@@ -1348,44 +1349,41 @@ class WalletManager(
         val trusted = MoneroConfig.trustedScannedHeight(appContext)
         val checkpointOk = st.lastScanned <= trusted + 3L
         if (!observedNetworkTip || !syncedWithinTolerance || !checkpointOk) return false
-        if (st.chainHeight > st.restoreHeight + 10_000L && state.transfers.isEmpty()) return false
         return true
     }
 
     private fun applyBalanceSnapshot(
         balance: WalletCore.Balance,
         allowAuthoritativeZero: Boolean,
+        readState: UiState,
     ) {
-        val current = _state.value
-        val knownTotal = maxOf(current.balance?.totalPiconero ?: 0L, 0L)
-        val knownUnlocked = maxOf(current.balance?.unlockedPiconero ?: 0L, 0L)
-        val decision = BalanceSnapshotPolicy.decide(
-            knownTotal = knownTotal,
-            knownUnlocked = knownUnlocked,
-            proposedTotal = balance.totalPiconero,
-            proposedUnlocked = balance.unlockedPiconero,
-            refreshInProgress = current.refreshInProgress,
-            scanInterrupted = MoneroConfig.scanInterrupted(appContext),
-            allowAuthoritativeZero = allowAuthoritativeZero,
-        )
-
-        if (!decision.apply) {
-            Log.i(
-                "WalletManager",
-                "BALANCE_GUARD preserve-known-nonzero knownTotal=$knownTotal proposedTotal=0 refreshInProgress=${current.refreshInProgress}"
+        _state.update { current ->
+            if (!WalletSnapshotPublication.sameReadSession(readState, current)) return@update current
+            val knownTotal = maxOf(current.balance?.totalPiconero ?: 0L, 0L)
+            val knownUnlocked = maxOf(current.balance?.unlockedPiconero ?: 0L, 0L)
+            val decision = BalanceSnapshotPolicy.decide(
+                knownTotal = knownTotal,
+                knownUnlocked = knownUnlocked,
+                proposedTotal = balance.totalPiconero,
+                proposedUnlocked = balance.unlockedPiconero,
+                refreshInProgress = current.refreshInProgress,
+                scanInterrupted = MoneroConfig.scanInterrupted(appContext),
+                allowAuthoritativeZero = allowAuthoritativeZero || isZeroBalanceAuthoritative(current),
             )
-            _state.value = current.copy(
-                balanceIsStaleWhileSyncing = true,
+
+            if (!decision.apply) {
+                return@update current.copy(
+                    balanceIsStaleWhileSyncing = true,
+                    lastBalanceRefreshAtMs = System.currentTimeMillis(),
+                )
+            }
+
+            current.copy(
+                balance = balance,
+                balanceIsStaleWhileSyncing = decision.staleWhileSyncing,
                 lastBalanceRefreshAtMs = System.currentTimeMillis(),
             )
-            return
         }
-
-        _state.value = current.copy(
-            balance = balance,
-            balanceIsStaleWhileSyncing = decision.staleWhileSyncing,
-            lastBalanceRefreshAtMs = System.currentTimeMillis(),
-        )
     }
 
     /**
@@ -1476,6 +1474,7 @@ class WalletManager(
     suspend fun send(
         toAddress: String,
         amountPiconero: Long,
+        approvedMaxFee: Long,
         ringLen: Int = 16,
     ): SendJson.SendResult = withSendLock {
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
@@ -1497,7 +1496,7 @@ class WalletManager(
                 )
             }
             val prepared = SendJson.decodePreparedSend(preparedRaw)
-            persistAndRelayPrepared(walletId, usedEndpoint, prepared)
+            persistAndRelayPrepared(walletId, usedEndpoint, prepared, approvedMaxFee)
                 .let { SendJson.SendResult(txid = it.txid, fee = it.fee) }
         }
 
@@ -1523,6 +1522,7 @@ class WalletManager(
         fromSubaddressMinor: Int,
         toAddress: String,
         amountPiconero: Long,
+        approvedMaxFee: Long,
         ringLen: Int = 16,
     ): SendJson.SendResult = withSendLock {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
@@ -1551,7 +1551,7 @@ class WalletManager(
                     nodeUrl = endpoint,
                 )
             }
-            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw))
+            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw), approvedMaxFee)
                 .let { SendJson.SendResult(txid = it.txid, fee = it.fee) }
         }
 
@@ -1640,6 +1640,7 @@ class WalletManager(
      */
     suspend fun sweep(
         toAddress: String,
+        approvedMaxFee: Long,
         ringLen: Int = 16,
     ): SendJson.SweepSendResult = withSendLock {
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
@@ -1663,7 +1664,7 @@ class WalletManager(
                     nodeUrl = endpoint,
                 )
             }
-            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw))
+            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw), approvedMaxFee)
                 .let {
                     SendJson.SweepSendResult(txid = it.txid, amount = it.amount, fee = it.fee)
                 }
@@ -1688,6 +1689,7 @@ class WalletManager(
     suspend fun sweep(
         fromSubaddressMinor: Int,
         toAddress: String,
+        approvedMaxFee: Long,
         ringLen: Int = 16,
     ): SendJson.SweepSendResult = withSendLock {
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
@@ -1713,7 +1715,7 @@ class WalletManager(
                     nodeUrl = endpoint,
                 )
             }
-            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw))
+            persistAndRelayPrepared(walletId, usedEndpoint, SendJson.decodePreparedSend(preparedRaw), approvedMaxFee)
                 .let {
                     SendJson.SweepSendResult(txid = it.txid, amount = it.amount, fee = it.fee)
                 }
@@ -1757,12 +1759,6 @@ class WalletManager(
         if (st.lastScanned > trusted + 3L) return true
         val tipKnown = st.chainHeight > st.restoreHeight || st.chainTime > 0L
         if (!tipKnown) return true // still waiting for tip — worth another try
-        if (st.lastScanned + 3L >= st.chainHeight &&
-            st.chainHeight > st.restoreHeight + 10_000L &&
-            _state.value.transfers.isEmpty()
-        ) {
-            return true
-        }
         return st.lastScanned + 3L < st.chainHeight
     }
 
@@ -1790,7 +1786,7 @@ class WalletManager(
             chainTime = st.chainTime,
             restoreHeight = recoveryRestoreHeight,
             trustedScannedHeight = trusted,
-            transfersEmpty = _state.value.transfers.isEmpty(),
+            transfersEmpty = (_state.value.totalHistoryCount == 0),
             didRewindEmptyHistory = didRewindEmptyHistory,
         ) ?: return
         if (decision.emptyHistoryAtTip) {
@@ -2223,7 +2219,8 @@ class WalletManager(
         walletId: String,
         usedEndpoint: String,
         prepared: SendJson.PreparedSend,
-    ): SendJson.PreparedSend {
+        approvedMaxFee: Long,
+    ): SendJson.PreparedSend = com.nexatrode.nexawal.logic.SendSafety.withApprovedFee(prepared.fee, approvedMaxFee) {
         persistPendingPrepared(walletId, usedEndpoint, prepared)
         val relayRaw = WalletCore.relayPreparedJson(
             walletId = walletId,
@@ -2236,7 +2233,7 @@ class WalletManager(
             "WalletManager",
             "prepare→relay ok txid=${relay.txid} status=${relay.status} fee=${prepared.fee} endpoint=$usedEndpoint",
         )
-        return prepared.copy(txid = relay.txid)
+        prepared.copy(txid = relay.txid)
     }
 
     private fun recoverPendingPreparedSendBestEffort(walletId: String) {
@@ -2279,7 +2276,7 @@ class WalletManager(
 
         if (!f.exists()) return
 
-        val bytes = runCatching { f.readBytes() }.getOrElse { error ->
+        val bytes = runCatching { CacheFileIO.readBounded(f) }.getOrElse { error ->
             val quarantined = quarantineRejectedCache(
                 file = f,
                 walletId = walletId,
@@ -2493,6 +2490,7 @@ class WalletManager(
 
         _state.value = _state.value.copy(
             walletId = meta.walletId,
+            historySession = java.util.UUID.randomUUID().toString(),
             nodeUrl = resolvedNode,
             walletAddress = derivedAddress,
             hasStoredWallet = true,
@@ -2529,6 +2527,9 @@ class WalletManager(
      * This mirrors iOS "Replace existing wallet?" destructive flow.
      */
     suspend fun clearStoredWallet() = withContext(ioDispatcher) {
+        // Preserve signed recovery data before deleting metadata; failure must stop replacement.
+        CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = true))
+        CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = false))
         runCatching {
             val m = metadataFile()
             if (m.exists()) m.delete()
@@ -2536,10 +2537,6 @@ class WalletManager(
         runCatching {
             val c = cacheFile(DEFAULT_WALLET_ID, mainnet = true)
             if (c.exists()) c.delete()
-        }
-        runCatching {
-            val p = preparedFile(DEFAULT_WALLET_ID, mainnet = true)
-            if (p.exists()) p.delete()
         }
         runCatching {
             val r = receiveSubaddressesFile()
@@ -2552,6 +2549,7 @@ class WalletManager(
             balance = null,
             transfersJson = null,
             transfers = emptyList(),
+            totalHistoryCount = 0, pendingHistoryCount = 0, historyRevision = null, historySession = java.util.UUID.randomUUID().toString(),
             transfersParseError = null,
             cacheInfo = null,
             hasStoredWallet = false,

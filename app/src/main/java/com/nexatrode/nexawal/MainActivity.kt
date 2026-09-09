@@ -5,6 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -12,9 +18,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.nexatrode.nexawal.logic.WalletAccessGate
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.launch
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -48,47 +62,67 @@ class MainActivity : ComponentActivity() {
                 }
 
                 val state by walletManager.state.collectAsState()
+                val accessGate = remember { WalletAccessGate() }
+                val access by accessGate.state.collectAsState()
+                val scope = rememberCoroutineScope()
+                var unlockError by remember { mutableStateOf<String?>(null) }
 
                 SyncLifecycleEffects(walletManager = walletManager, refreshInProgress = state.refreshInProgress)
 
-                LaunchedEffect(Unit) {
-                    walletManager.loadVersion()
+                suspend fun unlockWallet() {
+                    unlockError = null
+                    try {
+                        accessGate.unlock(authenticate = {
+                            walletManager.loadVersion()
+                            walletManager.loadSettingsOnLaunch()
+                            walletManager.fiatPrices.onForeground()
 
-                    // Load persisted app settings (e.g., node URL) before loading/opening any stored wallet.
-                    walletManager.loadSettingsOnLaunch()
-                    walletManager.fiatPrices.onForeground()
-
-                    // If a stored wallet exists, open it and start refresh automatically.
-                    // When enabled, require device authentication first.
-                    val hasStoredWallet = runCatching { walletManager.hasStoredWallet() }.getOrDefault(false)
-                    if (hasStoredWallet) {
-                        val shouldRequireAuth = MoneroConfig.requireDeviceAuth(applicationContext)
-                        val unlocked = when {
-                            !shouldRequireAuth -> true
-                            // Protection enabled but auth unavailable: do not silently open the wallet.
-                            !DeviceAuthGate.isAvailable(applicationContext) -> false
-                            else -> runCatching {
+                            val hasStoredWallet = walletManager.hasStoredWallet() ||
+                                walletManager.state.value.walletId != null
+                            if (hasStoredWallet && MoneroConfig.requireDeviceAuth(applicationContext)) {
                                 DeviceAuthGate.authenticate(
                                     activity = this@MainActivity,
                                     title = getString(R.string.biometric_unlock_wallet),
                                     subtitle = getString(R.string.biometric_unlock_subtitle)
                                 )
-                            }.isSuccess
-                        }
-
-                        if (unlocked) {
-                            val loaded = walletManager.loadStoredWalletOnLaunch()
-                            if (loaded) {
+                            }
+                        }, openWallet = {
+                            // A retained manager may be syncing. Do not reopen/reset it on rotation.
+                            if (walletManager.state.value.walletId == null && walletManager.hasStoredWallet()) {
+                                val loaded = walletManager.loadStoredWalletOnLaunch()
+                                check(loaded) { getString(R.string.authentication_failed) }
                                 walletManager.refreshWalletInBackground()
                             }
-                        }
+                        })
+                    } catch (cancelled: CancellationException) {
+                        throw cancelled
+                    } catch (_: Exception) {
+                        unlockError = getString(R.string.authentication_failed)
                     }
                 }
+
+                LaunchedEffect(Unit) { unlockWallet() }
 
                 // iOS parity:
                 // - If a wallet is open, show the main tab UI.
                 // - Otherwise, show the wallet creation/import flow (seed paste view).
-                if (state.walletId != null) {
+                if (access != WalletAccessGate.State.OPEN) {
+                    Column(
+                        modifier = Modifier.fillMaxSize().padding(24.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(stringResource(R.string.unlock_your_wallet))
+                        unlockError?.let { Text(it) }
+                        Button(
+                            enabled = access == WalletAccessGate.State.LOCKED,
+                            onClick = { scope.launch { unlockWallet() } },
+                        ) {
+                            Text(stringResource(if (access == WalletAccessGate.State.UNLOCKING)
+                                R.string.unlocking_ellipsis else R.string.unlock_existing_wallet))
+                        }
+                    }
+                } else if (state.walletId != null) {
                     AppScaffold(walletManager = walletManager)
                 } else {
                     WalletCreationScreen(walletManager = walletManager)

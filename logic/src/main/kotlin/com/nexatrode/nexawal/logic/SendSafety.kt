@@ -4,6 +4,18 @@ package com.nexatrode.nexawal.logic
  * Pure send preflight / retry classification helpers (no Android / JNI deps).
  */
 object SendSafety {
+    class FeeApprovalException : IllegalStateException(
+        "The network fee increased. Nothing was broadcast. Preview the fee and confirm again."
+    )
+
+    /** The guarded action includes pending-file persistence, not just relay. */
+    fun <T> withApprovedFee(preparedFee: Long, approvedMaxFee: Long, action: () -> T): T {
+        if (preparedFee < 0 || approvedMaxFee < 0 || preparedFee > approvedMaxFee) {
+            throw FeeApprovalException()
+        }
+        return action()
+    }
+
 
     /** Overflow-safe check that amount + fee fits in unlocked balance. */
     fun hasUnlockedForExactSend(amountPiconero: Long, feePiconero: Long, unlockedPiconero: Long): Boolean {

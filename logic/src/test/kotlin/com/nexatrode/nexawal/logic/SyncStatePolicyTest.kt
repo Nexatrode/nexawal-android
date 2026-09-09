@@ -68,9 +68,9 @@ class SyncStatePolicyTest {
     }
 
     @Test
-    fun `empty history at tip rewinds to restore height once`() {
+    fun `interrupted empty history at tip rewinds to restore height once`() {
         val decision = ScanRecoveryPolicy.decide(
-            previousScanInterrupted = false,
+            previousScanInterrupted = true,
             lastScanned = 3_745_389L,
             chainHeight = 3_745_389L,
             chainTime = 1L,
@@ -82,6 +82,16 @@ class SyncStatePolicyTest {
 
         assertEquals(3_519_450L, decision?.rewindHeight)
         assertTrue(decision?.emptyHistoryAtTip ?: false)
+    }
+
+    @Test
+    fun `clean empty long scan stays complete across subsequent launches`() {
+        assertNull(ScanRecoveryPolicy.decide(
+            previousScanInterrupted = false, lastScanned = 3_745_389L,
+            chainHeight = 3_745_389L, chainTime = 1L, restoreHeight = 3_519_450L,
+            trustedScannedHeight = 3_745_389L, transfersEmpty = true,
+            didRewindEmptyHistory = false,
+        ))
     }
 
     @Test

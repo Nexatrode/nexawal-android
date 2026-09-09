@@ -44,6 +44,7 @@ object ScanRecoveryPolicy {
         val aheadOfCheckpoint = lastScanned > safeAdd(trustedScannedHeight, tolerance)
         val emptyHistoryAtTip =
             !didRewindEmptyHistory &&
+                (previousScanInterrupted || aheadOfCheckpoint) &&
                 chainHeight > safeAdd(restoreHeight, historySpanThreshold) &&
                 transfersEmpty
 

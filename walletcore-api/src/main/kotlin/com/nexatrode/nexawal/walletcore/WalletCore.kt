@@ -326,11 +326,17 @@ object WalletCore {
     }
 
     /**
-     * List transfers (history) as raw JSON.
+     * Query a bounded local page of transfers as JSON (no RPC).
      *
      * Mirrors the C ABI:
-     *   char* wallet_list_transfers_json(const char* wallet_id)
+     *   char* wallet_query_transfers_json(const char* wallet_id, const char* query_json)
      */
+    @JvmStatic
+    fun queryTransfersJson(walletId: String, queryJson: String): String {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        return WalletCoreJni.queryTransfersJson(walletId, queryJson)
+    }
+
     @JvmStatic
     fun listTransfersJson(walletId: String): String {
         require(walletId.isNotBlank()) { "walletId must not be blank" }
@@ -663,6 +669,7 @@ internal object WalletCoreJni {
     external fun getBalanceWithFilter(walletId: String, filterJson: String?): LongArray
 
     external fun listTransfersJson(walletId: String): String
+    external fun queryTransfersJson(walletId: String, queryJson: String): String
 
     external fun exportOutputsJson(walletId: String): String
 

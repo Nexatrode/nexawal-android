@@ -8,8 +8,11 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -48,6 +51,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.ui.draw.rotate
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -528,7 +532,7 @@ fun AppScaffold(
                 items.forEach { item ->
                     val selected = currentDestination
                         ?.hierarchy
-                        ?.any { it.route == item.route } == true
+                        ?.any { it.route == item.route || (item == BottomNavItem.Wallet && it.route?.startsWith("transactions") == true) } == true
                     val label = stringResource(item.labelRes)
 
                     NavigationBarItem(
@@ -580,7 +584,11 @@ fun AppScaffold(
                     palette = palette,
                     onOpenSend = { navController.navigate(BottomNavItem.Send.route) },
                     onOpenReceive = { navController.navigate(BottomNavItem.Receive.route) },
+                    onOpenHistory = { filter -> navController.navigate("transactions/$filter") },
                 )
+            }
+            composable("transactions/{filter}") { entry ->
+                TransactionsScreen(walletManager, palette, entry.arguments?.getString("filter") ?: "all") { navController.popBackStack() }
             }
             composable(BottomNavItem.Send.route) {
                 SendScreen(walletManager = walletManager, palette = palette)
@@ -653,6 +661,7 @@ private fun WalletScreen(
     palette: NexaPalette,
     onOpenSend: () -> Unit,
     onOpenReceive: () -> Unit,
+    onOpenHistory: (String) -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -735,15 +744,12 @@ private fun WalletScreen(
         MoneroConfig.trustedScannedHeight(context)
     }
     // Match iOS: near tip alone is not enough after cancel/quit — require a clean checkpoint.
-    val emptyHistoryAtTip =
-        targetHeight > restoreHeight + 10_000L && state.transfers.isEmpty()
     val isSynced =
         !state.refreshInProgress &&
             !scanInterrupted &&
             targetHeight > 0L &&
             lastScanned + syncTolerance >= targetHeight &&
-            lastScanned <= trustedScanned + syncTolerance &&
-            !emptyHistoryAtTip
+            lastScanned <= trustedScanned + syncTolerance
 
     // Session-average blocks/sec for this refresh:
     // (lastScanned - baseline at refresh start) / wall time since refresh start.
@@ -1119,7 +1125,7 @@ private fun WalletScreen(
                     )
                     if (transfersSorted.isNotEmpty()) {
                         Text(
-                            transfersSorted.size.toString(),
+                            state.totalHistoryCount.toString(),
                             color = iosSecondary,
                             fontFamily = chromeFont,
                             fontSize = 13.sp,
@@ -1150,6 +1156,14 @@ private fun WalletScreen(
             }
         }
 
+        TextButton(onClick = { onOpenHistory("all") }, modifier = Modifier.fillMaxWidth()) {
+            Text("View all transactions (${state.totalHistoryCount})")
+        }
+        if (state.pendingHistoryCount > 0) {
+            TextButton(onClick = { onOpenHistory("pending") }, modifier = Modifier.fillMaxWidth()) {
+                Text("${state.pendingHistoryCount} pending transactions")
+            }
+        }
         Spacer(Modifier.height(16.dp))
 
         // Refresh / cancel — match iOS boxed outline + red cancel, equal height
@@ -1309,7 +1323,8 @@ private fun KeyValueRow(
 }
 
 @Composable
-private fun TransferRow(
+@OptIn(ExperimentalLayoutApi::class)
+internal fun TransferRow(
     t: Transfer,
     palette: NexaPalette,
     onClick: () -> Unit,
@@ -1372,21 +1387,50 @@ private fun TransferRow(
             Spacer(Modifier.width(12.dp))
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    direction,
-                    color = palette.primaryText,
-                    fontWeight = FontWeight.SemiBold,
-                    fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
-                )
+                // Keep the amount out of a fixed trailing column: on narrow screens or
+                // with larger fonts it can take its own line without squeezing the metadata.
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Text(
+                        direction,
+                        modifier = Modifier.padding(end = 12.dp),
+                        color = palette.primaryText,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                    )
+                    Text(
+                        stringResource(R.string.xmr_unit_fmt, signedAmountText),
+                        fontFamily = FontFamily.Monospace,
+                        color = amountColor,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 17.sp,
+                    )
+                }
 
                 Spacer(Modifier.height(4.dp))
 
-                Row {
+                // Measure each detail against the available row width, not the space
+                // left over after the date. Wrap whole items onto another line as needed.
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
                     relTime?.let {
                         Text(it, color = palette.secondaryText)
-                        Spacer(Modifier.width(8.dp))
                     }
                     Text(statusText, color = palette.secondaryText)
+                    t.fee?.let {
+                        Text(
+                            stringResource(R.string.fee_value_fmt, XmrFormat.formatPiconeroAsDisplayXmr(it)),
+                            fontFamily = FontFamily.Monospace,
+                            color = palette.secondaryText,
+                            fontSize = 12.sp,
+                        )
+                    }
                 }
 
                 Spacer(Modifier.height(4.dp))
@@ -1400,30 +1444,12 @@ private fun TransferRow(
                     fontSize = 12.sp
                 )
             }
-
-            Column {
-                Text(
-                    stringResource(R.string.xmr_unit_fmt, signedAmountText),
-                    fontFamily = FontFamily.Monospace,
-                    color = amountColor,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 17.sp
-                )
-                t.fee?.let {
-                    Text(
-                        stringResource(R.string.fee_value_fmt, XmrFormat.formatPiconeroAsDisplayXmr(it)),
-                        fontFamily = FontFamily.Monospace,
-                        color = palette.secondaryText,
-                        fontSize = 12.sp
-                    )
-                }
-            }
         }
     }
 }
 
 @Composable
-private fun TransferDetailsDialog(
+internal fun TransferDetailsDialog(
     t: Transfer,
     snapshot: FiatTxSnapshot?,
     onDismiss: () -> Unit,
@@ -2250,6 +2276,9 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                     onClick = {
                         if (isSending) return@PrimaryActionButton
                         // Disable immediately so dismiss+launch cannot race a second send.
+                        val approvedMaxFee = estimatedFee?.fee ?: return@PrimaryActionButton
+                        val approvedAmount = amountPiconeroOrNull() ?: return@PrimaryActionButton
+                        val approvedDestination = toAddress.trim()
                         isSending = true
                         showExactConfirmation = false
                         errorText = null
@@ -2258,9 +2287,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         sweepResult = null
                         scope.launch {
                             try {
-                                val amountPiconeroNow = amountPiconeroOrNull()
-                                    ?: throw IllegalArgumentException(invalidAmountText)
-                                val feePiconero = estimatedFee?.fee ?: 0L
+                                val amountPiconeroNow = approvedAmount
+                                val feePiconero = approvedMaxFee
                                 if (!com.nexatrode.nexawal.logic.SendSafety.hasUnlockedForExactSend(
                                         amountPiconero = amountPiconeroNow,
                                         feePiconero = feePiconero,
@@ -2285,11 +2313,15 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                 }
 
                                 sendResult = walletManager.send(
-                                    toAddress = toAddress.trim(),
-                                    amountPiconero = amountPiconeroNow
+                                    toAddress = approvedDestination,
+                                    amountPiconero = amountPiconeroNow,
+                                    approvedMaxFee = approvedMaxFee,
                                 )
                                 infoText = transactionBroadcastText
                                 walletManager.refreshWalletDataSnapshots()
+                            } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
+                                estimatedFee = null
+                                errorText = t.message
                             } catch (t: Throwable) {
                                 errorText = t.message ?: t.javaClass.simpleName
                             } finally {
@@ -2341,6 +2373,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                     palette = palette,
                     onClick = {
                         if (isSending) return@PrimaryActionButton
+                        val approvedMaxFee = sweepPreview?.fee ?: return@PrimaryActionButton
+                        val approvedDestination = toAddress.trim()
                         isSending = true
                         showMaxConfirmation = false
                         errorText = null
@@ -2361,9 +2395,12 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     )
                                 }
 
-                                sweepResult = walletManager.sweep(toAddress = toAddress.trim())
+                                sweepResult = walletManager.sweep(toAddress = approvedDestination, approvedMaxFee = approvedMaxFee)
                                 infoText = maxBalanceBroadcastText
                                 walletManager.refreshWalletDataSnapshots()
+                            } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
+                                sweepPreview = null
+                                errorText = t.message
                             } catch (t: Throwable) {
                                 errorText = t.message ?: t.javaClass.simpleName
                             } finally {
@@ -2552,6 +2589,7 @@ private fun SettingsScreen(
     var requireDeviceAuth by remember {
         mutableStateOf(MoneroConfig.requireDeviceAuth(context))
     }
+    var changingDeviceAuth by remember { mutableStateOf(false) }
     var showAdvancedRecovery by remember { mutableStateOf(false) }
     var fiatEnabled by remember { mutableStateOf(MoneroConfig.fiatEstimatesEnabled(context)) }
     var fiatCurrency by remember { mutableStateOf(MoneroConfig.fiatCurrency(context)) }
@@ -2755,10 +2793,36 @@ private fun SettingsScreen(
                 LabeledSwitchRow(
                     label = stringResource(R.string.toggle_require_device_auth),
                     checked = requireDeviceAuth,
-                    onCheckedChange = {
-                        requireDeviceAuth = it
-                        MoneroConfig.setRequireDeviceAuth(context, it)
-                        statusText = if (it) deviceAuthEnabledText else deviceAuthDisabledText
+                    enabled = !changingDeviceAuth,
+                    onCheckedChange = { required ->
+                        if (changingDeviceAuth) return@LabeledSwitchRow
+                        changingDeviceAuth = true
+                        scope.launch {
+                            try {
+                                com.nexatrode.nexawal.logic.DeviceAuthSettings.update(
+                                    currentlyRequired = MoneroConfig.requireDeviceAuth(context),
+                                    required = required,
+                                    authenticate = {
+                                        val activity = context as? ComponentActivity
+                                            ?: error(context.getString(R.string.error_activity_context_required))
+                                        DeviceAuthGate.authenticate(
+                                            activity,
+                                            context.getString(R.string.section_security),
+                                            context.getString(R.string.require_device_auth_description),
+                                        )
+                                    },
+                                    persist = { MoneroConfig.setRequireDeviceAuth(context, it) },
+                                )
+                                requireDeviceAuth = required
+                                statusText = if (required) deviceAuthEnabledText else deviceAuthDisabledText
+                            } catch (cancelled: kotlinx.coroutines.CancellationException) {
+                                throw cancelled
+                            } catch (_: Exception) {
+                                statusText = context.getString(R.string.authentication_failed)
+                            } finally {
+                                changingDeviceAuth = false
+                            }
+                        }
                     },
                     palette = palette,
                 )

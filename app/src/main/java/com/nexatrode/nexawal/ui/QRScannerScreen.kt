@@ -217,7 +217,7 @@ private fun CameraPreview(
                         imageAnalysis
                     )
                 } catch (e: Exception) {
-                    e.printStackTrace()
+                    com.nexatrode.nexawal.WalletDiagnostics.w("QRScanner", "QR scan failed", e)
                 }
             }, ContextCompat.getMainExecutor(ctx))
 

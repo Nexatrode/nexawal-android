@@ -151,4 +151,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // Debug tooling already resolves Foundation 1.9.2 at runtime. Match it at
+    // compile time too: the experimental 1.7 FlowRow ABI is not compatible.
+    debugImplementation("androidx.compose.foundation:foundation-layout:1.9.2")
 }
