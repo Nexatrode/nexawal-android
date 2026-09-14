@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.nexatrode.nexawal"
-        minSdk = 33
+        minSdk = 30
         targetSdk = 36
         versionCode = 2
         versionName = "1.0.1"
