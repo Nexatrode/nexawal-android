@@ -10,8 +10,8 @@ Unknown/evicted rows load locally, not from the node. Sync-incomplete is not aut
 The receive/send/balance and restore-height semantics are unchanged.
 
 The nested MoneroWalletCoreFFI source contains the new query C ABI. The Android build continues
-building Rust from source; no precompiled WalletCore dependency was added. The submodule's published
-pin has not yet moved: local native edits must be released/pinned together before distribution.
+building Rust from source; no precompiled WalletCore dependency was added. The submodule now includes
+the post-0.1.9 `rustls` security update; publish WalletCore before publishing the Android pin.
 
 Verification:
 

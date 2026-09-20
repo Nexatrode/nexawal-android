@@ -44,7 +44,8 @@ The follow-up hardening pass additionally bounds cache/journal file reads, prese
 identity during JSON round-trips, and archives pending journals on explicit wallet replacement.
 The matching native core rejects legacy/unbound and foreign-wallet journals before any RPC.
 See the sibling WalletCore `docs/production-hardening-2026-09-05.md` for synthetic scale results,
-dependency advisories and the remaining release gates. Public pins are not updated yet.
+dependency advisories and the remaining release gates. The Android submodule now points at the local
+patched WalletCore commit; that commit must be pushed and released before the Android pin is pushed.
 
 ## Required device checks before release
 
@@ -64,7 +65,6 @@ Use a disposable test wallet, not a user's funds:
 
 ## Rollout
 
-The fixes are local. The Android submodule working tree contains the same core source changes as
-the primary WalletCore checkout so local from-source builds include them. Do not discard those
-changes with a submodule update. Publish the next WalletCore release and then replace this local
-submodule diff with its final commit pin. No F-Droid source-build path has been replaced by binaries.
+The fixes are local. The Android submodule points at the same patched commit as the primary WalletCore
+checkout, so local from-source builds include it. Push/publish WalletCore first, then the Android
+commit containing that submodule pin. No F-Droid source-build path has been replaced by binaries.
