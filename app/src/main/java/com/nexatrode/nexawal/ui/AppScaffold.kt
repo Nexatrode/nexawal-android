@@ -116,6 +116,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.nexatrode.nexawal.BuildConfig
 import com.nexatrode.nexawal.DeviceAuthGate
+import com.nexatrode.nexawal.MnemonicCipher
 import com.nexatrode.nexawal.FiatTxSnapshot
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.MoneroQr
@@ -2799,20 +2800,15 @@ private fun SettingsScreen(
                         changingDeviceAuth = true
                         scope.launch {
                             try {
-                                com.nexatrode.nexawal.logic.DeviceAuthSettings.update(
-                                    currentlyRequired = MoneroConfig.requireDeviceAuth(context),
-                                    required = required,
-                                    authenticate = {
-                                        val activity = context as? ComponentActivity
-                                            ?: error(context.getString(R.string.error_activity_context_required))
-                                        DeviceAuthGate.authenticate(
-                                            activity,
-                                            context.getString(R.string.section_security),
-                                            context.getString(R.string.require_device_auth_description),
-                                        )
-                                    },
-                                    persist = { MoneroConfig.setRequireDeviceAuth(context, it) },
+                                val activity = context as? ComponentActivity
+                                    ?: error(context.getString(R.string.error_activity_context_required))
+                                if (required) MnemonicCipher.prepareDeviceAuthKey()
+                                DeviceAuthGate.authenticate(
+                                    activity,
+                                    context.getString(R.string.section_security),
+                                    context.getString(R.string.require_device_auth_description),
                                 )
+                                walletManager.updateDeviceAuthProtection(required)
                                 requireDeviceAuth = required
                                 statusText = if (required) deviceAuthEnabledText else deviceAuthDisabledText
                             } catch (cancelled: kotlinx.coroutines.CancellationException) {

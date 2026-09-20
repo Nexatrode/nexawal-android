@@ -59,7 +59,7 @@ object MoneroConfig {
     // Defaults (match iOS MoneroConfig.swift).
     const val DEFAULT_GAP_LIMIT: Int = 50
     const val DEFAULT_ACCOUNT_GAP: Int = 1
-    const val DEFAULT_REQUIRE_DEVICE_AUTH: Boolean = false
+    const val DEFAULT_REQUIRE_DEVICE_AUTH: Boolean = true
     /** Techno Theme ON = neon terminal look; OFF (default) = standard look. */
     const val DEFAULT_TECHNO_THEME: Boolean = false
     private const val DEFAULT_NETWORK_POLICY_RAW: String = "clearnet"
@@ -141,7 +141,13 @@ object MoneroConfig {
 
     @JvmStatic
     fun requireDeviceAuth(context: Context): Boolean {
-        return prefs(context).getBoolean(KEY_REQUIRE_DEVICE_AUTH, DEFAULT_REQUIRE_DEVICE_AUTH)
+        val preferences = prefs(context)
+        if (preferences.contains(KEY_REQUIRE_DEVICE_AUTH)) {
+            return preferences.getBoolean(KEY_REQUIRE_DEVICE_AUTH, DEFAULT_REQUIRE_DEVICE_AUTH)
+        }
+        // New installs default to protected when the device has a secure unlock configured.
+        // Explicit choices remain sticky, including an existing user's opt-out.
+        return DEFAULT_REQUIRE_DEVICE_AUTH && DeviceAuthGate.isAvailable(context)
     }
 
     @JvmStatic

@@ -13,6 +13,10 @@ class WalletAccessGate {
     private val mutableState = MutableStateFlow(State.LOCKED)
     val state: StateFlow<State> = mutableState.asStateFlow()
 
+    fun lock() {
+        mutableState.value = State.LOCKED
+    }
+
     suspend fun unlock(authenticate: suspend () -> Unit, openWallet: suspend () -> Unit) {
         if (!mutableState.compareAndSet(State.LOCKED, State.UNLOCKING)) return
         try {
@@ -20,7 +24,9 @@ class WalletAccessGate {
             currentCoroutineContext().ensureActive()
             openWallet()
             currentCoroutineContext().ensureActive()
-            mutableState.value = State.OPEN
+            // A lifecycle stop may have locked the gate while authentication was visible.
+            // Never let completion of that stale attempt reopen the UI.
+            mutableState.compareAndSet(State.UNLOCKING, State.OPEN)
         } finally {
             // Failure and coroutine cancellation both fail closed.
             mutableState.compareAndSet(State.UNLOCKING, State.LOCKED)
@@ -36,7 +42,7 @@ object DeviceAuthSettings {
         authenticate: suspend () -> Unit,
         persist: (Boolean) -> Unit,
     ) {
-        if (currentlyRequired && !required) authenticate()
+        if (currentlyRequired != required) authenticate()
         currentCoroutineContext().ensureActive()
         persist(required)
     }

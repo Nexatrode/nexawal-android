@@ -41,7 +41,9 @@ class WalletAccessGateTest {
         val events = mutableListOf<String>()
         DeviceAuthSettings.update(true, false, { events += "auth" }) { events += "persist:$it" }
         assertEquals(listOf("auth", "persist:false"), events)
-        DeviceAuthSettings.update(false, true, { fail("enabling does not downgrade protection") }) { }
+        events.clear()
+        DeviceAuthSettings.update(false, true, { events += "auth" }) { events += "persist:$it" }
+        assertEquals(listOf("auth", "persist:true"), events)
     }
 
     @Test fun recreationAndCancellationCannotExposeRetainedWallet() = runTest {
@@ -74,5 +76,27 @@ class WalletAccessGateTest {
         release.complete(Unit)
         job.join()
         assertEquals(WalletAccessGate.State.OPEN, gate.state.value)
+    }
+
+    @Test fun backgroundLockFailsClosedAndRequiresAnotherUnlock() = runTest {
+        val gate = WalletAccessGate()
+        var authentications = 0
+        gate.unlock({ authentications += 1 }, {})
+        gate.lock()
+        assertEquals(WalletAccessGate.State.LOCKED, gate.state.value)
+        gate.unlock({ authentications += 1 }, {})
+        assertEquals(2, authentications)
+        assertEquals(WalletAccessGate.State.OPEN, gate.state.value)
+    }
+
+    @Test fun unlockFinishingAfterBackgroundCannotReopenGate() = runTest {
+        val gate = WalletAccessGate()
+        val release = CompletableDeferred<Unit>()
+        val job = launch { gate.unlock({ release.await() }, {}) }
+        testScheduler.runCurrent()
+        gate.lock()
+        release.complete(Unit)
+        job.join()
+        assertEquals(WalletAccessGate.State.LOCKED, gate.state.value)
     }
 }

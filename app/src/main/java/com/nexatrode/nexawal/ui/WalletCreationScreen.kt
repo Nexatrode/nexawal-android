@@ -44,6 +44,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.nexatrode.nexawal.BuildConfig
 import com.nexatrode.nexawal.DeviceAuthGate
+import com.nexatrode.nexawal.MnemonicCipher
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.R
 import com.nexatrode.nexawal.WalletManager
@@ -240,10 +241,19 @@ fun WalletCreationScreen(
                     walletManager.setNodeUrl(trimmedNode)
                 }
 
-                MoneroConfig.setRequireDeviceAuth(
-                    context,
+                val protectWithDeviceAuth =
                     requireDeviceAuth.value && DeviceAuthGate.isAvailable(context)
-                )
+                if (protectWithDeviceAuth) {
+                    val activity = context as? ComponentActivity
+                        ?: throw IllegalStateException(activityContextRequiredText)
+                    MnemonicCipher.prepareDeviceAuthKey()
+                    DeviceAuthGate.authenticate(
+                        activity = activity,
+                        title = unlockWalletTitle,
+                        subtitle = unlockWalletSubtitle,
+                    )
+                }
+                MoneroConfig.setRequireDeviceAuth(context, protectWithDeviceAuth)
 
                 val walletId = walletManager.defaultWalletId()
                 val nodeUrl = walletManager.currentNodeUrl()
@@ -283,6 +293,7 @@ fun WalletCreationScreen(
                     }
                     val activity = context as? ComponentActivity
                         ?: throw IllegalStateException(activityContextRequiredText)
+                    MnemonicCipher.prepareDeviceAuthKey()
                     DeviceAuthGate.authenticate(
                         activity = activity,
                         title = unlockWalletTitle,

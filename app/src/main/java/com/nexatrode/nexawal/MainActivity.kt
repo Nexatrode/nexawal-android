@@ -2,6 +2,8 @@ package com.nexatrode.nexawal
 
 import android.Manifest
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -41,6 +43,36 @@ import com.nexatrode.nexawal.ui.theme.NexawalTheme
 
 class MainActivity : ComponentActivity() {
     private lateinit var walletManager: WalletManager
+    private val accessGate = WalletAccessGate()
+    private val sessionHandler = Handler(Looper.getMainLooper())
+    private val idleLockAction = Runnable { lockProtectedSession() }
+
+    private fun lockProtectedSession() {
+        sessionHandler.removeCallbacks(idleLockAction)
+        if (::walletManager.isInitialized &&
+            MoneroConfig.requireDeviceAuth(applicationContext) &&
+            walletManager.state.value.walletId != null
+        ) {
+            accessGate.lock()
+            walletManager.lockSession()
+        }
+    }
+
+    private fun scheduleIdleLock() {
+        sessionHandler.removeCallbacks(idleLockAction)
+        if (::walletManager.isInitialized &&
+            accessGate.state.value == WalletAccessGate.State.OPEN &&
+            MoneroConfig.requireDeviceAuth(applicationContext) &&
+            walletManager.state.value.walletId != null
+        ) {
+            sessionHandler.postDelayed(idleLockAction, PROTECTED_IDLE_TIMEOUT_MS)
+        }
+    }
+
+    override fun onUserInteraction() {
+        super.onUserInteraction()
+        scheduleIdleLock()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,12 +94,15 @@ class MainActivity : ComponentActivity() {
                 }
 
                 val state by walletManager.state.collectAsState()
-                val accessGate = remember { WalletAccessGate() }
                 val access by accessGate.state.collectAsState()
                 val scope = rememberCoroutineScope()
                 var unlockError by remember { mutableStateOf<String?>(null) }
 
-                SyncLifecycleEffects(walletManager = walletManager, refreshInProgress = state.refreshInProgress)
+                SyncLifecycleEffects(
+                    walletManager = walletManager,
+                    refreshInProgress = state.refreshInProgress,
+                    lockProtectedSession = ::lockProtectedSession,
+                )
 
                 suspend fun unlockWallet() {
                     unlockError = null
@@ -80,6 +115,7 @@ class MainActivity : ComponentActivity() {
                             val hasStoredWallet = walletManager.hasStoredWallet() ||
                                 walletManager.state.value.walletId != null
                             if (hasStoredWallet && MoneroConfig.requireDeviceAuth(applicationContext)) {
+                                MnemonicCipher.prepareDeviceAuthKey()
                                 DeviceAuthGate.authenticate(
                                     activity = this@MainActivity,
                                     title = getString(R.string.biometric_unlock_wallet),
@@ -92,8 +128,13 @@ class MainActivity : ComponentActivity() {
                                 val loaded = walletManager.loadStoredWalletOnLaunch()
                                 check(loaded) { getString(R.string.authentication_failed) }
                                 walletManager.refreshWalletInBackground()
+                            } else if (walletManager.state.value.walletId != null && walletManager.hasStoredWallet()) {
+                                check(walletManager.unlockStoredMetadataSession()) {
+                                    getString(R.string.authentication_failed)
+                                }
                             }
                         })
+                        scheduleIdleLock()
                     } catch (cancelled: CancellationException) {
                         throw cancelled
                     } catch (_: Exception) {
@@ -102,6 +143,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 LaunchedEffect(Unit) { unlockWallet() }
+                LaunchedEffect(access, state.walletId) { scheduleIdleLock() }
 
                 // iOS parity:
                 // - If a wallet is open, show the main tab UI.
@@ -130,6 +172,10 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private companion object {
+        const val PROTECTED_IDLE_TIMEOUT_MS = 5L * 60L * 1_000L
+    }
 }
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -137,6 +183,7 @@ class MainActivity : ComponentActivity() {
 private fun SyncLifecycleEffects(
     walletManager: WalletManager,
     refreshInProgress: Boolean,
+    lockProtectedSession: () -> Unit,
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val notificationPermission = rememberPermissionState(Manifest.permission.POST_NOTIFICATIONS)
@@ -159,6 +206,7 @@ private fun SyncLifecycleEffects(
                 Lifecycle.Event.ON_STOP -> {
                     walletManager.stopForegroundCatchUp()
                     walletManager.snapshotState()
+                    lockProtectedSession()
                 }
                 else -> Unit
             }

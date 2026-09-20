@@ -205,6 +205,8 @@ class WalletManager(
     private val refreshSingleFlight = RefreshSingleFlight()
     private val cachePersistenceSuppressed = AtomicBoolean(false)
     private val sendGate = SendGate()
+    /** Plaintext metadata exists only while the app session is unlocked. */
+    @Volatile private var unlockedMetadata: StoredWalletMetadata? = null
 
     // Cache export throttling:
     // - avoid redundant writes when exportCache returns identical bytes repeatedly (common during steady-state polling)
@@ -569,6 +571,25 @@ class WalletManager(
      */
     suspend fun hasStoredWallet(): Boolean = withContext(ioDispatcher) {
         metadataFile().exists()
+    }
+
+    /** Drop the app-layer plaintext seed when the protected UI leaves the foreground. */
+    fun lockSession() {
+        unlockedMetadata = null
+    }
+
+    /** Re-establish the in-memory metadata session after device authentication. */
+    suspend fun unlockStoredMetadataSession(): Boolean = withContext(ioDispatcher) {
+        if (!metadataFile().exists()) return@withContext false
+        readMetadataFromDisk()
+        true
+    }
+
+    /** Rewrap the persisted seed before changing the user-visible protection setting. */
+    suspend fun updateDeviceAuthProtection(required: Boolean) = withContext(ioDispatcher) {
+        val meta = readMetadata()
+        persistMetadata(meta, forceReencrypt = true, protectionOverride = required)
+        MoneroConfig.setRequireDeviceAuth(appContext, required)
     }
 
     suspend fun loadReceiveSubaddressBook(): ReceiveSubaddressBook = withContext(ioDispatcher) {
@@ -2558,22 +2579,41 @@ class WalletManager(
         MoneroConfig.setTrustedScannedHeight(appContext, 0L)
         MoneroConfig.setScanInterrupted(appContext, true)
         didRewindEmptyHistory = false
+        unlockedMetadata = null
     }
 
-    private fun persistMetadata(meta: StoredWalletMetadata) {
+    private fun persistMetadata(
+        meta: StoredWalletMetadata,
+        forceReencrypt: Boolean = false,
+        protectionOverride: Boolean? = null,
+    ) {
         val f = metadataFile()
         ensureParentDirExists(f)
-        val encrypted = MnemonicCipher.encrypt(meta.mnemonic)
+        val existing = if (f.exists()) runCatching { JSONObject(f.readText()) }.getOrNull() else null
+        val requireDeviceAuth = protectionOverride
+            ?: existing?.optBoolean("deviceAuthProtected", MoneroConfig.requireDeviceAuth(appContext))
+            ?: MoneroConfig.requireDeviceAuth(appContext)
+        val canReuseCiphertext = !forceReencrypt &&
+            unlockedMetadata?.mnemonic == meta.mnemonic &&
+            existing?.has("deviceAuthProtected") == true &&
+            existing.optBoolean("deviceAuthProtected") == requireDeviceAuth &&
+            !existing.optString("encryptedMnemonic", "").isNullOrBlank() &&
+            !existing.optString("mnemonicIv", "").isNullOrBlank()
+        val encrypted = if (canReuseCiphertext) null else {
+            MnemonicCipher.encrypt(meta.mnemonic, requireDeviceAuth = requireDeviceAuth)
+        }
         val json = JSONObject()
             .put("walletId", meta.walletId)
-            .put("encryptedMnemonic", encrypted.ciphertextBase64)
-            .put("mnemonicIv", encrypted.ivBase64)
+            .put("encryptedMnemonic", encrypted?.ciphertextBase64 ?: existing!!.getString("encryptedMnemonic"))
+            .put("mnemonicIv", encrypted?.ivBase64 ?: existing!!.getString("mnemonicIv"))
             .put("restoreHeight", meta.restoreHeight)
             .put("mainnet", meta.mainnet)
             .put("nodeUrl", meta.nodeUrl)
             .put("savedAtMs", meta.savedAtMs)
-            .put("formatVersion", 2)
+            .put("deviceAuthProtected", requireDeviceAuth)
+            .put("formatVersion", 3)
         CacheFileIO.writeAtomically(f, json.toString(2).toByteArray(Charsets.UTF_8))
+        unlockedMetadata = meta
         _state.value = _state.value.copy(
             lastPersistedAtMs = System.currentTimeMillis(),
             hasStoredWallet = true,
@@ -2581,6 +2621,11 @@ class WalletManager(
     }
 
     private fun readMetadata(): StoredWalletMetadata {
+        unlockedMetadata?.let { return it }
+        return readMetadataFromDisk()
+    }
+
+    private fun readMetadataFromDisk(): StoredWalletMetadata {
         val f = metadataFile()
         val json = JSONObject(f.readText())
 
@@ -2594,11 +2639,13 @@ class WalletManager(
 
         val encryptedMnemonic = json.optString("encryptedMnemonic", "").trim()
         val mnemonicIv = json.optString("mnemonicIv", "").trim()
+        val deviceAuthProtected = json.optBoolean("deviceAuthProtected", false)
 
         val mnemonic = if (encryptedMnemonic.isNotEmpty() && mnemonicIv.isNotEmpty()) {
             MnemonicCipher.decrypt(
                 ivBase64 = mnemonicIv,
-                ciphertextBase64 = encryptedMnemonic
+                ciphertextBase64 = encryptedMnemonic,
+                requireDeviceAuth = deviceAuthProtected,
             )
         } else {
             val plaintextMnemonic = json.optString("mnemonic", "").trim()
@@ -2615,12 +2662,14 @@ class WalletManager(
                     mainnet = mainnet,
                     nodeUrl = nodeUrl,
                     savedAtMs = savedAtMs,
-                )
+                ),
+                forceReencrypt = true,
+                protectionOverride = MoneroConfig.requireDeviceAuth(appContext),
             )
             plaintextMnemonic
         }
 
-        return StoredWalletMetadata(
+        val metadata = StoredWalletMetadata(
             walletId = walletId,
             mnemonic = mnemonic,
             restoreHeight = restoreHeight,
@@ -2628,6 +2677,18 @@ class WalletManager(
             nodeUrl = nodeUrl,
             savedAtMs = savedAtMs,
         )
+        // Existing v2 installations used an unprotected Keystore key. After the user's first
+        // successful device-auth prompt, atomically rewrap the seed with the authenticated key.
+        if (!deviceAuthProtected && MoneroConfig.requireDeviceAuth(appContext)) {
+            persistMetadata(
+                metadata,
+                forceReencrypt = true,
+                protectionOverride = true,
+            )
+        } else {
+            unlockedMetadata = metadata
+        }
+        return metadata
     }
 
     private fun metadataFile(): File {

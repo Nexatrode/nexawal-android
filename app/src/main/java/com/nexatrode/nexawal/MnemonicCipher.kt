@@ -20,9 +20,13 @@ import javax.crypto.spec.GCMParameterSpec
  */
 object MnemonicCipher {
     private const val ANDROID_KEYSTORE = "AndroidKeyStore"
-    private const val KEY_ALIAS = "com.nexatrode.nexawal.wallet.mnemonic"
+    private const val LEGACY_KEY_ALIAS = "com.nexatrode.nexawal.wallet.mnemonic"
+    private const val DEVICE_AUTH_KEY_ALIAS = "com.nexatrode.nexawal.wallet.mnemonic.device-auth.v1"
     private const val TRANSFORMATION = "AES/GCM/NoPadding"
     private const val GCM_TAG_LENGTH_BITS = 128
+    // The plaintext is cached only for the unlocked app session. This short window exists solely
+    // so the operation immediately following the system prompt can unwrap or wrap the seed.
+    private const val AUTH_VALIDITY_SECONDS = 30
 
     data class EncryptedMnemonic(
         val ivBase64: String,
@@ -30,11 +34,11 @@ object MnemonicCipher {
     )
 
     @JvmStatic
-    fun encrypt(plaintext: String): EncryptedMnemonic {
+    fun encrypt(plaintext: String, requireDeviceAuth: Boolean = false): EncryptedMnemonic {
         require(plaintext.isNotBlank()) { "mnemonic must not be blank" }
 
         val cipher = Cipher.getInstance(TRANSFORMATION)
-        cipher.init(Cipher.ENCRYPT_MODE, getOrCreateSecretKey())
+        cipher.init(Cipher.ENCRYPT_MODE, getOrCreateSecretKey(requireDeviceAuth))
         val ciphertext = cipher.doFinal(plaintext.toByteArray(StandardCharsets.UTF_8))
         val iv = cipher.iv ?: error("Cipher did not return an IV")
 
@@ -45,7 +49,11 @@ object MnemonicCipher {
     }
 
     @JvmStatic
-    fun decrypt(ivBase64: String, ciphertextBase64: String): String {
+    fun decrypt(
+        ivBase64: String,
+        ciphertextBase64: String,
+        requireDeviceAuth: Boolean = false,
+    ): String {
         require(ivBase64.isNotBlank()) { "iv must not be blank" }
         require(ciphertextBase64.isNotBlank()) { "ciphertext must not be blank" }
 
@@ -55,7 +63,7 @@ object MnemonicCipher {
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(
             Cipher.DECRYPT_MODE,
-            getOrCreateSecretKey(),
+            getOrCreateSecretKey(requireDeviceAuth),
             GCMParameterSpec(GCM_TAG_LENGTH_BITS, iv)
         )
 
@@ -63,25 +71,39 @@ object MnemonicCipher {
         return String(plaintext, StandardCharsets.UTF_8)
     }
 
-    private fun getOrCreateSecretKey(): SecretKey {
+    /** Create the protected key before showing the prompt so the resulting auth token can use it. */
+    @JvmStatic
+    fun prepareDeviceAuthKey() {
+        getOrCreateSecretKey(requireDeviceAuth = true)
+    }
+
+    private fun getOrCreateSecretKey(requireDeviceAuth: Boolean): SecretKey {
+        val alias = if (requireDeviceAuth) DEVICE_AUTH_KEY_ALIAS else LEGACY_KEY_ALIAS
         val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }
-        val existing = keyStore.getKey(KEY_ALIAS, null) as? SecretKey
+        val existing = keyStore.getKey(alias, null) as? SecretKey
         if (existing != null) {
             return existing
         }
 
         val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, ANDROID_KEYSTORE)
         val spec = KeyGenParameterSpec.Builder(
-            KEY_ALIAS,
+            alias,
             KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
         )
             .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
             .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
             .setRandomizedEncryptionRequired(true)
-            .setUserAuthenticationRequired(false)
-            .build()
+        if (requireDeviceAuth) {
+            spec.setUserAuthenticationRequired(true)
+                .setUserAuthenticationParameters(
+                    AUTH_VALIDITY_SECONDS,
+                    KeyProperties.AUTH_BIOMETRIC_STRONG or KeyProperties.AUTH_DEVICE_CREDENTIAL,
+                )
+        } else {
+            spec.setUserAuthenticationRequired(false)
+        }
 
-        keyGenerator.init(spec)
+        keyGenerator.init(spec.build())
         return keyGenerator.generateKey()
     }
 }
