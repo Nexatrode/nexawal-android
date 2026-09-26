@@ -146,6 +146,22 @@ int32_t wallet_open_from_mnemonic(
     uint8_t is_mainnet
 );
 
+/* Retain view-only scan authority while discarding private spend material. */
+int32_t wallet_seal(const char* wallet_id, uint64_t timeout_ms);
+
+/* Restore spend authority after host authentication. */
+int32_t wallet_unseal_from_mnemonic(
+    const char* wallet_id,
+    const char* mnemonic,
+    uint64_t timeout_ms
+);
+
+/* Cancel refresh and remove every wallet key from process memory. */
+int32_t wallet_close(const char* wallet_id, uint64_t timeout_ms);
+
+/* Write 1 when the wallet is view-only sealed, otherwise 0. */
+int32_t wallet_is_sealed(const char* wallet_id, uint8_t* out_sealed);
+
 /* Update the registered subaddress gap limit for scanning (minimum 1). */
 int32_t wallet_set_gap_limit(
     const char* wallet_id,

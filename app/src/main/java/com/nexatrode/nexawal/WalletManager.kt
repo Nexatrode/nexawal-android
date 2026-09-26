@@ -26,6 +26,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 
 import kotlinx.serialization.Serializable
@@ -203,6 +205,7 @@ class WalletManager(
     private val refreshInProgress = AtomicBoolean(false)
     /** Production single-flight gate (mutex + under-lock prepare); same type unit-tested in logic. */
     private val refreshSingleFlight = RefreshSingleFlight()
+    private val lifecycleMutex = Mutex()
     private val cachePersistenceSuppressed = AtomicBoolean(false)
     private val sendGate = SendGate()
     /** Plaintext metadata exists only while the app session is unlocked. */
@@ -573,16 +576,113 @@ class WalletManager(
         metadataFile().exists()
     }
 
-    /** Drop the app-layer plaintext seed when the protected UI leaves the foreground. */
-    fun lockSession() {
+    /**
+     * Drop the app-layer plaintext seed and replace WalletCore's spend authority with its
+     * private-view/public-spend pair. If a long scan was active, resume it view-only after the
+     * old native worker has observed cancellation. Sending remains impossible while sealed.
+     */
+    fun sealSessionForBackground() {
         unlockedMetadata = null
+        val walletId = _state.value.walletId ?: return
+        val continueRefresh = refreshInProgress.get() || _state.value.refreshInProgress
+        scope.launch {
+            runCatching {
+                lifecycleMutex.withLock {
+                    withContext(ioDispatcher) {
+                        WalletCore.seal(walletId)
+                        exportCacheAndPersist(walletId)
+                    }
+                }
+                // The ordinary refresh coroutine owns the single-flight gate. It exits promptly
+                // once wallet_seal cancels its native worker; join it before starting view-only.
+                refreshJob?.join()
+                if (continueRefresh && _state.value.walletId == walletId) {
+                    Log.i("WalletManager", "Resuming active scan with view-only wallet walletId=$walletId")
+                    refreshWallet()
+                }
+            }.onFailure { error ->
+                Log.w(
+                    "WalletManager",
+                    "Failed to seal wallet session: ${error.message ?: error.javaClass.simpleName}",
+                )
+            }
+        }
     }
 
-    /** Re-establish the in-memory metadata session after device authentication. */
-    suspend fun unlockStoredMetadataSession(): Boolean = withContext(ioDispatcher) {
-        if (!metadataFile().exists()) return@withContext false
-        readMetadataFromDisk()
-        true
+    /**
+     * Five-minute protected-idle boundary: persist a stable checkpoint, then remove both spend
+     * and view keys from native memory. The next authenticated unlock performs a normal reopen.
+     */
+    fun closeProtectedSession() {
+        unlockedMetadata = null
+        val walletId = _state.value.walletId ?: return
+        scope.launch {
+            runCatching {
+                lifecycleMutex.withLock {
+                    withContext(ioDispatcher) {
+                        WalletCore.seal(walletId)
+                        exportCacheAndPersist(walletId)
+                        WalletCore.close(walletId)
+                    }
+                    refreshInProgress.set(false)
+                    _state.value = _state.value.copy(
+                        walletId = null,
+                        refreshInProgress = false,
+                        refreshStartedAtMs = null,
+                        refreshLastProgressAtMs = null,
+                        refreshTargetHeight = null,
+                        balance = null,
+                        transfers = emptyList(),
+                        transfersJson = null,
+                    )
+                }
+                refreshJob?.join()
+                stopSyncForegroundService()
+            }.onFailure { error ->
+                Log.w(
+                    "WalletManager",
+                    "Failed to close protected wallet session: ${error.message ?: error.javaClass.simpleName}",
+                )
+            }
+        }
+    }
+
+    /** Re-establish spend authority only after the caller completed device authentication. */
+    suspend fun unlockStoredMetadataSession(): Boolean {
+        val meta = withContext(ioDispatcher) {
+            if (!metadataFile().exists()) return@withContext null
+            readMetadataFromDisk()
+        } ?: return false
+        val walletId = _state.value.walletId ?: return false
+        val restored = lifecycleMutex.withLock {
+            if (_state.value.walletId != walletId) return@withLock false
+            withContext(ioDispatcher) {
+                if (WalletCore.isSealed(walletId)) {
+                    WalletCore.unsealFromMnemonic(walletId, meta.mnemonic)
+                    exportCacheAndPersist(walletId)
+                }
+            }
+            true
+        }
+        if (!restored) return false
+        refreshJob?.join()
+        refreshWalletInBackground()
+        return true
+    }
+
+    /** Automatically restore an opt-out session; protected sessions call the authenticated path. */
+    fun resumeUnprotectedSession() {
+        if (MoneroConfig.requireDeviceAuth(appContext)) return
+        if (_state.value.walletId == null || !metadataFile().exists()) return
+        scope.launch {
+            runCatching { unlockStoredMetadataSession() }
+                .onFailure { error ->
+                    Log.w(
+                        "WalletManager",
+                        "Failed to resume unprotected wallet session: ${error.message ?: error.javaClass.simpleName}",
+                    )
+                }
+        }
     }
 
     /** Rewrap the persisted seed before changing the user-visible protection setting. */

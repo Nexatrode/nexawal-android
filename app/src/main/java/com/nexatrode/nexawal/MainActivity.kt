@@ -45,17 +45,14 @@ class MainActivity : ComponentActivity() {
     private lateinit var walletManager: WalletManager
     private val accessGate = WalletAccessGate()
     private val sessionHandler = Handler(Looper.getMainLooper())
-    private val idleLockAction = Runnable { lockProtectedSession() }
+    private val idleLockAction = Runnable { lockProtectedSession(closeCore = true) }
 
-    private fun lockProtectedSession() {
+    private fun lockProtectedSession(closeCore: Boolean = false) {
         sessionHandler.removeCallbacks(idleLockAction)
-        if (::walletManager.isInitialized &&
-            MoneroConfig.requireDeviceAuth(applicationContext) &&
-            walletManager.state.value.walletId != null
-        ) {
-            accessGate.lock()
-            walletManager.lockSession()
-        }
+        if (!::walletManager.isInitialized || walletManager.state.value.walletId == null) return
+        if (MoneroConfig.requireDeviceAuth(applicationContext)) accessGate.lock()
+        if (closeCore) walletManager.closeProtectedSession()
+        else walletManager.sealSessionForBackground()
     }
 
     private fun scheduleIdleLock() {
@@ -101,7 +98,7 @@ class MainActivity : ComponentActivity() {
                 SyncLifecycleEffects(
                     walletManager = walletManager,
                     refreshInProgress = state.refreshInProgress,
-                    lockProtectedSession = ::lockProtectedSession,
+                    lockProtectedSession = { lockProtectedSession(closeCore = false) },
                 )
 
                 suspend fun unlockWallet() {
@@ -194,6 +191,7 @@ private fun SyncLifecycleEffects(
             when (event) {
                 Lifecycle.Event.ON_START -> {
                     walletManager.fiatPrices.onForeground()
+                    walletManager.resumeUnprotectedSession()
                     walletManager.startForegroundCatchUp()
                     // If we already look synced (common after interruptions), still refresh
                     // balance/transfers from core — history lives in walletcore/cache, not UI state.

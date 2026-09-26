@@ -285,6 +285,62 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_openFromMnemonic(
     (void)check_rc_or_throw(env, rc, "wallet_open_from_mnemonic");
 }
 
+JNIEXPORT void JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_seal(
+    JNIEnv* env,
+    jclass /*clazz*/,
+    jstring walletId,
+    jlong timeoutMs
+) {
+    const std::string wid = jstring_to_std_string(env, walletId);
+    const uint64_t timeout = timeoutMs < 0 ? 0 : static_cast<uint64_t>(timeoutMs);
+    (void)check_rc_or_throw(env, wallet_seal(wid.c_str(), timeout), "wallet_seal");
+}
+
+JNIEXPORT void JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_unsealFromMnemonic(
+    JNIEnv* env,
+    jclass /*clazz*/,
+    jstring walletId,
+    jstring mnemonic,
+    jlong timeoutMs
+) {
+    const std::string wid = jstring_to_std_string(env, walletId);
+    const std::string m = jstring_to_std_string(env, mnemonic);
+    const uint64_t timeout = timeoutMs < 0 ? 0 : static_cast<uint64_t>(timeoutMs);
+    (void)check_rc_or_throw(
+        env,
+        wallet_unseal_from_mnemonic(wid.c_str(), m.c_str(), timeout),
+        "wallet_unseal_from_mnemonic"
+    );
+}
+
+JNIEXPORT void JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_close(
+    JNIEnv* env,
+    jclass /*clazz*/,
+    jstring walletId,
+    jlong timeoutMs
+) {
+    const std::string wid = jstring_to_std_string(env, walletId);
+    const uint64_t timeout = timeoutMs < 0 ? 0 : static_cast<uint64_t>(timeoutMs);
+    (void)check_rc_or_throw(env, wallet_close(wid.c_str(), timeout), "wallet_close");
+}
+
+JNIEXPORT jboolean JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_isSealed(
+    JNIEnv* env,
+    jclass /*clazz*/,
+    jstring walletId
+) {
+    const std::string wid = jstring_to_std_string(env, walletId);
+    uint8_t sealed = 0;
+    if (!check_rc_or_throw(env, wallet_is_sealed(wid.c_str(), &sealed), "wallet_is_sealed")) {
+        return JNI_FALSE;
+    }
+    return sealed == 0 ? JNI_FALSE : JNI_TRUE;
+}
+
 // Kotlin/Java signature:
 //   internal object WalletCoreJni { external fun refreshAsync(walletId: String, nodeUrl: String?) }
 JNIEXPORT void JNICALL

@@ -146,6 +146,41 @@ object WalletCore {
         WalletCoreJni.openFromMnemonic(walletId, mnemonic, restoreHeight, mainnet)
     }
 
+    /** Discard private spend material while keeping view-only refresh capability. */
+    @JvmStatic
+    fun seal(walletId: String, timeoutMs: Long = 30_000L) {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        require(timeoutMs >= 0L) { "timeoutMs must be >= 0" }
+        WalletCoreJni.seal(walletId, timeoutMs)
+    }
+
+    /** Restore spend authority after the host has authenticated the user. */
+    @JvmStatic
+    fun unsealFromMnemonic(
+        walletId: String,
+        mnemonic: String,
+        timeoutMs: Long = 30_000L,
+    ) {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        require(mnemonic.isNotBlank()) { "mnemonic must not be blank" }
+        require(timeoutMs >= 0L) { "timeoutMs must be >= 0" }
+        WalletCoreJni.unsealFromMnemonic(walletId, mnemonic.trim(), timeoutMs)
+    }
+
+    /** Remove all wallet key material from process memory after a bounded cancel/wait. */
+    @JvmStatic
+    fun close(walletId: String, timeoutMs: Long = 30_000L) {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        require(timeoutMs >= 0L) { "timeoutMs must be >= 0" }
+        WalletCoreJni.close(walletId, timeoutMs)
+    }
+
+    @JvmStatic
+    fun isSealed(walletId: String): Boolean {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        return WalletCoreJni.isSealed(walletId)
+    }
+
     /**
      * Start a background refresh against the given daemon URL.
      *
@@ -639,6 +674,10 @@ internal object WalletCoreJni {
     ): String
 
     external fun openFromMnemonic(walletId: String, mnemonic: String, restoreHeight: Long, mainnet: Boolean)
+    external fun seal(walletId: String, timeoutMs: Long)
+    external fun unsealFromMnemonic(walletId: String, mnemonic: String, timeoutMs: Long)
+    external fun close(walletId: String, timeoutMs: Long)
+    external fun isSealed(walletId: String): Boolean
 
     external fun refreshAsync(walletId: String, nodeUrl: String?)
 
