@@ -5,7 +5,7 @@
 - Android app: this repository
 - iOS / Mac Catalyst app: [nexawal](https://github.com/Nexatrode/nexawal)
 - Desktop (macOS, Windows, Linux): [nexawal-gpui](https://github.com/Nexatrode/nexawal-gpui)
-- Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) pinned to `912366f` (WalletCore 0.1.10)
+- Shared wallet core (git submodule): [MoneroWalletCoreFFI](https://github.com/cacaosteve/MoneroWalletCoreFFI) pinned to `7996693` (WalletCore 0.1.10)
 - Monero library work: [monero-oxide](https://github.com/cacaosteve/monero-oxide) (fork pin used by the core)
 - Website: [nexatrode.com](https://nexatrode.com)
 - Reproducible builds / Wallet Scrutiny: [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md)
