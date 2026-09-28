@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Meklēt darījuma ID</string>
     <string name="history_through_date">Līdz (YYYY-MM-DD)</string>
     <string name="history_title">Darījumi</string>
+    <string name="history_view_all_fmt">Skatīt visus darījumus (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d gaidoši darījumi</string>
     <string name="send_fee_increased_unapproved">Tīkla maksa palielinājās. Nekas netika pārraidīts. Pārskatiet maksu un apstipriniet vēlreiz.</string>
 </resources>

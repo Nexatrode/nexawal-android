@@ -15,60 +15,46 @@ class A11yStringsXmlTest {
 
     private val valuesDir = File("src/main/res/values")
 
-    private val localeDirs = listOf(
-        "values-es",
-        "values-pt-rBR",
-        "values-zh-rCN",
-        "values-zh-rTW",
-        "values-ru",
-        "values-de",
-        "values-fr",
-        "values-ja",
-        "values-ko",
-        "values-it",
-        "values-nl",
-        "values-in",
-        "values-tr",
-        "values-hi",
-        "values-pl",
-        "values-uk",
-        "values-vi",
-        "values-th",
-        "values-fa",
-        "values-cs",
-        "values-bg",
-        "values-sv",
-        "values-ro",
-        "values-nb",
-        "values-ar",
-        "values-he",
-        "values-yo",
-        "values-tl",
-        "values-my",
-        "values-ms",
-        "values-az",
-        "values-bn",
-        "values-sl",
-        "values-hu",
-        "values-lt",
-        "values-lv",
-        "values-ur",
-        "values-fi",
-        "values-ca",
-        "values-hr",
-        "values-sk",
-        "values-da",
-        "values-el",
-        "values-et",
-        "values-eu",
-        "values-ga",
-        "values-gl",
-        "values-gn",
-        "values-ha",
-        "values-hy",
-        "values-ky",
-        "values-sq",
-        "values-eo",
+    private val localeDirs = File("src/main/res")
+        .listFiles()
+        .orEmpty()
+        .filter { it.isDirectory && it.name.startsWith("values-") && File(it, "strings.xml").isFile }
+        .map { it.name }
+        .sorted()
+
+    private val translatedHistoryAndSafetyKeys = listOf(
+        "history_back",
+        "history_title",
+        "history_view_all_fmt",
+        "history_pending_count_fmt",
+        "history_search_txid",
+        "history_filter_all",
+        "history_from_date",
+        "history_through_date",
+        "history_invalid_date_range",
+        "history_results_fmt",
+        "history_incomplete_sync",
+        "history_changed_reload",
+        "history_load_failed",
+        "history_retry",
+        "history_no_matches",
+        "history_reload",
+        "history_loading_transaction",
+        "history_details_failed",
+        "send_fee_increased_unapproved",
+        "send_already_in_progress",
+    )
+
+    private val translatedCommonUiKeys = listOf(
+        "label_throughput_avg",
+        "label_throughput_recent",
+        "toggle_mainnet",
+        "legal_load_error",
+        "source_on_github",
+        "link_copied",
+        "section_info",
+        "section_chain",
+        "daemon_url_label",
     )
 
     private val requiredA11yKeys = listOf(
@@ -123,6 +109,53 @@ class A11yStringsXmlTest {
                 val value = values[key]
                 assertTrue("blank $dir value for $key", !value.isNullOrBlank())
             }
+        }
+    }
+
+    @Test
+    fun transactionHistoryAndSendSafetyCopy_isTranslatedInEveryLocale() {
+        for (dir in localeDirs) {
+            val values = loadStringValues(File("src/main/res/$dir", "strings.xml"))
+            for (key in translatedHistoryAndSafetyKeys) {
+                assertTrue("missing or blank $dir value for $key", !values[key].isNullOrBlank())
+            }
+        }
+    }
+
+    @Test
+    fun commonUiCopy_isTranslatedInEveryLocale() {
+        val english = loadStringValues(File(valuesDir, "strings.xml"))
+        for (dir in localeDirs) {
+            val values = loadStringValues(File("src/main/res/$dir", "strings.xml"))
+            for (key in translatedCommonUiKeys) {
+                val translated = values[key]
+                assertTrue("missing or blank $dir value for $key", !translated.isNullOrBlank())
+                assertTrue("$dir falls back to English for $key", translated != english[key])
+            }
+        }
+    }
+
+    @Test
+    fun transactionHistoryResultFormat_preservesBothArgumentsInEveryLocale() {
+        for (dir in localeDirs) {
+            val value = loadStringValues(File("src/main/res/$dir", "strings.xml")).getValue("history_results_fmt")
+            assertTrue("$dir is missing the matching-count argument", value.contains("%1\$d"))
+            assertTrue("$dir is missing the total-count argument", value.contains("%2\$d"))
+        }
+    }
+
+    @Test
+    fun walletHistoryButtonFormats_preserveCountArgumentInEveryLocale() {
+        for (dir in localeDirs) {
+            val values = loadStringValues(File("src/main/res/$dir", "strings.xml"))
+            assertTrue(
+                "$dir is missing the count argument in history_view_all_fmt",
+                values.getValue("history_view_all_fmt").contains("%1\$d"),
+            )
+            assertTrue(
+                "$dir is missing the count argument in history_pending_count_fmt",
+                values.getValue("history_pending_count_fmt").contains("%1\$d"),
+            )
         }
     }
 

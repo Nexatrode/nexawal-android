@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">ငွေလွှဲမှု ID ကို ရှာရန်</string>
     <string name="history_through_date">အထိ (YYYY-MM-DD)</string>
     <string name="history_title">ငွေလွှဲမှုများ</string>
+    <string name="history_view_all_fmt">ငွေလွှဲမှုအားလုံးကို ကြည့်ရန် (%1$d)</string>
+    <string name="history_pending_count_fmt">ဆိုင်းငံ့နေဆဲ ငွေလွှဲမှု %1$d ခု</string>
     <string name="send_fee_increased_unapproved">ကွန်ရက်ကြေး တိုးလာသည်။ မည်သည့်အရာမျှ ထုတ်လွှင့်ခြင်း မရှိပါ။ ကြေးကိုစစ်ဆေးပြီး ထပ်မံအတည်ပြုပါ။</string>
 </resources>

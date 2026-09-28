@@ -1,5 +1,7 @@
 package com.nexatrode.nexawal
 
+import android.content.Context
+import android.text.format.DateUtils
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -22,9 +24,24 @@ import java.util.Locale
  *
  * Notes:
  * - Input timestamps are expected to be seconds since epoch (Monero core uses seconds).
- * - We intentionally avoid Android framework dependencies (works on JVM/Android).
+ * - [relativeLocalized] is the Android UI path and delegates relative wording to Android's
+ *   locale-aware date formatter. [relative] remains a JVM-only English formatter for callers
+ *   that do not have an Android [Context].
  */
 object TimeFormat {
+
+    /** Locale-aware relative timestamp for Android UI. */
+    @JvmStatic
+    fun relativeLocalized(context: Context, tsSeconds: Long?): String? {
+        val ts = tsSeconds ?: return null
+        if (ts <= 0L) return null
+        if (ts > Instant.now().epochSecond) {
+            val locales = context.resources.configuration.locales
+            val locale = if (locales.isEmpty) Locale.getDefault() else locales[0]
+            return absolute(ts, locale = locale)
+        }
+        return DateUtils.getRelativeTimeSpanString(context, ts * 1000L, true).toString()
+    }
 
     /**
      * Format a UNIX timestamp (seconds since epoch) into a relative string like:

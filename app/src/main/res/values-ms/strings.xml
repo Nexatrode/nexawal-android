@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Cari ID transaksi</string>
     <string name="history_through_date">Hingga (YYYY-MM-DD)</string>
     <string name="history_title">Transaksi</string>
+    <string name="history_view_all_fmt">Lihat semua transaksi (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transaksi belum selesai</string>
     <string name="send_fee_increased_unapproved">Yuran rangkaian meningkat. Tiada apa-apa disiarkan. Semak yuran dan sahkan sekali lagi.</string>
 </resources>

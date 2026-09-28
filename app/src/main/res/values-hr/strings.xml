@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Pretraži ID transakcije</string>
     <string name="history_through_date">Do (YYYY-MM-DD)</string>
     <string name="history_title">Transakcije</string>
+    <string name="history_view_all_fmt">Prikaži sve transakcije (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transakcija na čekanju</string>
     <string name="send_fee_increased_unapproved">Mrežna naknada se povećala. Ništa nije emitirano. Pregledajte naknadu i ponovno potvrdite.</string>
 </resources>

@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Szukaj identyfikatora transakcji</string>
     <string name="history_through_date">Do (YYYY-MM-DD)</string>
     <string name="history_title">Transakcje</string>
+    <string name="history_view_all_fmt">Zobacz wszystkie transakcje (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d oczekujących transakcji</string>
     <string name="send_fee_increased_unapproved">Opłata sieciowa wzrosła. Nic nie zostało wysłane. Sprawdź opłatę i potwierdź ponownie.</string>
 </resources>

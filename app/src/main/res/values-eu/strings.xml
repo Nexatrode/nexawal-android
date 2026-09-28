@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Bilatu transakzioaren IDa</string>
     <string name="history_through_date">Noiz arte (YYYY-MM-DD)</string>
     <string name="history_title">Transakzioak</string>
+    <string name="history_view_all_fmt">Ikusi transakzio guztiak (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transakzio zain</string>
     <string name="send_fee_increased_unapproved">Sareko komisioa igo da. Ez da ezer bidali. Berrikusi komisioa eta berretsi berriro.</string>
 </resources>

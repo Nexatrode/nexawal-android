@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Əməliyyat ID-sini axtar</string>
     <string name="history_through_date">Son tarix (YYYY-MM-DD)</string>
     <string name="history_title">Əməliyyatlar</string>
+    <string name="history_view_all_fmt">Bütün əməliyyatlara bax (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d gözləyən əməliyyat</string>
     <string name="send_fee_increased_unapproved">Şəbəkə komissiyası artdı. Heç nə yayımlanmadı. Komissiyanı yoxlayıb yenidən təsdiqləyin.</string>
 </resources>

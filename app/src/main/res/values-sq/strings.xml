@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Kërko ID-në e transaksionit</string>
     <string name="history_through_date">Deri më (YYYY-MM-DD)</string>
     <string name="history_title">Transaksionet</string>
+    <string name="history_view_all_fmt">Shiko të gjitha transaksionet (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transaksione në pritje</string>
     <string name="send_fee_increased_unapproved">Tarifa e rrjetit u rrit. Nuk u transmetua asgjë. Kontrolloni tarifën dhe konfirmoni përsëri.</string>
 </resources>

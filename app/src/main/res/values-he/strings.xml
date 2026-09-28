@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">חיפוש מזהה עסקה</string>
     <string name="history_through_date">עד תאריך (YYYY-MM-DD)</string>
     <string name="history_title">עסקאות</string>
+    <string name="history_view_all_fmt">הצג את כל העסקאות (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d עסקאות בהמתנה</string>
     <string name="send_fee_increased_unapproved">עמלת הרשת עלתה. שום דבר לא שודר. יש לבדוק את העמלה ולאשר שוב.</string>
 </resources>

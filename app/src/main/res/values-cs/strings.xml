@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Hledat ID transakce</string>
     <string name="history_through_date">Do (YYYY-MM-DD)</string>
     <string name="history_title">Transakce</string>
+    <string name="history_view_all_fmt">Zobrazit všechny transakce (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d čekajících transakcí</string>
     <string name="send_fee_increased_unapproved">Síťový poplatek se zvýšil. Nic nebylo odesláno. Zkontrolujte poplatek a znovu potvrďte.</string>
 </resources>

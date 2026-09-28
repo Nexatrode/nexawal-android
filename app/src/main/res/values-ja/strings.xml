@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">取引 ID を検索</string>
     <string name="history_through_date">終了日 (YYYY-MM-DD)</string>
     <string name="history_title">取引</string>
+    <string name="history_view_all_fmt">すべての取引を表示 (%1$d)</string>
+    <string name="history_pending_count_fmt">保留中の取引 %1$d 件</string>
     <string name="send_fee_increased_unapproved">ネットワーク手数料が増加しました。送信は行われていません。手数料を確認してもう一度承認してください。</string>
 </resources>

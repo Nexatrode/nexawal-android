@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">거래 ID 검색</string>
     <string name="history_through_date">종료일 (YYYY-MM-DD)</string>
     <string name="history_title">거래</string>
+    <string name="history_view_all_fmt">모든 거래 보기 (%1$d)</string>
+    <string name="history_pending_count_fmt">대기 중 거래 %1$d건</string>
     <string name="send_fee_increased_unapproved">네트워크 수수료가 증가했습니다. 전송된 내용이 없습니다. 수수료를 확인하고 다시 승인하세요.</string>
 </resources>

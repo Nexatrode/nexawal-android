@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Tranzakcióazonosító keresése</string>
     <string name="history_through_date">Eddig (YYYY-MM-DD)</string>
     <string name="history_title">Tranzakciók</string>
+    <string name="history_view_all_fmt">Összes tranzakció megtekintése (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d függőben lévő tranzakció</string>
     <string name="send_fee_increased_unapproved">A hálózati díj megemelkedett. Nem történt közvetítés. Ellenőrizze a díjat, majd erősítse meg újra.</string>
 </resources>

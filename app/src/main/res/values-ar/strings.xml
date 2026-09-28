@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">ابحث عن معرّف المعاملة</string>
     <string name="history_through_date">حتى (YYYY-MM-DD)</string>
     <string name="history_title">المعاملات</string>
+    <string name="history_view_all_fmt">عرض كل المعاملات (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d معاملات معلّقة</string>
     <string name="send_fee_increased_unapproved">زادت رسوم الشبكة. لم تُبث أي معاملة. راجع الرسوم وأكّد مرة أخرى.</string>
 </resources>

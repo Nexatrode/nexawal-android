@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Пошук ID транзакції</string>
     <string name="history_through_date">До (YYYY-MM-DD)</string>
     <string name="history_title">Транзакції</string>
+    <string name="history_view_all_fmt">Показати всі транзакції (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d транзакцій очікується</string>
     <string name="send_fee_increased_unapproved">Мережева комісія зросла. Нічого не передано. Перевірте комісію та підтвердьте ще раз.</string>
 </resources>

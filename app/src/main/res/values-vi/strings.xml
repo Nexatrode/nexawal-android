@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Tìm mã giao dịch</string>
     <string name="history_through_date">Đến (YYYY-MM-DD)</string>
     <string name="history_title">Giao dịch</string>
+    <string name="history_view_all_fmt">Xem tất cả giao dịch (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d giao dịch đang chờ</string>
     <string name="send_fee_increased_unapproved">Phí mạng đã tăng. Chưa có giao dịch nào được phát đi. Kiểm tra phí và xác nhận lại.</string>
 </resources>

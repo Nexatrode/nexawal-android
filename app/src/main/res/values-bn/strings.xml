@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">লেনদেনের আইডি খুঁজুন</string>
     <string name="history_through_date">পর্যন্ত (YYYY-MM-DD)</string>
     <string name="history_title">লেনদেন</string>
+    <string name="history_view_all_fmt">সব লেনদেন দেখুন (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$dটি অপেক্ষমাণ লেনদেন</string>
     <string name="send_fee_increased_unapproved">নেটওয়ার্ক ফি বেড়েছে। কিছুই সম্প্রচার করা হয়নি। ফি পর্যালোচনা করে আবার নিশ্চিত করুন।</string>
 </resources>

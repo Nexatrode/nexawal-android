@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Serĉi transakcian ID</string>
     <string name="history_through_date">Ĝis (YYYY-MM-DD)</string>
     <string name="history_title">Transakcioj</string>
+    <string name="history_view_all_fmt">Montri ĉiujn transakciojn (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d atendantaj transakcioj</string>
     <string name="send_fee_increased_unapproved">La reta kotizo plialtiĝis. Nenio estis elsendita. Kontrolu la kotizon kaj konfirmu denove.</string>
 </resources>

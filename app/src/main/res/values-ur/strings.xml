@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">لین دین کی ID تلاش کریں</string>
     <string name="history_through_date">تک (YYYY-MM-DD)</string>
     <string name="history_title">لین دین</string>
+    <string name="history_view_all_fmt">تمام لین دین دیکھیں (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d زیر التوا لین دین</string>
     <string name="send_fee_increased_unapproved">نیٹ ورک فیس بڑھ گئی۔ کچھ بھی نشر نہیں ہوا۔ فیس کا جائزہ لے کر دوبارہ تصدیق کریں۔</string>
 </resources>

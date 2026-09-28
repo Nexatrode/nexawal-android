@@ -1158,11 +1158,11 @@ private fun WalletScreen(
         }
 
         TextButton(onClick = { onOpenHistory("all") }, modifier = Modifier.fillMaxWidth()) {
-            Text("View all transactions (${state.totalHistoryCount})")
+            Text(stringResource(R.string.history_view_all_fmt, state.totalHistoryCount))
         }
         if (state.pendingHistoryCount > 0) {
             TextButton(onClick = { onOpenHistory("pending") }, modifier = Modifier.fillMaxWidth()) {
-                Text("${state.pendingHistoryCount} pending transactions")
+                Text(stringResource(R.string.history_pending_count_fmt, state.pendingHistoryCount))
             }
         }
         Spacer(Modifier.height(16.dp))
@@ -1343,7 +1343,7 @@ internal fun TransferRow(
         else -> palette.primaryText
     }
 
-    val relTime = TimeFormat.relative(t.timestamp)
+    val relTime = TimeFormat.relativeLocalized(LocalContext.current, t.timestamp)
     val pendingLabel = stringResource(R.string.status_pending)
     val statusText = when {
         t.pending && palette.classic -> pendingLabel.uppercase()
@@ -2322,9 +2322,13 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
                                 estimatedFee = null
-                                errorText = t.message
+                                errorText = context.getString(R.string.send_fee_increased_unapproved)
                             } catch (t: Throwable) {
-                                errorText = t.message ?: t.javaClass.simpleName
+                                errorText = if (t.message == com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS) {
+                                    context.getString(R.string.send_already_in_progress)
+                                } else {
+                                    t.message ?: t.javaClass.simpleName
+                                }
                             } finally {
                                 isSending = false
                             }
@@ -2401,9 +2405,13 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
                                 sweepPreview = null
-                                errorText = t.message
+                                errorText = context.getString(R.string.send_fee_increased_unapproved)
                             } catch (t: Throwable) {
-                                errorText = t.message ?: t.javaClass.simpleName
+                                errorText = if (t.message == com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS) {
+                                    context.getString(R.string.send_already_in_progress)
+                                } else {
+                                    t.message ?: t.javaClass.simpleName
+                                }
                             } finally {
                                 isSending = false
                             }

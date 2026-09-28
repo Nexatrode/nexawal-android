@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">جستجوی شناسهٔ تراکنش</string>
     <string name="history_through_date">تا (YYYY-MM-DD)</string>
     <string name="history_title">تراکنش‌ها</string>
+    <string name="history_view_all_fmt">مشاهده همه تراکنش‌ها (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d تراکنش در انتظار</string>
     <string name="send_fee_increased_unapproved">کارمزد شبکه افزایش یافت. چیزی پخش نشد. کارمزد را بررسی و دوباره تأیید کنید.</string>
 </resources>

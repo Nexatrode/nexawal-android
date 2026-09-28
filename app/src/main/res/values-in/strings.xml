@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Cari ID transaksi</string>
     <string name="history_through_date">Sampai (YYYY-MM-DD)</string>
     <string name="history_title">Transaksi</string>
+    <string name="history_view_all_fmt">Lihat semua transaksi (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transaksi tertunda</string>
     <string name="send_fee_increased_unapproved">Biaya jaringan meningkat. Tidak ada transaksi yang disiarkan. Tinjau biaya lalu konfirmasi lagi.</string>
 </resources>

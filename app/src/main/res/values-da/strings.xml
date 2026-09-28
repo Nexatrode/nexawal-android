@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Søg efter transaktions-id</string>
     <string name="history_through_date">Til (YYYY-MM-DD)</string>
     <string name="history_title">Transaktioner</string>
+    <string name="history_view_all_fmt">Se alle transaktioner (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d afventende transaktioner</string>
     <string name="send_fee_increased_unapproved">Netværksgebyret steg. Intet blev udsendt. Gennemgå gebyret, og bekræft igen.</string>
 </resources>

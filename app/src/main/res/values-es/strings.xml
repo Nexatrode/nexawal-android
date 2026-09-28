@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Buscar ID de transacción</string>
     <string name="history_through_date">Hasta (YYYY-MM-DD)</string>
     <string name="history_title">Transacciones</string>
+    <string name="history_view_all_fmt">Ver todas las transacciones (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transacciones pendientes</string>
     <string name="send_fee_increased_unapproved">La comisión de red aumentó. No se envió nada. Revisa la comisión y vuelve a confirmar.</string>
 </resources>

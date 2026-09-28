@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Αναζήτηση ID συναλλαγής</string>
     <string name="history_through_date">Έως (YYYY-MM-DD)</string>
     <string name="history_title">Συναλλαγές</string>
+    <string name="history_view_all_fmt">Προβολή όλων των συναλλαγών (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d εκκρεμείς συναλλαγές</string>
     <string name="send_fee_increased_unapproved">Η χρέωση δικτύου αυξήθηκε. Δεν μεταδόθηκε τίποτα. Ελέγξτε τη χρέωση και επιβεβαιώστε ξανά.</string>
 </resources>

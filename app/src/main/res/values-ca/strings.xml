@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Cerca l’ID de la transacció</string>
     <string name="history_through_date">Fins a (YYYY-MM-DD)</string>
     <string name="history_title">Transaccions</string>
+    <string name="history_view_all_fmt">Mostra totes les transaccions (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d transaccions pendents</string>
     <string name="send_fee_increased_unapproved">La tarifa de la xarxa ha augmentat. No s’ha enviat res. Revisa-la i torna a confirmar.</string>
 </resources>

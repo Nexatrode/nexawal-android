@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Nemi ID na ma\'amala</string>
     <string name="history_through_date">Zuwa (YYYY-MM-DD)</string>
     <string name="history_title">Ma\'amaloli</string>
+    <string name="history_view_all_fmt">Duba duk ma\'amaloli (%1$d)</string>
+    <string name="history_pending_count_fmt">Ma\'amaloli %1$d ana jira</string>
     <string name="send_fee_increased_unapproved">Kudin cibiyar sadarwa ya ƙaru. Ba a aika komai ba. Duba kuɗin sannan ka sake tabbatarwa.</string>
 </resources>

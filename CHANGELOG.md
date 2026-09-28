@@ -3,6 +3,17 @@
 All notable changes to **NexaWal Android** are documented here.
 Release tags use `v<versionName>` (e.g. `v1.0.0`).
 
+## [1.0.2] — Unreleased
+
+### Changed
+- Localize transaction-history labels, filters, errors, and wallet history buttons across all 53 shipped locales
+- Show transaction dates with the device locale
+- Use clearer translated copy when a send fee increases or a send is already in progress
+
+### Fixed
+- Keep the release theme compatible with Android 11 while using Android 12+ splash-screen styling
+- Mark camera as optional so devices without a camera are not filtered out of installs
+
 ## [1.0.1] — 2026-09-04
 
 Correctness and recovery update for the first public release.

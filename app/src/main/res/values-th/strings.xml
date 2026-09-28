@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">ค้นหา ID ธุรกรรม</string>
     <string name="history_through_date">ถึง (YYYY-MM-DD)</string>
     <string name="history_title">ธุรกรรม</string>
+    <string name="history_view_all_fmt">ดูธุรกรรมทั้งหมด (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d ธุรกรรมรอดำเนินการ</string>
     <string name="send_fee_increased_unapproved">ค่าธรรมเนียมเครือข่ายเพิ่มขึ้น ไม่มีการเผยแพร่ธุรกรรม ตรวจสอบค่าธรรมเนียมและยืนยันอีกครั้ง</string>
 </resources>

@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Транзакциянын ID-син издөө</string>
     <string name="history_through_date">Аягына чейин (YYYY-MM-DD)</string>
     <string name="history_title">Транзакциялар</string>
+    <string name="history_view_all_fmt">Бардык транзакцияларды көрүү (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d күтүлүүдөгү транзакция</string>
     <string name="send_fee_increased_unapproved">Тармак акысы көбөйдү. Эч нерсе таратылган жок. Акыны карап чыгып, кайра ырастаңыз.</string>
 </resources>

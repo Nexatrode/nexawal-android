@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Որոնել գործարքի ID-ն</string>
     <string name="history_through_date">Մինչև (YYYY-MM-DD)</string>
     <string name="history_title">Գործարքներ</string>
+    <string name="history_view_all_fmt">Դիտել բոլոր գործարքները (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d սպասման գործարք</string>
     <string name="send_fee_increased_unapproved">Ցանցի վճարը բարձրացել է։ Ոչինչ չի հեռարձակվել։ Ստուգեք վճարը և կրկին հաստատեք։</string>
 </resources>

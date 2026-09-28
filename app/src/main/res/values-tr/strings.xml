@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">İşlem kimliğini ara</string>
     <string name="history_through_date">Bitiş (YYYY-MM-DD)</string>
     <string name="history_title">İşlemler</string>
+    <string name="history_view_all_fmt">Tüm işlemleri görüntüle (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d bekleyen işlem</string>
     <string name="send_fee_increased_unapproved">Ağ ücreti arttı. Hiçbir şey yayınlanmadı. Ücreti inceleyip yeniden onaylayın.</string>
 </resources>

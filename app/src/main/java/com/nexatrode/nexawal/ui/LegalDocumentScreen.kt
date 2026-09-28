@@ -74,7 +74,7 @@ fun LegalDocumentScreen(
                 navigationIcon = {
                     TextButton(onClick = onClose) {
                         Text(
-                            text = stringResource(R.string.legal_close),
+                            text = stringResource(R.string.action_close),
                             color = palette.accent,
                             fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                         )

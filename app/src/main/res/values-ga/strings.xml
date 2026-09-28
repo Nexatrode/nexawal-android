@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Cuardaigh aitheantas an idirbhirt</string>
     <string name="history_through_date">Go dtí (YYYY-MM-DD)</string>
     <string name="history_title">Idirbhearta</string>
+    <string name="history_view_all_fmt">Féach ar gach idirbheart (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d idirbheart ar feitheamh</string>
     <string name="send_fee_increased_unapproved">Tháinig méadú ar tháille an líonra. Níor craoladh aon rud. Seiceáil an táille agus deimhnigh arís.</string>
 </resources>

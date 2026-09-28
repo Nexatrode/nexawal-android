@@ -111,7 +111,7 @@ class WalletSyncForegroundService : Service() {
             .setSilent(true)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
             .setProgress(100, percent.coerceIn(0, 100), percent <= 0)
-            .addAction(0, getString(R.string.sync_notification_stop), stopIntent)
+            .addAction(0, getString(R.string.action_cancel), stopIntent)
             .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
             .build()
     }

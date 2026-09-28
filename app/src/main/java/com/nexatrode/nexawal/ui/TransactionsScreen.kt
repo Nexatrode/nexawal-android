@@ -12,7 +12,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.nexatrode.nexawal.R
 import com.nexatrode.nexawal.*
 import com.nexatrode.nexawal.logic.HistoryPageCache
 import com.nexatrode.nexawal.logic.HistoryConfirmations
@@ -32,7 +34,7 @@ internal class TransactionsPager(
     var version by mutableIntStateOf(0)
     var revision by mutableStateOf<String?>(null)
     var changed by mutableStateOf(false)
-    var error by mutableStateOf<String?>(null)
+    var error by mutableStateOf<HistoryPageError?>(null)
     var loading by mutableStateOf(false)
     var anchorIndex: Int? = null; private set
     var generation = 0; private set
@@ -66,7 +68,7 @@ internal class TransactionsPager(
             if (token != generation) return
             failed.add(offset)
             if (e.message?.contains("stale_history_cursor") == true) changed = true
-            else error = "Could not load this part of history. You can retry."
+            else error = HistoryPageError.LOAD
         } finally { if (token == generation) { inFlight.remove(offset); loading = inFlight.isNotEmpty() } }
     }
     suspend fun retry() {
@@ -74,6 +76,8 @@ internal class TransactionsPager(
         offsets.forEach { load(it) }
     }
 }
+
+internal enum class HistoryPageError { LOAD, DETAILS }
 
 @Composable
 internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalette, initialFilter: String, onBack: () -> Unit) {
@@ -107,35 +111,48 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     DisposableEffect(pager) { onDispose { pager.cancel() } }
     Column(Modifier.fillMaxSize().background(palette.background).padding(horizontal = 16.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            TextButton(onClick = onBack) { Text("Back") }
-            Text("Transactions", style = MaterialTheme.typography.titleLarge, color = palette.primaryText, modifier = Modifier.padding(12.dp))
+            TextButton(onClick = onBack) { Text(stringResource(R.string.history_back)) }
+            Text(stringResource(R.string.history_title), style = MaterialTheme.typography.titleLarge, color = palette.primaryText, modifier = Modifier.padding(12.dp))
         }
-        OutlinedTextField(search, { search = it }, label = { Text("Search transaction ID") }, singleLine = true, modifier = Modifier.fillMaxWidth())
+        OutlinedTextField(search, { search = it }, label = { Text(stringResource(R.string.history_search_txid)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            listOf("all" to "All", "received" to "Received", "sent" to "Sent", "pending" to "Pending").forEach { (value, label) ->
+            listOf(
+                "all" to stringResource(R.string.history_filter_all),
+                "received" to stringResource(R.string.direction_received),
+                "sent" to stringResource(R.string.direction_sent),
+                "pending" to stringResource(R.string.status_pending),
+            ).forEach { (value, label) ->
                 FilterChip(selected = filter == value, onClick = { filter = value }, label = { Text(label) })
             }
         }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedTextField(from, { from = it }, label = { Text("From YYYY-MM-DD") }, singleLine = true, modifier = Modifier.weight(1f))
-            OutlinedTextField(through, { through = it }, label = { Text("Through YYYY-MM-DD") }, singleLine = true, modifier = Modifier.weight(1f))
+            OutlinedTextField(from, { from = it }, label = { Text(stringResource(R.string.history_from_date)) }, singleLine = true, modifier = Modifier.weight(1f))
+            OutlinedTextField(through, { through = it }, label = { Text(stringResource(R.string.history_through_date)) }, singleLine = true, modifier = Modifier.weight(1f))
         }
-        if (queryResult.isFailure) Text("Enter a valid date range (YYYY-MM-DD), or leave it blank.", color = palette.danger)
-        Text("${pager.count} matching · ${pager.total} total", color = palette.secondaryText, modifier = Modifier.padding(vertical = 8.dp))
-        if (state.refreshInProgress || state.balanceIsStaleWhileSyncing) Text("History may be incomplete while syncing.", color = palette.secondaryText)
+        if (queryResult.isFailure) Text(stringResource(R.string.history_invalid_date_range), color = palette.danger)
+        if (queryResult.isSuccess) {
+            Text(stringResource(R.string.history_results_fmt, pager.count, pager.total), color = palette.secondaryText, modifier = Modifier.padding(vertical = 8.dp))
+        }
+        if (state.refreshInProgress || state.balanceIsStaleWhileSyncing) Text(stringResource(R.string.history_incomplete_sync), color = palette.secondaryText)
         if (pager.changed) TextButton(onClick = { scope.launch { queryResult.getOrNull()?.let {
                 val anchor = pager.cache.row(listState.firstVisibleItemIndex)?.txid
                 val pixelOffset = listState.firstVisibleItemScrollOffset
                 pager.reset(id, it, anchor)
                 listState.scrollToItem(pager.anchorIndex ?: 0, if (pager.anchorIndex != null) pixelOffset else 0)
-            } } }) { Text("History changed · Reload transactions") }
+            } } }) { Text(stringResource(R.string.history_changed_reload)) }
         pager.error?.let {
-            Text(it, color = palette.danger)
-            TextButton(onClick = { scope.launch { pager.retry() } }) { Text("Retry loading history") }
+            val message = when (it) {
+                HistoryPageError.LOAD -> stringResource(R.string.history_load_failed)
+                HistoryPageError.DETAILS -> stringResource(R.string.history_details_failed)
+            }
+            Text(message, color = palette.danger)
+            if (it == HistoryPageError.LOAD) {
+                TextButton(onClick = { scope.launch { pager.retry() } }) { Text(stringResource(R.string.history_retry)) }
+            }
         }
         if (pager.loading) LinearProgressIndicator(Modifier.fillMaxWidth())
         if (!pager.loading && pager.error == null && pager.count == 0) {
-            Text(if (pager.total > 0) "No transactions match these filters." else "No transactions found yet.", color = palette.secondaryText)
+            Text(if (pager.total > 0) stringResource(R.string.history_no_matches) else stringResource(R.string.no_transactions_yet), color = palette.secondaryText)
         }
         TransactionHistoryList(pager, palette, listState, queryResult.isSuccess, Modifier.weight(1f), state.syncStatus?.chainHeight ?: 0) { row ->
             val session = state.historySession
@@ -146,7 +163,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
                         if (detail == null) pager.changed = true else selected = detail
                     }
                 } catch (e: CancellationException) { throw e
-                } catch (_: Exception) { if (walletManager.state.value.historySession == session) pager.error = "Transaction details could not be loaded." }
+                } catch (_: Exception) { if (walletManager.state.value.historySession == session) pager.error = HistoryPageError.DETAILS }
             }
         }
     }
@@ -175,7 +192,11 @@ internal fun TransactionHistoryList(
         items(if (validQuery) pager.count else 0, key = { index -> pager.cache.row(index)?.txid ?: "loading-$index" }) { index ->
             val row = remember(version, index, chainHeight) { pager.cache.row(index)?.atChainHeight(chainHeight) }
             if (row == null) {
-                Text(if (pager.changed) "Reload history to continue." else "Loading transaction…", color = palette.secondaryText, modifier = Modifier.fillMaxWidth().heightIn(min = 100.dp))
+                Text(
+                    stringResource(if (pager.changed) R.string.history_reload else R.string.history_loading_transaction),
+                    color = palette.secondaryText,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 100.dp),
+                )
             } else {
                 TransferRow(row, palette) { onSelect(row) }
                 HorizontalDivider(color = palette.separator)

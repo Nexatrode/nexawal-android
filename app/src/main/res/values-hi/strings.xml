@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">लेन-देन ID खोजें</string>
     <string name="history_through_date">तक (YYYY-MM-DD)</string>
     <string name="history_title">लेन-देन</string>
+    <string name="history_view_all_fmt">सभी लेन-देन देखें (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d प्रतीक्षित लेन-देन</string>
     <string name="send_fee_increased_unapproved">नेटवर्क शुल्क बढ़ गया। कुछ भी प्रसारित नहीं हुआ। शुल्क देखें और फिर से पुष्टि करें।</string>
 </resources>

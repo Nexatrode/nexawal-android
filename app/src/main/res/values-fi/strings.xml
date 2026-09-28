@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Hae tapahtumatunnusta</string>
     <string name="history_through_date">Päättyen (YYYY-MM-DD)</string>
     <string name="history_title">Tapahtumat</string>
+    <string name="history_view_all_fmt">Näytä kaikki tapahtumat (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d odottavaa tapahtumaa</string>
     <string name="send_fee_increased_unapproved">Verkkomaksu nousi. Mitään ei lähetetty. Tarkista maksu ja vahvista uudelleen.</string>
 </resources>

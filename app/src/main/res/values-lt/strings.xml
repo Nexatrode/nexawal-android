@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Ieškoti operacijos ID</string>
     <string name="history_through_date">Iki (YYYY-MM-DD)</string>
     <string name="history_title">Operacijos</string>
+    <string name="history_view_all_fmt">Peržiūrėti visas operacijas (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d vykdomos operacijos</string>
     <string name="send_fee_increased_unapproved">Tinklo mokestis padidėjo. Nieko neišsiųsta. Peržiūrėkite mokestį ir patvirtinkite dar kartą.</string>
 </resources>

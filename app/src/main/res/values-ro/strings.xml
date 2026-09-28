@@ -409,5 +409,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Caută ID-ul tranzacției</string>
     <string name="history_through_date">Până la (YYYY-MM-DD)</string>
     <string name="history_title">Tranzacții</string>
+    <string name="history_view_all_fmt">Vezi toate tranzacțiile (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d tranzacții în curs</string>
     <string name="send_fee_increased_unapproved">Comisionul rețelei a crescut. Nu s-a transmis nimic. Verifică comisionul și confirmă din nou.</string>
 </resources>

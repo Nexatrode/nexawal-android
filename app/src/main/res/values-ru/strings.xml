@@ -407,5 +407,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Поиск ID транзакции</string>
     <string name="history_through_date">По (YYYY-MM-DD)</string>
     <string name="history_title">Транзакции</string>
+    <string name="history_view_all_fmt">Показать все транзакции (%1$d)</string>
+    <string name="history_pending_count_fmt">%1$d ожидающих транзакций</string>
     <string name="send_fee_increased_unapproved">Сетевая комиссия выросла. Ничего не отправлено. Проверьте комиссию и подтвердите снова.</string>
 </resources>

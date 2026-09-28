@@ -1,0 +1,1 @@
+Localizes transaction history labels, filters, errors, and wallet history buttons across all shipped locales. Improves localized transaction dates and clarifies fee changes that require send reconfirmation. Keeps splash-screen styling compatible with Android 11+.
