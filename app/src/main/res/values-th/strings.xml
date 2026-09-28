@@ -26,8 +26,8 @@
     <string name="label_network_height">ความสูงเครือข่าย</string>
     <string name="label_remaining">เหลืออีก</string>
     <string name="label_throughput">ปริมาณงานที่ประมวลผล</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">อัตราการประมวลผลเฉลี่ย</string>
+    <string name="label_throughput_recent">อัตราการประมวลผลล่าสุด</string>
     <string name="label_progress">ความคืบหน้า</string>
     <string name="recent_transactions">ธุรกรรมล่าสุด</string>
     <string name="no_transactions_yet">ยังไม่มีธุรกรรม</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">ความสูงการกู้คืน:</string>
     <string name="restore_height_tip">คำแนะนำ: 0 จะสแกนประวัติทั้งหมดของเชน เป็นตัวเลือกที่ปลอดภัยที่สุดหากคุณไม่แน่ใจ แต่การซิงค์อาจใช้เวลานานขึ้น</string>
     <string name="restore_height_warning">คำเตือน: หากคุณตั้งความสูงการกู้คืนไว้หลังจากธุรกรรมแรกของคุณ เงินทุนที่เก่ากว่าจะไม่ปรากฏจนกว่าคุณจะสแกนซ้ำจากความสูงที่เก่ากว่า</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">เครือข่ายหลัก</string>
     <string name="toggle_require_face_id">ต้องใช้ Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">ต้องยืนยันตัวตนอุปกรณ์</string>
     <string name="biometrics_unavailable">การยืนยันตัวตนด้วยไบโอเมตริกหรืออุปกรณ์ไม่พร้อมใช้งานบนอุปกรณ์นี้</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">บันทึกโหนดแล้ว</string>
     <string name="wallet_already_stored">มีกระเป๋าเงินถูกจัดเก็บไว้ในอุปกรณ์นี้แล้ว</string>
     <string name="recovery_seed_label">วลีกู้คืนของคุณ:</string>
-    <string name="recovery_seed_instructions">จดคำเหล่านี้ตามลำดับและเก็บไว้ในที่ปลอดภัย คุณจะต้องใช้คำเหล่านี้เพื่อกู้คืนกระเป๋าเงินของคุณ — คำเหล่านี้จะไม่ถูกจัดเก็บไว้บนอุปกรณ์นี้เลย</string>
+    <string name="recovery_seed_instructions">จดคำเหล่านี้ตามลำดับและเก็บไว้อย่างปลอดภัยแบบออฟไลน์ คุณจะต้องใช้คำเหล่านี้เพื่อกู้คืนกระเป๋าเงินหากโทรศัพท์เครื่องนี้สูญหาย NexaWal ยังเก็บสำเนาที่เข้ารหัสไว้บนอุปกรณ์สำหรับการปลดล็อกด้วย — ปฏิบัติต่อข้อมูลสำรองเหมือนเงินสด</string>
     <string name="confirm_backup_prompt">ยืนยันข้อมูลสำรองของคุณ — กรอกคำที่ต้องการ:</string>
     <string name="mnemonic_paste_label">วลีช่วยจำ (วาง):</string>
     <string name="mnemonic_paste_placeholder">วางวลีช่วยจำ 25 คำ…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">ออก</string>
     <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">ซอร์สโค้ดบน GitHub</string>
+    <string name="link_copied">คัดลอกลิงก์แล้ว</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">ไม่สามารถโหลดเอกสารออฟไลน์ได้</string>
     <string name="source_license">ซอร์สโค้ดและสัญญาอนุญาต (MIT)</string>
     <string name="saved_clearnet">บันทึก clearnet แล้ว</string>
     <string name="saved_i2p">บันทึก I2P แล้ว</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">ปิด</string>
     <string name="a11y_swap_amount_unit">สลับระหว่าง XMR และ %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">ย้อนกลับ</string>
+    <string name="history_changed_reload">ประวัติมีการเปลี่ยนแปลง · โหลดธุรกรรมใหม่</string>
+    <string name="history_details_failed">โหลดรายละเอียดธุรกรรมไม่ได้</string>
+    <string name="history_filter_all">ทั้งหมด</string>
+    <string name="history_from_date">ตั้งแต่ (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">ประวัติอาจไม่ครบถ้วนขณะกำลังซิงค์</string>
+    <string name="history_invalid_date_range">ป้อนวันที่ที่ถูกต้องในรูปแบบ YYYY-MM-DD หรือเว้นว่างไว้</string>
+    <string name="history_load_failed">โหลดประวัติส่วนนี้ไม่ได้ ลองอีกครั้ง</string>
+    <string name="history_loading_transaction">กำลังโหลดธุรกรรม…</string>
+    <string name="history_no_matches">ไม่มีธุรกรรมที่ตรงกับตัวกรองเหล่านี้</string>
+    <string name="history_reload">โหลดประวัติใหม่เพื่อดำเนินการต่อ</string>
+    <string name="history_results_fmt">ตรงกัน %1$d รายการ · ทั้งหมด %2$d รายการ</string>
+    <string name="history_retry">ลองอีกครั้ง</string>
+    <string name="history_search_txid">ค้นหา ID ธุรกรรม</string>
+    <string name="history_through_date">ถึง (YYYY-MM-DD)</string>
+    <string name="history_title">ธุรกรรม</string>
+    <string name="send_fee_increased_unapproved">ค่าธรรมเนียมเครือข่ายเพิ่มขึ้น ไม่มีการเผยแพร่ธุรกรรม ตรวจสอบค่าธรรมเนียมและยืนยันอีกครั้ง</string>
 </resources>

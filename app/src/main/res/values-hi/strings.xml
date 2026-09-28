@@ -26,8 +26,8 @@
     <string name="label_network_height">नेटवर्क हाइट</string>
     <string name="label_remaining">शेष</string>
     <string name="label_throughput">थ्रूपुट</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">औसत संसाधन गति</string>
+    <string name="label_throughput_recent">हाल की संसाधन गति</string>
     <string name="label_progress">प्रगति</string>
     <string name="recent_transactions">हाल के ट्रांज़ैक्शन</string>
     <string name="no_transactions_yet">अभी तक कोई ट्रांज़ैक्शन नहीं।</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">नोड सेव हो गया</string>
     <string name="wallet_already_stored">इस डिवाइस पर एक वॉलेट पहले से संग्रहीत है।</string>
     <string name="recovery_seed_label">आपका रिकवरी सीड:</string>
-    <string name="recovery_seed_instructions">इन शब्दों को क्रम में लिख लें और किसी सुरक्षित जगह रखें। आपके वॉलेट को रीस्टोर करने के लिए इनकी आवश्यकता होगी — ये इस डिवाइस पर कभी संग्रहीत नहीं होते।</string>
+    <string name="recovery_seed_instructions">इन शब्दों को क्रम में लिख लें और इन्हें ऑफ़लाइन किसी सुरक्षित जगह रखें। अगर यह फ़ोन खो जाए तो वॉलेट रीस्टोर करने के लिए इनकी ज़रूरत होगी। NexaWal अनलॉक के लिए डिवाइस पर एक एन्क्रिप्टेड प्रति भी रखता है — बैकअप को नकदी की तरह समझें।</string>
     <string name="confirm_backup_prompt">अपना बैकअप कन्फर्म करें — मांगे गए शब्द दर्ज करें:</string>
     <string name="mnemonic_paste_label">निमोनिक (पेस्ट करें):</string>
     <string name="mnemonic_paste_placeholder">25-शब्दों वाला निमोनिक पेस्ट करें…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">बाहर निकलें</string>
     <string name="privacy_policy">प्राइवेसी पॉलिसी</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">GitHub पर स्रोत कोड</string>
+    <string name="link_copied">लिंक कॉपी किया गया</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">ऑफ़लाइन दस्तावेज़ लोड नहीं हो सका।</string>
     <string name="source_license">सोर्स और लाइसेंस (MIT)</string>
     <string name="saved_clearnet">क्लियरनेट सेव हो गया</string>
     <string name="saved_i2p">I2P सेव हो गया</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">बंद</string>
     <string name="a11y_swap_amount_unit">XMR और %1$s के बीच स्विच करें</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">वापस</string>
+    <string name="history_changed_reload">इतिहास बदल गया · लेन-देन फिर से लोड करें</string>
+    <string name="history_details_failed">लेन-देन का विवरण लोड नहीं हो सका।</string>
+    <string name="history_filter_all">सभी</string>
+    <string name="history_from_date">से (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">सिंक के दौरान इतिहास अधूरा हो सकता है।</string>
+    <string name="history_invalid_date_range">YYYY-MM-DD प्रारूप में सही तारीखें दर्ज करें या खाली छोड़ें।</string>
+    <string name="history_load_failed">इतिहास का यह हिस्सा लोड नहीं हो सका। फिर से कोशिश करें।</string>
+    <string name="history_loading_transaction">लेन-देन लोड हो रहा है…</string>
+    <string name="history_no_matches">इन फ़िल्टर से मेल खाने वाला कोई लेन-देन नहीं है।</string>
+    <string name="history_reload">जारी रखने के लिए इतिहास फिर से लोड करें।</string>
+    <string name="history_results_fmt">%1$d मेल · कुल %2$d</string>
+    <string name="history_retry">फिर से कोशिश करें</string>
+    <string name="history_search_txid">लेन-देन ID खोजें</string>
+    <string name="history_through_date">तक (YYYY-MM-DD)</string>
+    <string name="history_title">लेन-देन</string>
+    <string name="send_fee_increased_unapproved">नेटवर्क शुल्क बढ़ गया। कुछ भी प्रसारित नहीं हुआ। शुल्क देखें और फिर से पुष्टि करें।</string>
 </resources>

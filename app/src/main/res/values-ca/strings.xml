@@ -26,8 +26,8 @@
     <string name="label_network_height">Alçada de la xarxa</string>
     <string name="label_remaining">Restant</string>
     <string name="label_throughput">Rendiment</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Rendiment mitjà</string>
+    <string name="label_throughput_recent">Rendiment recent</string>
     <string name="label_progress">Progrés</string>
     <string name="recent_transactions">Transaccions recents</string>
     <string name="no_transactions_yet">Encara no hi ha transaccions.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Alçada de restauració:</string>
     <string name="restore_height_tip">Consell: 0 escaneja tot l\'historial de la cadena. És l\'opció més segura si no n\'estàs segur, però pot trigar més a sincronitzar-se.</string>
     <string name="restore_height_warning">Avís: si estableixes una alçada de restauració posterior a la teva primera transacció, els fons més antics no apareixeran fins que tornis a escanejar des d\'una alçada anterior.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Xarxa principal</string>
     <string name="toggle_require_face_id">Requereix Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Requereix autenticació del dispositiu</string>
     <string name="biometrics_unavailable">L\'autenticació biomètrica o del dispositiu no està disponible en aquest dispositiu.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node desat</string>
     <string name="wallet_already_stored">Ja hi ha una cartera desada en aquest dispositiu.</string>
     <string name="recovery_seed_label">La teva llavor de recuperació:</string>
-    <string name="recovery_seed_instructions">Escriu aquestes paraules en ordre i guarda-les en un lloc segur. Les necessitaràs per restaurar la cartera — mai es desen en aquest dispositiu.</string>
+    <string name="recovery_seed_instructions">Escriu aquestes paraules en ordre i guarda-les de forma segura fora de línia. Les necessitaràs per restaurar la cartera si perds aquest telèfon. NexaWal també conserva una còpia xifrada al dispositiu per al desbloqueig — tracta la còpia de seguretat com diners en efectiu.</string>
     <string name="confirm_backup_prompt">Confirma la còpia de seguretat — introdueix les paraules sol·licitades:</string>
     <string name="mnemonic_paste_label">Mnemònic (enganxa):</string>
     <string name="mnemonic_paste_placeholder">Enganxa el mnemònic de 25 paraules…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Surt</string>
     <string name="privacy_policy">Política de privadesa</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Codi font a GitHub</string>
+    <string name="link_copied">Enllaç copiat</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">No s’ha pogut carregar el document sense connexió.</string>
     <string name="source_license">Codi font i llicència (MIT)</string>
     <string name="saved_clearnet">Clearnet desat</string>
     <string name="saved_i2p">I2P desat</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Desactivat</string>
     <string name="a11y_swap_amount_unit">Canvia entre XMR i %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Enrere</string>
+    <string name="history_changed_reload">L’historial ha canviat · Torna a carregar les transaccions</string>
+    <string name="history_details_failed">No s’han pogut carregar els detalls de la transacció.</string>
+    <string name="history_filter_all">Totes</string>
+    <string name="history_from_date">Des de (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">L’historial pot ser incomplet mentre se sincronitza.</string>
+    <string name="history_invalid_date_range">Introdueix dates vàlides en format YYYY-MM-DD o deixa-les en blanc.</string>
+    <string name="history_load_failed">No s’ha pogut carregar aquesta part de l’historial. Torna-ho a provar.</string>
+    <string name="history_loading_transaction">S’està carregant la transacció…</string>
+    <string name="history_no_matches">No hi ha transaccions que coincideixin amb aquests filtres.</string>
+    <string name="history_reload">Torna a carregar l’historial per continuar.</string>
+    <string name="history_results_fmt">%1$d coincidències · %2$d en total</string>
+    <string name="history_retry">Torna-ho a provar</string>
+    <string name="history_search_txid">Cerca l’ID de la transacció</string>
+    <string name="history_through_date">Fins a (YYYY-MM-DD)</string>
+    <string name="history_title">Transaccions</string>
+    <string name="send_fee_increased_unapproved">La tarifa de la xarxa ha augmentat. No s’ha enviat res. Revisa-la i torna a confirmar.</string>
 </resources>

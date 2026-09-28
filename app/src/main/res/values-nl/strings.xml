@@ -26,8 +26,8 @@
     <string name="label_network_height">Netwerkhoogte</string>
     <string name="label_remaining">Resterend</string>
     <string name="label_throughput">Doorvoersnelheid</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Gemiddelde doorvoer</string>
+    <string name="label_throughput_recent">Recente doorvoer</string>
     <string name="label_progress">Voortgang</string>
     <string name="recent_transactions">Recente transacties</string>
     <string name="no_transactions_yet">Nog geen transacties.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Herstelhoogte:</string>
     <string name="restore_height_tip">Tip: 0 scant de volledige ketengeschiedenis. Dit is de veiligste optie als je het niet zeker weet, maar de synchronisatie kan langer duren.</string>
     <string name="restore_height_warning">Waarschuwing: als je een herstelhoogte instelt na je eerste transactie, verschijnen oudere tegoeden niet totdat je opnieuw scant vanaf een eerdere hoogte.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Hoofdnetwerk</string>
     <string name="toggle_require_face_id">Face ID / Touch ID vereisen</string>
     <string name="toggle_require_device_auth">Apparaatverificatie vereisen</string>
     <string name="biometrics_unavailable">Biometrische of apparaatverificatie is niet beschikbaar op dit apparaat.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Typ de volledige URL, inclusief http:// of https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node opslaan</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Informatie</string>
     <string name="walletcore_version_label">WalletCore-versie:</string>
     <string name="seed_backup_intro">Dit is je herstel-seed. Schrijf hem op papier en bewaar hem op een veilige plek. Iedereen met deze woorden heeft toegang tot je tegoeden — nexawal uploadt of maakt hier nooit een back-up van voor je.</string>
     <string name="generate_new_seed">Nieuwe seed genereren</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node opgeslagen</string>
     <string name="wallet_already_stored">Er is al een portemonnee opgeslagen op dit apparaat.</string>
     <string name="recovery_seed_label">Je herstel-seed:</string>
-    <string name="recovery_seed_instructions">Schrijf deze woorden in volgorde op en bewaar ze op een veilige plek. Je hebt ze nodig om je portemonnee te herstellen — ze worden nooit op dit apparaat opgeslagen.</string>
+    <string name="recovery_seed_instructions">Schrijf deze woorden in volgorde op en bewaar ze offline op een veilige plek. Je hebt ze nodig om de portemonnee te herstellen als je deze telefoon kwijtraakt. NexaWal bewaart ook een versleutelde kopie op het apparaat om te ontgrendelen — behandel de back-up als contant geld.</string>
     <string name="confirm_backup_prompt">Bevestig je back-up — voer de gevraagde woorden in:</string>
     <string name="mnemonic_paste_label">Mnemonic (plakken):</string>
     <string name="mnemonic_paste_placeholder">Plak mnemonic van 25 woorden…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Afsluiten</string>
     <string name="privacy_policy">Privacybeleid</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Sluiten</string>
+    <string name="source_on_github">Broncode op GitHub</string>
+    <string name="link_copied">Link gekopieerd</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">Offline document kon niet worden geladen.</string>
     <string name="source_license">Broncode &amp; licentie (MIT)</string>
     <string name="saved_clearnet">Clearnet opgeslagen</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Uit</string>
     <string name="a11y_swap_amount_unit">Wisselen tussen XMR en %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Terug</string>
+    <string name="history_changed_reload">Geschiedenis gewijzigd · transacties opnieuw laden</string>
+    <string name="history_details_failed">Transactiegegevens konden niet worden geladen.</string>
+    <string name="history_filter_all">Alle</string>
+    <string name="history_from_date">Vanaf (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">De geschiedenis kan tijdens het synchroniseren onvolledig zijn.</string>
+    <string name="history_invalid_date_range">Voer geldige datums in als YYYY-MM-DD of laat ze leeg.</string>
+    <string name="history_load_failed">Dit deel van de geschiedenis kon niet worden geladen. Probeer het opnieuw.</string>
+    <string name="history_loading_transaction">Transactie laden…</string>
+    <string name="history_no_matches">Geen transacties voldoen aan deze filters.</string>
+    <string name="history_reload">Laad de geschiedenis opnieuw om door te gaan.</string>
+    <string name="history_results_fmt">%1$d overeenkomsten · %2$d totaal</string>
+    <string name="history_retry">Opnieuw proberen</string>
+    <string name="history_search_txid">Transactie-ID zoeken</string>
+    <string name="history_through_date">Tot en met (YYYY-MM-DD)</string>
+    <string name="history_title">Transacties</string>
+    <string name="send_fee_increased_unapproved">De netwerkkosten zijn gestegen. Er is niets uitgezonden. Controleer de kosten en bevestig opnieuw.</string>
 </resources>

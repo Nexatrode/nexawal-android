@@ -26,8 +26,8 @@
     <string name="label_network_height">Ύψος δικτύου</string>
     <string name="label_remaining">Απομένουν</string>
     <string name="label_throughput">Ρυθμός απόδοσης</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Μέσος ρυθμός διεκπεραίωσης</string>
+    <string name="label_throughput_recent">Πρόσφατος ρυθμός διεκπεραίωσης</string>
     <string name="label_progress">Πρόοδος</string>
     <string name="recent_transactions">Πρόσφατες συναλλαγές</string>
     <string name="no_transactions_yet">Δεν υπάρχουν ακόμη συναλλαγές.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Ύψος επαναφοράς:</string>
     <string name="restore_height_tip">Συμβουλή: Το 0 σαρώνει όλο το ιστορικό της αλυσίδας. Αυτή είναι η πιο ασφαλής επιλογή αν δεν είστε σίγουροι, αλλά ο συγχρονισμός μπορεί να διαρκέσει περισσότερο.</string>
     <string name="restore_height_warning">Προειδοποίηση: Αν ορίσετε ύψος επαναφοράς μετά την πρώτη σας συναλλαγή, τα παλαιότερα κεφάλαια δεν θα εμφανιστούν μέχρι να επαναλάβετε τη σάρωση από παλαιότερο ύψος.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Κύριο δίκτυο</string>
     <string name="toggle_require_face_id">Απαίτηση Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Απαίτηση ελέγχου ταυτότητας συσκευής</string>
     <string name="biometrics_unavailable">Ο βιομετρικός έλεγχος ή ο έλεγχος ταυτότητας συσκευής δεν είναι διαθέσιμος σε αυτή τη συσκευή.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Ο κόμβος αποθηκεύτηκε</string>
     <string name="wallet_already_stored">Υπάρχει ήδη αποθηκευμένο πορτοφόλι σε αυτή τη συσκευή.</string>
     <string name="recovery_seed_label">Η φράση ανάκτησής σας:</string>
-    <string name="recovery_seed_instructions">Γράψτε αυτές τις λέξεις με τη σειρά και αποθηκεύστε τις σε ασφαλές μέρος. Θα τις χρειαστείτε για να επαναφέρετε το πορτοφόλι σας — δεν αποθηκεύονται ποτέ σε αυτή τη συσκευή.</string>
+    <string name="recovery_seed_instructions">Γράψτε αυτές τις λέξεις με τη σειρά και αποθηκεύστε τις με ασφάλεια offline. Θα τις χρειαστείτε για να επαναφέρετε το πορτοφόλι αν χαθεί αυτό το τηλέφωνο. Το NexaWal κρατά επίσης ένα κρυπτογραφημένο αντίγραφο στη συσκευή για ξεκλείδωμα — αντιμετωπίστε το αντίγραφο ασφαλείας σαν μετρητά.</string>
     <string name="confirm_backup_prompt">Επιβεβαιώστε το αντίγραφο ασφαλείας σας — εισαγάγετε τις ζητούμενες λέξεις:</string>
     <string name="mnemonic_paste_label">Μνημονική φράση (επικόλληση):</string>
     <string name="mnemonic_paste_placeholder">Επικολλήστε τη μνημονική φράση 25 λέξεων…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Έξοδος</string>
     <string name="privacy_policy">Πολιτική απορρήτου</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Πηγαίος κώδικας στο GitHub</string>
+    <string name="link_copied">Ο σύνδεσμος αντιγράφηκε</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Δεν ήταν δυνατή η φόρτωση του εγγράφου εκτός σύνδεσης.</string>
     <string name="source_license">Πηγαίος κώδικας &amp; άδεια (MIT)</string>
     <string name="saved_clearnet">Το Clearnet αποθηκεύτηκε</string>
     <string name="saved_i2p">Το I2P αποθηκεύτηκε</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Ανενεργό</string>
     <string name="a11y_swap_amount_unit">Εναλλαγή μεταξύ XMR και %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Πίσω</string>
+    <string name="history_changed_reload">Το ιστορικό άλλαξε · επαναφόρτωση συναλλαγών</string>
+    <string name="history_details_failed">Δεν ήταν δυνατή η φόρτωση των λεπτομερειών της συναλλαγής.</string>
+    <string name="history_filter_all">Όλες</string>
+    <string name="history_from_date">Από (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Το ιστορικό μπορεί να είναι ελλιπές κατά τον συγχρονισμό.</string>
+    <string name="history_invalid_date_range">Εισαγάγετε έγκυρες ημερομηνίες σε μορφή YYYY-MM-DD ή αφήστε τα πεδία κενά.</string>
+    <string name="history_load_failed">Δεν ήταν δυνατή η φόρτωση αυτού του τμήματος του ιστορικού. Δοκιμάστε ξανά.</string>
+    <string name="history_loading_transaction">Φόρτωση συναλλαγής…</string>
+    <string name="history_no_matches">Δεν υπάρχουν συναλλαγές που να ταιριάζουν με αυτά τα φίλτρα.</string>
+    <string name="history_reload">Επαναφορτώστε το ιστορικό για να συνεχίσετε.</string>
+    <string name="history_results_fmt">%1$d αποτελέσματα · σύνολο %2$d</string>
+    <string name="history_retry">Δοκιμάστε ξανά</string>
+    <string name="history_search_txid">Αναζήτηση ID συναλλαγής</string>
+    <string name="history_through_date">Έως (YYYY-MM-DD)</string>
+    <string name="history_title">Συναλλαγές</string>
+    <string name="send_fee_increased_unapproved">Η χρέωση δικτύου αυξήθηκε. Δεν μεταδόθηκε τίποτα. Ελέγξτε τη χρέωση και επιβεβαιώστε ξανά.</string>
 </resources>

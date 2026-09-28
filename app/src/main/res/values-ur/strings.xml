@@ -26,8 +26,8 @@
     <string name="label_network_height">نیٹ ورک ہائٹ</string>
     <string name="label_remaining">باقی</string>
     <string name="label_throughput">تھرو پُٹ</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">اوسط پراسیسنگ رفتار</string>
+    <string name="label_throughput_recent">حالیہ پراسیسنگ رفتار</string>
     <string name="label_progress">پیش رفت</string>
     <string name="recent_transactions">حالیہ ٹرانزیکشنز</string>
     <string name="no_transactions_yet">ابھی تک کوئی ٹرانزیکشن نہیں۔</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">نوڈ محفوظ ہو گیا</string>
     <string name="wallet_already_stored">اس ڈیوائس پر پہلے ہی ایک والٹ محفوظ ہے۔</string>
     <string name="recovery_seed_label">آپ کی ریکوری سیڈ:</string>
-    <string name="recovery_seed_instructions">یہ الفاظ ترتیب سے لکھ لیں اور کسی محفوظ جگہ رکھیں۔ آپ کو اپنا والٹ بحال کرنے کے لیے ان کی ضرورت ہو گی — یہ اس ڈیوائس پر کبھی محفوظ نہیں ہوتے۔</string>
+    <string name="recovery_seed_instructions">یہ الفاظ ترتیب سے لکھ لیں اور انہیں آف لائن کسی محفوظ جگہ رکھیں۔ اگر یہ فون گم ہو جائے تو والٹ بحال کرنے کے لیے ان کی ضرورت ہو گی۔ NexaWal ان لاک کے لیے ڈیوائس پر ایک مرموز کاپی بھی رکھتا ہے — بیک اپ کو نقدی کی طرح سمجھیں۔</string>
     <string name="confirm_backup_prompt">اپنے بیک اپ کی تصدیق کریں — درخواست کیے گئے الفاظ درج کریں:</string>
     <string name="mnemonic_paste_label">منیمونک (پیسٹ کریں):</string>
     <string name="mnemonic_paste_placeholder">25 الفاظ کا منیمونک پیسٹ کریں…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">بند کریں</string>
     <string name="privacy_policy">رازداری کی پالیسی</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">GitHub پر ماخذ کوڈ</string>
+    <string name="link_copied">لنک کاپی ہو گیا</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">آف لائن دستاویز لوڈ نہیں ہو سکی۔</string>
     <string name="source_license">سورس اور لائسنس (MIT)</string>
     <string name="saved_clearnet">Clearnet محفوظ ہو گیا</string>
     <string name="saved_i2p">I2P محفوظ ہو گیا</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">آف</string>
     <string name="a11y_swap_amount_unit">XMR اور %1$s کے درمیان سوئچ کریں</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">واپس</string>
+    <string name="history_changed_reload">تاریخچہ بدل گیا · لین دین دوبارہ لوڈ کریں</string>
+    <string name="history_details_failed">لین دین کی تفصیلات لوڈ نہیں ہو سکیں۔</string>
+    <string name="history_filter_all">سب</string>
+    <string name="history_from_date">سے (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">مطابقت پذیری کے دوران تاریخچہ نامکمل ہو سکتا ہے۔</string>
+    <string name="history_invalid_date_range">YYYY-MM-DD فارمیٹ میں درست تاریخیں درج کریں یا خالی چھوڑ دیں۔</string>
+    <string name="history_load_failed">تاریخچے کا یہ حصہ لوڈ نہیں ہو سکا۔ دوبارہ کوشش کریں۔</string>
+    <string name="history_loading_transaction">لین دین لوڈ ہو رہا ہے…</string>
+    <string name="history_no_matches">ان فلٹرز سے مطابقت رکھنے والا کوئی لین دین نہیں۔</string>
+    <string name="history_reload">جاری رکھنے کے لیے تاریخچہ دوبارہ لوڈ کریں۔</string>
+    <string name="history_results_fmt">%1$d مماثل · کل %2$d</string>
+    <string name="history_retry">دوبارہ کوشش کریں</string>
+    <string name="history_search_txid">لین دین کی ID تلاش کریں</string>
+    <string name="history_through_date">تک (YYYY-MM-DD)</string>
+    <string name="history_title">لین دین</string>
+    <string name="send_fee_increased_unapproved">نیٹ ورک فیس بڑھ گئی۔ کچھ بھی نشر نہیں ہوا۔ فیس کا جائزہ لے کر دوبارہ تصدیق کریں۔</string>
 </resources>

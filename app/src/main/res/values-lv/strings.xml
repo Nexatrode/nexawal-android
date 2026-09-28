@@ -26,8 +26,8 @@
     <string name="label_network_height">Tīkla augstums</string>
     <string name="label_remaining">Atlicis</string>
     <string name="label_throughput">Caurlaidspēja</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Vidējā caurlaidspēja</string>
+    <string name="label_throughput_recent">Nesenā caurlaidspēja</string>
     <string name="label_progress">Progress</string>
     <string name="recent_transactions">Pēdējās transakcijas</string>
     <string name="no_transactions_yet">Pagaidām nav transakciju.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Atjaunošanas augstums:</string>
     <string name="restore_height_tip">Padoms: 0 skenē visu ķēdes vēsturi. Šī ir drošākā izvēle, ja nav pārliecības, bet sinhronizācija var ilgt ilgāk.</string>
     <string name="restore_height_warning">Brīdinājums: ja iestatīsiet atjaunošanas augstumu pēc pirmās transakcijas, vecāki līdzekļi netiks parādīti, kamēr neveiksiet atkārtotu skenēšanu no agrāka augstuma.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Galvenais tīkls</string>
     <string name="toggle_require_face_id">Pieprasīt Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Pieprasīt ierīces autentifikāciju</string>
     <string name="biometrics_unavailable">Šajā ierīcē biometriskā vai ierīces autentifikācija nav pieejama.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Mezgls saglabāts</string>
     <string name="wallet_already_stored">Šajā ierīcē jau ir saglabāts maks.</string>
     <string name="recovery_seed_label">Jūsu atjaunošanas sēkla:</string>
-    <string name="recovery_seed_instructions">Pierakstiet šos vārdus secībā un glabājiet tos drošā vietā. Tie būs nepieciešami maka atjaunošanai — tie nekad netiek glabāti šajā ierīcē.</string>
+    <string name="recovery_seed_instructions">Pierakstiet šos vārdus secībā un glabājiet tos droši bezsaistē. Tie būs nepieciešami, lai atjaunotu maku, ja šis tālrunis tiek pazaudēts. NexaWal arī glabā šifrētu kopiju ierīcē atbloķēšanai — izturieties pret dublējumu kā pret skaidru naudu.</string>
     <string name="confirm_backup_prompt">Apstipriniet dublējumu — ievadiet pieprasītos vārdus:</string>
     <string name="mnemonic_paste_label">Mnemonika (ielīmēt):</string>
     <string name="mnemonic_paste_placeholder">Ielīmējiet 25 vārdu mnemoniku…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Iziet</string>
     <string name="privacy_policy">Privātuma politika</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Avota kods vietnē GitHub</string>
+    <string name="link_copied">Saite nokopēta</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Neizdevās ielādēt bezsaistes dokumentu.</string>
     <string name="source_license">Kods un licence (MIT)</string>
     <string name="saved_clearnet">Clearnet saglabāts</string>
     <string name="saved_i2p">I2P saglabāts</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Izslēgts</string>
     <string name="a11y_swap_amount_unit">Pārslēgt starp XMR un %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Atpakaļ</string>
+    <string name="history_changed_reload">Vēsture ir mainījusies · atkārtoti ielādēt darījumus</string>
+    <string name="history_details_failed">Neizdevās ielādēt darījuma informāciju.</string>
+    <string name="history_filter_all">Visi</string>
+    <string name="history_from_date">No (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Sinhronizācijas laikā vēsture var būt nepilnīga.</string>
+    <string name="history_invalid_date_range">Ievadiet derīgus datumus formātā YYYY-MM-DD vai atstājiet laukus tukšus.</string>
+    <string name="history_load_failed">Neizdevās ielādēt šo vēstures daļu. Mēģiniet vēlreiz.</string>
+    <string name="history_loading_transaction">Ielādē darījumu…</string>
+    <string name="history_no_matches">Nav darījumu, kas atbilstu šiem filtriem.</string>
+    <string name="history_reload">Lai turpinātu, atkārtoti ielādējiet vēsturi.</string>
+    <string name="history_results_fmt">%1$d atbilst · kopā %2$d</string>
+    <string name="history_retry">Mēģināt vēlreiz</string>
+    <string name="history_search_txid">Meklēt darījuma ID</string>
+    <string name="history_through_date">Līdz (YYYY-MM-DD)</string>
+    <string name="history_title">Darījumi</string>
+    <string name="send_fee_increased_unapproved">Tīkla maksa palielinājās. Nekas netika pārraidīts. Pārskatiet maksu un apstipriniet vēlreiz.</string>
 </resources>

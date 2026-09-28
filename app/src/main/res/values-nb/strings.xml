@@ -26,8 +26,8 @@
     <string name="label_network_height">Nettverkshøyde</string>
     <string name="label_remaining">Gjenstår</string>
     <string name="label_throughput">Gjennomstrømning</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Gjennomsnittlig gjennomstrømning</string>
+    <string name="label_throughput_recent">Nylig gjennomstrømning</string>
     <string name="label_progress">Fremdrift</string>
     <string name="recent_transactions">Nylige transaksjoner</string>
     <string name="no_transactions_yet">Ingen transaksjoner ennå.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Gjenopprettingshøyde:</string>
     <string name="restore_height_tip">Tips: 0 skanner hele kjedehistorikken. Dette er det tryggeste valget hvis du er usikker, men synkroniseringen kan ta lengre tid.</string>
     <string name="restore_height_warning">Advarsel: hvis du setter en gjenopprettingshøyde etter din første transaksjon, vil eldre midler ikke vises før du skanner på nytt fra en tidligere høyde.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Hovednett</string>
     <string name="toggle_require_face_id">Krev Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Krev enhetsautentisering</string>
     <string name="biometrics_unavailable">Biometrisk eller enhetsautentisering er ikke tilgjengelig på denne enheten.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Skriv inn hele URL-en, inkludert http:// eller https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Lagre node</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Informasjon</string>
     <string name="walletcore_version_label">WalletCore-versjon:</string>
     <string name="seed_backup_intro">Dette er gjenopprettingsfrasen din. Skriv den ned på papir og oppbevar den et trygt sted. Alle som har disse ordene kan få tilgang til midlene dine — nexawal laster aldri opp eller sikkerhetskopierer den for deg.</string>
     <string name="generate_new_seed">Generer ny frase</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node lagret</string>
     <string name="wallet_already_stored">En lommebok er allerede lagret på denne enheten.</string>
     <string name="recovery_seed_label">Gjenopprettingsfrasen din:</string>
-    <string name="recovery_seed_instructions">Skriv ned disse ordene i riktig rekkefølge og oppbevar dem et trygt sted. Du vil trenge dem for å gjenopprette lommeboken din — de lagres aldri på denne enheten.</string>
+    <string name="recovery_seed_instructions">Skriv ned disse ordene i riktig rekkefølge og oppbevar dem trygt offline. Du vil trenge dem for å gjenopprette lommeboken hvis denne telefonen blir borte. NexaWal beholder også en kryptert kopi på enheten for opplåsing — behandle sikkerhetskopien som kontanter.</string>
     <string name="confirm_backup_prompt">Bekreft sikkerhetskopien din — skriv inn de forespurte ordene:</string>
     <string name="mnemonic_paste_label">Mnemonic (lim inn):</string>
     <string name="mnemonic_paste_placeholder">Lim inn mnemonic med 25 ord…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Avslutt</string>
     <string name="privacy_policy">Personvernerklæring</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Kildekode på GitHub</string>
+    <string name="link_copied">Lenke kopiert</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Kunne ikke laste inn dokumentet uten nett.</string>
     <string name="source_license">Kildekode og lisens (MIT)</string>
     <string name="saved_clearnet">Clearnet lagret</string>
     <string name="saved_i2p">I2P lagret</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Av</string>
     <string name="a11y_swap_amount_unit">Bytt mellom XMR og %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Tilbake</string>
+    <string name="history_changed_reload">Historikken er endret · last inn transaksjonene på nytt</string>
+    <string name="history_details_failed">Transaksjonsdetaljene kunne ikke lastes inn.</string>
+    <string name="history_filter_all">Alle</string>
+    <string name="history_from_date">Fra (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Historikken kan være ufullstendig mens synkroniseringen pågår.</string>
+    <string name="history_invalid_date_range">Skriv inn gyldige datoer i formatet YYYY-MM-DD, eller la dem stå tomme.</string>
+    <string name="history_load_failed">Denne delen av historikken kunne ikke lastes inn. Prøv igjen.</string>
+    <string name="history_loading_transaction">Laster inn transaksjon…</string>
+    <string name="history_no_matches">Ingen transaksjoner samsvarer med disse filtrene.</string>
+    <string name="history_reload">Last inn historikken på nytt for å fortsette.</string>
+    <string name="history_results_fmt">%1$d treff · %2$d totalt</string>
+    <string name="history_retry">Prøv igjen</string>
+    <string name="history_search_txid">Søk etter transaksjons-ID</string>
+    <string name="history_through_date">Til (YYYY-MM-DD)</string>
+    <string name="history_title">Transaksjoner</string>
+    <string name="send_fee_increased_unapproved">Nettverksgebyret økte. Ingenting ble kringkastet. Se over gebyret og bekreft på nytt.</string>
 </resources>

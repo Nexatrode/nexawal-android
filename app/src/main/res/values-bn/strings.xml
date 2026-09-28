@@ -26,8 +26,8 @@
     <string name="label_network_height">নেটওয়ার্ক উচ্চতা</string>
     <string name="label_remaining">অবশিষ্ট</string>
     <string name="label_throughput">থ্রুপুট</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">গড় প্রক্রিয়াকরণ গতি</string>
+    <string name="label_throughput_recent">সাম্প্রতিক প্রক্রিয়াকরণ গতি</string>
     <string name="label_progress">অগ্রগতি</string>
     <string name="recent_transactions">সাম্প্রতিক লেনদেন</string>
     <string name="no_transactions_yet">এখনও কোনো লেনদেন নেই।</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">নোড সংরক্ষিত হয়েছে</string>
     <string name="wallet_already_stored">এই ডিভাইসে একটি ওয়ালেট ইতিমধ্যে সংরক্ষিত আছে।</string>
     <string name="recovery_seed_label">আপনার রিকভারি সিড:</string>
-    <string name="recovery_seed_instructions">এই শব্দগুলো ক্রম অনুযায়ী লিখে রাখুন এবং কোথাও নিরাপদ জায়গায় সংরক্ষণ করুন। আপনার ওয়ালেট পুনরুদ্ধার করতে এগুলো প্রয়োজন হবে — এই ডিভাইসে এগুলো কখনো সংরক্ষিত হয় না।</string>
+    <string name="recovery_seed_instructions">এই শব্দগুলো ক্রম অনুযায়ী লিখে অফলাইনে নিরাপদ জায়গায় সংরক্ষণ করুন। এই ফোন হারিয়ে গেলে ওয়ালেট পুনরুদ্ধার করতে এগুলো প্রয়োজন হবে। NexaWal আনলকের জন্য ডিভাইসে একটি এনক্রিপ্টেড কপিও রাখে — ব্যাকআপকে নগদের মতো গুরুত্ব দিন।</string>
     <string name="confirm_backup_prompt">আপনার ব্যাকআপ নিশ্চিত করুন — অনুরোধ করা শব্দগুলো লিখুন:</string>
     <string name="mnemonic_paste_label">নিমোনিক (পেস্ট করুন):</string>
     <string name="mnemonic_paste_placeholder">২৫-শব্দের নিমোনিক পেস্ট করুন…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">প্রস্থান</string>
     <string name="privacy_policy">প্রাইভেসি পলিসি</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">GitHub-এ সোর্স কোড</string>
+    <string name="link_copied">লিংক কপি করা হয়েছে</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">অফলাইন নথিটি লোড করা যায়নি।</string>
     <string name="source_license">সোর্স ও লাইসেন্স (MIT)</string>
     <string name="saved_clearnet">ক্লিয়ারনেট সংরক্ষিত হয়েছে</string>
     <string name="saved_i2p">I2P সংরক্ষিত হয়েছে</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">বন্ধ</string>
     <string name="a11y_swap_amount_unit">XMR এবং %1$s-এর মধ্যে পরিবর্তন করুন</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">পিছনে</string>
+    <string name="history_changed_reload">ইতিহাস বদলেছে · লেনদেন আবার লোড করুন</string>
+    <string name="history_details_failed">লেনদেনের বিবরণ লোড করা যায়নি।</string>
+    <string name="history_filter_all">সব</string>
+    <string name="history_from_date">থেকে (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">সিঙ্ক চলাকালে লেনদেনের ইতিহাস অসম্পূর্ণ থাকতে পারে।</string>
+    <string name="history_invalid_date_range">YYYY-MM-DD বিন্যাসে সঠিক তারিখ লিখুন, অথবা ফাঁকা রাখুন।</string>
+    <string name="history_load_failed">ইতিহাসের এই অংশ লোড করা যায়নি। আবার চেষ্টা করুন।</string>
+    <string name="history_loading_transaction">লেনদেন লোড হচ্ছে…</string>
+    <string name="history_no_matches">এই ফিল্টারগুলোর সঙ্গে মেলে এমন লেনদেন নেই।</string>
+    <string name="history_reload">চালিয়ে যেতে ইতিহাস আবার লোড করুন।</string>
+    <string name="history_results_fmt">%1$dটি মিলেছে · মোট %2$dটি</string>
+    <string name="history_retry">আবার চেষ্টা করুন</string>
+    <string name="history_search_txid">লেনদেনের আইডি খুঁজুন</string>
+    <string name="history_through_date">পর্যন্ত (YYYY-MM-DD)</string>
+    <string name="history_title">লেনদেন</string>
+    <string name="send_fee_increased_unapproved">নেটওয়ার্ক ফি বেড়েছে। কিছুই সম্প্রচার করা হয়নি। ফি পর্যালোচনা করে আবার নিশ্চিত করুন।</string>
 </resources>

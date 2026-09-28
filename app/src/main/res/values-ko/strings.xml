@@ -26,8 +26,8 @@
     <string name="label_network_height">네트워크 높이</string>
     <string name="label_remaining">남음</string>
     <string name="label_throughput">처리량</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">평균 처리량</string>
+    <string name="label_throughput_recent">최근 처리량</string>
     <string name="label_progress">진행률</string>
     <string name="recent_transactions">최근 거래</string>
     <string name="no_transactions_yet">아직 거래가 없습니다.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">저장된 노드</string>
     <string name="wallet_already_stored">이 기기에 이미 지갑이 저장되어 있습니다.</string>
     <string name="recovery_seed_label">복구 시드:</string>
-    <string name="recovery_seed_instructions">이 단어들을 순서대로 적어서 안전한 곳에 보관하세요. 지갑을 복구할 때 필요하며 — 이 기기에는 저장되지 않습니다.</string>
+    <string name="recovery_seed_instructions">이 단어들을 순서대로 적어서 오프라인의 안전한 곳에 보관하세요. 이 휴대폰을 잃어버리면 지갑을 복구할 때 필요합니다. NexaWal은 잠금 해제를 위해 기기에 암호화된 사본도 보관합니다 — 백업을 현금처럼 다루세요.</string>
     <string name="confirm_backup_prompt">백업을 확인하세요 — 요청된 단어를 입력하세요:</string>
     <string name="mnemonic_paste_label">니모닉 (붙여넣기):</string>
     <string name="mnemonic_paste_placeholder">25단어 니모닉을 붙여넣으세요…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">종료</string>
     <string name="privacy_policy">개인정보 보호정책</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">닫기</string>
+    <string name="source_on_github">GitHub의 소스 코드</string>
+    <string name="link_copied">링크를 복사했습니다</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">오프라인 문서를 불러올 수 없습니다.</string>
     <string name="source_license">소스 및 라이선스 (MIT)</string>
     <string name="saved_clearnet">클리어넷 저장됨</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">꺼짐</string>
     <string name="a11y_swap_amount_unit">XMR과 %1$s 전환</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">뒤로</string>
+    <string name="history_changed_reload">내역이 변경됨 · 거래 다시 불러오기</string>
+    <string name="history_details_failed">거래 세부 정보를 불러오지 못했습니다.</string>
+    <string name="history_filter_all">전체</string>
+    <string name="history_from_date">시작일 (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">동기화 중에는 거래 내역이 완전하지 않을 수 있습니다.</string>
+    <string name="history_invalid_date_range">YYYY-MM-DD 형식의 올바른 날짜를 입력하거나 비워 두세요.</string>
+    <string name="history_load_failed">내역의 이 부분을 불러오지 못했습니다. 다시 시도할 수 있습니다.</string>
+    <string name="history_loading_transaction">거래 불러오는 중…</string>
+    <string name="history_no_matches">이 필터와 일치하는 거래가 없습니다.</string>
+    <string name="history_reload">계속하려면 내역을 다시 불러오세요.</string>
+    <string name="history_results_fmt">%1$d개 일치 · 총 %2$d개</string>
+    <string name="history_retry">다시 시도</string>
+    <string name="history_search_txid">거래 ID 검색</string>
+    <string name="history_through_date">종료일 (YYYY-MM-DD)</string>
+    <string name="history_title">거래</string>
+    <string name="send_fee_increased_unapproved">네트워크 수수료가 증가했습니다. 전송된 내용이 없습니다. 수수료를 확인하고 다시 승인하세요.</string>
 </resources>

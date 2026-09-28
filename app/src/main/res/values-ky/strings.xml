@@ -26,8 +26,8 @@
     <string name="label_network_height">Тармак бийиктиги</string>
     <string name="label_remaining">Калды</string>
     <string name="label_throughput">Ылдамдык</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Орточо өткөрүмдүүлүк</string>
+    <string name="label_throughput_recent">Акыркы өткөрүмдүүлүк</string>
     <string name="label_progress">Жүрүш</string>
     <string name="recent_transactions">Акыркы транзакциялар</string>
     <string name="no_transactions_yet">Азырынча транзакциялар жок.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Калыбына келтирүү бийиктиги:</string>
     <string name="restore_height_tip">Кеп: 0 бүтүндөй чынжыр тарыхын скандайт. Ынак болбосоңуз, бул эң коопсуз тандоо, бирок синхрондоштуруу үчүн көбүрөөк убакыт талап кылынышы мүмкүн.</string>
     <string name="restore_height_warning">Эскертүү: биринчи транзакцияңыздан кийин калыбына келтирүү бийиктигин койсоңуз, эски каражаттар мурунку бийиктиктен кайра сканабайынча көрүнбөйт.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Негизги тармак</string>
     <string name="toggle_require_face_id">Face ID / Touch ID талап кылуу</string>
     <string name="toggle_require_device_auth">Түзмөк аутентификациясын талап кылуу</string>
     <string name="biometrics_unavailable">Бул түзмөктө биометрикалык же түзмөк аутентификациясы жеткиликсиз.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Түйүн сакталды</string>
     <string name="wallet_already_stored">Бул түзмөктө капчык мурунтан сакталган.</string>
     <string name="recovery_seed_label">Сиздин калыбына келтирүү сөздөрүңүз:</string>
-    <string name="recovery_seed_instructions">Бул сөздөрдү тартип менен жазып, коопсуз жерде сактаңыз. Алар сизге капчыгыңызды калыбына келтирүү үчүн керек болот — алар бул түзмөктө эч качан сакталбайт.</string>
+    <string name="recovery_seed_instructions">Бул сөздөрдү тартип менен жазып, аларды оффлайн коопсуз жерде сактаңыз. Бул телефон жоголсо, капчыкты калыбына келтирүү үчүн алар керек болот. NexaWal кулпуну ачуу үчүн түзмөктө шифрленген көчүрмөнү да сактайт — камдык көчүрмөнү накталай акчадай мамиле кылыңыз.</string>
     <string name="confirm_backup_prompt">Камдык көчүрмөңүздү ырастаңыз — талап кылынган сөздөрдү киргизиңиз:</string>
     <string name="mnemonic_paste_label">Калыбына келтирүү сөздөрү (чапталсын):</string>
     <string name="mnemonic_paste_placeholder">25 сөздөн турган калыбына келтирүү сөздөрүн чаптаңыз…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Чыгуу</string>
     <string name="privacy_policy">Купуялуулук саясаты</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">GitHubтагы баштапкы код</string>
+    <string name="link_copied">Шилтеме көчүрүлдү</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Оффлайн документ жүктөлгөн жок.</string>
     <string name="source_license">Баштапкы код &amp; лицензия (MIT)</string>
     <string name="saved_clearnet">Clearnet сакталды</string>
     <string name="saved_i2p">I2P сакталды</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Өчүк</string>
     <string name="a11y_swap_amount_unit">XMR менен %1$s ортосунда которуштуруу</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Артка</string>
+    <string name="history_changed_reload">Тарых өзгөрдү · транзакцияларды кайра жүктөө</string>
+    <string name="history_details_failed">Транзакциянын чоо-жайын жүктөө мүмкүн болгон жок.</string>
+    <string name="history_filter_all">Баары</string>
+    <string name="history_from_date">Башталышы (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Шайкештештирүү учурунда тарых толук болбой калышы мүмкүн.</string>
+    <string name="history_invalid_date_range">YYYY-MM-DD форматында туура даталарды киргизиңиз же бош калтырыңыз.</string>
+    <string name="history_load_failed">Тарыхтын бул бөлүгүн жүктөө мүмкүн болгон жок. Кайра аракет кылыңыз.</string>
+    <string name="history_loading_transaction">Транзакция жүктөлүүдө…</string>
+    <string name="history_no_matches">Бул чыпкаларга туура келген транзакциялар жок.</string>
+    <string name="history_reload">Улантуу үчүн тарыхты кайра жүктөңүз.</string>
+    <string name="history_results_fmt">%1$d дал келди · жалпы %2$d</string>
+    <string name="history_retry">Кайра аракет кылуу</string>
+    <string name="history_search_txid">Транзакциянын ID-син издөө</string>
+    <string name="history_through_date">Аягына чейин (YYYY-MM-DD)</string>
+    <string name="history_title">Транзакциялар</string>
+    <string name="send_fee_increased_unapproved">Тармак акысы көбөйдү. Эч нерсе таратылган жок. Акыны карап чыгып, кайра ырастаңыз.</string>
 </resources>

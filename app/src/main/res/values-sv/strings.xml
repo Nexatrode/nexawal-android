@@ -26,8 +26,8 @@
     <string name="label_network_height">Nätverkshöjd</string>
     <string name="label_remaining">Återstår</string>
     <string name="label_throughput">Genomströmning</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Genomsnittlig genomströmning</string>
+    <string name="label_throughput_recent">Senaste genomströmning</string>
     <string name="label_progress">Förlopp</string>
     <string name="recent_transactions">Senaste transaktioner</string>
     <string name="no_transactions_yet">Inga transaktioner än.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Återställningshöjd:</string>
     <string name="restore_height_tip">Tips: 0 skannar hela kedjans historik. Detta är det säkraste alternativet om du är osäker, men synkroniseringen kan ta längre tid.</string>
     <string name="restore_height_warning">Varning: Om du anger en återställningshöjd efter din första transaktion visas inte äldre tillgångar förrän du skannar om från en tidigare höjd.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Huvudnät</string>
     <string name="toggle_require_face_id">Kräv Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Kräv enhetsautentisering</string>
     <string name="biometrics_unavailable">Biometrisk autentisering eller enhetsautentisering är inte tillgänglig på den här enheten.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Ange fullständig URL, inklusive http:// eller https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Spara nod</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Information</string>
     <string name="walletcore_version_label">WalletCore-version:</string>
     <string name="seed_backup_intro">Detta är din återställningsfras. Skriv den ner på papper och förvara den på ett säkert ställe. Vem som helst med dessa ord kan komma åt dina tillgångar — nexawal laddar aldrig upp den eller säkerhetskopierar den åt dig.</string>
     <string name="generate_new_seed">Generera ny återställningsfras</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nod sparad</string>
     <string name="wallet_already_stored">En plånbok finns redan sparad på den här enheten.</string>
     <string name="recovery_seed_label">Din återställningsfras:</string>
-    <string name="recovery_seed_instructions">Skriv ner dessa ord i ordning och förvara dem på ett säkert ställe. Du behöver dem för att återställa din plånbok — de sparas aldrig på den här enheten.</string>
+    <string name="recovery_seed_instructions">Skriv ner dessa ord i ordning och förvara dem säkert offline. Du behöver dem för att återställa plånboken om den här telefonen förloras. NexaWal sparar också en krypterad kopia på enheten för upplåsning — behandla säkerhetskopian som kontanter.</string>
     <string name="confirm_backup_prompt">Bekräfta din säkerhetskopia — ange de begärda orden:</string>
     <string name="mnemonic_paste_label">Mnemonisk fras (klistra in):</string>
     <string name="mnemonic_paste_placeholder">Klistra in 25-ords mnemonisk fras…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Avsluta</string>
     <string name="privacy_policy">Integritetspolicy</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Källkod på GitHub</string>
+    <string name="link_copied">Länk kopierad</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Det gick inte att läsa in offlinedokumentet.</string>
     <string name="source_license">Källkod och licens (MIT)</string>
     <string name="saved_clearnet">Clearnet sparad</string>
     <string name="saved_i2p">I2P sparad</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Av</string>
     <string name="a11y_swap_amount_unit">Växla mellan XMR och %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Tillbaka</string>
+    <string name="history_changed_reload">Historiken har ändrats · läs in transaktionerna igen</string>
+    <string name="history_details_failed">Transaktionsuppgifterna kunde inte läsas in.</string>
+    <string name="history_filter_all">Alla</string>
+    <string name="history_from_date">Från (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Historiken kan vara ofullständig under synkronisering.</string>
+    <string name="history_invalid_date_range">Ange giltiga datum i formatet YYYY-MM-DD eller lämna fälten tomma.</string>
+    <string name="history_load_failed">Den här delen av historiken kunde inte läsas in. Försök igen.</string>
+    <string name="history_loading_transaction">Läser in transaktion…</string>
+    <string name="history_no_matches">Inga transaktioner matchar de här filtren.</string>
+    <string name="history_reload">Läs in historiken igen för att fortsätta.</string>
+    <string name="history_results_fmt">%1$d träffar · %2$d totalt</string>
+    <string name="history_retry">Försök igen</string>
+    <string name="history_search_txid">Sök efter transaktions-ID</string>
+    <string name="history_through_date">Till och med (YYYY-MM-DD)</string>
+    <string name="history_title">Transaktioner</string>
+    <string name="send_fee_increased_unapproved">Nätverksavgiften ökade. Inget skickades. Granska avgiften och bekräfta igen.</string>
 </resources>

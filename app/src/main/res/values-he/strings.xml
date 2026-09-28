@@ -26,8 +26,8 @@
     <string name="label_network_height">גובה הרשת</string>
     <string name="label_remaining">נותרו</string>
     <string name="label_throughput">קצב עיבוד</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">קצב עיבוד ממוצע</string>
+    <string name="label_throughput_recent">קצב עיבוד אחרון</string>
     <string name="label_progress">התקדמות</string>
     <string name="recent_transactions">עסקאות אחרונות</string>
     <string name="no_transactions_yet">אין עדיין עסקאות.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">הצומת נשמרה</string>
     <string name="wallet_already_stored">ארנק כבר שמור במכשיר זה.</string>
     <string name="recovery_seed_label">ביטוי השחזור שלך:</string>
-    <string name="recovery_seed_instructions">כתוב מילים אלה לפי הסדר ושמור אותן במקום בטוח. תזדקק להן כדי לשחזר את הארנק שלך — הן לעולם לא נשמרות במכשיר זה.</string>
+    <string name="recovery_seed_instructions">כתוב מילים אלה לפי הסדר ושמור אותן בבטחה במצב לא מקוון. תזדקק להן כדי לשחזר את הארנק אם הטלפון הזה יאבד. NexaWal גם שומר עותק מוצפן במכשיר לצורך ביטול נעילה — התייחס לגיבוי כמו למזומן.</string>
     <string name="confirm_backup_prompt">אשר את הגיבוי שלך — הזן את המילים המבוקשות:</string>
     <string name="mnemonic_paste_label">מנמוניקה (הדבקה):</string>
     <string name="mnemonic_paste_placeholder">הדבק מנמוניקה של 25 מילים…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">יציאה</string>
     <string name="privacy_policy">מדיניות פרטיות</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">קוד המקור ב־GitHub</string>
+    <string name="link_copied">הקישור הועתק</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">לא ניתן לטעון את המסמך הלא־מקוון.</string>
     <string name="source_license">קוד מקור ורישיון (MIT)</string>
     <string name="saved_clearnet">Clearnet נשמרה</string>
     <string name="saved_i2p">I2P נשמרה</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">כבוי</string>
     <string name="a11y_swap_amount_unit">החלפה בין XMR ל-%1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">חזרה</string>
+    <string name="history_changed_reload">ההיסטוריה השתנתה · טעינה מחדש של העסקאות</string>
+    <string name="history_details_failed">לא ניתן לטעון את פרטי העסקה.</string>
+    <string name="history_filter_all">הכול</string>
+    <string name="history_from_date">מתאריך (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">ההיסטוריה עשויה להיות חלקית בזמן הסנכרון.</string>
+    <string name="history_invalid_date_range">יש להזין תאריכים תקינים בפורמט YYYY-MM-DD או להשאיר אותם ריקים.</string>
+    <string name="history_load_failed">לא ניתן לטעון את החלק הזה של ההיסטוריה. אפשר לנסות שוב.</string>
+    <string name="history_loading_transaction">טוען עסקה…</string>
+    <string name="history_no_matches">אין עסקאות שתואמות למסננים האלה.</string>
+    <string name="history_reload">יש לטעון מחדש את ההיסטוריה כדי להמשיך.</string>
+    <string name="history_results_fmt">%1$d התאמות · %2$d בסך הכול</string>
+    <string name="history_retry">ניסיון חוזר</string>
+    <string name="history_search_txid">חיפוש מזהה עסקה</string>
+    <string name="history_through_date">עד תאריך (YYYY-MM-DD)</string>
+    <string name="history_title">עסקאות</string>
+    <string name="send_fee_increased_unapproved">עמלת הרשת עלתה. שום דבר לא שודר. יש לבדוק את העמלה ולאשר שוב.</string>
 </resources>

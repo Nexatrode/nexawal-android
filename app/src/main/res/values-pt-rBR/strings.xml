@@ -26,8 +26,8 @@
     <string name="label_network_height">Altura da Rede</string>
     <string name="label_remaining">Restante</string>
     <string name="label_throughput">Taxa de transferência</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Vazão média</string>
+    <string name="label_throughput_recent">Vazão recente</string>
     <string name="label_progress">Progresso</string>
     <string name="recent_transactions">Transações Recentes</string>
     <string name="no_transactions_yet">Ainda não há transações.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Altura de Restauração:</string>
     <string name="restore_height_tip">Dica: 0 varre todo o histórico da cadeia. Esta é a opção mais segura se você não tiver certeza, mas a sincronização pode demorar mais.</string>
     <string name="restore_height_warning">Aviso: se você definir uma altura de restauração posterior à sua primeira transação, os fundos mais antigos não aparecerão até que você refaça a varredura a partir de uma altura anterior.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Rede principal</string>
     <string name="toggle_require_face_id">Exigir Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Exigir autenticação do dispositivo</string>
     <string name="biometrics_unavailable">A autenticação biométrica ou do dispositivo não está disponível neste dispositivo.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nó salvo</string>
     <string name="wallet_already_stored">Uma carteira já está armazenada neste dispositivo.</string>
     <string name="recovery_seed_label">Sua semente de recuperação:</string>
-    <string name="recovery_seed_instructions">Anote estas palavras em ordem e guarde-as em um lugar seguro. Você vai precisar delas para restaurar sua carteira — elas nunca são armazenadas neste dispositivo.</string>
+    <string name="recovery_seed_instructions">Anote estas palavras em ordem e guarde-as offline em um lugar seguro. Você vai precisar delas para restaurar a carteira se este telefone for perdido. O NexaWal também mantém uma cópia criptografada no dispositivo para o desbloqueio — trate o backup como dinheiro vivo.</string>
     <string name="confirm_backup_prompt">Confirme seu backup — digite as palavras solicitadas:</string>
     <string name="mnemonic_paste_label">Mnemônico (colar):</string>
     <string name="mnemonic_paste_placeholder">Colar mnemônico de 25 palavras…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Sair</string>
     <string name="privacy_policy">Política de privacidade</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Fechar</string>
+    <string name="source_on_github">Código-fonte no GitHub</string>
+    <string name="link_copied">Link copiado</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">Não foi possível carregar o documento offline.</string>
     <string name="source_license">Código-fonte e licença (MIT)</string>
     <string name="saved_clearnet">Clearnet salvo</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Desativado</string>
     <string name="a11y_swap_amount_unit">Alternar entre XMR e %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Voltar</string>
+    <string name="history_changed_reload">O histórico mudou · Recarregar transações</string>
+    <string name="history_details_failed">Não foi possível carregar os detalhes da transação.</string>
+    <string name="history_filter_all">Todas</string>
+    <string name="history_from_date">De (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">O histórico pode ficar incompleto durante a sincronização.</string>
+    <string name="history_invalid_date_range">Informe datas válidas no formato YYYY-MM-DD ou deixe os campos em branco.</string>
+    <string name="history_load_failed">Não foi possível carregar esta parte do histórico. Tente novamente.</string>
+    <string name="history_loading_transaction">Carregando transação…</string>
+    <string name="history_no_matches">Nenhuma transação corresponde a estes filtros.</string>
+    <string name="history_reload">Recarregue o histórico para continuar.</string>
+    <string name="history_results_fmt">%1$d correspondências · %2$d no total</string>
+    <string name="history_retry">Tentar novamente</string>
+    <string name="history_search_txid">Buscar ID da transação</string>
+    <string name="history_through_date">Até (YYYY-MM-DD)</string>
+    <string name="history_title">Transações</string>
+    <string name="send_fee_increased_unapproved">A taxa da rede aumentou. Nada foi transmitido. Confira a taxa e confirme novamente.</string>
 </resources>

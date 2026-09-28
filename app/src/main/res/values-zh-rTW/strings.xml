@@ -26,8 +26,8 @@
     <string name="label_network_height">網絡高度</string>
     <string name="label_remaining">剩餘</string>
     <string name="label_throughput">吞吐量</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">平均處理量</string>
+    <string name="label_throughput_recent">最近處理量</string>
     <string name="label_progress">進度</string>
     <string name="recent_transactions">最近交易</string>
     <string name="no_transactions_yet">暫無交易記錄。</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">已保存節點</string>
     <string name="wallet_already_stored">此設備上已存有一個錢包。</string>
     <string name="recovery_seed_label">您的恢復種子:</string>
-    <string name="recovery_seed_instructions">請按順序寫下這些詞並存放在安全的地方。恢復錢包時需要用到它們 — 它們不會存儲在此設備上。</string>
+    <string name="recovery_seed_instructions">請按順序寫下這些詞，並離線存放在安全的地方。如果這支手機遺失，恢復錢包時需要用到它們。NexaWal 也會在裝置上保留一份加密副本用於解鎖 — 請像對待現金一樣對待備份。</string>
     <string name="confirm_backup_prompt">確認您的備份 — 請輸入所要求的詞:</string>
     <string name="mnemonic_paste_label">助記詞(粘貼):</string>
     <string name="mnemonic_paste_placeholder">粘貼 25 個詞的助記詞…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">結束</string>
     <string name="privacy_policy">隱私政策</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">關閉</string>
+    <string name="source_on_github">GitHub 上的原始碼</string>
+    <string name="link_copied">已複製連結</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">無法載入離線文件。</string>
     <string name="source_license">源代碼與許可(MIT)</string>
     <string name="saved_clearnet">已保存 Clearnet 設置</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">關</string>
     <string name="a11y_swap_amount_unit">在 XMR 和 %1$s 之間切換</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">返回</string>
+    <string name="history_changed_reload">歷史記錄已變更 · 重新載入交易</string>
+    <string name="history_details_failed">無法載入交易詳細資料。</string>
+    <string name="history_filter_all">全部</string>
+    <string name="history_from_date">開始日期 (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">同步期間歷史記錄可能不完整。</string>
+    <string name="history_invalid_date_range">請輸入 YYYY-MM-DD 格式的有效日期，或留白。</string>
+    <string name="history_load_failed">無法載入這部分歷史記錄。請重試。</string>
+    <string name="history_loading_transaction">正在載入交易…</string>
+    <string name="history_no_matches">沒有符合這些篩選條件的交易。</string>
+    <string name="history_reload">重新載入歷史記錄以繼續。</string>
+    <string name="history_results_fmt">符合 %1$d 筆 · 共 %2$d 筆</string>
+    <string name="history_retry">重試</string>
+    <string name="history_search_txid">搜尋交易 ID</string>
+    <string name="history_through_date">結束日期 (YYYY-MM-DD)</string>
+    <string name="history_title">交易</string>
+    <string name="send_fee_increased_unapproved">網路手續費已增加。沒有廣播任何交易。請檢查手續費並再次確認。</string>
 </resources>

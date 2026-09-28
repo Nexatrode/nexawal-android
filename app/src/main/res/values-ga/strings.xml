@@ -26,8 +26,8 @@
     <string name="label_network_height">Airde an Líonra</string>
     <string name="label_remaining">Fanta</string>
     <string name="label_throughput">Tréchur</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Tréchur meánach</string>
+    <string name="label_throughput_recent">Tréchur le déanaí</string>
     <string name="label_progress">Dul Chun Cinn</string>
     <string name="recent_transactions">Idirbhearta Le Déanaí</string>
     <string name="no_transactions_yet">Níl idirbheart ann fós.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Airde Aisghabhála:</string>
     <string name="restore_height_tip">Leid: scanann 0 an stair iomlán den slabhra. Is í seo an rogha is sábháilte mura bhfuil tú cinnte, ach féadfaidh sé tuilleadh ama a thógáil chun sioncronú.</string>
     <string name="restore_height_warning">Rabhadh: Má shocraíonn tú airde aisghabhála tar éis do chéad idirbheart, ní thaispeánfar cistí níos sine go dtí go n-athscanann tú ó airde is luaithe.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Príomhlíonra</string>
     <string name="toggle_require_face_id">Éiligh Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Éiligh fíordheimhniú gléasta</string>
     <string name="biometrics_unavailable">Níl fíordheimhniú bithmhéadrach nó gléasta ar fáil ar an ghléas seo.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nód sábháilte</string>
     <string name="wallet_already_stored">Tá sparán stóráilte ar an ghléas seo cheana.</string>
     <string name="recovery_seed_label">Do shíol aisghabhála:</string>
-    <string name="recovery_seed_instructions">Scríobh na focail seo in ord agus stóráil iad in áit shábháilte. Beidh siad de dhíth ort chun do sparán a aischur — ní stóráiltear iad ar an ghléas seo riamh.</string>
+    <string name="recovery_seed_instructions">Scríobh na focail seo in ord agus stóráil iad go sábháilte as líne. Beidh siad de dhíth ort chun an sparán a aischur má chailltear an fón seo. Coinníonn NexaWal cóip chriptithe ar an ngléas freisin le haghaidh díghlasála — caith leis an gcúltaca mar airgead tirim.</string>
     <string name="confirm_backup_prompt">Deimhnigh do chúltaca — cuir isteach na focail iarrtha:</string>
     <string name="mnemonic_paste_label">Síol (greamaigh):</string>
     <string name="mnemonic_paste_placeholder">Greamaigh síol 25 focal…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Scoir</string>
     <string name="privacy_policy">Polasaí Príobháideachta</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Cód foinse ar GitHub</string>
+    <string name="link_copied">Nasc cóipeáilte</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Níorbh fhéidir an doiciméad as líne a luchtú.</string>
     <string name="source_license">Foinse &amp; ceadúnas (MIT)</string>
     <string name="saved_clearnet">Clearnet sábháilte</string>
     <string name="saved_i2p">I2P sábháilte</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Múchta</string>
     <string name="a11y_swap_amount_unit">Athraigh idir XMR agus %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Ar ais</string>
+    <string name="history_changed_reload">Athraíodh an stair · athlódáil na hidirbhearta</string>
+    <string name="history_details_failed">Níorbh fhéidir sonraí an idirbhirt a luchtú.</string>
+    <string name="history_filter_all">Uile</string>
+    <string name="history_from_date">Ó (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Seans go mbeidh an stair neamhiomlán agus sioncronú ar siúl.</string>
+    <string name="history_invalid_date_range">Cuir dátaí bailí isteach san fhormáid YYYY-MM-DD, nó fág bán iad.</string>
+    <string name="history_load_failed">Níorbh fhéidir an chuid seo den stair a luchtú. Bain triail eile as.</string>
+    <string name="history_loading_transaction">Idirbheart á luchtú…</string>
+    <string name="history_no_matches">Níl aon idirbhearta ag teacht leis na scagairí seo.</string>
+    <string name="history_reload">Athlódáil an stair chun leanúint ar aghaidh.</string>
+    <string name="history_results_fmt">%1$d meaitseáil · %2$d san iomlán</string>
+    <string name="history_retry">Bain triail eile as</string>
+    <string name="history_search_txid">Cuardaigh aitheantas an idirbhirt</string>
+    <string name="history_through_date">Go dtí (YYYY-MM-DD)</string>
+    <string name="history_title">Idirbhearta</string>
+    <string name="send_fee_increased_unapproved">Tháinig méadú ar tháille an líonra. Níor craoladh aon rud. Seiceáil an táille agus deimhnigh arís.</string>
 </resources>

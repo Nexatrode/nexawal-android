@@ -26,8 +26,8 @@
     <string name="label_network_height">Hauteur du réseau</string>
     <string name="label_remaining">Restant</string>
     <string name="label_throughput">Débit</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Débit moyen</string>
+    <string name="label_throughput_recent">Débit récent</string>
     <string name="label_progress">Progression</string>
     <string name="recent_transactions">Transactions récentes</string>
     <string name="no_transactions_yet">Aucune transaction pour le moment.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nœud enregistré</string>
     <string name="wallet_already_stored">Un portefeuille est déjà enregistré sur cet appareil.</string>
     <string name="recovery_seed_label">Ta phrase de récupération :</string>
-    <string name="recovery_seed_instructions">Note ces mots dans l\'ordre et conserve-les en lieu sûr. Tu en auras besoin pour restaurer ton portefeuille — ils ne sont jamais stockés sur cet appareil.</string>
+    <string name="recovery_seed_instructions">Note ces mots dans l\'ordre et conserve-les hors ligne en lieu sûr. Tu en auras besoin pour restaurer le portefeuille si ce téléphone est perdu. NexaWal conserve aussi une copie chiffrée sur l\'appareil pour le déverrouillage — traite la sauvegarde comme de l\'argent liquide.</string>
     <string name="confirm_backup_prompt">Confirme ta sauvegarde — saisis les mots demandés :</string>
     <string name="mnemonic_paste_label">Phrase mnémonique (coller) :</string>
     <string name="mnemonic_paste_placeholder">Colle la phrase mnémonique de 25 mots…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Quitter</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Fermer</string>
+    <string name="source_on_github">Code source sur GitHub</string>
+    <string name="link_copied">Lien copié</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">Impossible de charger le document hors ligne.</string>
     <string name="source_license">Code source et licence (MIT)</string>
     <string name="saved_clearnet">Clearnet enregistré</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Désactivé</string>
     <string name="a11y_swap_amount_unit">Basculer entre XMR et %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Retour</string>
+    <string name="history_changed_reload">Historique modifié · Recharger les transactions</string>
+    <string name="history_details_failed">Impossible de charger les détails de la transaction.</string>
+    <string name="history_filter_all">Toutes</string>
+    <string name="history_from_date">Du (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">L’historique peut être incomplet pendant la synchronisation.</string>
+    <string name="history_invalid_date_range">Saisissez des dates valides au format YYYY-MM-DD ou laissez les champs vides.</string>
+    <string name="history_load_failed">Impossible de charger cette partie de l’historique. Réessayez.</string>
+    <string name="history_loading_transaction">Chargement de la transaction…</string>
+    <string name="history_no_matches">Aucune transaction ne correspond à ces filtres.</string>
+    <string name="history_reload">Rechargez l’historique pour continuer.</string>
+    <string name="history_results_fmt">%1$d résultat(s) · %2$d au total</string>
+    <string name="history_retry">Réessayer</string>
+    <string name="history_search_txid">Rechercher l’identifiant de transaction</string>
+    <string name="history_through_date">Au (YYYY-MM-DD)</string>
+    <string name="history_title">Transactions</string>
+    <string name="send_fee_increased_unapproved">Les frais réseau ont augmenté. Rien n’a été diffusé. Vérifiez les frais et confirmez à nouveau.</string>
 </resources>

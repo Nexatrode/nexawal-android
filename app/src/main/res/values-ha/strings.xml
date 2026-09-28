@@ -26,8 +26,8 @@
     <string name="label_network_height">Tsayin Hanyar Sadarwa</string>
     <string name="label_remaining">Ya Rage</string>
     <string name="label_throughput">Gudun Aiki</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Matsakaicin saurin sarrafawa</string>
+    <string name="label_throughput_recent">Gudun sarrafawa na baya-bayan nan</string>
     <string name="label_progress">Ci gaba</string>
     <string name="recent_transactions">Ma\'amaloli na Kwanan Nan</string>
     <string name="no_transactions_yet">Babu ma\'amaloli tukuna.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Tsayin Dawowa:</string>
     <string name="restore_height_tip">Shawara: 0 yana bincika dukkan tarihin sarƙa. Wannan shi ne zaɓi mafi aminci idan ba ka tabbata ba, amma yana iya ɗaukar tsawon lokaci wajen daidaitawa.</string>
     <string name="restore_height_warning">Gargaɗi: Idan ka saita tsayin dawowa bayan ma\'amalarka ta farko, tsofaffin kuɗaɗe ba za su bayyana ba sai ka sake bincika daga tsayi na baya.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Babbar hanyar sadarwa</string>
     <string name="toggle_require_face_id">Bukaci Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Bukaci tantancewar na\'ura</string>
     <string name="biometrics_unavailable">Tantancewar halittar jiki ko ta na\'ura babu ita a wannan na\'urar.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">An ajiye node</string>
     <string name="wallet_already_stored">An riga an ajiye walat a wannan na\'urar.</string>
     <string name="recovery_seed_label">Kalmomin dawowar ku:</string>
-    <string name="recovery_seed_instructions">Rubuta waɗannan kalmomi bisa jeri kuma ajiye su a wuri mai aminci. Za ka buƙace su don dawo da walatinka — ba a ajiye su a wannan na\'urar ba a ko yaushe.</string>
+    <string name="recovery_seed_instructions">Rubuta waɗannan kalmomi bisa jeri kuma ajiye su a aminci a waje da yanar gizo. Za ka buƙace su don dawo da walati idan wannan wayar ta ɓace. NexaWal kuma yana ajiye kwafin da aka ɓoye a na\'urar don buɗewa — ɗauki baya a matsayin kuɗi na hannu.</string>
     <string name="confirm_backup_prompt">Tabbatar da adanawar ku — shigar da kalmomin da ake buƙata:</string>
     <string name="mnemonic_paste_label">Kalmomin Dawowa (manna):</string>
     <string name="mnemonic_paste_placeholder">Manna kalmomin dawowa na kalmomi 25…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Fita</string>
     <string name="privacy_policy">Manufar sirri</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Lambar tushe a GitHub</string>
+    <string name="link_copied">An kwafi hanyar haɗin</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">An kasa loda daftarin aiki na wajen layi.</string>
     <string name="source_license">Tushen lambar da lasisi (MIT)</string>
     <string name="saved_clearnet">An ajiye clearnet</string>
     <string name="saved_i2p">An Ajiye I2P</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">A Kashe</string>
     <string name="a11y_swap_amount_unit">Canza tsakanin XMR da %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Koma baya</string>
+    <string name="history_changed_reload">Tarihi ya canza · sake loda ma\'amaloli</string>
+    <string name="history_details_failed">Ba a iya loda bayanan ma\'amala ba.</string>
+    <string name="history_filter_all">Duka</string>
+    <string name="history_from_date">Daga (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Tarihi na iya zama bai cika ba yayin daidaitawa.</string>
+    <string name="history_invalid_date_range">Shigar da ranaku masu inganci a tsarin YYYY-MM-DD, ko ka bar su babu komai.</string>
+    <string name="history_load_failed">Ba a iya loda wannan ɓangaren tarihin ba. Gwada kuma.</string>
+    <string name="history_loading_transaction">Ana loda ma\'amala…</string>
+    <string name="history_no_matches">Babu ma\'amala da ta dace da waɗannan matatun.</string>
+    <string name="history_reload">Sake loda tarihin don ci gaba.</string>
+    <string name="history_results_fmt">%1$d sun dace · jimilla %2$d</string>
+    <string name="history_retry">Sake gwadawa</string>
+    <string name="history_search_txid">Nemi ID na ma\'amala</string>
+    <string name="history_through_date">Zuwa (YYYY-MM-DD)</string>
+    <string name="history_title">Ma\'amaloli</string>
+    <string name="send_fee_increased_unapproved">Kudin cibiyar sadarwa ya ƙaru. Ba a aika komai ba. Duba kuɗin sannan ka sake tabbatarwa.</string>
 </resources>

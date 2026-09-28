@@ -26,8 +26,8 @@
     <string name="label_network_height">Tinggi Jaringan</string>
     <string name="label_remaining">Sisa</string>
     <string name="label_throughput">Kecepatan</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Kecepatan pemrosesan rata-rata</string>
+    <string name="label_throughput_recent">Kecepatan pemrosesan terbaru</string>
     <string name="label_progress">Progres</string>
     <string name="recent_transactions">Transaksi Terbaru</string>
     <string name="no_transactions_yet">Belum ada transaksi.</string>
@@ -45,7 +45,7 @@
     <string name="label_time">Waktu</string>
     <string name="label_txid">TXID</string>
     <string name="section_summary">Ringkasan</string>
-    <string name="section_chain">Chain</string>
+    <string name="section_chain">Blockchain</string>
     <string name="section_identifiers">Pengenal</string>
     <string name="sync_node_unreachable">Node tidak dapat dijangkau</string>
     <string name="sync_wallet_synced">Dompet tersinkron</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Tinggi Pemulihan:</string>
     <string name="restore_height_tip">Tips: 0 memindai seluruh riwayat chain. Ini adalah opsi paling aman jika Anda tidak yakin, tetapi sinkronisasi bisa memakan waktu lebih lama.</string>
     <string name="restore_height_warning">Peringatan: Jika Anda mengatur tinggi pemulihan setelah transaksi pertama, dana yang lebih lama tidak akan muncul sampai Anda memindai ulang dari tinggi yang lebih awal.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Jaringan utama</string>
     <string name="toggle_require_face_id">Wajibkan Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Wajibkan autentikasi perangkat</string>
     <string name="biometrics_unavailable">Autentikasi biometrik atau perangkat tidak tersedia di perangkat ini.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Ketik URL lengkap, termasuk http:// atau https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Simpan node</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Informasi</string>
     <string name="walletcore_version_label">Versi WalletCore:</string>
     <string name="seed_backup_intro">Ini adalah seed pemulihan Anda. Tulis di atas kertas dan simpan di tempat yang aman. Siapa pun yang memiliki kata-kata ini dapat mengakses dana Anda — nexawal tidak pernah mengunggah atau mencadangkannya untuk Anda.</string>
     <string name="generate_new_seed">Buat seed baru</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node disimpan</string>
     <string name="wallet_already_stored">Sebuah dompet sudah tersimpan di perangkat ini.</string>
     <string name="recovery_seed_label">Seed pemulihan Anda:</string>
-    <string name="recovery_seed_instructions">Tulis kata-kata ini secara berurutan dan simpan di tempat yang aman. Anda akan membutuhkannya untuk memulihkan dompet Anda — kata-kata ini tidak pernah disimpan di perangkat ini.</string>
+    <string name="recovery_seed_instructions">Tulis kata-kata ini secara berurutan dan simpan secara offline di tempat yang aman. Anda akan membutuhkannya untuk memulihkan dompet jika ponsel ini hilang. NexaWal juga menyimpan salinan terenkripsi di perangkat untuk membuka kunci — perlakukan cadangan seperti uang tunai.</string>
     <string name="confirm_backup_prompt">Konfirmasi cadangan Anda — masukkan kata-kata yang diminta:</string>
     <string name="mnemonic_paste_label">Mnemonic (tempel):</string>
     <string name="mnemonic_paste_placeholder">Tempel mnemonic 25 kata…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Kebijakan privasi</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Kode sumber di GitHub</string>
+    <string name="link_copied">Tautan disalin</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Dokumen offline tidak dapat dimuat.</string>
     <string name="source_license">Sumber &amp; lisensi (MIT)</string>
     <string name="saved_clearnet">Clearnet disimpan</string>
     <string name="saved_i2p">I2P disimpan</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Nonaktif</string>
     <string name="a11y_swap_amount_unit">Beralih antara XMR dan %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Kembali</string>
+    <string name="history_changed_reload">Riwayat berubah · muat ulang transaksi</string>
+    <string name="history_details_failed">Detail transaksi tidak dapat dimuat.</string>
+    <string name="history_filter_all">Semua</string>
+    <string name="history_from_date">Dari (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Riwayat mungkin belum lengkap saat sinkronisasi berlangsung.</string>
+    <string name="history_invalid_date_range">Masukkan tanggal yang valid dengan format YYYY-MM-DD atau biarkan kosong.</string>
+    <string name="history_load_failed">Bagian riwayat ini tidak dapat dimuat. Coba lagi.</string>
+    <string name="history_loading_transaction">Memuat transaksi…</string>
+    <string name="history_no_matches">Tidak ada transaksi yang cocok dengan filter ini.</string>
+    <string name="history_reload">Muat ulang riwayat untuk melanjutkan.</string>
+    <string name="history_results_fmt">%1$d cocok · total %2$d</string>
+    <string name="history_retry">Coba lagi</string>
+    <string name="history_search_txid">Cari ID transaksi</string>
+    <string name="history_through_date">Sampai (YYYY-MM-DD)</string>
+    <string name="history_title">Transaksi</string>
+    <string name="send_fee_increased_unapproved">Biaya jaringan meningkat. Tidak ada transaksi yang disiarkan. Tinjau biaya lalu konfirmasi lagi.</string>
 </resources>

@@ -26,8 +26,8 @@
     <string name="label_network_height">Altezza di rete</string>
     <string name="label_remaining">Rimanente</string>
     <string name="label_throughput">Velocità</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Velocità media</string>
+    <string name="label_throughput_recent">Velocità recente</string>
     <string name="label_progress">Progresso</string>
     <string name="recent_transactions">Transazioni recenti</string>
     <string name="no_transactions_yet">Ancora nessuna transazione.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Altezza di ripristino:</string>
     <string name="restore_height_tip">Suggerimento: 0 scansiona tutta la cronologia della catena. È l\'opzione più sicura se non sei sicuro, ma la sincronizzazione può richiedere più tempo.</string>
     <string name="restore_height_warning">Attenzione: se imposti un\'altezza di ripristino successiva alla tua prima transazione, i fondi precedenti non appariranno finché non riesegui la scansione da un\'altezza precedente.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Rete principale</string>
     <string name="toggle_require_face_id">Richiedi Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Richiedi autenticazione del dispositivo</string>
     <string name="biometrics_unavailable">L\'autenticazione biometrica o del dispositivo non è disponibile su questo dispositivo.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Digita l\'URL completo, incluso http:// o https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salva nodo</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Informazioni</string>
     <string name="walletcore_version_label">Versione WalletCore:</string>
     <string name="seed_backup_intro">Questa è la tua frase di recupero (seed). Scrivila su carta e conservala in un luogo sicuro. Chiunque conosca queste parole può accedere ai tuoi fondi — nexawal non la carica né la salva mai per te.</string>
     <string name="generate_new_seed">Genera nuova frase di recupero</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nodo salvato</string>
     <string name="wallet_already_stored">Un wallet è già salvato su questo dispositivo.</string>
     <string name="recovery_seed_label">La tua frase di recupero:</string>
-    <string name="recovery_seed_instructions">Scrivi queste parole in ordine e conservale in un luogo sicuro. Ti serviranno per ripristinare il wallet — non vengono mai salvate su questo dispositivo.</string>
+    <string name="recovery_seed_instructions">Scrivi queste parole in ordine e conservale offline in un luogo sicuro. Ti serviranno per ripristinare il wallet se perdi questo telefono. NexaWal conserva anche una copia crittografata sul dispositivo per lo sblocco — tratta il backup come contanti.</string>
     <string name="confirm_backup_prompt">Confermi il backup — inserisci le parole richieste:</string>
     <string name="mnemonic_paste_label">Frase mnemonica (incolla):</string>
     <string name="mnemonic_paste_placeholder">Incolla la frase mnemonica di 25 parole…</string>
@@ -169,9 +169,9 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Esci</string>
     <string name="privacy_policy">Informativa sulla privacy</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Chiudi</string>
+    <string name="source_on_github">Codice sorgente su GitHub</string>
+    <string name="link_copied">Link copiato</string>
+    <string name="legal_close">@string/action_close</string>
     <string name="legal_load_error">Impossibile caricare il documento offline.</string>
     <string name="source_license">Codice sorgente e licenza (MIT)</string>
     <string name="saved_clearnet">Clearnet salvata</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Disattivo</string>
     <string name="a11y_swap_amount_unit">Passa tra XMR e %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Indietro</string>
+    <string name="history_changed_reload">Cronologia modificata · ricarica le transazioni</string>
+    <string name="history_details_failed">Impossibile caricare i dettagli della transazione.</string>
+    <string name="history_filter_all">Tutte</string>
+    <string name="history_from_date">Da (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">La cronologia potrebbe essere incompleta durante la sincronizzazione.</string>
+    <string name="history_invalid_date_range">Inserisci date valide nel formato YYYY-MM-DD oppure lascia i campi vuoti.</string>
+    <string name="history_load_failed">Impossibile caricare questa parte della cronologia. Riprova.</string>
+    <string name="history_loading_transaction">Caricamento della transazione…</string>
+    <string name="history_no_matches">Nessuna transazione corrisponde a questi filtri.</string>
+    <string name="history_reload">Ricarica la cronologia per continuare.</string>
+    <string name="history_results_fmt">%1$d corrispondenze · %2$d in totale</string>
+    <string name="history_retry">Riprova</string>
+    <string name="history_search_txid">Cerca ID transazione</string>
+    <string name="history_through_date">A (YYYY-MM-DD)</string>
+    <string name="history_title">Transazioni</string>
+    <string name="send_fee_increased_unapproved">La commissione di rete è aumentata. Non è stato trasmesso nulla. Controlla la commissione e conferma di nuovo.</string>
 </resources>

@@ -26,8 +26,8 @@
     <string name="label_network_height">Ipele Nẹ́tíwọ́ọ̀kì</string>
     <string name="label_remaining">Tí ó Kù</string>
     <string name="label_throughput">Ìyára Sísàn</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Iyara iṣẹ́ àpapọ̀</string>
+    <string name="label_throughput_recent">Iyara iṣẹ́ aipẹ́</string>
     <string name="label_progress">Ìlọsíwájú</string>
     <string name="recent_transactions">Àwọn Ìṣòwò Tuntun</string>
     <string name="no_transactions_yet">Kò sí ìṣòwò kankan síbẹ̀.</string>
@@ -45,7 +45,7 @@
     <string name="label_time">Àkókò</string>
     <string name="label_txid">TXID</string>
     <string name="section_summary">Àkópọ̀</string>
-    <string name="section_chain">Chain</string>
+    <string name="section_chain">Ẹ̀wọ̀n àwọn bulọ́ọ̀kì</string>
     <string name="section_identifiers">Àwọn Ìdámọ̀</string>
     <string name="sync_node_unreachable">A kò lè dé Node</string>
     <string name="sync_wallet_synced">Àpamọ́wọ́ ti ṣọ̀kan</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Ipele Ìpadàbọ̀:</string>
     <string name="restore_height_tip">Ìmọ̀ràn: 0 yóò yẹ̀wò gbogbo ìtàn chain náà. Èyí ni àṣàyàn tí ó dájú jùlọ bí o kò bá dá ọkàn balẹ̀, ṣùgbọ́n ó lè gba àkókò gígùn láti ṣọ̀kan.</string>
     <string name="restore_height_warning">Ìkìlọ̀: Bí o bá ṣètò ipele ìpadàbọ̀ lẹ́yìn ìṣòwò rẹ àkọ́kọ́, owó àtijọ́ kò ní farahàn títí o fi tún yẹ̀wò láti ipele tí ó ṣáájú.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Nẹ́tíwọ́ọ̀kì àkọ́kọ́</string>
     <string name="toggle_require_face_id">Nílò Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Nílò ìmúdájú ẹ̀rọ</string>
     <string name="biometrics_unavailable">Ìmúdájú Biometric tàbí ẹ̀rọ kò sí lórí ẹ̀rọ yìí.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node ti di fífi pamọ́</string>
     <string name="wallet_already_stored">Àpamọ́wọ́ kan ti wà tí a ti fi pamọ́sí ẹ̀rọ yìí.</string>
     <string name="recovery_seed_label">Ọ̀rọ̀ ìpadàbọ̀ rẹ:</string>
-    <string name="recovery_seed_instructions">Kọ àwọn ọ̀rọ̀ yìí sílẹ̀ ní ìlọ́tẹ̀léra kí o sì fi pamọ́sí ibi tí ó dájú. O óò nílò wọn láti dá àpamọ́wọ́ rẹ padà — a kò fi wọ́n pamọ́ sórí ẹ̀rọ yìí láé.</string>
+    <string name="recovery_seed_instructions">Kọ àwọn ọ̀rọ̀ yìí sílẹ̀ ní ìtòlẹ́sẹẹsẹ kí o sì fi wọ́n pamọ́ síbi àìsí-ayélujára tí ó dájú. O óò nílò wọn láti dá àpamọ́wọ́ padà tí fóònù yìí bá sọnù. NexaWal tún pa àdàkọ tí a fi ọ̀rọ̀-ìpamọ́ pamọ́ sórí ẹ̀rọ fún ṣíṣí — lo àdàkọ ìpamọ́ bí owó ọwọ́.</string>
     <string name="confirm_backup_prompt">Jẹ́rìí pé o ti fi ẹ̀dà pamọ́ — kọ àwọn ọ̀rọ̀ tí a béèrè:</string>
     <string name="mnemonic_paste_label">Mnemonic (fi lẹ̀mọ́):</string>
     <string name="mnemonic_paste_placeholder">Fi ọ̀rọ̀ mnemonic tí ó ní ọ̀rọ̀ 25 lẹ̀mọ́…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Jáde</string>
     <string name="privacy_policy">Ìlànà àṣírí</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Kóòdù orísun lórí GitHub</string>
+    <string name="link_copied">A ti da ọna asopọ kọ</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">A kò lè ṣí ìwé àìsí ìkànnì.</string>
     <string name="source_license">Orísun &amp; ìwé-àṣẹ (MIT)</string>
     <string name="saved_clearnet">Clearnet ti di fífi pamọ́</string>
     <string name="saved_i2p">I2P ti di fífi pamọ́</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Ti dúró</string>
     <string name="a11y_swap_amount_unit">Yí padà láàrin XMR àti %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Pada</string>
+    <string name="history_changed_reload">Ìtàn ti yí padà · tún àwọn ìṣòwò gbé wọlé</string>
+    <string name="history_details_failed">A kò lè gbé àlàyé ìṣòwò wọlé.</string>
+    <string name="history_filter_all">Gbogbo</string>
+    <string name="history_from_date">Láti (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Ìtàn lè má pé nígbà ìmúṣiṣẹpọ̀.</string>
+    <string name="history_invalid_date_range">Tẹ ọjọ́ tó bófin mu ní ìrísí YYYY-MM-DD wọlé, tàbí fi sílẹ̀ láìsí nǹkan.</string>
+    <string name="history_load_failed">A kò lè gbé apá ìtàn yìí wọlé. Gbìyànjú lẹ́ẹ̀kansi.</string>
+    <string name="history_loading_transaction">Ń gbé ìṣòwò wọlé…</string>
+    <string name="history_no_matches">Kò sí ìṣòwò tó bá àwọn àlẹ̀mọ́ wọ̀nyí mu.</string>
+    <string name="history_reload">Tún ìtàn gbé wọlé láti tẹ̀síwájú.</string>
+    <string name="history_results_fmt">%1$d bá mu · lápapọ̀ %2$d</string>
+    <string name="history_retry">Gbìyànjú lẹ́ẹ̀kansi</string>
+    <string name="history_search_txid">Wa ID ìṣòwò</string>
+    <string name="history_through_date">Títí dé (YYYY-MM-DD)</string>
+    <string name="history_title">Àwọn ìṣòwò</string>
+    <string name="send_fee_increased_unapproved">Owó iṣẹ́ nẹ́tíwọ́ọ̀kì ti pọ̀ sí i. A kò tan ohunkóhun ká. Ṣàyẹ̀wò owó náà kí o sì fọwọ́ sí i lẹ́ẹ̀kansi.</string>
 </resources>

@@ -26,8 +26,8 @@
     <string name="label_network_height">Võrgu kõrgus</string>
     <string name="label_remaining">Jäänud</string>
     <string name="label_throughput">Läbilaskevõime</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Keskmine läbilaskevõime</string>
+    <string name="label_throughput_recent">Hiljutine läbilaskevõime</string>
     <string name="label_progress">Edenemine</string>
     <string name="recent_transactions">Viimased tehingud</string>
     <string name="no_transactions_yet">Tehinguid veel ei ole.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Taastamiskõrgus:</string>
     <string name="restore_height_tip">Nõuanne: 0 skannib kogu ahela ajaloo. See on kõige ohutum valik, kui te ei ole kindel, kuid sünkroonimine võib kauem aega võtta.</string>
     <string name="restore_height_warning">Hoiatus: kui määrate taastamiskõrguse pärast esimest tehingut, ei kuvata vanemaid vahendeid enne, kui skannite varasemast kõrgusest uuesti.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Põhivõrk</string>
     <string name="toggle_require_face_id">Nõua Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Nõua seadme autentimist</string>
     <string name="biometrics_unavailable">Biomeetriline või seadme autentimine ei ole selles seadmes saadaval.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Sõlm salvestatud</string>
     <string name="wallet_already_stored">Selles seadmes on juba rahakott salvestatud.</string>
     <string name="recovery_seed_label">Teie taastefraas:</string>
-    <string name="recovery_seed_instructions">Kirjutage need sõnad järjekorras üles ja hoidke neid turvalises kohas. Vajate neid rahakoti taastamiseks — neid ei salvestata kunagi selles seadmes.</string>
+    <string name="recovery_seed_instructions">Kirjutage need sõnad järjekorras üles ja hoidke neid turvaliselt võrguühenduseta. Vajate neid rahakoti taastamiseks, kui see telefon kaob. NexaWal hoiab avamiseks ka krüpteeritud koopiat seadmes — kohtlege varukoopiat nagu sularaha.</string>
     <string name="confirm_backup_prompt">Kinnitage oma varukoopia — sisestage küsitud sõnad:</string>
     <string name="mnemonic_paste_label">Mnemooniline fraas (kleebi):</string>
     <string name="mnemonic_paste_placeholder">Kleebi 25-sõnaline mnemooniline fraas…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Välju</string>
     <string name="privacy_policy">Privaatsuspoliitika</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Lähtekood GitHubis</string>
+    <string name="link_copied">Link kopeeritud</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Võrguühenduseta dokumenti ei saanud laadida.</string>
     <string name="source_license">Lähtekood ja litsents (MIT)</string>
     <string name="saved_clearnet">Clearnet salvestatud</string>
     <string name="saved_i2p">I2P salvestatud</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Väljas</string>
     <string name="a11y_swap_amount_unit">Vaheta XMR ja %1$s vahel</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Tagasi</string>
+    <string name="history_changed_reload">Ajalugu muutus · laadi tehingud uuesti</string>
+    <string name="history_details_failed">Tehingu üksikasjade laadimine ebaõnnestus.</string>
+    <string name="history_filter_all">Kõik</string>
+    <string name="history_from_date">Alates (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Sünkroonimise ajal võib ajalugu olla puudulik.</string>
+    <string name="history_invalid_date_range">Sisesta kuupäevad vormingus YYYY-MM-DD või jäta väljad tühjaks.</string>
+    <string name="history_load_failed">Selle ajaloo osa laadimine ebaõnnestus. Proovi uuesti.</string>
+    <string name="history_loading_transaction">Tehingu laadimine…</string>
+    <string name="history_no_matches">Nendele filtritele vastavaid tehinguid pole.</string>
+    <string name="history_reload">Jätkamiseks laadi ajalugu uuesti.</string>
+    <string name="history_results_fmt">%1$d vastet · kokku %2$d</string>
+    <string name="history_retry">Proovi uuesti</string>
+    <string name="history_search_txid">Otsi tehingu ID-d</string>
+    <string name="history_through_date">Kuni (YYYY-MM-DD)</string>
+    <string name="history_title">Tehingud</string>
+    <string name="send_fee_increased_unapproved">Võrgutasu suurenes. Midagi ei edastatud. Vaata tasu üle ja kinnita uuesti.</string>
 </resources>

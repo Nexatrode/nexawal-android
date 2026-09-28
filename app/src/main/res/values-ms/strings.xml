@@ -26,8 +26,8 @@
     <string name="label_network_height">Ketinggian Rangkaian</string>
     <string name="label_remaining">Baki Tinggal</string>
     <string name="label_throughput">Kelajuan Aliran</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Kadar pemprosesan purata</string>
+    <string name="label_throughput_recent">Kadar pemprosesan terkini</string>
     <string name="label_progress">Kemajuan</string>
     <string name="recent_transactions">Transaksi Terkini</string>
     <string name="no_transactions_yet">Belum ada transaksi.</string>
@@ -45,7 +45,7 @@
     <string name="label_time">Masa</string>
     <string name="label_txid">TXID</string>
     <string name="section_summary">Ringkasan</string>
-    <string name="section_chain">Chain</string>
+    <string name="section_chain">Rantaian blok</string>
     <string name="section_identifiers">Pengenalan</string>
     <string name="sync_node_unreachable">Node tidak dapat dihubungi</string>
     <string name="sync_wallet_synced">Dompet telah diselaraskan</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Ketinggian Pemulihan:</string>
     <string name="restore_height_tip">Petua: 0 akan mengimbas seluruh sejarah chain. Ini adalah pilihan paling selamat jika anda tidak pasti, tetapi penyelarasan mungkin mengambil masa lebih lama.</string>
     <string name="restore_height_warning">Amaran: Jika anda menetapkan ketinggian pemulihan selepas transaksi pertama anda, wang lama tidak akan muncul sehingga anda mengimbas semula daripada ketinggian yang lebih awal.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Rangkaian utama</string>
     <string name="toggle_require_face_id">Wajibkan Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Wajibkan pengesahan peranti</string>
     <string name="biometrics_unavailable">Pengesahan biometrik atau peranti tidak tersedia pada peranti ini.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Node disimpan</string>
     <string name="wallet_already_stored">Dompet sudah disimpan pada peranti ini.</string>
     <string name="recovery_seed_label">Benih pemulihan anda:</string>
-    <string name="recovery_seed_instructions">Tulis perkataan ini mengikut susunan dan simpan di tempat yang selamat. Anda akan memerlukannya untuk memulihkan dompet anda — ia tidak sekali-kali disimpan pada peranti ini.</string>
+    <string name="recovery_seed_instructions">Tulis perkataan ini mengikut susunan dan simpan secara luar talian di tempat yang selamat. Anda akan memerlukannya untuk memulihkan dompet jika telefon ini hilang. NexaWal juga menyimpan salinan disulitkan pada peranti untuk membuka kunci — anggap sandaran seperti wang tunai.</string>
     <string name="confirm_backup_prompt">Sahkan sandaran anda — masukkan perkataan yang diminta:</string>
     <string name="mnemonic_paste_label">Mnemonic (tampal):</string>
     <string name="mnemonic_paste_placeholder">Tampal mnemonic 25 perkataan…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Keluar</string>
     <string name="privacy_policy">Dasar privasi</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Kod sumber di GitHub</string>
+    <string name="link_copied">Pautan disalin</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Dokumen luar talian tidak dapat dimuatkan.</string>
     <string name="source_license">Sumber &amp; lesen (MIT)</string>
     <string name="saved_clearnet">Clearnet disimpan</string>
     <string name="saved_i2p">I2P disimpan</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Mati</string>
     <string name="a11y_swap_amount_unit">Tukar antara XMR dan %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Kembali</string>
+    <string name="history_changed_reload">Sejarah berubah · muat semula transaksi</string>
+    <string name="history_details_failed">Butiran transaksi tidak dapat dimuatkan.</string>
+    <string name="history_filter_all">Semua</string>
+    <string name="history_from_date">Dari (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Sejarah mungkin tidak lengkap semasa penyegerakan.</string>
+    <string name="history_invalid_date_range">Masukkan tarikh yang sah dalam format YYYY-MM-DD atau biarkan kosong.</string>
+    <string name="history_load_failed">Bahagian sejarah ini tidak dapat dimuatkan. Cuba lagi.</string>
+    <string name="history_loading_transaction">Memuatkan transaksi…</string>
+    <string name="history_no_matches">Tiada transaksi yang sepadan dengan penapis ini.</string>
+    <string name="history_reload">Muat semula sejarah untuk meneruskan.</string>
+    <string name="history_results_fmt">%1$d sepadan · jumlah %2$d</string>
+    <string name="history_retry">Cuba lagi</string>
+    <string name="history_search_txid">Cari ID transaksi</string>
+    <string name="history_through_date">Hingga (YYYY-MM-DD)</string>
+    <string name="history_title">Transaksi</string>
+    <string name="send_fee_increased_unapproved">Yuran rangkaian meningkat. Tiada apa-apa disiarkan. Semak yuran dan sahkan sekali lagi.</string>
 </resources>

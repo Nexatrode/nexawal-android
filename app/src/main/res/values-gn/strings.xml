@@ -26,8 +26,8 @@
     <string name="label_network_height">Altura de Red</string>
     <string name="label_remaining">Opytáva</string>
     <string name="label_throughput">Pya\'eha</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Pya’e ñembohape mbytegua</string>
+    <string name="label_throughput_recent">Pya’e ñembohape ko’ág̃agua</string>
     <string name="label_progress">Progreso</string>
     <string name="recent_transactions">Transacciones Ramovéva</string>
     <string name="no_transactions_yet">Ndaipóri transacción gueteri.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Altura de Restauración:</string>
     <string name="restore_height_tip">Jehechakuaa: 0 oskanea opaite cadena rembiasakue. Kóva ha\'e opción segurove nde ndereikuaáirõ, katu ikatu ombopukukuvéta sincronización.</string>
     <string name="restore_height_warning">Kyhyje: Eñemoĩrõ altura de restauración nde primer transacción rire, umi viru tuja ndojehecháiva peve rejeskanea jey altura ymave guive.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Ñanduti tenondegua</string>
     <string name="toggle_require_face_id">Tekotevẽ Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Tekotevẽ autenticación dispositivo-gua</string>
     <string name="biometrics_unavailable">Autenticación biométrica térã dispositivo-gua ndaipóri ko dispositivo-pe.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Ehai pe URL tuichaháicha, oike hag̃ua http:// térã https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Eñongatu nodo</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Marandu</string>
     <string name="walletcore_version_label">Versión WalletCore:</string>
     <string name="seed_backup_intro">Kóva ha\'e nde frase mnemónica ñeñongaturã. Ehai kuatiáre ha eñongatu tenda segurohápe. Oimeraẽva oikuaáva ko\'ã ñe\'ẽ ikatu oike nde viru-pe — nexawal araka\'eve ndohupivéi térã ñeñongatu ndojapói nde rehe.</string>
     <string name="generate_new_seed">Emoheñói frase mnemónica pyahu</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nodo ñeñongatupyre</string>
     <string name="wallet_already_stored">Peteĩ ñongatuha oĩma ñeñongatupyre ko dispositivo-pe.</string>
     <string name="recovery_seed_label">Nde frase mnemónica:</string>
-    <string name="recovery_seed_instructions">Ehai ko\'ã ñe\'ẽ oĩháicha ha eñongatu tenda segurohápe. Eikotevẽta hese ñongatuha ñemoĩ jey hag̃ua — araka\'eve ndaha\'éi ñeñongatupyre ko dispositivo-pe.</string>
+    <string name="recovery_seed_instructions">Ehai ko\'ã ñe\'ẽ oĩháicha ha eñongatu chupekuéra segurohápe ñanduti\'ỹre. Eikotevẽta hesekuéra ñongatuha ñemoĩ jey hag̃ua ko pumbyry ojeheja ramo. NexaWal oñongatu avei peteĩ kopia cifrada dispositivo-pe ijepe\'a hag̃ua — eñangareko backup rehe viruicha.</string>
     <string name="confirm_backup_prompt">Emoneĩ nde ñeñongaturã — emoinge umi ñe\'ẽ ojejeruréva:</string>
     <string name="mnemonic_paste_label">Frase mnemónica (emoinge):</string>
     <string name="mnemonic_paste_placeholder">Emoinge frase mnemónica 25 ñe\'ẽgua…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Sẽ</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Código ypykue GitHub-pe</string>
+    <string name="link_copied">Joajuha ojekopia</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Ndoikói oñemyanyhẽ hag̃ua kuatia offline.</string>
     <string name="source_license">Código &amp; licencia (MIT)</string>
     <string name="saved_clearnet">Clearnet ñeñongatupyre</string>
     <string name="saved_i2p">I2P ñeñongatupyre</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Mbogue</string>
     <string name="a11y_swap_amount_unit">Emyengovia XMR ha %1$s mbytépe</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Tapykuépe</string>
+    <string name="history_changed_reload">Ñemuhakue oñemoambue · emyanyhẽ jey ñemuhakue</string>
+    <string name="history_details_failed">Ndaikatúi oñemyanyhẽ umi detalle ñemuhakue rehegua.</string>
+    <string name="history_filter_all">Opavave</string>
+    <string name="history_from_date">Guive (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Ñemuhakue ikatu ndoĩmbái oñembojoaju aja.</string>
+    <string name="history_invalid_date_range">Emoinge ára oĩporãva YYYY-MM-DD-pe, térã eheja nandi.</string>
+    <string name="history_load_failed">Ndaikatúi oñemyanyhẽ ko ñemuhakue pehẽ. Eha\'ã jey.</string>
+    <string name="history_loading_transaction">Oñemyanyhẽ hína ñemuhakue…</string>
+    <string name="history_no_matches">Ndaipóri ñemuhakue ojoajúva ko\'ã filtro rehe.</string>
+    <string name="history_reload">Emyanyhẽ jey ñemuhakue eho hag̃ua tenonde.</string>
+    <string name="history_results_fmt">%1$d ojogueraha · %2$d oñondive</string>
+    <string name="history_retry">Eha\'ã jey</string>
+    <string name="history_search_txid">Eheka ñemuhakue ID</string>
+    <string name="history_through_date">Peve (YYYY-MM-DD)</string>
+    <string name="history_title">Ñemuhakue</string>
+    <string name="send_fee_increased_unapproved">Oñembohetave pe tarifa red rehegua. Ndojekuaaukái mba\'eve. Ehecha jey tarifa ha emoneĩ jey.</string>
 </resources>

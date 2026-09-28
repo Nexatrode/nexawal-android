@@ -26,8 +26,8 @@
     <string name="label_network_height">Visina mreže</string>
     <string name="label_remaining">Preostalo</string>
     <string name="label_throughput">Protok</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Prosječna propusnost</string>
+    <string name="label_throughput_recent">Nedavna propusnost</string>
     <string name="label_progress">Napredak</string>
     <string name="recent_transactions">Nedavne transakcije</string>
     <string name="no_transactions_yet">Još nema transakcija.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Visina obnove:</string>
     <string name="restore_height_tip">Savjet: 0 skenira cijelu povijest lanca. To je najsigurnija opcija ako niste sigurni, ali sinkronizacija može trajati dulje.</string>
     <string name="restore_height_warning">Upozorenje: ako postavite visinu obnove nakon prve transakcije, starija sredstva neće se prikazati dok ponovno ne skenirate od ranije visine.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Glavna mreža</string>
     <string name="toggle_require_face_id">Zahtijevaj Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Zahtijevaj autentifikaciju uređaja</string>
     <string name="biometrics_unavailable">Biometrijska autentifikacija ili autentifikacija uređaja nije dostupna na ovom uređaju.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Čvor spremljen</string>
     <string name="wallet_already_stored">Novčanik je već spremljen na ovom uređaju.</string>
     <string name="recovery_seed_label">Vaš sjemenski kod za obnovu:</string>
-    <string name="recovery_seed_instructions">Zapišite ove riječi po redu i pohranite ih na sigurno mjesto. Trebat će vam za obnovu novčanika — nikada se ne pohranjuju na ovom uređaju.</string>
+    <string name="recovery_seed_instructions">Zapišite ove riječi po redu i pohranite ih sigurno offline. Trebat će vam za obnovu novčanika ako ovaj telefon bude izgubljen. NexaWal također čuva šifriranu kopiju na uređaju za otključavanje — tretirajte sigurnosnu kopiju kao gotovinu.</string>
     <string name="confirm_backup_prompt">Potvrdite sigurnosnu kopiju — unesite tražene riječi:</string>
     <string name="mnemonic_paste_label">Mnemonik (zalijepi):</string>
     <string name="mnemonic_paste_placeholder">Zalijepite mnemonik od 25 riječi…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Izlaz</string>
     <string name="privacy_policy">Pravila privatnosti</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Izvorni kod na GitHubu</string>
+    <string name="link_copied">Veza je kopirana</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Nije moguće učitati izvanmrežni dokument.</string>
     <string name="source_license">Izvorni kod i licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet spremljen</string>
     <string name="saved_i2p">I2P spremljen</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Isključeno</string>
     <string name="a11y_swap_amount_unit">Prebaci između XMR i %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Natrag</string>
+    <string name="history_changed_reload">Povijest je promijenjena · ponovno učitajte transakcije</string>
+    <string name="history_details_failed">Pojedinosti transakcije nije moguće učitati.</string>
+    <string name="history_filter_all">Sve</string>
+    <string name="history_from_date">Od (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Povijest može biti nepotpuna tijekom sinkronizacije.</string>
+    <string name="history_invalid_date_range">Unesite valjane datume u formatu YYYY-MM-DD ili ih ostavite praznima.</string>
+    <string name="history_load_failed">Ovaj dio povijesti nije moguće učitati. Pokušajte ponovno.</string>
+    <string name="history_loading_transaction">Učitavanje transakcije…</string>
+    <string name="history_no_matches">Nema transakcija koje odgovaraju ovim filtrima.</string>
+    <string name="history_reload">Ponovno učitajte povijest za nastavak.</string>
+    <string name="history_results_fmt">%1$d podudaranja · ukupno %2$d</string>
+    <string name="history_retry">Pokušaj ponovno</string>
+    <string name="history_search_txid">Pretraži ID transakcije</string>
+    <string name="history_through_date">Do (YYYY-MM-DD)</string>
+    <string name="history_title">Transakcije</string>
+    <string name="send_fee_increased_unapproved">Mrežna naknada se povećala. Ništa nije emitirano. Pregledajte naknadu i ponovno potvrdite.</string>
 </resources>

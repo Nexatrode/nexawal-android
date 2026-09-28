@@ -26,8 +26,8 @@
     <string name="label_network_height">Sarearen altuera</string>
     <string name="label_remaining">Geratzen dena</string>
     <string name="label_throughput">Abiadura</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Batez besteko errendimendua</string>
+    <string name="label_throughput_recent">Azken errendimendua</string>
     <string name="label_progress">Aurrerapena</string>
     <string name="recent_transactions">Azken transakzioak</string>
     <string name="no_transactions_yet">Oraindik ez dago transakziorik.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Leheneratze-altuera:</string>
     <string name="restore_height_tip">Aholkua: 0 balioak katearen historia osoa eskaneatzen du. Aukera seguruena da ez bazaude ziur, baina sinkronizatzeko denbora gehiago behar du.</string>
     <string name="restore_height_warning">Kontuz: leheneratze-altuera zure lehen transakzioaren ondorengoa ezartzen baduzu, funts zaharragoak ez dira agertuko altuera lehenago batetik berreskaneatu arte.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Sare nagusia</string>
     <string name="toggle_require_face_id">Eskatu Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Eskatu gailuaren autentifikazioa</string>
     <string name="biometrics_unavailable">Autentifikazio biometrikoa edo gailuarena ez dago erabilgarri gailu honetan.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nodoa gordeta</string>
     <string name="wallet_already_stored">Gailu honetan zorro bat gordeta dago jada.</string>
     <string name="recovery_seed_label">Zure leheneratze-hazia:</string>
-    <string name="recovery_seed_instructions">Idatzi hitz hauek ordenan eta gorde leku seguru batean. Zure zorroa leheneratzeko beharko dituzu — ez dira inoiz gailu honetan gordetzen.</string>
+    <string name="recovery_seed_instructions">Idatzi hitz hauek ordenan eta gorde itzazu seguru lineaz kanpo. Telefono hau galtzen baduzu, zorroa leheneratzeko beharko dituzu. NexaWal-ek desblokeatzeko gailuan kopia enkriptatu bat ere gordetzen du — tratatu babeskopia eskudirutan bezala.</string>
     <string name="confirm_backup_prompt">Berretsi zure babeskopia — sartu eskatutako hitzak:</string>
     <string name="mnemonic_paste_label">Esaldi mnemoteknikoa (itsatsi):</string>
     <string name="mnemonic_paste_placeholder">Itsatsi 25 hitzeko esaldi mnemoteknikoa…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Irten</string>
     <string name="privacy_policy">Pribatutasun politika</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Iturburu-kodea GitHuben</string>
+    <string name="link_copied">Esteka kopiatu da</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Ezin izan da konexiorik gabeko dokumentua kargatu.</string>
     <string name="source_license">Iturburua eta lizentzia (MIT)</string>
     <string name="saved_clearnet">Clearnet gordeta</string>
     <string name="saved_i2p">I2P gordeta</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Desaktibatuta</string>
     <string name="a11y_swap_amount_unit">Aldatu XMR eta %1$s artean</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Atzera</string>
+    <string name="history_changed_reload">Historia aldatu da · kargatu berriro transakzioak</string>
+    <string name="history_details_failed">Ezin izan dira transakzioaren xehetasunak kargatu.</string>
+    <string name="history_filter_all">Guztiak</string>
+    <string name="history_from_date">Noiztik (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Sinkronizatzen ari den bitartean historia osatu gabe egon daiteke.</string>
+    <string name="history_invalid_date_range">Sartu data baliozkoak YYYY-MM-DD formatuan, edo utzi hutsik.</string>
+    <string name="history_load_failed">Ezin izan da historiaren zati hau kargatu. Saiatu berriro.</string>
+    <string name="history_loading_transaction">Transakzioa kargatzen…</string>
+    <string name="history_no_matches">Ez dago iragazki hauekin bat datorren transakziorik.</string>
+    <string name="history_reload">Kargatu historia berriro jarraitzeko.</string>
+    <string name="history_results_fmt">%1$d bat datoz · guztira %2$d</string>
+    <string name="history_retry">Saiatu berriro</string>
+    <string name="history_search_txid">Bilatu transakzioaren IDa</string>
+    <string name="history_through_date">Noiz arte (YYYY-MM-DD)</string>
+    <string name="history_title">Transakzioak</string>
+    <string name="send_fee_increased_unapproved">Sareko komisioa igo da. Ez da ezer bidali. Berrikusi komisioa eta berretsi berriro.</string>
 </resources>

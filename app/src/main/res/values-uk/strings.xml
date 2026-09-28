@@ -26,8 +26,8 @@
     <string name="label_network_height">Висота мережі</string>
     <string name="label_remaining">Залишилось</string>
     <string name="label_throughput">Пропускна здатність</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Середня пропускна здатність</string>
+    <string name="label_throughput_recent">Нещодавня пропускна здатність</string>
     <string name="label_progress">Прогрес</string>
     <string name="recent_transactions">Останні транзакції</string>
     <string name="no_transactions_yet">Транзакцій ще немає.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Висота відновлення:</string>
     <string name="restore_height_tip">Порада: 0 скановує всю історію ланцюга. Це найбезпечніший варіант, якщо ви не впевнені, але синхронізація може тривати довше.</string>
     <string name="restore_height_warning">Попередження: якщо ви встановите висоту відновлення після своєї першої транзакції, старіші кошти не з\'являться, доки ви не виконаєте повторне сканування з ранішої висоти.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Основна мережа</string>
     <string name="toggle_require_face_id">Вимагати Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Вимагати автентифікацію пристрою</string>
     <string name="biometrics_unavailable">Біометрична автентифікація або автентифікація пристрою недоступна на цьому пристрої.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Вузол збережено</string>
     <string name="wallet_already_stored">На цьому пристрої вже збережено гаманець.</string>
     <string name="recovery_seed_label">Ваша фраза відновлення:</string>
-    <string name="recovery_seed_instructions">Запишіть ці слова по порядку і зберігайте їх у безпечному місці. Вони знадобляться для відновлення гаманця — вони ніколи не зберігаються на цьому пристрої.</string>
+    <string name="recovery_seed_instructions">Запишіть ці слова по порядку і зберігайте їх безпечно офлайн. Вони знадобляться для відновлення гаманця, якщо цей телефон буде втрачено. NexaWal також зберігає зашифровану копію на пристрої для розблокування — ставтеся до резервної копії як до готівки.</string>
     <string name="confirm_backup_prompt">Підтвердьте резервну копію — введіть потрібні слова:</string>
     <string name="mnemonic_paste_label">Мнемонічна фраза (вставити):</string>
     <string name="mnemonic_paste_placeholder">Вставте мнемонічну фразу з 25 слів…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Вийти</string>
     <string name="privacy_policy">Політика конфіденційності</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Вихідний код на GitHub</string>
+    <string name="link_copied">Посилання скопійовано</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Не вдалося завантажити офлайн-документ.</string>
     <string name="source_license">Джерельний код і ліцензія (MIT)</string>
     <string name="saved_clearnet">Clearnet збережено</string>
     <string name="saved_i2p">I2P збережено</string>
@@ -387,9 +387,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Вимкнено</string>
     <string name="a11y_swap_amount_unit">Перемкнути між XMR і %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Назад</string>
+    <string name="history_changed_reload">Історію змінено · перезавантажте транзакції</string>
+    <string name="history_details_failed">Не вдалося завантажити відомості про транзакцію.</string>
+    <string name="history_filter_all">Усі</string>
+    <string name="history_from_date">Від (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Під час синхронізації історія може бути неповною.</string>
+    <string name="history_invalid_date_range">Введіть коректні дати у форматі YYYY-MM-DD або залиште поля порожніми.</string>
+    <string name="history_load_failed">Не вдалося завантажити цю частину історії. Спробуйте ще раз.</string>
+    <string name="history_loading_transaction">Завантаження транзакції…</string>
+    <string name="history_no_matches">Немає транзакцій, що відповідають цим фільтрам.</string>
+    <string name="history_reload">Перезавантажте історію, щоб продовжити.</string>
+    <string name="history_results_fmt">Збігів: %1$d · усього %2$d</string>
+    <string name="history_retry">Повторити</string>
+    <string name="history_search_txid">Пошук ID транзакції</string>
+    <string name="history_through_date">До (YYYY-MM-DD)</string>
+    <string name="history_title">Транзакції</string>
+    <string name="send_fee_increased_unapproved">Мережева комісія зросла. Нічого не передано. Перевірте комісію та підтвердьте ще раз.</string>
 </resources>

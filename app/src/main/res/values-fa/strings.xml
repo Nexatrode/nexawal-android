@@ -26,8 +26,8 @@
     <string name="label_network_height">ارتفاع شبکه</string>
     <string name="label_remaining">باقی‌مانده</string>
     <string name="label_throughput">نرخ پردازش</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">میانگین توان عملیاتی</string>
+    <string name="label_throughput_recent">توان عملیاتی اخیر</string>
     <string name="label_progress">پیشرفت</string>
     <string name="recent_transactions">تراکنش‌های اخیر</string>
     <string name="no_transactions_yet">هنوز تراکنشی وجود ندارد.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">ارتفاع بازیابی:</string>
     <string name="restore_height_tip">نکته: 0 کل تاریخچه زنجیره را اسکن می‌کند. اگر مطمئن نیستید، این امن‌ترین گزینه است، اما همگام‌سازی آن ممکن است بیشتر طول بکشد.</string>
     <string name="restore_height_warning">هشدار: اگر ارتفاع بازیابی را بعد از اولین تراکنش خود تنظیم کنید، وجوه قدیمی‌تر نمایش داده نمی‌شوند تا زمانی که از ارتفاعی زودتر دوباره اسکن کنید.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">شبکه اصلی</string>
     <string name="toggle_require_face_id">نیاز به Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">نیاز به احراز هویت دستگاه</string>
     <string name="biometrics_unavailable">احراز هویت بیومتریک یا دستگاه روی این دستگاه در دسترس نیست.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">گره ذخیره شد</string>
     <string name="wallet_already_stored">کیف پولی از قبل روی این دستگاه ذخیره شده است.</string>
     <string name="recovery_seed_label">عبارت بازیابی شما:</string>
-    <string name="recovery_seed_instructions">این کلمات را به ترتیب یادداشت کنید و در جای امنی نگه دارید. برای بازیابی کیف پول خود به آن‌ها نیاز خواهید داشت — آن‌ها هرگز روی این دستگاه ذخیره نمی‌شوند.</string>
+    <string name="recovery_seed_instructions">این کلمات را به ترتیب یادداشت کنید و آن‌ها را به‌صورت آفلاین در جای امنی نگه دارید. اگر این گوشی گم شود، برای بازیابی کیف پول به آن‌ها نیاز خواهید داشت. NexaWal همچنین یک رونوشت رمزنگاری‌شده روی دستگاه برای باز کردن قفل نگه می‌دارد — از پشتیبان مثل پول نقد مراقبت کنید.</string>
     <string name="confirm_backup_prompt">پشتیبان خود را تأیید کنید — کلمات درخواستی را وارد کنید:</string>
     <string name="mnemonic_paste_label">عبارت بازیابی (چسباندن):</string>
     <string name="mnemonic_paste_placeholder">عبارت بازیابی 25 کلمه‌ای را بچسبانید…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">خروج</string>
     <string name="privacy_policy">سیاست حریم خصوصی</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">کد منبع در گیت‌هاب</string>
+    <string name="link_copied">پیوند کپی شد</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">بارگیری سند آفلاین ممکن نشد.</string>
     <string name="source_license">کد منبع و مجوز (MIT)</string>
     <string name="saved_clearnet">Clearnet ذخیره شد</string>
     <string name="saved_i2p">I2P ذخیره شد</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">خاموش</string>
     <string name="a11y_swap_amount_unit">تعویض بین XMR و %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">بازگشت</string>
+    <string name="history_changed_reload">تاریخچه تغییر کرد · تراکنش‌ها را دوباره بارگیری کنید</string>
+    <string name="history_details_failed">جزئیات تراکنش بارگیری نشد.</string>
+    <string name="history_filter_all">همه</string>
+    <string name="history_from_date">از (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">هنگام همگام‌سازی ممکن است تاریخچه کامل نباشد.</string>
+    <string name="history_invalid_date_range">تاریخ معتبر را با قالب YYYY-MM-DD وارد کنید یا خالی بگذارید.</string>
+    <string name="history_load_failed">بارگیری این بخش از تاریخچه ممکن نشد. دوباره تلاش کنید.</string>
+    <string name="history_loading_transaction">در حال بارگیری تراکنش…</string>
+    <string name="history_no_matches">تراکنشی با این فیلترها مطابقت ندارد.</string>
+    <string name="history_reload">برای ادامه، تاریخچه را دوباره بارگیری کنید.</string>
+    <string name="history_results_fmt">%1$d مورد · در مجموع %2$d</string>
+    <string name="history_retry">تلاش دوباره</string>
+    <string name="history_search_txid">جستجوی شناسهٔ تراکنش</string>
+    <string name="history_through_date">تا (YYYY-MM-DD)</string>
+    <string name="history_title">تراکنش‌ها</string>
+    <string name="send_fee_increased_unapproved">کارمزد شبکه افزایش یافت. چیزی پخش نشد. کارمزد را بررسی و دوباره تأیید کنید.</string>
 </resources>

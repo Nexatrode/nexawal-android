@@ -26,8 +26,8 @@
     <string name="label_network_height">Lartësia e Rrjetit</string>
     <string name="label_remaining">Të mbetura</string>
     <string name="label_throughput">Kapaciteti</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Shpejtësia mesatare e përpunimit</string>
+    <string name="label_throughput_recent">Shpejtësia e fundit e përpunimit</string>
     <string name="label_progress">Progresi</string>
     <string name="recent_transactions">Transaksionet e Fundit</string>
     <string name="no_transactions_yet">Ende asnjë transaksion.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Lartësia e Rikuperimit:</string>
     <string name="restore_height_tip">Këshillë: 0 skanon të gjithë historinë e zinxhirit. Kjo është opsioni më i sigurt nëse nuk je i sigurt, por mund të zgjasë më shumë kohë për t\'u sinkronizuar.</string>
     <string name="restore_height_warning">Kujdes: Nëse cakton një lartësi rikuperimi pas transaksionit tënd të parë, fondet më të vjetra nuk do të shfaqen derisa të riskanosh nga një lartësi më e hershme.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Rrjeti kryesor</string>
     <string name="toggle_require_face_id">Kërko Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Kërko autentikim të pajisjes</string>
     <string name="biometrics_unavailable">Autentikimi biometrik ose i pajisjes nuk është i disponueshëm në këtë pajisje.</string>
@@ -89,7 +89,7 @@
     <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.
 Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Ruaj nyjen</string>
-    <string name="section_info">Info</string>
+    <string name="section_info">Informacion</string>
     <string name="walletcore_version_label">Versioni i WalletCore:</string>
     <string name="seed_backup_intro">Kjo është fraza jote e rikuperimit (seed). Shkruaje në letër dhe ruaje në një vend të sigurt. Kushdo që ka këto fjalë mund të aksesojë fondet e tua — nexawal nuk e ngarkon dhe nuk e bën kurrë kopje rezervë për ty.</string>
     <string name="generate_new_seed">Gjenero seed të re</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Nyja u ruajt</string>
     <string name="wallet_already_stored">Një portofol është ruajtur tashmë në këtë pajisje.</string>
     <string name="recovery_seed_label">Fraza jote e rikuperimit:</string>
-    <string name="recovery_seed_instructions">Shkruaji këto fjalë me radhë dhe ruaji në një vend të sigurt. Do t\'i nevojiten për të rikuperuar portofolin tënd — ato nuk ruhen kurrë në këtë pajisje.</string>
+    <string name="recovery_seed_instructions">Shkruaji këto fjalë me radhë dhe ruaji ato të sigurta jashtë linje. Do t\'i nevojiten për të rikuperuar portofolin nëse humbet ky telefon. NexaWal mban gjithashtu një kopje të enkriptuar në pajisje për shkyçje — trajtoje kopjen rezervë si para në dorë.</string>
     <string name="confirm_backup_prompt">Konfirmo kopjen rezervë — fut fjalët e kërkuara:</string>
     <string name="mnemonic_paste_label">Mnemoniku (ngjit):</string>
     <string name="mnemonic_paste_placeholder">Ngjit mnemonikun me 25 fjalë…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Dil</string>
     <string name="privacy_policy">Politika e privatësisë</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Kodi burimor në GitHub</string>
+    <string name="link_copied">Lidhja u kopjua</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Dokumenti jashtë linje nuk u ngarkua.</string>
     <string name="source_license">Burimi &amp; licenca (MIT)</string>
     <string name="saved_clearnet">Clearnet u ruajt</string>
     <string name="saved_i2p">I2P u ruajt</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Joaktiv</string>
     <string name="a11y_swap_amount_unit">Ndrysho midis XMR dhe %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Prapa</string>
+    <string name="history_changed_reload">Historiku ndryshoi · ringarko transaksionet</string>
+    <string name="history_details_failed">Detajet e transaksionit nuk mund të ngarkoheshin.</string>
+    <string name="history_filter_all">Të gjitha</string>
+    <string name="history_from_date">Nga (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Historiku mund të jetë i paplotë gjatë sinkronizimit.</string>
+    <string name="history_invalid_date_range">Shkruani data të vlefshme në formatin YYYY-MM-DD ose lërini bosh.</string>
+    <string name="history_load_failed">Nuk mund të ngarkohej kjo pjesë e historikut. Provo përsëri.</string>
+    <string name="history_loading_transaction">Po ngarkohet transaksioni…</string>
+    <string name="history_no_matches">Nuk ka transaksione që përputhen me këta filtra.</string>
+    <string name="history_reload">Ringarko historikun për të vazhduar.</string>
+    <string name="history_results_fmt">%1$d përputhje · gjithsej %2$d</string>
+    <string name="history_retry">Provo përsëri</string>
+    <string name="history_search_txid">Kërko ID-në e transaksionit</string>
+    <string name="history_through_date">Deri më (YYYY-MM-DD)</string>
+    <string name="history_title">Transaksionet</string>
+    <string name="send_fee_increased_unapproved">Tarifa e rrjetit u rrit. Nuk u transmetua asgjë. Kontrolloni tarifën dhe konfirmoni përsëri.</string>
 </resources>

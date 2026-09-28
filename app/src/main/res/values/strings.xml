@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Saved node</string>
     <string name="wallet_already_stored">A wallet is already stored on this device.</string>
     <string name="recovery_seed_label">Your recovery seed:</string>
-    <string name="recovery_seed_instructions">Write these words down in order and store them somewhere safe. You\'ll need them to restore your wallet — they are never stored on this device.</string>
+    <string name="recovery_seed_instructions">Write these words down in order and store them somewhere safe offline. You\'ll need them to restore the wallet if this phone is lost. NexaWal also keeps an encrypted copy on device for unlock — treat the backup like cash.</string>
     <string name="confirm_backup_prompt">Confirm your backup — enter the requested words:</string>
     <string name="mnemonic_paste_label">Mnemonic (paste):</string>
     <string name="mnemonic_paste_placeholder">Paste 25-word mnemonic…</string>
@@ -390,9 +390,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_swap_amount_unit">Switch between XMR and %1$s</string>
 
     <!-- Background sync foreground service -->
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Back</string>
+    <string name="history_changed_reload">History changed · Reload transactions</string>
+    <string name="history_details_failed">Transaction details could not be loaded.</string>
+    <string name="history_filter_all">All</string>
+    <string name="history_from_date">From (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">History may be incomplete while syncing.</string>
+    <string name="history_invalid_date_range">Enter valid dates in YYYY-MM-DD format, or leave them blank.</string>
+    <string name="history_load_failed">Could not load this part of history. You can retry.</string>
+    <string name="history_loading_transaction">Loading transaction…</string>
+    <string name="history_no_matches">No transactions match these filters.</string>
+    <string name="history_reload">Reload history to continue.</string>
+    <string name="history_results_fmt">%1$d matching · %2$d total</string>
+    <string name="history_retry">Retry loading history</string>
+    <string name="history_search_txid">Search transaction ID</string>
+    <string name="history_through_date">Through (YYYY-MM-DD)</string>
+    <string name="history_title">Transactions</string>
+    <string name="send_fee_increased_unapproved">The network fee increased. Nothing was broadcast. Preview the fee and confirm again.</string>
 </resources>

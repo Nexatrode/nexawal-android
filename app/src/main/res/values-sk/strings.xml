@@ -26,8 +26,8 @@
     <string name="label_network_height">Výška siete</string>
     <string name="label_remaining">Zostáva</string>
     <string name="label_throughput">Rýchlosť spracovania</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Priemerná priepustnosť</string>
+    <string name="label_throughput_recent">Nedávna priepustnosť</string>
     <string name="label_progress">Priebeh</string>
     <string name="recent_transactions">Nedávne transakcie</string>
     <string name="no_transactions_yet">Zatiaľ žiadne transakcie.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Výška obnovenia:</string>
     <string name="restore_height_tip">Tip: 0 skenuje celú históriu reťazca. Je to najbezpečnejšia možnosť, ak si nie ste istí, ale synchronizácia môže trvať dlhšie.</string>
     <string name="restore_height_warning">Upozornenie: Ak nastavíte výšku obnovenia po svojej prvej transakcii, staršie prostriedky sa nezobrazia, kým znova neskenujete od skoršej výšky.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Hlavná sieť</string>
     <string name="toggle_require_face_id">Vyžadovať Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Vyžadovať overenie zariadenia</string>
     <string name="biometrics_unavailable">Biometrické overenie alebo overenie zariadenia nie je na tomto zariadení k dispozícii.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Uzol uložený</string>
     <string name="wallet_already_stored">V tomto zariadení je už uložená peňaženka.</string>
     <string name="recovery_seed_label">Vaša fráza na obnovenie:</string>
-    <string name="recovery_seed_instructions">Zapíšte si tieto slová v poradí a uložte ich na bezpečnom mieste. Budete ich potrebovať na obnovenie peňaženky — na tomto zariadení nie sú nikdy uložené.</string>
+    <string name="recovery_seed_instructions">Zapíšte si tieto slová v poradí a uložte ich bezpečne offline. Budete ich potrebovať na obnovenie peňaženky, ak tento telefón stratíte. NexaWal tiež uchováva šifrovanú kópiu v zariadení na odomknutie — zaobchádzajte so zálohou ako s hotovosťou.</string>
     <string name="confirm_backup_prompt">Potvrďte svoju zálohu — zadajte požadované slová:</string>
     <string name="mnemonic_paste_label">Mnemonická fráza (vložiť):</string>
     <string name="mnemonic_paste_placeholder">Vložte 25-slovnú mnemonickú frázu…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Ukončiť</string>
     <string name="privacy_policy">Zásady ochrany súkromia</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Zdrojový kód na GitHube</string>
+    <string name="link_copied">Odkaz skopírovaný</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Dokument offline sa nepodarilo načítať.</string>
     <string name="source_license">Zdrojový kód a licencia (MIT)</string>
     <string name="saved_clearnet">Clearnet uložený</string>
     <string name="saved_i2p">I2P uložené</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Vypnuté</string>
     <string name="a11y_swap_amount_unit">Prepnúť medzi XMR a %1$s</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Späť</string>
+    <string name="history_changed_reload">História sa zmenila · znova načítať transakcie</string>
+    <string name="history_details_failed">Podrobnosti transakcie sa nepodarilo načítať.</string>
+    <string name="history_filter_all">Všetky</string>
+    <string name="history_from_date">Od (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Počas synchronizácie môže byť história neúplná.</string>
+    <string name="history_invalid_date_range">Zadajte platné dátumy vo formáte YYYY-MM-DD alebo ich nechajte prázdne.</string>
+    <string name="history_load_failed">Túto časť histórie sa nepodarilo načítať. Skúste to znova.</string>
+    <string name="history_loading_transaction">Načítava sa transakcia…</string>
+    <string name="history_no_matches">Žiadne transakcie nezodpovedajú týmto filtrom.</string>
+    <string name="history_reload">Ak chcete pokračovať, znova načítajte históriu.</string>
+    <string name="history_results_fmt">%1$d zhôd · spolu %2$d</string>
+    <string name="history_retry">Skúsiť znova</string>
+    <string name="history_search_txid">Hľadať ID transakcie</string>
+    <string name="history_through_date">Do (YYYY-MM-DD)</string>
+    <string name="history_title">Transakcie</string>
+    <string name="send_fee_increased_unapproved">Sieťový poplatok sa zvýšil. Nič sa nevyslalo. Skontrolujte poplatok a znova potvrďte.</string>
 </resources>

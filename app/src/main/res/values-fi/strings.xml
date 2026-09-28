@@ -26,8 +26,8 @@
     <string name="label_network_height">Verkon korkeus</string>
     <string name="label_remaining">Jäljellä</string>
     <string name="label_throughput">Läpimenonopeus</string>
-    <string name="label_throughput_avg">Avg throughput</string>
-    <string name="label_throughput_recent">Recent throughput</string>
+    <string name="label_throughput_avg">Keskimääräinen läpimeno</string>
+    <string name="label_throughput_recent">Viimeisin läpimeno</string>
     <string name="label_progress">Edistyminen</string>
     <string name="recent_transactions">Viimeisimmät tapahtumat</string>
     <string name="no_transactions_yet">Ei tapahtumia vielä.</string>
@@ -69,7 +69,7 @@
     <string name="restore_height_label">Palautuskorkeus:</string>
     <string name="restore_height_tip">Vinkki: 0 skannaa koko ketjun historian. Tämä on turvallisin vaihtoehto, jos olet epävarma, mutta synkronointi voi kestää kauemmin.</string>
     <string name="restore_height_warning">Varoitus: jos asetat palautuskorkeuden ensimmäisen tapahtumasi jälkeen, vanhemmat varat eivät näy, ennen kuin skannaat uudelleen aikaisemmasta korkeudesta.</string>
-    <string name="toggle_mainnet">Mainnet</string>
+    <string name="toggle_mainnet">Pääverkko</string>
     <string name="toggle_require_face_id">Vaadi Face ID / Touch ID</string>
     <string name="toggle_require_device_auth">Vaadi laitteen todennus</string>
     <string name="biometrics_unavailable">Biometrinen tai laitteen todennus ei ole käytettävissä tällä laitteella.</string>
@@ -100,7 +100,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="saved_node">Solmu tallennettu</string>
     <string name="wallet_already_stored">Tähän laitteeseen on jo tallennettu lompakko.</string>
     <string name="recovery_seed_label">Palautussiemenesi:</string>
-    <string name="recovery_seed_instructions">Kirjoita nämä sanat järjestyksessä ylös ja säilytä ne turvallisessa paikassa. Tarvitset niitä lompakkosi palauttamiseen — niitä ei koskaan tallenneta tälle laitteelle.</string>
+    <string name="recovery_seed_instructions">Kirjoita nämä sanat järjestyksessä ylös ja säilytä ne turvallisesti offline-tilassa. Tarvitset niitä lompakon palauttamiseen, jos tämä puhelin katoaa. NexaWal säilyttää myös salatun kopion laitteella lukituksen avaamista varten — käsittele varmuuskopiota kuin käteistä.</string>
     <string name="confirm_backup_prompt">Vahvista varmuuskopiosi — syötä pyydetyt sanat:</string>
     <string name="mnemonic_paste_label">Muistisana (liitä):</string>
     <string name="mnemonic_paste_placeholder">Liitä 25 sanan muistisana…</string>
@@ -169,10 +169,10 @@ Default: https://rpc.nexatrode.com</string>
     <string name="terms_quit">Lopeta</string>
     <string name="privacy_policy">Tietosuojakäytäntö</string>
     <string name="mit_license">MIT License</string>
-    <string name="source_on_github">Source on GitHub</string>
-    <string name="link_copied">Link copied</string>
-    <string name="legal_close">Close</string>
-    <string name="legal_load_error">Could not load the offline document.</string>
+    <string name="source_on_github">Lähdekoodi GitHubissa</string>
+    <string name="link_copied">Linkki kopioitu</string>
+    <string name="legal_close">@string/action_close</string>
+    <string name="legal_load_error">Offline-asiakirjan lataaminen epäonnistui.</string>
     <string name="source_license">Lähdekoodi ja lisenssi (MIT)</string>
     <string name="saved_clearnet">Clearnet tallennettu</string>
     <string name="saved_i2p">I2P tallennettu</string>
@@ -389,9 +389,26 @@ Default: https://rpc.nexatrode.com</string>
     <string name="a11y_off">Pois</string>
     <string name="a11y_swap_amount_unit">Vaihda XMR:n ja %1$s:n välillä</string>
 
-    <string name="sync_notification_channel">Wallet sync</string>
-    <string name="sync_notification_channel_desc">Shows progress while the wallet scans the blockchain</string>
-    <string name="sync_notification_title">Syncing wallet</string>
-    <string name="sync_notification_progress_fmt">%1$d%% complete</string>
-    <string name="sync_notification_stop">Stop</string>
+    <string name="sync_notification_channel">@string/sync_syncing</string>
+    <string name="sync_notification_channel_desc">@string/sync_scanning</string>
+    <string name="sync_notification_title">@string/sync_syncing</string>
+    <string name="sync_notification_progress_fmt">@string/a11y_sync_progress_fmt</string>
+    <string name="sync_notification_stop">@string/action_cancel</string>
+    <string name="history_back">Takaisin</string>
+    <string name="history_changed_reload">Historia muuttui · lataa tapahtumat uudelleen</string>
+    <string name="history_details_failed">Tapahtuman tietoja ei voitu ladata.</string>
+    <string name="history_filter_all">Kaikki</string>
+    <string name="history_from_date">Alkaen (YYYY-MM-DD)</string>
+    <string name="history_incomplete_sync">Historia voi olla puutteellinen synkronoinnin aikana.</string>
+    <string name="history_invalid_date_range">Anna kelvolliset päivämäärät muodossa YYYY-MM-DD tai jätä ne tyhjiksi.</string>
+    <string name="history_load_failed">Tämän historiaosan lataaminen epäonnistui. Yritä uudelleen.</string>
+    <string name="history_loading_transaction">Ladataan tapahtumaa…</string>
+    <string name="history_no_matches">Näitä suodattimia vastaavia tapahtumia ei ole.</string>
+    <string name="history_reload">Jatka lataamalla historia uudelleen.</string>
+    <string name="history_results_fmt">%1$d osumaa · yhteensä %2$d</string>
+    <string name="history_retry">Yritä uudelleen</string>
+    <string name="history_search_txid">Hae tapahtumatunnusta</string>
+    <string name="history_through_date">Päättyen (YYYY-MM-DD)</string>
+    <string name="history_title">Tapahtumat</string>
+    <string name="send_fee_increased_unapproved">Verkkomaksu nousi. Mitään ei lähetetty. Tarkista maksu ja vahvista uudelleen.</string>
 </resources>
