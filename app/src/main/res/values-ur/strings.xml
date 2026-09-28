@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">نوڈ محفوظ کریں</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">WalletCore ورژن:</string>
-    <string name="seed_backup_intro">یہ آپ کی ریکوری سیڈ ہے۔ اسے کاغذ پر لکھ لیں اور کسی محفوظ جگہ رکھیں۔ ان الفاظ کے حامل کوئی بھی شخص آپ کے فنڈز تک رسائی حاصل کر سکتا ہے — nexawal اسے کبھی اپلوڈ یا بیک اپ نہیں کرتا۔</string>
-    <string name="generate_new_seed">نئی سیڈ تیار کریں</string>
+<string name="generate_new_seed">نئی سیڈ تیار کریں</string>
     <string name="wrote_seed_down">میں نے اپنی ریکوری سیڈ لکھ لی ہے</string>
     <string name="seed_challenge_intro">تصدیق کریں کہ آپ نے یہ لکھ لیا ہے: نیچے درخواست کیے گئے الفاظ درج کریں۔</string>
     <string name="seed_challenge_mismatch">الفاظ ابھی میچ نہیں ہو رہے۔</string>

@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Uložiť uzol</string>
     <string name="section_info">Informácie</string>
     <string name="walletcore_version_label">Verzia WalletCore:</string>
-    <string name="seed_backup_intro">Toto je vaša fráza na obnovenie. Zapíšte si ju na papier a uložte na bezpečnom mieste. Ktokoľvek, kto tieto slová pozná, sa môže dostať k vašim prostriedkom — nexawal ju nikdy nikam neodovzdáva ani ju za vás nezálohuje.</string>
-    <string name="generate_new_seed">Vygenerovať novú frázu na obnovenie</string>
+<string name="generate_new_seed">Vygenerovať novú frázu na obnovenie</string>
     <string name="wrote_seed_down">Zapísal som si svoju frázu na obnovenie</string>
     <string name="seed_challenge_intro">Potvrďte, že ste si ju zapísali: zadajte požadované slová nižšie.</string>
     <string name="seed_challenge_mismatch">Slovo (slová) ešte nesúhlasí.</string>

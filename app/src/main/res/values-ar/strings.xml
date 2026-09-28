@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">حفظ العقدة</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">إصدار WalletCore:</string>
-    <string name="seed_backup_intro">هذه عبارة الاستعادة الخاصة بك. اكتبها على ورقة واحفظها في مكان آمن. يمكن لأي شخص يملك هذه الكلمات الوصول إلى أموالك — لا يقوم nexawal مطلقًا برفعها أو نسخها احتياطيًا نيابة عنك.</string>
-    <string name="generate_new_seed">إنشاء عبارة جديدة</string>
+<string name="generate_new_seed">إنشاء عبارة جديدة</string>
     <string name="wrote_seed_down">لقد كتبت عبارة الاستعادة الخاصة بي</string>
     <string name="seed_challenge_intro">أكّد أنك كتبتها: أدخل الكلمات المطلوبة أدناه.</string>
     <string name="seed_challenge_mismatch">الكلمة (أو الكلمات) غير مطابقة حتى الآن.</string>

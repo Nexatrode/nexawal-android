@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Shrani vozlišče</string>
     <string name="section_info">Informacije</string>
     <string name="walletcore_version_label">Različica WalletCore:</string>
-    <string name="seed_backup_intro">To je tvoj obnovitveni seed. Zapiši ga na papir in ga shrani na varno mesto. Kdorkoli pozna te besede, lahko dostopa do tvojih sredstev — nexawal ga nikoli ne naloži ali shrani zate.</string>
-    <string name="generate_new_seed">Ustvari nov seed</string>
+<string name="generate_new_seed">Ustvari nov seed</string>
     <string name="wrote_seed_down">Zapisal sem svoj obnovitveni seed</string>
     <string name="seed_challenge_intro">Potrdi, da si ga zapisal: spodaj vnesi zahtevane besede.</string>
     <string name="seed_challenge_mismatch">Beseda(-e) se še ne ujemajo.</string>

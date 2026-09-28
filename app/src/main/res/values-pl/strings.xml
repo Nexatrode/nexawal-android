@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Zapisz węzeł</string>
     <string name="section_info">Informacje</string>
     <string name="walletcore_version_label">Wersja WalletCore:</string>
-    <string name="seed_backup_intro">To jest Twoja fraza odzyskiwania. Zapisz ją na papierze i przechowuj w bezpiecznym miejscu. Każdy, kto zna te słowa, może uzyskać dostęp do Twoich środków — nexawal nigdy nie wysyła jej ani nie tworzy dla Ciebie kopii zapasowej.</string>
-    <string name="generate_new_seed">Wygeneruj nową frazę odzyskiwania</string>
+<string name="generate_new_seed">Wygeneruj nową frazę odzyskiwania</string>
     <string name="wrote_seed_down">Zapisałem swoją frazę odzyskiwania</string>
     <string name="seed_challenge_intro">Potwierdź, że go zapisałeś: wpisz poniżej żądane słowa.</string>
     <string name="seed_challenge_mismatch">Słowa jeszcze się nie zgadzają.</string>

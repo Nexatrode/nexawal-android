@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Gem node</string>
     <string name="section_info">Oplysninger</string>
     <string name="walletcore_version_label">WalletCore-version:</string>
-    <string name="seed_backup_intro">Dette er din gendannelsesfrase. Skriv den ned på papir, og opbevar den et sikkert sted. Alle med disse ord kan få adgang til dine midler — nexawal uploader eller sikkerhedskopierer den aldrig for dig.</string>
-    <string name="generate_new_seed">Generer ny gendannelsesfrase</string>
+<string name="generate_new_seed">Generer ny gendannelsesfrase</string>
     <string name="wrote_seed_down">Jeg har skrevet min gendannelsesfrase ned</string>
     <string name="seed_challenge_intro">Bekræft, at du har skrevet den ned: indtast de anmodede ord nedenfor.</string>
     <string name="seed_challenge_mismatch">Ordene matcher ikke endnu.</string>

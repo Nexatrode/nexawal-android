@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Konservi nodon</string>
     <string name="section_info">Informoj</string>
     <string name="walletcore_version_label">WalletCore-Versio:</string>
-    <string name="seed_backup_intro">Tio estas via restaŭra semo. Skribu ĝin sur papero kaj konservu ĝin ie sekure. Iu ajn kun ĉi tiuj vortoj povas atingi viajn fondusojn — nexawal neniam alŝutas aŭ sekurkopias ĝin por vi.</string>
-    <string name="generate_new_seed">Generi novan semon</string>
+<string name="generate_new_seed">Generi novan semon</string>
     <string name="wrote_seed_down">Mi skribis mian restaŭran semon</string>
     <string name="seed_challenge_intro">Konfirmu, ke vi skribis ĝin: entajpu la petitajn vortojn sube.</string>
     <string name="seed_challenge_mismatch">La vorto(j) ankoraŭ ne kongruas.</string>

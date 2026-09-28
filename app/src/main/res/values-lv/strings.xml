@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Saglabāt mezglu</string>
     <string name="section_info">Informācija</string>
     <string name="walletcore_version_label">WalletCore versija:</string>
-    <string name="seed_backup_intro">Šī ir jūsu atjaunošanas sēkla. Pierakstiet to uz papīra un glabājiet drošā vietā. Ikviens, kam ir šie vārdi, var piekļūt jūsu līdzekļiem — nexawal nekad neaugšupielādē un nedublē to jūsu vietā.</string>
-    <string name="generate_new_seed">Izveidot jaunu sēklu</string>
+<string name="generate_new_seed">Izveidot jaunu sēklu</string>
     <string name="wrote_seed_down">Es pierakstīju savu atjaunošanas sēklu</string>
     <string name="seed_challenge_intro">Apstipriniet, ka to pierakstījāt: ievadiet zemāk pieprasītos vārdus.</string>
     <string name="seed_challenge_mismatch">Vārds(-i) vēl nesakrīt.</string>

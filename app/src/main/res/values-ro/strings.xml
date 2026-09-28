@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salvează nodul</string>
     <string name="section_info">Informații</string>
     <string name="walletcore_version_label">Versiune WalletCore:</string>
-    <string name="seed_backup_intro">Aceasta este cheia ta de recuperare. Notează-o pe hârtie și păstreaz-o într-un loc sigur. Oricine deține aceste cuvinte poate accesa fondurile tale — nexawal nu le încarcă și nu le salvează niciodată pentru tine.</string>
-    <string name="generate_new_seed">Generează o cheie nouă</string>
+<string name="generate_new_seed">Generează o cheie nouă</string>
     <string name="wrote_seed_down">Am notat cheia mea de recuperare</string>
     <string name="seed_challenge_intro">Confirmă că ai notat-o: introdu mai jos cuvintele solicitate.</string>
     <string name="seed_challenge_mismatch">Cuvântul (sau cuvintele) nu se potrivesc încă.</string>

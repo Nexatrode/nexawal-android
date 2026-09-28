@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Sábháil an nód</string>
     <string name="section_info">Eolas</string>
     <string name="walletcore_version_label">Leagan WalletCore:</string>
-    <string name="seed_backup_intro">Seo é do shíol aisghabhála. Scríobh é ar pháipéar agus stóráil é in áit shábháilte. Is féidir le duine ar bith a bhfuil na focail seo aige rochtain a fháil ar do chistí — ní uaslódálann nexawal é ná ní chuireann sé cúltaca air ar do shon riamh.</string>
-    <string name="generate_new_seed">Gin síol nua</string>
+<string name="generate_new_seed">Gin síol nua</string>
     <string name="wrote_seed_down">Scríobh mé mo shíol aisghabhála</string>
     <string name="seed_challenge_intro">Deimhnigh gur scríobh tú é: cuir isteach na focail iarrtha thíos.</string>
     <string name="seed_challenge_mismatch">Níl na focail ag teacht le chéile fós.</string>

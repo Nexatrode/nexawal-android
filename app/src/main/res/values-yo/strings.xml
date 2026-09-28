@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Fi node pamọ́</string>
     <string name="section_info">Ìròyìn</string>
     <string name="walletcore_version_label">Ẹ̀dà WalletCore:</string>
-    <string name="seed_backup_intro">Èyí ni ọ̀rọ̀ ìpadàbọ̀ rẹ. Kọ ọ́ sílẹ̀ lórí bébà kí o sì fi pamọ́sí ibi tí ó dájú. Ẹnikẹ́ni tí ó bá ní àwọn ọ̀rọ̀ yìí lè wọlé sí owó rẹ — nexawal kò gbé e kalẹ̀ tàbí fi pamọ́ fún ọ láé.</string>
-    <string name="generate_new_seed">Ṣẹ̀dá ọ̀rọ̀ ìpadàbọ̀ tuntun</string>
+<string name="generate_new_seed">Ṣẹ̀dá ọ̀rọ̀ ìpadàbọ̀ tuntun</string>
     <string name="wrote_seed_down">Mo ti kọ ọ̀rọ̀ ìpadàbọ̀ mi sílẹ̀</string>
     <string name="seed_challenge_intro">Jẹ́rìí pé o ti kọ ọ́ sílẹ̀: kọ àwọn ọ̀rọ̀ tí a béèrè sí ìsàlẹ̀.</string>
     <string name="seed_challenge_mismatch">Ọ̀rọ̀ (àwọn) kò tíì bára mu.</string>

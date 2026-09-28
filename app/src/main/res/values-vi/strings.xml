@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Lưu node</string>
     <string name="section_info">Thông tin</string>
     <string name="walletcore_version_label">Phiên bản WalletCore:</string>
-    <string name="seed_backup_intro">Đây là cụm từ khôi phục của bạn. Hãy ghi lại trên giấy và lưu giữ ở nơi an toàn. Bất kỳ ai có các từ này đều có thể truy cập tiền của bạn — nexawal không bao giờ tải lên hoặc sao lưu nó cho bạn.</string>
-    <string name="generate_new_seed">Tạo cụm từ khôi phục mới</string>
+<string name="generate_new_seed">Tạo cụm từ khôi phục mới</string>
     <string name="wrote_seed_down">Tôi đã ghi lại cụm từ khôi phục của mình</string>
     <string name="seed_challenge_intro">Xác nhận bạn đã ghi lại: nhập các từ được yêu cầu dưới đây.</string>
     <string name="seed_challenge_mismatch">Các từ chưa khớp.</string>

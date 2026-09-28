@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Išsaugoti tinklo tašką</string>
     <string name="section_info">Informacija</string>
     <string name="walletcore_version_label">WalletCore versija:</string>
-    <string name="seed_backup_intro">Tai jūsų atkūrimo sėkla. Užsirašykite ją ant popieriaus ir laikykite saugioje vietoje. Kiekvienas, žinantis šiuos žodžius, gali pasiekti jūsų lėšas — nexawal jos niekada neįkelia į debesį ir nesaugo už jus.</string>
-    <string name="generate_new_seed">Generuoti naują sėklą</string>
+<string name="generate_new_seed">Generuoti naują sėklą</string>
     <string name="wrote_seed_down">Užsirašiau savo atkūrimo sėklą</string>
     <string name="seed_challenge_intro">Patvirtinkite, kad užsirašėte: įveskite žemiau prašomus žodžius.</string>
     <string name="seed_challenge_mismatch">Žodis (-iai) kol kas nesutampa.</string>

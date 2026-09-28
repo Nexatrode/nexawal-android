@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">नोड सेव करें</string>
     <string name="section_info">जानकारी</string>
     <string name="walletcore_version_label">WalletCore वर्शन:</string>
-    <string name="seed_backup_intro">यह आपका रिकवरी सीड है। इसे कागज़ पर लिख लें और किसी सुरक्षित जगह रखें। ये शब्द जिस किसी के पास होंगे, वह आपके फंड तक पहुंच सकता है — nexawal इसे कभी अपलोड या बैकअप नहीं करता।</string>
-    <string name="generate_new_seed">नया सीड जनरेट करें</string>
+<string name="generate_new_seed">नया सीड जनरेट करें</string>
     <string name="wrote_seed_down">मैंने अपना रिकवरी सीड लिख लिया है</string>
     <string name="seed_challenge_intro">पुष्टि करें कि आपने इसे लिख लिया है: नीचे मांगे गए शब्द दर्ज करें।</string>
     <string name="seed_challenge_mismatch">शब्द अभी मेल नहीं खा रहे हैं।</string>

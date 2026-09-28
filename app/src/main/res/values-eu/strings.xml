@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Gorde nodoa</string>
     <string name="section_info">Informazioa</string>
     <string name="walletcore_version_label">WalletCore bertsioa:</string>
-    <string name="seed_backup_intro">Hau da zure leheneratze-hazia. Idatzi paperean eta gorde leku seguru batean. Hitz horiek dituen edonork zure funtsak atzitu ditzake — nexawal-ek ez du inoiz igotzen edo babeskopiarik egiten zure ordez.</string>
-    <string name="generate_new_seed">Sortu hazi berria</string>
+<string name="generate_new_seed">Sortu hazi berria</string>
     <string name="wrote_seed_down">Idatzi dut nire leheneratze-hazia</string>
     <string name="seed_challenge_intro">Berretsi idatzi duzula: sartu eskatutako hitzak behean.</string>
     <string name="seed_challenge_mismatch">Hitzak ez datoz oraindik bat.</string>

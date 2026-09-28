@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">保存节点</string>
     <string name="section_info">信息</string>
     <string name="walletcore_version_label">WalletCore 版本:</string>
-    <string name="seed_backup_intro">这是您的恢复种子。请将它写在纸上并存放在安全的地方。任何持有这些词的人都可以动用您的资金 — nexawal 不会为您上传或备份它。</string>
-    <string name="generate_new_seed">生成新种子</string>
+<string name="generate_new_seed">生成新种子</string>
     <string name="wrote_seed_down">我已写下我的恢复种子</string>
     <string name="seed_challenge_intro">确认您已写下种子:请在下方输入所要求的词。</string>
     <string name="seed_challenge_mismatch">词语尚不匹配。</string>

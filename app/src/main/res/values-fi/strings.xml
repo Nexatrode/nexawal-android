@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Tallenna solmu</string>
     <string name="section_info">Tietoja</string>
     <string name="walletcore_version_label">WalletCore-versio:</string>
-    <string name="seed_backup_intro">Tämä on palautussiemenesi. Kirjoita se paperille ja säilytä turvallisessa paikassa. Kuka tahansa, jolla on näitä sanat, voi käyttää varojasi — nexawal ei koskaan lataa tai varmuuskopioi sitä puolestasi.</string>
-    <string name="generate_new_seed">Luo uusi siemen</string>
+<string name="generate_new_seed">Luo uusi siemen</string>
     <string name="wrote_seed_down">Kirjoitin palautussiemeneni ylös</string>
     <string name="seed_challenge_intro">Vahvista, että kirjoitit sen ylös: syötä pyydetyt sanat alla.</string>
     <string name="seed_challenge_mismatch">Sana(t) eivät täsmää vielä.</string>

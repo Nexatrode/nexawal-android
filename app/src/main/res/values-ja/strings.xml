@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">ノードを保存</string>
     <string name="section_info">情報</string>
     <string name="walletcore_version_label">WalletCoreバージョン:</string>
-    <string name="seed_backup_intro">これはあなたの復元シードです。紙に書き留めて安全な場所に保管してください。これらの単語を知っている人は誰でもあなたの資金にアクセスできます — nexawalはシードをアップロードしたり、代わりにバックアップしたりすることは一切ありません。</string>
-    <string name="generate_new_seed">新しいシードを生成</string>
+<string name="generate_new_seed">新しいシードを生成</string>
     <string name="wrote_seed_down">復元シードを書き留めました</string>
     <string name="seed_challenge_intro">書き留めたことを確認してください:以下に指定された単語を入力してください。</string>
     <string name="seed_challenge_mismatch">単語がまだ一致していません。</string>

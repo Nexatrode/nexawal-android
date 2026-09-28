@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Lagre node</string>
     <string name="section_info">Informasjon</string>
     <string name="walletcore_version_label">WalletCore-versjon:</string>
-    <string name="seed_backup_intro">Dette er gjenopprettingsfrasen din. Skriv den ned på papir og oppbevar den et trygt sted. Alle som har disse ordene kan få tilgang til midlene dine — nexawal laster aldri opp eller sikkerhetskopierer den for deg.</string>
-    <string name="generate_new_seed">Generer ny frase</string>
+<string name="generate_new_seed">Generer ny frase</string>
     <string name="wrote_seed_down">Jeg har skrevet ned gjenopprettingsfrasen min</string>
     <string name="seed_challenge_intro">Bekreft at du skrev den ned: skriv inn de forespurte ordene nedenfor.</string>
     <string name="seed_challenge_mismatch">Ordet/ordene stemmer ikke ennå.</string>

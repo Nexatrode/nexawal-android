@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Eñongatu nodo</string>
     <string name="section_info">Marandu</string>
     <string name="walletcore_version_label">Versión WalletCore:</string>
-    <string name="seed_backup_intro">Kóva ha\'e nde frase mnemónica ñeñongaturã. Ehai kuatiáre ha eñongatu tenda segurohápe. Oimeraẽva oikuaáva ko\'ã ñe\'ẽ ikatu oike nde viru-pe — nexawal araka\'eve ndohupivéi térã ñeñongatu ndojapói nde rehe.</string>
-    <string name="generate_new_seed">Emoheñói frase mnemónica pyahu</string>
+<string name="generate_new_seed">Emoheñói frase mnemónica pyahu</string>
     <string name="wrote_seed_down">Ahai ahupimahague che frase mnemónica</string>
     <string name="seed_challenge_intro">Emoneĩ ehaihague: emoinge umi ñe\'ẽ ojejeruréva ko\'ápe guive.</string>
     <string name="seed_challenge_mismatch">Umi ñe\'ẽ ndojojahái gueteri.</string>

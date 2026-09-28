@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node ကို သိမ်းမည်</string>
     <string name="section_info">အချက်အလက်</string>
     <string name="walletcore_version_label">WalletCore ဗားရှင်း:</string>
-    <string name="seed_backup_intro">ဤသည်မှာ သင်၏ ပြန်လည်ရယူရန် မျိုးစေ့ဖြစ်သည်။ စက္ကူပေါ်တွင် ရေးမှတ်ပြီး လုံခြုံသော နေရာတွင် သိမ်းဆည်းထားပါ။ ဤစကားလုံးများကို ရရှိသူ မည်သူမဆို သင့်ငွေကို ဝင်ရောက်နိုင်သည် — nexawal သည် သင့်အတွက် ဤအရာကို ဘယ်တော့မှ upload သို့မဟုတ် backup ယူပေးမည် မဟုတ်ပါ။</string>
-    <string name="generate_new_seed">မျိုးစေ့အသစ် ထုတ်မည်</string>
+<string name="generate_new_seed">မျိုးစေ့အသစ် ထုတ်မည်</string>
     <string name="wrote_seed_down">ကျွန်ုပ်၏ ပြန်လည်ရယူရန် မျိုးစေ့ကို ရေးမှတ်ပြီးပါပြီ</string>
     <string name="seed_challenge_intro">ရေးမှတ်ထားကြောင်း အတည်ပြုပါ: အောက်တွင် တောင်းဆိုထားသော စကားလုံးများကို ရိုက်ထည့်ပါ။</string>
     <string name="seed_challenge_mismatch">စကားလုံး(များ) မကိုက်ညီသေးပါ။</string>

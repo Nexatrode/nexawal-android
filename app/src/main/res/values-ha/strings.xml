@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Ajiye node</string>
     <string name="section_info">Bayani</string>
     <string name="walletcore_version_label">Sigar WalletCore:</string>
-    <string name="seed_backup_intro">Wannan shi ne kalmomin dawowar ku. Rubuta shi a takarda kuma ajiye shi a wuri mai aminci. Duk wanda ya san waɗannan kalmomi zai iya samun damar kuɗaɗenku — nexawal ba ya loda ko ajiye shi maku a ko yaushe.</string>
-    <string name="generate_new_seed">Ƙirƙiri sabon kalmomin dawowa</string>
+<string name="generate_new_seed">Ƙirƙiri sabon kalmomin dawowa</string>
     <string name="wrote_seed_down">Na rubuta kalmomin dawowar da</string>
     <string name="seed_challenge_intro">Tabbatar kun rubuta shi: shigar da kalmomin da ake buƙata a ƙasa.</string>
     <string name="seed_challenge_mismatch">Kalma(kalmomi) ba su dace ba tukuna.</string>

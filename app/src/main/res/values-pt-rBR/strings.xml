@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salvar nó</string>
     <string name="section_info">Informações</string>
     <string name="walletcore_version_label">Versão do WalletCore:</string>
-    <string name="seed_backup_intro">Esta é a sua semente de recuperação. Anote-a no papel e guarde-a em um lugar seguro. Qualquer pessoa com essas palavras pode acessar seus fundos — o nexawal nunca faz upload ou backup dela para você.</string>
-    <string name="generate_new_seed">Gerar nova semente</string>
+<string name="generate_new_seed">Gerar nova semente</string>
     <string name="wrote_seed_down">Anotei minha semente de recuperação</string>
     <string name="seed_challenge_intro">Confirme que você anotou: digite as palavras solicitadas abaixo.</string>
     <string name="seed_challenge_mismatch">A(s) palavra(s) ainda não coincide(m).</string>

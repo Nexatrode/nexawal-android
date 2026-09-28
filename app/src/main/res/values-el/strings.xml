@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Αποθήκευση κόμβου</string>
     <string name="section_info">Πληροφορίες</string>
     <string name="walletcore_version_label">Έκδοση WalletCore:</string>
-    <string name="seed_backup_intro">Αυτή είναι η φράση ανάκτησής σας. Γράψτε την σε χαρτί και αποθηκεύστε την σε ασφαλές μέρος. Όποιος έχει αυτές τις λέξεις μπορεί να αποκτήσει πρόσβαση στα κεφάλαιά σας — το nexawal δεν την ανεβάζει ούτε δημιουργεί αντίγραφο ασφαλείας για εσάς.</string>
-    <string name="generate_new_seed">Δημιουργία νέας φράσης ανάκτησης</string>
+<string name="generate_new_seed">Δημιουργία νέας φράσης ανάκτησης</string>
     <string name="wrote_seed_down">Έγραψα τη φράση ανάκτησής μου</string>
     <string name="seed_challenge_intro">Επιβεβαιώστε ότι την γράψατε: εισαγάγετε τις ζητούμενες λέξεις παρακάτω.</string>
     <string name="seed_challenge_mismatch">Οι λέξεις δεν ταιριάζουν ακόμη.</string>

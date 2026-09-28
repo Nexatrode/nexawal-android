@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Simpan node</string>
     <string name="section_info">Informasi</string>
     <string name="walletcore_version_label">Versi WalletCore:</string>
-    <string name="seed_backup_intro">Ini adalah seed pemulihan Anda. Tulis di atas kertas dan simpan di tempat yang aman. Siapa pun yang memiliki kata-kata ini dapat mengakses dana Anda — nexawal tidak pernah mengunggah atau mencadangkannya untuk Anda.</string>
-    <string name="generate_new_seed">Buat seed baru</string>
+<string name="generate_new_seed">Buat seed baru</string>
     <string name="wrote_seed_down">Saya sudah menulis seed pemulihan saya</string>
     <string name="seed_challenge_intro">Konfirmasi bahwa Anda sudah menulisnya: masukkan kata-kata yang diminta di bawah.</string>
     <string name="seed_challenge_mismatch">Kata belum cocok.</string>

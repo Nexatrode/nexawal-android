@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">שמירת צומת</string>
     <string name="section_info">מידע</string>
     <string name="walletcore_version_label">גרסת WalletCore:</string>
-    <string name="seed_backup_intro">זהו ביטוי השחזור שלך. כתוב אותו על ניר ושמור אותו במקום בטוח. כל מי שמחזיק במילים אלה יכול לגשת לכספים שלך — nexawal לעולם לא מעלה או מגבה אותו בשבילך.</string>
-    <string name="generate_new_seed">יצירת ביטוי חדש</string>
+<string name="generate_new_seed">יצירת ביטוי חדש</string>
     <string name="wrote_seed_down">כתבתי את ביטוי השחזור שלי</string>
     <string name="seed_challenge_intro">אשר שכתבת אותו: הזן להלן את המילים המבוקשות.</string>
     <string name="seed_challenge_mismatch">המילה (או המילים) עדיין לא תואמות.</string>

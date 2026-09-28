@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node-u yadda saxla</string>
     <string name="section_info">Məlumat</string>
     <string name="walletcore_version_label">WalletCore versiyası:</string>
-    <string name="seed_backup_intro">Bu sizin bərpa seed-inizdir. Onu kağız üzərinə yazın və təhlükəsiz bir yerdə saxlayın. Bu sözləri bilən istənilən şəxs vəsaitlərinizə giriş əldə edə bilər — nexawal onu heç vaxt sizin üçün yükləmir və ya ehtiyat nüsxəsini saxlamır.</string>
-    <string name="generate_new_seed">Yeni seed yarat</string>
+<string name="generate_new_seed">Yeni seed yarat</string>
     <string name="wrote_seed_down">Bərpa seed-imi yazdım</string>
     <string name="seed_challenge_intro">Yazdığınızı təsdiqləyin: aşağıda istənilən sözləri daxil edin.</string>
     <string name="seed_challenge_mismatch">Söz(lər) hələ uyğun gəlmir.</string>

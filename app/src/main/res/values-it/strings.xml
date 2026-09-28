@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salva nodo</string>
     <string name="section_info">Informazioni</string>
     <string name="walletcore_version_label">Versione WalletCore:</string>
-    <string name="seed_backup_intro">Questa è la tua frase di recupero (seed). Scrivila su carta e conservala in un luogo sicuro. Chiunque conosca queste parole può accedere ai tuoi fondi — nexawal non la carica né la salva mai per te.</string>
-    <string name="generate_new_seed">Genera nuova frase di recupero</string>
+<string name="generate_new_seed">Genera nuova frase di recupero</string>
     <string name="wrote_seed_down">Ho scritto la mia frase di recupero</string>
     <string name="seed_challenge_intro">Confermi di averla scritta: inserisci qui sotto le parole richieste.</string>
     <string name="seed_challenge_mismatch">Le parole non corrispondono ancora.</string>

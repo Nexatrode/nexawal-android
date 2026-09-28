@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">ذخیره گره</string>
     <string name="section_info">اطلاعات</string>
     <string name="walletcore_version_label">نسخه WalletCore:</string>
-    <string name="seed_backup_intro">این عبارت بازیابی شماست. آن را روی کاغذ بنویسید و در جای امنی نگه دارید. هر کسی که این کلمات را داشته باشد می‌تواند به وجوه شما دسترسی پیدا کند — nexawal هرگز آن را بارگذاری یا برای شما پشتیبان‌گیری نمی‌کند.</string>
-    <string name="generate_new_seed">ایجاد عبارت بازیابی جدید</string>
+<string name="generate_new_seed">ایجاد عبارت بازیابی جدید</string>
     <string name="wrote_seed_down">عبارت بازیابی خود را یادداشت کردم</string>
     <string name="seed_challenge_intro">تأیید کنید که آن را یادداشت کرده‌اید: کلمات درخواستی را در زیر وارد کنید.</string>
     <string name="seed_challenge_mismatch">کلمه(ها) هنوز مطابقت ندارند.</string>

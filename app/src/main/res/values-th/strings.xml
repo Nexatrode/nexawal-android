@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">บันทึกโหนด</string>
     <string name="section_info">ข้อมูล</string>
     <string name="walletcore_version_label">เวอร์ชัน WalletCore:</string>
-    <string name="seed_backup_intro">นี่คือวลีกู้คืนของคุณ จดลงบนกระดาษและเก็บไว้ในที่ปลอดภัย ใครก็ตามที่รู้คำเหล่านี้สามารถเข้าถึงเงินของคุณได้ — nexawal จะไม่อัปโหลดหรือสำรองข้อมูลนี้ให้คุณเด็ดขาด</string>
-    <string name="generate_new_seed">สร้างวลีกู้คืนใหม่</string>
+<string name="generate_new_seed">สร้างวลีกู้คืนใหม่</string>
     <string name="wrote_seed_down">ฉันได้จดวลีกู้คืนของฉันแล้ว</string>
     <string name="seed_challenge_intro">ยืนยันว่าคุณจดไว้แล้ว: กรอกคำที่ต้องการด้านล่าง</string>
     <string name="seed_challenge_mismatch">คำยังไม่ตรงกัน</string>

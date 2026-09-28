@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Salvesta sõlm</string>
     <string name="section_info">Teave</string>
     <string name="walletcore_version_label">WalletCore versioon:</string>
-    <string name="seed_backup_intro">See on teie taastefraas. Kirjutage see paberile ja hoidke seda turvalises kohas. Igaühel, kellel on need sõnad, on juurdepääs teie vahenditele — nexawal ei laadi seda kunagi üles ega varunda seda teie eest.</string>
-    <string name="generate_new_seed">Loo uus taastefraas</string>
+<string name="generate_new_seed">Loo uus taastefraas</string>
     <string name="wrote_seed_down">Kirjutasin oma taastefraasi üles</string>
     <string name="seed_challenge_intro">Kinnitage, et kirjutasite selle üles: sisestage allpool küsitud sõnad.</string>
     <string name="seed_challenge_mismatch">Sõnad ei klapi veel.</string>

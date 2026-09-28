@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Node opslaan</string>
     <string name="section_info">Informatie</string>
     <string name="walletcore_version_label">WalletCore-versie:</string>
-    <string name="seed_backup_intro">Dit is je herstel-seed. Schrijf hem op papier en bewaar hem op een veilige plek. Iedereen met deze woorden heeft toegang tot je tegoeden — nexawal uploadt of maakt hier nooit een back-up van voor je.</string>
-    <string name="generate_new_seed">Nieuwe seed genereren</string>
+<string name="generate_new_seed">Nieuwe seed genereren</string>
     <string name="wrote_seed_down">Ik heb mijn herstel-seed opgeschreven</string>
     <string name="seed_challenge_intro">Bevestig dat je hem hebt opgeschreven: voer de gevraagde woorden hieronder in.</string>
     <string name="seed_challenge_mismatch">Woord(en) komen nog niet overeen.</string>

@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Save node</string>
     <string name="section_info">Info</string>
     <string name="walletcore_version_label">WalletCore Version:</string>
-    <string name="seed_backup_intro">This is your recovery seed. Write it down on paper and store it somewhere safe. Anyone with these words can access your funds — nexawal never uploads or backs it up for you.</string>
-    <string name="generate_new_seed">Generate new seed</string>
+<string name="generate_new_seed">Generate new seed</string>
     <string name="wrote_seed_down">I wrote down my recovery seed</string>
     <string name="seed_challenge_intro">Confirm you wrote it down: enter the requested words below.</string>
     <string name="seed_challenge_mismatch">Word(s) don\'t match yet.</string>

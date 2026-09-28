@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Desa el node</string>
     <string name="section_info">Informació</string>
     <string name="walletcore_version_label">Versió de WalletCore:</string>
-    <string name="seed_backup_intro">Aquesta és la teva llavor de recuperació. Escriu-la en paper i guarda-la en un lloc segur. Qualsevol persona que tingui aquestes paraules pot accedir als teus fons — nexawal mai la puja ni en fa còpia de seguretat per tu.</string>
-    <string name="generate_new_seed">Genera una nova llavor</string>
+<string name="generate_new_seed">Genera una nova llavor</string>
     <string name="wrote_seed_down">He escrit la meva llavor de recuperació</string>
     <string name="seed_challenge_intro">Confirma que ho has escrit: introdueix a continuació les paraules sol·licitades.</string>
     <string name="seed_challenge_mismatch">Les paraules encara no coincideixen.</string>

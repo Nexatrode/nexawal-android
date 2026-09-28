@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Պահել հանգույցը</string>
     <string name="section_info">Տեղեկություններ</string>
     <string name="walletcore_version_label">WalletCore տարբերակ՝</string>
-    <string name="seed_backup_intro">Սա ձեր վերականգնման բառերն են։ Գրի առեք դրանք թղթի վրա և պահեք ապահով վայրում։ Ով որ իմանա այս բառերը, կարող է հասանելիություն ունենալ ձեր միջոցներին — nexawal-ը երբեք չի վերբեռնում կամ չի պահուստավորում դրանք ձեզ համար։</string>
-    <string name="generate_new_seed">Ստեղծել նոր վերականգնման բառեր</string>
+<string name="generate_new_seed">Ստեղծել նոր վերականգնման բառեր</string>
     <string name="wrote_seed_down">Ես գրի առա իմ վերականգնման բառերը</string>
     <string name="seed_challenge_intro">Հաստատեք, որ գրի եք առել՝ մուտքագրեք ներքևում հայցվող բառերը։</string>
     <string name="seed_challenge_mismatch">Բառ(եր)ը դեռ չեն համընկնում։</string>

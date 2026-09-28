@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Csomópont mentése</string>
     <string name="section_info">Infó</string>
     <string name="walletcore_version_label">WalletCore verzió:</string>
-    <string name="seed_backup_intro">Ez a helyreállítási seeded. Írd le papírra, és tárold biztonságos helyen. Bárki, aki ismeri ezeket a szavakat, hozzáférhet a pénzeszközeidhez — a nexawal soha nem tölti fel és nem menti el helyetted.</string>
-    <string name="generate_new_seed">Új seed létrehozása</string>
+<string name="generate_new_seed">Új seed létrehozása</string>
     <string name="wrote_seed_down">Leírtam a helyreállítási seedemet</string>
     <string name="seed_challenge_intro">Erősítsd meg, hogy leírtad: add meg a kért szavakat lent.</string>
     <string name="seed_challenge_mismatch">A szó(ak) még nem egyeznek.</string>

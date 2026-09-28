@@ -91,8 +91,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="save_node">Түйүндү сактоо</string>
     <string name="section_info">Маалымат</string>
     <string name="walletcore_version_label">WalletCore версиясы:</string>
-    <string name="seed_backup_intro">Бул сиздин калыбына келтирүү сөздөрүңүз. Аны кагазга жазып, коопсуз жерде сактаңыз. Бул сөздөрдү билген ар ким сиздин каражаттарыңызга мүмкүнчүлүк алат — nexawal аны сиз үчүн эч качан жүктөбөйт же камдап сактабайт.</string>
-    <string name="generate_new_seed">Жаңы калыбына келтирүү сөздөрүн жаратуу</string>
+<string name="generate_new_seed">Жаңы калыбына келтирүү сөздөрүн жаратуу</string>
     <string name="wrote_seed_down">Мен калыбына келтирүү сөздөрүмдү жазып алдым</string>
     <string name="seed_challenge_intro">Жазып алганыңызды ырастаңыз: төмөндө талап кылынган сөздөрдү киргизиңиз.</string>
     <string name="seed_challenge_mismatch">Сөз(дөр) азырынча дал келбейт.</string>
