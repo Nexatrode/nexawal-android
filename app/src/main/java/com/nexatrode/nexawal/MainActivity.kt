@@ -203,6 +203,7 @@ private fun SyncLifecycleEffects(
                 }
                 Lifecycle.Event.ON_STOP -> {
                     walletManager.stopForegroundCatchUp()
+                    walletManager.fiatPrices.onBackground()
                     walletManager.snapshotState()
                     lockProtectedSession()
                 }

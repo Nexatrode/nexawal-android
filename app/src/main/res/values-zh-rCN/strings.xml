@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">已清除此网络的扫描缓存</string>
     <string name="section_fiat">法币估算</string>
     <string name="toggle_show_fiat">显示法币估算</string>
-    <string name="fiat_help">可选功能。启用后,nexawal 会从 Kraken(api.kraken.com)获取公开的 XMR 价格,并在需要时从 Frankfurter(api.frankfurter.dev)获取法币汇率。这些服务器会看到您的 IP。金额和地址不会被发送。法币查询使用 Clearnet HTTPS,与节点 / I2P 代理设置无关。仅供估算 — 您实际发送和持有的是 XMR。</string>
     <string name="fiat_currency_label">货币</string>
     <string name="section_about">关于</string>
-    <string name="about_disclaimer">本软件基于 MIT 许可,未经审计。您需自行负责您的种子和资金安全。默认的远程节点可以看到您的 IP 和钱包同步请求 — 运行您自己的节点可获得更强的隐私保护。若启用可选的法币估算功能,将会连接 api.kraken.com 和 api.frankfurter.dev。</string>
     <string name="terms_of_use">使用条款</string>
     <string name="terms_title">使用条款</string>
     <string name="terms_body_custody">Nexatrode LLC 的 nexawal 是用于管理数字资产的自托管界面。您对私钥和 25 词助记词负有全部责任。</string>
@@ -410,4 +408,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">查看全部交易 (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d 笔待确认交易</string>
     <string name="send_fee_increased_unapproved">网络手续费已增加。没有广播任何交易。请检查手续费并再次确认。</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>

@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Taisce scanta glanta don líonra seo</string>
     <string name="section_fiat">Meastacháin Fiat</string>
     <string name="toggle_show_fiat">Taispeáin meastacháin fiat</string>
-    <string name="fiat_help">Roghnach. Nuair a bhíonn sé ar siúl, faigheann nexawal praghas poiblí XMR ó Kraken (api.kraken.com) agus, más gá, malartán fiat ó Frankfurter (api.frankfurter.dev). Feiceann na freastalaithe sin do sheoladh IP. Ní sheoltar méideanna ná seoltaí. Úsáideann cuardaigh fiat HTTPS Clearnet agus tá siad ar leithligh ó shocruithe an nóid / seachfhreastalaí I2P. Meastacháin amháin iad seo — is é XMR an rud a sheolann agus a shealbhaíonn tú.</string>
     <string name="fiat_currency_label">Airgeadra</string>
     <string name="section_about">Maidir Leis</string>
-    <string name="about_disclaimer">Bogearra ceadúnaithe faoi MIT, gan iniúchadh. Tá tú féin freagrach as do shíol agus do chistí. Is féidir leis an nód cianda réamhshocraithe do sheoladh IP agus do cheisteanacha sioncronaithe sparáin a fheiceáil — rith do nód féin le haghaidh príobháideachta níos fearr. Déanann meastacháin roghnach fiat, má tá siad cumasaithe, teagmháil le api.kraken.com agus api.frankfurter.dev.</string>
     <string name="terms_of_use">Téarmaí Úsáide</string>
     <string name="terms_title">Téarmaí Úsáide</string>
     <string name="terms_body_custody">Is comhéadan féinchoimeádta é nexawal ó Nexatrode LLC chun sócmhainní digiteacha a bhainistiú. Tá freagracht eisiach ort as do phríomheochracha agus as an bhfrása síl 25 focal.</string>
@@ -412,4 +410,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Féach ar gach idirbheart (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d idirbheart ar feitheamh</string>
     <string name="send_fee_increased_unapproved">Tháinig méadú ar tháille an líonra. Níor craoladh aon rud. Seiceáil an táille agus deimhnigh arís.</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>

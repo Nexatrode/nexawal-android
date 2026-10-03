@@ -3,6 +3,7 @@ package com.nexatrode.nexawal
 import android.content.Context
 import com.nexatrode.nexawal.logic.FiatEstimate
 import com.nexatrode.nexawal.logic.FiatRate
+import org.json.JSONObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -39,20 +40,29 @@ class FiatPriceService(context: Context) {
     val snapshots = FiatSnapshotStore(appContext)
     private var loopJob: Job? = null
     private var staleJob: Job? = null
+    private var foregroundActive = false
 
     init {
         republishFromCache()
     }
 
     fun onForeground() {
+        foregroundActive = true
         republishFromCache()
         scope.launch { refreshIfNeeded(force = false) }
         startLoop()
     }
 
+    fun onBackground() {
+        foregroundActive = false
+        client.dispatcher.cancelAll()
+        stopLoop()
+    }
+
     fun settingsDidChange() {
         republishFromCache()
         if (!canFetch()) {
+            client.dispatcher.cancelAll()
             publish(null)
             stopLoop()
             return
@@ -62,7 +72,8 @@ class FiatPriceService(context: Context) {
         startLoop()
     }
 
-    fun canFetch(): Boolean = MoneroConfig.fiatEstimatesEnabled(appContext)
+    fun canFetch(): Boolean = MoneroConfig.fiatEstimatesEnabled(appContext) &&
+        MoneroConfig.networkPolicy(appContext) != MoneroConfig.NetworkPolicy.I2P
 
     fun recordSend(txid: String) {
         snapshots.record(txid, _displayRate.value, kind = "send")
@@ -85,13 +96,15 @@ class FiatPriceService(context: Context) {
         val currency = MoneroConfig.fiatCurrency(appContext)
         val cached = MoneroConfig.cachedFiatRate(appContext)
         publish(
-            cached?.takeIf { it.currency == currency && FiatEstimate.isFresh(it.fetchedAtMs, now) },
+            cached?.takeIf {
+                it.source == "nexatrode" && it.currency == currency && FiatEstimate.isFresh(it.fetchedAtMs, now)
+            },
         )
     }
 
     private fun startLoop() {
         stopLoop()
-        if (!canFetch()) return
+        if (!canFetch() || !foregroundActive) return
         loopJob = scope.launch {
             while (isActive) {
                 delay(FiatEstimate.REFRESH_INTERVAL_MS)
@@ -108,6 +121,7 @@ class FiatPriceService(context: Context) {
     }
 
     suspend fun refreshIfNeeded(force: Boolean) {
+        if (!foregroundActive) return
         if (!canFetch()) {
             publish(null)
             return
@@ -125,11 +139,15 @@ class FiatPriceService(context: Context) {
             return
         }
         fetchMutex.withLock {
+            if (!canFetch() || !foregroundActive) {
+                publish(null)
+                return@withLock
+            }
             val lockedCurrency = MoneroConfig.fiatCurrency(appContext)
             runCatching { fetchRate(lockedCurrency) }
                 .onSuccess { rate ->
                     MoneroConfig.setCachedFiatRate(appContext, rate)
-                    if (canFetch() && MoneroConfig.fiatCurrency(appContext) == lockedCurrency) {
+                    if (canFetch() && foregroundActive && MoneroConfig.fiatCurrency(appContext) == lockedCurrency) {
                         publish(FiatEstimate.liveRate(rate, System.currentTimeMillis()))
                     }
                 }
@@ -157,27 +175,18 @@ class FiatPriceService(context: Context) {
     }
 
     private suspend fun fetchRate(currency: String): FiatRate = withContext(Dispatchers.IO) {
+        require(FiatEstimate.isSupported(currency))
+        val json = JSONObject(get("https://rates.nexatrode.com/v1/rates/XMR/$currency"))
+        require(json.getString("base") == "XMR" && json.getString("quote") == currency)
+        val checkedAt = json.getLong("checked_at_ms")
+        val expiresAt = json.getLong("expires_at_ms")
         val now = System.currentTimeMillis()
-        if (currency == "EUR") {
-            val last = fetchKrakenLastTrade("XMREUR")
-            return@withContext FiatRate("EUR", last, now, "kraken")
-        }
-        val usd = fetchKrakenLastTrade("XMRUSD")
-        if (currency == "USD") {
-            return@withContext FiatRate("USD", usd, now, "kraken")
-        }
-        val fx = fetchFrankfurter(currency)
-        FiatRate(currency, FiatEstimate.combine(usd, fx), now, "kraken+frankfurter")
-    }
-
-    private fun fetchKrakenLastTrade(pair: String): java.math.BigDecimal {
-        val json = get("https://api.kraken.com/0/public/Ticker?pair=$pair")
-        return FiatEstimate.parseKrakenLastTrade(json) ?: error("kraken parse failed")
-    }
-
-    private fun fetchFrankfurter(symbol: String): java.math.BigDecimal {
-        val json = get("https://api.frankfurter.dev/v1/latest?base=USD&symbols=$symbol")
-        return FiatEstimate.parseFrankfurterRate(json, symbol) ?: error("frankfurter parse failed")
+        require(checkedAt > 0L && checkedAt <= now && expiresAt > now)
+        require(expiresAt - checkedAt in 1L..FiatEstimate.MAX_AGE_MS)
+        require(FiatEstimate.isFresh(checkedAt, now))
+        val value = java.math.BigDecimal(json.getString("fiat_per_xmr"))
+        require(value.signum() > 0)
+        FiatRate(currency, value, checkedAt, "nexatrode")
     }
 
     private fun get(url: String): String {

@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">اس نیٹ ورک کی اسکین کیشے صاف کر دی گئی</string>
     <string name="section_fiat">فیاٹ تخمینے</string>
     <string name="toggle_show_fiat">فیاٹ تخمینے دکھائیں</string>
-    <string name="fiat_help">اختیاری۔ فعال ہونے پر، nexawal Kraken (api.kraken.com) سے عوامی XMR قیمت حاصل کرتا ہے اور، اگر ضرورت ہو، Frankfurter (api.frankfurter.dev) سے فیاٹ ایکسچینج ریٹ حاصل کرتا ہے۔ یہ سرورز آپ کا IP دیکھتے ہیں۔ رقوم اور ایڈریسز نہیں بھیجے جاتے۔ فیاٹ کی تلاش Clearnet HTTPS استعمال کرتی ہے اور نوڈ / I2P پراکسی ترتیبات سے الگ ہے۔ یہ صرف تخمینے ہیں — آپ XMR ہی بھیجتے اور رکھتے ہیں۔</string>
     <string name="fiat_currency_label">کرنسی</string>
     <string name="section_about">بارے میں</string>
-    <string name="about_disclaimer">یہ MIT لائسنس یافتہ، غیر آڈٹ شدہ سافٹ ویئر ہے۔ آپ اپنی سیڈ اور فنڈز کے خود ذمہ دار ہیں۔ ڈیفالٹ ریموٹ نوڈ آپ کا IP اور والٹ سنک کی درخواستیں دیکھ سکتا ہے — زیادہ پرائیویسی کے لیے اپنا نوڈ چلائیں۔ اختیاری فیاٹ تخمینے، اگر فعال ہوں، تو api.kraken.com اور api.frankfurter.dev سے رابطہ کرتے ہیں۔</string>
     <string name="terms_of_use">استعمال کی شرائط</string>
     <string name="terms_title">استعمال کی شرائط</string>
     <string name="terms_body_custody">Nexatrode LLC کا nexawal ڈیجیٹل اثاثوں کے انتظام کے لیے سیلف کسٹوڈیل انٹرفیس ہے۔ آپ کی نجی کلیدیں اور 25 الفاظ کی سیڈ فریز کی مکمل ذمہ داری آپ پر ہے۔</string>
@@ -412,4 +410,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">تمام لین دین دیکھیں (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d زیر التوا لین دین</string>
     <string name="send_fee_increased_unapproved">نیٹ ورک فیس بڑھ گئی۔ کچھ بھی نشر نہیں ہوا۔ فیس کا جائزہ لے کر دوبارہ تصدیق کریں۔</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>

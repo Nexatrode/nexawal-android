@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cache de escaneo mboguepyre ko red-pe g̃uarã</string>
     <string name="section_fiat">Techapyrã Fiat</string>
     <string name="toggle_show_fiat">Ehechauka techapyrã fiat</string>
-    <string name="fiat_help">Opcional. Oñemyendýrõ, nexawal oheka precio público XMR-gua Kraken-gui (api.kraken.com) ha, tekotevẽramo, tipo de cambio fiat Frankfurter-gui (api.frankfurter.dev). Umi servidor ohecha nde IP. Ndojejapói cantidad térã dirección ñemondo. Consulta fiat oiporu HTTPS clearnet ha oĩ hendaguáre ñemboheko nodo / proxy I2P-gui. Techapyrã año — XMR ha\'e emondóva ha eñongatúva.</string>
     <string name="fiat_currency_label">Moneda</string>
     <string name="section_about">Ko App Rehegua</string>
-    <string name="about_disclaimer">Software licencia MIT-gua, ndojeexaminái porãha. Nde\'ỹ ha\'e responsable nde frase mnemónica ha nde viru rehe. Nodo remoto default ikatu ohecha nde IP ha consulta de sincronización — eiporúke nde nodo teete privacidad porãve g̃uarã. Techapyrã fiat opcional, oñemyendýrõ, oñondive api.kraken.com ha api.frankfurter.dev.</string>
     <string name="terms_of_use">Jeporu ñe\'ẽme\'ẽ</string>
     <string name="terms_title">Jeporu ñe\'ẽme\'ẽ</string>
     <string name="terms_body_custody">nexawal Nexatrode LLC mba\'éva ha\'e peteĩ interface autocustodia oñangareko hag̃ua mba\'e rehegua digital-pe. Ndévoi reñangarekóta ne llave privada ha ne semilla ñe\'ẽ 25-pe.</string>
@@ -412,4 +410,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Ehecha opaite ñemuhakue (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ñemuhakue ha\'arõhápe</string>
     <string name="send_fee_increased_unapproved">Oñembohetave pe tarifa red rehegua. Ndojekuaaukái mba\'eve. Ehecha jey tarifa ha emoneĩ jey.</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>

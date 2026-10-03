@@ -3049,7 +3049,7 @@ private fun SettingsScreen(
                 val fiatDisabledText = stringResource(R.string.fiat_disabled)
                 LabeledSwitchRow(
                     label = stringResource(R.string.toggle_show_fiat),
-                    description = stringResource(R.string.fiat_help),
+                    description = stringResource(R.string.fiat_help_nexatrode),
                     checked = fiatEnabled,
                     onCheckedChange = {
                         fiatEnabled = it
@@ -3121,7 +3121,7 @@ private fun SettingsScreen(
                 )
                 Spacer(Modifier.height(8.dp))
                 Text(
-                    stringResource(R.string.about_disclaimer),
+                    stringResource(R.string.about_disclaimer_nexatrode),
                     color = secondaryText,
                 )
                 Spacer(Modifier.height(12.dp))

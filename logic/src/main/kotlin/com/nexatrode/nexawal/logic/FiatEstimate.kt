@@ -19,7 +19,7 @@ data class FiatRate(
 
 object FiatEstimate {
     const val MAX_AGE_MS: Long = 30L * 60L * 1_000L
-    const val REFRESH_INTERVAL_MS: Long = 15L * 60L * 1_000L
+    const val REFRESH_INTERVAL_MS: Long = 5L * 60L * 1_000L
 
     val supportedCurrencies: List<String> = listOf(
         "USD", "EUR", "GBP", "JPY", "CNY", "AUD", "CAD", "CHF", "HKD", "SGD",

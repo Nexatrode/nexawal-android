@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">מטמון הסריקה לרשת זו נוקה</string>
     <string name="section_fiat">אומדני פיאט</string>
     <string name="toggle_show_fiat">הצגת אומדני פיאט</string>
-    <string name="fiat_help">אופציונלי. כשמופעל, nexawal מביא מחיר XMR ציבורי מ-Kraken (api.kraken.com) ובמידת הצורך שער מטבע פיאט מ-Frankfurter (api.frankfurter.dev). שרתים אלה רואים את כתובת ה-IP שלך. סכומים וכתובות אינם נשלחים. שאילתות הפיאט משתמשות ב-HTTPS ברשת הפתוחה (Clearnet) והן נפרדות מהגדרות הצומת / הפרוקסי של I2P. אומדנים בלבד — XMR הוא מה שאתה שולח ומחזיק.</string>
     <string name="fiat_currency_label">מטבע</string>
     <string name="section_about">אודות</string>
-    <string name="about_disclaimer">תוכנה מורשית ברישיון MIT ולא מבוקרת. אתה אחראי לביטוי השחזור ולכספים שלך. הצומת המרוחקת שמוגדרת כברירת מחדל יכולה לראות את כתובת ה-IP שלך ואת שאילתות הסנכרון של הארנק — הפעל צומת משלך לפרטיות חזקה יותר. אומדני פיאט אופציונליים, אם מופעלים, פונים ל-api.kraken.com ול-api.frankfurter.dev.</string>
     <string name="terms_of_use">תנאי השימוש</string>
     <string name="terms_title">תנאי השימוש</string>
     <string name="terms_body_custody">nexawal של Nexatrode LLC הוא ממשק בשמירה עצמית לניהול נכסים דיגיטליים. האחריות הבלעדית למפתחות הפרטיים ולביטוי הזרע בן 25 המילים היא שלך.</string>
@@ -412,4 +410,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">הצג את כל העסקאות (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d עסקאות בהמתנה</string>
     <string name="send_fee_increased_unapproved">עמלת הרשת עלתה. שום דבר לא שודר. יש לבדוק את העמלה ולאשר שוב.</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>

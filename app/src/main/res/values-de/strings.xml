@@ -153,10 +153,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Scan-Cache für dieses Netzwerk geleert</string>
     <string name="section_fiat">Fiat-Schätzungen</string>
     <string name="toggle_show_fiat">Fiat-Schätzungen anzeigen</string>
-    <string name="fiat_help">Optional. Wenn aktiviert, ruft nexawal einen öffentlichen XMR-Preis von Kraken (api.kraken.com) ab und, falls nötig, den Fiat-Wechselkurs von Frankfurter (api.frankfurter.dev). Diese Server sehen deine IP-Adresse. Beträge und Adressen werden nicht übermittelt. Fiat-Abfragen nutzen Clearnet-HTTPS und sind unabhängig von den Node- / I2P-Proxy-Einstellungen. Nur Schätzungen — XMR ist, was du sendest und hältst.</string>
     <string name="fiat_currency_label">Währung</string>
     <string name="section_about">Über</string>
-    <string name="about_disclaimer">MIT-lizenzierte, nicht auditierte Software. Du bist selbst für deinen Seed und deine Gelder verantwortlich. Der Standard-Remote-Node kann deine IP-Adresse und deine Wallet-Sync-Anfragen sehen — betreibe für mehr Privatsphäre deinen eigenen Node. Optionale Fiat-Schätzungen kontaktieren, falls aktiviert, api.kraken.com und api.frankfurter.dev.</string>
     <string name="terms_of_use">Nutzungsbedingungen</string>
     <string name="terms_title">Nutzungsbedingungen</string>
     <string name="terms_body_custody">nexawal von Nexatrode LLC ist eine selbstverwahrte Schnittstelle zur Verwaltung digitaler Vermögenswerte. Du trägst die alleinige Verantwortung für deine privaten Schlüssel und die 25-Wort-Seed-Phrase.</string>
@@ -410,4 +408,6 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Alle Transaktionen anzeigen (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ausstehende Transaktionen</string>
     <string name="send_fee_increased_unapproved">Die Netzwerkgebühr ist gestiegen. Es wurde nichts übertragen. Prüfe die Gebühr und bestätige erneut.</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
 </resources>
