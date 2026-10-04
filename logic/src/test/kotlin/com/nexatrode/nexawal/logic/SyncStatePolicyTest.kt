@@ -52,6 +52,22 @@ class SyncStatePolicyTest {
     }
 
     @Test
+    fun `rewind target cannot advance beyond the scanned cursor`() {
+        val decision = ScanRecoveryPolicy.decide(
+            previousScanInterrupted = true,
+            lastScanned = 3_745_389L,
+            chainHeight = 3_745_389L,
+            chainTime = 1L,
+            restoreHeight = 3_519_450L,
+            trustedScannedHeight = 3_800_000L,
+            transfersEmpty = false,
+            didRewindEmptyHistory = false,
+        )
+
+        assertEquals(3_745_389L, decision?.rewindHeight)
+    }
+
+    @Test
     fun `cursor ahead of clean checkpoint rewinds even without interrupted marker`() {
         val decision = ScanRecoveryPolicy.decide(
             previousScanInterrupted = false,

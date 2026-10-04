@@ -616,6 +616,13 @@ object WalletCore {
     }
 
     @JvmStatic
+    fun rewindScanCursorToHeight(walletId: String, targetHeight: Long) {
+        require(walletId.isNotBlank()) { "walletId must not be blank" }
+        require(targetHeight >= 0L) { "targetHeight must be >= 0" }
+        WalletCoreJni.rewindScanCursorToHeight(walletId, targetHeight)
+    }
+
+    @JvmStatic
     fun resetTrackedOutputs(walletId: String) {
         require(walletId.isNotBlank()) { "walletId must not be blank" }
         WalletCoreJni.resetTrackedOutputs(walletId)
@@ -792,6 +799,7 @@ internal object WalletCoreJni {
     ): String
 
     external fun forceRescanFromHeight(walletId: String, fromHeight: Long)
+    external fun rewindScanCursorToHeight(walletId: String, targetHeight: Long)
     external fun resetTrackedOutputs(walletId: String)
     external fun startZmqListener(endpoint: String)
     external fun stopZmqListener()

@@ -1883,13 +1883,13 @@ class WalletManager(
         return st.lastScanned + 3L < st.chainHeight
     }
 
-    /** If a killed refresh left lastScanned ≈ tip, rewind to the last completed checkpoint. */
+    /** If a killed refresh left lastScanned ≈ tip, preserve older outputs while rewinding. */
     private fun maybeRewindInterruptedScan(
         walletId: String,
         previousScanInterrupted: Boolean,
     ) {
-        val st = _state.value.syncStatus
-            ?: runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
+        val st = runCatching { WalletCore.syncStatus(walletId) }.getOrNull()
+            ?: _state.value.syncStatus
             ?: return
         val trusted = MoneroConfig.trustedScannedHeight(appContext)
         // Metadata is the user's durable restore choice. A cache produced by the old refresh bug
@@ -1900,6 +1900,13 @@ class WalletManager(
             coreRestoreHeight = st.restoreHeight,
             persistedRestoreHeight = persistedRestoreHeight,
         )
+        if (recoveryRestoreHeight < st.restoreHeight) {
+            // An older destructive rewind raised the core restore height and discarded
+            // earlier outputs. Only a full rescan from the durable original can repair it.
+            Log.w("WalletManager", "Core restore height ${st.restoreHeight} exceeds durable restore height $recoveryRestoreHeight; rebuilding from original")
+            WalletCore.forceRescanFromHeight(walletId, recoveryRestoreHeight)
+            return
+        }
         val decision = ScanRecoveryPolicy.decide(
             previousScanInterrupted = previousScanInterrupted,
             lastScanned = st.lastScanned,
@@ -1910,21 +1917,12 @@ class WalletManager(
             transfersEmpty = (_state.value.totalHistoryCount == 0),
             didRewindEmptyHistory = didRewindEmptyHistory,
         ) ?: return
-        if (decision.emptyHistoryAtTip) {
-            didRewindEmptyHistory = true
-        }
         Log.w(
             "WalletManager",
-            "incomplete scan looks at tip; rewinding cursor from ${st.lastScanned} to ${decision.rewindHeight} (tip=${st.chainHeight} coreRestore=${st.restoreHeight} persistedRestore=$persistedRestoreHeight trusted=$trusted previousInterrupted=$previousScanInterrupted emptyHistory=${decision.emptyHistoryAtTip})",
+            "incomplete scan looks at tip; preserving rewind from ${st.lastScanned} to ${decision.rewindHeight} (tip=${st.chainHeight} coreRestore=${st.restoreHeight} persistedRestore=$persistedRestoreHeight trusted=$trusted previousInterrupted=$previousScanInterrupted emptyHistory=${decision.emptyHistoryAtTip})",
         )
-        runCatching {
-            WalletCore.forceRescanFromHeight(walletId, decision.rewindHeight)
-        }.onFailure { t ->
-            Log.w(
-                "WalletManager",
-                "rewindScanCursor failed: ${t.message ?: t.javaClass.simpleName}",
-            )
-        }
+        WalletCore.rewindScanCursorToHeight(walletId, decision.rewindHeight)
+        if (decision.emptyHistoryAtTip) didRewindEmptyHistory = true
     }
 
     fun refreshWalletInBackgroundIfNeeded(reason: String = "auto-resume"): Job? {

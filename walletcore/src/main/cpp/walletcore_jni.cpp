@@ -1111,6 +1111,18 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_sweepWithFilter(
 }
 
 JNIEXPORT void JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_rewindScanCursorToHeight(
+    JNIEnv* env,
+    jclass /*clazz*/,
+    jstring walletId,
+    jlong targetHeight
+) {
+    const std::string wid = jstring_to_std_string(env, walletId);
+    int32_t rc = wallet_rewind_scan_cursor_to_height(wid.c_str(), static_cast<uint64_t>(targetHeight));
+    (void)check_rc_or_throw(env, rc, "wallet_rewind_scan_cursor_to_height");
+}
+
+JNIEXPORT void JNICALL
 Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_forceRescanFromHeight(
     JNIEnv* env,
     jclass /*clazz*/,

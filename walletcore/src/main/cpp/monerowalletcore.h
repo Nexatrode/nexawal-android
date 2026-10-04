@@ -467,6 +467,11 @@ char* wallet_preview_fee_with_filter(
 );
 
 /* Force rescan from a given restore height (resets cache/state). */
+int32_t wallet_rewind_scan_cursor_to_height(
+    const char* wallet_id,
+    uint64_t target_height
+);
+
 int32_t wallet_force_rescan_from_height(
     const char* wallet_id,
     uint64_t new_restore_height

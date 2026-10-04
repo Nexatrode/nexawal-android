@@ -54,7 +54,7 @@ object ScanRecoveryPolicy {
             rewindHeight = if (emptyHistoryAtTip) {
                 restoreHeight
             } else {
-                maxOf(restoreHeight, trustedScannedHeight)
+                maxOf(restoreHeight, minOf(trustedScannedHeight, lastScanned))
             },
             emptyHistoryAtTip = emptyHistoryAtTip,
         )
