@@ -37,6 +37,7 @@
     <string name="transaction">Transakcia</string>
     <string name="copy_txid">Kopírovať TXID</string>
     <string name="open_in_explorer">Otvoriť v prehliadači</string>
+    <string name="copy_explorer_link">Kopírovať odkaz na blockchainový prehliadač</string>
     <string name="label_type">Typ</string>
     <string name="label_amount">Suma</string>
     <string name="label_fee">Poplatok</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Zobraziť všetky transakcie (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d čakajúcich transakcií</string>
     <string name="send_fee_increased_unapproved">Sieťový poplatok sa zvýšil. Nič sa nevyslalo. Skontrolujte poplatok a znova potvrďte.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Voliteľné. Keď je zapnuté, NexaWal si cez HTTPS vyžiada kurz XMR pre zvolenú menu zo servera rates.nexatrode.com. Požiadavka používa verejný internet (Clearnet), aj keď uzol peňaženky používa I2P. Nexatrode môže vidieť vašu IP adresu a zvolenú menu, ale nedostáva zostatky, adresy, obnovovaciu frázu ani históriu transakcií. Kurzy sú iba odhad — posielate a držíte XMR.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Exportovať zodpovedajúce transakcie (CSV)</string>
+    <string name="history_export_failed">Export CSV zlyhal. Skúste to znova.</string>
 </resources>

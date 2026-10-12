@@ -37,6 +37,7 @@
     <string name="transaction">Transaksi</string>
     <string name="copy_txid">Salin TXID</string>
     <string name="open_in_explorer">Buka di Explorer</string>
+    <string name="copy_explorer_link">Salin tautan penjelajah blockchain</string>
     <string name="label_type">Jenis</string>
     <string name="label_amount">Jumlah</string>
     <string name="label_fee">Biaya</string>
@@ -408,6 +409,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Lihat semua transaksi (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transaksi tertunda</string>
     <string name="send_fee_increased_unapproved">Biaya jaringan meningkat. Tidak ada transaksi yang disiarkan. Tinjau biaya lalu konfirmasi lagi.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Opsional. Saat diaktifkan, NexaWal meminta kurs XMR untuk mata uang pilihan Anda dari rates.nexatrode.com melalui HTTPS. Permintaan ini memakai internet publik (Clearnet), meskipun node dompet menggunakan I2P. Nexatrode dapat melihat alamat IP dan mata uang pilihan Anda, tetapi saldo, alamat, seed, dan riwayat transaksi dompet tidak dikirim. Kurs hanya perkiraan — XMR-lah yang Anda kirim dan simpan.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Ekspor transaksi yang cocok (CSV)</string>
+    <string name="history_export_failed">Ekspor CSV gagal. Coba lagi.</string>
 </resources>

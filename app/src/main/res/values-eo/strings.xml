@@ -37,6 +37,7 @@
     <string name="transaction">Transakcio</string>
     <string name="copy_txid">Kopii TXID</string>
     <string name="open_in_explorer">Malfermi en Esploristo</string>
+    <string name="copy_explorer_link">Kopii la ligilon de la blokĉena esplorilo</string>
     <string name="label_type">Tipo</string>
     <string name="label_amount">Sumo</string>
     <string name="label_fee">Krompago</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Montri ĉiujn transakciojn (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d atendantaj transakcioj</string>
     <string name="send_fee_increased_unapproved">La reta kotizo plialtiĝis. Nenio estis elsendita. Kontrolu la kotizon kaj konfirmu denove.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Laŭvola. Kiam ĝi estas ŝaltita, NexaWal petas per HTTPS de rates.nexatrode.com la XMR-kurzon por via elektita valuto. La peto uzas la publikan interreton (Clearnet), eĉ se via monujo-nodo uzas I2P. Nexatrode povas vidi vian IP-adreson kaj elektitan valuton, sed ne ricevas monujajn sumojn, adresojn, reakiraĵan frazon aŭ transakcian historion. Kurzoj estas nur taksoj — vi sendas kaj tenas XMR.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Eksporti kongruajn transakciojn (CSV)</string>
+    <string name="history_export_failed">Eksporto de CSV malsukcesis. Provu denove.</string>
 </resources>

@@ -36,6 +36,7 @@
     <string name="refreshing_ellipsis">Refreshing…</string>
     <string name="transaction">Transaction</string>
     <string name="copy_txid">Copy TXID</string>
+    <string name="copy_explorer_link">Copy Explorer Link</string>
     <string name="open_in_explorer">Open in Explorer</string>
     <string name="label_type">Type</string>
     <string name="label_amount">Amount</string>
@@ -153,7 +154,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="cleared_scan_cache_android">Cleared scan cache for this network</string>
     <string name="section_fiat">Fiat estimates</string>
     <string name="toggle_show_fiat">Show fiat estimates</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are fetched over clearnet HTTPS even when the wallet node uses I2P. Estimates only — XMR is what you send and hold.</string>
     <string name="fiat_currency_label">Currency</string>
     <string name="section_about">About</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_search_txid">Search transaction ID</string>
     <string name="history_through_date">Through (YYYY-MM-DD)</string>
     <string name="history_title">Transactions</string>
+    <string name="history_export_csv">Export matching transactions (CSV)</string>
+    <string name="history_export_failed">CSV export failed. Try again.</string>
     <string name="history_view_all_fmt">View all transactions (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d pending transactions</string>
     <string name="send_fee_increased_unapproved">The network fee increased. Nothing was broadcast. Preview the fee and confirm again.</string>

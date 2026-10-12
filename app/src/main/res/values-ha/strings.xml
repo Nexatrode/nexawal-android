@@ -37,6 +37,7 @@
     <string name="transaction">Ma\'amala</string>
     <string name="copy_txid">Kwafi TXID</string>
     <string name="open_in_explorer">Buɗe a Explorer</string>
+    <string name="copy_explorer_link">Kwafi mahadar blockchain explorer</string>
     <string name="label_type">Nau\'i</string>
     <string name="label_amount">Adadi</string>
     <string name="label_fee">Kuɗin Caji</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Duba duk ma\'amaloli (%1$d)</string>
     <string name="history_pending_count_fmt">Ma\'amaloli %1$d ana jira</string>
     <string name="send_fee_increased_unapproved">Kudin cibiyar sadarwa ya ƙaru. Ba a aika komai ba. Duba kuɗin sannan ka sake tabbatarwa.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Na zaɓi ne. Idan an kunna shi, NexaWal yana neman farashin XMR na kuɗin da ka zaɓa daga rates.nexatrode.com ta HTTPS. Wannan buƙatar tana amfani da intanet na jama’a (Clearnet), ko da nodes ɗin walat yana amfani da I2P. Nexatrode na iya ganin adireshin IP ɗinka da kuɗin da ka zaɓa, amma ba a aika ma’aunin walat, adireshi, kalmomin dawo da walat, ko tarihin ma’amaloli ba. Ƙididdiga ce kawai — XMR ne kake aikawa da riƙewa.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Fitar da ma\'amaloli da suka dace (CSV)</string>
+    <string name="history_export_failed">Fitar da CSV ta kasa. Sake gwadawa.</string>
 </resources>

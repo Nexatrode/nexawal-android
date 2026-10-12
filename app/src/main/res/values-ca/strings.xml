@@ -37,6 +37,7 @@
     <string name="transaction">Transacció</string>
     <string name="copy_txid">Copia el TXID</string>
     <string name="open_in_explorer">Obre a l\'explorador</string>
+    <string name="copy_explorer_link">Copia l’enllaç de l’explorador de blockchain</string>
     <string name="label_type">Tipus</string>
     <string name="label_amount">Import</string>
     <string name="label_fee">Comissió</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Mostra totes les transaccions (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transaccions pendents</string>
     <string name="send_fee_increased_unapproved">La tarifa de la xarxa ha augmentat. No s’ha enviat res. Revisa-la i torna a confirmar.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Opcional. Si està activat, NexaWal demana a rates.nexatrode.com, mitjançant HTTPS, la cotització d’XMR per a la moneda que has triat. Aquesta petició usa la Internet pública (Clearnet), encara que el node de la cartera faci servir I2P. Nexatrode pot veure la teva IP i la moneda triada, però no rep saldos, adreces, la frase de recuperació ni l’historial de transaccions. Les cotitzacions són només estimacions: el que tens i envies és XMR.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Exporta les transaccions coincidents (CSV)</string>
+    <string name="history_export_failed">No s\'ha pogut exportar el CSV. Torna-ho a provar.</string>
 </resources>

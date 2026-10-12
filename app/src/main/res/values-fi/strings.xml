@@ -37,6 +37,7 @@
     <string name="transaction">Tapahtuma</string>
     <string name="copy_txid">Kopioi TXID</string>
     <string name="open_in_explorer">Avaa selaimessa</string>
+    <string name="copy_explorer_link">Kopioi lohkoketjuselaimen linkki</string>
     <string name="label_type">Tyyppi</string>
     <string name="label_amount">Määrä</string>
     <string name="label_fee">Maksu</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Näytä kaikki tapahtumat (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d odottavaa tapahtumaa</string>
     <string name="send_fee_increased_unapproved">Verkkomaksu nousi. Mitään ei lähetetty. Tarkista maksu ja vahvista uudelleen.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Valinnainen. Kun toiminto on käytössä, NexaWal pyytää HTTPS-yhteydellä palvelusta rates.nexatrode.com XMR-kurssin valitsemallesi valuutalle. Pyyntö käyttää julkista internetiä (clearnet), vaikka lompakon solmu käyttäisi I2P:tä. Nexatrode näkee IP-osoitteesi ja valitun valuutan, mutta lompakon saldoja, osoitteita, palautussanoja tai tapahtumahistoriaa ei lähetetä. Kurssit ovat vain arvioita — lähetät ja säilytät XMR:ää.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Vie hakua vastaavat tapahtumat (CSV)</string>
+    <string name="history_export_failed">CSV-vienti epäonnistui. Yritä uudelleen.</string>
 </resources>

@@ -37,6 +37,7 @@
     <string name="transaction">Συναλλαγή</string>
     <string name="copy_txid">Αντιγραφή TXID</string>
     <string name="open_in_explorer">Άνοιγμα στον Explorer</string>
+    <string name="copy_explorer_link">Αντιγραφή συνδέσμου εξερευνητή blockchain</string>
     <string name="label_type">Τύπος</string>
     <string name="label_amount">Ποσό</string>
     <string name="label_fee">Προμήθεια</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Προβολή όλων των συναλλαγών (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d εκκρεμείς συναλλαγές</string>
     <string name="send_fee_increased_unapproved">Η χρέωση δικτύου αυξήθηκε. Δεν μεταδόθηκε τίποτα. Ελέγξτε τη χρέωση και επιβεβαιώστε ξανά.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Προαιρετικό. Όταν είναι ενεργό, το NexaWal ζητά μέσω HTTPS από το rates.nexatrode.com την ισοτιμία XMR για το νόμισμα που επιλέξατε. Το αίτημα χρησιμοποιεί το δημόσιο διαδίκτυο (clearnet), ακόμη κι αν ο κόμβος του πορτοφολιού χρησιμοποιεί I2P. Η Nexatrode μπορεί να δει τη διεύθυνση IP και το επιλεγμένο νόμισμα, αλλά δεν λαμβάνει ποσά, διευθύνσεις, φράση ανάκτησης ή ιστορικό συναλλαγών. Οι ισοτιμίες είναι μόνο εκτιμήσεις — στέλνετε και κρατάτε XMR.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Εξαγωγή συναλλαγών που ταιριάζουν (CSV)</string>
+    <string name="history_export_failed">Η εξαγωγή CSV απέτυχε. Δοκιμάστε ξανά.</string>
 </resources>

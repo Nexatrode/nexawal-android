@@ -37,6 +37,7 @@
     <string name="transaction">交易</string>
     <string name="copy_txid">複製 TXID</string>
     <string name="open_in_explorer">在區塊瀏覽器中打開</string>
+    <string name="copy_explorer_link">複製區塊鏈瀏覽器連結</string>
     <string name="label_type">類型</string>
     <string name="label_amount">金額</string>
     <string name="label_fee">手續費</string>
@@ -408,6 +409,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">查看全部交易 (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d 筆待確認交易</string>
     <string name="send_fee_increased_unapproved">網路手續費已增加。沒有廣播任何交易。請檢查手續費並再次確認。</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">選用。啟用後，NexaWal 會透過 HTTPS 向 rates.nexatrode.com 查詢所選貨幣的 XMR 匯率。即使錢包節點使用 I2P，此請求仍會透過公共網際網路（Clearnet）傳送。Nexatrode 可以看到你的 IP 位址和所選貨幣，但不會收到錢包金額、地址、助記詞或交易紀錄。匯率僅供估算——你實際傳送和持有的是 XMR。</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">匯出符合條件的交易記錄 (CSV)</string>
+    <string name="history_export_failed">CSV 匯出失敗，請再試一次。</string>
 </resources>

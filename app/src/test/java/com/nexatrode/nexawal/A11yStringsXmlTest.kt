@@ -48,6 +48,10 @@ class A11yStringsXmlTest {
     private val translatedCommonUiKeys = listOf(
         "label_throughput_avg",
         "label_throughput_recent",
+        "history_export_csv",
+        "history_export_failed",
+        "copy_explorer_link",
+        "fiat_help_nexatrode",
         "toggle_mainnet",
         "legal_load_error",
         "source_on_github",

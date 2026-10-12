@@ -37,6 +37,7 @@
     <string name="transaction">Idirbheart</string>
     <string name="copy_txid">Cóipeáil an TXID</string>
     <string name="open_in_explorer">Oscail sa Bhrabhsálaí</string>
+    <string name="copy_explorer_link">Cóipeáil nasc an taiscéalaí blockchain</string>
     <string name="label_type">Cineál</string>
     <string name="label_amount">Méid</string>
     <string name="label_fee">Táille</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Féach ar gach idirbheart (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d idirbheart ar feitheamh</string>
     <string name="send_fee_increased_unapproved">Tháinig méadú ar tháille an líonra. Níor craoladh aon rud. Seiceáil an táille agus deimhnigh arís.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Roghnach. Nuair atá sé cumasaithe, iarrann NexaWal ráta XMR don airgeadra roghnaithe ó rates.nexatrode.com trí HTTPS. Úsáideann an t-iarratas an tIdirlíon poiblí (Clearnet), fiú má úsáideann nóid an sparáin I2P. Is féidir le Nexatrode do sheoladh IP agus an t-airgeadra roghnaithe a fheiceáil, ach ní sheoltar iarmhéideanna, seoltaí, frása síl ná stair idirbheart an sparáin. Meastacháin amháin iad na rátaí — is é XMR a sheolann agus a choinníonn tú.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Easpórtáil na hidirbhearta meaitseáilte (CSV)</string>
+    <string name="history_export_failed">Theip ar easpórtáil CSV. Bain triail eile as.</string>
 </resources>

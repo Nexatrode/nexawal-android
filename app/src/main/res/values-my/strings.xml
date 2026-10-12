@@ -37,6 +37,7 @@
     <string name="transaction">ငွေပေးငွေယူမှု</string>
     <string name="copy_txid">TXID ကူးယူမည်</string>
     <string name="open_in_explorer">Explorer တွင် ဖွင့်မည်</string>
+    <string name="copy_explorer_link">ဘလော့ခ်ချိန်း Explorer လင့်ခ်ကို ကူးယူပါ</string>
     <string name="label_type">အမျိုးအစား</string>
     <string name="label_amount">ပမာဏ</string>
     <string name="label_fee">အခကြေးငွေ</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">ငွေလွှဲမှုအားလုံးကို ကြည့်ရန် (%1$d)</string>
     <string name="history_pending_count_fmt">ဆိုင်းငံ့နေဆဲ ငွေလွှဲမှု %1$d ခု</string>
     <string name="send_fee_increased_unapproved">ကွန်ရက်ကြေး တိုးလာသည်။ မည်သည့်အရာမျှ ထုတ်လွှင့်ခြင်း မရှိပါ။ ကြေးကိုစစ်ဆေးပြီး ထပ်မံအတည်ပြုပါ။</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">ရွေးချယ်နိုင်သည်။ ဖွင့်ထားပါက NexaWal သည် သင်ရွေးထားသော ငွေကြေးအတွက် XMR ဈေးနှုန်းကို HTTPS ဖြင့် rates.nexatrode.com မှ တောင်းယူသည်။ ပိုက်ဆံအိတ် node က I2P သုံးနေသော်လည်း ဤတောင်းဆိုမှုသည် အများသုံးအင်တာနက် (Clearnet) ကို အသုံးပြုသည်။ Nexatrode သည် သင့် IP လိပ်စာနှင့် ရွေးချယ်ထားသော ငွေကြေးကို မြင်နိုင်သော်လည်း ပိုက်ဆံအိတ်ပမာဏ၊ လိပ်စာများ၊ seed စကားစု သို့မဟုတ် ငွေလွှဲမှတ်တမ်းကို မပို့ပါ။ ဈေးနှုန်းများသည် ခန့်မှန်းချက်သာဖြစ်ပြီး သင်ပို့/သိမ်းဆည်းသည့် ပိုင်ဆိုင်မှုမှာ XMR ဖြစ်သည်။</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">ကိုက်ညီသော ငွေလွှဲမှုများကို ထုတ်ယူရန် (CSV)</string>
+    <string name="history_export_failed">CSV ထုတ်ယူမှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။</string>
 </resources>

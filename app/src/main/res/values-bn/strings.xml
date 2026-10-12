@@ -37,6 +37,7 @@
     <string name="transaction">লেনদেন</string>
     <string name="copy_txid">TXID কপি করুন</string>
     <string name="open_in_explorer">এক্সপ্লোরারে খুলুন</string>
+    <string name="copy_explorer_link">ব্লকচেইন এক্সপ্লোরার লিংক কপি করুন</string>
     <string name="label_type">ধরন</string>
     <string name="label_amount">পরিমাণ</string>
     <string name="label_fee">ফি</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">সব লেনদেন দেখুন (%1$d)</string>
     <string name="history_pending_count_fmt">%1$dটি অপেক্ষমাণ লেনদেন</string>
     <string name="send_fee_increased_unapproved">নেটওয়ার্ক ফি বেড়েছে। কিছুই সম্প্রচার করা হয়নি। ফি পর্যালোচনা করে আবার নিশ্চিত করুন।</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">ঐচ্ছিক। চালু থাকলে, NexaWal আপনার নির্বাচিত মুদ্রার XMR দর HTTPS-এর মাধ্যমে rates.nexatrode.com থেকে চায়। ওয়ালেট নোড I2P ব্যবহার করলেও এই অনুরোধ সাধারণ ইন্টারনেট (Clearnet) দিয়ে যায়। Nexatrode আপনার IP ঠিকানা ও নির্বাচিত মুদ্রা দেখতে পারে, তবে ওয়ালেটের পরিমাণ, ঠিকানা, সিড বা লেনদেনের ইতিহাস পাঠানো হয় না। দর কেবল আনুমানিক — আপনি XMR-ই পাঠান ও রাখেন।</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">মিলে যাওয়া লেনদেন রপ্তানি করুন (CSV)</string>
+    <string name="history_export_failed">CSV রপ্তানি করা যায়নি। আবার চেষ্টা করুন।</string>
 </resources>

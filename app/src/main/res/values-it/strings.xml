@@ -37,6 +37,7 @@
     <string name="transaction">Transazione</string>
     <string name="copy_txid">Copia TXID</string>
     <string name="open_in_explorer">Apri nell\'Explorer</string>
+    <string name="copy_explorer_link">Copia il link dell’esploratore blockchain</string>
     <string name="label_type">Tipo</string>
     <string name="label_amount">Importo</string>
     <string name="label_fee">Commissione</string>
@@ -408,6 +409,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Vedi tutte le transazioni (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transazioni in sospeso</string>
     <string name="send_fee_increased_unapproved">La commissione di rete è aumentata. Non è stato trasmesso nulla. Controlla la commissione e conferma di nuovo.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Facoltativo. Se attivato, NexaWal richiede via HTTPS a rates.nexatrode.com il tasso XMR per la valuta scelta. La richiesta usa Internet pubblico (clearnet), anche se il nodo del portafoglio usa I2P. Nexatrode può vedere il tuo IP e la valuta scelta, ma non riceve saldi, indirizzi, frase di recupero o cronologia delle transazioni. I tassi sono solo stime: invii e conservi XMR.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">Esporta le transazioni corrispondenti (CSV)</string>
+    <string name="history_export_failed">Esportazione CSV non riuscita. Riprova.</string>
 </resources>

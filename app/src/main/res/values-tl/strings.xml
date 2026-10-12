@@ -37,6 +37,7 @@
     <string name="transaction">Transaksyon</string>
     <string name="copy_txid">Kopyahin ang TXID</string>
     <string name="open_in_explorer">Buksan sa Explorer</string>
+    <string name="copy_explorer_link">Kopyahin ang link ng blockchain explorer</string>
     <string name="label_type">Uri</string>
     <string name="label_amount">Halaga</string>
     <string name="label_fee">Bayad</string>
@@ -410,6 +411,8 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">Tingnan ang lahat ng transaksyon (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d nakabinbing transaksyon</string>
     <string name="send_fee_increased_unapproved">Tumaas ang network fee. Walang na-broadcast. Suriin ang fee at kumpirmahin muli.</string>
-    <string name="fiat_help_nexatrode">Optional. NexaWal requests an XMR rate for your chosen currency from rates.nexatrode.com over HTTPS. Nexatrode can see your IP address and chosen currency; wallet amounts and addresses are not sent. Rates are unavailable in I2P-only mode. Estimates only — XMR is what you send and hold.</string>
+    <string name="fiat_help_nexatrode">Opsyonal. Kapag naka-on, humihingi ang NexaWal sa rates.nexatrode.com ng XMR rate para sa pinili mong currency sa pamamagitan ng HTTPS. Dumadaan ito sa pampublikong internet (clearnet), kahit I2P ang gamit ng wallet node. Makikita ng Nexatrode ang IP address mo at piniling currency, pero hindi ipinapadala ang halaga, mga address, seed phrase, o history ng transaksyon ng wallet. Tantiya lamang ang mga rate — XMR ang ipinapadala at hawak mo.</string>
     <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="history_export_csv">I-export ang mga tumugmang transaksyon (CSV)</string>
+    <string name="history_export_failed">Hindi na-export ang CSV. Subukan muli.</string>
 </resources>
