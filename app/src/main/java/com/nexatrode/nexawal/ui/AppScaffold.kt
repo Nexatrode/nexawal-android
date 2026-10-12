@@ -1,6 +1,7 @@
 package com.nexatrode.nexawal.ui
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -1521,11 +1522,13 @@ internal fun TransferDetailsDialog(
                     Text(stringResource(R.string.copy_txid))
                 }
                 Spacer(Modifier.height(8.dp))
+                val explorerUrl = "https://xmrchain.net/tx/${t.txid}"
+                val linkCopiedText = stringResource(R.string.link_copied)
                 Button(
                     onClick = {
-                        val uri = android.net.Uri.parse("https://xmrchain.net/tx/${t.txid}")
-                        runCatching {
-                            context.startActivity(Intent(Intent.ACTION_VIEW, uri))
+                        scope.launch {
+                            ClipboardCompat.setText(clipboard, explorerUrl)
+                            Toast.makeText(context, linkCopiedText, Toast.LENGTH_SHORT).show()
                         }
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -1533,7 +1536,7 @@ internal fun TransferDetailsDialog(
                         contentColor = Color(0xFF39FF14),
                     )
                 ) {
-                    Text(stringResource(R.string.open_in_explorer))
+                    Text(stringResource(R.string.copy_explorer_link))
                 }
             }
         },

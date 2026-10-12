@@ -1,5 +1,8 @@
 package com.nexatrode.nexawal.ui
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -12,6 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.nexatrode.nexawal.R
@@ -21,6 +25,9 @@ import com.nexatrode.nexawal.logic.HistoryConfirmations
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.io.File
 import java.time.LocalDate
 import java.time.ZoneId
 
@@ -85,12 +92,41 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     val id = state.walletId ?: return
     val pager = remember(id, state.walletAddress, state.historySession) { TransactionsPager(onRows = { rows -> walletManager.fiatPrices.recordSeenTransfers(rows.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp) }) }) }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
     val listState = rememberLazyListState()
     var search by rememberSaveable { mutableStateOf("") }
     var filter by rememberSaveable { mutableStateOf(initialFilter) }
     var from by rememberSaveable { mutableStateOf("") }
     var through by rememberSaveable { mutableStateOf("") }
     var selected by remember { mutableStateOf<Transfer?>(null) }
+    var isExporting by remember { mutableStateOf(false) }
+    var exportStatus by remember { mutableStateOf<String?>(null) }
+    var exportFailed by remember { mutableStateOf(false) }
+    var exportFile by remember { mutableStateOf<File?>(null) }
+    val saveCsv = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri: Uri? ->
+        val file = exportFile
+        exportFile = null
+        if (file != null) {
+            if (uri == null) {
+                file.delete()
+            } else {
+                scope.launch {
+                    val saved = runCatching {
+                        withContext(Dispatchers.IO) {
+                            val output = context.contentResolver.openOutputStream(uri)
+                                ?: error("Could not open the selected destination")
+                            file.inputStream().use { input -> output.use { input.copyTo(it) } }
+                        }
+                    }
+                    file.delete()
+                    if (saved.isFailure) {
+                        exportFailed = true
+                        exportStatus = context.getString(R.string.history_export_failed)
+                    }
+                }
+            }
+        }
+    }
     val queryResult = remember(search, filter, from, through) {
         runCatching {
             val zone = ZoneId.systemDefault()
@@ -108,7 +144,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     LaunchedEffect(state.historyRevision) {
         if (pager.revision != null && state.historyRevision != null && pager.revision != state.historyRevision) pager.changed = true
     }
-    DisposableEffect(pager) { onDispose { pager.cancel() } }
+    DisposableEffect(pager) { onDispose { pager.cancel(); exportFile?.delete() } }
     Column(Modifier.fillMaxSize().background(palette.background).padding(horizontal = 16.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             TextButton(onClick = onBack) { Text(stringResource(R.string.history_back)) }
@@ -133,6 +169,60 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
         if (queryResult.isSuccess) {
             Text(stringResource(R.string.history_results_fmt, pager.count, pager.total), color = palette.secondaryText, modifier = Modifier.padding(vertical = 8.dp))
         }
+        TextButton(
+            enabled = queryResult.isSuccess && pager.count > 0 && !pager.changed && !isExporting,
+            onClick = {
+                val request = queryResult.getOrNull() ?: return@TextButton
+                val session = state.historySession
+                exportStatus = null
+                exportFailed = false
+                isExporting = true
+                scope.launch {
+                    try {
+                        val (file, _) = withContext(Dispatchers.IO) {
+                            val temp = File.createTempFile("nexawal-history-", ".csv", context.cacheDir)
+                            try {
+                                val written = temp.outputStream().bufferedWriter(Charsets.UTF_8).use { writer ->
+                                    TransferHistoryCsv.writeAll(
+                                        walletId = id,
+                                        query = request,
+                                        writer = writer,
+                                        shouldContinue = {
+                                            val current = walletManager.state.value
+                                            current.walletId == id && current.historySession == session
+                                        },
+                                    )
+                                }
+                                check(written > 0) { "No matching transactions to export" }
+                                temp to written
+                            } catch (error: Throwable) {
+                                temp.delete()
+                                throw error
+                            }
+                        }
+                        if (walletManager.state.value.walletId == id && walletManager.state.value.historySession == session) {
+                            exportFile = file
+                            saveCsv.launch("nexawal-history.csv")
+                        } else {
+                            file.delete()
+                            exportFailed = true
+                            exportStatus = context.getString(R.string.history_export_failed)
+                        }
+                    } catch (cancelled: CancellationException) {
+                        throw cancelled
+                    } catch (_: Exception) {
+                        exportFailed = true
+                        exportStatus = context.getString(R.string.history_export_failed)
+                    } finally {
+                        isExporting = false
+                    }
+                }
+            },
+        ) {
+            Text(stringResource(if (isExporting) R.string.history_loading_transaction else R.string.history_export_csv))
+        }
+        exportStatus?.let { Text(it, color = if (exportFailed) palette.danger else palette.secondaryText) }
+        if (isExporting) LinearProgressIndicator(Modifier.fillMaxWidth())
         if (state.refreshInProgress || state.balanceIsStaleWhileSyncing) Text(stringResource(R.string.history_incomplete_sync), color = palette.secondaryText)
         if (pager.changed) TextButton(onClick = { scope.launch { queryResult.getOrNull()?.let {
                 val anchor = pager.cache.row(listState.firstVisibleItemIndex)?.txid

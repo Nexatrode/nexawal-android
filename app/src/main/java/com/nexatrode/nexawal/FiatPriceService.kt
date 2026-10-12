@@ -72,8 +72,7 @@ class FiatPriceService(context: Context) {
         startLoop()
     }
 
-    fun canFetch(): Boolean = MoneroConfig.fiatEstimatesEnabled(appContext) &&
-        MoneroConfig.networkPolicy(appContext) != MoneroConfig.NetworkPolicy.I2P
+    fun canFetch(): Boolean = MoneroConfig.fiatEstimatesEnabled(appContext)
 
     fun recordSend(txid: String) {
         snapshots.record(txid, _displayRate.value, kind = "send")
