@@ -5,21 +5,8 @@ name: Native Android (from source)
 # path; the legacy source env flag is retained for recipe compatibility.
 
 on:
+  # Keep the source-first release verification available on demand only.
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "MoneroWalletCoreFFI"
-      - "MoneroWalletCoreFFI/**"
-      - "walletcore/build.gradle.kts"
-      - ".github/workflows/native-android.yml"
-      - "docs/REPRODUCIBLE_BUILD.md"
-  pull_request:
-    paths:
-      - "MoneroWalletCoreFFI"
-      - "MoneroWalletCoreFFI/**"
-      - "walletcore/build.gradle.kts"
-      - ".github/workflows/native-android.yml"
 
 env:
   ANDROID_API: "26"
