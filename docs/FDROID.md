@@ -28,7 +28,7 @@ No proprietary Google SDKs ship in the APK.
 
 - JDK **17**
 - Android SDK (compileSdk **36**), NDK (**r27b** recommended; pin in recipe)
-- Rust **stable** with targets `aarch64-linux-android`, `x86_64-linux-android`
+- Rust **1.97.1** (the WalletCore toolchain pin) with targets `aarch64-linux-android`, `x86_64-linux-android`
 - Git submodules initialized
 - Source build is the Gradle default. `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` is
   still accepted for older recipes.
@@ -61,7 +61,7 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
 ## Local dry-run (developer machine)
 
 ```bash
-git checkout v1.0.0
+git checkout v1.0.2   # after tagging the final tested release commit
 git submodule update --init --recursive
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon

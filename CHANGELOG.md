@@ -11,6 +11,8 @@ Release tags use `v<versionName>` (e.g. `v1.0.0`).
 - Use clearer translated copy when a send fee increases or a send is already in progress
 
 ### Fixed
+- Honor the rates server's expiry in live estimates, cache reloads, and fiat amount entry
+- Clear expired fiat input before returning to XMR so a fiat number cannot become an XMR amount
 - Keep the release theme compatible with Android 11 while using Android 12+ splash-screen styling
 - Mark camera as optional so devices without a camera are not filtered out of installs
 

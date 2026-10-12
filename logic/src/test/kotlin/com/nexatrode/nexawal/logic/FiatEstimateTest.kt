@@ -46,6 +46,29 @@ class FiatEstimateTest {
     }
 
     @Test
+    fun serverDeadlineWinsAndLegacyServerQuoteMustRefetch() {
+        val fetched = 1_000_000L
+        val rate = FiatRate("USD", BigDecimal("100"), fetched, "nexatrode", fetched + 1_000)
+        assertEquals(rate, FiatEstimate.liveRate(rate, fetched + 999))
+        assertEquals(500_000_000_000L, FiatEstimate.livePiconeroFromFiat("50", rate, fetched + 999))
+        assertEquals(1L, FiatEstimate.msUntilStale(rate, fetched + 999))
+        assertNull(FiatEstimate.liveRate(rate, fetched + 1_000))
+        assertNull(FiatEstimate.livePiconeroFromFiat("50", rate, fetched + 1_000))
+        assertEquals(0L, FiatEstimate.msUntilStale(rate, fetched + 1_000))
+        assertNull(FiatEstimate.liveApproxText(1_000_000_000_000L, rate, fetched + 1_000))
+        assertNull(FiatEstimate.liveRate(rate.copy(expiresAtMs = null), fetched))
+        assertEquals("≈ $100.00", FiatEstimate.recordedApproxText(1_000_000_000_000L,
+            BigDecimal("100"), "USD"))
+    }
+
+    @Test
+    fun serverCannotExtendLocalAgeLimit() {
+        val rate = FiatRate("USD", BigDecimal("100"), 1_000L, "nexatrode", Long.MAX_VALUE)
+        assertEquals(FiatEstimate.MAX_AGE_MS, FiatEstimate.msUntilStale(rate, 1_000L))
+        assertNull(FiatEstimate.liveRate(rate, 1_000L + FiatEstimate.MAX_AGE_MS))
+    }
+
+    @Test
     fun conversionAndFormatting() {
         val usdRate = FiatRate("USD", BigDecimal("356.85"), 10L, "kraken")
         assertEquals(0, BigDecimal("356.85").compareTo(FiatEstimate.fiatAmount(1_000_000_000_000L, usdRate.fiatPerXmr)))

@@ -51,6 +51,7 @@ object MoneroConfig {
     private const val KEY_FIAT_RATE_CURRENCY: String = "fiat_rate_currency"
     private const val KEY_FIAT_RATE_PER_XMR: String = "fiat_rate_per_xmr"
     private const val KEY_FIAT_RATE_FETCHED_AT: String = "fiat_rate_fetched_at_ms"
+    private const val KEY_FIAT_RATE_EXPIRES_AT: String = "fiat_rate_expires_at_ms"
     private const val KEY_FIAT_RATE_SOURCE: String = "fiat_rate_source"
     private const val KEY_ACCEPTED_TERMS_VERSION: String = "nexawal_accepted_terms_version"
     private const val KEY_SCAN_INTERRUPTED: String = "nexawal_scan_interrupted"
@@ -252,8 +253,10 @@ object MoneroConfig {
         val raw = p.getString(KEY_FIAT_RATE_PER_XMR, null) ?: return null
         val perXmr = FiatEstimate.decimalOrNull(raw) ?: return null
         val fetchedAt = p.getLong(KEY_FIAT_RATE_FETCHED_AT, 0L)
+        val expiresAt = p.getLong(KEY_FIAT_RATE_EXPIRES_AT, 0L)
+        if (expiresAt <= fetchedAt) return null // Old caches must refetch their deadline.
         val source = p.getString(KEY_FIAT_RATE_SOURCE, "kraken") ?: "kraken"
-        return FiatRate(currency, perXmr, fetchedAt, source)
+        return FiatRate(currency, perXmr, fetchedAt, source, expiresAt)
     }
 
     @JvmStatic
@@ -263,11 +266,13 @@ object MoneroConfig {
             edit.remove(KEY_FIAT_RATE_CURRENCY)
                 .remove(KEY_FIAT_RATE_PER_XMR)
                 .remove(KEY_FIAT_RATE_FETCHED_AT)
+                .remove(KEY_FIAT_RATE_EXPIRES_AT)
                 .remove(KEY_FIAT_RATE_SOURCE)
         } else {
             edit.putString(KEY_FIAT_RATE_CURRENCY, rate.currency)
                 .putString(KEY_FIAT_RATE_PER_XMR, rate.fiatPerXmr.stripTrailingZeros().toPlainString())
                 .putLong(KEY_FIAT_RATE_FETCHED_AT, rate.fetchedAtMs)
+                .putLong(KEY_FIAT_RATE_EXPIRES_AT, rate.expiresAtMs ?: 0L)
                 .putString(KEY_FIAT_RATE_SOURCE, rate.source)
         }
         edit.apply()

@@ -37,8 +37,7 @@ internal object AmountUnitParsing {
         return when (mode) {
             AmountInputMode.XMR -> XmrAmount.parsePiconero(text)
             AmountInputMode.FIAT -> {
-                val live = rate ?: return null
-                FiatEstimate.piconeroFromFiat(text, live)
+                FiatEstimate.livePiconeroFromFiat(text, rate, System.currentTimeMillis())
             }
         }
     }
@@ -65,6 +64,12 @@ internal object AmountUnitParsing {
         onModeChange(AmountInputMode.XMR)
         onTextChange(FiatEstimate.formatXmrForInput(piconero))
     }
+
+    fun clearExpiredFiatAmount(onTextChange: (String) -> Unit, onModeChange: (AmountInputMode) -> Unit) {
+        // Clear first: never transiently reinterpret the fiat number as XMR.
+        onTextChange("")
+        onModeChange(AmountInputMode.XMR)
+    }
 }
 
 @Composable
@@ -86,12 +91,12 @@ internal fun AmountUnitField(
 
     LaunchedEffect(rate, mode) {
         if (rate == null && mode == AmountInputMode.FIAT) {
-            onModeChange(AmountInputMode.XMR)
+            AmountUnitParsing.clearExpiredFiatAmount(onTextChange, onModeChange)
         }
     }
 
     fun swapUnits() {
-        val live = rate ?: return
+        val live = FiatEstimate.liveRate(rate, System.currentTimeMillis()) ?: return
         val pico = AmountUnitParsing.piconero(text, mode, live)
         when (mode) {
             AmountInputMode.XMR -> {

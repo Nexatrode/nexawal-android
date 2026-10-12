@@ -1,1 +1,1 @@
-Localizes transaction history labels, filters, errors, and wallet history buttons across all shipped locales. Improves localized transaction dates and clarifies fee changes that require send reconfirmation. Keeps splash-screen styling compatible with Android 11+.
+Localizes transaction history labels, filters, errors, and wallet history buttons across all shipped locales. Improves localized dates and fee reconfirmation copy. Honors the server's rate expiry and clears expired fiat input safely. Keeps splash-screen styling compatible with Android 11+.

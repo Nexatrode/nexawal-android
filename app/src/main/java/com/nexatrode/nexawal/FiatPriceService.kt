@@ -96,7 +96,7 @@ class FiatPriceService(context: Context) {
         val cached = MoneroConfig.cachedFiatRate(appContext)
         publish(
             cached?.takeIf {
-                it.source == "nexatrode" && it.currency == currency && FiatEstimate.isFresh(it.fetchedAtMs, now)
+                it.source == "nexatrode" && it.currency == currency && FiatEstimate.liveRate(it, now) != null
             },
         )
     }
@@ -132,7 +132,7 @@ class FiatPriceService(context: Context) {
             !force &&
             current != null &&
             current.currency == currency &&
-            FiatEstimate.isFresh(current.fetchedAtMs, now) &&
+            FiatEstimate.liveRate(current, now) != null &&
             now - current.fetchedAtMs < FiatEstimate.REFRESH_INTERVAL_MS
         ) {
             return
@@ -162,7 +162,7 @@ class FiatPriceService(context: Context) {
     private fun scheduleStaleHide() {
         staleJob?.cancel()
         val rate = _displayRate.value ?: return
-        val remaining = FiatEstimate.msUntilStale(rate.fetchedAtMs, System.currentTimeMillis())
+        val remaining = FiatEstimate.msUntilStale(rate, System.currentTimeMillis())
         if (remaining <= 0L) {
             _displayRate.value = null
             return
@@ -185,7 +185,7 @@ class FiatPriceService(context: Context) {
         require(FiatEstimate.isFresh(checkedAt, now))
         val value = java.math.BigDecimal(json.getString("fiat_per_xmr"))
         require(value.signum() > 0)
-        FiatRate(currency, value, checkedAt, "nexatrode")
+        FiatRate(currency, value, checkedAt, "nexatrode", expiresAt)
     }
 
     private fun get(url: String): String {

@@ -33,7 +33,7 @@ class FiatSnapshotStore(context: Context) {
         val observed = state.observed.toMutableSet()
         observed.add(trimmed)
         val snapshots = state.snapshots.toMutableMap()
-        if (rate != null && FiatEstimate.isFresh(rate.fetchedAtMs, nowMs) && !snapshots.containsKey(trimmed)) {
+        if (rate != null && FiatEstimate.liveRate(rate, nowMs) != null && !snapshots.containsKey(trimmed)) {
             snapshots[trimmed] = FiatTxSnapshot(
                 currency = rate.currency,
                 fiatPerXmr = rate.fiatPerXmr.stripTrailingZeros().toPlainString(),
@@ -63,7 +63,7 @@ class FiatSnapshotStore(context: Context) {
             changed = true
             if (!FiatEstimate.shouldRecordSeenSnapshot(item.timestampSeconds, optedInAtMs)) continue
             if (snapshots.containsKey(trimmed)) continue
-            if (rate == null || !FiatEstimate.isFresh(rate.fetchedAtMs, nowMs)) continue
+            if (rate == null || FiatEstimate.liveRate(rate, nowMs) == null) continue
             snapshots[trimmed] = FiatTxSnapshot(
                 currency = rate.currency,
                 fiatPerXmr = rate.fiatPerXmr.stripTrailingZeros().toPlainString(),

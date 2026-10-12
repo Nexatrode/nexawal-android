@@ -8,6 +8,7 @@ data class FiatRate(
     val fiatPerXmr: BigDecimal,
     val fetchedAtMs: Long,
     val source: String,
+    val expiresAtMs: Long? = null,
 ) {
     constructor(currency: String, fiatPerXmr: String, fetchedAtMs: Long, source: String) : this(
         currency = currency.uppercase(),
@@ -89,17 +90,27 @@ object FiatEstimate {
     fun decimalPlaces(currency: String): Int = if (zeroDecimal.contains(currency.uppercase())) 0 else 2
 
     fun isFresh(fetchedAtMs: Long, nowMs: Long, maxAgeMs: Long = MAX_AGE_MS): Boolean {
-        return nowMs >= fetchedAtMs && (nowMs - fetchedAtMs) < maxAgeMs
+        return fetchedAtMs >= 0L && nowMs >= fetchedAtMs && (nowMs - fetchedAtMs) < maxAgeMs
     }
 
     fun liveRate(rate: FiatRate?, nowMs: Long): FiatRate? {
-        return rate?.takeIf { isFresh(it.fetchedAtMs, nowMs) }
+        return rate?.takeIf {
+            isFresh(it.fetchedAtMs, nowMs) &&
+                (it.source != "nexatrode" || it.expiresAtMs != null) &&
+                (it.expiresAtMs?.let { expiry -> nowMs < expiry } ?: true)
+        }
+    }
+
+    fun msUntilStale(rate: FiatRate, nowMs: Long): Long {
+        if (liveRate(rate, nowMs) == null) return 0L
+        val localRemaining = msUntilStale(rate.fetchedAtMs, nowMs)
+        return minOf(localRemaining, rate.expiresAtMs?.minus(nowMs) ?: localRemaining)
     }
 
     /** Remaining ms until a live rate must be hidden. `0` means hide now. */
     fun msUntilStale(fetchedAtMs: Long, nowMs: Long, maxAgeMs: Long = MAX_AGE_MS): Long {
-        val remaining = fetchedAtMs + maxAgeMs - nowMs
-        return if (remaining > 0) remaining else 0L
+        if (!isFresh(fetchedAtMs, nowMs, maxAgeMs)) return 0L
+        return maxAgeMs - (nowMs - fetchedAtMs)
     }
 
     /**
@@ -161,6 +172,11 @@ object FiatEstimate {
      * Convert a typed fiat amount to piconero using the live rate.
      * Rounds **down** so send never exceeds the typed fiat value.
      */
+    fun livePiconeroFromFiat(fiatText: String, rate: FiatRate?, nowMs: Long): Long? {
+        val live = liveRate(rate, nowMs) ?: return null
+        return piconeroFromFiat(fiatText, live)
+    }
+
     fun piconeroFromFiat(fiatText: String, rate: FiatRate): Long? {
         if (rate.fiatPerXmr.signum() <= 0) return null
         val fiat = decimalOrNull(fiatText.replace(',', '.')) ?: return null
