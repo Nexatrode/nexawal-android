@@ -120,6 +120,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         }, openWallet = {
+                            walletManager.awaitSessionCleanup()
                             // A retained manager may be syncing. Do not reopen/reset it on rotation.
                             if (walletManager.state.value.walletId == null && walletManager.hasStoredWallet()) {
                                 val loaded = walletManager.loadStoredWalletOnLaunch()

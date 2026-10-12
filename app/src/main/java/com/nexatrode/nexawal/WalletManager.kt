@@ -11,10 +11,13 @@ import com.nexatrode.nexawal.logic.RefreshSingleFlight
 import com.nexatrode.nexawal.logic.ScanRecoveryPolicy
 import com.nexatrode.nexawal.logic.SendGate
 import com.nexatrode.nexawal.logic.SendSafety
+import com.nexatrode.nexawal.logic.SessionCleanupPolicy
+import com.nexatrode.nexawal.logic.SessionCleanupRequests
 import com.nexatrode.nexawal.walletcore.WalletCore
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
@@ -206,6 +209,10 @@ class WalletManager(
     /** Production single-flight gate (mutex + under-lock prepare); same type unit-tested in logic. */
     private val refreshSingleFlight = RefreshSingleFlight()
     private val lifecycleMutex = Mutex()
+    private val cleanupPending = AtomicBoolean(false)
+    private val cleanupRequests = SessionCleanupRequests()
+    @Volatile private var cleanupJob: Job? = null
+    @Volatile private var cleanupFailure: Throwable? = null
     private val cachePersistenceSuppressed = AtomicBoolean(false)
     private val sendGate = SendGate()
     /** Plaintext metadata exists only while the app session is unlocked. */
@@ -309,6 +316,7 @@ class WalletManager(
     }
 
     private suspend fun <T> withSendLock(block: suspend () -> T): T {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         if (!sendGate.tryBegin()) {
             throw IllegalStateException(appContext.getString(R.string.send_already_in_progress))
         }
@@ -583,30 +591,8 @@ class WalletManager(
      */
     fun sealSessionForBackground() {
         unlockedMetadata = null
-        val walletId = _state.value.walletId ?: return
         val continueRefresh = refreshInProgress.get() || _state.value.refreshInProgress
-        scope.launch {
-            runCatching {
-                lifecycleMutex.withLock {
-                    withContext(ioDispatcher) {
-                        WalletCore.seal(walletId)
-                        exportCacheAndPersist(walletId)
-                    }
-                }
-                // The ordinary refresh coroutine owns the single-flight gate. It exits promptly
-                // once wallet_seal cancels its native worker; join it before starting view-only.
-                refreshJob?.join()
-                if (continueRefresh && _state.value.walletId == walletId) {
-                    Log.i("WalletManager", "Resuming active scan with view-only wallet walletId=$walletId")
-                    refreshWallet()
-                }
-            }.onFailure { error ->
-                Log.w(
-                    "WalletManager",
-                    "Failed to seal wallet session: ${error.message ?: error.javaClass.simpleName}",
-                )
-            }
-        }
+        requestSessionCleanup(close = false, continueRefresh = continueRefresh)
     }
 
     /**
@@ -615,46 +601,100 @@ class WalletManager(
      */
     fun closeProtectedSession() {
         unlockedMetadata = null
+        requestSessionCleanup(close = true, continueRefresh = false)
+    }
+
+    /** Single-flight cleanup owns retries independently of the UI; close supersedes seal. */
+    @Synchronized private fun requestSessionCleanup(close: Boolean, continueRefresh: Boolean) {
         val walletId = _state.value.walletId ?: return
-        scope.launch {
+        cleanupRequests.request(close, continueRefresh)
+        cleanupPending.set(true)
+        if (cleanupJob?.isActive == true) return
+        cleanupFailure = null
+        cleanupJob = scope.launch(start = CoroutineStart.LAZY) {
             runCatching {
-                lifecycleMutex.withLock {
-                    withContext(ioDispatcher) {
-                        WalletCore.seal(walletId)
-                        exportCacheAndPersist(walletId)
-                        WalletCore.close(walletId)
+                var resume = false
+                while (true) {
+                    val generation = cleanupRequests.snapshot().generation
+                    lifecycleMutex.withLock {
+                        SessionCleanupPolicy.complete {
+                            withContext(ioDispatcher) { WalletCore.seal(walletId, timeoutMs = 1000) }
+                        }
+                        withContext(ioDispatcher) { exportCacheAndPersist(walletId) }
+                        if (cleanupRequests.snapshot().close) {
+                            SessionCleanupPolicy.complete {
+                                withContext(ioDispatcher) { WalletCore.close(walletId, timeoutMs = 1000) }
+                            }
+                            refreshInProgress.set(false)
+                            _state.value = _state.value.copy(
+                                walletId = null,
+                                refreshInProgress = false,
+                                refreshStartedAtMs = null,
+                                refreshLastProgressAtMs = null,
+                                refreshTargetHeight = null,
+                                balance = null,
+                                transfers = emptyList(),
+                                transfersJson = null,
+                            )
+                        }
                     }
-                    refreshInProgress.set(false)
-                    _state.value = _state.value.copy(
-                        walletId = null,
-                        refreshInProgress = false,
-                        refreshStartedAtMs = null,
-                        refreshLastProgressAtMs = null,
-                        refreshTargetHeight = null,
-                        balance = null,
-                        transfers = emptyList(),
-                        transfersJson = null,
-                    )
+                    refreshJob?.join()
+                    if (_state.value.walletId == null) stopSyncForegroundService()
+                    val done = synchronized(this@WalletManager) {
+                        val finished = cleanupRequests.finish(generation)
+                        if (finished == null) false else {
+                            resume = finished.continueRefresh
+                            cleanupPending.set(false)
+                            cleanupJob = null
+                            true
+                        }
+                    }
+                    if (done) break
+                    // A close/pause request arrived while seal or worker-join suspended.
+                    // Replay it before declaring cleanup complete.
+                    if (_state.value.walletId == null) {
+                        synchronized(this@WalletManager) {
+                            cleanupRequests.clearClosed()
+                            cleanupPending.set(false)
+                            cleanupJob = null
+                        }
+                        break
+                    }
                 }
-                refreshJob?.join()
-                stopSyncForegroundService()
+                if (resume && !cleanupPending.get() && _state.value.walletId == walletId) {
+                    refreshWalletInBackground()
+                }
             }.onFailure { error ->
-                Log.w(
-                    "WalletManager",
-                    "Failed to close protected wallet session: ${error.message ?: error.javaClass.simpleName}",
-                )
+                // Preserve pending state on unexpected failures: no unlock/replacement bypass.
+                synchronized(this@WalletManager) {
+                    cleanupFailure = error
+                    cleanupJob = null
+                }
+                Log.w("WalletManager", "Wallet session cleanup pending: ${error.message ?: error.javaClass.simpleName}")
             }
         }
+        cleanupJob?.start()
+    }
+
+    suspend fun awaitSessionCleanup() {
+        while (true) {
+            val job = cleanupJob ?: break
+            job.join()
+        }
+        cleanupFailure?.let { throw it }
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
     }
 
     /** Re-establish spend authority only after the caller completed device authentication. */
     suspend fun unlockStoredMetadataSession(): Boolean {
+        awaitSessionCleanup()
         val meta = withContext(ioDispatcher) {
             if (!metadataFile().exists()) return@withContext null
             readMetadataFromDisk()
         } ?: return false
         val walletId = _state.value.walletId ?: return false
         val restored = lifecycleMutex.withLock {
+            check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
             if (_state.value.walletId != walletId) return@withLock false
             withContext(ioDispatcher) {
                 if (WalletCore.isSealed(walletId)) {
@@ -750,6 +790,7 @@ class WalletManager(
         persist: Boolean = true,
         replaceExisting: Boolean = false,
     ) {
+        awaitSessionCleanup()
         require(walletId.isNotBlank()) { "walletId must not be blank" }
         require(mnemonic.isNotBlank()) { "mnemonic must not be blank" }
 
@@ -862,6 +903,7 @@ class WalletManager(
      *   - exports cache periodically and at the end (best-effort)
      */
     suspend fun refreshWallet(): WalletCore.SyncStatus {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveScanNodeUrl()
         applyProxyEnv(forBroadcast = false)
@@ -1516,6 +1558,7 @@ class WalletManager(
         destinations: List<SendJson.Destination>,
         ringLen: Int = 16,
     ): SendJson.FeeResult {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
@@ -1558,6 +1601,7 @@ class WalletManager(
         destinations: List<SendJson.Destination>,
         ringLen: Int = 16,
     ): SendJson.FeeResult {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
@@ -1699,6 +1743,7 @@ class WalletManager(
         toAddress: String,
         ringLen: Int = 16,
     ): SendJson.SweepPreviewResult {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
 
@@ -1728,6 +1773,7 @@ class WalletManager(
         toAddress: String,
         ringLen: Int = 16,
     ): SendJson.SweepPreviewResult {
+        check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
         require(fromSubaddressMinor >= 0) { "fromSubaddressMinor must be >= 0" }
         val walletId = _state.value.walletId ?: throw IllegalStateException(appContext.getString(R.string.no_wallet_open))
         val nodeUrl = resolveBroadcastNodeUrl()
@@ -2536,6 +2582,7 @@ class WalletManager(
      * Returns true if a wallet was loaded and opened, false if none exists.
      */
     suspend fun loadStoredWalletOnLaunch(): Boolean = withContext(ioDispatcher) {
+        awaitSessionCleanup()
         val f = metadataFile()
         if (!f.exists()) {
             _state.value = _state.value.copy(hasStoredWallet = false)
@@ -2646,6 +2693,7 @@ class WalletManager(
      * This mirrors iOS "Replace existing wallet?" destructive flow.
      */
     suspend fun clearStoredWallet() = withContext(ioDispatcher) {
+        awaitSessionCleanup()
         // Preserve signed recovery data before deleting metadata; failure must stop replacement.
         CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = true))
         CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = false))
