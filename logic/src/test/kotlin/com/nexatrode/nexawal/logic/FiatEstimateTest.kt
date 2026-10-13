@@ -8,6 +8,17 @@ import org.junit.Test
 import java.math.BigDecimal
 
 class FiatEstimateTest {
+    @Test
+    fun currencyNames_followTheRequestedLocale() {
+        val french = FiatEstimate.localizedCurrencyName("USD", java.util.Locale.FRENCH)
+        val japanese = FiatEstimate.localizedCurrencyName("JPY", java.util.Locale.JAPANESE)
+        assertTrue(french.isNotBlank())
+        assertTrue(japanese.isNotBlank())
+        assertFalse(french == FiatEstimate.currencyNames["USD"])
+        assertFalse(japanese == FiatEstimate.currencyNames["JPY"])
+        assertEquals("INVALID", FiatEstimate.localizedCurrencyName("INVALID"))
+    }
+
     private val krakenUsd = """
         {"error":[],"result":{"XXMRZUSD":{"a":["356.73000000","9","9.000"],"b":["356.61000000","1","1.000"],"c":["356.85000000","0.02761000"],"v":["4487.01313992","6468.48583715"]}}}
     """.trimIndent()

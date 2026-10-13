@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Rọ́pò àpamọ́wọ́ tí ó ti wà?</string>
     <string name="replace_wallet_message">Èyí yóò rọ́pò àpamọ́wọ́ tí ó ti wà lórí ẹ̀rọ yìí.\n\nBí o bá tẹ̀síwájú, ọ̀rọ̀ ìpadàbọ̀ tí a fi pamọ́ báyìí àti ipò yíyẹ̀wò yóò di yíyọ. Rí i dájú pé o ti fi ọ̀rọ̀ ìpadàbọ̀ rẹ pamọ́sí ṣáájú kí o tẹ̀síwájú.</string>
     <string name="section_network_node">Nẹ́tíwọ́ọ̀kì &amp; Node</string>
-    <string name="node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.\nIyipada aiyipada: https://rpc.nexatrode.com</string>
     <string name="save_node">Fi node pamọ́</string>
     <string name="section_info">Ìròyìn</string>
     <string name="walletcore_version_label">Ẹ̀dà WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Àwọn méjèèjì (yẹ̀wò clearnet, tan I2P jáde)</string>
     <string name="network_policy_help">Clearnet nìkan máa ń lo node clearnet kan. I2P nìkan máa ń lo node I2P àti proxy kan. Àwọn méjèèjì máa ń yẹ̀wò lórí clearnet, á sì tan jáde lórí I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
-    <string name="clearnet_node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Kọ URL kíkún, pẹ̀lú http:// tàbí https://.\nIyipada aiyipada: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Lo node yìí</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (host:port)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d ìṣòwò tí ń dúró</string>
     <string name="send_fee_increased_unapproved">Owó iṣẹ́ nẹ́tíwọ́ọ̀kì ti pọ̀ sí i. A kò tan ohunkóhun ká. Ṣàyẹ̀wò owó náà kí o sì fọwọ́ sí i lẹ́ẹ̀kansi.</string>
     <string name="fiat_help_nexatrode">Aṣàyàn. Tí o bá ṣiṣẹ́, NexaWal máa béèrè fún iye XMR fún owó tí o yàn láti ọ̀dọ̀ rates.nexatrode.com nípasẹ̀ HTTPS. Ìbéèrè yìí ń lo Íńtánẹ́ẹ̀tì gbogbogbò (Clearnet), bó tilẹ̀ jẹ́ pé ẹ̀rọ ìsopọ̀ apamọwọ ń lo I2P. Nexatrode lè rí àdírẹ́sì IP rẹ àti owó tí o yàn, ṣùgbọ́n kò gba iye owó apamọwọ, àdírẹ́sì, ọ̀rọ̀ ìmúpadàbọ̀sípò tàbí ìtàn ìṣòwò. Ìṣírò iye owó jẹ́ àfojúsùn nìkan — XMR ni o ń fi ránṣẹ́ tí o sì ń tọ́jú.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">Iwe-aṣẹ MIT, sọfitiwia ti a ko ṣe ayẹwo. O ni iduro fun gbolohun imularada rẹ ati awọn owo. Node isakoṣo latọna jijin le rii IP rẹ ati awọn ibeere amuṣiṣẹpọ apamọwọ - ṣiṣe ipade tirẹ fun ikọkọ ti o lagbara. Awọn iṣiro fiat iyan, ti o ba ṣiṣẹ, kan si rates.nexatrode.com fun awọn oṣuwọn.</string>
     <string name="history_export_csv">Gbe àwọn ìṣòwò tó bá mu jáde (CSV)</string>
     <string name="history_export_failed">Gbigbe CSV jáde kuna. Gbìyànjú lẹ́ẹ̀kan síi.</string>
 </resources>

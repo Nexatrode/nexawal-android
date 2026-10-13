@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Замінити наявний гаманець?</string>
     <string name="replace_wallet_message">Це замінить наявний гаманець на цьому пристрої.\n\nЯкщо ви продовжите, поточну збережену мнемонічну фразу та стан сканування буде видалено. Перш ніж продовжити, переконайтеся, що маєте резервну копію мнемонічної фрази.</string>
     <string name="section_network_node">Мережа і вузол</string>
-    <string name="node_url_help">Введіть повну URL-адресу, включно з http:// або https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Введіть повну URL-адресу, включно з http:// або https://.\nВузол за замовчуванням: https://rpc.nexatrode.com</string>
     <string name="save_node">Зберегти вузол</string>
     <string name="section_info">Інформація</string>
     <string name="walletcore_version_label">Версія WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Обидва (сканування в clearnet, трансляція через I2P)</string>
     <string name="network_policy_help">Лише clearnet використовує вузол clearnet. Лише I2P використовує вузол і проксі I2P. Обидва: сканування в clearnet, трансляція через I2P.</string>
     <string name="section_clearnet_node">Вузол clearnet</string>
-    <string name="clearnet_node_url_help">Введіть повну URL-адресу, включно з http:// або https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Введіть повну URL-адресу, включно з http:// або https://.\nВузол за замовчуванням: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Використати цей вузол</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Вузол I2P (хост:порт)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d транзакцій очікується</string>
     <string name="send_fee_increased_unapproved">Мережева комісія зросла. Нічого не передано. Перевірте комісію та підтвердьте ще раз.</string>
     <string name="fiat_help_nexatrode">Необов’язково. Якщо ввімкнено, NexaWal запитує через HTTPS на rates.nexatrode.com курс XMR для вибраної валюти. Запит використовує звичайний інтернет (Clearnet), навіть якщо вузол гаманця працює через I2P. Nexatrode може бачити вашу IP-адресу й вибрану валюту, але не отримує суми, адреси, фразу відновлення чи історію транзакцій гаманця. Курси є лише оцінкою — ви надсилаєте й зберігаєте XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">програмне забезпечення, що не перевірялося, ліцензоване MIT. Ви несете відповідальність за свою фразу відновлення та кошти. Віддалений вузол за замовчуванням може бачити вашу IP-адресу та запити синхронізації гаманця — запустіть власний вузол для кращої конфіденційності. Необов’язкова оцінка фіат, якщо ввімкнено, зв’яжіться з rates.nexatrode.com, щоб дізнатися ціни.</string>
     <string name="history_export_csv">Експортувати відповідні транзакції (CSV)</string>
     <string name="history_export_failed">Не вдалося експортувати CSV. Спробуйте ще раз.</string>
 </resources>

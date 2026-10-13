@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Gantikan dompet sedia ada?</string>
     <string name="replace_wallet_message">Ini akan menggantikan dompet sedia ada pada peranti ini.\n\nJika anda meneruskan, mnemonic yang disimpan sekarang dan status imbasan akan dialih keluar. Pastikan anda telah membuat sandaran mnemonic anda sebelum meneruskan.</string>
     <string name="section_network_node">Rangkaian &amp; Node</string>
-    <string name="node_url_help">Taip URL penuh, termasuk http:// atau https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Taip URL penuh, termasuk http:// atau https://.\nNod lalai: https://rpc.nexatrode.com</string>
     <string name="save_node">Simpan node</string>
     <string name="section_info">Maklumat</string>
     <string name="walletcore_version_label">Versi WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Kedua-duanya (imbas clearnet, siar I2P)</string>
     <string name="network_policy_help">Clearnet sahaja menggunakan node clearnet. I2P sahaja menggunakan node dan proksi I2P. Kedua-duanya mengimbas pada clearnet dan menyiarkan melalui I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
-    <string name="clearnet_node_url_help">Taip URL penuh, termasuk http:// atau https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Taip URL penuh, termasuk http:// atau https://.\nNod lalai: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Gunakan node ini</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (host:port)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d transaksi belum selesai</string>
     <string name="send_fee_increased_unapproved">Yuran rangkaian meningkat. Tiada apa-apa disiarkan. Semak yuran dan sahkan sekali lagi.</string>
     <string name="fiat_help_nexatrode">Pilihan. Apabila dihidupkan, NexaWal meminta kadar XMR bagi mata wang pilihan anda daripada rates.nexatrode.com melalui HTTPS. Permintaan ini menggunakan Internet awam (Clearnet), walaupun nod dompet menggunakan I2P. Nexatrode boleh melihat alamat IP dan mata wang pilihan anda, tetapi baki, alamat, frasa pemulihan dan sejarah transaksi dompet tidak dihantar. Kadar hanyalah anggaran — XMR ialah aset yang anda hantar dan simpan.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">Berlesen MIT, perisian tidak diaudit. Anda bertanggungjawab untuk frasa pemulihan dan dana anda. Nod jauh lalai boleh melihat pertanyaan penyegerakan IP dan dompet anda — jalankan nod anda sendiri untuk privasi yang lebih kukuh. Anggaran fiat pilihan, jika didayakan, hubungi rates.nexatrode.com untuk mendapatkan kadar.</string>
     <string name="history_export_csv">Eksport transaksi yang sepadan (CSV)</string>
     <string name="history_export_failed">Eksport CSV gagal. Cuba lagi.</string>
 </resources>

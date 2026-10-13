@@ -2,6 +2,7 @@ package com.nexatrode.nexawal.ui
 
 import android.content.Intent
 import android.widget.Toast
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -3068,11 +3069,12 @@ private fun SettingsScreen(
                     Text(stringResource(R.string.fiat_currency_label), color = primaryText, fontWeight = FontWeight.SemiBold)
                     Spacer(Modifier.height(6.dp))
                     val currencyCodeNameFmt = stringResource(R.string.currency_code_name_fmt)
+                    val currencyLocale = LocalConfiguration.current.locales[0]
                     val currencyMenuExpandedText = stringResource(R.string.a11y_currency_menu_expanded)
                     val currencyMenuCollapsedText = stringResource(R.string.a11y_currency_menu_collapsed)
                     Box {
                         SecondaryActionButton(
-                            text = String.format(currencyCodeNameFmt, fiatCurrency, FiatEstimate.currencyNames[fiatCurrency] ?: fiatCurrency),
+                            text = String.format(currencyCodeNameFmt, fiatCurrency, FiatEstimate.localizedCurrencyName(fiatCurrency, currencyLocale)),
                             onClick = { fiatCurrencyMenuOpen = true },
                             palette = palette,
                             modifier = Modifier
@@ -3088,7 +3090,7 @@ private fun SettingsScreen(
                         ) {
                             FiatEstimate.supportedCurrencies.forEach { code ->
                                 androidx.compose.material3.DropdownMenuItem(
-                                    text = { Text(String.format(currencyCodeNameFmt, code, FiatEstimate.currencyNames[code] ?: code)) },
+                                    text = { Text(String.format(currencyCodeNameFmt, code, FiatEstimate.localizedCurrencyName(code, currencyLocale))) },
                                     onClick = {
                                         fiatCurrency = code
                                         MoneroConfig.setFiatCurrency(context, code)

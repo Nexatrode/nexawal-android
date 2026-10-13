@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">বিদ্যমান ওয়ালেট প্রতিস্থাপন করবেন?</string>
     <string name="replace_wallet_message">এটি এই ডিভাইসে থাকা বিদ্যমান ওয়ালেট প্রতিস্থাপন করবে।\n\nআপনি চালিয়ে গেলে, বর্তমানে সংরক্ষিত নিমোনিক এবং স্ক্যান স্টেট মুছে যাবে। এগিয়ে যাওয়ার আগে নিশ্চিত করুন যে আপনার নিমোনিকের ব্যাকআপ আছে।</string>
     <string name="section_network_node">নেটওয়ার্ক ও নোড</string>
-    <string name="node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।\nডিফল্ট নোড: https://rpc.nexatrode.com</string>
     <string name="save_node">নোড সংরক্ষণ করুন</string>
     <string name="section_info">তথ্য</string>
     <string name="walletcore_version_label">WalletCore সংস্করণ:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">উভয়টি (ক্লিয়ারনেটে স্ক্যান, I2P-তে ব্রডকাস্ট)</string>
     <string name="network_policy_help">শুধু ক্লিয়ারনেট একটি ক্লিয়ারনেট নোড ব্যবহার করে। শুধু I2P একটি I2P নোড এবং প্রক্সি ব্যবহার করে। উভয়টি ক্লিয়ারনেটে স্ক্যান করে এবং I2P-এর মাধ্যমে ব্রডকাস্ট করে।</string>
     <string name="section_clearnet_node">ক্লিয়ারনেট নোড</string>
-    <string name="clearnet_node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">সম্পূর্ণ URL লিখুন, http:// বা https:// সহ।\nডিফল্ট নোড: https://rpc.nexatrode.com</string>
     <string name="use_this_node">এই নোড ব্যবহার করুন</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P নোড (host:port)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$dটি অপেক্ষমাণ লেনদেন</string>
     <string name="send_fee_increased_unapproved">নেটওয়ার্ক ফি বেড়েছে। কিছুই সম্প্রচার করা হয়নি। ফি পর্যালোচনা করে আবার নিশ্চিত করুন।</string>
     <string name="fiat_help_nexatrode">ঐচ্ছিক। চালু থাকলে, NexaWal আপনার নির্বাচিত মুদ্রার XMR দর HTTPS-এর মাধ্যমে rates.nexatrode.com থেকে চায়। ওয়ালেট নোড I2P ব্যবহার করলেও এই অনুরোধ সাধারণ ইন্টারনেট (Clearnet) দিয়ে যায়। Nexatrode আপনার IP ঠিকানা ও নির্বাচিত মুদ্রা দেখতে পারে, তবে ওয়ালেটের পরিমাণ, ঠিকানা, সিড বা লেনদেনের ইতিহাস পাঠানো হয় না। দর কেবল আনুমানিক — আপনি XMR-ই পাঠান ও রাখেন।</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT- লাইসেন্সপ্রাপ্ত, অনিরীক্ষিত সফ্টওয়্যার। আপনি আপনার পুনরুদ্ধার শব্দগুচ্ছ এবং তহবিল জন্য দায়ী. ডিফল্ট রিমোট নোড আপনার আইপি এবং ওয়ালেট সিঙ্ক প্রশ্নগুলি দেখতে পারে — শক্তিশালী গোপনীয়তার জন্য আপনার নিজস্ব নোড চালান৷ ঐচ্ছিক ফিয়াট অনুমান, যদি সক্ষম করা থাকে, তাহলে হারের জন্য rates.nexatrode.com-এর সাথে যোগাযোগ করুন।</string>
     <string name="history_export_csv">মিলে যাওয়া লেনদেন রপ্তানি করুন (CSV)</string>
     <string name="history_export_failed">CSV রপ্তানি করা যায়নি। আবার চেষ্টা করুন।</string>
 </resources>

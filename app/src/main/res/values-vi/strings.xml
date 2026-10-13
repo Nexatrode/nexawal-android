@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Thay thế ví hiện có?</string>
     <string name="replace_wallet_message">Việc này sẽ thay thế ví hiện có trên thiết bị này.\n\nNếu bạn tiếp tục, cụm từ mnemonic và trạng thái quét đang lưu sẽ bị xóa. Hãy đảm bảo bạn đã sao lưu cụm từ mnemonic trước khi tiếp tục.</string>
     <string name="section_network_node">Mạng và node</string>
-    <string name="node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.\nNút mặc định: https://rpc.nexatrode.com</string>
     <string name="save_node">Lưu node</string>
     <string name="section_info">Thông tin</string>
     <string name="walletcore_version_label">Phiên bản WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Cả hai (quét clearnet, phát qua I2P)</string>
     <string name="network_policy_help">Chỉ clearnet sử dụng node clearnet. Chỉ I2P sử dụng node và proxy I2P. Cả hai sẽ quét trên clearnet và phát qua I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
-    <string name="clearnet_node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.\nNút mặc định: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Dùng node này</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node I2P (host:port)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d giao dịch đang chờ</string>
     <string name="send_fee_increased_unapproved">Phí mạng đã tăng. Chưa có giao dịch nào được phát đi. Kiểm tra phí và xác nhận lại.</string>
     <string name="fiat_help_nexatrode">Tùy chọn. Khi bật, NexaWal yêu cầu rates.nexatrode.com cung cấp tỷ giá XMR cho loại tiền bạn chọn qua HTTPS. Yêu cầu này dùng Internet công cộng (Clearnet), ngay cả khi nút ví dùng I2P. Nexatrode có thể thấy địa chỉ IP và loại tiền đã chọn, nhưng không nhận số dư, địa chỉ, cụm từ khôi phục hay lịch sử giao dịch của ví. Tỷ giá chỉ là ước tính — tài sản bạn gửi và nắm giữ là XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">Phần mềm chưa được kiểm tra, được MIT cấp phép. Bạn chịu trách nhiệm về thời hạn khôi phục và số tiền của mình. Nút từ xa mặc định có thể xem các truy vấn đồng bộ hóa IP và ví của bạn — hãy chạy nút của riêng bạn để có được sự bảo mật mạnh mẽ hơn. Ước tính tiền pháp định tùy chọn, nếu được bật, hãy liên hệ với rates.nexatrode.com để biết mức giá.</string>
     <string name="history_export_csv">Xuất các giao dịch phù hợp (CSV)</string>
     <string name="history_export_failed">Xuất CSV không thành công. Hãy thử lại.</string>
 </resources>

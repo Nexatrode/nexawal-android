@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">기존 지갑을 교체하시겠습니까?</string>
     <string name="replace_wallet_message">이 기기의 기존 지갑을 교체합니다.\n\n계속하면 현재 저장된 니모닉과 스캔 상태가 삭제됩니다. 진행하기 전에 니모닉을 백업했는지 확인하세요.</string>
     <string name="section_network_node">네트워크 및 노드</string>
-    <string name="node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.\n기본 노드: https://rpc.nexatrode.com</string>
     <string name="save_node">노드 저장</string>
     <string name="section_info">정보</string>
     <string name="walletcore_version_label">WalletCore 버전:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">둘 다 (클리어넷 스캔, I2P 브로드캐스트)</string>
     <string name="network_policy_help">클리어넷만 사용하면 클리어넷 노드를 사용합니다. I2P만 사용하면 I2P 노드와 프록시를 사용합니다. 둘 다 사용하면 클리어넷에서 스캔하고 I2P로 브로드캐스트합니다.</string>
     <string name="section_clearnet_node">클리어넷 노드</string>
-    <string name="clearnet_node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">http:// 또는 https://를 포함한 전체 URL을 입력하세요.\n기본 노드: https://rpc.nexatrode.com</string>
     <string name="use_this_node">이 노드 사용</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P 노드 (호스트:포트)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">대기 중 거래 %1$d건</string>
     <string name="send_fee_increased_unapproved">네트워크 수수료가 증가했습니다. 전송된 내용이 없습니다. 수수료를 확인하고 다시 승인하세요.</string>
     <string name="fiat_help_nexatrode">선택 사항입니다. 켜면 NexaWal이 HTTPS를 통해 rates.nexatrode.com에 선택한 통화의 XMR 시세를 요청합니다. 지갑 노드가 I2P를 사용하더라도 이 요청은 일반 인터넷(Clearnet)을 사용합니다. Nexatrode는 IP 주소와 선택한 통화를 볼 수 있지만 지갑 잔액, 주소, 시드 문구, 거래 내역은 전송되지 않습니다. 시세는 참고용 추정치이며 실제로 보내고 보유하는 자산은 XMR입니다.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT 라이선스, 감사되지 않은 소프트웨어. 복구 문구와 자금에 대한 책임은 귀하에게 있습니다. 기본 원격 노드는 귀하의 IP 및 지갑 동기화 쿼리를 볼 수 있습니다. 더 강력한 개인정보 보호를 위해 자체 노드를 실행하세요. 선택적 법정화폐 추정이 활성화된 경우 요율은 rates.nexatrode.com에 문의하세요.</string>
     <string name="history_export_csv">일치하는 거래 내보내기 (CSV)</string>
     <string name="history_export_failed">CSV 내보내기에 실패했습니다. 다시 시도하세요.</string>
 </resources>

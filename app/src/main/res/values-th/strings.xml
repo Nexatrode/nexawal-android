@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">แทนที่กระเป๋าเงินที่มีอยู่หรือไม่?</string>
     <string name="replace_wallet_message">การทำเช่นนี้จะแทนที่กระเป๋าเงินที่มีอยู่บนอุปกรณ์นี้\n\nหากคุณดำเนินการต่อ วลีช่วยจำและสถานะการสแกนที่จัดเก็บไว้ในปัจจุบันจะถูกลบออก โปรดตรวจสอบให้แน่ใจว่าคุณได้สำรองวลีช่วยจำไว้แล้วก่อนดำเนินการต่อ</string>
     <string name="section_network_node">เครือข่ายและโหนด</string>
-    <string name="node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://\nโหนดเริ่มต้น: https://rpc.nexatrode.com</string>
     <string name="save_node">บันทึกโหนด</string>
     <string name="section_info">ข้อมูล</string>
     <string name="walletcore_version_label">เวอร์ชัน WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">ทั้งสองอย่าง (สแกนผ่าน clearnet กระจายผ่าน I2P)</string>
     <string name="network_policy_help">clearnet เท่านั้นจะใช้โหนด clearnet ส่วน I2P เท่านั้นจะใช้โหนดและพร็อกซี I2P ทั้งสองอย่างจะสแกนผ่าน clearnet และกระจายผ่าน I2P</string>
     <string name="section_clearnet_node">โหนด clearnet</string>
-    <string name="clearnet_node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://\nโหนดเริ่มต้น: https://rpc.nexatrode.com</string>
     <string name="use_this_node">ใช้โหนดนี้</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">โหนด I2P (host:port)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d ธุรกรรมรอดำเนินการ</string>
     <string name="send_fee_increased_unapproved">ค่าธรรมเนียมเครือข่ายเพิ่มขึ้น ไม่มีการเผยแพร่ธุรกรรม ตรวจสอบค่าธรรมเนียมและยืนยันอีกครั้ง</string>
     <string name="fiat_help_nexatrode">ไม่บังคับ เมื่อเปิดใช้ NexaWal จะขออัตรา XMR สำหรับสกุลเงินที่คุณเลือกจาก rates.nexatrode.com ผ่าน HTTPS คำขอนี้ใช้อินเทอร์เน็ตสาธารณะ (Clearnet) แม้โหนดกระเป๋าเงินจะใช้ I2P ก็ตาม Nexatrode อาจเห็นที่อยู่ IP และสกุลเงินที่เลือก แต่จะไม่ได้รับยอดเงิน ที่อยู่ วลีเมล็ดพันธุ์ หรือประวัติธุรกรรมของกระเป๋าเงิน อัตราเป็นเพียงค่าประมาณ — สินทรัพย์ที่คุณส่งและถือคือ XMR</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">ซอฟต์แวร์ที่ได้รับอนุญาตจาก MIT และยังไม่ได้รับการตรวจสอบ คุณต้องรับผิดชอบต่อวลีกู้คืนและเงินทุนของคุณ โหนดระยะไกลเริ่มต้นสามารถดู IP และคำขอซิงค์กระเป๋าเงินของคุณ — เรียกใช้โหนดของคุณเองเพื่อความเป็นส่วนตัวที่แข็งแกร่งยิ่งขึ้น การประมาณการคำสั่งเพิ่มเติม หากเปิดใช้งาน โปรดติดต่อ rates.nexatrode.com เพื่อสอบถามอัตรา</string>
     <string name="history_export_csv">ส่งออกธุรกรรมที่ตรงกัน (CSV)</string>
     <string name="history_export_failed">ส่งออก CSV ไม่สำเร็จ ลองอีกครั้ง</string>
 </resources>

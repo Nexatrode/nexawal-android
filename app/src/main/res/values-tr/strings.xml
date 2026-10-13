@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Mevcut cüzdan değiştirilsin mi?</string>
     <string name="replace_wallet_message">Bu, bu cihazdaki mevcut cüzdanın yerini alacaktır.\n\nDevam edersen, şu anda kayıtlı olan anımsatıcı ve tarama durumu silinecektir. Devam etmeden önce anımsatıcının bir yedeğini aldığından emin ol.</string>
     <string name="section_network_node">Ağ ve Düğüm</string>
-    <string name="node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.\nVarsayılan düğüm: https://rpc.nexatrode.com</string>
     <string name="save_node">Düğümü kaydet</string>
     <string name="section_info">Bilgi</string>
     <string name="walletcore_version_label">WalletCore Sürümü:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">İkisi de (clearnet ile tara, I2P ile yayınla)</string>
     <string name="network_policy_help">Sadece clearnet, bir clearnet düğümü kullanır. Sadece I2P, bir I2P düğümü ve proxy kullanır. İkisi de clearnet üzerinden tarar ve I2P üzerinden yayınlar.</string>
     <string name="section_clearnet_node">Clearnet düğümü</string>
-    <string name="clearnet_node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Tam URL\'yi, http:// veya https:// dahil olacak şekilde gir.\nVarsayılan düğüm: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Bu düğümü kullan</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P düğümü (host:port)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d bekleyen işlem</string>
     <string name="send_fee_increased_unapproved">Ağ ücreti arttı. Hiçbir şey yayınlanmadı. Ücreti inceleyip yeniden onaylayın.</string>
     <string name="fiat_help_nexatrode">İsteğe bağlıdır. Açıkken NexaWal, seçtiğiniz para birimi için XMR kurunu HTTPS üzerinden rates.nexatrode.com adresinden ister. Cüzdan düğümü I2P kullansa bile bu istek genel interneti (Clearnet) kullanır. Nexatrode IP adresinizi ve seçtiğiniz para birimini görebilir; ancak cüzdan bakiyeleri, adresler, kurtarma kelimeleri veya işlem geçmişi gönderilmez. Kurlar yalnızca tahmindir — gönderdiğiniz ve tuttuğunuz varlık XMR’dir.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT lisanslı, denetlenmemiş yazılım. Kurtarma ifadenizden ve fonlarınızdan siz sorumlusunuz. Varsayılan uzak düğüm, IP ve cüzdan senkronizasyonu sorgularınızı görebilir; daha güçlü gizlilik için kendi düğümünüzü çalıştırın. İsteğe bağlı fiat tahminleri, eğer etkinleştirilirse, oranlar için rates.nexatrode.com ile iletişime geçin.</string>
     <string name="history_export_csv">Eşleşen işlemleri dışa aktar (CSV)</string>
     <string name="history_export_failed">CSV dışa aktarılamadı. Yeniden deneyin.</string>
 </resources>

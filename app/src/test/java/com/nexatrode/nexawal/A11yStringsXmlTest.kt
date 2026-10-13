@@ -52,6 +52,7 @@ class A11yStringsXmlTest {
         "history_export_failed",
         "copy_explorer_link",
         "fiat_help_nexatrode",
+        "about_disclaimer_nexatrode",
         "toggle_mainnet",
         "legal_load_error",
         "source_on_github",
@@ -81,6 +82,27 @@ class A11yStringsXmlTest {
         "toggle_techno_theme",
         "toggle_mainnet",
     )
+
+    @Test
+    fun allFormats_preserveArgumentPositionsAndTypes() {
+        val english = loadStringValues(File(valuesDir, "strings.xml"))
+        for (dir in localeDirs) {
+            val translated = loadStringValues(File("src/main/res/$dir", "strings.xml"))
+            for ((key, value) in english) {
+                val localized = translated.getValue(key)
+                assertTrue("blank $dir: $key", localized.isNotBlank())
+                assertEquals("format changed in $dir: $key", arguments(value), arguments(localized))
+            }
+        }
+    }
+
+    private fun arguments(value: String): List<String> {
+        val regex = Regex("%(?:(\\d+)\\$)?[-+0# ]*\\d*(?:\\.\\d+)?([a-zA-Z])")
+        return regex.findAll(value.replace("%%", "")).mapIndexed { index, match ->
+            val position = match.groupValues[1].ifEmpty { (index + 1).toString() }
+            "$position:${match.groupValues[2]}"
+        }.sorted().toList()
+    }
 
     @Test
     fun allLocales_haveMatchingKeys() {
@@ -178,7 +200,7 @@ class A11yStringsXmlTest {
         val names = linkedSetOf<String>()
         for (i in 0 until nodes.length) {
             val el = nodes.item(i) as Element
-            names += el.getAttribute("name")
+            assertTrue("duplicate string in ${file.path}", names.add(el.getAttribute("name")))
         }
         return names
     }

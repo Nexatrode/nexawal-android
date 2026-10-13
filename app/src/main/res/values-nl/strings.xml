@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Bestaande portemonnee vervangen?</string>
     <string name="replace_wallet_message">Dit vervangt de bestaande portemonnee op dit apparaat.\n\nAls je doorgaat, worden de opgeslagen mnemonic en scanstatus verwijderd. Zorg dat je een back-up van je mnemonic hebt voordat je doorgaat.</string>
     <string name="section_network_node">Netwerk &amp; Node</string>
-    <string name="node_url_help">Typ de volledige URL, inclusief http:// of https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Typ de volledige URL, inclusief http:// of https://.\nStandaardknooppunt: https://rpc.nexatrode.com</string>
     <string name="save_node">Node opslaan</string>
     <string name="section_info">Informatie</string>
     <string name="walletcore_version_label">WalletCore-versie:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Beide (scannen via clearnet, uitzenden via I2P)</string>
     <string name="network_policy_help">Alleen clearnet gebruikt een clearnet-node. Alleen I2P gebruikt een I2P-node en -proxy. Beide scant via clearnet en zendt uit via I2P.</string>
     <string name="section_clearnet_node">Clearnet-node</string>
-    <string name="clearnet_node_url_help">Typ de volledige URL, inclusief http:// of https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Typ de volledige URL, inclusief http:// of https://.\nStandaardknooppunt: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Deze node gebruiken</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-node (host:poort)</string>
@@ -410,7 +408,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d openstaande transacties</string>
     <string name="send_fee_increased_unapproved">De netwerkkosten zijn gestegen. Er is niets uitgezonden. Controleer de kosten en bevestig opnieuw.</string>
     <string name="fiat_help_nexatrode">Optioneel. Als dit is ingeschakeld, vraagt NexaWal via HTTPS bij rates.nexatrode.com de XMR-koers voor de gekozen valuta op. Dit verzoek gebruikt het openbare internet (clearnet), ook als de walletnode I2P gebruikt. Nexatrode kan je IP-adres en gekozen valuta zien, maar ontvangt geen walletbedragen, adressen, herstelzin of transactiegeschiedenis. De koersen zijn slechts schattingen — je verstuurt en bewaart XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT-gelicentieerde, niet-gecontroleerde software. U bent verantwoordelijk voor uw herstelzin en fondsen. Het standaard externe knooppunt kan uw IP- en portemonneesynchronisatieverzoeken zien. Voer uw eigen knooppunt uit voor een betere privacy. Optionele fiatschattingen, indien ingeschakeld, neem contact op met rates.nexatrode.com voor tarieven.</string>
     <string name="history_export_csv">Overeenkomende transacties exporteren (CSV)</string>
     <string name="history_export_failed">CSV-export mislukt. Probeer het opnieuw.</string>
 </resources>

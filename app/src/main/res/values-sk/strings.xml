@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Nahradiť existujúcu peňaženku?</string>
     <string name="replace_wallet_message">Týmto sa nahradí existujúca peňaženka v tomto zariadení.\n\nAk budete pokračovať, aktuálne uložená mnemonická fráza a stav skenovania budú odstránené. Pred pokračovaním sa uistite, že máte mnemonickú frázu zálohovanú.</string>
     <string name="section_network_node">Sieť a uzol</string>
-    <string name="node_url_help">Zadajte celú URL adresu, vrátane http:// alebo https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Zadajte celú URL adresu, vrátane http:// alebo https://.\nPredvolený uzol: https://rpc.nexatrode.com</string>
     <string name="save_node">Uložiť uzol</string>
     <string name="section_info">Informácie</string>
     <string name="walletcore_version_label">Verzia WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Oboje (skenovať clearnet, vysielať cez I2P)</string>
     <string name="network_policy_help">Iba Clearnet používa uzol Clearnet. Iba I2P používa uzol a proxy I2P. Oboje skenuje na Clearnet a vysiela cez I2P.</string>
     <string name="section_clearnet_node">Uzol Clearnet</string>
-    <string name="clearnet_node_url_help">Zadajte celú URL adresu, vrátane http:// alebo https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Zadajte celú URL adresu, vrátane http:// alebo https://.\nPredvolený uzol: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Použiť tento uzol</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Uzol I2P (host:port)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d čakajúcich transakcií</string>
     <string name="send_fee_increased_unapproved">Sieťový poplatok sa zvýšil. Nič sa nevyslalo. Skontrolujte poplatok a znova potvrďte.</string>
     <string name="fiat_help_nexatrode">Voliteľné. Keď je zapnuté, NexaWal si cez HTTPS vyžiada kurz XMR pre zvolenú menu zo servera rates.nexatrode.com. Požiadavka používa verejný internet (Clearnet), aj keď uzol peňaženky používa I2P. Nexatrode môže vidieť vašu IP adresu a zvolenú menu, ale nedostáva zostatky, adresy, obnovovaciu frázu ani históriu transakcií. Kurzy sú iba odhad — posielate a držíte XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">Neauditovaný softvér s licenciou MIT. Zodpovedáte za svoju frázu na obnovenie a finančné prostriedky. Predvolený vzdialený uzol môže vidieť vaše dotazy na synchronizáciu IP a peňaženky – spustite svoj vlastný uzol pre väčšie súkromie. Voliteľné odhady fiat, ak sú aktivované, kontaktujte rates.nexatrode.com pre sadzby.</string>
     <string name="history_export_csv">Exportovať zodpovedajúce transakcie (CSV)</string>
     <string name="history_export_failed">Export CSV zlyhal. Skúste to znova.</string>
 </resources>

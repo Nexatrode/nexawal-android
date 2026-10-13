@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">¿Reemplazar la cartera existente?</string>
     <string name="replace_wallet_message">Esto reemplazará la cartera existente en este dispositivo.\n\nSi continúas, se eliminarán la frase mnemónica y el estado de escaneo guardados. Asegúrate de tener tu frase respaldada antes de continuar.</string>
     <string name="section_network_node">Red y nodo</string>
-    <string name="node_url_help">Escribe la URL completa, incluyendo http:// o https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Escribe la URL completa, incluyendo http:// o https://.\nNodo predeterminado: https://rpc.nexatrode.com</string>
     <string name="save_node">Guardar nodo</string>
     <string name="section_info">Información</string>
     <string name="walletcore_version_label">Versión de WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Ambos (escanear clearnet, transmitir por I2P)</string>
     <string name="network_policy_help">Solo clearnet usa un nodo clearnet. Solo I2P usa un nodo y proxy I2P. Ambos escanea en clearnet y transmite por I2P.</string>
     <string name="section_clearnet_node">Nodo clearnet</string>
-    <string name="clearnet_node_url_help">Escribe la URL completa, incluyendo http:// o https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Escribe la URL completa, incluyendo http:// o https://.\nNodo predeterminado: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Usar este nodo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo I2P (host:puerto)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d transacciones pendientes</string>
     <string name="send_fee_increased_unapproved">La comisión de red aumentó. No se envió nada. Revisa la comisión y vuelve a confirmar.</string>
     <string name="fiat_help_nexatrode">Opcional. Al activarlo, NexaWal solicita por HTTPS a rates.nexatrode.com la cotización de XMR para la moneda elegida. La solicitud usa Internet público (Clearnet), aunque el nodo de la cartera use I2P. Nexatrode puede ver tu IP y la moneda elegida, pero no recibe saldos, direcciones, frase semilla ni historial de transacciones. Las cotizaciones son solo estimaciones: lo que tienes y envías es XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">software no auditado con licencia del MIT. Usted es responsable de su frase de recuperación y de sus fondos. El nodo remoto predeterminado puede ver sus consultas de sincronización de IP y billetera; ejecute su propio nodo para mayor privacidad. Estimaciones fiduciarias opcionales, si están habilitadas, comuníquese con rates.nexatrode.com para conocer las tarifas.</string>
     <string name="history_export_csv">Exportar las transacciones coincidentes (CSV)</string>
     <string name="history_export_failed">No se pudo exportar el CSV. Inténtalo de nuevo.</string>
 </resources>

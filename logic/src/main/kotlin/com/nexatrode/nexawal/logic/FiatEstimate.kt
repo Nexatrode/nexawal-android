@@ -19,6 +19,10 @@ data class FiatRate(
 }
 
 object FiatEstimate {
+    fun localizedCurrencyName(code: String, locale: java.util.Locale = java.util.Locale.getDefault()): String =
+        runCatching { java.util.Currency.getInstance(code).getDisplayName(locale) }
+            .getOrElse { currencyNames[code] ?: code }
+
     const val MAX_AGE_MS: Long = 30L * 60L * 1_000L
     const val REFRESH_INTERVAL_MS: Long = 5L * 60L * 1_000L
 

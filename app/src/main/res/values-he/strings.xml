@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">להחליף את הארנק הקיים?</string>
     <string name="replace_wallet_message">פעולה זו תחליף את הארנק הקיים במכשיר זה.\n\nאם תמשיך, המנמוניקה השמורה ומצב הסריקה יימחקו. הקפד שיש לך גיבוי של המנמוניקה לפני שתמשיך.</string>
     <string name="section_network_node">רשת וצומת</string>
-    <string name="node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.\nצומת ברירת מחדל: https://rpc.nexatrode.com</string>
     <string name="save_node">שמירת צומת</string>
     <string name="section_info">מידע</string>
     <string name="walletcore_version_label">גרסת WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">שניהם (סריקה ב-Clearnet, שידור ב-I2P)</string>
     <string name="network_policy_help">האפשרות Clearnet בלבד משתמשת בצומת Clearnet. האפשרות I2P בלבד משתמשת בצומת ובפרוקסי I2P. שניהם סורקים ב-Clearnet ומשדרים באמצעות I2P.</string>
     <string name="section_clearnet_node">צומת Clearnet</string>
-    <string name="clearnet_node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">הזן את כתובת ה-URL המלאה, כולל http:// או https://.\nצומת ברירת מחדל: https://rpc.nexatrode.com</string>
     <string name="use_this_node">שימוש בצומת זו</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">צומת I2P (מארח:פורט)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d עסקאות בהמתנה</string>
     <string name="send_fee_increased_unapproved">עמלת הרשת עלתה. שום דבר לא שודר. יש לבדוק את העמלה ולאשר שוב.</string>
     <string name="fiat_help_nexatrode">אופציונלי. כשהאפשרות מופעלת, NexaWal מבקשת מ־rates.nexatrode.com דרך HTTPS את שער ה־XMR למטבע שבחרת. הבקשה עוברת באינטרנט הציבורי (Clearnet), גם כשצומת הארנק משתמש ב־I2P. Nexatrode יכולה לראות את כתובת ה־IP שלך ואת המטבע שנבחר, אך לא נשלחים יתרות, כתובות, מילות השחזור או היסטוריית עסקאות של הארנק. השערים הם הערכות בלבד — מה שנשלח ונשמר הוא XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">תוכנה לא מבוקרה ברישיון MIT. אתה אחראי על ביטוי השחזור והכספים שלך. צומת ברירת המחדל יכול לראות את שאילתות סנכרון ה-IP והארנק שלך - הפעל צומת משלך לפרטיות חזקה יותר. הערכות פיאט אופציונליות, אם מופעלות, צור קשר עם rates.nexatrode.com לקבלת תעריפים.</string>
     <string name="history_export_csv">ייצוא העסקאות התואמות (CSV)</string>
     <string name="history_export_failed">ייצוא ה־CSV נכשל. נסו שוב.</string>
 </resources>

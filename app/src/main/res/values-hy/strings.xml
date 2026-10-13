@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Փոխարինել առկա դրամապանակը?</string>
     <string name="replace_wallet_message">Սա կփոխարինի առկա դրամապանակը այս սարքում։\n\nԵթե շարունակեք, ընթացիկ պահված վերականգնման բառերը և սկանավորման վիճակը կհեռացվեն։ Համոզվեք, որ ունեք ձեր վերականգնման բառերի պահուստային պատճենը, նախքան շարունակելը։</string>
     <string name="section_network_node">Ցանց և հանգույց</string>
-    <string name="node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։\nԿանխադրված հանգույց՝ https://rpc.nexatrode.com</string>
     <string name="save_node">Պահել հանգույցը</string>
     <string name="section_info">Տեղեկություններ</string>
     <string name="walletcore_version_label">WalletCore տարբերակ՝</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Երկուսը (սկանավորում clearnet-ով, հեռարձակում I2P-ով)</string>
     <string name="network_policy_help">«Միայն Clearnet»-ը օգտագործում է clearnet հանգույց։ «Միայն I2P»-ը օգտագործում է I2P հանգույց և պրոքսի։ «Երկուսը»՝ սկանավորում է clearnet-ով և հեռարձակում I2P-ով։</string>
     <string name="section_clearnet_node">Clearnet հանգույց</string>
-    <string name="clearnet_node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Մուտքագրեք ամբողջական URL-ը, ներառյալ http:// կամ https://։\nԿանխադրված հանգույց՝ https://rpc.nexatrode.com</string>
     <string name="use_this_node">Օգտագործել այս հանգույցը</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P հանգույց (հանգույց:պորտ)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d սպասման գործարք</string>
     <string name="send_fee_increased_unapproved">Ցանցի վճարը բարձրացել է։ Ոչինչ չի հեռարձակվել։ Ստուգեք վճարը և կրկին հաստատեք։</string>
     <string name="fiat_help_nexatrode">Ընտրովի է։ Միացնելու դեպքում NexaWal-ը HTTPS-ով rates.nexatrode.com-ից հարցնում է ձեր ընտրած արժույթի XMR փոխարժեքը։ Հարցումն օգտագործում է հանրային ինտերնետը (Clearnet), նույնիսկ եթե դրամապանակի հանգույցն աշխատում է I2P-ով։ Nexatrode-ը կարող է տեսնել ձեր IP հասցեն և ընտրված արժույթը, սակայն դրամապանակի մնացորդները, հասցեները, վերականգնման արտահայտությունը կամ գործարքների պատմությունը չեն ուղարկվում։ Փոխարժեքները միայն մոտավոր են — ուղարկում և պահում եք XMR։</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT լիցենզավորված, չաուդիտի ենթարկված ծրագրակազմ: Դուք պատասխանատու եք ձեր վերականգնման արտահայտության և միջոցների համար: Կանխադրված հեռավոր հանգույցը կարող է տեսնել ձեր IP-ի և դրամապանակի համաժամացման հարցումները. գործարկել ձեր սեփական հանգույցը՝ ավելի ուժեղ գաղտնիության համար: Ֆիատի կամընտիր գնահատականները, եթե միացված են, կապվեք rates.nexatrode.com համարով գների համար:</string>
     <string name="history_export_csv">Արտահանել համապատասխան գործարքները (CSV)</string>
     <string name="history_export_failed">CSV-ի արտահանումը չհաջողվեց։ Կրկին փորձեք։</string>
 </resources>

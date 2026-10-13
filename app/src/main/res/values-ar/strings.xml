@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">استبدال المحفظة الموجودة؟</string>
     <string name="replace_wallet_message">سيؤدي ذلك إلى استبدال المحفظة الموجودة على هذا الجهاز.\n\nإذا استمررت، ستُحذف العبارة التذكيرية المحفوظة وحالة المسح الحاليتان. تأكد من أنك قد نسخت العبارة التذكيرية احتياطيًا قبل الاستمرار.</string>
     <string name="section_network_node">الشبكة والعقدة</string>
-    <string name="node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.\nالعقدة الافتراضية: https://rpc.nexatrode.com</string>
     <string name="save_node">حفظ العقدة</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">إصدار WalletCore:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">كلاهما (مسح عبر Clearnet، وبث عبر I2P)</string>
     <string name="network_policy_help">يستخدم Clearnet فقط عقدة على الإنترنت العادي. يستخدم I2P فقط عقدة ووكيل I2P. يقوم كلاهما بالمسح عبر Clearnet والبث عبر I2P.</string>
     <string name="section_clearnet_node">عقدة Clearnet</string>
-    <string name="clearnet_node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">أدخل العنوان (URL) الكامل، بما في ذلك http:// أو https://.\nالعقدة الافتراضية: https://rpc.nexatrode.com</string>
     <string name="use_this_node">استخدام هذه العقدة</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">عقدة I2P (المضيف:المنفذ)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d معاملات معلّقة</string>
     <string name="send_fee_increased_unapproved">زادت رسوم الشبكة. لم تُبث أي معاملة. راجع الرسوم وأكّد مرة أخرى.</string>
     <string name="fiat_help_nexatrode">اختياري. عند التفعيل، يطلب NexaWal سعر XMR للعملة التي اخترتها من rates.nexatrode.com عبر HTTPS. يستخدم هذا الطلب الإنترنت العام (Clearnet) حتى عند استخدام عقدة المحفظة I2P. يمكن لـ Nexatrode رؤية عنوان IP والعملة المختارة، لكن لا تُرسل أرصدة المحفظة أو عناوينها أو عبارة الاسترداد أو سجل المعاملات. الأسعار تقديرية فقط — XMR هو ما ترسله وتحتفظ به.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">برنامج مرخص من معهد ماساتشوستس للتكنولوجيا وغير مدقق. أنت مسؤول عن عبارة الاسترداد والأموال الخاصة بك. يمكن للعقدة البعيدة الافتراضية رؤية استعلامات IP ومزامنة المحفظة الخاصة بك - قم بتشغيل العقدة الخاصة بك للحصول على خصوصية أقوى. التقديرات الورقية الاختيارية، إذا تم تمكينها، اتصل بـ rates.nexatrode.com لمعرفة الأسعار.</string>
     <string name="history_export_csv">تصدير المعاملات المطابقة (CSV)</string>
     <string name="history_export_failed">فشل تصدير CSV. حاول مرة أخرى.</string>
 </resources>

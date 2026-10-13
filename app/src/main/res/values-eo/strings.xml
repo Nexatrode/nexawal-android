@@ -87,8 +87,7 @@
     <string name="replace_wallet_title">Ĉu anstataŭigi la ekzistantan monujon?</string>
     <string name="replace_wallet_message">Tio anstataŭigos la ekzistantan monujon sur ĉi tiu aparato.\n\nSe vi daŭrigas, la nuntempe konservita mnemoniko kaj skan-stato estos forigitaj. Certiĝu, ke vi havas vian mnemonikon sekurkopiitan antaŭ ol daŭrigi.</string>
     <string name="section_network_node">Reto &amp; Nodo</string>
-    <string name="node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.\nDefaŭlta nodo: https://rpc.nexatrode.com</string>
     <string name="save_node">Konservi nodon</string>
     <string name="section_info">Informoj</string>
     <string name="walletcore_version_label">WalletCore-Versio:</string>
@@ -119,8 +118,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="network_policy_hybrid">Ambaŭ (skani per clearnet, elsendi per I2P)</string>
     <string name="network_policy_help">Nur Clearnet uzas nodon de clearnet. Nur I2P uzas nodon kaj prokurilon de I2P. Ambaŭ skanas per clearnet kaj elsendas per I2P.</string>
     <string name="section_clearnet_node">Nodo de Clearnet</string>
-    <string name="clearnet_node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.
-Default: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Tajpu la kompletan URL, inkluzive de http:// aŭ https://.\nDefaŭlta nodo: https://rpc.nexatrode.com</string>
     <string name="use_this_node">Uzi ĉi tiun nodon</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo de I2P (gastigo:pordo)</string>
@@ -412,7 +410,7 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_pending_count_fmt">%1$d atendantaj transakcioj</string>
     <string name="send_fee_increased_unapproved">La reta kotizo plialtiĝis. Nenio estis elsendita. Kontrolu la kotizon kaj konfirmu denove.</string>
     <string name="fiat_help_nexatrode">Laŭvola. Kiam ĝi estas ŝaltita, NexaWal petas per HTTPS de rates.nexatrode.com la XMR-kurzon por via elektita valuto. La peto uzas la publikan interreton (Clearnet), eĉ se via monujo-nodo uzas I2P. Nexatrode povas vidi vian IP-adreson kaj elektitan valuton, sed ne ricevas monujajn sumojn, adresojn, reakiraĵan frazon aŭ transakcian historion. Kurzoj estas nur taksoj — vi sendas kaj tenas XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensed, unaudited software. You are responsible for your seed and funds. The default remote node can see your IP and wallet sync queries — run your own node for stronger privacy. Optional fiat estimates, if enabled, contact rates.nexatrode.com for rates.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licencita, nekontrolita programaro. Vi respondecas pri via reakira frazo kaj financoj. La defaŭlta fora nodo povas vidi viajn IP- kaj monujo-sinkronigajn demandojn — rulu vian propran nodon por pli forta privateco. Laŭvolaj fiattaksoj, se ebligitaj, kontaktu rates.nexatrode.com por tarifoj.</string>
     <string name="history_export_csv">Eksporti kongruajn transakciojn (CSV)</string>
     <string name="history_export_failed">Eksporto de CSV malsukcesis. Provu denove.</string>
 </resources>
