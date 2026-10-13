@@ -1,6 +1,6 @@
 # Focused security fixes — September 2026
 
-## Local follow-up: session authority and seed buffers
+## WalletCore v0.1.15 rollout: session authority and seed buffers
 
 - Unlocks are generation-fenced before native open/unseal and UI publication, including before
   the first wallet ID exists. Native and plaintext metadata ownership are tracked separately.
@@ -13,10 +13,10 @@
   copies cannot be guaranteed erased; do not advertise complete RAM wiping.
 - Signed-device auth, first unlock/background timing, rotation and native teardown QA remain required.
 
-Local verification: 127 logic/app tests pass; Debug and Release APKs build with the new native
-arm64-v8a/x86_64 libraries staged only in this temporary main worktree. Neither release JNI nor
-native library links a Logcat writer. The committed submodule pin is unchanged; a future source
-pin bump is still needed before distribution. No device was installed, opened, or rescanned.
+Release verification: 127 logic/app tests pass; Debug and Release APKs build from the pinned
+WalletCore v0.1.15 source with Rust 1.97.1 and NDK 27.1.12297006. Both ABIs retain 16 KB alignment.
+Neither release JNI nor native library links a Logcat writer. No device was installed, opened,
+or rescanned. F-Droid and Wallet Scrutiny keep the normal source-build path.
 
 Additional device QA: background while the first authentication is visible and immediately after
 it succeeds; cancel/retry without reopening an old attempt. Check seed input, Recents/screenshots,
@@ -66,8 +66,8 @@ The follow-up hardening pass additionally bounds cache/journal file reads, prese
 identity during JSON round-trips, and archives pending journals on explicit wallet replacement.
 The matching native core rejects legacy/unbound and foreign-wallet journals before any RPC.
 See the sibling WalletCore `docs/production-hardening-2026-09-05.md` for synthetic scale results,
-dependency advisories and the remaining release gates. The Android submodule now points at the local
-patched WalletCore commit; that commit must be pushed and released before the Android pin is pushed.
+dependency advisories and the remaining release gates. The Android submodule pins the published
+WalletCore v0.1.15 commit `7f7153ecc902380130c8c9461c3310f1bfddab83` and builds it from source.
 
 ## Required device checks before release
 
@@ -87,6 +87,6 @@ Use a disposable test wallet, not a user's funds:
 
 ## Rollout
 
-The fixes are local. The Android submodule points at the same patched commit as the primary WalletCore
-checkout, so local from-source builds include it. Push/publish WalletCore first, then the Android
-commit containing that submodule pin. No F-Droid source-build path has been replaced by binaries.
+The security fixes and WalletCore v0.1.15 source pin are on main. Native release assets remain an
+explicit opt-in, not the default Android build input. No F-Droid/Wallet Scrutiny submission or
+app-store release is performed by this rollout. Signed-device QA above remains a release gate.
