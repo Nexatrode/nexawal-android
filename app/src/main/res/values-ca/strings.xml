@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">programari no auditat amb llicència MIT. Sou responsable de la vostra frase de recuperació i dels vostres fons. El node remot predeterminat pot veure les consultes de sincronització d\'IP i cartera: executeu el vostre propi node per obtenir una privadesa més forta. Estimacions de fiat opcionals, si estan habilitades, poseu-vos en contacte amb rates.nexatrode.com per obtenir les tarifes.</string>
     <string name="history_export_csv">Exporta les transaccions coincidents (CSV)</string>
     <string name="history_export_failed">No s\'ha pogut exportar el CSV. Torna-ho a provar.</string>
+    <string name="send_previous_payment_recovered">S\'ha recuperat el pagament anterior. El nou pagament no s\'ha enviat. Torneu a previsualitzar-lo.</string>
 </resources>

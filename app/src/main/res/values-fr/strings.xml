@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">logiciel non audité sous licence MIT. Vous êtes responsable de votre phrase de récupération et de vos fonds. Le nœud distant par défaut peut voir vos requêtes de synchronisation IP et de portefeuille – exécutez votre propre nœud pour une meilleure confidentialité. Estimations fiat facultatives, si activées, contactez rates.nexatrode.com pour connaître les tarifs.</string>
     <string name="history_export_csv">Exporter les transactions correspondantes (CSV)</string>
     <string name="history_export_failed">Échec de l’exportation CSV. Réessayez.</string>
+    <string name="send_previous_payment_recovered">Le paiement précédent a été récupéré. Le nouveau paiement n\'a pas été envoyé. Affichez à nouveau l\'aperçu.</string>
 </resources>

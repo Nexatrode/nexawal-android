@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT لائسنس یافتہ، غیر آڈیٹ سافٹ ویئر۔ آپ اپنے ریکوری کے جملے اور فنڈز کے ذمہ دار ہیں۔ ڈیفالٹ ریموٹ نوڈ آپ کے IP اور والیٹ کی مطابقت پذیری کے سوالات دیکھ سکتا ہے — مضبوط رازداری کے لیے اپنا نوڈ چلائیں۔ اختیاری تخمینہ جات، اگر فعال ہو، تو قیمتوں کے لیے rates.nexatrode.com سے رابطہ کریں۔</string>
     <string name="history_export_csv">مماثل لین دین برآمد کریں (CSV)</string>
     <string name="history_export_failed">CSV برآمد نہیں ہو سکی۔ دوبارہ کوشش کریں۔</string>
+    <string name="send_previous_payment_recovered">پچھلی ادائیگی بازیافت ہو گئی۔ نئی ادائیگی نہیں بھیجی گئی۔ دوبارہ پیش منظر دیکھیں۔</string>
 </resources>

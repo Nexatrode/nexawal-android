@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">Bogearraí MIT-cheadúnaithe, neamhiniúchta. Tá tú freagrach as do frása athshlánaithe agus cistí. Is féidir leis an gciannód réamhshocraithe do cheisteanna maidir le sioncrónú IP agus sparán a fheiceáil - do nód féin a rith le haghaidh príobháideachta níos láidre. Meastacháin fiat roghnach, má tá sé cumasaithe, téigh i dteagmháil le rates.nexatrode.com le haghaidh rátaí.</string>
     <string name="history_export_csv">Easpórtáil na hidirbhearta meaitseáilte (CSV)</string>
     <string name="history_export_failed">Theip ar easpórtáil CSV. Bain triail eile as.</string>
+    <string name="send_previous_payment_recovered">Aisghabhadh an íocaíocht roimhe seo. Níor seoladh an íocaíocht nua. Réamhamharc uirthi arís.</string>
 </resources>

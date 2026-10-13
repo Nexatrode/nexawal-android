@@ -1,8 +1,5 @@
 package com.nexatrode.nexawal.ui
 
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -87,7 +84,7 @@ internal class TransactionsPager(
 internal enum class HistoryPageError { LOAD, DETAILS }
 
 @Composable
-internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalette, initialFilter: String, onBack: () -> Unit) {
+internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalette, initialFilter: String, onExportReady: (File, String) -> Unit, onBack: () -> Unit) {
     val state by walletManager.state.collectAsState()
     val id = state.walletId ?: return
     val pager = remember(id, state.walletAddress, state.historySession) { TransactionsPager(onRows = { rows -> walletManager.fiatPrices.recordSeenTransfers(rows.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp) }) }) }
@@ -102,31 +99,6 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     var isExporting by remember { mutableStateOf(false) }
     var exportStatus by remember { mutableStateOf<String?>(null) }
     var exportFailed by remember { mutableStateOf(false) }
-    var exportFile by remember { mutableStateOf<File?>(null) }
-    val saveCsv = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/csv")) { uri: Uri? ->
-        val file = exportFile
-        exportFile = null
-        if (file != null) {
-            if (uri == null) {
-                file.delete()
-            } else {
-                scope.launch {
-                    val saved = runCatching {
-                        withContext(Dispatchers.IO) {
-                            val output = context.contentResolver.openOutputStream(uri)
-                                ?: error("Could not open the selected destination")
-                            file.inputStream().use { input -> output.use { input.copyTo(it) } }
-                        }
-                    }
-                    file.delete()
-                    if (saved.isFailure) {
-                        exportFailed = true
-                        exportStatus = context.getString(R.string.history_export_failed)
-                    }
-                }
-            }
-        }
-    }
     val queryResult = remember(search, filter, from, through) {
         runCatching {
             val zone = ZoneId.systemDefault()
@@ -144,7 +116,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     LaunchedEffect(state.historyRevision) {
         if (pager.revision != null && state.historyRevision != null && pager.revision != state.historyRevision) pager.changed = true
     }
-    DisposableEffect(pager) { onDispose { pager.cancel(); exportFile?.delete() } }
+    DisposableEffect(pager) { onDispose { pager.cancel() } }
     Column(Modifier.fillMaxSize().background(palette.background).padding(horizontal = 16.dp)) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             TextButton(onClick = onBack) { Text(stringResource(R.string.history_back)) }
@@ -201,8 +173,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
                             }
                         }
                         if (walletManager.state.value.walletId == id && walletManager.state.value.historySession == session) {
-                            exportFile = file
-                            saveCsv.launch("nexawal-history.csv")
+                            onExportReady(file, state.walletAddress ?: "")
                         } else {
                             file.delete()
                             exportFailed = true

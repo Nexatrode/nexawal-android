@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">Phần mềm chưa được kiểm tra, được MIT cấp phép. Bạn chịu trách nhiệm về thời hạn khôi phục và số tiền của mình. Nút từ xa mặc định có thể xem các truy vấn đồng bộ hóa IP và ví của bạn — hãy chạy nút của riêng bạn để có được sự bảo mật mạnh mẽ hơn. Ước tính tiền pháp định tùy chọn, nếu được bật, hãy liên hệ với rates.nexatrode.com để biết mức giá.</string>
     <string name="history_export_csv">Xuất các giao dịch phù hợp (CSV)</string>
     <string name="history_export_failed">Xuất CSV không thành công. Hãy thử lại.</string>
+    <string name="send_previous_payment_recovered">Đã khôi phục khoản thanh toán trước. Khoản thanh toán mới chưa được gửi. Hãy xem trước lại.</string>
 </resources>

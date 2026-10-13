@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-lisenziyalı, yoxlanılmamış proqram təminatı. Bərpa ifadəniz və vəsaitlərinizə görə məsuliyyət daşıyırsınız. Defolt uzaq qovşaq IP və pul kisəsi sinxronizasiya sorğularınızı görə bilər – daha güclü məxfilik üçün öz nodeunuzu idarə edin. Könüllü fiat təxminləri, əgər aktivdirsə, tariflər üçün rates.nexatrode.com ilə əlaqə saxlayın.</string>
     <string name="history_export_csv">Uyğun əməliyyatları ixrac et (CSV)</string>
     <string name="history_export_failed">CSV ixracı alınmadı. Yenidən cəhd edin.</string>
+    <string name="send_previous_payment_recovered">Əvvəlki ödəniş bərpa edildi. Yeni ödəniş göndərilmədi. Yenidən önizləyin.</string>
 </resources>

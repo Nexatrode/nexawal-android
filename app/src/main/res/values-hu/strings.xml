@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-licenc, nem auditált szoftver. Ön felelős a helyreállítási kifejezésért és az alapokért. Az alapértelmezett távoli csomópont láthatja az Ön IP-címét és a pénztárca szinkronizálási lekérdezéseit – futtassa saját csomópontját az erősebb adatvédelem érdekében. Opcionális fiat becslések, ha engedélyezve van, forduljon a rates.nexatrode.com-hez az árakért.</string>
     <string name="history_export_csv">Egyező tranzakciók exportálása (CSV)</string>
     <string name="history_export_failed">A CSV-exportálás nem sikerült. Próbálja újra.</string>
+    <string name="send_previous_payment_recovered">A korábbi fizetés helyreállt. Az új fizetés nem lett elküldve. Tekintsd meg újra az előnézetet.</string>
 </resources>

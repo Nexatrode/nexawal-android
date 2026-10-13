@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">麻省理工學院許可、未經審核的軟體。您應對您的恢復短語和資金負責。預設遠端節點可以查看您的 IP 和錢包同步查詢 - 運行您自己的節點以獲得更強的隱私。可選的法定估算（如果啟用）請聯絡 rates.nexatrode.com 以了解費率。</string>
     <string name="history_export_csv">匯出符合條件的交易記錄 (CSV)</string>
     <string name="history_export_failed">CSV 匯出失敗，請再試一次。</string>
+    <string name="send_previous_payment_recovered">已恢復上一筆付款。新的付款尚未傳送。請重新預覽。</string>
 </resources>

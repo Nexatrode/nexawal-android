@@ -45,6 +45,8 @@ import com.nexatrode.nexawal.ui.theme.NexawalTheme
 
 class MainActivity : ComponentActivity() {
     private lateinit var walletManager: WalletManager
+    private lateinit var historyExports: HistoryExportCoordinator
+    private lateinit var historyExportLauncher: androidx.activity.result.ActivityResultLauncher<String>
     private val accessGate = WalletAccessGate()
     private val sessionHandler = Handler(Looper.getMainLooper())
     private val idleLockAction = Runnable { lockProtectedSession(closeCore = true) }
@@ -79,6 +81,10 @@ class MainActivity : ComponentActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
 
         walletManager = (application as NexaWalApp).walletManager
+        historyExports = androidx.lifecycle.ViewModelProvider(this)[HistoryExportCoordinator::class.java]
+        historyExportLauncher = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.CreateDocument("text/csv")) { uri ->
+            historyExports.selected(uri)
+        }
 
         enableEdgeToEdge()
         setContent {
@@ -96,6 +102,21 @@ class MainActivity : ComponentActivity() {
 
                 val state by walletManager.state.collectAsState()
                 val access by accessGate.state.collectAsState()
+                val exportRevision by historyExports.revision.collectAsState()
+                LaunchedEffect(access, state.walletAddress, exportRevision) {
+                    val pending = historyExports.claim(access == WalletAccessGate.State.OPEN, state.walletAddress)
+                    if (pending != null) {
+                        try {
+                            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                                val output = contentResolver.openOutputStream(pending.uri)
+                                    ?: error("Could not open export destination")
+                                pending.file.inputStream().use { input -> output.use { input.copyTo(it) } }
+                            }
+                        } catch (_: Exception) {
+                            android.widget.Toast.makeText(this@MainActivity, R.string.history_export_failed, android.widget.Toast.LENGTH_LONG).show()
+                        } finally { pending.file.delete() }
+                    }
+                }
                 val scope = rememberCoroutineScope()
                 var unlockError by remember { mutableStateOf<String?>(null) }
 
@@ -168,7 +189,11 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 } else if (state.walletId != null) {
-                    AppScaffold(walletManager = walletManager)
+                    AppScaffold(walletManager = walletManager, onHistoryExportReady = { file, address ->
+                        historyExports.stage(file, address)
+                        try { historyExportLauncher.launch("nexawal-history.csv") }
+                        catch (_: Exception) { historyExports.discard() }
+                    })
                 } else {
                     SecretTextInput { WalletCreationScreen(walletManager = walletManager) }
                 }

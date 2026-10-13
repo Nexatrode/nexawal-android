@@ -4,6 +4,10 @@ package com.nexatrode.nexawal.logic
  * Pure send preflight / retry classification helpers (no Android / JNI deps).
  */
 object SendSafety {
+    class PreviousPaymentRecovered(val txid: String) : Exception()
+    fun requireNewPayment(recoveredTxid: String?) {
+        if (recoveredTxid != null) throw PreviousPaymentRecovered(recoveredTxid)
+    }
     class FeeApprovalException : IllegalStateException(
         "The network fee increased. Nothing was broadcast. Preview the fee and confirm again."
     )

@@ -761,9 +761,14 @@ class WalletManager(
         normalized
     }
 
-    suspend fun createReceiveSubaddress(label: String = ""): ReceiveSubaddressEntry = withContext(ioDispatcher) {
+    private val receiveAddressMutex = kotlinx.coroutines.sync.Mutex()
+    suspend fun createReceiveSubaddress(label: String = ""): ReceiveSubaddressEntry = withContext(ioDispatcher) { receiveAddressMutex.withLock {
+        val token = sessionAuthority.token()
         val current = loadReceiveSubaddressBook()
         val nextIndex = current.nextSubaddressIndex.coerceAtLeast(1)
+        val walletId = _state.value.walletId ?: error(appContext.getString(R.string.no_wallet_open))
+        sessionAuthority.withCurrent(token) { WalletCore.setGapLimit(walletId, maxOf(MoneroConfig.gapLimit(appContext), nextIndex)) }
+        exportCacheAndPersist(walletId)
         val entry = ReceiveSubaddressEntry(
             accountIndex = 0,
             subaddressIndex = nextIndex,
@@ -776,9 +781,9 @@ class WalletManager(
                 entries = current.entries + entry
             )
         )
-        persistReceiveSubaddressBook(updated)
+        sessionAuthority.withCurrent(token) { persistReceiveSubaddressBook(updated) }
         entry
-    }
+    } }
 
     suspend fun deriveReceiveAddress(subaddressIndex: Int): String = withContext(ioDispatcher) {
         val meta = readMetadata()
@@ -938,7 +943,7 @@ class WalletManager(
         // - gapLimit via wallet_set_gap_limit
         // - accountGap via WALLETCORE_ACCOUNT_GAP env var
         val cfg = MoneroConfig.snapshot(appContext)
-        val gapLimit = cfg.gapLimit
+        val gapLimit = maxOf(cfg.gapLimit, loadReceiveSubaddressBook().entries.maxOfOrNull { it.subaddressIndex } ?: 0)
         val accountGap = cfg.accountGap
 
         // Mirror iOS: log the node URL at refresh start so we can see exactly what the core is using.
@@ -1031,11 +1036,9 @@ class WalletManager(
                     // Apply per-wallet tuning before starting refresh. Scan request sizing is
                     // controlled by WalletCore's shared range/75/75 defaults unless explicitly
                     // overridden through WalletCore environment variables.
-                    runCatching {
-                        WalletCore.setGapLimit(walletId = walletId, gapLimit = gapLimit)
-                    }.onFailure { t ->
-                        Log.w("WalletManager", "Failed to apply gapLimit=$gapLimit: ${t.message ?: t.javaClass.simpleName}")
-                    }
+                    // Required receive coverage must succeed before a refresh can
+                    // claim it has scanned this wallet; never silently scan less.
+                    WalletCore.setGapLimit(walletId = walletId, gapLimit = gapLimit)
 
                     runCatching {
                         WalletCore.setAccountGap(accountGap)
@@ -1672,9 +1675,7 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
-                return@withContext SendJson.SendResult(txid = recovered.txid, fee = recovered.fee)
-            }
+            com.nexatrode.nexawal.logic.SendSafety.requireNewPayment(completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.txid)
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSendJson(
@@ -1721,9 +1722,7 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
-                return@withContext SendJson.SendResult(txid = recovered.txid, fee = recovered.fee)
-            }
+            com.nexatrode.nexawal.logic.SendSafety.requireNewPayment(completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.txid)
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSendJsonWithFilter(
@@ -1840,13 +1839,7 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
-                return@withContext SendJson.SweepSendResult(
-                    txid = recovered.txid,
-                    amount = recovered.amount,
-                    fee = recovered.fee,
-                )
-            }
+            com.nexatrode.nexawal.logic.SendSafety.requireNewPayment(completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.txid)
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSweepJson(
@@ -1890,13 +1883,7 @@ class WalletManager(
 
         val res = withContext(ioDispatcher) {
             applyProxyEnv(forBroadcast = true)
-            completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.let { recovered ->
-                return@withContext SendJson.SweepSendResult(
-                    txid = recovered.txid,
-                    amount = recovered.amount,
-                    fee = recovered.fee,
-                )
-            }
+            com.nexatrode.nexawal.logic.SendSafety.requireNewPayment(completePendingPreparedSend(walletId, preferredNodeUrl = nodeUrl)?.txid)
 
             val (preparedRaw, usedEndpoint) = withOptionalSiblingFeeRetryReturningEndpoint(nodeUrl) { endpoint ->
                 WalletCore.prepareSweepJsonWithFilter(
@@ -2706,6 +2693,8 @@ class WalletManager(
 
         // Import cache best-effort, then snapshot status.
         importCacheIfPresent(meta.walletId)
+        val coverage = maxOf(MoneroConfig.gapLimit(appContext), loadReceiveSubaddressBook().entries.maxOfOrNull { it.subaddressIndex } ?: 0)
+        sessionAuthority.withCurrent(sessionToken) { WalletCore.setGapLimit(meta.walletId, coverage) }
         recoverPendingPreparedSendBestEffort(meta.walletId)
         updateStatusSnapshot(meta.walletId)
         refreshWalletDataSnapshotsNow(meta.walletId)

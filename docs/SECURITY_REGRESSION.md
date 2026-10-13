@@ -1,5 +1,19 @@
 # Focused security fixes — September 2026
 
+## October 2026 parity follow-up (WalletCore v0.1.16)
+
+The source submodule now pins `8b01cc3e321a5aa62a80797ef75d33052be583b2`.
+Receive-address issuance and reopening require native coverage of all saved indices;
+coverage growth rescans from the original restore height without deleting known history.
+Recovered pending payments are reported separately: they cannot become success for a new send.
+Fee previews are bound to the payment/session/node and checked again after authentication.
+CSV chooser results survive background locking and are only written for the same unlocked wallet.
+Rates responses and decimal precision are bounded before decoding.
+
+Verification: 87 logic tests and 46 app tests pass; Debug and Release APKs build from
+source using Rust 1.97.1 and NDK 27.1.12297006. The signed-device QA gates below still apply.
+No personal wallet was opened or payment sent, and no store submission was performed.
+
 ## WalletCore v0.1.15 rollout: session authority and seed buffers
 
 - Unlocks are generation-fenced before native open/unseal and UI publication, including before

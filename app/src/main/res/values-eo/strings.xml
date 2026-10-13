@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-licencita, nekontrolita programaro. Vi respondecas pri via reakira frazo kaj financoj. La defaŭlta fora nodo povas vidi viajn IP- kaj monujo-sinkronigajn demandojn — rulu vian propran nodon por pli forta privateco. Laŭvolaj fiattaksoj, se ebligitaj, kontaktu rates.nexatrode.com por tarifoj.</string>
     <string name="history_export_csv">Eksporti kongruajn transakciojn (CSV)</string>
     <string name="history_export_failed">Eksporto de CSV malsukcesis. Provu denove.</string>
+    <string name="send_previous_payment_recovered">La antaŭa pago estis reakirita. La nova pago ne estis sendita. Antaŭrigardu ĝin denove.</string>
 </resources>

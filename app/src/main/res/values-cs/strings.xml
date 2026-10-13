@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">Neauditovaný software s licencí MIT. Jste odpovědní za svou frázi pro obnovení a finanční prostředky. Výchozí vzdálený uzel vidí vaši IP adresu a dotazy na synchronizaci peněženky – spusťte svůj vlastní uzel pro větší soukromí. Volitelné odhady fiat, pokud jsou povoleny, kontaktujte rates.nexatrode.com pro sazby.</string>
     <string name="history_export_csv">Exportovat odpovídající transakce (CSV)</string>
     <string name="history_export_failed">Export CSV se nezdařil. Zkuste to znovu.</string>
+    <string name="send_previous_payment_recovered">Předchozí platba byla obnovena. Nová platba nebyla odeslána. Znovu zobrazte náhled.</string>
 </resources>

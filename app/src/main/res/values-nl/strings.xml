@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">MIT-gelicentieerde, niet-gecontroleerde software. U bent verantwoordelijk voor uw herstelzin en fondsen. Het standaard externe knooppunt kan uw IP- en portemonneesynchronisatieverzoeken zien. Voer uw eigen knooppunt uit voor een betere privacy. Optionele fiatschattingen, indien ingeschakeld, neem contact op met rates.nexatrode.com voor tarieven.</string>
     <string name="history_export_csv">Overeenkomende transacties exporteren (CSV)</string>
     <string name="history_export_failed">CSV-export mislukt. Probeer het opnieuw.</string>
+    <string name="send_previous_payment_recovered">De vorige betaling is hersteld. De nieuwe betaling is niet verzonden. Bekijk het voorbeeld opnieuw.</string>
 </resources>

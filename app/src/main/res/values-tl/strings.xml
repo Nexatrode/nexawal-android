@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">Lisensyado ng MIT, hindi na-audited na software. Responsable ka para sa iyong parirala sa pagbawi at mga pondo. Makikita ng default na remote node ang iyong mga query sa pag-sync ng IP at wallet — patakbuhin ang sarili mong node para sa mas malakas na privacy. Mga opsyonal na pagtatantya ng fiat, kung naka-enable, makipag-ugnayan sa rates.nexatrode.com para sa mga rate.</string>
     <string name="history_export_csv">I-export ang mga tumugmang transaksyon (CSV)</string>
     <string name="history_export_failed">Hindi na-export ang CSV. Subukan muli.</string>
+    <string name="send_previous_payment_recovered">Na-recover ang nakaraang bayad. Hindi naipadala ang bagong bayad. I-preview itong muli.</string>
 </resources>

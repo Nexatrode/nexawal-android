@@ -416,4 +416,5 @@ Default: https://rpc.nexatrode.com</string>
     <string name="history_view_all_fmt">View all transactions (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d pending transactions</string>
     <string name="send_fee_increased_unapproved">The network fee increased. Nothing was broadcast. Preview the fee and confirm again.</string>
+    <string name="send_previous_payment_recovered">Previous payment recovered. The new payment was not sent. Preview it again.</string>
 </resources>

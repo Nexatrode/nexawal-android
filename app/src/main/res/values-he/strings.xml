@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">תוכנה לא מבוקרה ברישיון MIT. אתה אחראי על ביטוי השחזור והכספים שלך. צומת ברירת המחדל יכול לראות את שאילתות סנכרון ה-IP והארנק שלך - הפעל צומת משלך לפרטיות חזקה יותר. הערכות פיאט אופציונליות, אם מופעלות, צור קשר עם rates.nexatrode.com לקבלת תעריפים.</string>
     <string name="history_export_csv">ייצוא העסקאות התואמות (CSV)</string>
     <string name="history_export_failed">ייצוא ה־CSV נכשל. נסו שוב.</string>
+    <string name="send_previous_payment_recovered">התשלום הקודם שוחזר. התשלום החדש לא נשלח. הצג שוב תצוגה מקדימה.</string>
 </resources>

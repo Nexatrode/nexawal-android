@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">MIT ライセンスの未監査ソフトウェア。回復フレーズと資金についてはあなたが責任を負います。デフォルトのリモート ノードは、IP とウォレットの同期クエリを参照できます。プライバシーを強化するために独自のノードを実行します。オプションの法定通貨見積りが有効になっている場合、料金については rates.nexatrode.com にお問い合わせください。</string>
     <string name="history_export_csv">該当する取引をエクスポート (CSV)</string>
     <string name="history_export_failed">CSVをエクスポートできませんでした。もう一度お試しください。</string>
+    <string name="send_previous_payment_recovered">前の支払いを復旧しました。新しい支払いは送信されていません。もう一度プレビューしてください。</string>
 </resources>

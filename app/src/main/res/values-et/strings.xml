@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-litsentsiga, auditeerimata tarkvara. Vastutate oma taastamisfraasi ja raha eest. Vaikimisi kaugsõlm näeb teie IP ja rahakoti sünkroonimise päringuid – tugevama privaatsuse tagamiseks käivitage oma sõlm. Valikulised fiati hinnangud, kui see on lubatud, võtke hindade saamiseks ühendust rates.nexatrode.com-ga.</string>
     <string name="history_export_csv">Ekspordi vastavad tehingud (CSV)</string>
     <string name="history_export_failed">CSV eksportimine ebaõnnestus. Proovi uuesti.</string>
+    <string name="send_previous_payment_recovered">Eelmine makse taastati. Uut makset ei saadetud. Vaadake eelvaadet uuesti.</string>
 </resources>

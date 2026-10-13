@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">Perangkat lunak berlisensi MIT dan tidak diaudit. Anda bertanggung jawab atas frase dan dana pemulihan Anda. Node jarak jauh default dapat melihat permintaan sinkronisasi IP dan dompet Anda — jalankan node Anda sendiri untuk privasi yang lebih kuat. Perkiraan fiat opsional, jika diaktifkan, hubungi rates.nexatrode.com untuk mengetahui tarif.</string>
     <string name="history_export_csv">Ekspor transaksi yang cocok (CSV)</string>
     <string name="history_export_failed">Ekspor CSV gagal. Coba lagi.</string>
+    <string name="send_previous_payment_recovered">Pembayaran sebelumnya dipulihkan. Pembayaran baru tidak dikirim. Lihat pratinjaunya lagi.</string>
 </resources>

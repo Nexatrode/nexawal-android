@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-lasisi, software mara tantancewa. Kuna da alhakin dawo da kalmar ku da kuɗi. Kullin nesa na tsoho yana iya ganin tambayoyin daidaitawa na IP da walat ɗinku - gudanar da kumburin ku don ƙarin sirrin sirri. Ƙididdiga na fiat na zaɓi, idan an kunna, tuntuɓi rates.nexatrode.com don ƙimar kuɗi.</string>
     <string name="history_export_csv">Fitar da ma\'amaloli da suka dace (CSV)</string>
     <string name="history_export_failed">Fitar da CSV ta kasa. Sake gwadawa.</string>
+    <string name="send_previous_payment_recovered">An dawo da biyan kuɗin da ya gabata. Ba a aika sabon biyan kuɗin ba. Duba samfoti kuma.</string>
 </resources>

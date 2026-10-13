@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-licenseret, ikke-revideret software. Du er ansvarlig for din genopretningssætning og midler. Standard-fjernknuden kan se dine IP- og tegnebogssynkroniseringsforespørgsler - kør din egen node for stærkere privatliv. Valgfri fiat-estimat, hvis aktiveret, kontakt rates.nexatrode.com for priser.</string>
     <string name="history_export_csv">Eksportér matchende transaktioner (CSV)</string>
     <string name="history_export_failed">CSV-eksport mislykkedes. Prøv igen.</string>
+    <string name="send_previous_payment_recovered">Den tidligere betaling er gendannet. Den nye betaling blev ikke sendt. Se forhåndsvisningen igen.</string>
 </resources>

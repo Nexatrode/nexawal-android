@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">برنامج مرخص من معهد ماساتشوستس للتكنولوجيا وغير مدقق. أنت مسؤول عن عبارة الاسترداد والأموال الخاصة بك. يمكن للعقدة البعيدة الافتراضية رؤية استعلامات IP ومزامنة المحفظة الخاصة بك - قم بتشغيل العقدة الخاصة بك للحصول على خصوصية أقوى. التقديرات الورقية الاختيارية، إذا تم تمكينها، اتصل بـ rates.nexatrode.com لمعرفة الأسعار.</string>
     <string name="history_export_csv">تصدير المعاملات المطابقة (CSV)</string>
     <string name="history_export_failed">فشل تصدير CSV. حاول مرة أخرى.</string>
+    <string name="send_previous_payment_recovered">تم استرداد الدفعة السابقة. لم تُرسل الدفعة الجديدة. عاينها مجددًا.</string>
 </resources>

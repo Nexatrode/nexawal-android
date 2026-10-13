@@ -19,6 +19,10 @@ data class FiatRate(
 }
 
 object FiatEstimate {
+    fun serverRate(text: String): BigDecimal? {
+        if (text.length > 37 || !text.matches(Regex("[0-9]{1,12}(\\.[0-9]{1,24})?"))) return null
+        return text.toBigDecimalOrNull()?.takeIf { it.signum() > 0 }
+    }
     fun localizedCurrencyName(code: String, locale: java.util.Locale = java.util.Locale.getDefault()): String =
         runCatching { java.util.Currency.getInstance(code).getDisplayName(locale) }
             .getOrElse { currencyNames[code] ?: code }

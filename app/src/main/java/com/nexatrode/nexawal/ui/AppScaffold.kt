@@ -79,6 +79,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -164,7 +165,7 @@ internal data class NexaPalette(
 
 @Composable
 internal fun rememberNexaPalette(technoTheme: Boolean): NexaPalette {
-    val dark = isSystemInDarkTheme()
+    val dark = isSystemInDarkTheme() || technoTheme
     // Techno Theme ON = neon terminal look (`palette.classic == true`).
     // OFF (default) = standard non-neon look.
     val neon = technoTheme
@@ -469,6 +470,7 @@ private fun WalletHomeActionButton(
 fun AppScaffold(
     walletManager: WalletManager,
     modifier: Modifier = Modifier,
+    onHistoryExportReady: (java.io.File, String) -> Unit,
 ) {
     val navController = rememberNavController()
     val context = LocalContext.current
@@ -487,7 +489,7 @@ fun AppScaffold(
     val currentDestination = navBackStackEntry?.destination
 
     val neonScheme = if (palette.classic) {
-        if (isSystemInDarkTheme()) {
+        if (!palette.isLight) {
             darkColorScheme(
                 primary = palette.accent,
                 onPrimary = palette.ctaText,
@@ -591,7 +593,7 @@ fun AppScaffold(
                 )
             }
             composable("transactions/{filter}") { entry ->
-                TransactionsScreen(walletManager, palette, entry.arguments?.getString("filter") ?: "all") { navController.popBackStack() }
+                TransactionsScreen(walletManager, palette, entry.arguments?.getString("filter") ?: "all", onHistoryExportReady) { navController.popBackStack() }
             }
             composable(BottomNavItem.Send.route) {
                 SendScreen(walletManager = walletManager, palette = palette)
@@ -1925,6 +1927,9 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     var isEstimating by remember { mutableStateOf(false) }
     var isSending by remember { mutableStateOf(false) }
     var isPreviewingMax by remember { mutableStateOf(false) }
+    var previewEpoch by remember { mutableStateOf(0L) }
+    var approvedIntent by remember { mutableStateOf<com.nexatrode.nexawal.logic.SendPreviewIntent?>(null) }
+    val latestFiatRate by rememberUpdatedState(fiatRate)
     var estimatedFee by remember { mutableStateOf<SendJson.FeeResult?>(null) }
     var sweepPreview by remember { mutableStateOf<SendJson.SweepPreviewResult?>(null) }
     var sendResult by remember { mutableStateOf<SendJson.SendResult?>(null) }
@@ -1954,12 +1959,25 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     val addressFromQrText = stringResource(R.string.info_address_from_qr)
     val invalidQrText = stringResource(R.string.error_invalid_qr)
 
-    fun amountPiconeroOrNull(): Long? = AmountUnitParsing.piconero(amountXmrText, amountInputMode, fiatRate)
+    fun amountPiconeroOrNull(): Long? = AmountUnitParsing.piconero(amountXmrText, amountInputMode, latestFiatRate)
+    fun previewIntent(maximum: Boolean): com.nexatrode.nexawal.logic.SendPreviewIntent {
+        val live = walletManager.state.value
+        return com.nexatrode.nexawal.logic.SendPreviewIntent(toAddress.trim(), if (maximum) null else amountPiconeroOrNull(),
+            "${live.walletId}:${live.historySession}", "${live.nodeUrl}:${MoneroConfig.networkPolicy(context)}:${MoneroConfig.i2pHttpProxyAddress(context)}", maximum)
+    }
+    LaunchedEffect(previewIntent(false), previewIntent(true)) {
+        if (approvedIntent != null && approvedIntent != previewIntent(approvedIntent!!.maximum)) {
+            estimatedFee = null; sweepPreview = null; approvedIntent = null
+            showExactConfirmation = false; showMaxConfirmation = false
+        }
+        previewEpoch++
+    }
     fun canPreviewFee(): Boolean = hasWallet &&
         !state.refreshInProgress &&
         toAddress.trim().isNotEmpty() &&
         amountPiconeroOrNull() != null &&
         !isEstimating &&
+        !isPreviewingMax &&
         !isSending
     fun hasUnlockedForExactSend(): Boolean {
         val amount = amountPiconeroOrNull() ?: return false
@@ -1970,8 +1988,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             unlockedPiconero = unlockedPiconero,
         )
     }
-    fun canSendExact(): Boolean = canPreviewFee() && estimatedFee != null && hasUnlockedForExactSend()
-    fun canSendMax(): Boolean = hasWallet &&
+    fun canSendExact(): Boolean = canPreviewFee() && estimatedFee != null && approvedIntent == previewIntent(false) && hasUnlockedForExactSend()
+    fun canSendMax(): Boolean = !isPreviewingMax && hasWallet &&
         !state.refreshInProgress &&
         toAddress.trim().isNotEmpty() &&
         !isEstimating &&
@@ -2162,20 +2180,27 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 sweepPreview = null
                 scope.launch {
                     isEstimating = true
+                    val epoch = ++previewEpoch
+                    val intent = previewIntent(false)
                     try {
                         val amountPiconero = amountPiconeroOrNull()
                             ?: throw IllegalArgumentException(invalidAmountText)
-                        estimatedFee = walletManager.previewFee(
+                        val result = walletManager.previewFee(
                             destinations = listOf(
                                 SendJson.Destination(
-                                    address = toAddress.trim(),
+                                    address = intent.destination,
                                     amount = amountPiconero
                                 )
                             )
                         )
-                        infoText = feeEstimatedOkText
+                        if (epoch == previewEpoch && intent == previewIntent(false)) {
+                            estimatedFee = result; approvedIntent = intent
+                            infoText = feeEstimatedOkText
+                        }
                     } catch (t: Throwable) {
-                        errorText = t.message ?: t.javaClass.simpleName
+                        if (epoch == previewEpoch && intent == previewIntent(false)) {
+                            errorText = t.message ?: t.javaClass.simpleName
+                        }
                     } finally {
                         isEstimating = false
                     }
@@ -2210,11 +2235,18 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                 estimatedFee = null
                 scope.launch {
                     isPreviewingMax = true
+                    val epoch = ++previewEpoch
+                    val intent = previewIntent(true)
                     try {
-                        sweepPreview = walletManager.previewSweep(toAddress = toAddress.trim())
-                        infoText = maxAmountEstimatedText
+                        val result = walletManager.previewSweep(toAddress = intent.destination)
+                        if (epoch == previewEpoch && intent == previewIntent(true)) {
+                            sweepPreview = result; approvedIntent = intent
+                            infoText = maxAmountEstimatedText
+                        }
                     } catch (t: Throwable) {
-                        errorText = t.message ?: t.javaClass.simpleName
+                        if (epoch == previewEpoch && intent == previewIntent(true)) {
+                            errorText = t.message ?: t.javaClass.simpleName
+                        }
                     } finally {
                         isPreviewingMax = false
                     }
@@ -2281,6 +2313,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                     onClick = {
                         if (isSending) return@PrimaryActionButton
                         // Disable immediately so dismiss+launch cannot race a second send.
+                        if (approvedIntent != previewIntent(false)) return@PrimaryActionButton
+                        val authorizedIntent = approvedIntent
                         val approvedMaxFee = estimatedFee?.fee ?: return@PrimaryActionButton
                         val approvedAmount = amountPiconeroOrNull() ?: return@PrimaryActionButton
                         val approvedDestination = toAddress.trim()
@@ -2317,12 +2351,22 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     )
                                 }
 
+                                if (authorizedIntent != previewIntent(false)) {
+                                    estimatedFee = null
+                                    approvedIntent = null
+                                    throw IllegalStateException(context.getString(R.string.error_preview_before_send))
+                                }
                                 sendResult = walletManager.send(
                                     toAddress = approvedDestination,
                                     amountPiconero = amountPiconeroNow,
                                     approvedMaxFee = approvedMaxFee,
                                 )
                                 infoText = transactionBroadcastText
+                                walletManager.refreshWalletDataSnapshots()
+                            } catch (t: com.nexatrode.nexawal.logic.SendSafety.PreviousPaymentRecovered) {
+                                estimatedFee = null
+                                sweepPreview = null
+                                errorText = context.getString(R.string.send_previous_payment_recovered) + "\nTXID: ${t.txid}"
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
                                 estimatedFee = null
@@ -2382,6 +2426,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                     palette = palette,
                     onClick = {
                         if (isSending) return@PrimaryActionButton
+                        if (approvedIntent != previewIntent(true)) return@PrimaryActionButton
+                        val authorizedIntent = approvedIntent
                         val approvedMaxFee = sweepPreview?.fee ?: return@PrimaryActionButton
                         val approvedDestination = toAddress.trim()
                         isSending = true
@@ -2404,8 +2450,18 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     )
                                 }
 
+                                if (authorizedIntent != previewIntent(true)) {
+                                    sweepPreview = null
+                                    approvedIntent = null
+                                    throw IllegalStateException(context.getString(R.string.preview_max_before))
+                                }
                                 sweepResult = walletManager.sweep(toAddress = approvedDestination, approvedMaxFee = approvedMaxFee)
                                 infoText = maxBalanceBroadcastText
+                                walletManager.refreshWalletDataSnapshots()
+                            } catch (t: com.nexatrode.nexawal.logic.SendSafety.PreviousPaymentRecovered) {
+                                estimatedFee = null
+                                sweepPreview = null
+                                errorText = context.getString(R.string.send_previous_payment_recovered) + "\nTXID: ${t.txid}"
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
                                 sweepPreview = null
@@ -2421,7 +2477,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                             }
                         }
                     },
-                    enabled = sweepPreview != null && !isSending,
+                    enabled = sweepPreview != null && approvedIntent == previewIntent(true) && !isSending,
                     modifier = Modifier.fillMaxWidth()
                 )
             },

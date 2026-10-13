@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">MIT-lizenzierte, ungeprüfte Software. Sie sind für Ihren Wiederherstellungssatz und Ihre Mittel verantwortlich. Der standardmäßige Remote-Knoten kann Ihre IP- und Wallet-Synchronisierungsanfragen sehen – führen Sie Ihren eigenen Knoten aus, um den Datenschutz zu verbessern. Optionale Fiat-Schätzungen, falls aktiviert, kontaktieren Sie rates.nexatrode.com für Preise.</string>
     <string name="history_export_csv">Passende Transaktionen exportieren (CSV)</string>
     <string name="history_export_failed">CSV-Export fehlgeschlagen. Versuchen Sie es erneut.</string>
+    <string name="send_previous_payment_recovered">Die vorherige Zahlung wurde wiederhergestellt. Die neue Zahlung wurde nicht gesendet. Öffne die Vorschau erneut.</string>
 </resources>

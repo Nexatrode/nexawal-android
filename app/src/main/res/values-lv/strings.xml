@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT licencēta, neauditēta programmatūra. Jūs esat atbildīgs par savu atgūšanas frāzi un līdzekļiem. Noklusējuma attālais mezgls var redzēt jūsu IP un maka sinhronizācijas vaicājumus — palaidiet savu mezglu, lai nodrošinātu lielāku privātumu. Izvēles fiat aprēķini, ja tie ir iespējoti, sazinieties ar rates.nexatrode.com, lai uzzinātu cenas.</string>
     <string name="history_export_csv">Eksportēt atbilstošos darījumus (CSV)</string>
     <string name="history_export_failed">CSV eksportēšana neizdevās. Mēģiniet vēlreiz.</string>
+    <string name="send_previous_payment_recovered">Iepriekšējais maksājums atjaunots. Jaunais maksājums netika nosūtīts. Apskatiet priekšskatījumu vēlreiz.</string>
 </resources>

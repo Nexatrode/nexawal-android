@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">نرم افزار دارای مجوز MIT و حسابرسی نشده. شما مسئول عبارت و وجوه بازیابی خود هستید. گره راه دور پیش‌فرض می‌تواند جستارهای همگام‌سازی IP و کیف پول شما را ببیند - برای حفظ حریم خصوصی قوی‌تر، گره خود را اجرا کنید. تخمین‌های فیات اختیاری، در صورت فعال بودن، برای اطلاع از نرخ‌ها با rates.nexatrode.com تماس بگیرید.</string>
     <string name="history_export_csv">تراکنش‌های منطبق را صادر کنید (CSV)</string>
     <string name="history_export_failed">خروجی CSV ناموفق بود. دوباره تلاش کنید.</string>
+    <string name="send_previous_payment_recovered">پرداخت قبلی بازیابی شد. پرداخت جدید ارسال نشد. دوباره پیش‌نمایش را ببینید.</string>
 </resources>

@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">Niesprawdzone oprogramowanie na licencji MIT. Jesteś odpowiedzialny za zwrot środków i środki. Domyślny węzeł zdalny może zobaczyć Twoje zapytania dotyczące synchronizacji adresu IP i portfela — uruchom własny węzeł, aby zapewnić większą prywatność. Opcjonalne szacunki fiat, jeśli są włączone, skontaktuj się z rates.nexatrode.com w celu uzyskania stawek.</string>
     <string name="history_export_csv">Eksportuj pasujące transakcje (CSV)</string>
     <string name="history_export_failed">Eksport CSV nie powiódł się. Spróbuj ponownie.</string>
+    <string name="send_previous_payment_recovered">Poprzednia płatność została odzyskana. Nowa płatność nie została wysłana. Ponownie wyświetl podgląd.</string>
 </resources>

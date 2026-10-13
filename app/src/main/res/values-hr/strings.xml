@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT licencirani, nerevidirani softver. Vi ste odgovorni za svoju frazu i sredstva za oporavak. Zadani udaljeni čvor može vidjeti vaše IP i upite za sinkronizaciju novčanika — pokrenite vlastiti čvor za veću privatnost. Neobavezne procjene fiat-a, ako je omogućeno, kontaktirajte rates.nexatrode.com za cijene.</string>
     <string name="history_export_csv">Izvezi odgovarajuće transakcije (CSV)</string>
     <string name="history_export_failed">Izvoz CSV-a nije uspio. Pokušajte ponovno.</string>
+    <string name="send_previous_payment_recovered">Prethodno plaćanje je obnovljeno. Novo plaćanje nije poslano. Ponovno pogledajte pretpregled.</string>
 </resources>

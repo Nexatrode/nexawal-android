@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">software con licenza MIT non auditado. Vostede é o responsable da súa frase de recuperación e dos fondos. O nodo remoto predeterminado pode ver as túas consultas de sincronización de IP e carteira: executa o teu propio nodo para aumentar a privacidade. Estimacións fiat opcionais, se están habilitadas, póñase en contacto con rates.nexatrode.com para obter tarifas.</string>
     <string name="history_export_csv">Exportar as transaccións coincidentes (CSV)</string>
     <string name="history_export_failed">Non se puido exportar o CSV. Téntao de novo.</string>
+    <string name="send_previous_payment_recovered">Recuperouse o pagamento anterior. O novo pagamento non se enviou. Previsualízao de novo.</string>
 </resources>

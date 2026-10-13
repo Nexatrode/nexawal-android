@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">nerevidirana programska oprema z licenco MIT. Odgovorni ste za vašo frazo za obnovitev in sredstva. Privzeto oddaljeno vozlišče lahko vidi vaše poizvedbe za sinhronizacijo IP in denarnice – za večjo zasebnost zaženite svoje vozlišče. Izbirne ocene fiat, če so omogočene, se za cene obrnite na rates.nexatrode.com.</string>
     <string name="history_export_csv">Izvozi ujemajoče se transakcije (CSV)</string>
     <string name="history_export_failed">Izvoz CSV ni uspel. Poskusite znova.</string>
+    <string name="send_previous_payment_recovered">Prejšnje plačilo je obnovljeno. Novo plačilo ni bilo poslano. Ponovno si oglejte predogled.</string>
 </resources>

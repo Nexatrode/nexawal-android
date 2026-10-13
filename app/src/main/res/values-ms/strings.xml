@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">Berlesen MIT, perisian tidak diaudit. Anda bertanggungjawab untuk frasa pemulihan dan dana anda. Nod jauh lalai boleh melihat pertanyaan penyegerakan IP dan dompet anda — jalankan nod anda sendiri untuk privasi yang lebih kukuh. Anggaran fiat pilihan, jika didayakan, hubungi rates.nexatrode.com untuk mendapatkan kadar.</string>
     <string name="history_export_csv">Eksport transaksi yang sepadan (CSV)</string>
     <string name="history_export_failed">Eksport CSV gagal. Cuba lagi.</string>
+    <string name="send_previous_payment_recovered">Pembayaran terdahulu dipulihkan. Pembayaran baharu tidak dihantar. Lihat pratonton sekali lagi.</string>
 </resources>

@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-lisensoitu, auditoimaton ohjelmisto. Olet vastuussa palautuslausekkeestasi ja varoistasi. Oletusetäsolmu voi nähdä IP- ja lompakkosynkronointikyselysi – käytä omaa solmuasi parantaaksesi yksityisyyttä. Valinnaiset fiat-arviot, jos ne ovat käytössä, ota yhteyttä rates.nexatrode.com:iin saadaksesi hinnat.</string>
     <string name="history_export_csv">Vie hakua vastaavat tapahtumat (CSV)</string>
     <string name="history_export_failed">CSV-vienti epäonnistui. Yritä uudelleen.</string>
+    <string name="send_previous_payment_recovered">Aiempi maksu palautettiin. Uutta maksua ei lähetetty. Avaa esikatselu uudelleen.</string>
 </resources>

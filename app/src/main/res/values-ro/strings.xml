@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">software cu licență MIT, neauditat. Sunteți responsabil pentru fraza și fondurile dvs. de recuperare. Nodul la distanță implicit poate vedea interogările dvs. de sincronizare IP și portofel - rulați propriul nod pentru o confidențialitate mai puternică. Estimări fiat opționale, dacă sunt activate, contactați rates.nexatrode.com pentru tarife.</string>
     <string name="history_export_csv">Exportă tranzacțiile potrivite (CSV)</string>
     <string name="history_export_failed">Exportul CSV a eșuat. Încercați din nou.</string>
+    <string name="send_previous_payment_recovered">Plata anterioară a fost recuperată. Noua plată nu a fost trimisă. Previzualizați-o din nou.</string>
 </resources>

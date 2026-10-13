@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">MIT lisanslı, denetlenmemiş yazılım. Kurtarma ifadenizden ve fonlarınızdan siz sorumlusunuz. Varsayılan uzak düğüm, IP ve cüzdan senkronizasyonu sorgularınızı görebilir; daha güçlü gizlilik için kendi düğümünüzü çalıştırın. İsteğe bağlı fiat tahminleri, eğer etkinleştirilirse, oranlar için rates.nexatrode.com ile iletişime geçin.</string>
     <string name="history_export_csv">Eşleşen işlemleri dışa aktar (CSV)</string>
     <string name="history_export_failed">CSV dışa aktarılamadı. Yeniden deneyin.</string>
+    <string name="send_previous_payment_recovered">Önceki ödeme kurtarıldı. Yeni ödeme gönderilmedi. Yeniden önizleyin.</string>
 </resources>

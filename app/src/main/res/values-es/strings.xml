@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">software no auditado con licencia del MIT. Usted es responsable de su frase de recuperación y de sus fondos. El nodo remoto predeterminado puede ver sus consultas de sincronización de IP y billetera; ejecute su propio nodo para mayor privacidad. Estimaciones fiduciarias opcionales, si están habilitadas, comuníquese con rates.nexatrode.com para conocer las tarifas.</string>
     <string name="history_export_csv">Exportar las transacciones coincidentes (CSV)</string>
     <string name="history_export_failed">No se pudo exportar el CSV. Inténtalo de nuevo.</string>
+    <string name="send_previous_payment_recovered">Se recuperó el pago anterior. El nuevo pago no se envió. Vuelve a previsualizarlo.</string>
 </resources>

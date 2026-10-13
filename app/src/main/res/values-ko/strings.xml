@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">MIT 라이선스, 감사되지 않은 소프트웨어. 복구 문구와 자금에 대한 책임은 귀하에게 있습니다. 기본 원격 노드는 귀하의 IP 및 지갑 동기화 쿼리를 볼 수 있습니다. 더 강력한 개인정보 보호를 위해 자체 노드를 실행하세요. 선택적 법정화폐 추정이 활성화된 경우 요율은 rates.nexatrode.com에 문의하세요.</string>
     <string name="history_export_csv">일치하는 거래 내보내기 (CSV)</string>
     <string name="history_export_failed">CSV 내보내기에 실패했습니다. 다시 시도하세요.</string>
+    <string name="send_previous_payment_recovered">이전 결제가 복구되었습니다. 새 결제는 전송되지 않았습니다. 다시 미리 보기를 확인하세요.</string>
 </resources>

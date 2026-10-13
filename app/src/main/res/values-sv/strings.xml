@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT-licensierad, oreviderad programvara. Du är ansvarig för din återställningsfras och pengar. Standardfjärrnoden kan se dina IP- och plånbokssynkroniseringsfrågor – kör din egen nod för bättre integritet. Valfria fiat-uppskattningar, om de är aktiverade, kontakta rates.nexatrode.com för priser.</string>
     <string name="history_export_csv">Exportera matchande transaktioner (CSV)</string>
     <string name="history_export_failed">CSV-exporten misslyckades. Försök igen.</string>
+    <string name="send_previous_payment_recovered">Den tidigare betalningen återställdes. Den nya betalningen skickades inte. Förhandsgranska den igen.</string>
 </resources>

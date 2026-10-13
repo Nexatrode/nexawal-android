@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">Software oguerekóva licencia MIT-pe, ndojejapóiva auditada. Nde ha’e responsable nde frase de recuperación ha fondo-kuéra rehe. Pe nodo mombyrygua ñepyrũrã ikatu ohecha ne IP ha billetera ñemboheko porandu — emongu’e nde nodo tee ñeñangareko imbaretevévape g̃uarã. Umi estimación fiat opcional, oñembohapéramo, eñe’ẽ rates.nexatrode.com ndive umi tasa rehegua.</string>
     <string name="history_export_csv">Egueru umi transacción okorrespondéva (CSV)</string>
     <string name="history_export_failed">Ndoikói CSV ñeguenohẽ. Eha\'ãjey.</string>
+    <string name="send_previous_payment_recovered">Ojerekupera pe jehepyme’ẽ ymaguare. Ndoñemondói pe jehepyme’ẽ pyahu. Ehecha jey henonderã.</string>
 </resources>

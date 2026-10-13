@@ -411,4 +411,5 @@
     <string name="about_disclaimer_nexatrode">麻省理工学院许可、未经审核的软件。您应对您的恢复短语和资金负责。默认远程节点可以查看您的 IP 和钱包同步查询 - 运行您自己的节点以获得更强的隐私。可选的法定估算（如果启用）请联系 rates.nexatrode.com 了解费率。</string>
     <string name="history_export_csv">导出匹配的交易记录 (CSV)</string>
     <string name="history_export_failed">CSV 导出失败，请重试。</string>
+    <string name="send_previous_payment_recovered">已恢复上一笔付款。新的付款尚未发送。请重新预览。</string>
 </resources>

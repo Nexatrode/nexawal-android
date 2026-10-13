@@ -413,4 +413,5 @@
     <string name="about_disclaimer_nexatrode">MIT licencijuota, neaudituota programinė įranga. Jūs esate atsakingi už atkūrimo frazę ir lėšas. Numatytasis nuotolinis mazgas gali matyti jūsų IP ir piniginės sinchronizavimo užklausas – paleiskite savo mazgą, kad užtikrintumėte didesnį privatumą. Pasirenkami „fiat“ įvertinimai, jei įjungta, dėl tarifų susisiekite su rates.nexatrode.com.</string>
     <string name="history_export_csv">Eksportuoti atitinkančias operacijas (CSV)</string>
     <string name="history_export_failed">CSV eksportuoti nepavyko. Bandykite dar kartą.</string>
+    <string name="send_previous_payment_recovered">Ankstesnis mokėjimas atkurtas. Naujas mokėjimas neišsiųstas. Dar kartą peržiūrėkite jį.</string>
 </resources>

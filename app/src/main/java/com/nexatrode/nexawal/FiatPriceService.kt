@@ -183,8 +183,7 @@ class FiatPriceService(context: Context) {
         require(checkedAt > 0L && checkedAt <= now && expiresAt > now)
         require(expiresAt - checkedAt in 1L..FiatEstimate.MAX_AGE_MS)
         require(FiatEstimate.isFresh(checkedAt, now))
-        val value = java.math.BigDecimal(json.getString("fiat_per_xmr"))
-        require(value.signum() > 0)
+        val value = FiatEstimate.serverRate(json.getString("fiat_per_xmr")) ?: error("invalid rate")
         FiatRate(currency, value, checkedAt, "nexatrode", expiresAt)
     }
 
@@ -192,7 +191,10 @@ class FiatPriceService(context: Context) {
         val response = client.newCall(Request.Builder().url(url).get().build()).execute()
         response.use {
             if (!it.isSuccessful) error("http ${it.code}")
-            return it.body?.string().orEmpty()
+            val body = it.body ?: error("missing rates response")
+            return body.byteStream().use { input ->
+                com.nexatrode.nexawal.logic.BoundedRateBody.read(input, body.contentLength())
+            }
         }
     }
 }
