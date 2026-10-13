@@ -39,7 +39,8 @@ object MnemonicCipher {
 
         val cipher = Cipher.getInstance(TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, getOrCreateSecretKey(requireDeviceAuth))
-        val ciphertext = cipher.doFinal(plaintext.toByteArray(StandardCharsets.UTF_8))
+        val plaintextBytes = plaintext.toByteArray(StandardCharsets.UTF_8)
+        val ciphertext = try { cipher.doFinal(plaintextBytes) } finally { plaintextBytes.fill(0) }
         val iv = cipher.iv ?: error("Cipher did not return an IV")
 
         return EncryptedMnemonic(
@@ -68,7 +69,7 @@ object MnemonicCipher {
         )
 
         val plaintext = cipher.doFinal(ciphertext)
-        return String(plaintext, StandardCharsets.UTF_8)
+        return try { String(plaintext, StandardCharsets.UTF_8) } finally { plaintext.fill(0) }
     }
 
     /** Create the protected key before showing the prompt so the resulting auth token can use it. */

@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -39,6 +40,7 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.nexatrode.nexawal.ui.AppScaffold
 import com.nexatrode.nexawal.ui.TermsAcceptanceScreen
 import com.nexatrode.nexawal.ui.WalletCreationScreen
+import com.nexatrode.nexawal.ui.SecretTextInput
 import com.nexatrode.nexawal.ui.theme.NexawalTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +51,7 @@ class MainActivity : ComponentActivity() {
 
     private fun lockProtectedSession(closeCore: Boolean = false) {
         sessionHandler.removeCallbacks(idleLockAction)
-        if (!::walletManager.isInitialized || walletManager.state.value.walletId == null) return
+        if (!::walletManager.isInitialized) return
         if (MoneroConfig.requireDeviceAuth(applicationContext)) accessGate.lock()
         if (closeCore) walletManager.closeProtectedSession()
         else walletManager.sealSessionForBackground()
@@ -73,6 +75,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Seeds, balances and history must never enter screenshots, casting or Recents snapshots.
+        window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
 
         walletManager = (application as NexaWalApp).walletManager
 
@@ -103,6 +107,7 @@ class MainActivity : ComponentActivity() {
 
                 suspend fun unlockWallet() {
                     unlockError = null
+                    val sessionToken = walletManager.sessionAuthority.token()
                     try {
                         accessGate.unlock(authenticate = {
                             walletManager.loadVersion()
@@ -123,15 +128,15 @@ class MainActivity : ComponentActivity() {
                             walletManager.awaitSessionCleanup()
                             // A retained manager may be syncing. Do not reopen/reset it on rotation.
                             if (walletManager.state.value.walletId == null && walletManager.hasStoredWallet()) {
-                                val loaded = walletManager.loadStoredWalletOnLaunch()
+                                val loaded = walletManager.loadStoredWalletOnLaunch(sessionToken)
                                 check(loaded) { getString(R.string.authentication_failed) }
                                 walletManager.refreshWalletInBackground()
                             } else if (walletManager.state.value.walletId != null && walletManager.hasStoredWallet()) {
-                                check(walletManager.unlockStoredMetadataSession()) {
+                                check(walletManager.unlockStoredMetadataSession(sessionToken)) {
                                     getString(R.string.authentication_failed)
                                 }
                             }
-                        })
+                        }, discardStaleOpen = { walletManager.discardStaleSession(sessionToken) })
                         scheduleIdleLock()
                     } catch (cancelled: CancellationException) {
                         throw cancelled
@@ -165,7 +170,7 @@ class MainActivity : ComponentActivity() {
                 } else if (state.walletId != null) {
                     AppScaffold(walletManager = walletManager)
                 } else {
-                    WalletCreationScreen(walletManager = walletManager)
+                    SecretTextInput { WalletCreationScreen(walletManager = walletManager) }
                 }
             }
         }

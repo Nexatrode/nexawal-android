@@ -13,6 +13,7 @@ import com.nexatrode.nexawal.logic.SendGate
 import com.nexatrode.nexawal.logic.SendSafety
 import com.nexatrode.nexawal.logic.SessionCleanupPolicy
 import com.nexatrode.nexawal.logic.SessionCleanupRequests
+import com.nexatrode.nexawal.logic.SessionAuthorityEpoch
 import com.nexatrode.nexawal.walletcore.WalletCore
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
@@ -217,6 +218,11 @@ class WalletManager(
     private val sendGate = SendGate()
     /** Plaintext metadata exists only while the app session is unlocked. */
     @Volatile private var unlockedMetadata: StoredWalletMetadata? = null
+    @Volatile private var metadataAuthorityToken: Long? = null
+    val sessionAuthority = SessionAuthorityEpoch()
+    @Volatile private var nativeWalletId: String? = null
+    @Volatile private var nativeAuthorityToken: Long? = null
+    @Volatile private var sessionLocked = false
 
     // Cache export throttling:
     // - avoid redundant writes when exportCache returns identical bytes repeatedly (common during steady-state polling)
@@ -590,7 +596,7 @@ class WalletManager(
      * old native worker has observed cancellation. Sending remains impossible while sealed.
      */
     fun sealSessionForBackground() {
-        unlockedMetadata = null
+        sessionAuthority.invalidate { sessionLocked = true; unlockedMetadata = null; metadataAuthorityToken = null }
         val continueRefresh = refreshInProgress.get() || _state.value.refreshInProgress
         requestSessionCleanup(close = false, continueRefresh = continueRefresh)
     }
@@ -600,13 +606,18 @@ class WalletManager(
      * and view keys from native memory. The next authenticated unlock performs a normal reopen.
      */
     fun closeProtectedSession() {
-        unlockedMetadata = null
+        sessionAuthority.invalidate { sessionLocked = true; unlockedMetadata = null; metadataAuthorityToken = null }
         requestSessionCleanup(close = true, continueRefresh = false)
+    }
+
+    fun discardStaleSession(token: Long) = synchronized(sessionAuthority) {
+        // An old callback must never tear down a newer authenticated session.
+        if (nativeAuthorityToken == token || metadataAuthorityToken == token) closeProtectedSession()
     }
 
     /** Single-flight cleanup owns retries independently of the UI; close supersedes seal. */
     @Synchronized private fun requestSessionCleanup(close: Boolean, continueRefresh: Boolean) {
-        val walletId = _state.value.walletId ?: return
+        val walletId = nativeWalletId ?: _state.value.walletId ?: return
         cleanupRequests.request(close, continueRefresh)
         cleanupPending.set(true)
         if (cleanupJob?.isActive == true) return
@@ -625,6 +636,8 @@ class WalletManager(
                             SessionCleanupPolicy.complete {
                                 withContext(ioDispatcher) { WalletCore.close(walletId, timeoutMs = 1000) }
                             }
+                            nativeWalletId = null
+                            nativeAuthorityToken = null
                             refreshInProgress.set(false)
                             _state.value = _state.value.copy(
                                 walletId = null,
@@ -686,26 +699,31 @@ class WalletManager(
     }
 
     /** Re-establish spend authority only after the caller completed device authentication. */
-    suspend fun unlockStoredMetadataSession(): Boolean {
+    suspend fun unlockStoredMetadataSession(sessionToken: Long = sessionAuthority.token()): Boolean {
         awaitSessionCleanup()
+        sessionAuthority.check(sessionToken)
         val meta = withContext(ioDispatcher) {
             if (!metadataFile().exists()) return@withContext null
-            readMetadataFromDisk()
+            readMetadataFromDisk(sessionToken)
         } ?: return false
         val walletId = _state.value.walletId ?: return false
         val restored = lifecycleMutex.withLock {
             check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
             if (_state.value.walletId != walletId) return@withLock false
             withContext(ioDispatcher) {
-                if (WalletCore.isSealed(walletId)) {
-                    WalletCore.unsealFromMnemonic(walletId, meta.mnemonic)
-                    exportCacheAndPersist(walletId)
+                sessionAuthority.withCurrent(sessionToken) {
+                    if (WalletCore.isSealed(walletId)) WalletCore.unsealFromMnemonic(walletId, meta.mnemonic)
+                    nativeWalletId = walletId
+                    nativeAuthorityToken = sessionToken
+                    sessionLocked = false
                 }
+                exportCacheAndPersist(walletId)
             }
             true
         }
         if (!restored) return false
         refreshJob?.join()
+        sessionAuthority.check(sessionToken)
         refreshWalletInBackground()
         return true
     }
@@ -789,8 +807,10 @@ class WalletManager(
         mainnet: Boolean = true,
         persist: Boolean = true,
         replaceExisting: Boolean = false,
+        sessionToken: Long = sessionAuthority.token(),
     ) {
         awaitSessionCleanup()
+        sessionAuthority.check(sessionToken)
         require(walletId.isNotBlank()) { "walletId must not be blank" }
         require(mnemonic.isNotBlank()) { "mnemonic must not be blank" }
 
@@ -813,12 +833,16 @@ class WalletManager(
         cachePersistenceSuppressed.set(false)
 
         withContext(ioDispatcher) {
-            WalletCore.openFromMnemonic(
+            sessionAuthority.withCurrent(sessionToken) { WalletCore.openFromMnemonic(
                 walletId = walletId,
                 mnemonic = mnemonic.trim(),
                 restoreHeight = restoreHeight,
                 mainnet = mainnet,
             )
+                nativeWalletId = walletId
+                nativeAuthorityToken = sessionToken
+                sessionLocked = false
+            }
             // Constant wallet id leaves Occupied in-memory last_scanned at tip after replace.
             WalletCore.forceRescanFromHeight(walletId, restoreHeight)
         }
@@ -856,7 +880,7 @@ class WalletManager(
         // Persist metadata for auto-load on next launch.
         if (persist) {
             withContext(ioDispatcher) {
-                persistMetadata(
+                sessionAuthority.withCurrent(sessionToken) { persistMetadata(
                     StoredWalletMetadata(
                         walletId = walletId,
                         mnemonic = mnemonic.trim(),
@@ -865,21 +889,22 @@ class WalletManager(
                         nodeUrl = normalizedNodeUrl,
                         savedAtMs = System.currentTimeMillis(),
                     )
-                )
+                ) }
             }
         }
 
         // Start sync on the manager-owned scope BEFORE publishing walletId (which swaps the UI).
         refreshWalletInBackground()
+        val stored = runCatching { hasStoredWallet() }.getOrNull()
 
-        _state.value = _state.value.copy(
+        sessionAuthority.withCurrent(sessionToken) { _state.value = _state.value.copy(
             walletId = walletId,
             nodeUrl = normalizedNodeUrl,
             walletAddress = derivedAddress,
-            hasStoredWallet = runCatching { hasStoredWallet() }.getOrNull(),
+            hasStoredWallet = stored,
             lastLoadedFromDiskAtMs = System.currentTimeMillis(),
             lastError = null,
-        )
+        ) }
 
         // Best-effort retry if we ended up with no address in state.
         if (derivedAddress.isNullOrBlank()) {
@@ -2581,15 +2606,17 @@ class WalletManager(
      *
      * Returns true if a wallet was loaded and opened, false if none exists.
      */
-    suspend fun loadStoredWalletOnLaunch(): Boolean = withContext(ioDispatcher) {
+    suspend fun loadStoredWalletOnLaunch(sessionToken: Long = sessionAuthority.token()): Boolean = withContext(ioDispatcher) {
         awaitSessionCleanup()
+        sessionAuthority.check(sessionToken)
         val f = metadataFile()
         if (!f.exists()) {
             _state.value = _state.value.copy(hasStoredWallet = false)
             return@withContext false
         }
 
-        val meta = runCatching { readMetadata() }.getOrElse { t ->
+        val meta = runCatching { readMetadataFromDisk(sessionToken) }.getOrElse { t ->
+            sessionAuthority.check(sessionToken)
             _state.value = _state.value.copy(
                 hasStoredWallet = true,
                 lastError = appContext.getString(R.string.failed_read_metadata_fmt, t.message ?: t.javaClass.simpleName)
@@ -2603,13 +2630,18 @@ class WalletManager(
         )
 
         runCatching {
-            WalletCore.openFromMnemonic(
+            sessionAuthority.withCurrent(sessionToken) { WalletCore.openFromMnemonic(
                 walletId = meta.walletId,
                 mnemonic = meta.mnemonic,
                 restoreHeight = meta.restoreHeight,
                 mainnet = meta.mainnet
             )
+                nativeWalletId = meta.walletId
+                nativeAuthorityToken = sessionToken
+                sessionLocked = false
+            }
         }.onFailure { t ->
+            sessionAuthority.check(sessionToken)
             _state.value = _state.value.copy(
                 hasStoredWallet = true,
                 lastError = appContext.getString(R.string.failed_open_wallet_fmt, t.message ?: t.javaClass.simpleName)
@@ -2645,16 +2677,16 @@ class WalletManager(
         val resolvedNode = settingsNode ?: meta.nodeUrl
         if (settingsNode != null && meta.nodeUrl != settingsNode) {
             runCatching {
-                persistMetadata(
+                sessionAuthority.withCurrent(sessionToken) { persistMetadata(
                     meta.copy(
                         nodeUrl = settingsNode,
                         savedAtMs = System.currentTimeMillis(),
                     )
-                )
+                ) }
             }
         }
 
-        _state.value = _state.value.copy(
+        sessionAuthority.withCurrent(sessionToken) { _state.value = _state.value.copy(
             walletId = meta.walletId,
             historySession = java.util.UUID.randomUUID().toString(),
             nodeUrl = resolvedNode,
@@ -2662,7 +2694,7 @@ class WalletManager(
             hasStoredWallet = true,
             lastLoadedFromDiskAtMs = System.currentTimeMillis(),
             lastError = null,
-        )
+        ) }
 
         // Best-effort retry if we ended up with no address in state.
         if (derivedAddress.isNullOrBlank()) {
@@ -2684,6 +2716,7 @@ class WalletManager(
             "LOAD_STORED_WALLET afterImport walletId=${meta.walletId} syncStatusAfterImport(chainHeight=${stAfterImport?.chainHeight} lastScanned=${stAfterImport?.lastScanned} restoreHeight=${stAfterImport?.restoreHeight})"
         )
 
+        sessionAuthority.check(sessionToken)
         true
     }
 
@@ -2732,6 +2765,22 @@ class WalletManager(
         meta: StoredWalletMetadata,
         forceReencrypt: Boolean = false,
         protectionOverride: Boolean? = null,
+        sessionToken: Long? = null,
+    ) {
+        val token = sessionToken ?: synchronized(sessionAuthority) {
+            check(!sessionLocked) { "Wallet session is locked" }
+            sessionAuthority.token()
+        }
+        sessionAuthority.withCurrent(token) {
+            persistMetadataCurrent(meta, forceReencrypt, protectionOverride)
+            metadataAuthorityToken = token
+        }
+    }
+
+    private fun persistMetadataCurrent(
+        meta: StoredWalletMetadata,
+        forceReencrypt: Boolean,
+        protectionOverride: Boolean?,
     ) {
         val f = metadataFile()
         ensureParentDirExists(f)
@@ -2767,11 +2816,16 @@ class WalletManager(
     }
 
     private fun readMetadata(): StoredWalletMetadata {
+        val token = synchronized(sessionAuthority) {
+            check(!sessionLocked) { "Wallet session is locked" }
+            sessionAuthority.token()
+        }
         unlockedMetadata?.let { return it }
-        return readMetadataFromDisk()
+        return readMetadataFromDisk(token)
     }
 
-    private fun readMetadataFromDisk(): StoredWalletMetadata {
+    private fun readMetadataFromDisk(sessionToken: Long = sessionAuthority.token()): StoredWalletMetadata {
+        sessionAuthority.check(sessionToken)
         val f = metadataFile()
         val json = JSONObject(f.readText())
 
@@ -2800,7 +2854,7 @@ class WalletManager(
             }
 
             // Transparent migration from legacy plaintext metadata.
-            persistMetadata(
+            sessionAuthority.withCurrent(sessionToken) { persistMetadata(
                 StoredWalletMetadata(
                     walletId = walletId,
                     mnemonic = plaintextMnemonic,
@@ -2811,7 +2865,8 @@ class WalletManager(
                 ),
                 forceReencrypt = true,
                 protectionOverride = MoneroConfig.requireDeviceAuth(appContext),
-            )
+                sessionToken = sessionToken,
+            ) }
             plaintextMnemonic
         }
 
@@ -2825,15 +2880,17 @@ class WalletManager(
         )
         // Existing v2 installations used an unprotected Keystore key. After the user's first
         // successful device-auth prompt, atomically rewrap the seed with the authenticated key.
-        if (!deviceAuthProtected && MoneroConfig.requireDeviceAuth(appContext)) {
+        sessionAuthority.withCurrent(sessionToken) { if (!deviceAuthProtected && MoneroConfig.requireDeviceAuth(appContext)) {
             persistMetadata(
                 metadata,
                 forceReencrypt = true,
                 protectionOverride = true,
+                sessionToken = sessionToken,
             )
         } else {
             unlockedMetadata = metadata
-        }
+            metadataAuthorityToken = sessionToken
+        } }
         return metadata
     }
 

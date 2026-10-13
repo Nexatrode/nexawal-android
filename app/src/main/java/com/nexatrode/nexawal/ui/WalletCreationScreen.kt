@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
@@ -35,6 +36,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -146,10 +150,32 @@ fun WalletCreationScreen(
     val wroteSeedDown = remember { mutableStateOf(false) }
     val challengePositions = remember { mutableStateOf(listOf<Int>()) }
     val challengeAnswers = remember { mutableStateListOf("", "", "") }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_STOP) {
+                mnemonicInput.value = ""
+                generatedMnemonic.value = ""
+                wroteSeedDown.value = false
+                challengeAnswers.indices.forEach { challengeAnswers[it] = "" }
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            mnemonicInput.value = ""
+            generatedMnemonic.value = ""
+            challengeAnswers.indices.forEach { challengeAnswers[it] = "" }
+        }
+    }
 
     suspend fun regenerateCreateSeed() {
+        if (!lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) return
+        val token = walletManager.sessionAuthority.token()
         try {
             val mnemonic = withContext(Dispatchers.Default) { WalletCore.generateMnemonicEnglish() }
+            walletManager.sessionAuthority.check(token)
+            if (!lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) return
             generatedMnemonic.value = mnemonic
             wroteSeedDown.value = false
             val words = mnemonic.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
@@ -230,6 +256,7 @@ fun WalletCreationScreen(
     }
 
     fun submit(replaceExisting: Boolean) {
+        val sessionToken = walletManager.sessionAuthority.token()
         errorText.value = null
         isLoading.value = true
 
@@ -253,7 +280,9 @@ fun WalletCreationScreen(
                         subtitle = unlockWalletSubtitle,
                     )
                 }
-                MoneroConfig.setRequireDeviceAuth(context, protectWithDeviceAuth)
+                walletManager.sessionAuthority.withCurrent(sessionToken) {
+                    MoneroConfig.setRequireDeviceAuth(context, protectWithDeviceAuth)
+                }
 
                 val walletId = walletManager.defaultWalletId()
                 val nodeUrl = walletManager.currentNodeUrl()
@@ -266,6 +295,7 @@ fun WalletCreationScreen(
                     mainnet = isMainnet.value,
                     persist = true,
                     replaceExisting = replaceExisting,
+                    sessionToken = sessionToken,
                 )
 
                 // Refresh is started inside openWalletFromMnemonic (manager scope) before walletId
@@ -274,6 +304,9 @@ fun WalletCreationScreen(
                 // After importing/replacing, refresh persisted-wallet flag
                 hasStoredWallet.value = runCatching { walletManager.hasStoredWallet() }.getOrNull()
             } catch (t: Throwable) {
+                // Successful publication disposes this screen/cancels its coroutine. Only a
+                // failed, unpublished setup should discard its partially opened authority.
+                if (walletManager.state.value.walletId == null) walletManager.discardStaleSession(sessionToken)
                 errorText.value = t.message ?: t.javaClass.simpleName
             } finally {
                 isLoading.value = false
@@ -282,6 +315,7 @@ fun WalletCreationScreen(
     }
 
     fun unlockStoredWallet() {
+        val sessionToken = walletManager.sessionAuthority.token()
         errorText.value = null
         isLoading.value = true
 
@@ -301,13 +335,15 @@ fun WalletCreationScreen(
                     )
                 }
 
-                val loaded = walletManager.loadStoredWalletOnLaunch()
+                val loaded = walletManager.loadStoredWalletOnLaunch(sessionToken)
                 if (!loaded) {
+                    walletManager.discardStaleSession(sessionToken)
                     errorText.value = noStoredWalletText
                 } else {
                     walletManager.refreshWalletInBackground()
                 }
             } catch (t: Throwable) {
+                if (walletManager.state.value.walletId == null) walletManager.discardStaleSession(sessionToken)
                 errorText.value = t.message ?: t.javaClass.simpleName
             } finally {
                 isLoading.value = false
@@ -469,6 +505,7 @@ fun WalletCreationScreen(
                                 },
                                 modifier = Modifier.fillMaxWidth(),
                                 label = { Text(String.format(wordNumberFmt, position), color = palette.secondaryText) },
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, autoCorrectEnabled = false),
                                 singleLine = true,
                                 colors = nexaFieldColors(palette),
                             )
@@ -487,6 +524,7 @@ fun WalletCreationScreen(
                             .height(160.dp),
                         label = { Text(stringResource(R.string.mnemonic_paste_label)) },
                         placeholder = { Text(stringResource(R.string.mnemonic_paste_placeholder), color = palette.secondaryText) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, autoCorrectEnabled = false),
                         textStyle = androidx.compose.ui.text.TextStyle(
                             fontFamily = FontFamily.Monospace,
                             color = palette.primaryText,

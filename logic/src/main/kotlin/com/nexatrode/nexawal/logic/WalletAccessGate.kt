@@ -11,25 +11,43 @@ class WalletAccessGate {
     enum class State { LOCKED, UNLOCKING, OPEN }
 
     private val mutableState = MutableStateFlow(State.LOCKED)
+    private val attempts = SessionAuthorityEpoch()
     val state: StateFlow<State> = mutableState.asStateFlow()
 
-    fun lock() {
+    @Synchronized fun lock() {
+        attempts.invalidate()
         mutableState.value = State.LOCKED
     }
 
-    suspend fun unlock(authenticate: suspend () -> Unit, openWallet: suspend () -> Unit) {
-        if (!mutableState.compareAndSet(State.LOCKED, State.UNLOCKING)) return
+    @Synchronized private fun begin(): Long? {
+        if (!mutableState.compareAndSet(State.LOCKED, State.UNLOCKING)) return null
+        return attempts.token()
+    }
+
+    @Synchronized private fun finish(attempt: Long) {
+        // Check and state mutation must be indivisible relative to lock()/begin().
+        if (attempts.accepts(attempt)) mutableState.compareAndSet(State.UNLOCKING, State.LOCKED)
+    }
+
+    suspend fun unlock(authenticate: suspend () -> Unit, openWallet: suspend () -> Unit,
+                       discardStaleOpen: suspend () -> Unit = {}) {
+        val attempt = begin() ?: return
+        var opening = false
+        var committed = false
         try {
             authenticate()
             currentCoroutineContext().ensureActive()
+            attempts.check(attempt)
+            opening = true
             openWallet()
             currentCoroutineContext().ensureActive()
             // A lifecycle stop may have locked the gate while authentication was visible.
             // Never let completion of that stale attempt reopen the UI.
-            mutableState.compareAndSet(State.UNLOCKING, State.OPEN)
+            committed = attempts.withCurrent(attempt) { mutableState.compareAndSet(State.UNLOCKING, State.OPEN) }
         } finally {
+            if (opening && !committed) discardStaleOpen()
             // Failure and coroutine cancellation both fail closed.
-            mutableState.compareAndSet(State.UNLOCKING, State.LOCKED)
+            finish(attempt)
         }
     }
 }

@@ -1,5 +1,27 @@
 # Focused security fixes — September 2026
 
+## Local follow-up: session authority and seed buffers
+
+- Unlocks are generation-fenced before native open/unseal and UI publication, including before
+  the first wallet ID exists. Native and plaintext metadata ownership are tracked separately.
+- Failed/stale opens clean up their own authority without tearing down a newer authenticated session.
+- Metadata operations cannot repopulate the plaintext session after background locking.
+- Seed setup drops input/generated/challenge references on background/disposal. FLAG_SECURE
+  covers the Activity; secret keyboard requests disable personalized learning/extract UI.
+  These requests do not make a malicious keyboard trustworthy.
+- AES plaintext arrays and owned JNI seed buffers are wiped. Kotlin/VM strings and framework
+  copies cannot be guaranteed erased; do not advertise complete RAM wiping.
+- Signed-device auth, first unlock/background timing, rotation and native teardown QA remain required.
+
+Local verification: 127 logic/app tests pass; Debug and Release APKs build with the new native
+arm64-v8a/x86_64 libraries staged only in this temporary main worktree. Neither release JNI nor
+native library links a Logcat writer. The committed submodule pin is unchanged; a future source
+pin bump is still needed before distribution. No device was installed, opened, or rescanned.
+
+Additional device QA: background while the first authentication is visible and immediately after
+it succeeds; cancel/retry without reopening an old attempt. Check seed input, Recents/screenshots,
+keyboard no-learning requests, setup persistence failure, and idle lock with a disposable wallet.
+
 ## Behaviors covered
 
 - New wallets default to device authentication when a secure biometric/device credential is

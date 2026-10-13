@@ -7,6 +7,35 @@
 
 #include "monerowalletcore.h"
 
+// Volatile writes are not optimized away. This owns only buffers we allocated, never JNI's.
+static void wipe_secret(void* data, size_t size) {
+    volatile unsigned char* p = static_cast<volatile unsigned char*>(data);
+    while (size--) *p++ = 0;
+}
+struct SecretString {
+    std::string value;
+    SecretString(JNIEnv* env, jstring text) {
+        if (text == nullptr) return;
+        const jsize size = env->GetStringUTFLength(text);
+        value.resize(static_cast<size_t>(size) + 1, '\0');
+        // Write directly into our wipeable storage, avoiding a VM-owned UTF-8 temporary.
+        env->GetStringUTFRegion(text, 0, env->GetStringLength(text), value.data());
+        value.resize(static_cast<size_t>(size));
+    }
+    SecretString(const SecretString&) = delete;
+    ~SecretString() { wipe_secret(value.data(), value.size()); }
+    const char* c_str() const { return value.c_str(); }
+    size_t size() const { return value.size(); }
+};
+struct SecretBuffer {
+    std::vector<char> value;
+    explicit SecretBuffer(size_t size) : value(size, 0) {}
+    ~SecretBuffer() { wipe_secret(value.data(), value.size()); }
+    char* data() { return value.data(); }
+    size_t size() const { return value.size(); }
+    char& operator[](size_t index) { return value[index]; }
+};
+
 // Helper: convert a Rust-allocated C string to jstring and free it via walletcore_free_cstr.
 static jstring cstr_to_jstring_and_free(JNIEnv* env, char* cstr) {
     if (cstr == nullptr) {
@@ -102,7 +131,7 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_generateMnemonicEnglish(JNIE
         return nullptr;
     }
 
-    std::vector<char> buf(512, 0);
+    SecretBuffer buf(512);
     size_t written = 0;
     int32_t rc = fn(buf.data(), static_cast<size_t>(buf.size()), &written);
     if (!check_rc_or_throw(env, rc, "wallet_generate_mnemonic_english")) {
@@ -139,7 +168,7 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_primaryAddressFromMnemonic(
     jstring mnemonic,
     jboolean mainnet
 ) {
-    const std::string m = jstring_to_std_string(env, mnemonic);
+    const SecretString m(env, mnemonic);
     const uint8_t is_mainnet = mainnet ? 1 : 0;
 
     // Match iOS behavior (MoneroWalletCoreFFI.swift):
@@ -202,7 +231,7 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_subaddressFromMnemonic(
     jint subaddressIndex,
     jboolean mainnet
 ) {
-    const std::string m = jstring_to_std_string(env, mnemonic);
+    const SecretString m(env, mnemonic);
     const uint32_t account_index = static_cast<uint32_t>(accountIndex < 0 ? 0 : accountIndex);
     const uint32_t subaddress_index = static_cast<uint32_t>(subaddressIndex < 0 ? 0 : subaddressIndex);
     const uint8_t is_mainnet = mainnet ? 1 : 0;
@@ -272,7 +301,7 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_openFromMnemonic(
     jboolean mainnet
 ) {
     const std::string wid = jstring_to_std_string(env, walletId);
-    const std::string m = jstring_to_std_string(env, mnemonic);
+    const SecretString m(env, mnemonic);
 
     const uint8_t is_mainnet = mainnet ? 1 : 0;
 
@@ -306,7 +335,7 @@ Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_unsealFromMnemonic(
     jlong timeoutMs
 ) {
     const std::string wid = jstring_to_std_string(env, walletId);
-    const std::string m = jstring_to_std_string(env, mnemonic);
+    const SecretString m(env, mnemonic);
     const uint64_t timeout = timeoutMs < 0 ? 0 : static_cast<uint64_t>(timeoutMs);
     (void)check_rc_or_throw(
         env,
