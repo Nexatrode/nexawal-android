@@ -751,14 +751,8 @@ class WalletManager(
     }
 
     suspend fun loadReceiveSubaddressBook(): ReceiveSubaddressBook = withContext(ioDispatcher) {
-        val existing = runCatching {
-            val f = receiveSubaddressesFile()
-            if (!f.exists()) null else receiveBookJson.decodeFromString<ReceiveSubaddressBook>(f.readText())
-        }.getOrNull()
-
-        val normalized = normalizeReceiveBook(existing)
-        persistReceiveSubaddressBook(normalized)
-        normalized
+        // Reads must not race a new issuance by writing an older normalized book.
+        normalizeReceiveBook(ReceiveAddressBookStorage.read(receiveSubaddressesFile(), receiveBookJson))
     }
 
     private val receiveAddressMutex = kotlinx.coroutines.sync.Mutex()
@@ -2990,12 +2984,11 @@ class WalletManager(
     }
 
     private fun persistReceiveSubaddressBook(book: ReceiveSubaddressBook) {
-        runCatching {
-            val f = receiveSubaddressesFile()
-            ensureParentDirExists(f)
-            f.writeText(receiveBookJson.encodeToString(book))
-        }.onFailure { t ->
+        try {
+            ReceiveAddressBookStorage.write(receiveSubaddressesFile(), book, receiveBookJson)
+        } catch (t: Exception) {
             _state.value = _state.value.copy(lastError = appContext.getString(R.string.failed_persist_addrs_fmt, t.message ?: t.javaClass.simpleName))
+            throw t // Do not display/issue an address that was not saved.
         }
     }
 

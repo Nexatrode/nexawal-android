@@ -1,5 +1,23 @@
 # Focused security fixes — September 2026
 
+## October 2026 replay and persistence follow-up (WalletCore v0.1.17)
+
+The source submodule pins `79c8ceb3ba8629bce72738c52e360c9c4fd8bed5`.
+Coverage replay preserves receives re-mined before their previous height without
+resetting their key images or observed spends. Native regression tests include a
+cache round-trip checking the receive's balance, height, timestamp and fee.
+Receive books are saved atomically; save failures abort address issuance. Reads
+do not overwrite corrupt books or race issuance by rewriting stale snapshots.
+An authorized CSV copy is owned by the retained Activity ViewModel, not a
+cancellable Compose effect; rotation/relocking cannot dispose of its staged file.
+Starting a copy still requires the same unlocked wallet. These exports do not
+survive process death, and filesystem errors are reported to the user.
+
+Verification: 87 logic tests and 51 app tests pass, including a fresh uncached run.
+Debug and Release APKs build from source with Rust 1.97.1 and NDK 27.1.12297006;
+both native ABIs retain 16 KB alignment. No device was installed or rescanned,
+no payment was sent, and signed-device QA remains required before distribution.
+
 ## October 2026 parity follow-up (WalletCore v0.1.16)
 
 The source submodule now pins `8b01cc3e321a5aa62a80797ef75d33052be583b2`.

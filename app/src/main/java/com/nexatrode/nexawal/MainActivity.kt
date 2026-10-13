@@ -103,18 +103,24 @@ class MainActivity : ComponentActivity() {
                 val state by walletManager.state.collectAsState()
                 val access by accessGate.state.collectAsState()
                 val exportRevision by historyExports.revision.collectAsState()
+                val exportFailed by historyExports.failed.collectAsState()
                 LaunchedEffect(access, state.walletAddress, exportRevision) {
-                    val pending = historyExports.claim(access == WalletAccessGate.State.OPEN, state.walletAddress)
-                    if (pending != null) {
-                        try {
-                            kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                                val output = contentResolver.openOutputStream(pending.uri)
-                                    ?: error("Could not open export destination")
-                                pending.file.inputStream().use { input -> output.use { input.copyTo(it) } }
+                    // The worker retains the application resolver, not this Activity.
+                    val resolver = applicationContext.contentResolver
+                    historyExports.startIfReady(access == WalletAccessGate.State.OPEN, state.walletAddress) { pending ->
+                        kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                            val output = resolver.openOutputStream(pending.uri)
+                                ?: error("Could not open export destination")
+                            output.use { destination ->
+                                pending.file.inputStream().use { input -> input.copyTo(destination) }
                             }
-                        } catch (_: Exception) {
-                            android.widget.Toast.makeText(this@MainActivity, R.string.history_export_failed, android.widget.Toast.LENGTH_LONG).show()
-                        } finally { pending.file.delete() }
+                        }
+                    }
+                }
+                LaunchedEffect(exportFailed) {
+                    if (exportFailed) {
+                        android.widget.Toast.makeText(this@MainActivity, R.string.history_export_failed, android.widget.Toast.LENGTH_LONG).show()
+                        historyExports.acknowledgeFailure()
                     }
                 }
                 val scope = rememberCoroutineScope()
@@ -190,9 +196,15 @@ class MainActivity : ComponentActivity() {
                     }
                 } else if (state.walletId != null) {
                     AppScaffold(walletManager = walletManager, onHistoryExportReady = { file, address ->
-                        historyExports.stage(file, address)
-                        try { historyExportLauncher.launch("nexawal-history.csv") }
-                        catch (_: Exception) { historyExports.discard() }
+                        var staged = false
+                        try {
+                            historyExports.stage(file, address)
+                            staged = true
+                            historyExportLauncher.launch("nexawal-history.csv")
+                        } catch (_: Exception) {
+                            if (staged) historyExports.discard() else file.delete()
+                            android.widget.Toast.makeText(this@MainActivity, R.string.history_export_failed, android.widget.Toast.LENGTH_LONG).show()
+                        }
                     })
                 } else {
                     SecretTextInput { WalletCreationScreen(walletManager = walletManager) }
