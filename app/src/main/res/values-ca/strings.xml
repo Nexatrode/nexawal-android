@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">L\'autenticació biomètrica o amb credencials del dispositiu no està disponible</string>
     <string name="authentication_failed">L\'autenticació ha fallat</string>
     <string name="biometric_permission_missing">Falta el permís biomètric o no està disponible</string>
-    <string name="starting_height_fast_fmt">Alçada inicial (ràpid): %1$d (target_height del node − 10)</string>
+    <string name="starting_height_fast_fmt">Alçada inicial (ràpid): %1$d (height del node − 10)</string>
     <string name="word_number_fmt">Paraula núm. %1$d</string>
     <string name="scanned_to_block_fmt">Escanejat fins al bloc %1$s</string>
     <string name="fetching_initial_fmt">Obtenint els blocs inicials des de %1$s</string>

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Биометрическая аутентификация или аутентификация по учётным данным устройства недоступна</string>
     <string name="authentication_failed">Аутентификация не удалась</string>
     <string name="biometric_permission_missing">Разрешение на биометрию отсутствует или недоступно</string>
-    <string name="starting_height_fast_fmt">Начальная высота (быстро): %1$d (высота узла target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Начальная высота (быстро): %1$d (высота узла height − 10)</string>
     <string name="word_number_fmt">Слово #%1$d</string>
     <string name="scanned_to_block_fmt">Просканировано до блока %1$s</string>
     <string name="fetching_initial_fmt">Получение первых блоков от %1$s</string>

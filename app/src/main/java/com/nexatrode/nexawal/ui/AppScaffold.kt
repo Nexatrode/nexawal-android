@@ -1925,7 +1925,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     var paymentDescription by remember { mutableStateOf("") }
     var paymentRecipientName by remember { mutableStateOf("") }
     var isEstimating by remember { mutableStateOf(false) }
-    var isSending by remember { mutableStateOf(false) }
+    var sendAuthPending by remember { mutableStateOf(false) }
+    val isSending = sendAuthPending || state.sendInProgress
     var isPreviewingMax by remember { mutableStateOf(false) }
     var previewEpoch by remember { mutableStateOf(0L) }
     var approvedIntent by remember { mutableStateOf<com.nexatrode.nexawal.logic.SendPreviewIntent?>(null) }
@@ -1958,6 +1959,20 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     val paymentFromQrText = stringResource(R.string.info_payment_from_qr)
     val addressFromQrText = stringResource(R.string.info_address_from_qr)
     val invalidQrText = stringResource(R.string.error_invalid_qr)
+
+    LaunchedEffect(state.sendInProgress, state.sendError, state.lastSendResult, state.lastSweepSendResult) {
+        if (state.sendInProgress) {
+            sendResult = null; sweepResult = null; infoText = null; errorText = null
+        } else if (state.sendError != null) {
+            errorText = state.sendError
+        } else if (state.lastSendResult != null) {
+            sendResult = state.lastSendResult
+            infoText = transactionBroadcastText
+        } else if (state.lastSweepSendResult != null) {
+            sweepResult = state.lastSweepSendResult
+            infoText = maxBalanceBroadcastText
+        }
+    }
 
     fun amountPiconeroOrNull(): Long? = AmountUnitParsing.piconero(amountXmrText, amountInputMode, latestFiatRate)
     fun previewIntent(maximum: Boolean): com.nexatrode.nexawal.logic.SendPreviewIntent {
@@ -2280,7 +2295,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             text = {
                 Column {
                     Text(stringResource(R.string.label_to), color = palette.secondaryText)
-                    Text(toAddress.trim(), fontFamily = FontFamily.Monospace, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    Text(toAddress.trim(), fontFamily = FontFamily.Monospace)
                     Spacer(Modifier.height(8.dp))
                     amountPiconero?.let {
                         Text(stringResource(R.string.label_amount), color = palette.secondaryText)
@@ -2318,7 +2333,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         val approvedMaxFee = estimatedFee?.fee ?: return@PrimaryActionButton
                         val approvedAmount = amountPiconeroOrNull() ?: return@PrimaryActionButton
                         val approvedDestination = toAddress.trim()
-                        isSending = true
+                        sendAuthPending = true
                         showExactConfirmation = false
                         errorText = null
                         infoText = null
@@ -2378,7 +2393,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     t.message ?: t.javaClass.simpleName
                                 }
                             } finally {
-                                isSending = false
+                                sendAuthPending = false
                             }
                         }
                     },
@@ -2404,7 +2419,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
             text = {
                 Column {
                     Text(stringResource(R.string.label_to), color = palette.secondaryText)
-                    Text(toAddress.trim(), fontFamily = FontFamily.Monospace, maxLines = 2, overflow = TextOverflow.Ellipsis)
+                    Text(toAddress.trim(), fontFamily = FontFamily.Monospace)
                     sweepPreview?.let {
                         Spacer(Modifier.height(8.dp))
                         Text(stringResource(R.string.label_amount), color = palette.secondaryText)
@@ -2430,7 +2445,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         val authorizedIntent = approvedIntent
                         val approvedMaxFee = sweepPreview?.fee ?: return@PrimaryActionButton
                         val approvedDestination = toAddress.trim()
-                        isSending = true
+                        sendAuthPending = true
                         showMaxConfirmation = false
                         errorText = null
                         infoText = null
@@ -2473,7 +2488,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     t.message ?: t.javaClass.simpleName
                                 }
                             } finally {
-                                isSending = false
+                                sendAuthPending = false
                             }
                         }
                     },

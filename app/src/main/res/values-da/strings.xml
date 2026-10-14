@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrisk eller enhedsgodkendelse med adgangskode er ikke tilgængelig</string>
     <string name="authentication_failed">Godkendelse mislykkedes</string>
     <string name="biometric_permission_missing">Biometrisk tilladelse mangler eller er ikke tilgængelig</string>
-    <string name="starting_height_fast_fmt">Starthøjde (hurtig): %1$d (nodens target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Starthøjde (hurtig): %1$d (nodens height − 10)</string>
     <string name="word_number_fmt">Ord #%1$d</string>
     <string name="scanned_to_block_fmt">Scannet til blok %1$s</string>
     <string name="fetching_initial_fmt">Henter indledende blokke fra %1$s</string>

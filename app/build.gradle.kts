@@ -18,6 +18,7 @@ android {
         targetSdk = 36
         versionCode = 3
         versionName = "1.0.2"
+        ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "NEXAWAL_TEST_MNEMONIC", "\"\"")
@@ -151,7 +152,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    // Debug tooling already resolves Foundation 1.9.2 at runtime. Match it at
-    // compile time too: the experimental 1.7 FlowRow ABI is not compatible.
-    debugImplementation("androidx.compose.foundation:foundation-layout:1.9.2")
 }

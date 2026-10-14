@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Биометрикалык же түзмөк ишеним каттары боюнча аутентификация жеткиликсиз</string>
     <string name="authentication_failed">Аутентификация ишке ашпады</string>
     <string name="biometric_permission_missing">Биометрикалык уруксат жок же жеткиликсиз</string>
-    <string name="starting_height_fast_fmt">Баштапкы бийиктик (тез): %1$d (түйүндүн target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Баштапкы бийиктик (тез): %1$d (түйүндүн height − 10)</string>
     <string name="word_number_fmt">Сөз №%1$d</string>
     <string name="scanned_to_block_fmt">%1$s-блокко чейин скандалды</string>
     <string name="fetching_initial_fmt">%1$s-дан баштапкы блоктор алынып жатат</string>

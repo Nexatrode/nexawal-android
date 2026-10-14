@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biyometrik veya cihaz kimlik bilgisi doğrulaması kullanılamıyor</string>
     <string name="authentication_failed">Kimlik doğrulama başarısız oldu</string>
     <string name="biometric_permission_missing">Biyometrik izin eksik veya kullanılamıyor</string>
-    <string name="starting_height_fast_fmt">Başlangıç yüksekliği (hızlı): %1$d (düğüm target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Başlangıç yüksekliği (hızlı): %1$d (düğüm height − 10)</string>
     <string name="word_number_fmt">Kelime #%1$d</string>
     <string name="scanned_to_block_fmt">Blok %1$s\'e kadar tarandı</string>
     <string name="fetching_initial_fmt">%1$s\'den ilk bloklar alınıyor</string>

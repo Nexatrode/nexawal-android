@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Биометрично удостоверяване или удостоверяване с данни на устройството не е достъпно</string>
     <string name="authentication_failed">Удостоверяването не бе успешно</string>
     <string name="biometric_permission_missing">Разрешението за биометрия липсва или не е достъпно</string>
-    <string name="starting_height_fast_fmt">Начална височина (бърза): %1$d (target_height на възела − 10)</string>
+    <string name="starting_height_fast_fmt">Начална височина (бърза): %1$d (height на възела − 10)</string>
     <string name="word_number_fmt">Дума №%1$d</string>
     <string name="scanned_to_block_fmt">Сканирано до блок %1$s</string>
     <string name="fetching_initial_fmt">Извличане на начални блокове от %1$s</string>

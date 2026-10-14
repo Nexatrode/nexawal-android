@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrische verificatie of verificatie met apparaatgegevens is niet beschikbaar</string>
     <string name="authentication_failed">Verificatie mislukt</string>
     <string name="biometric_permission_missing">Biometrische rechten ontbreken of zijn niet beschikbaar</string>
-    <string name="starting_height_fast_fmt">Starthoogte (snel): %1$d (node target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Starthoogte (snel): %1$d (node height − 10)</string>
     <string name="word_number_fmt">Woord #%1$d</string>
     <string name="scanned_to_block_fmt">Gescand tot blok %1$s</string>
     <string name="fetching_initial_fmt">Eerste blokken ophalen van %1$s</string>

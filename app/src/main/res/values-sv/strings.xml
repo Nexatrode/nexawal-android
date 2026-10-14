@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrisk autentisering eller autentisering med enhetsuppgifter är inte tillgänglig</string>
     <string name="authentication_failed">Autentiseringen misslyckades</string>
     <string name="biometric_permission_missing">Behörighet för biometri saknas eller är inte tillgänglig</string>
-    <string name="starting_height_fast_fmt">Starthöjd (snabb): %1$d (nodens target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Starthöjd (snabb): %1$d (nodens height − 10)</string>
     <string name="word_number_fmt">Ord nr %1$d</string>
     <string name="scanned_to_block_fmt">Skannad till block %1$s</string>
     <string name="fetching_initial_fmt">Hämtar initiala block från %1$s</string>

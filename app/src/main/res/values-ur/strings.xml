@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">بایومیٹرک یا ڈیوائس کریڈینشل تصدیق دستیاب نہیں ہے</string>
     <string name="authentication_failed">تصدیق ناکام ہو گئی</string>
     <string name="biometric_permission_missing">بایومیٹرک اجازت موجود نہیں یا دستیاب نہیں ہے</string>
-    <string name="starting_height_fast_fmt">ابتدائی ہائٹ (فاسٹ): %1$d (نوڈ target_height − 10)</string>
+    <string name="starting_height_fast_fmt">ابتدائی ہائٹ (فاسٹ): %1$d (نوڈ height − 10)</string>
     <string name="word_number_fmt">لفظ #%1$d</string>
     <string name="scanned_to_block_fmt">بلاک %1$s تک اسکین ہو گیا</string>
     <string name="fetching_initial_fmt">%1$s سے ابتدائی بلاکس حاصل کیے جا رہے ہیں</string>

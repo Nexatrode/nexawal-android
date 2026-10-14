@@ -23,6 +23,16 @@ import androidx.core.content.ContextCompat
 class WalletSyncForegroundService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
+    override fun onTimeout(startId: Int, fgsType: Int) {
+        // Stop the service immediately; cancellation/checkpoint persistence drains in the
+        // retained manager. Waiting for a scan here would exceed Android's shutdown grace.
+        try {
+            runCatching { (applicationContext as? NexaWalApp)?.walletManager?.cancelRefresh() }
+        } finally {
+            stopForegroundAndSelf()
+        }
+    }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_STOP -> {

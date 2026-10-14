@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Die biometrische Authentifizierung oder Authentifizierung per Gerätecode ist nicht verfügbar</string>
     <string name="authentication_failed">Authentifizierung fehlgeschlagen</string>
     <string name="biometric_permission_missing">Die biometrische Berechtigung fehlt oder ist nicht verfügbar</string>
-    <string name="starting_height_fast_fmt">Starthöhe (schnell): %1$d (target_height des Node − 10)</string>
+    <string name="starting_height_fast_fmt">Starthöhe (schnell): %1$d (height des Node − 10)</string>
     <string name="word_number_fmt">Wort Nr. %1$d</string>
     <string name="scanned_to_block_fmt">Gescannt bis Block %1$s</string>
     <string name="fetching_initial_fmt">Erste Blöcke werden ab %1$s abgerufen</string>

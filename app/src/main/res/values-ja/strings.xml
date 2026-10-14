@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">生体認証またはデバイス資格情報認証は利用できません</string>
     <string name="authentication_failed">認証に失敗しました</string>
     <string name="biometric_permission_missing">生体認証の権限がないか、利用できません</string>
-    <string name="starting_height_fast_fmt">開始高さ(高速):%1$d(ノードのtarget_height − 10)</string>
+    <string name="starting_height_fast_fmt">開始高さ(高速):%1$d(ノードのheight − 10)</string>
     <string name="word_number_fmt">単語 #%1$d</string>
     <string name="scanned_to_block_fmt">ブロック %1$s までスキャン済み</string>
     <string name="fetching_initial_fmt">%1$s から初期ブロックを取得中</string>

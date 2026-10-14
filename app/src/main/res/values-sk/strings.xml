@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrické overenie alebo overenie prístupovými údajmi zariadenia nie je k dispozícii</string>
     <string name="authentication_failed">Overenie sa nepodarilo</string>
     <string name="biometric_permission_missing">Chýba oprávnenie na biometriu alebo nie je k dispozícii</string>
-    <string name="starting_height_fast_fmt">Počiatočná výška (rýchla): %1$d (target_height uzla − 10)</string>
+    <string name="starting_height_fast_fmt">Počiatočná výška (rýchla): %1$d (height uzla − 10)</string>
     <string name="word_number_fmt">Slovo #%1$d</string>
     <string name="scanned_to_block_fmt">Naskenované do bloku %1$s</string>
     <string name="fetching_initial_fmt">Získavanie počiatočných blokov od %1$s</string>

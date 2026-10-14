@@ -7,14 +7,14 @@ import java.io.InputStream
 object BoundedRateBody {
     const val LIMIT = 16_384
 
-    fun read(input: InputStream, contentLength: Long = -1): String {
-        require(contentLength <= LIMIT) { "rates response too large" }
+    fun read(input: InputStream, contentLength: Long = -1, limit: Int = LIMIT): String {
+        require(limit in 1 until Int.MAX_VALUE && contentLength <= limit) { "response too large" }
         val output = ByteArrayOutputStream()
         val buffer = ByteArray(4096)
         while (true) {
-            val count = input.read(buffer, 0, minOf(buffer.size, LIMIT + 1 - output.size()))
+            val count = input.read(buffer, 0, minOf(buffer.size, limit + 1 - output.size()))
             if (count < 0) break
-            require(output.size() + count <= LIMIT) { "rates response too large" }
+            require(output.size() + count <= limit) { "response too large" }
             output.write(buffer, 0, count)
         }
         return output.toString(Charsets.UTF_8.name())

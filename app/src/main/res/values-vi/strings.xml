@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Xác thực bằng sinh trắc học hoặc thông tin đăng nhập thiết bị không khả dụng</string>
     <string name="authentication_failed">Xác thực không thành công</string>
     <string name="biometric_permission_missing">Thiếu quyền sinh trắc học hoặc không khả dụng</string>
-    <string name="starting_height_fast_fmt">Độ cao bắt đầu (nhanh): %1$d (target_height của node − 10)</string>
+    <string name="starting_height_fast_fmt">Độ cao bắt đầu (nhanh): %1$d (height của node − 10)</string>
     <string name="word_number_fmt">Từ số %1$d</string>
     <string name="scanned_to_block_fmt">Đã quét đến khối %1$s</string>
     <string name="fetching_initial_fmt">Đang lấy các khối ban đầu từ %1$s</string>

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Autentificarea biometrică sau prin credențiale de dispozitiv nu este disponibilă</string>
     <string name="authentication_failed">Autentificarea a eșuat</string>
     <string name="biometric_permission_missing">Permisiunea biometrică este lipsă sau indisponibilă</string>
-    <string name="starting_height_fast_fmt">Înălțime de start (rapidă): %1$d (target_height al nodului − 10)</string>
+    <string name="starting_height_fast_fmt">Înălțime de start (rapidă): %1$d (height al nodului − 10)</string>
     <string name="word_number_fmt">Cuvântul #%1$d</string>
     <string name="scanned_to_block_fmt">Scanat până la blocul %1$s</string>
     <string name="fetching_initial_fmt">Se preiau blocurile inițiale de la %1$s</string>

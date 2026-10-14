@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Autentifikazio biometrikoa edo gailuaren kredentzialena ez dago erabilgarri</string>
     <string name="authentication_failed">Autentifikazioak huts egin du</string>
     <string name="biometric_permission_missing">Baimen biometrikoa falta da edo ez dago erabilgarri</string>
-    <string name="starting_height_fast_fmt">Hasierako altuera (azkarra): %1$d (nodoaren target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Hasierako altuera (azkarra): %1$d (nodoaren height − 10)</string>
     <string name="word_number_fmt">Hitza #%1$d</string>
     <string name="scanned_to_block_fmt">Eskaneatuta %1$s blokeora arte</string>
     <string name="fetching_initial_fmt">Hasierako blokeak eskuratzen: %1$s</string>

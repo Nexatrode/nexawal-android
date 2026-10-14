@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Pengesahan biometrik atau kelayakan peranti tidak tersedia</string>
     <string name="authentication_failed">Pengesahan gagal</string>
     <string name="biometric_permission_missing">Kebenaran biometrik tiada atau tidak tersedia</string>
-    <string name="starting_height_fast_fmt">Ketinggian permulaan (pantas): %1$d (target_height node − 10)</string>
+    <string name="starting_height_fast_fmt">Ketinggian permulaan (pantas): %1$d (height node − 10)</string>
     <string name="word_number_fmt">Perkataan #%1$d</string>
     <string name="scanned_to_block_fmt">Diimbas hingga blok %1$s</string>
     <string name="fetching_initial_fmt">Mendapatkan blok awal daripada %1$s</string>

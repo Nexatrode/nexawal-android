@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Կենսաչափական կամ սարքի հավատարմագրերով նույնականացումը հասանելի չէ</string>
     <string name="authentication_failed">Նույնականացումը ձախողվեց</string>
     <string name="biometric_permission_missing">Կենսաչափական թույլտվությունը բացակայում է կամ հասանելի չէ</string>
-    <string name="starting_height_fast_fmt">Մեկնարկային բարձրություն (արագ)՝ %1$d (հանգույցի target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Մեկնարկային բարձրություն (արագ)՝ %1$d (հանգույցի height − 10)</string>
     <string name="word_number_fmt">Բառ #%1$d</string>
     <string name="scanned_to_block_fmt">Սկանավորված է մինչև բլոկ %1$s</string>
     <string name="fetching_initial_fmt">Ստացվում են սկզբնական բլոկները %1$s-ից</string>

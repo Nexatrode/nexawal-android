@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">बायोमेट्रिक या डिवाइस क्रेडेंशियल ऑथेंटिकेशन उपलब्ध नहीं है</string>
     <string name="authentication_failed">ऑथेंटिकेशन विफल</string>
     <string name="biometric_permission_missing">बायोमेट्रिक परमिशन गुम है या उपलब्ध नहीं है</string>
-    <string name="starting_height_fast_fmt">स्टार्टिंग हाइट (फास्ट): %1$d (नोड target_height − 10)</string>
+    <string name="starting_height_fast_fmt">स्टार्टिंग हाइट (फास्ट): %1$d (नोड height − 10)</string>
     <string name="word_number_fmt">शब्द #%1$d</string>
     <string name="scanned_to_block_fmt">ब्लॉक %1$s तक स्कैन किया गया</string>
     <string name="fetching_initial_fmt">%1$s से प्रारंभिक ब्लॉक प्राप्त किए जा रहे हैं</string>

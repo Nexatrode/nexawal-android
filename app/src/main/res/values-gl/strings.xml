@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">A autenticación biométrica ou por credenciais do dispositivo non está dispoñible</string>
     <string name="authentication_failed">Fallou a autenticación</string>
     <string name="biometric_permission_missing">Falta o permiso biométrico ou non está dispoñible</string>
-    <string name="starting_height_fast_fmt">Altura inicial (rápida): %1$d (target_height do nodo − 10)</string>
+    <string name="starting_height_fast_fmt">Altura inicial (rápida): %1$d (height do nodo − 10)</string>
     <string name="word_number_fmt">Palabra #%1$d</string>
     <string name="scanned_to_block_fmt">Escaneado ata o bloque %1$s</string>
     <string name="fetching_initial_fmt">Obtendo os bloques iniciais desde %1$s</string>

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -75,6 +76,12 @@ class MainActivity : ComponentActivity() {
         scheduleIdleLock()
     }
 
+    override fun onDestroy() {
+        // Configuration changes retain the manager/send worker, not this Activity's timer.
+        sessionHandler.removeCallbacks(idleLockAction)
+        super.onDestroy()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Seeds, balances and history must never enter screenshots, casting or Recents snapshots.
@@ -125,11 +132,14 @@ class MainActivity : ComponentActivity() {
                 }
                 val scope = rememberCoroutineScope()
                 var unlockError by remember { mutableStateOf<String?>(null) }
+                var showRecoveryReset by remember { mutableStateOf(false) }
+                var resettingWallet by remember { mutableStateOf(false) }
 
                 SyncLifecycleEffects(
                     walletManager = walletManager,
                     refreshInProgress = state.refreshInProgress,
                     lockProtectedSession = { lockProtectedSession(closeCore = false) },
+                    changingConfigurations = { this@MainActivity.isChangingConfigurations },
                 )
 
                 suspend fun unlockWallet() {
@@ -193,6 +203,10 @@ class MainActivity : ComponentActivity() {
                             Text(stringResource(if (access == WalletAccessGate.State.UNLOCKING)
                                 R.string.unlocking_ellipsis else R.string.unlock_existing_wallet))
                         }
+                        Button(enabled = access == WalletAccessGate.State.LOCKED && !resettingWallet && !state.sendInProgress,
+                            onClick = { showRecoveryReset = true }) {
+                            Text(stringResource(R.string.replace_wallet_title))
+                        }
                     }
                 } else if (state.walletId != null) {
                     AppScaffold(walletManager = walletManager, onHistoryExportReady = { file, address ->
@@ -209,6 +223,37 @@ class MainActivity : ComponentActivity() {
                 } else {
                     SecretTextInput { WalletCreationScreen(walletManager = walletManager) }
                 }
+                if (showRecoveryReset) {
+                    AlertDialog(onDismissRequest = { if (!resettingWallet) showRecoveryReset = false },
+                        title = { Text(stringResource(R.string.replace_wallet_title)) },
+                        text = { Text(stringResource(R.string.replace_wallet_message)) },
+                        confirmButton = { Button(enabled = !resettingWallet, onClick = {
+                            resettingWallet = true
+                            scope.launch {
+                                try {
+                                    val token = walletManager.sessionAuthority.token()
+                                    com.nexatrode.nexawal.logic.RecoveryReset.run(walletManager.sessionAuthority, token,
+                                        authenticate = {
+                                            if (DeviceAuthGate.isAvailable(this@MainActivity)) {
+                                                DeviceAuthGate.authenticate(this@MainActivity,
+                                                    getString(R.string.replace_wallet_title), getString(R.string.biometric_unlock_subtitle))
+                                            }
+                                        }, reset = {
+                                            walletManager.resetStoredWalletForRecovery()
+                                            showRecoveryReset = false
+                                        }, foreground = { lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) },
+                                        openSetup = { accessGate.unlock(authenticate = {}, openWallet = {}) })
+                                } catch (cancelled: CancellationException) {
+                                    throw cancelled
+                                } catch (error: Exception) {
+                                    unlockError = error.message ?: getString(R.string.authentication_failed)
+                                } finally { resettingWallet = false }
+                            }
+                        }) { Text(stringResource(R.string.action_replace)) } },
+                        dismissButton = { Button(enabled = !resettingWallet,
+                            onClick = { showRecoveryReset = false }) { Text(stringResource(R.string.action_cancel)) } },
+                    )
+                }
             }
         }
     }
@@ -224,6 +269,7 @@ private fun SyncLifecycleEffects(
     walletManager: WalletManager,
     refreshInProgress: Boolean,
     lockProtectedSession: () -> Unit,
+    changingConfigurations: () -> Boolean,
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
     val notificationPermission = rememberPermissionState(Manifest.permission.POST_NOTIFICATIONS)
@@ -245,6 +291,7 @@ private fun SyncLifecycleEffects(
                     }
                 }
                 Lifecycle.Event.ON_STOP -> {
+                    if (changingConfigurations()) return@LifecycleEventObserver
                     walletManager.stopForegroundCatchUp()
                     walletManager.fiatPrices.onBackground()
                     walletManager.snapshotState()

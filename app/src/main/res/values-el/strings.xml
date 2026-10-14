@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Ο βιομετρικός έλεγχος ή ο έλεγχος με διαπιστευτήρια συσκευής δεν είναι διαθέσιμος</string>
     <string name="authentication_failed">Ο έλεγχος ταυτότητας απέτυχε</string>
     <string name="biometric_permission_missing">Η άδεια βιομετρικού ελέγχου λείπει ή δεν είναι διαθέσιμη</string>
-    <string name="starting_height_fast_fmt">Αρχικό ύψος (ταχύ): %1$d (target_height κόμβου − 10)</string>
+    <string name="starting_height_fast_fmt">Αρχικό ύψος (ταχύ): %1$d (height κόμβου − 10)</string>
     <string name="word_number_fmt">Λέξη #%1$d</string>
     <string name="scanned_to_block_fmt">Σαρώθηκε έως το μπλοκ %1$s</string>
     <string name="fetching_initial_fmt">Λήψη αρχικών μπλοκ από %1$s</string>

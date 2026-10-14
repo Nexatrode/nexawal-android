@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Autentikasi biometrik atau kredensial perangkat tidak tersedia</string>
     <string name="authentication_failed">Autentikasi gagal</string>
     <string name="biometric_permission_missing">Izin biometrik tidak ada atau tidak tersedia</string>
-    <string name="starting_height_fast_fmt">Tinggi awal (cepat): %1$d (target_height node − 10)</string>
+    <string name="starting_height_fast_fmt">Tinggi awal (cepat): %1$d (height node − 10)</string>
     <string name="word_number_fmt">Kata #%1$d</string>
     <string name="scanned_to_block_fmt">Dipindai sampai blok %1$s</string>
     <string name="fetching_initial_fmt">Mengambil blok awal dari %1$s</string>

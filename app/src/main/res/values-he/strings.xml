@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">אימות ביומטרי או אימות פרטי כניסה של המכשיר אינו זמין</string>
     <string name="authentication_failed">האימות נכשל</string>
     <string name="biometric_permission_missing">הרשאת ביומטריה חסרה או לא זמינה</string>
-    <string name="starting_height_fast_fmt">גובה התחלה (מהיר): %1$d (target_height של הצומת − 10)</string>
+    <string name="starting_height_fast_fmt">גובה התחלה (מהיר): %1$d (height של הצומת − 10)</string>
     <string name="word_number_fmt">מילה מספר %1$d</string>
     <string name="scanned_to_block_fmt">נסרק עד בלוק %1$s</string>
     <string name="fetching_initial_fmt">מביא בלוקים ראשוניים מ-%1$s</string>

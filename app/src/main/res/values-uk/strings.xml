@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Автентифікація за біометрією або обліковими даними пристрою недоступна</string>
     <string name="authentication_failed">Автентифікація не вдалася</string>
     <string name="biometric_permission_missing">Дозвіл на біометрію відсутній або недоступний</string>
-    <string name="starting_height_fast_fmt">Початкова висота (швидка): %1$d (target_height вузла − 10)</string>
+    <string name="starting_height_fast_fmt">Початкова висота (швидка): %1$d (height вузла − 10)</string>
     <string name="word_number_fmt">Слово №%1$d</string>
     <string name="scanned_to_block_fmt">Просканувано до блоку %1$s</string>
     <string name="fetching_initial_fmt">Отримання початкових блоків з %1$s</string>

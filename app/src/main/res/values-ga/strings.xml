@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Níl fíordheimhniú bithmhéadrach nó dintiúir gléasta ar fáil</string>
     <string name="authentication_failed">Theip ar fhíordheimhniú</string>
     <string name="biometric_permission_missing">Tá cead bithmhéadrach ar iarraidh nó níl sé ar fáil</string>
-    <string name="starting_height_fast_fmt">Airde tosaigh (tapa): %1$d (target_height an nóid − 10)</string>
+    <string name="starting_height_fast_fmt">Airde tosaigh (tapa): %1$d (height an nóid − 10)</string>
     <string name="word_number_fmt">Focal #%1$d</string>
     <string name="scanned_to_block_fmt">Scanta go bloc %1$s</string>
     <string name="fetching_initial_fmt">Ag fáil na bloic tosaigh ó %1$s</string>

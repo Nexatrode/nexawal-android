@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">L\'authentification biométrique ou par identifiants de l\'appareil n\'est pas disponible</string>
     <string name="authentication_failed">Authentification échouée</string>
     <string name="biometric_permission_missing">L\'autorisation biométrique est manquante ou indisponible</string>
-    <string name="starting_height_fast_fmt">Hauteur de départ (rapide) : %1$d (hauteur cible du nœud target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Hauteur de départ (rapide) : %1$d (hauteur cible du nœud height − 10)</string>
     <string name="word_number_fmt">Mot n° %1$d</string>
     <string name="scanned_to_block_fmt">Analysé jusqu\'au bloc %1$s</string>
     <string name="fetching_initial_fmt">Récupération des premiers blocs depuis %1$s</string>

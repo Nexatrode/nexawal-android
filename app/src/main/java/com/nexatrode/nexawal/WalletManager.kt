@@ -163,6 +163,8 @@ class WalletManager(
         val lastSweepPreview: SendJson.SweepPreviewResult? = null,
         val lastSweepSendResult: SendJson.SweepSendResult? = null,
         val lastSendOrSweepAtMs: Long? = null,
+        val sendInProgress: Boolean = false,
+        val sendError: String? = null,
 
         // Persistence helpers for the "single wallet" slot
         val hasStoredWallet: Boolean? = null,
@@ -215,7 +217,7 @@ class WalletManager(
     @Volatile private var cleanupJob: Job? = null
     @Volatile private var cleanupFailure: Throwable? = null
     private val cachePersistenceSuppressed = AtomicBoolean(false)
-    private val sendGate = SendGate()
+    private val retainedSend = com.nexatrode.nexawal.logic.RetainedSend(scope)
     /** Plaintext metadata exists only while the app session is unlocked. */
     @Volatile private var unlockedMetadata: StoredWalletMetadata? = null
     @Volatile private var metadataAuthorityToken: Long? = null
@@ -258,6 +260,26 @@ class WalletManager(
      * If the user has edited Settings, state.nodeUrl will take precedence.
      */
     fun currentNodeUrl(): String = _state.value.nodeUrl ?: defaultNodeUrl()
+
+    /** Same scan routing/proxy policy as sync; bounded response and whole-call timeout. */
+    suspend fun suggestedCreateRestoreHeight(): Long = withContext(ioDispatcher) {
+        val client = buildDaemonHttpClient(forBroadcast = false).newBuilder()
+            .callTimeout(5, TimeUnit.SECONDS).build()
+        val request = okhttp3.Request.Builder()
+            .url(resolveScanNodeUrl().trimEnd('/') + "/get_info").build()
+        client.newCall(request).execute().use { response ->
+            check(response.isSuccessful) { "get_info failed: HTTP ${response.code}" }
+            val body = response.body ?: error("get_info response is empty")
+            val raw = com.nexatrode.nexawal.logic.BoundedRateBody.read(
+                body.byteStream(), body.contentLength(), limit = 64 * 1024,
+            )
+            val root = JSONObject(raw)
+            val info = root.optJSONObject("result") ?: root
+            com.nexatrode.nexawal.logic.RestoreHeightPolicy.suggestedCreateHeight(
+                info.optLong("height", 0), info.optLong("target_height", 0),
+            )
+        }
+    }
 
     private fun resolveBroadcastNodeUrl(): String {
         return MoneroConfig.broadcastNodeUrl(appContext, currentNodeUrl())
@@ -309,27 +331,40 @@ class WalletManager(
         if (MoneroConfig.shouldUseI2pHttpProxy(appContext, forBroadcast = forBroadcast)) {
             val proxy = MoneroConfig.i2pHttpProxyAddress(appContext)
             val hostPort = proxy?.let { parseProxyHostPort(it) }
-            if (hostPort != null) {
-                builder.proxy(
-                    java.net.Proxy(
-                        java.net.Proxy.Type.HTTP,
-                        java.net.InetSocketAddress(hostPort.first, hostPort.second),
-                    )
+                ?: error("The configured I2P HTTP proxy is invalid")
+            builder.proxy(
+                java.net.Proxy(
+                    java.net.Proxy.Type.HTTP,
+                    java.net.InetSocketAddress(hostPort.first, hostPort.second),
                 )
-            }
+            )
+        } else {
+            builder.proxy(java.net.Proxy.NO_PROXY)
         }
         return builder.build()
     }
 
     private suspend fun <T> withSendLock(block: suspend () -> T): T {
         check(!cleanupPending.get()) { "Wallet session cleanup is still pending" }
-        if (!sendGate.tryBegin()) {
-            throw IllegalStateException(appContext.getString(R.string.send_already_in_progress))
-        }
-        return try {
+        check(!sessionLocked) { appContext.getString(R.string.authentication_failed) }
+        val token = sessionAuthority.token()
+        return retainedSend.run(onBegin = {
+            _state.update { it.copy(sendInProgress = true, sendError = null,
+                lastSendResult = null, lastSweepSendResult = null,
+                snapshotEpoch = java.util.UUID.randomUUID().toString()) }
+        }, onFinish = { failure ->
+            val message = when (failure) {
+                null -> null
+                is com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException ->
+                    appContext.getString(R.string.send_fee_increased_unapproved)
+                is com.nexatrode.nexawal.logic.SendSafety.PreviousPaymentRecovered ->
+                    appContext.getString(R.string.send_previous_payment_recovered) + "\nTXID: ${failure.txid}"
+                else -> failure.message ?: failure.javaClass.simpleName
+            }
+            _state.update { it.copy(sendInProgress = false, sendError = message) }
+        }) {
+            sessionAuthority.check(token)
             block()
-        } finally {
-            sendGate.end()
         }
     }
 
@@ -1655,8 +1690,8 @@ class WalletManager(
      * Send a transaction (single destination).
      *
      * Exact (unfiltered) sends use prepare → durable persist → relay so a crash between
-     * signing and broadcast can be retried idempotently. Filtered / sweep paths still use
-     * fire-and-forget send (no prepare-with-filter / prepare-sweep in the core ABI yet).
+     * signing and broadcast can be retried idempotently. Filtered sends and sweeps use
+     * the same durable prepare/journal/relay path.
      */
     suspend fun send(
         toAddress: String,
@@ -2708,22 +2743,27 @@ class WalletManager(
      *
      * This mirrors iOS "Replace existing wallet?" destructive flow.
      */
+    suspend fun resetStoredWalletForRecovery() {
+        check(!retainedSend.isRunning()) { appContext.getString(R.string.send_already_in_progress) }
+        closeProtectedSession()
+        awaitSessionCleanup()
+        clearStoredWallet()
+        withContext(ioDispatcher) { MnemonicCipher.clearWalletKeysForRecovery() }
+    }
+
     suspend fun clearStoredWallet() = withContext(ioDispatcher) {
+        check(!retainedSend.isRunning()) { appContext.getString(R.string.send_already_in_progress) }
         awaitSessionCleanup()
         // Preserve signed recovery data before deleting metadata; failure must stop replacement.
         CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = true))
         CacheFileIO.quarantineRejected(preparedFile(DEFAULT_WALLET_ID, mainnet = false))
-        runCatching {
-            val m = metadataFile()
-            if (m.exists()) m.delete()
-        }
-        runCatching {
-            val c = cacheFile(DEFAULT_WALLET_ID, mainnet = true)
-            if (c.exists()) c.delete()
-        }
-        runCatching {
-            val r = receiveSubaddressesFile()
-            if (r.exists()) r.delete()
+        // Keep the encrypted seed if cleanup cannot remove scan files. No silent success
+        // and no recursive deletion: these are exact, validated single-wallet file paths.
+        for (file in listOf(cacheFile(DEFAULT_WALLET_ID, mainnet = true),
+            cacheFile(DEFAULT_WALLET_ID, mainnet = false), receiveSubaddressesFile(), metadataFile())) {
+            if (file.exists()) {
+                check(file.isFile && file.delete()) { "Could not remove stored wallet file" }
+            }
         }
 
         _state.value = _state.value.copy(
@@ -2736,6 +2776,7 @@ class WalletManager(
             transfersParseError = null,
             cacheInfo = null,
             hasStoredWallet = false,
+            lastSendResult = null, lastSweepSendResult = null, sendError = null,
             lastPersistedAtMs = System.currentTimeMillis(),
         )
         MoneroConfig.setTrustedScannedHeight(appContext, 0L)

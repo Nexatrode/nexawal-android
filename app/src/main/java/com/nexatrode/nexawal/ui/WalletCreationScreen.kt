@@ -54,6 +54,7 @@ import com.nexatrode.nexawal.R
 import com.nexatrode.nexawal.WalletManager
 import com.nexatrode.nexawal.walletcore.WalletCore
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -194,8 +195,7 @@ fun WalletCreationScreen(
         // Fetch suggested restore height for create mode (best-effort)
         refreshSuggestedRestoreHeightIfNeeded(
             setupMode = setupMode,
-            isMainnet = isMainnet.value,
-            nodeUrl = walletManager.currentNodeUrl(),
+            fetchHeight = { walletManager.suggestedCreateRestoreHeight() },
             isFetching = isFetchingSuggestedHeight,
             suggestedHeight = suggestedRestoreHeight,
             suggestedError = suggestedHeightError,
@@ -206,8 +206,7 @@ fun WalletCreationScreen(
     LaunchedEffect(setupMode, isMainnet.value) {
         refreshSuggestedRestoreHeightIfNeeded(
             setupMode = setupMode,
-            isMainnet = isMainnet.value,
-            nodeUrl = walletManager.currentNodeUrl(),
+            fetchHeight = { walletManager.suggestedCreateRestoreHeight() },
             isFetching = isFetchingSuggestedHeight,
             suggestedHeight = suggestedRestoreHeight,
             suggestedError = suggestedHeightError,
@@ -691,8 +690,7 @@ fun WalletCreationScreen(
                             nodeSaveStatus.value = savedNodeText
                             refreshSuggestedRestoreHeightIfNeeded(
                                 setupMode = setupMode,
-                                isMainnet = isMainnet.value,
-                                nodeUrl = walletManager.currentNodeUrl(),
+                                fetchHeight = { walletManager.suggestedCreateRestoreHeight() },
                                 isFetching = isFetchingSuggestedHeight,
                                 suggestedHeight = suggestedRestoreHeight,
                                 suggestedError = suggestedHeightError,
@@ -785,8 +783,7 @@ private fun randomChallengePositions(wordCount: Int, count: Int = 3): List<Int> 
 
 private suspend fun refreshSuggestedRestoreHeightIfNeeded(
     setupMode: WalletSetupMode,
-    isMainnet: Boolean,
-    nodeUrl: String,
+    fetchHeight: suspend () -> Long,
     isFetching: MutableState<Boolean>,
     suggestedHeight: MutableState<Long?>,
     suggestedError: MutableState<String?>,
@@ -804,51 +801,15 @@ private suspend fun refreshSuggestedRestoreHeightIfNeeded(
     suggestedError.value = null
     suggestedHeight.value = null
 
-    // Minimal /get_info call (mirrors iOS MoneroDaemonClient.getInfo usage).
-    // We only need target_height to suggest restoreHeight = target_height - 10.
     try {
-        val tip = fetchMoneroTargetHeight(nodeUrl)
-        val suggested = if (tip > 10L) tip - 10L else 0L
-        suggestedHeight.value = suggested
-    } catch (t: Throwable) {
+        suggestedHeight.value = fetchHeight()
+    } catch (cancelled: CancellationException) {
+        throw cancelled
+    } catch (_: Exception) {
         // Non-fatal: this is only used to suggest a fast height.
         suggestedHeight.value = null
         suggestedError.value = fetchFailedMessage
     } finally {
         isFetching.value = false
-    }
-}
-
-/**
- * Fetch `target_height` from a monerod daemon using `/get_info`.
- *
- * This intentionally avoids introducing a full HTTP client dependency (Retrofit/OkHttp) for bring-up.
- */
-private suspend fun fetchMoneroTargetHeight(baseUrl: String): Long {
-    return withContext(Dispatchers.IO) {
-        val url = java.net.URL(baseUrl.trimEnd('/') + "/get_info")
-        val conn = (url.openConnection() as java.net.HttpURLConnection).apply {
-            connectTimeout = 5_000
-            readTimeout = 5_000
-            requestMethod = "GET"
-            doInput = true
-        }
-
-        conn.connect()
-        val code = conn.responseCode
-        if (code !in 200..299) {
-            throw IllegalStateException("get_info failed: HTTP $code")
-        }
-
-        val body = conn.inputStream.bufferedReader().use { it.readText() }
-
-        // Minimal parse: find `"target_height": <number>`
-        val key = "\"target_height\""
-        val idx = body.indexOf(key)
-        if (idx < 0) throw IllegalStateException("target_height not found")
-        val colon = body.indexOf(':', idx)
-        if (colon < 0) throw IllegalStateException("target_height parse error")
-        val end = body.indexOfAny(charArrayOf(',', '\n', '\r', '}'), startIndex = colon + 1).let { if (it < 0) body.length else it }
-        body.substring(colon + 1, end).trim().toLong()
     }
 }

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">احراز هویت بیومتریک یا اطلاعات ورود دستگاه در دسترس نیست</string>
     <string name="authentication_failed">احراز هویت ناموفق بود</string>
     <string name="biometric_permission_missing">مجوز بیومتریک وجود ندارد یا در دسترس نیست</string>
-    <string name="starting_height_fast_fmt">ارتفاع شروع (سریع): %1$d (target_height گره − 10)</string>
+    <string name="starting_height_fast_fmt">ارتفاع شروع (سریع): %1$d (height گره − 10)</string>
     <string name="word_number_fmt">کلمه #%1$d</string>
     <string name="scanned_to_block_fmt">اسکن شده تا بلوک %1$s</string>
     <string name="fetching_initial_fmt">در حال دریافت بلوک‌های اولیه از %1$s</string>

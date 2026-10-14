@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrinen tai laitteen tunnistetietojen todennus ei ole käytettävissä</string>
     <string name="authentication_failed">Todennus epäonnistui</string>
     <string name="biometric_permission_missing">Biometrinen lupa puuttuu tai ei ole käytettävissä</string>
-    <string name="starting_height_fast_fmt">Aloituskorkeus (nopea): %1$d (solmun target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Aloituskorkeus (nopea): %1$d (solmun height − 10)</string>
     <string name="word_number_fmt">Sana #%1$d</string>
     <string name="scanned_to_block_fmt">Skannattu lohkoon %1$s</string>
     <string name="fetching_initial_fmt">Haetaan alkulohkoja lohkosta %1$s</string>

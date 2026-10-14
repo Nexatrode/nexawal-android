@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">生物识别或设备凭据验证不可用</string>
     <string name="authentication_failed">身份验证失败</string>
     <string name="biometric_permission_missing">缺少生物识别权限或权限不可用</string>
-    <string name="starting_height_fast_fmt">起始高度(快速):%1$d(节点 target_height − 10)</string>
+    <string name="starting_height_fast_fmt">起始高度(快速):%1$d(节点 height − 10)</string>
     <string name="word_number_fmt">第 %1$d 个词</string>
     <string name="scanned_to_block_fmt">已扫描至区块 %1$s</string>
     <string name="fetching_initial_fmt">正在从 %1$s 获取初始区块</string>

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrično preverjanje ali preverjanje s poverilnico naprave ni na voljo</string>
     <string name="authentication_failed">Preverjanje ni uspelo</string>
     <string name="biometric_permission_missing">Dovoljenje za biometrijo manjka ali ni na voljo</string>
-    <string name="starting_height_fast_fmt">Začetna višina (hitro): %1$d (target_height vozlišča − 10)</string>
+    <string name="starting_height_fast_fmt">Začetna višina (hitro): %1$d (height vozlišča − 10)</string>
     <string name="word_number_fmt">Beseda #%1$d</string>
     <string name="scanned_to_block_fmt">Preiskano do bloka %1$s</string>
     <string name="fetching_initial_fmt">Pridobivanje začetnih blokov od %1$s</string>

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometriskā vai ierīces akreditācijas datu autentifikācija nav pieejama</string>
     <string name="authentication_failed">Autentifikācija neizdevās</string>
     <string name="biometric_permission_missing">Biometrijas atļauja nav piešķirta vai nav pieejama</string>
-    <string name="starting_height_fast_fmt">Sākuma augstums (ātrais): %1$d (mezgla target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Sākuma augstums (ātrais): %1$d (mezgla height − 10)</string>
     <string name="word_number_fmt">Vārds Nr. %1$d</string>
     <string name="scanned_to_block_fmt">Skenēts līdz blokam %1$s</string>
     <string name="fetching_initial_fmt">Saņem sākotnējos blokus no %1$s</string>

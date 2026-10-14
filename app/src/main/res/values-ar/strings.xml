@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">المصادقة البيومترية أو بيانات اعتماد الجهاز غير متاحة</string>
     <string name="authentication_failed">فشلت المصادقة</string>
     <string name="biometric_permission_missing">إذن البصمة البيومترية مفقود أو غير متاح</string>
-    <string name="starting_height_fast_fmt">ارتفاع البداية (السريع): %1$d (target_height للعقدة − 10)</string>
+    <string name="starting_height_fast_fmt">ارتفاع البداية (السريع): %1$d (height للعقدة − 10)</string>
     <string name="word_number_fmt">الكلمة رقم %1$d</string>
     <string name="scanned_to_block_fmt">تم المسح حتى الكتلة %1$s</string>
     <string name="fetching_initial_fmt">جارٍ جلب الكتل الأولية من %1$s</string>

@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrijska autentifikacija ili autentifikacija vjerodajnicama uređaja nije dostupna</string>
     <string name="authentication_failed">Autentifikacija nije uspjela</string>
     <string name="biometric_permission_missing">Biometrijska dozvola nedostaje ili nije dostupna</string>
-    <string name="starting_height_fast_fmt">Početna visina (brzo): %1$d (target_height čvora − 10)</string>
+    <string name="starting_height_fast_fmt">Početna visina (brzo): %1$d (height čvora − 10)</string>
     <string name="word_number_fmt">Riječ #%1$d</string>
     <string name="scanned_to_block_fmt">Skenirano do bloka %1$s</string>
     <string name="fetching_initial_fmt">Dohvaćanje početnih blokova od %1$s</string>

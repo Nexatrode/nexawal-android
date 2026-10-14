@@ -13,6 +13,7 @@ class SendGate {
     fun end() {
         inFlight.set(false)
     }
+    fun isRunning(): Boolean = inFlight.get()
 
     fun <T> withLock(block: () -> T): T {
         if (!tryBegin()) {

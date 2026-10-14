@@ -1,5 +1,39 @@
 # Focused security fixes — September 2026
 
+## Pending October 13 release-candidate corrections
+
+- Create uses the configured scan node and HTTP-proxy policy, a five-second whole-call timeout
+  and a 64 KiB response cap. A synced node's `target_height: 0` falls back to `height`; an absent
+  tip is an error, not a silent genesis-height suggestion. Restore/import heights stay user-owned.
+- Debug and Release share Compose BOM 2025.09.01 (foundation-layout 1.9.2). The app, not just its
+  native library module, restricts packaging to arm64-v8a and x86_64. Source builds remain default.
+- Foreground-service timeout requests cancellation and stops the service immediately. Native
+  checkpoint cleanup drains separately; the Service never waits for network or signing work.
+- Already-authorized sends belong to the retained manager. Rotation cancels only the UI waiter,
+  not prepare/journal/relay, and completion/errors are retained for the next screen. A duplicate
+  send is refused until the worker finishes. Destroyed Activities remove their old idle timers;
+  background/idle session authority still locks.
+- The locked surface offers explicit wallet replacement using translated backup warnings and
+  device authentication when available. It does not require decrypting the lost seed. Native
+  cleanup must complete and signed journals must be archived before exact scan/metadata files
+  and the app's two Keystore aliases are removed. Failures do not silently open setup.
+
+Synthetic tests cover creation-height fallback, retained send success/failure after UI cancellation,
+duplicate refusal, cancelled authorization, reset authority/foreground fencing, and Service timeout.
+The creation tests also exercise real bounded HTTP responses through WalletManager and reject an
+invalid configured proxy before any direct network attempt.
+Verification: 98 logic and 56 app tests pass; Debug and unsigned Release APKs build. A temporary
+Release package containing the changed local Core was also built and checked against both native
+library hashes, then the normal v0.1.17 source build was restored. No production pin was changed.
+No real wallet was opened or payment sent. WalletCore is still pinned to v0.1.17: publish and pin
+the pending native quarantine/FFI fixes before distributing this batch.
+
+Additional signed-device gates: rotate during preview, auth, signing and relay; background a send
+and reopen to its retained result; kill/restart after durable journal creation; simulate lost
+Keystore access with a disposable wallet and verify explicit recovery never auto-relays archived
+journals. Verify Android 11 and current Android release APK installation, full-recipient wrapping,
+and timeout cancellation. Host tests do not replace these checks or a reproducibility comparison.
+
 ## October 2026 replay and persistence follow-up (WalletCore v0.1.17)
 
 The source submodule pins `79c8ceb3ba8629bce72738c52e360c9c4fd8bed5`.

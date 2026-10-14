@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrisk eller enhetsbasert autentisering er ikke tilgjengelig</string>
     <string name="authentication_failed">Autentisering mislyktes</string>
     <string name="biometric_permission_missing">Biometritillatelse mangler eller er utilgjengelig</string>
-    <string name="starting_height_fast_fmt">Starthøyde (rask): %1$d (nodens target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Starthøyde (rask): %1$d (nodens height − 10)</string>
     <string name="word_number_fmt">Ord #%1$d</string>
     <string name="scanned_to_block_fmt">Skannet til blokk %1$s</string>
     <string name="fetching_initial_fmt">Henter innledende blokker fra %1$s</string>

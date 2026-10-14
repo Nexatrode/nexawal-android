@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Hindi available ang biometric o device credential authentication</string>
     <string name="authentication_failed">Nabigo ang authentication</string>
     <string name="biometric_permission_missing">Nawawala o hindi available ang pahintulot sa biometric</string>
-    <string name="starting_height_fast_fmt">Starting height (mabilis): %1$d (node target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Starting height (mabilis): %1$d (node height − 10)</string>
     <string name="word_number_fmt">Salita #%1$d</string>
     <string name="scanned_to_block_fmt">Na-scan hanggang sa block %1$s</string>
     <string name="fetching_initial_fmt">Kinukuha ang mga paunang block mula sa %1$s</string>

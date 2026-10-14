@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biomeetriline või seadme mandaadiga autentimine ei ole saadaval</string>
     <string name="authentication_failed">Autentimine ebaõnnestus</string>
     <string name="biometric_permission_missing">Biomeetria luba puudub või ei ole saadaval</string>
-    <string name="starting_height_fast_fmt">Algkõrgus (kiire): %1$d (sõlme target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Algkõrgus (kiire): %1$d (sõlme height − 10)</string>
     <string name="word_number_fmt">Sõna nr %1$d</string>
     <string name="scanned_to_block_fmt">Skannitud kuni plokini %1$s</string>
     <string name="fetching_initial_fmt">Esialgsete plokkide laadimine alates %1$s</string>

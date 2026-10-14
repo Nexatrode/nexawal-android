@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">A biometrikus vagy eszközhitelesítő adatos hitelesítés nem elérhető</string>
     <string name="authentication_failed">Hitelesítés sikertelen</string>
     <string name="biometric_permission_missing">A biometrikus engedély hiányzik vagy nem elérhető</string>
-    <string name="starting_height_fast_fmt">Kezdő magasság (gyors): %1$d (csomópont target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Kezdő magasság (gyors): %1$d (csomópont height − 10)</string>
     <string name="word_number_fmt">%1$d. szó</string>
     <string name="scanned_to_block_fmt">Átvizsgálva eddig a blokkig: %1$s</string>
     <string name="fetching_initial_fmt">Kezdeti blokkok lekérése innen: %1$s</string>

@@ -11,6 +11,11 @@ Release tags use `v<versionName>` (e.g. `v1.0.0`).
 - Use clearer translated copy when a send fee increases or a send is already in progress
 
 ### Fixed
+- Use the node's current height when a synced daemon reports target_height zero during wallet creation
+- Retain already-authorized sends and their outcomes across screen rotation; reject overlapping sends
+- Offer explicit recovery/reset when the stored wallet cannot be unlocked
+- Stop the foreground sync service promptly on Android's timeout callback
+- Package only supported 64-bit native ABIs and align Debug/Release Compose dependencies
 - Honor the rates server's expiry in live estimates, cache reloads, and fiat amount entry
 - Clear expired fiat input before returning to XMR so a fiat number cannot become an XMR amount
 - Keep the release theme compatible with Android 11 while using Android 12+ splash-screen styling

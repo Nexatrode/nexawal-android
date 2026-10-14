@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Ìmúdájú Biometric tàbí ẹ̀rí ẹ̀rọ kò sí</string>
     <string name="authentication_failed">Ìmúdájú kùnà</string>
     <string name="biometric_permission_missing">Ìyọ̀nda Biometric kò sí tàbí kò wà</string>
-    <string name="starting_height_fast_fmt">Ipele ìbẹ̀rẹ̀ (yára): %1$d (target_height node − 10)</string>
+    <string name="starting_height_fast_fmt">Ipele ìbẹ̀rẹ̀ (yára): %1$d (height node − 10)</string>
     <string name="word_number_fmt">Ọ̀rọ̀ #%1$d</string>
     <string name="scanned_to_block_fmt">A ti yẹ̀wò dé bulọ́ọ̀kì %1$s</string>
     <string name="fetching_initial_fmt">Ń gbé àwọn bulọ́ọ̀kì àkọ́kọ́ wọlé láti %1$s</string>

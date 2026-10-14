@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrik və ya cihaz kimlik məlumatı ilə autentifikasiya əlçatan deyil</string>
     <string name="authentication_failed">Autentifikasiya alınmadı</string>
     <string name="biometric_permission_missing">Biometrik icazə yoxdur və ya əlçatan deyil</string>
-    <string name="starting_height_fast_fmt">Başlanğıc hündürlük (tez): %1$d (node target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Başlanğıc hündürlük (tez): %1$d (node height − 10)</string>
     <string name="word_number_fmt">Söz #%1$d</string>
     <string name="scanned_to_block_fmt">%1$s blokuna qədər skan edildi</string>
     <string name="fetching_initial_fmt">%1$s-dən ilkin bloklar alınır</string>

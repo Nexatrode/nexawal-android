@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">বায়োমেট্রিক বা ডিভাইস ক্রেডেনশিয়াল প্রমাণীকরণ উপলব্ধ নেই</string>
     <string name="authentication_failed">প্রমাণীকরণ ব্যর্থ হয়েছে</string>
     <string name="biometric_permission_missing">বায়োমেট্রিক অনুমতি নেই বা উপলব্ধ নেই</string>
-    <string name="starting_height_fast_fmt">শুরুর উচ্চতা (দ্রুত): %1$d (নোড target_height − 10)</string>
+    <string name="starting_height_fast_fmt">শুরুর উচ্চতা (দ্রুত): %1$d (নোড height − 10)</string>
     <string name="word_number_fmt">শব্দ #%1$d</string>
     <string name="scanned_to_block_fmt">ব্লক %1$s পর্যন্ত স্ক্যান করা হয়েছে</string>
     <string name="fetching_initial_fmt">%1$s থেকে প্রাথমিক ব্লক আনা হচ্ছে</string>

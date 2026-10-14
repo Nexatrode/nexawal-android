@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">생체 인증 또는 기기 자격 증명 인증을 사용할 수 없습니다</string>
     <string name="authentication_failed">인증 실패</string>
     <string name="biometric_permission_missing">생체 인증 권한이 없거나 사용할 수 없습니다</string>
-    <string name="starting_height_fast_fmt">시작 높이 (빠름): %1$d (노드 target_height − 10)</string>
+    <string name="starting_height_fast_fmt">시작 높이 (빠름): %1$d (노드 height − 10)</string>
     <string name="word_number_fmt">단어 #%1$d</string>
     <string name="scanned_to_block_fmt">블록 %1$s까지 스캔됨</string>
     <string name="fetching_initial_fmt">%1$s에서 초기 블록을 가져오는 중</string>

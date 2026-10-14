@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometrinis arba įrenginio duomenų tapatybės patvirtinimas negalimas</string>
     <string name="authentication_failed">Tapatybės patvirtinimas nepavyko</string>
     <string name="biometric_permission_missing">Biometrinis leidimas nesuteiktas arba negalimas</string>
-    <string name="starting_height_fast_fmt">Pradinis aukštis (greitas): %1$d (tinklo taško target_height − 10)</string>
+    <string name="starting_height_fast_fmt">Pradinis aukštis (greitas): %1$d (tinklo taško height − 10)</string>
     <string name="word_number_fmt">Žodis Nr. %1$d</string>
     <string name="scanned_to_block_fmt">Nuskaityta iki bloko %1$s</string>
     <string name="fetching_initial_fmt">Gaunami pradiniai blokai nuo %1$s</string>

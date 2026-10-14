@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Biometric သို့မဟုတ် device credential အထောက်အထားစိစစ်မှု မရရှိနိုင်ပါ</string>
     <string name="authentication_failed">အထောက်အထားစိစစ်မှု မအောင်မြင်ပါ</string>
     <string name="biometric_permission_missing">Biometric ခွင့်ပြုချက် ပျောက်ဆုံးနေသည် သို့မဟုတ် မရရှိနိုင်ပါ</string>
-    <string name="starting_height_fast_fmt">စတင်ရန် အမြင့် (မြန်): %1$d (node target_height − 10)</string>
+    <string name="starting_height_fast_fmt">စတင်ရန် အမြင့် (မြန်): %1$d (node height − 10)</string>
     <string name="word_number_fmt">စကားလုံး #%1$d</string>
     <string name="scanned_to_block_fmt">Block %1$s အထိ စကင်ဖတ်ပြီးပါပြီ</string>
     <string name="fetching_initial_fmt">%1$s မှ အစပိုင်း block များကို ရယူနေသည်</string>

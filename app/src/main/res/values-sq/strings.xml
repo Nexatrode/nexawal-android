@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Autentikimi biometrik ose me kredencialet e pajisjes nuk është i disponueshëm</string>
     <string name="authentication_failed">Autentikimi dështoi</string>
     <string name="biometric_permission_missing">Leja biometrike mungon ose nuk është e disponueshme</string>
-    <string name="starting_height_fast_fmt">Lartësia fillestare (e shpejtë): %1$d (target_height i nyjes − 10)</string>
+    <string name="starting_height_fast_fmt">Lartësia fillestare (e shpejtë): %1$d (height i nyjes − 10)</string>
     <string name="word_number_fmt">Fjala #%1$d</string>
     <string name="scanned_to_block_fmt">Skanuar deri te blloku %1$s</string>
     <string name="fetching_initial_fmt">Duke marrë blloqet fillestare nga %1$s</string>

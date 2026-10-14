@@ -78,6 +78,14 @@ object MnemonicCipher {
         getOrCreateSecretKey(requireDeviceAuth = true)
     }
 
+    /** Only after an explicit, confirmed wallet reset; never regenerate keys on decrypt failure. */
+    fun clearWalletKeysForRecovery() {
+        val store = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }
+        for (alias in listOf(DEVICE_AUTH_KEY_ALIAS, LEGACY_KEY_ALIAS)) {
+            if (store.containsAlias(alias)) store.deleteEntry(alias)
+        }
+    }
+
     private fun getOrCreateSecretKey(requireDeviceAuth: Boolean): SecretKey {
         val alias = if (requireDeviceAuth) DEVICE_AUTH_KEY_ALIAS else LEGACY_KEY_ALIAS
         val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }

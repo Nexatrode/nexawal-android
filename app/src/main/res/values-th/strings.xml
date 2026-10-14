@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">การยืนยันตัวตนด้วยไบโอเมตริกหรือข้อมูลรับรองอุปกรณ์ไม่พร้อมใช้งาน</string>
     <string name="authentication_failed">การยืนยันตัวตนล้มเหลว</string>
     <string name="biometric_permission_missing">ไม่มีสิทธิ์ไบโอเมตริกหรือไม่พร้อมใช้งาน</string>
-    <string name="starting_height_fast_fmt">ความสูงเริ่มต้น (แบบเร็ว): %1$d (target_height ของโหนด − 10)</string>
+    <string name="starting_height_fast_fmt">ความสูงเริ่มต้น (แบบเร็ว): %1$d (height ของโหนด − 10)</string>
     <string name="word_number_fmt">คำที่ %1$d</string>
     <string name="scanned_to_block_fmt">สแกนถึงบล็อก %1$s แล้ว</string>
     <string name="fetching_initial_fmt">กำลังดึงบล็อกเริ่มต้นจาก %1$s</string>

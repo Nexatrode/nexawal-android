@@ -318,7 +318,7 @@
     <string name="biometric_not_available_short">Autenticación biométrica térã credencial dispositivo-gua ndaipóri</string>
     <string name="authentication_failed">Autenticación ndoikói porã</string>
     <string name="biometric_permission_missing">Permiso biométrico ndaipóri térã ndaijaváiva</string>
-    <string name="starting_height_fast_fmt">Altura ñepyrũha (pya\'e): %1$d (target_height nodo-gua − 10)</string>
+    <string name="starting_height_fast_fmt">Altura ñepyrũha (pya\'e): %1$d (height nodo-gua − 10)</string>
     <string name="word_number_fmt">Ñe\'ẽ #%1$d</string>
     <string name="scanned_to_block_fmt">Oñeskaneáma bloque %1$s peve</string>
     <string name="fetching_initial_fmt">Oñemboguerúhína bloque ñepyrũha %1$s guive</string>
