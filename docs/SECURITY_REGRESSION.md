@@ -1,6 +1,6 @@
 # Focused security fixes — September 2026
 
-## Pending October 13 release-candidate corrections
+## October 13 release-candidate corrections — WalletCore v0.1.18
 
 - Create uses the configured scan node and HTTP-proxy policy, a five-second whole-call timeout
   and a 64 KiB response cap. A synced node's `target_height: 0` falls back to `height`; an absent
@@ -24,9 +24,10 @@ The creation tests also exercise real bounded HTTP responses through WalletManag
 invalid configured proxy before any direct network attempt.
 Verification: 98 logic and 56 app tests pass; Debug and unsigned Release APKs build. A temporary
 Release package containing the changed local Core was also built and checked against both native
-library hashes, then the normal v0.1.17 source build was restored. No production pin was changed.
-No real wallet was opened or payment sent. WalletCore is still pinned to v0.1.17: publish and pin
-the pending native quarantine/FFI fixes before distributing this batch.
+library hashes. The source submodule now pins the final v0.1.18 release commit
+`c3cc89519ff88e68322fcddbcc6227669b943a34`, including native quarantine/FFI hardening.
+The default build remains from source for F-Droid and Wallet Scrutiny. No real wallet was opened
+or payment sent; no app release or submission is performed by this rollout.
 
 Additional signed-device gates: rotate during preview, auth, signing and relay; background a send
 and reopen to its retained result; kill/restart after durable journal creation; simulate lost
