@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Pakeisti esamą piniginę?</string>
     <string name="replace_wallet_message">Tai pakeis esamą piniginę šiame įrenginyje.\n\nJei tęsite, dabartinė saugoma mnemoninė frazė ir skenavimo būsena bus pašalinti. Prieš tęsdami įsitikinkite, kad turite atsarginę mnemoninės frazės kopiją.</string>
     <string name="section_network_node">Tinklas ir tinklo taškas</string>
-    <string name="node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.\nNumatytasis mazgas: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.\nNumatytasis mazgas: https://rpc.nexawal.com</string>
     <string name="save_node">Išsaugoti tinklo tašką</string>
     <string name="section_info">Informacija</string>
     <string name="walletcore_version_label">WalletCore versija:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Abu (skenuoti Clearnet, transliuoti I2P)</string>
     <string name="network_policy_help">Tik Clearnet naudoja clearnet tinklo tašką. Tik I2P naudoja I2P tinklo tašką ir tarpinį serverį. Abu skenuoja per Clearnet ir transliuoja per I2P.</string>
     <string name="section_clearnet_node">Clearnet tinklo taškas</string>
-    <string name="clearnet_node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.\nNumatytasis mazgas: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Įveskite pilną URL, įskaitant http:// arba https://.\nNumatytasis mazgas: https://rpc.nexawal.com</string>
     <string name="use_this_node">Naudoti šį tinklo tašką</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P tinklo taškas (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Peržiūrėti visas operacijas (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d vykdomos operacijos</string>
     <string name="send_fee_increased_unapproved">Tinklo mokestis padidėjo. Nieko neišsiųsta. Peržiūrėkite mokestį ir patvirtinkite dar kartą.</string>
-    <string name="fiat_help_nexatrode">Pasirenkama. Įjungus „NexaWal“ HTTPS ryšiu iš „rates.nexatrode.com“ paprašo pasirinktos valiutos XMR kurso. Užklausa siunčiama viešuoju internetu („Clearnet“), net jei piniginės mazgas naudoja I2P. „Nexatrode“ mato jūsų IP adresą ir pasirinktą valiutą, tačiau piniginės sumos, adresai, atkūrimo frazė ir operacijų istorija nesiunčiami. Kursai yra tik apytiksliai — siunčiate ir laikote XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT licencijuota, neaudituota programinė įranga. Jūs esate atsakingi už atkūrimo frazę ir lėšas. Numatytasis nuotolinis mazgas gali matyti jūsų IP ir piniginės sinchronizavimo užklausas – paleiskite savo mazgą, kad užtikrintumėte didesnį privatumą. Pasirenkami „fiat“ įvertinimai, jei įjungta, dėl tarifų susisiekite su rates.nexatrode.com.</string>
+    <string name="fiat_help_nexatrode">Pasirenkama. Įjungus „NexaWal“ HTTPS ryšiu iš „rates.nexawal.com“ paprašo pasirinktos valiutos XMR kurso. Užklausa siunčiama viešuoju internetu („Clearnet“), net jei piniginės mazgas naudoja I2P. „Nexatrode“ mato jūsų IP adresą ir pasirinktą valiutą, tačiau piniginės sumos, adresai, atkūrimo frazė ir operacijų istorija nesiunčiami. Kursai yra tik apytiksliai — siunčiate ir laikote XMR.</string>
+    <string name="about_disclaimer_nexatrode">MIT licencijuota, neaudituota programinė įranga. Jūs esate atsakingi už atkūrimo frazę ir lėšas. Numatytasis nuotolinis mazgas gali matyti jūsų IP ir piniginės sinchronizavimo užklausas – paleiskite savo mazgą, kad užtikrintumėte didesnį privatumą. Pasirenkami „fiat“ įvertinimai, jei įjungta, dėl tarifų susisiekite su rates.nexawal.com.</string>
     <string name="history_export_csv">Eksportuoti atitinkančias operacijas (CSV)</string>
     <string name="history_export_failed">CSV eksportuoti nepavyko. Bandykite dar kartą.</string>
     <string name="send_previous_payment_recovered">Ankstesnis mokėjimas atkurtas. Naujas mokėjimas neišsiųstas. Dar kartą peržiūrėkite jį.</string>

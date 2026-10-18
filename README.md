@@ -13,6 +13,12 @@
 - Privacy (also bundled offline in-app): [docs/PRIVACY.md](docs/PRIVACY.md)
 - Terms of Use (also bundled offline in-app): [docs/TERMS.md](docs/TERMS.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
+
+The default node is `https://rpc.nexawal.com`. Saved copies of the previous
+built-in `rpc.nexatrode.com` default migrate on load; custom nodes and I2P
+settings remain unchanged. Optional rates use `https://rates.nexawal.com` over
+clearnet HTTPS, independently of wallet-node routing.
+
 ## Setup
 
 ```bash
@@ -107,7 +113,7 @@ See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md
 - Uses a native wallet core built from `monero-oxide` via `MoneroWalletCoreFFI`
 - Android consumes the shared core through the submodule + JNI `.so` integration
 - Syncs against standard Monero nodes (local or remote), including the configured I2P RPC path when enabled
-- Default daemon is `https://rpc.nexatrode.com` (type a full `http://` or `https://` URL to override)
+- Default daemon is `https://rpc.nexawal.com` (type a full `http://` or `https://` URL to override)
 - Feature parity targets: [nexawal](https://github.com/Nexatrode/nexawal) and [nexawal-gpui](https://github.com/Nexatrode/nexawal-gpui)
 - Unaudited software. You are responsible for backups and funds. A remote node can see your IP and sync queries.
 

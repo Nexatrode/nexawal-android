@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Αντικατάσταση υπάρχοντος πορτοφολιού;</string>
     <string name="replace_wallet_message">Αυτό θα αντικαταστήσει το υπάρχον πορτοφόλι σε αυτή τη συσκευή.\n\nΑν συνεχίσετε, η αποθηκευμένη μνημονική φράση και η κατάσταση σάρωσης θα αφαιρεθούν. Βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας της μνημονικής φράσης σας πριν προχωρήσετε.</string>
     <string name="section_network_node">Δίκτυο &amp; κόμβος</string>
-    <string name="node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexawal.com</string>
     <string name="save_node">Αποθήκευση κόμβου</string>
     <string name="section_info">Πληροφορίες</string>
     <string name="walletcore_version_label">Έκδοση WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Και τα δύο (σάρωση Clearnet, μετάδοση I2P)</string>
     <string name="network_policy_help">Το «Μόνο Clearnet» χρησιμοποιεί κόμβο Clearnet. Το «Μόνο I2P» χρησιμοποιεί κόμβο και διαμεσολαβητή I2P. Το «Και τα δύο» σαρώνει στο Clearnet και μεταδίδει μέσω I2P.</string>
     <string name="section_clearnet_node">Κόμβος Clearnet</string>
-    <string name="clearnet_node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexawal.com</string>
     <string name="use_this_node">Χρήση αυτού του κόμβου</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Κόμβος I2P (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Προβολή όλων των συναλλαγών (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d εκκρεμείς συναλλαγές</string>
     <string name="send_fee_increased_unapproved">Η χρέωση δικτύου αυξήθηκε. Δεν μεταδόθηκε τίποτα. Ελέγξτε τη χρέωση και επιβεβαιώστε ξανά.</string>
-    <string name="fiat_help_nexatrode">Προαιρετικό. Όταν είναι ενεργό, το NexaWal ζητά μέσω HTTPS από το rates.nexatrode.com την ισοτιμία XMR για το νόμισμα που επιλέξατε. Το αίτημα χρησιμοποιεί το δημόσιο διαδίκτυο (clearnet), ακόμη κι αν ο κόμβος του πορτοφολιού χρησιμοποιεί I2P. Η Nexatrode μπορεί να δει τη διεύθυνση IP και το επιλεγμένο νόμισμα, αλλά δεν λαμβάνει ποσά, διευθύνσεις, φράση ανάκτησης ή ιστορικό συναλλαγών. Οι ισοτιμίες είναι μόνο εκτιμήσεις — στέλνετε και κρατάτε XMR.</string>
-    <string name="about_disclaimer_nexatrode">Λογισμικό με άδεια MIT, μη ελεγμένο. Είστε υπεύθυνοι για τη φράση και τα χρήματά σας ανάκτησης. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει τα ερωτήματα συγχρονισμού IP και πορτοφολιού — εκτελέστε τον δικό σας κόμβο για ισχυρότερο απόρρητο. Προαιρετικές εκτιμήσεις fiat, εάν είναι ενεργοποιημένες, επικοινωνήστε με το rates.nexatrode.com για τιμές.</string>
+    <string name="fiat_help_nexatrode">Προαιρετικό. Όταν είναι ενεργό, το NexaWal ζητά μέσω HTTPS από το rates.nexawal.com την ισοτιμία XMR για το νόμισμα που επιλέξατε. Το αίτημα χρησιμοποιεί το δημόσιο διαδίκτυο (clearnet), ακόμη κι αν ο κόμβος του πορτοφολιού χρησιμοποιεί I2P. Η Nexatrode μπορεί να δει τη διεύθυνση IP και το επιλεγμένο νόμισμα, αλλά δεν λαμβάνει ποσά, διευθύνσεις, φράση ανάκτησης ή ιστορικό συναλλαγών. Οι ισοτιμίες είναι μόνο εκτιμήσεις — στέλνετε και κρατάτε XMR.</string>
+    <string name="about_disclaimer_nexatrode">Λογισμικό με άδεια MIT, μη ελεγμένο. Είστε υπεύθυνοι για τη φράση και τα χρήματά σας ανάκτησης. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει τα ερωτήματα συγχρονισμού IP και πορτοφολιού — εκτελέστε τον δικό σας κόμβο για ισχυρότερο απόρρητο. Προαιρετικές εκτιμήσεις fiat, εάν είναι ενεργοποιημένες, επικοινωνήστε με το rates.nexawal.com για τιμές.</string>
     <string name="history_export_csv">Εξαγωγή συναλλαγών που ταιριάζουν (CSV)</string>
     <string name="history_export_failed">Η εξαγωγή CSV απέτυχε. Δοκιμάστε ξανά.</string>
     <string name="send_previous_payment_recovered">Η προηγούμενη πληρωμή ανακτήθηκε. Η νέα πληρωμή δεν στάλθηκε. Δείτε ξανά την προεπισκόπηση.</string>

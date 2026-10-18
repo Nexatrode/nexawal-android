@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Zamenjaš obstoječo denarnico?</string>
     <string name="replace_wallet_message">S tem boš zamenjal obstoječo denarnico na tej napravi.\n\nČe nadaljuješ, bosta trenutno shranjena mnemonika in stanje preiskovanja odstranjena. Prepričaj se, da imaš varnostno kopijo mnemonike, preden nadaljuješ.</string>
     <string name="section_network_node">Omrežje in vozlišče</string>
-    <string name="node_url_help">Vnesi celoten URL, vključno s http:// ali https://.\nPrivzeto vozlišče: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Vnesi celoten URL, vključno s http:// ali https://.\nPrivzeto vozlišče: https://rpc.nexawal.com</string>
     <string name="save_node">Shrani vozlišče</string>
     <string name="section_info">Informacije</string>
     <string name="walletcore_version_label">Različica WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Oboje (preiskovanje clearnet, oddajanje I2P)</string>
     <string name="network_policy_help">Samo Clearnet uporablja clearnet vozlišče. Samo I2P uporablja I2P vozlišče in proxy. Oboje preiskuje na clearnetu in oddaja prek I2P.</string>
     <string name="section_clearnet_node">Vozlišče Clearnet</string>
-    <string name="clearnet_node_url_help">Vnesi celoten URL, vključno s http:// ali https://.\nPrivzeto vozlišče: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Vnesi celoten URL, vključno s http:// ali https://.\nPrivzeto vozlišče: https://rpc.nexawal.com</string>
     <string name="use_this_node">Uporabi to vozlišče</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Vozlišče I2P (gostitelj:vrata)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Prikaži vse transakcije (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transakcij v obdelavi</string>
     <string name="send_fee_increased_unapproved">Omrežna provizija se je zvišala. Nič ni bilo oddano. Preverite provizijo in znova potrdite.</string>
-    <string name="fiat_help_nexatrode">Neobvezno. Ko je omogočeno, NexaWal prek HTTPS od rates.nexatrode.com zahteva tečaj XMR za izbrano valuto. Zahteva uporablja javni internet (Clearnet), tudi če vozlišče denarnice uporablja I2P. Nexatrode lahko vidi vaš naslov IP in izbrano valuto, ne prejme pa zneskov, naslovov, obnovitvene fraze ali zgodovine transakcij denarnice. Tečaji so le ocene — pošiljate in hranite XMR.</string>
-    <string name="about_disclaimer_nexatrode">nerevidirana programska oprema z licenco MIT. Odgovorni ste za vašo frazo za obnovitev in sredstva. Privzeto oddaljeno vozlišče lahko vidi vaše poizvedbe za sinhronizacijo IP in denarnice – za večjo zasebnost zaženite svoje vozlišče. Izbirne ocene fiat, če so omogočene, se za cene obrnite na rates.nexatrode.com.</string>
+    <string name="fiat_help_nexatrode">Neobvezno. Ko je omogočeno, NexaWal prek HTTPS od rates.nexawal.com zahteva tečaj XMR za izbrano valuto. Zahteva uporablja javni internet (Clearnet), tudi če vozlišče denarnice uporablja I2P. Nexatrode lahko vidi vaš naslov IP in izbrano valuto, ne prejme pa zneskov, naslovov, obnovitvene fraze ali zgodovine transakcij denarnice. Tečaji so le ocene — pošiljate in hranite XMR.</string>
+    <string name="about_disclaimer_nexatrode">nerevidirana programska oprema z licenco MIT. Odgovorni ste za vašo frazo za obnovitev in sredstva. Privzeto oddaljeno vozlišče lahko vidi vaše poizvedbe za sinhronizacijo IP in denarnice – za večjo zasebnost zaženite svoje vozlišče. Izbirne ocene fiat, če so omogočene, se za cene obrnite na rates.nexawal.com.</string>
     <string name="history_export_csv">Izvozi ujemajoče se transakcije (CSV)</string>
     <string name="history_export_failed">Izvoz CSV ni uspel. Poskusite znova.</string>
     <string name="send_previous_payment_recovered">Prejšnje plačilo je obnovljeno. Novo plačilo ni bilo poslano. Ponovno si oglejte predogled.</string>

@@ -175,7 +175,7 @@ class FiatPriceService(context: Context) {
 
     private suspend fun fetchRate(currency: String): FiatRate = withContext(Dispatchers.IO) {
         require(FiatEstimate.isSupported(currency))
-        val json = JSONObject(get("https://rates.nexatrode.com/v1/rates/XMR/$currency"))
+        val json = JSONObject(get("https://rates.nexawal.com/v1/rates/XMR/$currency"))
         require(json.getString("base") == "XMR" && json.getString("quote") == currency)
         val checkedAt = json.getLong("checked_at_ms")
         val expiresAt = json.getLong("expires_at_ms")

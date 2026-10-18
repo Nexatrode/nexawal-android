@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Substituir carteira existente?</string>
     <string name="replace_wallet_message">Isso substituirá a carteira existente neste dispositivo.\n\nSe você continuar, o mnemônico armazenado atualmente e o estado de varredura serão removidos. Certifique-se de ter feito backup do seu mnemônico antes de continuar.</string>
     <string name="section_network_node">Rede e Nó</string>
-    <string name="node_url_help">Digite a URL completa, incluindo http:// ou https://.\nNó padrão: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Digite a URL completa, incluindo http:// ou https://.\nNó padrão: https://rpc.nexawal.com</string>
     <string name="save_node">Salvar nó</string>
     <string name="section_info">Informações</string>
     <string name="walletcore_version_label">Versão do WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Ambos (varrer via clearnet, transmitir via I2P)</string>
     <string name="network_policy_help">Somente Clearnet usa um nó clearnet. Somente I2P usa um nó e proxy I2P. Ambos faz a varredura na clearnet e transmite via I2P.</string>
     <string name="section_clearnet_node">Nó Clearnet</string>
-    <string name="clearnet_node_url_help">Digite a URL completa, incluindo http:// ou https://.\nNó padrão: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Digite a URL completa, incluindo http:// ou https://.\nNó padrão: https://rpc.nexawal.com</string>
     <string name="use_this_node">Usar este nó</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nó I2P (host:porta)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Ver todas as transações (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transações pendentes</string>
     <string name="send_fee_increased_unapproved">A taxa da rede aumentou. Nada foi transmitido. Confira a taxa e confirme novamente.</string>
-    <string name="fiat_help_nexatrode">Opcional. Quando ativado, o NexaWal solicita por HTTPS a cotação do XMR na moeda escolhida em rates.nexatrode.com. Essa solicitação usa a internet pública (Clearnet), mesmo quando o nó da carteira usa I2P. A Nexatrode pode ver seu IP e a moeda escolhida, mas não recebe saldos, endereços, frase de recuperação nem histórico de transações da carteira. As cotações são apenas estimativas — você envia e mantém XMR.</string>
-    <string name="about_disclaimer_nexatrode">Software não auditado e licenciado pelo MIT. Você é responsável por seu período de recuperação e fundos. O nó remoto padrão pode ver suas consultas de sincronização de IP e carteira – execute seu próprio nó para maior privacidade. Estimativas fiduciárias opcionais, se habilitadas, entre em contato com rates.nexatrode.com para obter taxas.</string>
+    <string name="fiat_help_nexatrode">Opcional. Quando ativado, o NexaWal solicita por HTTPS a cotação do XMR na moeda escolhida em rates.nexawal.com. Essa solicitação usa a internet pública (Clearnet), mesmo quando o nó da carteira usa I2P. A Nexatrode pode ver seu IP e a moeda escolhida, mas não recebe saldos, endereços, frase de recuperação nem histórico de transações da carteira. As cotações são apenas estimativas — você envia e mantém XMR.</string>
+    <string name="about_disclaimer_nexatrode">Software não auditado e licenciado pelo MIT. Você é responsável por seu período de recuperação e fundos. O nó remoto padrão pode ver suas consultas de sincronização de IP e carteira – execute seu próprio nó para maior privacidade. Estimativas fiduciárias opcionais, se habilitadas, entre em contato com rates.nexawal.com para obter taxas.</string>
     <string name="history_export_csv">Exportar transações correspondentes (CSV)</string>
     <string name="history_export_failed">Falha ao exportar CSV. Tente novamente.</string>
     <string name="send_previous_payment_recovered">O pagamento anterior foi recuperado. O novo pagamento não foi enviado. Veja a prévia novamente.</string>

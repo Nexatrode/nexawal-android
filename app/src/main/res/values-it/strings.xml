@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Sostituire il wallet esistente?</string>
     <string name="replace_wallet_message">Questa operazione sostituirà il wallet esistente su questo dispositivo.\n\nSe continui, la frase mnemonica salvata e lo stato di scansione verranno rimossi. Assicurati di aver salvato una copia della tua frase mnemonica prima di procedere.</string>
     <string name="section_network_node">Rete e nodo</string>
-    <string name="node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexawal.com</string>
     <string name="save_node">Salva nodo</string>
     <string name="section_info">Informazioni</string>
     <string name="walletcore_version_label">Versione WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Entrambi (scansione clearnet, trasmissione I2P)</string>
     <string name="network_policy_help">Solo clearnet usa un nodo clearnet. Solo I2P usa un nodo e un proxy I2P. Entrambi scansiona su clearnet e trasmette via I2P.</string>
     <string name="section_clearnet_node">Nodo clearnet</string>
-    <string name="clearnet_node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexawal.com</string>
     <string name="use_this_node">Usa questo nodo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo I2P (host:porta)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Vedi tutte le transazioni (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transazioni in sospeso</string>
     <string name="send_fee_increased_unapproved">La commissione di rete è aumentata. Non è stato trasmesso nulla. Controlla la commissione e conferma di nuovo.</string>
-    <string name="fiat_help_nexatrode">Facoltativo. Se attivato, NexaWal richiede via HTTPS a rates.nexatrode.com il tasso XMR per la valuta scelta. La richiesta usa Internet pubblico (clearnet), anche se il nodo del portafoglio usa I2P. Nexatrode può vedere il tuo IP e la valuta scelta, ma non riceve saldi, indirizzi, frase di recupero o cronologia delle transazioni. I tassi sono solo stime: invii e conservi XMR.</string>
-    <string name="about_disclaimer_nexatrode">software non certificato con licenza MIT. Sei responsabile della tua frase di recupero e dei tuoi fondi. Il nodo remoto predefinito può vedere il tuo IP e le query di sincronizzazione del portafoglio: esegui il tuo nodo per una maggiore privacy. Stime fiat opzionali, se abilitate, contattare rates.nexatrode.com per le tariffe.</string>
+    <string name="fiat_help_nexatrode">Facoltativo. Se attivato, NexaWal richiede via HTTPS a rates.nexawal.com il tasso XMR per la valuta scelta. La richiesta usa Internet pubblico (clearnet), anche se il nodo del portafoglio usa I2P. Nexatrode può vedere il tuo IP e la valuta scelta, ma non riceve saldi, indirizzi, frase di recupero o cronologia delle transazioni. I tassi sono solo stime: invii e conservi XMR.</string>
+    <string name="about_disclaimer_nexatrode">software non certificato con licenza MIT. Sei responsabile della tua frase di recupero e dei tuoi fondi. Il nodo remoto predefinito può vedere il tuo IP e le query di sincronizzazione del portafoglio: esegui il tuo nodo per una maggiore privacy. Stime fiat opzionali, se abilitate, contattare rates.nexawal.com per le tariffe.</string>
     <string name="history_export_csv">Esporta le transazioni corrispondenti (CSV)</string>
     <string name="history_export_failed">Esportazione CSV non riuscita. Riprova.</string>
     <string name="send_previous_payment_recovered">Il pagamento precedente è stato recuperato. Il nuovo pagamento non è stato inviato. Visualizza di nuovo l\'anteprima.</string>

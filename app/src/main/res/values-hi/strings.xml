@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">मौजूदा वॉलेट बदलें?</string>
     <string name="replace_wallet_message">इससे इस डिवाइस पर मौजूदा वॉलेट बदल जाएगा।\n\nयदि आप जारी रखते हैं, तो वर्तमान में संग्रहीत निमोनिक और स्कैन स्थिति हटा दी जाएगी। आगे बढ़ने से पहले सुनिश्चित करें कि आपके निमोनिक का बैकअप ले लिया गया है।</string>
     <string name="section_network_node">नेटवर्क और नोड</string>
-    <string name="node_url_help">पूरा URL टाइप करें, जिसमें http:// या https:// शामिल हो।\nडिफ़ॉल्ट नोड: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">पूरा URL टाइप करें, जिसमें http:// या https:// शामिल हो।\nडिफ़ॉल्ट नोड: https://rpc.nexawal.com</string>
     <string name="save_node">नोड सेव करें</string>
     <string name="section_info">जानकारी</string>
     <string name="walletcore_version_label">WalletCore वर्शन:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">दोनों (क्लियरनेट पर स्कैन, I2P पर ब्रॉडकास्ट)</string>
     <string name="network_policy_help">केवल क्लियरनेट में केवल क्लियरनेट नोड का उपयोग होता है। केवल I2P में I2P नोड और प्रॉक्सी का उपयोग होता है। दोनों में क्लियरनेट पर स्कैन और I2P पर ब्रॉडकास्ट होता है।</string>
     <string name="section_clearnet_node">क्लियरनेट नोड</string>
-    <string name="clearnet_node_url_help">पूरा URL टाइप करें, जिसमें http:// या https:// शामिल हो।\nडिफ़ॉल्ट नोड: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">पूरा URL टाइप करें, जिसमें http:// या https:// शामिल हो।\nडिफ़ॉल्ट नोड: https://rpc.nexawal.com</string>
     <string name="use_this_node">इस नोड का उपयोग करें</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P नोड (host:port)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">सभी लेन-देन देखें (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d प्रतीक्षित लेन-देन</string>
     <string name="send_fee_increased_unapproved">नेटवर्क शुल्क बढ़ गया। कुछ भी प्रसारित नहीं हुआ। शुल्क देखें और फिर से पुष्टि करें।</string>
-    <string name="fiat_help_nexatrode">वैकल्पिक। चालू होने पर, NexaWal आपके चुने हुए मुद्रा के लिए XMR दर HTTPS के ज़रिए rates.nexatrode.com से मांगता है। वॉलेट नोड I2P का उपयोग करे तब भी यह अनुरोध सार्वजनिक इंटरनेट (Clearnet) से जाता है। Nexatrode आपका IP पता और चुनी हुई मुद्रा देख सकता है, लेकिन वॉलेट की राशि, पते, seed phrase या लेन-देन इतिहास नहीं भेजे जाते। दरें केवल अनुमान हैं — आप XMR ही भेजते और रखते हैं।</string>
-    <string name="about_disclaimer_nexatrode">एमआईटी-लाइसेंस प्राप्त, अनऑडिटेड सॉफ़्टवेयर। आप अपने पुनर्प्राप्ति वाक्यांश और धन के लिए जिम्मेदार हैं। डिफ़ॉल्ट रिमोट नोड आपके आईपी और वॉलेट सिंक क्वेरी को देख सकता है - मजबूत गोपनीयता के लिए अपना स्वयं का नोड चलाएं। वैकल्पिक फिएट अनुमान, यदि सक्षम है, तो दरों के लिए rates.nexatrode.com से संपर्क करें।</string>
+    <string name="fiat_help_nexatrode">वैकल्पिक। चालू होने पर, NexaWal आपके चुने हुए मुद्रा के लिए XMR दर HTTPS के ज़रिए rates.nexawal.com से मांगता है। वॉलेट नोड I2P का उपयोग करे तब भी यह अनुरोध सार्वजनिक इंटरनेट (Clearnet) से जाता है। Nexatrode आपका IP पता और चुनी हुई मुद्रा देख सकता है, लेकिन वॉलेट की राशि, पते, seed phrase या लेन-देन इतिहास नहीं भेजे जाते। दरें केवल अनुमान हैं — आप XMR ही भेजते और रखते हैं।</string>
+    <string name="about_disclaimer_nexatrode">एमआईटी-लाइसेंस प्राप्त, अनऑडिटेड सॉफ़्टवेयर। आप अपने पुनर्प्राप्ति वाक्यांश और धन के लिए जिम्मेदार हैं। डिफ़ॉल्ट रिमोट नोड आपके आईपी और वॉलेट सिंक क्वेरी को देख सकता है - मजबूत गोपनीयता के लिए अपना स्वयं का नोड चलाएं। वैकल्पिक फिएट अनुमान, यदि सक्षम है, तो दरों के लिए rates.nexawal.com से संपर्क करें।</string>
     <string name="history_export_csv">मिलते-जुलते लेन-देन निर्यात करें (CSV)</string>
     <string name="history_export_failed">CSV निर्यात विफल हुआ। फिर से प्रयास करें।</string>
     <string name="send_previous_payment_recovered">पिछला भुगतान पुनर्प्राप्त हो गया। नया भुगतान नहीं भेजा गया। उसका पूर्वावलोकन फिर देखें।</string>

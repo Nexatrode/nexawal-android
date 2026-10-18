@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Palitan ang umiiral na wallet?</string>
     <string name="replace_wallet_message">Papalitan nito ang umiiral na wallet sa device na ito.\n\nKung magpapatuloy ka, matatanggal ang kasalukuyang naimbak na mnemonic at scan state. Siguraduhing na-back up mo na ang iyong mnemonic bago magpatuloy.</string>
     <string name="section_network_node">Network at Node</string>
-    <string name="node_url_help">I-type ang buong URL, kasama ang http:// o https://.\nDefault na node: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">I-type ang buong URL, kasama ang http:// o https://.\nDefault na node: https://rpc.nexawal.com</string>
     <string name="save_node">I-save ang node</string>
     <string name="section_info">Impormasyon</string>
     <string name="walletcore_version_label">Bersyon ng WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Pareho (i-scan sa clearnet, i-broadcast sa I2P)</string>
     <string name="network_policy_help">Gumagamit lang ang Clearnet ng clearnet node. Gumagamit lang ang I2P ng I2P node at proxy. Ang Pareho ay nag-scan sa clearnet at nag-broadcast sa I2P.</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">I-type ang buong URL, kasama ang http:// o https://.\nDefault na node: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">I-type ang buong URL, kasama ang http:// o https://.\nDefault na node: https://rpc.nexawal.com</string>
     <string name="use_this_node">Gamitin ang node na ito</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Tingnan ang lahat ng transaksyon (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d nakabinbing transaksyon</string>
     <string name="send_fee_increased_unapproved">Tumaas ang network fee. Walang na-broadcast. Suriin ang fee at kumpirmahin muli.</string>
-    <string name="fiat_help_nexatrode">Opsyonal. Kapag naka-on, humihingi ang NexaWal sa rates.nexatrode.com ng XMR rate para sa pinili mong currency sa pamamagitan ng HTTPS. Dumadaan ito sa pampublikong internet (clearnet), kahit I2P ang gamit ng wallet node. Makikita ng Nexatrode ang IP address mo at piniling currency, pero hindi ipinapadala ang halaga, mga address, seed phrase, o history ng transaksyon ng wallet. Tantiya lamang ang mga rate — XMR ang ipinapadala at hawak mo.</string>
-    <string name="about_disclaimer_nexatrode">Lisensyado ng MIT, hindi na-audited na software. Responsable ka para sa iyong parirala sa pagbawi at mga pondo. Makikita ng default na remote node ang iyong mga query sa pag-sync ng IP at wallet — patakbuhin ang sarili mong node para sa mas malakas na privacy. Mga opsyonal na pagtatantya ng fiat, kung naka-enable, makipag-ugnayan sa rates.nexatrode.com para sa mga rate.</string>
+    <string name="fiat_help_nexatrode">Opsyonal. Kapag naka-on, humihingi ang NexaWal sa rates.nexawal.com ng XMR rate para sa pinili mong currency sa pamamagitan ng HTTPS. Dumadaan ito sa pampublikong internet (clearnet), kahit I2P ang gamit ng wallet node. Makikita ng Nexatrode ang IP address mo at piniling currency, pero hindi ipinapadala ang halaga, mga address, seed phrase, o history ng transaksyon ng wallet. Tantiya lamang ang mga rate — XMR ang ipinapadala at hawak mo.</string>
+    <string name="about_disclaimer_nexatrode">Lisensyado ng MIT, hindi na-audited na software. Responsable ka para sa iyong parirala sa pagbawi at mga pondo. Makikita ng default na remote node ang iyong mga query sa pag-sync ng IP at wallet — patakbuhin ang sarili mong node para sa mas malakas na privacy. Mga opsyonal na pagtatantya ng fiat, kung naka-enable, makipag-ugnayan sa rates.nexawal.com para sa mga rate.</string>
     <string name="history_export_csv">I-export ang mga tumugmang transaksyon (CSV)</string>
     <string name="history_export_failed">Hindi na-export ang CSV. Subukan muli.</string>
     <string name="send_previous_payment_recovered">Na-recover ang nakaraang bayad. Hindi naipadala ang bagong bayad. I-preview itong muli.</string>

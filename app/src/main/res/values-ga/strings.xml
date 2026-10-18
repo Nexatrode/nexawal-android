@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Ionadaigh an sparán atá ann?</string>
     <string name="replace_wallet_message">Ionadóidh sé seo an sparán atá ar an ghléas seo cheana.\n\nMá leanann tú ar aghaidh, bainfear an síol agus staid an scanta atá stóráilte faoi láthair. Bí cinnte go bhfuil cúltaca de do shíol agat sula leanann tú ar aghaidh.</string>
     <string name="section_network_node">Líonra agus Nód</string>
-    <string name="node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.\nnód réamhshocraithe: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.\nnód réamhshocraithe: https://rpc.nexawal.com</string>
     <string name="save_node">Sábháil an nód</string>
     <string name="section_info">Eolas</string>
     <string name="walletcore_version_label">Leagan WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">An Dá Cheann (scan Clearnet, craol I2P)</string>
     <string name="network_policy_help">Úsáideann Clearnet amháin nód Clearnet. Úsáideann I2P amháin nód agus seachfhreastalaí I2P. Scanann An Dá Cheann ar Clearnet agus craolann trí I2P.</string>
     <string name="section_clearnet_node">Nód Clearnet</string>
-    <string name="clearnet_node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.\nnód réamhshocraithe: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Cuir isteach an URL iomlán, lena n-áirítear http:// nó https://.\nnód réamhshocraithe: https://rpc.nexawal.com</string>
     <string name="use_this_node">Úsáid an nód seo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nód I2P (óstach:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Féach ar gach idirbheart (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d idirbheart ar feitheamh</string>
     <string name="send_fee_increased_unapproved">Tháinig méadú ar tháille an líonra. Níor craoladh aon rud. Seiceáil an táille agus deimhnigh arís.</string>
-    <string name="fiat_help_nexatrode">Roghnach. Nuair atá sé cumasaithe, iarrann NexaWal ráta XMR don airgeadra roghnaithe ó rates.nexatrode.com trí HTTPS. Úsáideann an t-iarratas an tIdirlíon poiblí (Clearnet), fiú má úsáideann nóid an sparáin I2P. Is féidir le Nexatrode do sheoladh IP agus an t-airgeadra roghnaithe a fheiceáil, ach ní sheoltar iarmhéideanna, seoltaí, frása síl ná stair idirbheart an sparáin. Meastacháin amháin iad na rátaí — is é XMR a sheolann agus a choinníonn tú.</string>
-    <string name="about_disclaimer_nexatrode">Bogearraí MIT-cheadúnaithe, neamhiniúchta. Tá tú freagrach as do frása athshlánaithe agus cistí. Is féidir leis an gciannód réamhshocraithe do cheisteanna maidir le sioncrónú IP agus sparán a fheiceáil - do nód féin a rith le haghaidh príobháideachta níos láidre. Meastacháin fiat roghnach, má tá sé cumasaithe, téigh i dteagmháil le rates.nexatrode.com le haghaidh rátaí.</string>
+    <string name="fiat_help_nexatrode">Roghnach. Nuair atá sé cumasaithe, iarrann NexaWal ráta XMR don airgeadra roghnaithe ó rates.nexawal.com trí HTTPS. Úsáideann an t-iarratas an tIdirlíon poiblí (Clearnet), fiú má úsáideann nóid an sparáin I2P. Is féidir le Nexatrode do sheoladh IP agus an t-airgeadra roghnaithe a fheiceáil, ach ní sheoltar iarmhéideanna, seoltaí, frása síl ná stair idirbheart an sparáin. Meastacháin amháin iad na rátaí — is é XMR a sheolann agus a choinníonn tú.</string>
+    <string name="about_disclaimer_nexatrode">Bogearraí MIT-cheadúnaithe, neamhiniúchta. Tá tú freagrach as do frása athshlánaithe agus cistí. Is féidir leis an gciannód réamhshocraithe do cheisteanna maidir le sioncrónú IP agus sparán a fheiceáil - do nód féin a rith le haghaidh príobháideachta níos láidre. Meastacháin fiat roghnach, má tá sé cumasaithe, téigh i dteagmháil le rates.nexawal.com le haghaidh rátaí.</string>
     <string name="history_export_csv">Easpórtáil na hidirbhearta meaitseáilte (CSV)</string>
     <string name="history_export_failed">Theip ar easpórtáil CSV. Bain triail eile as.</string>
     <string name="send_previous_payment_recovered">Aisghabhadh an íocaíocht roimhe seo. Níor seoladh an íocaíocht nua. Réamhamharc uirthi arís.</string>

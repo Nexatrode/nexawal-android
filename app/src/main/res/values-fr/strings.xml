@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Remplacer le portefeuille existant ?</string>
     <string name="replace_wallet_message">Cela remplacera le portefeuille existant sur cet appareil.\n\nSi tu continues, la phrase mnémonique enregistrée et l\'état d\'analyse seront supprimés. Assure-toi d\'avoir sauvegardé ta phrase mnémonique avant de continuer.</string>
     <string name="section_network_node">Réseau et nœud</string>
-    <string name="node_url_help">Saisis l\'URL complète, y compris http:// ou https://.\nNœud par défaut : https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Saisis l\'URL complète, y compris http:// ou https://.\nNœud par défaut : https://rpc.nexawal.com</string>
     <string name="save_node">Enregistrer le nœud</string>
     <string name="section_info">Infos</string>
     <string name="walletcore_version_label">Version de WalletCore :</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Les deux (analyse Clearnet, diffusion I2P)</string>
     <string name="network_policy_help">« Clearnet uniquement » utilise un nœud Clearnet. « I2P uniquement » utilise un nœud et un proxy I2P. « Les deux » analyse via Clearnet et diffuse via I2P.</string>
     <string name="section_clearnet_node">Nœud Clearnet</string>
-    <string name="clearnet_node_url_help">Saisis l\'URL complète, y compris http:// ou https://.\nNœud par défaut : https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Saisis l\'URL complète, y compris http:// ou https://.\nNœud par défaut : https://rpc.nexawal.com</string>
     <string name="use_this_node">Utiliser ce nœud</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nœud I2P (hôte:port)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Voir toutes les transactions (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transactions en attente</string>
     <string name="send_fee_increased_unapproved">Les frais réseau ont augmenté. Rien n’a été diffusé. Vérifiez les frais et confirmez à nouveau.</string>
-    <string name="fiat_help_nexatrode">Facultatif. Si cette option est activée, NexaWal demande par HTTPS à rates.nexatrode.com le cours du XMR dans la devise choisie. Cette requête passe par l’Internet public (clearnet), même si le nœud du portefeuille utilise I2P. Nexatrode peut voir votre adresse IP et la devise choisie, mais ne reçoit ni soldes, ni adresses, ni phrase de récupération, ni historique des transactions. Les cours sont des estimations — vous détenez et envoyez du XMR.</string>
-    <string name="about_disclaimer_nexatrode">logiciel non audité sous licence MIT. Vous êtes responsable de votre phrase de récupération et de vos fonds. Le nœud distant par défaut peut voir vos requêtes de synchronisation IP et de portefeuille – exécutez votre propre nœud pour une meilleure confidentialité. Estimations fiat facultatives, si activées, contactez rates.nexatrode.com pour connaître les tarifs.</string>
+    <string name="fiat_help_nexatrode">Facultatif. Si cette option est activée, NexaWal demande par HTTPS à rates.nexawal.com le cours du XMR dans la devise choisie. Cette requête passe par l’Internet public (clearnet), même si le nœud du portefeuille utilise I2P. Nexatrode peut voir votre adresse IP et la devise choisie, mais ne reçoit ni soldes, ni adresses, ni phrase de récupération, ni historique des transactions. Les cours sont des estimations — vous détenez et envoyez du XMR.</string>
+    <string name="about_disclaimer_nexatrode">logiciel non audité sous licence MIT. Vous êtes responsable de votre phrase de récupération et de vos fonds. Le nœud distant par défaut peut voir vos requêtes de synchronisation IP et de portefeuille – exécutez votre propre nœud pour une meilleure confidentialité. Estimations fiat facultatives, si activées, contactez rates.nexawal.com pour connaître les tarifs.</string>
     <string name="history_export_csv">Exporter les transactions correspondantes (CSV)</string>
     <string name="history_export_failed">Échec de l’exportation CSV. Réessayez.</string>
     <string name="send_previous_payment_recovered">Le paiement précédent a été récupéré. Le nouveau paiement n\'a pas été envoyé. Affichez à nouveau l\'aperçu.</string>

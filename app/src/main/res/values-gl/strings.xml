@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Substituír a carteira existente?</string>
     <string name="replace_wallet_message">Isto substituirá a carteira existente neste dispositivo.\n\nSe continúas, a frase mnemónica gardada e o estado de escaneo eliminaranse. Asegúrate de ter a túa frase mnemónica gardada como copia de seguridade antes de continuar.</string>
     <string name="section_network_node">Rede e nodo</string>
-    <string name="node_url_help">Escribe o URL completo, incluíndo http:// ou https://.\nNodo predeterminado: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Escribe o URL completo, incluíndo http:// ou https://.\nNodo predeterminado: https://rpc.nexawal.com</string>
     <string name="save_node">Gardar nodo</string>
     <string name="section_info">Información</string>
     <string name="walletcore_version_label">Versión de WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Ambos (escanear en Clearnet, difundir por I2P)</string>
     <string name="network_policy_help">Só Clearnet usa un nodo Clearnet. Só I2P usa un nodo e proxy I2P. Ambos escanea en Clearnet e difunde por I2P.</string>
     <string name="section_clearnet_node">Nodo Clearnet</string>
-    <string name="clearnet_node_url_help">Escribe o URL completo, incluíndo http:// ou https://.\nNodo predeterminado: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Escribe o URL completo, incluíndo http:// ou https://.\nNodo predeterminado: https://rpc.nexawal.com</string>
     <string name="use_this_node">Usar este nodo</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nodo I2P (host:porto)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Ver todas as transaccións (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transaccións pendentes</string>
     <string name="send_fee_increased_unapproved">A comisión da rede aumentou. Non se emitiu nada. Revisa a comisión e confirma de novo.</string>
-    <string name="fiat_help_nexatrode">Opcional. Se está activado, NexaWal solicita por HTTPS a rates.nexatrode.com a cotización de XMR para a moeda escollida. A solicitude usa a Internet pública (Clearnet), mesmo se o nodo do moedeiro usa I2P. Nexatrode pode ver o teu IP e a moeda escollida, pero non recibe saldos, enderezos, frase de recuperación nin historial de transaccións. As cotizacións son só estimacións: o que tes e envías é XMR.</string>
-    <string name="about_disclaimer_nexatrode">software con licenza MIT non auditado. Vostede é o responsable da súa frase de recuperación e dos fondos. O nodo remoto predeterminado pode ver as túas consultas de sincronización de IP e carteira: executa o teu propio nodo para aumentar a privacidade. Estimacións fiat opcionais, se están habilitadas, póñase en contacto con rates.nexatrode.com para obter tarifas.</string>
+    <string name="fiat_help_nexatrode">Opcional. Se está activado, NexaWal solicita por HTTPS a rates.nexawal.com a cotización de XMR para a moeda escollida. A solicitude usa a Internet pública (Clearnet), mesmo se o nodo do moedeiro usa I2P. Nexatrode pode ver o teu IP e a moeda escollida, pero non recibe saldos, enderezos, frase de recuperación nin historial de transaccións. As cotizacións son só estimacións: o que tes e envías é XMR.</string>
+    <string name="about_disclaimer_nexatrode">software con licenza MIT non auditado. Vostede é o responsable da súa frase de recuperación e dos fondos. O nodo remoto predeterminado pode ver as túas consultas de sincronización de IP e carteira: executa o teu propio nodo para aumentar a privacidade. Estimacións fiat opcionais, se están habilitadas, póñase en contacto con rates.nexawal.com para obter tarifas.</string>
     <string name="history_export_csv">Exportar as transaccións coincidentes (CSV)</string>
     <string name="history_export_failed">Non se puido exportar o CSV. Téntao de novo.</string>
     <string name="send_previous_payment_recovered">Recuperouse o pagamento anterior. O novo pagamento non se enviou. Previsualízao de novo.</string>

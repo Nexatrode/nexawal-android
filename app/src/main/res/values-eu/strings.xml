@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Lehendik dagoen zorroa ordeztu?</string>
     <string name="replace_wallet_message">Honek gailu honetan dagoen zorroa ordeztuko du.\n\nJarraitzen baduzu, gordetako esaldi mnemoteknikoa eta eskaneo-egoera ezabatuko dira. Ziurtatu esaldi mnemotekniko horren babeskopia egin duzula jarraitu aurretik.</string>
     <string name="section_network_node">Sarea eta nodoa</string>
-    <string name="node_url_help">Idatzi URL osoa, http:// edo https:// barne.\nNodo lehenetsia: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Idatzi URL osoa, http:// edo https:// barne.\nNodo lehenetsia: https://rpc.nexawal.com</string>
     <string name="save_node">Gorde nodoa</string>
     <string name="section_info">Informazioa</string>
     <string name="walletcore_version_label">WalletCore bertsioa:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Biak (eskaneatu clearneten, hedatu I2Pn)</string>
     <string name="network_policy_help">Clearnet soilik aukerak clearnet nodo bat erabiltzen du. I2P soilik aukerak I2P nodo eta proxy bat erabiltzen du. Biak aukerak clearneten eskaneatzen du eta I2Pren bidez hedatzen du.</string>
     <string name="section_clearnet_node">Clearnet nodoa</string>
-    <string name="clearnet_node_url_help">Idatzi URL osoa, http:// edo https:// barne.\nNodo lehenetsia: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Idatzi URL osoa, http:// edo https:// barne.\nNodo lehenetsia: https://rpc.nexawal.com</string>
     <string name="use_this_node">Erabili nodo hau</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P nodoa (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Ikusi transakzio guztiak (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transakzio zain</string>
     <string name="send_fee_increased_unapproved">Sareko komisioa igo da. Ez da ezer bidali. Berrikusi komisioa eta berretsi berriro.</string>
-    <string name="fiat_help_nexatrode">Aukerakoa. Aktibatuta dagoenean, NexaWal-ek rates.nexatrode.com-i eskatzen dio, HTTPS bidez, aukeratutako monetaren XMR tasa. Eskaerak Internet publikoa (Clearnet) erabiltzen du, zorro-nodoak I2P erabiltzen badu ere. Nexatrode-k zure IP helbidea eta hautatutako moneta ikus ditzake, baina ez ditu jasotzen zorroko saldoak, helbideak, berreskuratze-esaldia edo transakzioen historia. Tasak estimazioak baino ez dira: XMR bidali eta gordetzen duzun aktiboa da.</string>
-    <string name="about_disclaimer_nexatrode">MIT lizentziadun, ikuskatu gabeko softwarea. Zure berreskurapen esaldiaren eta funtsen arduraduna zara. Urruneko nodo lehenetsiak zure IP eta zorroaren sinkronizazio-kontsultak ikus ditzake; exekutatu zure nodoa pribatutasun sendoagoa izateko. Aukerako fiat estimazioak, gaituta badago, jarri harremanetan rates.nexatrode.com tarifak lortzeko.</string>
+    <string name="fiat_help_nexatrode">Aukerakoa. Aktibatuta dagoenean, NexaWal-ek rates.nexawal.com-i eskatzen dio, HTTPS bidez, aukeratutako monetaren XMR tasa. Eskaerak Internet publikoa (Clearnet) erabiltzen du, zorro-nodoak I2P erabiltzen badu ere. Nexatrode-k zure IP helbidea eta hautatutako moneta ikus ditzake, baina ez ditu jasotzen zorroko saldoak, helbideak, berreskuratze-esaldia edo transakzioen historia. Tasak estimazioak baino ez dira: XMR bidali eta gordetzen duzun aktiboa da.</string>
+    <string name="about_disclaimer_nexatrode">MIT lizentziadun, ikuskatu gabeko softwarea. Zure berreskurapen esaldiaren eta funtsen arduraduna zara. Urruneko nodo lehenetsiak zure IP eta zorroaren sinkronizazio-kontsultak ikus ditzake; exekutatu zure nodoa pribatutasun sendoagoa izateko. Aukerako fiat estimazioak, gaituta badago, jarri harremanetan rates.nexawal.com tarifak lortzeko.</string>
     <string name="history_export_csv">Esportatu bat datozen transakzioak (CSV)</string>
     <string name="history_export_failed">Ezin izan da CSV esportatu. Saiatu berriro.</string>
     <string name="send_previous_payment_recovered">Aurreko ordainketa berreskuratu da. Ordainketa berria ez da bidali. Ikusi aurrebista berriro.</string>

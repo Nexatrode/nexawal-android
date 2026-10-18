@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">موجودہ والٹ کو تبدیل کریں؟</string>
     <string name="replace_wallet_message">یہ اس ڈیوائس پر موجودہ والٹ کو تبدیل کر دے گا۔\n\nاگر آپ جاری رکھتے ہیں تو موجودہ محفوظ منیمونک اور اسکین کی حالت ہٹا دی جائے گی۔ آگے بڑھنے سے پہلے یقینی بنائیں کہ آپ کے منیمونک کا بیک اپ موجود ہے۔</string>
     <string name="section_network_node">نیٹ ورک اور نوڈ</string>
-    <string name="node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔\nڈیفالٹ نوڈ: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔\nڈیفالٹ نوڈ: https://rpc.nexawal.com</string>
     <string name="save_node">نوڈ محفوظ کریں</string>
     <string name="section_info">معلومات</string>
     <string name="walletcore_version_label">WalletCore ورژن:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">دونوں (Clearnet اسکین کریں، I2P پر براڈکاسٹ کریں)</string>
     <string name="network_policy_help">صرف Clearnet ایک Clearnet نوڈ استعمال کرتا ہے۔ صرف I2P ایک I2P نوڈ اور پراکسی استعمال کرتا ہے۔ دونوں Clearnet پر اسکین اور I2P پر براڈکاسٹ کرتے ہیں۔</string>
     <string name="section_clearnet_node">Clearnet نوڈ</string>
-    <string name="clearnet_node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔\nڈیفالٹ نوڈ: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">مکمل URL درج کریں، بشمول http:// یا https://۔\nڈیفالٹ نوڈ: https://rpc.nexawal.com</string>
     <string name="use_this_node">یہ نوڈ استعمال کریں</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P نوڈ (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">تمام لین دین دیکھیں (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d زیر التوا لین دین</string>
     <string name="send_fee_increased_unapproved">نیٹ ورک فیس بڑھ گئی۔ کچھ بھی نشر نہیں ہوا۔ فیس کا جائزہ لے کر دوبارہ تصدیق کریں۔</string>
-    <string name="fiat_help_nexatrode">اختیاری ہے۔ فعال ہونے پر، NexaWal آپ کی منتخب کردہ کرنسی کے لیے XMR کی شرح HTTPS کے ذریعے rates.nexatrode.com سے طلب کرتا ہے۔ یہ درخواست عوامی انٹرنیٹ (Clearnet) استعمال کرتی ہے، چاہے والیٹ نوڈ I2P استعمال کرے۔ Nexatrode آپ کا IP پتہ اور منتخب کرنسی دیکھ سکتا ہے، لیکن والیٹ کی رقم، پتے، بحالی کے الفاظ یا لین دین کی تاریخ نہیں بھیجی جاتی۔ شرحیں صرف اندازے ہیں — آپ XMR ہی بھیجتے اور رکھتے ہیں۔</string>
-    <string name="about_disclaimer_nexatrode">MIT لائسنس یافتہ، غیر آڈیٹ سافٹ ویئر۔ آپ اپنے ریکوری کے جملے اور فنڈز کے ذمہ دار ہیں۔ ڈیفالٹ ریموٹ نوڈ آپ کے IP اور والیٹ کی مطابقت پذیری کے سوالات دیکھ سکتا ہے — مضبوط رازداری کے لیے اپنا نوڈ چلائیں۔ اختیاری تخمینہ جات، اگر فعال ہو، تو قیمتوں کے لیے rates.nexatrode.com سے رابطہ کریں۔</string>
+    <string name="fiat_help_nexatrode">اختیاری ہے۔ فعال ہونے پر، NexaWal آپ کی منتخب کردہ کرنسی کے لیے XMR کی شرح HTTPS کے ذریعے rates.nexawal.com سے طلب کرتا ہے۔ یہ درخواست عوامی انٹرنیٹ (Clearnet) استعمال کرتی ہے، چاہے والیٹ نوڈ I2P استعمال کرے۔ Nexatrode آپ کا IP پتہ اور منتخب کرنسی دیکھ سکتا ہے، لیکن والیٹ کی رقم، پتے، بحالی کے الفاظ یا لین دین کی تاریخ نہیں بھیجی جاتی۔ شرحیں صرف اندازے ہیں — آپ XMR ہی بھیجتے اور رکھتے ہیں۔</string>
+    <string name="about_disclaimer_nexatrode">MIT لائسنس یافتہ، غیر آڈیٹ سافٹ ویئر۔ آپ اپنے ریکوری کے جملے اور فنڈز کے ذمہ دار ہیں۔ ڈیفالٹ ریموٹ نوڈ آپ کے IP اور والیٹ کی مطابقت پذیری کے سوالات دیکھ سکتا ہے — مضبوط رازداری کے لیے اپنا نوڈ چلائیں۔ اختیاری تخمینہ جات، اگر فعال ہو، تو قیمتوں کے لیے rates.nexawal.com سے رابطہ کریں۔</string>
     <string name="history_export_csv">مماثل لین دین برآمد کریں (CSV)</string>
     <string name="history_export_failed">CSV برآمد نہیں ہو سکی۔ دوبارہ کوشش کریں۔</string>
     <string name="send_previous_payment_recovered">پچھلی ادائیگی بازیافت ہو گئی۔ نئی ادائیگی نہیں بھیجی گئی۔ دوبارہ پیش منظر دیکھیں۔</string>

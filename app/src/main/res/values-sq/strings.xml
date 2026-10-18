@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Të zëvendësohet portofoli ekzistues?</string>
     <string name="replace_wallet_message">Kjo do të zëvendësojë portofolin ekzistues në këtë pajisje.\n\nNëse vazhdon, mnemoniku i ruajtur aktualisht dhe gjendja e skanimit do të hiqen. Sigurohu që e ke bërë kopje rezervë të mnemonikut para se të vazhdosh.</string>
     <string name="section_network_node">Rrjeti &amp; Nyja</string>
-    <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nNyja e parazgjedhur: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nNyja e parazgjedhur: https://rpc.nexawal.com</string>
     <string name="save_node">Ruaj nyjen</string>
     <string name="section_info">Informacion</string>
     <string name="walletcore_version_label">Versioni i WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Të dyja (skano clearnet, transmeto I2P)</string>
     <string name="network_policy_help">Vetëm Clearnet përdor një nyje clearnet. Vetëm I2P përdor një nyje dhe proxy I2P. Të dyja skanon në clearnet dhe transmeton përmes I2P.</string>
     <string name="section_clearnet_node">Nyja Clearnet</string>
-    <string name="clearnet_node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nNyja e parazgjedhur: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nNyja e parazgjedhur: https://rpc.nexawal.com</string>
     <string name="use_this_node">Përdor këtë nyje</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Nyja I2P (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Shiko të gjitha transaksionet (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transaksione në pritje</string>
     <string name="send_fee_increased_unapproved">Tarifa e rrjetit u rrit. Nuk u transmetua asgjë. Kontrolloni tarifën dhe konfirmoni përsëri.</string>
-    <string name="fiat_help_nexatrode">Opsionale. Kur aktivizohet, NexaWal kërkon përmes HTTPS nga rates.nexatrode.com kursin e XMR-së për monedhën e zgjedhur. Kërkesa përdor internetin publik (Clearnet), edhe kur nyja e portofolit përdor I2P. Nexatrode mund të shohë adresën tuaj IP dhe monedhën e zgjedhur, por nuk merr gjendjen, adresat, frazën e rikuperimit ose historikun e transaksioneve të portofolit. Kurset janë vetëm vlerësime — dërgoni dhe mbani XMR.</string>
-    <string name="about_disclaimer_nexatrode">Softuer i paaudituar i licencuar nga MIT. Ju jeni përgjegjës për frazën dhe fondet tuaja të rikuperimit. Nyja e largët e parazgjedhur mund të shohë pyetjet tuaja të sinkronizimit të IP-së dhe portofolit - drejtoni nyjen tuaj për privatësi më të fortë. Vlerësimet opsionale të fiat-it, nëse janë të aktivizuara, kontaktoni rates.nexatrode.com për tarifat.</string>
+    <string name="fiat_help_nexatrode">Opsionale. Kur aktivizohet, NexaWal kërkon përmes HTTPS nga rates.nexawal.com kursin e XMR-së për monedhën e zgjedhur. Kërkesa përdor internetin publik (Clearnet), edhe kur nyja e portofolit përdor I2P. Nexatrode mund të shohë adresën tuaj IP dhe monedhën e zgjedhur, por nuk merr gjendjen, adresat, frazën e rikuperimit ose historikun e transaksioneve të portofolit. Kurset janë vetëm vlerësime — dërgoni dhe mbani XMR.</string>
+    <string name="about_disclaimer_nexatrode">Softuer i paaudituar i licencuar nga MIT. Ju jeni përgjegjës për frazën dhe fondet tuaja të rikuperimit. Nyja e largët e parazgjedhur mund të shohë pyetjet tuaja të sinkronizimit të IP-së dhe portofolit - drejtoni nyjen tuaj për privatësi më të fortë. Vlerësimet opsionale të fiat-it, nëse janë të aktivizuara, kontaktoni rates.nexawal.com për tarifat.</string>
     <string name="history_export_csv">Eksporto transaksionet që përputhen (CSV)</string>
     <string name="history_export_failed">Eksportimi i CSV-së dështoi. Provo përsëri.</string>
     <string name="send_previous_payment_recovered">Pagesa e mëparshme u rikuperua. Pagesa e re nuk u dërgua. Shikojeni paraprakisht përsëri.</string>

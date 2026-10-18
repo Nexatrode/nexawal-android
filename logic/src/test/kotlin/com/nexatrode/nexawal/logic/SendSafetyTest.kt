@@ -44,7 +44,7 @@ class SendSafetyTest {
             SendSafety.shouldRetryViaSiblingMonerod(
                 "fee_rate failed",
                 "",
-                "https://rpc.nexatrode.com",
+                "https://rpc.nexawal.com",
             ),
         )
         assertNull(

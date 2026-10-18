@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">替換現有錢包?</string>
     <string name="replace_wallet_message">這將替換此設備上的現有錢包。\n\n如果繼續,當前存儲的助記詞和掃描狀態將被刪除。請確保在繼續之前已備份好您的助記詞。</string>
     <string name="section_network_node">網絡與節點</string>
-    <string name="node_url_help">請輸入完整網址,包括 http:// 或 https://。\n預設節點：https://rpc.nexatrode.com</string>
+    <string name="node_url_help">請輸入完整網址,包括 http:// 或 https://。\n預設節點：https://rpc.nexawal.com</string>
     <string name="save_node">保存節點</string>
     <string name="section_info">信息</string>
     <string name="walletcore_version_label">WalletCore 版本:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">兩者(Clearnet 掃描,I2P 廣播)</string>
     <string name="network_policy_help">“僅 Clearnet”使用 Clearnet 節點。“僅 I2P”使用 I2P 節點和代理。“兩者”會通過 Clearnet 掃描,並經 I2P 廣播。</string>
     <string name="section_clearnet_node">Clearnet 節點</string>
-    <string name="clearnet_node_url_help">請輸入完整網址,包括 http:// 或 https://。\n預設節點：https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">請輸入完整網址,包括 http:// 或 https://。\n預設節點：https://rpc.nexawal.com</string>
     <string name="use_this_node">使用此節點</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P 節點(主機:端口)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">查看全部交易 (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d 筆待確認交易</string>
     <string name="send_fee_increased_unapproved">網路手續費已增加。沒有廣播任何交易。請檢查手續費並再次確認。</string>
-    <string name="fiat_help_nexatrode">選用。啟用後，NexaWal 會透過 HTTPS 向 rates.nexatrode.com 查詢所選貨幣的 XMR 匯率。即使錢包節點使用 I2P，此請求仍會透過公共網際網路（Clearnet）傳送。Nexatrode 可以看到你的 IP 位址和所選貨幣，但不會收到錢包金額、地址、助記詞或交易紀錄。匯率僅供估算——你實際傳送和持有的是 XMR。</string>
-    <string name="about_disclaimer_nexatrode">麻省理工學院許可、未經審核的軟體。您應對您的恢復短語和資金負責。預設遠端節點可以查看您的 IP 和錢包同步查詢 - 運行您自己的節點以獲得更強的隱私。可選的法定估算（如果啟用）請聯絡 rates.nexatrode.com 以了解費率。</string>
+    <string name="fiat_help_nexatrode">選用。啟用後，NexaWal 會透過 HTTPS 向 rates.nexawal.com 查詢所選貨幣的 XMR 匯率。即使錢包節點使用 I2P，此請求仍會透過公共網際網路（Clearnet）傳送。Nexatrode 可以看到你的 IP 位址和所選貨幣，但不會收到錢包金額、地址、助記詞或交易紀錄。匯率僅供估算——你實際傳送和持有的是 XMR。</string>
+    <string name="about_disclaimer_nexatrode">麻省理工學院許可、未經審核的軟體。您應對您的恢復短語和資金負責。預設遠端節點可以查看您的 IP 和錢包同步查詢 - 運行您自己的節點以獲得更強的隱私。可選的法定估算（如果啟用）請聯絡 rates.nexawal.com 以了解費率。</string>
     <string name="history_export_csv">匯出符合條件的交易記錄 (CSV)</string>
     <string name="history_export_failed">CSV 匯出失敗，請再試一次。</string>
     <string name="send_previous_payment_recovered">已恢復上一筆付款。新的付款尚未傳送。請重新預覽。</string>

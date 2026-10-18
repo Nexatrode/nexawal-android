@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Mövcud pulqabı əvəz edilsin?</string>
     <string name="replace_wallet_message">Bu, cihazda saxlanılan mövcud pulqabını əvəz edəcək.\n\nDavam etsəniz, hazırda saxlanılan mnemonik və skan vəziyyəti silinəcək. Davam etməzdən əvvəl mnemonikinizin ehtiyat nüsxəsinin olduğuna əmin olun.</string>
     <string name="section_network_node">Şəbəkə və Node</string>
-    <string name="node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.\nDefolt node: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.\nDefolt node: https://rpc.nexawal.com</string>
     <string name="save_node">Node-u yadda saxla</string>
     <string name="section_info">Məlumat</string>
     <string name="walletcore_version_label">WalletCore versiyası:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Hər ikisi (clearnet skan, I2P yayım)</string>
     <string name="network_policy_help">Yalnız Clearnet clearnet node-dan istifadə edir. Yalnız I2P I2P node və proksi istifadə edir. Hər ikisi clearnet-də skan edir və I2P üzərindən yayımlayır.</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.\nDefolt node: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Tam URL-i daxil edin, http:// və ya https:// daxil olmaqla.\nDefolt node: https://rpc.nexawal.com</string>
     <string name="use_this_node">Bu node-dan istifadə et</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Bütün əməliyyatlara bax (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d gözləyən əməliyyat</string>
     <string name="send_fee_increased_unapproved">Şəbəkə komissiyası artdı. Heç nə yayımlanmadı. Komissiyanı yoxlayıb yenidən təsdiqləyin.</string>
-    <string name="fiat_help_nexatrode">İstəyə bağlıdır. Aktiv olduqda NexaWal seçdiyiniz valyuta üçün XMR məzənnəsini HTTPS ilə rates.nexatrode.com saytından soruşur. Bu sorğu pul kisəsi qovşağı I2P istifadə etsə belə açıq internetdən (Clearnet) gedir. Nexatrode IP ünvanınızı və seçilmiş valyutanı görə bilər, lakin pul kisəsi məbləğləri, ünvanları, toxum ifadəsi və əməliyyat tarixçəsi göndərilmir. Məzənnələr yalnız təxminidir — saxladığınız və göndərdiyiniz aktiv XMR-dir.</string>
-    <string name="about_disclaimer_nexatrode">MIT-lisenziyalı, yoxlanılmamış proqram təminatı. Bərpa ifadəniz və vəsaitlərinizə görə məsuliyyət daşıyırsınız. Defolt uzaq qovşaq IP və pul kisəsi sinxronizasiya sorğularınızı görə bilər – daha güclü məxfilik üçün öz nodeunuzu idarə edin. Könüllü fiat təxminləri, əgər aktivdirsə, tariflər üçün rates.nexatrode.com ilə əlaqə saxlayın.</string>
+    <string name="fiat_help_nexatrode">İstəyə bağlıdır. Aktiv olduqda NexaWal seçdiyiniz valyuta üçün XMR məzənnəsini HTTPS ilə rates.nexawal.com saytından soruşur. Bu sorğu pul kisəsi qovşağı I2P istifadə etsə belə açıq internetdən (Clearnet) gedir. Nexatrode IP ünvanınızı və seçilmiş valyutanı görə bilər, lakin pul kisəsi məbləğləri, ünvanları, toxum ifadəsi və əməliyyat tarixçəsi göndərilmir. Məzənnələr yalnız təxminidir — saxladığınız və göndərdiyiniz aktiv XMR-dir.</string>
+    <string name="about_disclaimer_nexatrode">MIT-lisenziyalı, yoxlanılmamış proqram təminatı. Bərpa ifadəniz və vəsaitlərinizə görə məsuliyyət daşıyırsınız. Defolt uzaq qovşaq IP və pul kisəsi sinxronizasiya sorğularınızı görə bilər – daha güclü məxfilik üçün öz nodeunuzu idarə edin. Könüllü fiat təxminləri, əgər aktivdirsə, tariflər üçün rates.nexawal.com ilə əlaqə saxlayın.</string>
     <string name="history_export_csv">Uyğun əməliyyatları ixrac et (CSV)</string>
     <string name="history_export_failed">CSV ixracı alınmadı. Yenidən cəhd edin.</string>
     <string name="send_previous_payment_recovered">Əvvəlki ödəniş bərpa edildi. Yeni ödəniş göndərilmədi. Yenidən önizləyin.</string>

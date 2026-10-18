@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Lecseréled a meglévő pénztárcát?</string>
     <string name="replace_wallet_message">Ez lecseréli a jelenlegi eszközön tárolt pénztárcát.\n\nHa folytatod, a jelenleg tárolt mnemonika és a szkennelési állapot törlődik. Győződj meg róla, hogy mentetted a mnemonikádat, mielőtt folytatod.</string>
     <string name="section_network_node">Hálózat és csomópont</string>
-    <string name="node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.\nAlapértelmezett csomópont: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.\nAlapértelmezett csomópont: https://rpc.nexawal.com</string>
     <string name="save_node">Csomópont mentése</string>
     <string name="section_info">Infó</string>
     <string name="walletcore_version_label">WalletCore verzió:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Mindkettő (clearnet szkennelés, I2P közvetítés)</string>
     <string name="network_policy_help">A Csak Clearnet egy clearnet csomópontot használ. A Csak I2P egy I2P csomópontot és proxyt használ. A Mindkettő clearneten szkennel, és I2P-n keresztül közvetít.</string>
     <string name="section_clearnet_node">Clearnet csomópont</string>
-    <string name="clearnet_node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.\nAlapértelmezett csomópont: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Írd be a teljes URL-t, http:// vagy https:// előtaggal.\nAlapértelmezett csomópont: https://rpc.nexawal.com</string>
     <string name="use_this_node">Ezt a csomópontot használom</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P csomópont (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Összes tranzakció megtekintése (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d függőben lévő tranzakció</string>
     <string name="send_fee_increased_unapproved">A hálózati díj megemelkedett. Nem történt közvetítés. Ellenőrizze a díjat, majd erősítse meg újra.</string>
-    <string name="fiat_help_nexatrode">Nem kötelező. Bekapcsoláskor a NexaWal HTTPS-en keresztül lekéri a kiválasztott pénznem XMR-árfolyamát a rates.nexatrode.com címről. A kérés a nyilvános internetet (Clearnet) használja akkor is, ha a tárca csomópontja I2P-t használ. A Nexatrode láthatja az IP-címedet és a választott pénznemet, de nem kap tárcaegyenleget, címet, helyreállító kifejezést vagy tranzakciós előzményt. Az árfolyamok csak becslések — XMR-t küldesz és tartasz.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licenc, nem auditált szoftver. Ön felelős a helyreállítási kifejezésért és az alapokért. Az alapértelmezett távoli csomópont láthatja az Ön IP-címét és a pénztárca szinkronizálási lekérdezéseit – futtassa saját csomópontját az erősebb adatvédelem érdekében. Opcionális fiat becslések, ha engedélyezve van, forduljon a rates.nexatrode.com-hez az árakért.</string>
+    <string name="fiat_help_nexatrode">Nem kötelező. Bekapcsoláskor a NexaWal HTTPS-en keresztül lekéri a kiválasztott pénznem XMR-árfolyamát a rates.nexawal.com címről. A kérés a nyilvános internetet (Clearnet) használja akkor is, ha a tárca csomópontja I2P-t használ. A Nexatrode láthatja az IP-címedet és a választott pénznemet, de nem kap tárcaegyenleget, címet, helyreállító kifejezést vagy tranzakciós előzményt. Az árfolyamok csak becslések — XMR-t küldesz és tartasz.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licenc, nem auditált szoftver. Ön felelős a helyreállítási kifejezésért és az alapokért. Az alapértelmezett távoli csomópont láthatja az Ön IP-címét és a pénztárca szinkronizálási lekérdezéseit – futtassa saját csomópontját az erősebb adatvédelem érdekében. Opcionális fiat becslések, ha engedélyezve van, forduljon a rates.nexawal.com-hez az árakért.</string>
     <string name="history_export_csv">Egyező tranzakciók exportálása (CSV)</string>
     <string name="history_export_failed">A CSV-exportálás nem sikerült. Próbálja újra.</string>
     <string name="send_previous_payment_recovered">A korábbi fizetés helyreállt. Az új fizetés nem lett elküldve. Tekintsd meg újra az előnézetet.</string>

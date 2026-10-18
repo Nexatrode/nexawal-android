@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Vorhandene Wallet ersetzen?</string>
     <string name="replace_wallet_message">Dadurch wird die vorhandene Wallet auf diesem Gerät ersetzt.\n\nWenn du fortfährst, werden der derzeit gespeicherte Mnemonic und der Scan-Status entfernt. Stelle sicher, dass du ein Backup deines Mnemonics hast, bevor du fortfährst.</string>
     <string name="section_network_node">Netzwerk &amp; Node</string>
-    <string name="node_url_help">Gib die vollständige URL ein, einschließlich http:// oder https://.\nStandardknoten: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Gib die vollständige URL ein, einschließlich http:// oder https://.\nStandardknoten: https://rpc.nexawal.com</string>
     <string name="save_node">Node speichern</string>
     <string name="section_info">Informationen</string>
     <string name="walletcore_version_label">WalletCore-Version:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Beide (Clearnet scannen, I2P senden)</string>
     <string name="network_policy_help">Nur Clearnet verwendet einen Clearnet-Node. Nur I2P verwendet einen I2P-Node und -Proxy. Beide scannt über Clearnet und sendet über I2P.</string>
     <string name="section_clearnet_node">Clearnet-Node</string>
-    <string name="clearnet_node_url_help">Gib die vollständige URL ein, einschließlich http:// oder https://.\nStandardknoten: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Gib die vollständige URL ein, einschließlich http:// oder https://.\nStandardknoten: https://rpc.nexawal.com</string>
     <string name="use_this_node">Diesen Node verwenden</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-Node (Host:Port)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Alle Transaktionen anzeigen (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ausstehende Transaktionen</string>
     <string name="send_fee_increased_unapproved">Die Netzwerkgebühr ist gestiegen. Es wurde nichts übertragen. Prüfe die Gebühr und bestätige erneut.</string>
-    <string name="fiat_help_nexatrode">Optional. Wenn aktiviert, fragt NexaWal über HTTPS bei rates.nexatrode.com den XMR-Kurs für die ausgewählte Währung ab. Diese Anfrage nutzt das öffentliche Internet (Clearnet), auch wenn dein Wallet-Node I2P verwendet. Nexatrode kann deine IP-Adresse und die gewählte Währung sehen, erhält aber keine Wallet-Beträge, Adressen, Seed-Phrase oder Transaktionshistorie. Die Kurse sind nur Schätzwerte — du hältst und sendest XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-lizenzierte, ungeprüfte Software. Sie sind für Ihren Wiederherstellungssatz und Ihre Mittel verantwortlich. Der standardmäßige Remote-Knoten kann Ihre IP- und Wallet-Synchronisierungsanfragen sehen – führen Sie Ihren eigenen Knoten aus, um den Datenschutz zu verbessern. Optionale Fiat-Schätzungen, falls aktiviert, kontaktieren Sie rates.nexatrode.com für Preise.</string>
+    <string name="fiat_help_nexatrode">Optional. Wenn aktiviert, fragt NexaWal über HTTPS bei rates.nexawal.com den XMR-Kurs für die ausgewählte Währung ab. Diese Anfrage nutzt das öffentliche Internet (Clearnet), auch wenn dein Wallet-Node I2P verwendet. Nexatrode kann deine IP-Adresse und die gewählte Währung sehen, erhält aber keine Wallet-Beträge, Adressen, Seed-Phrase oder Transaktionshistorie. Die Kurse sind nur Schätzwerte — du hältst und sendest XMR.</string>
+    <string name="about_disclaimer_nexatrode">MIT-lizenzierte, ungeprüfte Software. Sie sind für Ihren Wiederherstellungssatz und Ihre Mittel verantwortlich. Der standardmäßige Remote-Knoten kann Ihre IP- und Wallet-Synchronisierungsanfragen sehen – führen Sie Ihren eigenen Knoten aus, um den Datenschutz zu verbessern. Optionale Fiat-Schätzungen, falls aktiviert, kontaktieren Sie rates.nexawal.com für Preise.</string>
     <string name="history_export_csv">Passende Transaktionen exportieren (CSV)</string>
     <string name="history_export_failed">CSV-Export fehlgeschlagen. Versuchen Sie es erneut.</string>
     <string name="send_previous_payment_recovered">Die vorherige Zahlung wurde wiederhergestellt. Die neue Zahlung wurde nicht gesendet. Öffne die Vorschau erneut.</string>

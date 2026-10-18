@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Бар болгон капчыкты алмаштырасызбы?</string>
     <string name="replace_wallet_message">Бул бул түзмөктөгү бар болгон капчыкты алмаштырат.\n\nЭгер улантсаңыз, учурда сакталган калыбына келтирүү сөздөрү жана скандоо абалы алынып салынат. Улантуудан мурун калыбына келтирүү сөздөрүңүздүн камдык көчүрмөсү бар экенине ынаныңыз.</string>
     <string name="section_network_node">Тармак &amp; Түйүн</string>
-    <string name="node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.\nДемейки түйүн: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.\nДемейки түйүн: https://rpc.nexawal.com</string>
     <string name="save_node">Түйүндү сактоо</string>
     <string name="section_info">Маалымат</string>
     <string name="walletcore_version_label">WalletCore версиясы:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Экөө тең (clearnet аркылуу скандоо, I2P аркылуу таратуу)</string>
     <string name="network_policy_help">«Жалгыз Clearnet» clearnet түйүнүн колдонот. «Жалгыз I2P» I2P түйүнү менен проксисин колдонот. «Экөө тең» clearnet аркылуу скандап, I2P аркылуу таратат.</string>
     <string name="section_clearnet_node">Clearnet түйүнү</string>
-    <string name="clearnet_node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.\nДемейки түйүн: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">http:// же https:// менен кошо толук URL дарегин киргизиңиз.\nДемейки түйүн: https://rpc.nexawal.com</string>
     <string name="use_this_node">Бул түйүндү колдонуу</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P түйүнү (хост:порт)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Бардык транзакцияларды көрүү (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d күтүлүүдөгү транзакция</string>
     <string name="send_fee_increased_unapproved">Тармак акысы көбөйдү. Эч нерсе таратылган жок. Акыны карап чыгып, кайра ырастаңыз.</string>
-    <string name="fiat_help_nexatrode">Ыктыярдуу. Иштетилгенде NexaWal HTTPS аркылуу rates.nexatrode.com кызматынан сиз тандаган валютадагы XMR курсун сурайт. Капчыктын түйүнү I2P колдонсо да, суроо ачык интернет аркылуу (Clearnet) жөнөтүлөт. Nexatrode IP дарегиңизди жана тандалган валютаны көрө алат, бирок капчыктын суммалары, даректери, калыбына келтирүү сөздөрү же транзакциялар таржымалы жөнөтүлбөйт. Курстар болжолдуу гана — сиз XMR жөнөтүп, сактайсыз.</string>
-    <string name="about_disclaimer_nexatrode">MIT лицензиясы бар, текшерилбеген программалык камсыздоо. Сиз калыбына келтирүү фразасы жана каражаттарыңыз үчүн жооптуусуз. Демейки алыскы түйүн сиздин IP жана капчыкты синхрондоштуруу сурамдарын көрө алат — купуялуулукту бекемдөө үчүн өз түйүнүңүздү иштетиңиз. Кошумча fiat баалоолору, эгер иштетилген болсо, тарифтер үчүн rates.nexatrode.com менен байланышыңыз.</string>
+    <string name="fiat_help_nexatrode">Ыктыярдуу. Иштетилгенде NexaWal HTTPS аркылуу rates.nexawal.com кызматынан сиз тандаган валютадагы XMR курсун сурайт. Капчыктын түйүнү I2P колдонсо да, суроо ачык интернет аркылуу (Clearnet) жөнөтүлөт. Nexatrode IP дарегиңизди жана тандалган валютаны көрө алат, бирок капчыктын суммалары, даректери, калыбына келтирүү сөздөрү же транзакциялар таржымалы жөнөтүлбөйт. Курстар болжолдуу гана — сиз XMR жөнөтүп, сактайсыз.</string>
+    <string name="about_disclaimer_nexatrode">MIT лицензиясы бар, текшерилбеген программалык камсыздоо. Сиз калыбына келтирүү фразасы жана каражаттарыңыз үчүн жооптуусуз. Демейки алыскы түйүн сиздин IP жана капчыкты синхрондоштуруу сурамдарын көрө алат — купуялуулукту бекемдөө үчүн өз түйүнүңүздү иштетиңиз. Кошумча fiat баалоолору, эгер иштетилген болсо, тарифтер үчүн rates.nexawal.com менен байланышыңыз.</string>
     <string name="history_export_csv">Дал келген транзакцияларды экспорттоо (CSV)</string>
     <string name="history_export_failed">CSV экспорттоо ишке ашкан жок. Кайра аракет кылыңыз.</string>
     <string name="send_previous_payment_recovered">Мурунку төлөм калыбына келтирилди. Жаңы төлөм жөнөтүлгөн жок. Алдын ала көрүнүшүн кайра текшериңиз.</string>

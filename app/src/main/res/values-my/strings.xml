@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">ရှိပြီးသား ပိုက်ဆံအိတ်ကို အစားထိုးမလား?</string>
     <string name="replace_wallet_message">ဤသည်က ဤစက်ပစ္စည်းရှိ ရှိပြီးသား ပိုက်ဆံအိတ်ကို အစားထိုးမည်။\n\nဆက်လက်လုပ်ဆောင်ပါက၊ လက်ရှိ သိမ်းဆည်းထားသော mnemonic နှင့် စကင်ဖတ်မှု အခြေအနေကို ဖျက်ပစ်မည်။ ဆက်လက်လုပ်ဆောင်ခြင်းမပြုမီ mnemonic ကို backup ယူထားကြောင်း သေချာပါစေ။</string>
     <string name="section_network_node">ကွန်ရက် &amp; Node</string>
-    <string name="node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။\nမူရင်း node- https://rpc.nexatrode.com</string>
+    <string name="node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။\nမူရင်း node- https://rpc.nexawal.com</string>
     <string name="save_node">Node ကို သိမ်းမည်</string>
     <string name="section_info">အချက်အလက်</string>
     <string name="walletcore_version_label">WalletCore ဗားရှင်း:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">နှစ်မျိုးစလုံး (clearnet ဖြင့် စကင်ဖတ်၊ I2P ဖြင့် ပျံ့နှံ့စေမည်)</string>
     <string name="network_policy_help">Clearnet သာ သည် clearnet node ကို အသုံးပြုသည်။ I2P သာ သည် I2P node နှင့် proxy ကို အသုံးပြုသည်။ နှစ်မျိုးစလုံး သည် clearnet ဖြင့် စကင်ဖတ်ပြီး I2P ဖြင့် ပျံ့နှံ့စေသည်။</string>
     <string name="section_clearnet_node">Clearnet node</string>
-    <string name="clearnet_node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။\nမူရင်း node- https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">http:// သို့မဟုတ် https:// အပါအဝင် URL အပြည့်အစုံကို ရိုက်ထည့်ပါ။\nမူရင်း node- https://rpc.nexawal.com</string>
     <string name="use_this_node">ဤ node ကို အသုံးပြုမည်</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P node (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">ငွေလွှဲမှုအားလုံးကို ကြည့်ရန် (%1$d)</string>
     <string name="history_pending_count_fmt">ဆိုင်းငံ့နေဆဲ ငွေလွှဲမှု %1$d ခု</string>
     <string name="send_fee_increased_unapproved">ကွန်ရက်ကြေး တိုးလာသည်။ မည်သည့်အရာမျှ ထုတ်လွှင့်ခြင်း မရှိပါ။ ကြေးကိုစစ်ဆေးပြီး ထပ်မံအတည်ပြုပါ။</string>
-    <string name="fiat_help_nexatrode">ရွေးချယ်နိုင်သည်။ ဖွင့်ထားပါက NexaWal သည် သင်ရွေးထားသော ငွေကြေးအတွက် XMR ဈေးနှုန်းကို HTTPS ဖြင့် rates.nexatrode.com မှ တောင်းယူသည်။ ပိုက်ဆံအိတ် node က I2P သုံးနေသော်လည်း ဤတောင်းဆိုမှုသည် အများသုံးအင်တာနက် (Clearnet) ကို အသုံးပြုသည်။ Nexatrode သည် သင့် IP လိပ်စာနှင့် ရွေးချယ်ထားသော ငွေကြေးကို မြင်နိုင်သော်လည်း ပိုက်ဆံအိတ်ပမာဏ၊ လိပ်စာများ၊ seed စကားစု သို့မဟုတ် ငွေလွှဲမှတ်တမ်းကို မပို့ပါ။ ဈေးနှုန်းများသည် ခန့်မှန်းချက်သာဖြစ်ပြီး သင်ပို့/သိမ်းဆည်းသည့် ပိုင်ဆိုင်မှုမှာ XMR ဖြစ်သည်။</string>
-    <string name="about_disclaimer_nexatrode">- MIT လိုင်စင်ရ၊ စစ်ဆေးမထားသော ဆော့ဖ်ဝဲ။ သင်၏ ပြန်လည်ရယူရေး စကားစုနှင့် ရန်ပုံငွေများအတွက် သင်သည် တာဝန်ရှိပါသည်။ မူရင်းအဝေးမှ node သည် သင်၏ IP နှင့် wallet sync queries များကို မြင်နိုင်သည် — ပိုမိုခိုင်မာသောကိုယ်ရေးကိုယ်တာအတွက် သင့်ကိုယ်ပိုင် node ကိုဖွင့်ပါ။ ရွေးချယ်နိုင်သော fiat ခန့်မှန်းချက်များကို ဖွင့်ထားပါက နှုန်းထားများအတွက် rates.nexatrode.com သို့ ဆက်သွယ်ပါ။</string>
+    <string name="fiat_help_nexatrode">ရွေးချယ်နိုင်သည်။ ဖွင့်ထားပါက NexaWal သည် သင်ရွေးထားသော ငွေကြေးအတွက် XMR ဈေးနှုန်းကို HTTPS ဖြင့် rates.nexawal.com မှ တောင်းယူသည်။ ပိုက်ဆံအိတ် node က I2P သုံးနေသော်လည်း ဤတောင်းဆိုမှုသည် အများသုံးအင်တာနက် (Clearnet) ကို အသုံးပြုသည်။ Nexatrode သည် သင့် IP လိပ်စာနှင့် ရွေးချယ်ထားသော ငွေကြေးကို မြင်နိုင်သော်လည်း ပိုက်ဆံအိတ်ပမာဏ၊ လိပ်စာများ၊ seed စကားစု သို့မဟုတ် ငွေလွှဲမှတ်တမ်းကို မပို့ပါ။ ဈေးနှုန်းများသည် ခန့်မှန်းချက်သာဖြစ်ပြီး သင်ပို့/သိမ်းဆည်းသည့် ပိုင်ဆိုင်မှုမှာ XMR ဖြစ်သည်။</string>
+    <string name="about_disclaimer_nexatrode">- MIT လိုင်စင်ရ၊ စစ်ဆေးမထားသော ဆော့ဖ်ဝဲ။ သင်၏ ပြန်လည်ရယူရေး စကားစုနှင့် ရန်ပုံငွေများအတွက် သင်သည် တာဝန်ရှိပါသည်။ မူရင်းအဝေးမှ node သည် သင်၏ IP နှင့် wallet sync queries များကို မြင်နိုင်သည် — ပိုမိုခိုင်မာသောကိုယ်ရေးကိုယ်တာအတွက် သင့်ကိုယ်ပိုင် node ကိုဖွင့်ပါ။ ရွေးချယ်နိုင်သော fiat ခန့်မှန်းချက်များကို ဖွင့်ထားပါက နှုန်းထားများအတွက် rates.nexawal.com သို့ ဆက်သွယ်ပါ။</string>
     <string name="history_export_csv">ကိုက်ညီသော ငွေလွှဲမှုများကို ထုတ်ယူရန် (CSV)</string>
     <string name="history_export_failed">CSV ထုတ်ယူမှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။</string>
     <string name="send_previous_payment_recovered">ယခင်ငွေပေးချေမှုကို ပြန်လည်ရယူပြီးပါပြီ။ ငွေပေးချေမှုအသစ်ကို မပို့ရသေးပါ။ အကြိုကြည့်ရှုမှုကို ထပ်ကြည့်ပါ။</string>

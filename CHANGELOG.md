@@ -41,7 +41,7 @@ First public packaging cut for Play / F-Droid / Wallet Scrutiny.
 
 ### Features
 - Single-wallet Monero create / import with seed backup gate
-- Sync against configurable Monero daemon RPC (default `https://rpc.nexatrode.com`)
+- Sync against configurable Monero daemon RPC (default `https://rpc.nexawal.com`)
 - Clearnet / I2P / hybrid routing
 - Receive (QR, payment URI, subaddresses) and send with fee preview
 - Optional biometrics / screen-lock for unlock and send

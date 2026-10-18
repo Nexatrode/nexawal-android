@@ -20,7 +20,7 @@ Declare these honestly in fdroiddata:
 
 | AntiFeature | Why |
 | --- | --- |
-| `NonFreeNet` | Default daemon is `https://rpc.nexatrode.com` (user-replaceable). Optional fiat estimates contact `https://rates.nexatrode.com` when enabled. |
+| `NonFreeNet` | Default daemon is `https://rpc.nexawal.com` (user-replaceable). Optional fiat estimates contact `https://rates.nexawal.com` when enabled. |
 
 No proprietary Google SDKs ship in the APK.
 

@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Zamienić istniejący portfel?</string>
     <string name="replace_wallet_message">To zastąpi istniejący portfel na tym urządzeniu.\n\nJeśli będziesz kontynuować, aktualnie zapisana fraza mnemoniczna i stan skanowania zostaną usunięte. Zanim przejdziesz dalej, upewnij się, że masz zapisaną kopię swojej frazy mnemonicznej.</string>
     <string name="section_network_node">Sieć i węzeł</string>
-    <string name="node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.\nWęzeł domyślny: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.\nWęzeł domyślny: https://rpc.nexawal.com</string>
     <string name="save_node">Zapisz węzeł</string>
     <string name="section_info">Informacje</string>
     <string name="walletcore_version_label">Wersja WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Oba (skanowanie clearnet, transmisja I2P)</string>
     <string name="network_policy_help">Tylko clearnet używa węzła clearnet. Tylko I2P używa węzła i proxy I2P. Oba: skanowanie w clearnet, transmisja przez I2P.</string>
     <string name="section_clearnet_node">Węzeł clearnet</string>
-    <string name="clearnet_node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.\nWęzeł domyślny: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Wpisz pełny adres URL, w tym http:// lub https://.\nWęzeł domyślny: https://rpc.nexawal.com</string>
     <string name="use_this_node">Użyj tego węzła</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Węzeł I2P (host:port)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Zobacz wszystkie transakcje (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d oczekujących transakcji</string>
     <string name="send_fee_increased_unapproved">Opłata sieciowa wzrosła. Nic nie zostało wysłane. Sprawdź opłatę i potwierdź ponownie.</string>
-    <string name="fiat_help_nexatrode">Opcjonalne. Po włączeniu NexaWal pobiera przez HTTPS z rates.nexatrode.com kurs XMR dla wybranej waluty. Żądanie korzysta z publicznego Internetu (Clearnet), nawet gdy węzeł portfela używa I2P. Nexatrode widzi Twój adres IP i wybraną walutę, ale nie otrzymuje sald, adresów, frazy odzyskiwania ani historii transakcji portfela. Kursy są tylko szacunkowe — wysyłasz i przechowujesz XMR.</string>
-    <string name="about_disclaimer_nexatrode">Niesprawdzone oprogramowanie na licencji MIT. Jesteś odpowiedzialny za zwrot środków i środki. Domyślny węzeł zdalny może zobaczyć Twoje zapytania dotyczące synchronizacji adresu IP i portfela — uruchom własny węzeł, aby zapewnić większą prywatność. Opcjonalne szacunki fiat, jeśli są włączone, skontaktuj się z rates.nexatrode.com w celu uzyskania stawek.</string>
+    <string name="fiat_help_nexatrode">Opcjonalne. Po włączeniu NexaWal pobiera przez HTTPS z rates.nexawal.com kurs XMR dla wybranej waluty. Żądanie korzysta z publicznego Internetu (Clearnet), nawet gdy węzeł portfela używa I2P. Nexatrode widzi Twój adres IP i wybraną walutę, ale nie otrzymuje sald, adresów, frazy odzyskiwania ani historii transakcji portfela. Kursy są tylko szacunkowe — wysyłasz i przechowujesz XMR.</string>
+    <string name="about_disclaimer_nexatrode">Niesprawdzone oprogramowanie na licencji MIT. Jesteś odpowiedzialny za zwrot środków i środki. Domyślny węzeł zdalny może zobaczyć Twoje zapytania dotyczące synchronizacji adresu IP i portfela — uruchom własny węzeł, aby zapewnić większą prywatność. Opcjonalne szacunki fiat, jeśli są włączone, skontaktuj się z rates.nexawal.com w celu uzyskania stawek.</string>
     <string name="history_export_csv">Eksportuj pasujące transakcje (CSV)</string>
     <string name="history_export_failed">Eksport CSV nie powiódł się. Spróbuj ponownie.</string>
     <string name="send_previous_payment_recovered">Poprzednia płatność została odzyskana. Nowa płatność nie została wysłana. Ponownie wyświetl podgląd.</string>

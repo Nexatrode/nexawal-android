@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Korvataanko olemassa oleva lompakko?</string>
     <string name="replace_wallet_message">Tämä korvaa olemassa olevan lompakon tällä laitteella.\n\nJos jatkat, nykyinen tallennettu muistisana ja skannaustila poistetaan. Varmista, että olet varmuuskopioinut muistisanasi ennen jatkamista.</string>
     <string name="section_network_node">Verkko ja solmu</string>
-    <string name="node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.\nOletussolmu: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.\nOletussolmu: https://rpc.nexawal.com</string>
     <string name="save_node">Tallenna solmu</string>
     <string name="section_info">Tietoja</string>
     <string name="walletcore_version_label">WalletCore-versio:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Molemmat (skannaa Clearnet, lähetä I2P)</string>
     <string name="network_policy_help">Vain Clearnet käyttää clearnet-solmua. Vain I2P käyttää I2P-solmua ja välityspalvelinta. Molemmat skannaavat Clearnetin kautta ja lähettävät I2P:n kautta.</string>
     <string name="section_clearnet_node">Clearnet-solmu</string>
-    <string name="clearnet_node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.\nOletussolmu: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Kirjoita täydellinen URL, mukaan lukien http:// tai https://.\nOletussolmu: https://rpc.nexawal.com</string>
     <string name="use_this_node">Käytä tätä solmua</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P-solmu (isäntä:portti)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Näytä kaikki tapahtumat (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d odottavaa tapahtumaa</string>
     <string name="send_fee_increased_unapproved">Verkkomaksu nousi. Mitään ei lähetetty. Tarkista maksu ja vahvista uudelleen.</string>
-    <string name="fiat_help_nexatrode">Valinnainen. Kun toiminto on käytössä, NexaWal pyytää HTTPS-yhteydellä palvelusta rates.nexatrode.com XMR-kurssin valitsemallesi valuutalle. Pyyntö käyttää julkista internetiä (clearnet), vaikka lompakon solmu käyttäisi I2P:tä. Nexatrode näkee IP-osoitteesi ja valitun valuutan, mutta lompakon saldoja, osoitteita, palautussanoja tai tapahtumahistoriaa ei lähetetä. Kurssit ovat vain arvioita — lähetät ja säilytät XMR:ää.</string>
-    <string name="about_disclaimer_nexatrode">MIT-lisensoitu, auditoimaton ohjelmisto. Olet vastuussa palautuslausekkeestasi ja varoistasi. Oletusetäsolmu voi nähdä IP- ja lompakkosynkronointikyselysi – käytä omaa solmuasi parantaaksesi yksityisyyttä. Valinnaiset fiat-arviot, jos ne ovat käytössä, ota yhteyttä rates.nexatrode.com:iin saadaksesi hinnat.</string>
+    <string name="fiat_help_nexatrode">Valinnainen. Kun toiminto on käytössä, NexaWal pyytää HTTPS-yhteydellä palvelusta rates.nexawal.com XMR-kurssin valitsemallesi valuutalle. Pyyntö käyttää julkista internetiä (clearnet), vaikka lompakon solmu käyttäisi I2P:tä. Nexatrode näkee IP-osoitteesi ja valitun valuutan, mutta lompakon saldoja, osoitteita, palautussanoja tai tapahtumahistoriaa ei lähetetä. Kurssit ovat vain arvioita — lähetät ja säilytät XMR:ää.</string>
+    <string name="about_disclaimer_nexatrode">MIT-lisensoitu, auditoimaton ohjelmisto. Olet vastuussa palautuslausekkeestasi ja varoistasi. Oletusetäsolmu voi nähdä IP- ja lompakkosynkronointikyselysi – käytä omaa solmuasi parantaaksesi yksityisyyttä. Valinnaiset fiat-arviot, jos ne ovat käytössä, ota yhteyttä rates.nexawal.com:iin saadaksesi hinnat.</string>
     <string name="history_export_csv">Vie hakua vastaavat tapahtumat (CSV)</string>
     <string name="history_export_failed">CSV-vienti epäonnistui. Yritä uudelleen.</string>
     <string name="send_previous_payment_recovered">Aiempi maksu palautettiin. Uutta maksua ei lähetetty. Avaa esikatselu uudelleen.</string>

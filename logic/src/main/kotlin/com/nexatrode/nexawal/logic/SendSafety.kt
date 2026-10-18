@@ -51,7 +51,7 @@ object SendSafety {
 
     /**
      * Historical sibling-daemon fee fallback. Always null: the default public node is a
-     * single endpoint (`https://rpc.nexatrode.com`) with no alternate host/port remap.
+     * single endpoint (`https://rpc.nexawal.com`) with no alternate host/port remap.
      */
     @Suppress("UNUSED_PARAMETER")
     fun siblingMonerodUrlIfNeeded(endpoint: String): String? = null

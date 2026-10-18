@@ -244,7 +244,7 @@ class WalletManager(
      *
      * Public restricted monerod RPC via Caddy + Let's Encrypt on mini.
      */
-    fun defaultNodeUrl(): String = "https://rpc.nexatrode.com"
+    fun defaultNodeUrl(): String = "https://rpc.nexawal.com"
 
     /**
      * Host:port form for Settings / status UI (iOS parity).
@@ -430,6 +430,8 @@ class WalletManager(
             "http://rpc.nexatrode.com",
             "http://rpc.nexatrode.com:443",
             "https://rpc.nexatrode.com",
+            "https://rpc.nexatrode.com:443",
+            "http://rpc.nexatrode.com:80",
             "rpc.nexatrode.com",
             "http://cuprate.nexatrode.com",
             "https://cuprate.nexatrode.com",
@@ -443,7 +445,7 @@ class WalletManager(
      * Normalize user input into a URL string that walletcore expects.
      *
      * Accepts full URLs only for user-entered clearnet nodes:
-     * - "https://rpc.nexatrode.com"
+     * - "https://rpc.nexawal.com"
      * - "http://127.0.0.1:18089"
      *
      * Trims whitespace and rejects blank values.
@@ -2965,32 +2967,11 @@ class WalletManager(
     }
 
     private fun readSettings(): StoredSettings {
-        val f = settingsFile()
-        val raw = f.readText()
-
-        fun findString(key: String): String {
-            val needle = "\"$key\""
-            val idx = raw.indexOf(needle)
-            if (idx < 0) throw IllegalStateException("Missing key: $key")
-            val colon = raw.indexOf(':', idx)
-            val firstQuote = raw.indexOf('"', colon + 1)
-            val secondQuote = raw.indexOf('"', firstQuote + 1)
-            if (firstQuote < 0 || secondQuote < 0) throw IllegalStateException("Invalid string for key: $key")
-            return raw.substring(firstQuote + 1, secondQuote).replace("\\\"", "\"")
-        }
-
-        fun findLong(key: String): Long {
-            val needle = "\"$key\""
-            val idx = raw.indexOf(needle)
-            if (idx < 0) throw IllegalStateException("Missing key: $key")
-            val colon = raw.indexOf(':', idx)
-            val end = raw.indexOfAny(charArrayOf(',', '\n', '\r', '}'), startIndex = colon + 1).let { if (it < 0) raw.length else it }
-            return raw.substring(colon + 1, end).trim().toLong()
-        }
-
+        // Decode JSON escapes before recognizing old defaults or custom URLs.
+        val json = JSONObject(settingsFile().readText())
         return StoredSettings(
-            nodeUrl = migrateLegacyDefaultNodeUrl(findString("nodeUrl")),
-            savedAtMs = runCatching { findLong("savedAtMs") }.getOrElse { 0L },
+            nodeUrl = migrateLegacyDefaultNodeUrl(json.getString("nodeUrl")),
+            savedAtMs = json.optLong("savedAtMs", 0L),
         )
     }
 

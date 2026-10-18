@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Заменить существующий кошелёк?</string>
     <string name="replace_wallet_message">Это заменит существующий кошелёк на этом устройстве.\n\nЕсли вы продолжите, сохранённая мнемоническая фраза и состояние сканирования будут удалены. Убедитесь, что у вас есть резервная копия мнемонической фразы, перед тем как продолжить.</string>
     <string name="section_network_node">Сеть и узел</string>
-    <string name="node_url_help">Введите полный URL, включая http:// или https://.\nУзел по умолчанию: https://rpc.nexatrode.com.</string>
+    <string name="node_url_help">Введите полный URL, включая http:// или https://.\nУзел по умолчанию: https://rpc.nexawal.com.</string>
     <string name="save_node">Сохранить узел</string>
     <string name="section_info">Информация</string>
     <string name="walletcore_version_label">Версия WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Оба (сканирование через Clearnet, отправка через I2P)</string>
     <string name="network_policy_help">«Только Clearnet» использует обычный узел Clearnet. «Только I2P» использует узел и прокси I2P. «Оба» сканирует через Clearnet и отправляет через I2P.</string>
     <string name="section_clearnet_node">Узел Clearnet</string>
-    <string name="clearnet_node_url_help">Введите полный URL, включая http:// или https://.\nУзел по умолчанию: https://rpc.nexatrode.com.</string>
+    <string name="clearnet_node_url_help">Введите полный URL, включая http:// или https://.\nУзел по умолчанию: https://rpc.nexawal.com.</string>
     <string name="use_this_node">Использовать этот узел</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Узел I2P (хост:порт)</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">Показать все транзакции (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ожидающих транзакций</string>
     <string name="send_fee_increased_unapproved">Сетевая комиссия выросла. Ничего не отправлено. Проверьте комиссию и подтвердите снова.</string>
-    <string name="fiat_help_nexatrode">Необязательно. Если функция включена, NexaWal запрашивает по HTTPS у rates.nexatrode.com курс XMR для выбранной валюты. Запрос проходит через обычный интернет (Clearnet), даже если узел кошелька использует I2P. Nexatrode видит ваш IP-адрес и выбранную валюту, но не получает суммы, адреса, seed-фразу или историю транзакций кошелька. Курсы являются лишь оценкой — вы отправляете и храните XMR.</string>
-    <string name="about_disclaimer_nexatrode">непроверенное программное обеспечение, лицензированное MIT. Вы несете ответственность за свою фразу восстановления и средства. Удаленный узел по умолчанию может видеть ваш IP-адрес и запросы синхронизации кошелька — запустите собственный узел для большей конфиденциальности. Дополнительные оценки, если они включены, позвоните по номеру rates.nexatrode.com, чтобы узнать тарифы.</string>
+    <string name="fiat_help_nexatrode">Необязательно. Если функция включена, NexaWal запрашивает по HTTPS у rates.nexawal.com курс XMR для выбранной валюты. Запрос проходит через обычный интернет (Clearnet), даже если узел кошелька использует I2P. Nexatrode видит ваш IP-адрес и выбранную валюту, но не получает суммы, адреса, seed-фразу или историю транзакций кошелька. Курсы являются лишь оценкой — вы отправляете и храните XMR.</string>
+    <string name="about_disclaimer_nexatrode">непроверенное программное обеспечение, лицензированное MIT. Вы несете ответственность за свою фразу восстановления и средства. Удаленный узел по умолчанию может видеть ваш IP-адрес и запросы синхронизации кошелька — запустите собственный узел для большей конфиденциальности. Дополнительные оценки, если они включены, позвоните по номеру rates.nexawal.com, чтобы узнать тарифы.</string>
     <string name="history_export_csv">Экспортировать подходящие транзакции (CSV)</string>
     <string name="history_export_failed">Не удалось экспортировать CSV. Попробуйте ещё раз.</string>
     <string name="send_previous_payment_recovered">Предыдущий платёж восстановлен. Новый платёж не отправлен. Повторите предварительный просмотр.</string>

@@ -1525,7 +1525,7 @@ internal fun TransferDetailsDialog(
                     Text(stringResource(R.string.copy_txid))
                 }
                 Spacer(Modifier.height(8.dp))
-                val explorerUrl = "https://xmrchain.net/tx/${t.txid}"
+                val explorerUrl = "https://explorer.nexawal.com/tx/${t.txid}"
                 val linkCopiedText = stringResource(R.string.link_copied)
                 Button(
                     onClick = {

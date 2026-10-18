@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Asendada olemasolev rahakott?</string>
     <string name="replace_wallet_message">Sellega asendatakse selles seadmes olev rahakott.\n\nKui jätkate, eemaldatakse praegu salvestatud mnemooniline fraas ja skannimise olek. Veenduge, et olete oma mnemoonilise fraasi varundanud enne jätkamist.</string>
     <string name="section_network_node">Võrk ja sõlm</string>
-    <string name="node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexawal.com</string>
     <string name="save_node">Salvesta sõlm</string>
     <string name="section_info">Teave</string>
     <string name="walletcore_version_label">WalletCore versioon:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Mõlemad (skanni Clearnetis, saada I2P kaudu)</string>
     <string name="network_policy_help">Ainult Clearnet kasutab Clearnet-sõlme. Ainult I2P kasutab I2P sõlme ja puhverserverit. Mõlemad skannib Clearnetis ja saadab I2P kaudu.</string>
     <string name="section_clearnet_node">Clearnet sõlm</string>
-    <string name="clearnet_node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexawal.com</string>
     <string name="use_this_node">Kasuta seda sõlme</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">I2P sõlm (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Kuva kõik tehingud (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ootel tehingut</string>
     <string name="send_fee_increased_unapproved">Võrgutasu suurenes. Midagi ei edastatud. Vaata tasu üle ja kinnita uuesti.</string>
-    <string name="fiat_help_nexatrode">Valikuline. Kui see on sisse lülitatud, küsib NexaWal HTTPS-i kaudu saidilt rates.nexatrode.com XMR-i kurssi valitud valuuta jaoks. Päring kasutab avalikku internetti (Clearnet) ka siis, kui rahakoti sõlm kasutab I2P-d. Nexatrode näeb sinu IP-aadressi ja valitud valuutat, kuid rahakoti summasid, aadresse, taastefraasi ega tehinguajalugu ei saadeta. Kursid on vaid hinnangud — hoiad ja saadad XMR-i.</string>
-    <string name="about_disclaimer_nexatrode">MIT-litsentsiga, auditeerimata tarkvara. Vastutate oma taastamisfraasi ja raha eest. Vaikimisi kaugsõlm näeb teie IP ja rahakoti sünkroonimise päringuid – tugevama privaatsuse tagamiseks käivitage oma sõlm. Valikulised fiati hinnangud, kui see on lubatud, võtke hindade saamiseks ühendust rates.nexatrode.com-ga.</string>
+    <string name="fiat_help_nexatrode">Valikuline. Kui see on sisse lülitatud, küsib NexaWal HTTPS-i kaudu saidilt rates.nexawal.com XMR-i kurssi valitud valuuta jaoks. Päring kasutab avalikku internetti (Clearnet) ka siis, kui rahakoti sõlm kasutab I2P-d. Nexatrode näeb sinu IP-aadressi ja valitud valuutat, kuid rahakoti summasid, aadresse, taastefraasi ega tehinguajalugu ei saadeta. Kursid on vaid hinnangud — hoiad ja saadad XMR-i.</string>
+    <string name="about_disclaimer_nexatrode">MIT-litsentsiga, auditeerimata tarkvara. Vastutate oma taastamisfraasi ja raha eest. Vaikimisi kaugsõlm näeb teie IP ja rahakoti sünkroonimise päringuid – tugevama privaatsuse tagamiseks käivitage oma sõlm. Valikulised fiati hinnangud, kui see on lubatud, võtke hindade saamiseks ühendust rates.nexawal.com-ga.</string>
     <string name="history_export_csv">Ekspordi vastavad tehingud (CSV)</string>
     <string name="history_export_failed">CSV eksportimine ebaõnnestus. Proovi uuesti.</string>
     <string name="send_previous_payment_recovered">Eelmine makse taastati. Uut makset ei saadetud. Vaadake eelvaadet uuesti.</string>

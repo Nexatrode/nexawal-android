@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">کیف پول موجود جایگزین شود؟</string>
     <string name="replace_wallet_message">این کار کیف پول موجود روی این دستگاه را جایگزین می‌کند.\n\nاگر ادامه دهید، عبارت بازیابی و وضعیت اسکن ذخیره‌شده کنونی حذف خواهند شد. پیش از ادامه، مطمئن شوید که از عبارت بازیابی خود پشتیبان گرفته‌اید.</string>
     <string name="section_network_node">شبکه و گره</string>
-    <string name="node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nگره پیش فرض: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nگره پیش فرض: https://rpc.nexawal.com</string>
     <string name="save_node">ذخیره گره</string>
     <string name="section_info">اطلاعات</string>
     <string name="walletcore_version_label">نسخه WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">هر دو (اسکن در Clearnet، ارسال از طریق I2P)</string>
     <string name="network_policy_help">فقط Clearnet از یک گره Clearnet استفاده می‌کند. فقط I2P از یک گره و پراکسی I2P استفاده می‌کند. هر دو، اسکن را روی Clearnet انجام می‌دهد و از طریق I2P ارسال می‌کند.</string>
     <string name="section_clearnet_node">گره Clearnet</string>
-    <string name="clearnet_node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nگره پیش فرض: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nگره پیش فرض: https://rpc.nexawal.com</string>
     <string name="use_this_node">استفاده از این گره</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">گره I2P (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">مشاهده همه تراکنش‌ها (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d تراکنش در انتظار</string>
     <string name="send_fee_increased_unapproved">کارمزد شبکه افزایش یافت. چیزی پخش نشد. کارمزد را بررسی و دوباره تأیید کنید.</string>
-    <string name="fiat_help_nexatrode">اختیاری است. با فعال‌کردن آن، NexaWal نرخ XMR برای ارز انتخابی شما را از طریق HTTPS از rates.nexatrode.com می‌گیرد. این درخواست حتی هنگام استفادهٔ گره کیف پول از I2P از اینترنت عمومی (Clearnet) عبور می‌کند. Nexatrode می‌تواند نشانی IP و ارز انتخابی شما را ببیند، اما موجودی‌ها، نشانی‌ها، عبارت بازیابی یا سابقهٔ تراکنش‌های کیف پول ارسال نمی‌شوند. نرخ‌ها فقط تخمینی‌اند — دارایی‌ای که می‌فرستید و نگه می‌دارید XMR است.</string>
-    <string name="about_disclaimer_nexatrode">نرم افزار دارای مجوز MIT و حسابرسی نشده. شما مسئول عبارت و وجوه بازیابی خود هستید. گره راه دور پیش‌فرض می‌تواند جستارهای همگام‌سازی IP و کیف پول شما را ببیند - برای حفظ حریم خصوصی قوی‌تر، گره خود را اجرا کنید. تخمین‌های فیات اختیاری، در صورت فعال بودن، برای اطلاع از نرخ‌ها با rates.nexatrode.com تماس بگیرید.</string>
+    <string name="fiat_help_nexatrode">اختیاری است. با فعال‌کردن آن، NexaWal نرخ XMR برای ارز انتخابی شما را از طریق HTTPS از rates.nexawal.com می‌گیرد. این درخواست حتی هنگام استفادهٔ گره کیف پول از I2P از اینترنت عمومی (Clearnet) عبور می‌کند. Nexatrode می‌تواند نشانی IP و ارز انتخابی شما را ببیند، اما موجودی‌ها، نشانی‌ها، عبارت بازیابی یا سابقهٔ تراکنش‌های کیف پول ارسال نمی‌شوند. نرخ‌ها فقط تخمینی‌اند — دارایی‌ای که می‌فرستید و نگه می‌دارید XMR است.</string>
+    <string name="about_disclaimer_nexatrode">نرم افزار دارای مجوز MIT و حسابرسی نشده. شما مسئول عبارت و وجوه بازیابی خود هستید. گره راه دور پیش‌فرض می‌تواند جستارهای همگام‌سازی IP و کیف پول شما را ببیند - برای حفظ حریم خصوصی قوی‌تر، گره خود را اجرا کنید. تخمین‌های فیات اختیاری، در صورت فعال بودن، برای اطلاع از نرخ‌ها با rates.nexawal.com تماس بگیرید.</string>
     <string name="history_export_csv">تراکنش‌های منطبق را صادر کنید (CSV)</string>
     <string name="history_export_failed">خروجی CSV ناموفق بود. دوباره تلاش کنید.</string>
     <string name="send_previous_payment_recovered">پرداخت قبلی بازیابی شد. پرداخت جدید ارسال نشد. دوباره پیش‌نمایش را ببینید.</string>

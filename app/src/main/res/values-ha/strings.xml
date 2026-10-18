@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Maye da walat da ya kasance?</string>
     <string name="replace_wallet_message">Wannan zai maye da walat da ke akwai a wannan na\'urar.\n\nIdan ka ci gaba, kalmomin dawowa da halin bincike da ake ajiye a yanzu za su goge. Tabbata kana da madadin kalmomin dawowarka kafin ci gaba.</string>
     <string name="section_network_node">Hanyar Sadarwa &amp; Node</string>
-    <string name="node_url_help">Shigar da cikakken URL, tare da http:// ko https://.\nLambar asali: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Shigar da cikakken URL, tare da http:// ko https://.\nLambar asali: https://rpc.nexawal.com</string>
     <string name="save_node">Ajiye node</string>
     <string name="section_info">Bayani</string>
     <string name="walletcore_version_label">Sigar WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">Duka biyu (bincika ta clearnet, watsa ta I2P)</string>
     <string name="network_policy_help">Clearnet kawai yana amfani da node na clearnet. I2P kawai yana amfani da node da proxy na I2P. Duka biyu suna bincike ta clearnet suna watsawa ta I2P.</string>
     <string name="section_clearnet_node">Node na Clearnet</string>
-    <string name="clearnet_node_url_help">Shigar da cikakken URL, tare da http:// ko https://.\nLambar asali: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Shigar da cikakken URL, tare da http:// ko https://.\nLambar asali: https://rpc.nexawal.com</string>
     <string name="use_this_node">Yi amfani da wannan node</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Node na I2P (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Duba duk ma\'amaloli (%1$d)</string>
     <string name="history_pending_count_fmt">Ma\'amaloli %1$d ana jira</string>
     <string name="send_fee_increased_unapproved">Kudin cibiyar sadarwa ya ƙaru. Ba a aika komai ba. Duba kuɗin sannan ka sake tabbatarwa.</string>
-    <string name="fiat_help_nexatrode">Na zaɓi ne. Idan an kunna shi, NexaWal yana neman farashin XMR na kuɗin da ka zaɓa daga rates.nexatrode.com ta HTTPS. Wannan buƙatar tana amfani da intanet na jama’a (Clearnet), ko da nodes ɗin walat yana amfani da I2P. Nexatrode na iya ganin adireshin IP ɗinka da kuɗin da ka zaɓa, amma ba a aika ma’aunin walat, adireshi, kalmomin dawo da walat, ko tarihin ma’amaloli ba. Ƙididdiga ce kawai — XMR ne kake aikawa da riƙewa.</string>
-    <string name="about_disclaimer_nexatrode">MIT-lasisi, software mara tantancewa. Kuna da alhakin dawo da kalmar ku da kuɗi. Kullin nesa na tsoho yana iya ganin tambayoyin daidaitawa na IP da walat ɗinku - gudanar da kumburin ku don ƙarin sirrin sirri. Ƙididdiga na fiat na zaɓi, idan an kunna, tuntuɓi rates.nexatrode.com don ƙimar kuɗi.</string>
+    <string name="fiat_help_nexatrode">Na zaɓi ne. Idan an kunna shi, NexaWal yana neman farashin XMR na kuɗin da ka zaɓa daga rates.nexawal.com ta HTTPS. Wannan buƙatar tana amfani da intanet na jama’a (Clearnet), ko da nodes ɗin walat yana amfani da I2P. Nexatrode na iya ganin adireshin IP ɗinka da kuɗin da ka zaɓa, amma ba a aika ma’aunin walat, adireshi, kalmomin dawo da walat, ko tarihin ma’amaloli ba. Ƙididdiga ce kawai — XMR ne kake aikawa da riƙewa.</string>
+    <string name="about_disclaimer_nexatrode">MIT-lasisi, software mara tantancewa. Kuna da alhakin dawo da kalmar ku da kuɗi. Kullin nesa na tsoho yana iya ganin tambayoyin daidaitawa na IP da walat ɗinku - gudanar da kumburin ku don ƙarin sirrin sirri. Ƙididdiga na fiat na zaɓi, idan an kunna, tuntuɓi rates.nexawal.com don ƙimar kuɗi.</string>
     <string name="history_export_csv">Fitar da ma\'amaloli da suka dace (CSV)</string>
     <string name="history_export_failed">Fitar da CSV ta kasa. Sake gwadawa.</string>
     <string name="send_previous_payment_recovered">An dawo da biyan kuɗin da ya gabata. Ba a aika sabon biyan kuɗin ba. Duba samfoti kuma.</string>

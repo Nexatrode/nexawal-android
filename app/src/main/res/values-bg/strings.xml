@@ -87,7 +87,7 @@
     <string name="replace_wallet_title">Да се замени ли съществуващият портфейл?</string>
     <string name="replace_wallet_message">Това ще замени съществуващия портфейл на това устройство.\n\nАко продължите, текущо запазената мнемонична фраза и състоянието на сканиране ще бъдат премахнати. Уверете се, че имате резервно копие на мнемоничната фраза, преди да продължите.</string>
     <string name="section_network_node">Мрежа и възел</string>
-    <string name="node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexatrode.com</string>
+    <string name="node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexawal.com</string>
     <string name="save_node">Запазване на възела</string>
     <string name="section_info">Информация</string>
     <string name="walletcore_version_label">Версия на WalletCore:</string>
@@ -118,7 +118,7 @@
     <string name="network_policy_hybrid">И двете (сканиране в Clearnet, разпращане през I2P)</string>
     <string name="network_policy_help">Само Clearnet използва възел в Clearnet. Само I2P използва възел и прокси на I2P. И двете сканира в Clearnet и разпраща през I2P.</string>
     <string name="section_clearnet_node">Възел в Clearnet</string>
-    <string name="clearnet_node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexatrode.com</string>
+    <string name="clearnet_node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexawal.com</string>
     <string name="use_this_node">Използване на този възел</string>
     <string name="section_i2p">I2P</string>
     <string name="i2p_node_placeholder">Възел на I2P (host:port)</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Покажи всички транзакции (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d чакащи транзакции</string>
     <string name="send_fee_increased_unapproved">Таксата на мрежата се увеличи. Нищо не е излъчено. Проверете таксата и потвърдете отново.</string>
-    <string name="fiat_help_nexatrode">По избор. Когато е включено, NexaWal заявява курс на XMR за избраната от вас валута от rates.nexatrode.com чрез HTTPS. Заявката използва обикновения интернет (Clearnet), дори когато възелът на портфейла използва I2P. Nexatrode може да види IP адреса ви и избраната валута, но не получава суми, адреси, начална фраза или история на транзакциите от портфейла. Курсовете са само ориентировъчни — изпращате и съхранявате XMR.</string>
-    <string name="about_disclaimer_nexatrode">Лицензиран от MIT, неодитиран софтуер. Вие носите отговорност за вашата фраза за възстановяване и средства. Отдалеченият възел по подразбиране може да вижда вашите заявки за синхронизиране на IP и портфейл — стартирайте свой собствен възел за по-голяма поверителност. Незадължителни фиатни оценки, ако са активирани, свържете се с rates.nexatrode.com за цени.</string>
+    <string name="fiat_help_nexatrode">По избор. Когато е включено, NexaWal заявява курс на XMR за избраната от вас валута от rates.nexawal.com чрез HTTPS. Заявката използва обикновения интернет (Clearnet), дори когато възелът на портфейла използва I2P. Nexatrode може да види IP адреса ви и избраната валута, но не получава суми, адреси, начална фраза или история на транзакциите от портфейла. Курсовете са само ориентировъчни — изпращате и съхранявате XMR.</string>
+    <string name="about_disclaimer_nexatrode">Лицензиран от MIT, неодитиран софтуер. Вие носите отговорност за вашата фраза за възстановяване и средства. Отдалеченият възел по подразбиране може да вижда вашите заявки за синхронизиране на IP и портфейл — стартирайте свой собствен възел за по-голяма поверителност. Незадължителни фиатни оценки, ако са активирани, свържете се с rates.nexawal.com за цени.</string>
     <string name="history_export_csv">Експортирай съвпадащите трансакции (CSV)</string>
     <string name="history_export_failed">Експортирането на CSV не бе успешно. Опитайте отново.</string>
     <string name="send_previous_payment_recovered">Предишното плащане е възстановено. Новото плащане не е изпратено. Прегледайте го отново.</string>
