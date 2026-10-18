@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">รายละเอียดตัวสำรวจ</string>
+    <string name="explorer_enable">เปิดใช้รายละเอียดตัวสำรวจ</string>
+    <string name="explorer_help">ไม่บังคับ การค้นหาแต่ละครั้งจะแชร์ที่อยู่ IP และ ID ธุรกรรมนี้กับ explorer.nexawal.com ผ่าน HTTPS บนอินเทอร์เน็ตสาธารณะ แม้อยู่ในโหมด I2P ไม่มีคำขอเบื้องหลัง ข้อมูลกระเป๋าเงินจะไม่เปลี่ยนแปลง</string>
+    <string name="explorer_reported">เป็นเพียงข้อมูลสาธารณะจากตัวสำรวจ กระเป๋าเงินของคุณเป็นผู้ตรวจสอบการชำระเงิน</string>
+    <string name="explorer_disabled">เปิดใช้รายละเอียดตัวสำรวจในการตั้งค่าเพื่อใช้ฟีเจอร์นี้</string>
+    <string name="explorer_missing">ไม่พบในโหนดนี้ แต่ไม่ได้พิสูจน์ว่าการชำระเงินหายไป</string>
+    <string name="explorer_unavailable">ตัวสำรวจไม่พร้อมใช้งาน กระเป๋าเงินของคุณไม่ได้รับผลกระทบ ลองอีกครั้ง</string>
+    <string name="explorer_node_stale">ข้อมูลโหนดอาจเก่าหรือไม่ครบถ้วน</string>
+    <string name="explorer_observed">เวลาที่สังเกต</string>
+    <string name="explorer_mainnet">ตัวสำรวจสาธารณะรองรับเฉพาะเครือข่ายหลัก</string>
+    <string name="explorer_refresh">รีเฟรช</string>
+    <string name="explorer_save_failed">บันทึกการตั้งค่าไม่ได้</string>
+    <string name="explorer_observed_fmt">เวลาที่สังเกต: %1$s</string>
+</resources>

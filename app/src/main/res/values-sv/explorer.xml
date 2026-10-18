@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Utforskardetaljer</string>
+    <string name="explorer_enable">Aktivera utforskardetaljer</string>
+    <string name="explorer_help">Valfritt. Varje uppslagning delar din IP-adress och detta transaktions-ID med explorer.nexawal.com via HTTPS på det öppna internet, även i I2P-läge. Inga bakgrundsanrop. Plånbokens data ändras inte.</string>
+    <string name="explorer_reported">Endast offentliga utforskardata; din plånbok verifierar betalningar.</string>
+    <string name="explorer_disabled">Aktivera utforskardetaljer i Inställningar för att använda funktionen.</string>
+    <string name="explorer_missing">Hittades inte på denna nod. Det bevisar inte att en betalning saknas.</string>
+    <string name="explorer_unavailable">Utforskaren är inte tillgänglig. Din plånbok påverkas inte. Försök igen.</string>
+    <string name="explorer_node_stale">Nodens data kan vara gamla eller ofullständiga.</string>
+    <string name="explorer_observed">Observerad vid</string>
+    <string name="explorer_mainnet">Den offentliga utforskaren stöder bara huvudnätet.</string>
+    <string name="explorer_refresh">Uppdatera</string>
+    <string name="explorer_save_failed">Det gick inte att spara inställningarna.</string>
+    <string name="explorer_observed_fmt">Observerad vid: %1$s</string>
+</resources>

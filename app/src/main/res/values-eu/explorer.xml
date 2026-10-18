@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Esploratzailearen xehetasunak</string>
+    <string name="explorer_enable">Gaitu esploratzailearen xehetasunak</string>
+    <string name="explorer_help">Aukerakoa. Kontsulta bakoitzak zure IP helbidea eta transakzio honen IDa explorer.nexawal.com zerbitzuarekin partekatzen ditu, Internet publikoko HTTPS bidez, baita I2P moduan ere. Ez dago atzeko planoko eskaerarik. Diru-zorroaren datuak ez dira aldatzen.</string>
+    <string name="explorer_reported">Esploratzailearen datu publikoak soilik; zure diru-zorroak egiaztatzen ditu ordainketak.</string>
+    <string name="explorer_disabled">Eginbide hau erabiltzeko, gaitu esploratzailearen xehetasunak Ezarpenetan.</string>
+    <string name="explorer_missing">Ez da nodo honetan aurkitu. Horrek ez du frogatzen ordainketa bat falta denik.</string>
+    <string name="explorer_unavailable">Esploratzailea ez dago erabilgarri. Zure diru-zorroari ez dio eragiten. Saiatu berriro.</string>
+    <string name="explorer_node_stale">Nodoaren datuak zaharkituta edo osatu gabe egon daitezke.</string>
+    <string name="explorer_observed">Behaketa-unea</string>
+    <string name="explorer_mainnet">Esploratzaile publikoak sare nagusia soilik onartzen du.</string>
+    <string name="explorer_refresh">Freskatu</string>
+    <string name="explorer_save_failed">Ezin izan dira ezarpenak gorde.</string>
+    <string name="explorer_observed_fmt">Behaketa-unea: %1$s</string>
+</resources>

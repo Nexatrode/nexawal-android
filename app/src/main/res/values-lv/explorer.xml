@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Pārlūka informācija</string>
+    <string name="explorer_enable">Iespējot pārlūka informāciju</string>
+    <string name="explorer_help">Neobligāti. Katrs vaicājums nosūta jūsu IP adresi un šī darījuma ID vietnei explorer.nexawal.com, izmantojot HTTPS publiskajā internetā, arī I2P režīmā. Nav fona pieprasījumu. Maka dati netiek mainīti.</string>
+    <string name="explorer_reported">Tikai publiski pārlūka dati; maks pārbauda maksājumus.</string>
+    <string name="explorer_disabled">Lai izmantotu šo funkciju, iestatījumos iespējojiet pārlūka informāciju.</string>
+    <string name="explorer_missing">Šajā mezglā nav atrasts. Tas nepierāda, ka maksājums nav veikts.</string>
+    <string name="explorer_unavailable">Pārlūks nav pieejams. Jūsu maks netiek ietekmēts. Mēģiniet vēlreiz.</string>
+    <string name="explorer_node_stale">Mezgla dati var būt novecojuši vai nepilnīgi.</string>
+    <string name="explorer_observed">Novērošanas laiks</string>
+    <string name="explorer_mainnet">Publiskais pārlūks atbalsta tikai galveno tīklu.</string>
+    <string name="explorer_refresh">Atsvaidzināt</string>
+    <string name="explorer_save_failed">Neizdevās saglabāt iestatījumus.</string>
+    <string name="explorer_observed_fmt">Novērošanas laiks: %1$s</string>
+</resources>

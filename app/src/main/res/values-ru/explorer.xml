@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Данные обозревателя</string>
+    <string name="explorer_enable">Включить данные обозревателя</string>
+    <string name="explorer_help">Необязательно. Каждый запрос передаёт ваш IP-адрес и ID этой транзакции на explorer.nexawal.com по HTTPS через обычный интернет, даже в режиме I2P. Фоновых запросов нет. Данные кошелька не меняются.</string>
+    <string name="explorer_reported">Только открытые данные обозревателя; платежи проверяет ваш кошелёк.</string>
+    <string name="explorer_disabled">Для этой функции включите данные обозревателя в настройках.</string>
+    <string name="explorer_missing">Не найдено на этом узле. Это не доказывает отсутствие платежа.</string>
+    <string name="explorer_unavailable">Обозреватель недоступен. Это не влияет на кошелёк. Повторите попытку.</string>
+    <string name="explorer_node_stale">Данные узла могут быть устаревшими или неполными.</string>
+    <string name="explorer_observed">Время наблюдения</string>
+    <string name="explorer_mainnet">Публичный обозреватель поддерживает только основную сеть.</string>
+    <string name="explorer_refresh">Обновить</string>
+    <string name="explorer_save_failed">Не удалось сохранить настройки.</string>
+    <string name="explorer_observed_fmt">Время наблюдения: %1$s</string>
+</resources>

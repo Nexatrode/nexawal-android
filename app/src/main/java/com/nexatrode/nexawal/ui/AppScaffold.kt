@@ -711,6 +711,10 @@ private fun WalletScreen(
 
     var selectedTransfer by remember { mutableStateOf<Transfer?>(null) }
     var showTransferDetails by remember { mutableStateOf(false) }
+    LaunchedEffect(state.walletId, state.historySession) {
+        showTransferDetails = false
+        selectedTransfer = null
+    }
 
     val mergedError = errorText ?: state.lastError
 
@@ -1289,6 +1293,7 @@ private fun WalletScreen(
         TransferDetailsDialog(
             t = selectedTransfer!!,
             snapshot = walletManager.fiatPrices.snapshots.snapshot(selectedTransfer!!.txid),
+            mainnet = state.mainnet,
             onDismiss = {
                 showTransferDetails = false
                 selectedTransfer = null
@@ -1457,8 +1462,16 @@ internal fun TransferRow(
 internal fun TransferDetailsDialog(
     t: Transfer,
     snapshot: FiatTxSnapshot?,
+    mainnet: Boolean = true,
     onDismiss: () -> Unit,
 ) {
+    var showExplorer by remember(t.txid) { mutableStateOf(false) }
+    if (showExplorer) {
+        androidx.compose.ui.window.Dialog(onDismissRequest = { showExplorer = false }, properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false)) {
+            ExplorerDetailsScreen(t.txid, mainnet) { showExplorer = false }
+        }
+        return
+    }
     val absTime = TimeFormat.absolute(t.timestamp)
     val clipboard = ClipboardCompat.current()
     val scope = rememberCoroutineScope()
@@ -1510,6 +1523,7 @@ internal fun TransferDetailsDialog(
                     Text(stringResource(R.string.tx_txid_fmt, t.txid), fontFamily = FontFamily.Monospace)
                 }
                 Spacer(Modifier.height(8.dp))
+                TextButton(onClick = { showExplorer = true }) { Text(stringResource(R.string.explorer_details)) }
                 // themed below via palette from parent if available
                 Button(
                     onClick = {
@@ -2676,6 +2690,7 @@ private fun SettingsScreen(
     var changingDeviceAuth by remember { mutableStateOf(false) }
     var showAdvancedRecovery by remember { mutableStateOf(false) }
     var fiatEnabled by remember { mutableStateOf(MoneroConfig.fiatEstimatesEnabled(context)) }
+    var explorerEnabled by remember { mutableStateOf(com.nexatrode.nexawal.ExplorerAccess.enabled(context)) }
     var fiatCurrency by remember { mutableStateOf(MoneroConfig.fiatCurrency(context)) }
     var fiatCurrencyMenuOpen by remember { mutableStateOf(false) }
 
@@ -3106,6 +3121,15 @@ private fun SettingsScreen(
             }
         }
 
+        Spacer(Modifier.height(20.dp))
+
+        LabeledSwitchRow(
+            label = stringResource(R.string.explorer_enable),
+            description = stringResource(R.string.explorer_help),
+            checked = explorerEnabled,
+            onCheckedChange = { explorerEnabled = it; com.nexatrode.nexawal.ExplorerAccess.setEnabled(context, it) },
+            palette = palette,
+        )
         Spacer(Modifier.height(20.dp))
 
         val fiatSectionLabel = stringResource(R.string.section_fiat)

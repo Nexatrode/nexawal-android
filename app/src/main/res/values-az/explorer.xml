@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">İcmalçı təfərrüatları</string>
+    <string name="explorer_enable">İcmalçı təfərrüatlarını aktivləşdir</string>
+    <string name="explorer_help">İstəyə bağlıdır. Hər sorğu IP ünvanınızı və bu əməliyyatın ID-sini I2P rejimində də açıq internet üzərindən HTTPS ilə explorer.nexawal.com-a ötürür. Arxa plan sorğuları yoxdur. Pulqabı məlumatları dəyişmir.</string>
+    <string name="explorer_reported">Yalnız icmalçının açıq məlumatlarıdır; ödənişləri pulqabınız yoxlayır.</string>
+    <string name="explorer_disabled">Bu funksiyadan istifadə üçün Ayarlarda icmalçı təfərrüatlarını aktivləşdirin.</string>
+    <string name="explorer_missing">Bu qovşaqda tapılmadı. Bu, ödənişin olmamasını sübut etmir.</string>
+    <string name="explorer_unavailable">İcmalçı əlçatan deyil. Pulqabınıza təsir etmir. Yenidən cəhd edin.</string>
+    <string name="explorer_node_stale">Qovşaq məlumatları köhnə və ya natamam ola bilər.</string>
+    <string name="explorer_observed">Müşahidə vaxtı</string>
+    <string name="explorer_mainnet">Açıq icmalçı yalnız əsas şəbəkəni dəstəkləyir.</string>
+    <string name="explorer_refresh">Yenilə</string>
+    <string name="explorer_save_failed">Ayarları saxlamaq mümkün olmadı.</string>
+    <string name="explorer_observed_fmt">Müşahidə vaxtı: %1$s</string>
+</resources>

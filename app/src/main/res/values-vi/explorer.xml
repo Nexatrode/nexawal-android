@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Chi tiết trình khám phá</string>
+    <string name="explorer_enable">Bật chi tiết trình khám phá</string>
+    <string name="explorer_help">Tùy chọn. Mỗi lần tra cứu chia sẻ địa chỉ IP và ID giao dịch này với explorer.nexawal.com qua HTTPS trên internet công cộng, kể cả ở chế độ I2P. Không có yêu cầu chạy nền. Dữ liệu ví không thay đổi.</string>
+    <string name="explorer_reported">Chỉ là dữ liệu công khai từ trình khám phá; ví của bạn xác minh thanh toán.</string>
+    <string name="explorer_disabled">Bật chi tiết trình khám phá trong Cài đặt để dùng tính năng này.</string>
+    <string name="explorer_missing">Không tìm thấy trên nút này. Điều này không chứng minh rằng khoản thanh toán bị thiếu.</string>
+    <string name="explorer_unavailable">Trình khám phá không khả dụng. Ví của bạn không bị ảnh hưởng. Hãy thử lại.</string>
+    <string name="explorer_node_stale">Dữ liệu nút có thể đã cũ hoặc chưa đầy đủ.</string>
+    <string name="explorer_observed">Thời điểm quan sát</string>
+    <string name="explorer_mainnet">Trình khám phá công khai chỉ hỗ trợ mạng chính.</string>
+    <string name="explorer_refresh">Làm mới</string>
+    <string name="explorer_save_failed">Không thể lưu cài đặt.</string>
+    <string name="explorer_observed_fmt">Thời điểm quan sát: %1$s</string>
+</resources>

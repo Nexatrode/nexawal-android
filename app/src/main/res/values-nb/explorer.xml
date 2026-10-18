@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Utforskerdetaljer</string>
+    <string name="explorer_enable">Aktiver utforskerdetaljer</string>
+    <string name="explorer_help">Valgfritt. Hvert oppslag deler IP-adressen din og denne transaksjons-ID-en med explorer.nexawal.com via HTTPS på det åpne internettet, også i I2P-modus. Ingen bakgrunnsforespørsler. Lommebokdata endres ikke.</string>
+    <string name="explorer_reported">Bare offentlige utforskerdata; lommeboken din verifiserer betalinger.</string>
+    <string name="explorer_disabled">Aktiver utforskerdetaljer i Innstillinger for å bruke funksjonen.</string>
+    <string name="explorer_missing">Ikke funnet på denne noden. Det beviser ikke at en betaling mangler.</string>
+    <string name="explorer_unavailable">Utforskeren er utilgjengelig. Lommeboken din påvirkes ikke. Prøv igjen.</string>
+    <string name="explorer_node_stale">Nodedata kan være utdaterte eller ufullstendige.</string>
+    <string name="explorer_observed">Observert</string>
+    <string name="explorer_mainnet">Den offentlige utforskeren støtter bare hovednettet.</string>
+    <string name="explorer_refresh">Oppdater</string>
+    <string name="explorer_save_failed">Kunne ikke lagre innstillingene.</string>
+    <string name="explorer_observed_fmt">Observert: %1$s</string>
+</resources>

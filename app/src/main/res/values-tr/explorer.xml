@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Gezgin ayrıntıları</string>
+    <string name="explorer_enable">Gezgin ayrıntılarını etkinleştir</string>
+    <string name="explorer_help">İsteğe bağlıdır. Her sorgu, IP adresinizi ve bu işlem kimliğini I2P modunda bile açık internet üzerinden HTTPS ile explorer.nexawal.com ile paylaşır. Arka plan isteği yoktur. Cüzdan verileri değişmez.</string>
+    <string name="explorer_reported">Yalnızca gezginin herkese açık verileridir; ödemeleri cüzdanınız doğrular.</string>
+    <string name="explorer_disabled">Bu özelliği kullanmak için Ayarlar’dan gezgin ayrıntılarını etkinleştirin.</string>
+    <string name="explorer_missing">Bu düğümde bulunamadı. Bu, bir ödemenin eksik olduğunu kanıtlamaz.</string>
+    <string name="explorer_unavailable">Gezgin kullanılamıyor. Cüzdanınız etkilenmez. Tekrar deneyin.</string>
+    <string name="explorer_node_stale">Düğüm verileri eski veya eksik olabilir.</string>
+    <string name="explorer_observed">Gözlem zamanı</string>
+    <string name="explorer_mainnet">Herkese açık gezgin yalnızca ana ağı destekler.</string>
+    <string name="explorer_refresh">Yenile</string>
+    <string name="explorer_save_failed">Ayarlar kaydedilemedi.</string>
+    <string name="explorer_observed_fmt">Gözlem zamanı: %1$s</string>
+</resources>

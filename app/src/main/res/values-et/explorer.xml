@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Plokiahela sirvija andmed</string>
+    <string name="explorer_enable">Luba sirvija andmed</string>
+    <string name="explorer_help">Valikuline. Iga päring jagab teie IP-aadressi ja selle tehingu ID-d saidiga explorer.nexawal.com avaliku interneti HTTPS-i kaudu, ka I2P-režiimis. Taustapäringuid ei tehta. Rahakoti andmed ei muutu.</string>
+    <string name="explorer_reported">Ainult sirvija avalikud andmed; makseid kontrollib teie rahakott.</string>
+    <string name="explorer_disabled">Selle funktsiooni kasutamiseks lubage seadetes sirvija andmed.</string>
+    <string name="explorer_missing">Sellest sõlmest ei leitud. See ei tõesta makse puudumist.</string>
+    <string name="explorer_unavailable">Sirvija pole saadaval. Rahakotti see ei mõjuta. Proovige uuesti.</string>
+    <string name="explorer_node_stale">Sõlme andmed võivad olla aegunud või puudulikud.</string>
+    <string name="explorer_observed">Vaatluse aeg</string>
+    <string name="explorer_mainnet">Avalik sirvija toetab ainult põhivõrku.</string>
+    <string name="explorer_refresh">Värskenda</string>
+    <string name="explorer_save_failed">Seadete salvestamine ebaõnnestus.</string>
+    <string name="explorer_observed_fmt">Vaatluse aeg: %1$s</string>
+</resources>

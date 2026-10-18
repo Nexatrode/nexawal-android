@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Detail penjelajah</string>
+    <string name="explorer_enable">Aktifkan detail penjelajah</string>
+    <string name="explorer_help">Opsional. Setiap pencarian membagikan alamat IP dan ID transaksi ini ke explorer.nexawal.com melalui HTTPS di internet publik, bahkan dalam mode I2P. Tidak ada permintaan latar belakang. Data dompet tidak berubah.</string>
+    <string name="explorer_reported">Hanya data publik penjelajah; dompet Anda memverifikasi pembayaran.</string>
+    <string name="explorer_disabled">Aktifkan detail penjelajah di Pengaturan untuk menggunakan fitur ini.</string>
+    <string name="explorer_missing">Tidak ditemukan pada node ini. Ini tidak membuktikan bahwa pembayaran hilang.</string>
+    <string name="explorer_unavailable">Penjelajah tidak tersedia. Dompet Anda tidak terpengaruh. Coba lagi.</string>
+    <string name="explorer_node_stale">Data node mungkin kedaluwarsa atau tidak lengkap.</string>
+    <string name="explorer_observed">Waktu pengamatan</string>
+    <string name="explorer_mainnet">Penjelajah publik hanya mendukung mainnet.</string>
+    <string name="explorer_refresh">Segarkan</string>
+    <string name="explorer_save_failed">Tidak dapat menyimpan pengaturan.</string>
+    <string name="explorer_observed_fmt">Waktu pengamatan: %1$s</string>
+</resources>

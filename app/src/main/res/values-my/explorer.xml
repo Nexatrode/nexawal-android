@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Explorer အသေးစိတ်</string>
+    <string name="explorer_enable">Explorer အသေးစိတ်ကို ဖွင့်ရန်</string>
+    <string name="explorer_help">မဖြစ်မနေ မဟုတ်ပါ။ ရှာဖွေမှုတိုင်းတွင် သင့် IP လိပ်စာနှင့် ဤငွေလွှဲ ID ကို အများသုံးအင်တာနက် HTTPS မှတစ်ဆင့် explorer.nexawal.com သို့ ပို့သည်။ I2P မုဒ်တွင်လည်း အတူတူဖြစ်သည်။ နောက်ခံတောင်းဆိုမှု မရှိပါ။ ပိုက်ဆံအိတ်ဒေတာ မပြောင်းလဲပါ။</string>
+    <string name="explorer_reported">Explorer ၏ အများမြင်ဒေတာသာ ဖြစ်သည်။ ငွေပေးချေမှုများကို သင့်ပိုက်ဆံအိတ်က စစ်ဆေးသည်။</string>
+    <string name="explorer_disabled">ဤလုပ်ဆောင်ချက်ကို သုံးရန် ဆက်တင်တွင် Explorer အသေးစိတ်ကို ဖွင့်ပါ။</string>
+    <string name="explorer_missing">ဤ node တွင် မတွေ့ပါ။ ငွေပေးချေမှု ပျောက်နေကြောင်း သက်သေမဟုတ်ပါ။</string>
+    <string name="explorer_unavailable">Explorer ကို မသုံးနိုင်ပါ။ သင့်ပိုက်ဆံအိတ်ကို မထိခိုက်ပါ။ ပြန်ကြိုးစားပါ။</string>
+    <string name="explorer_node_stale">Node ဒေတာသည် ဟောင်းနွမ်းနေခြင်း သို့မဟုတ် မပြည့်စုံခြင်း ဖြစ်နိုင်သည်။</string>
+    <string name="explorer_observed">တွေ့ရှိချိန်</string>
+    <string name="explorer_mainnet">အများသုံး Explorer သည် mainnet ကိုသာ ပံ့ပိုးသည်။</string>
+    <string name="explorer_refresh">ပြန်လည်ရယူရန်</string>
+    <string name="explorer_save_failed">ဆက်တင်များကို မသိမ်းနိုင်ပါ။</string>
+    <string name="explorer_observed_fmt">တွေ့ရှိချိန်: %1$s</string>
+</resources>

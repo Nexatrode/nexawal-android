@@ -87,6 +87,7 @@ class WalletManager(
     )
 
     data class UiState(
+        val mainnet: Boolean = true,
         val walletId: String? = null,
 
         /**
@@ -935,6 +936,7 @@ class WalletManager(
 
         sessionAuthority.withCurrent(sessionToken) { _state.value = _state.value.copy(
             walletId = walletId,
+            mainnet = mainnet,
             nodeUrl = normalizedNodeUrl,
             walletAddress = derivedAddress,
             hasStoredWallet = stored,
@@ -2706,6 +2708,7 @@ class WalletManager(
 
         sessionAuthority.withCurrent(sessionToken) { _state.value = _state.value.copy(
             walletId = meta.walletId,
+            mainnet = meta.mainnet,
             historySession = java.util.UUID.randomUUID().toString(),
             nodeUrl = resolvedNode,
             walletAddress = derivedAddress,

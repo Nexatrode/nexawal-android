@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Դիտարկիչի մանրամասներ</string>
+    <string name="explorer_enable">Միացնել դիտարկիչի մանրամասները</string>
+    <string name="explorer_help">Ընտրովի։ Յուրաքանչյուր հարցում ձեր IP հասցեն և այս գործարքի ID-ն փոխանցում է explorer.nexawal.com-ին՝ հանրային ինտերնետի HTTPS կապով, նույնիսկ I2P ռեժիմում։ Ֆոնային հարցումներ չկան։ Դրամապանակի տվյալները չեն փոխվում։</string>
+    <string name="explorer_reported">Միայն դիտարկիչի հանրային տվյալներն են․ վճարումները ստուգում է ձեր դրամապանակը։</string>
+    <string name="explorer_disabled">Այս գործառույթն օգտագործելու համար Կարգավորումներում միացրեք դիտարկիչի մանրամասները։</string>
+    <string name="explorer_missing">Այս հանգույցում չի գտնվել։ Սա չի ապացուցում, որ վճարում չկա։</string>
+    <string name="explorer_unavailable">Դիտարկիչն անհասանելի է։ Ձեր դրամապանակը չի տուժում։ Փորձեք կրկին։</string>
+    <string name="explorer_node_stale">Հանգույցի տվյալները կարող են լինել հնացած կամ թերի։</string>
+    <string name="explorer_observed">Դիտարկման պահը</string>
+    <string name="explorer_mainnet">Հանրային դիտարկիչն աջակցում է միայն հիմնական ցանցին։</string>
+    <string name="explorer_refresh">Թարմացնել</string>
+    <string name="explorer_save_failed">Չհաջողվեց պահպանել կարգավորումները։</string>
+    <string name="explorer_observed_fmt">Դիտարկման պահը: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Explorer-oplysninger</string>
+    <string name="explorer_enable">Aktivér explorer-oplysninger</string>
+    <string name="explorer_help">Valgfrit. Hvert opslag deler din IP-adresse og dette transaktions-id med explorer.nexawal.com via HTTPS på det åbne internet, også i I2P-tilstand. Ingen baggrundsforespørgsler. Tegnebogens data ændres ikke.</string>
+    <string name="explorer_reported">Kun offentlige explorer-data; din tegnebog bekræfter betalinger.</string>
+    <string name="explorer_disabled">Aktivér explorer-oplysninger i Indstillinger for at bruge funktionen.</string>
+    <string name="explorer_missing">Ikke fundet på denne node. Det beviser ikke, at en betaling mangler.</string>
+    <string name="explorer_unavailable">Explorer er utilgængelig. Din tegnebog påvirkes ikke. Prøv igen.</string>
+    <string name="explorer_node_stale">Nodens data kan være forældede eller ufuldstændige.</string>
+    <string name="explorer_observed">Observeret den</string>
+    <string name="explorer_mainnet">Den offentlige explorer understøtter kun hovednettet.</string>
+    <string name="explorer_refresh">Opdatér</string>
+    <string name="explorer_save_failed">Indstillingerne kunne ikke gemmes.</string>
+    <string name="explorer_observed_fmt">Observeret den: %1$s</string>
+</resources>

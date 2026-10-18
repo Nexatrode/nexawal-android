@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">פרטי הסייר</string>
+    <string name="explorer_enable">הפעלת פרטי הסייר</string>
+    <string name="explorer_help">אופציונלי. כל חיפוש משתף את כתובת ה-IP שלך ואת מזהה העסקה הזו עם explorer.nexawal.com באמצעות HTTPS באינטרנט הציבורי, גם במצב I2P. אין בקשות ברקע. נתוני הארנק אינם משתנים.</string>
+    <string name="explorer_reported">נתונים ציבוריים מהסייר בלבד; הארנק שלך מאמת תשלומים.</string>
+    <string name="explorer_disabled">יש להפעיל את פרטי הסייר בהגדרות כדי להשתמש בתכונה זו.</string>
+    <string name="explorer_missing">לא נמצא בצומת זה. זו אינה הוכחה שתשלום חסר.</string>
+    <string name="explorer_unavailable">הסייר אינו זמין. הארנק שלך אינו מושפע. נסו שוב.</string>
+    <string name="explorer_node_stale">נתוני הצומת עשויים להיות מיושנים או חלקיים.</string>
+    <string name="explorer_observed">זמן התצפית</string>
+    <string name="explorer_mainnet">הסייר הציבורי תומך ברשת הראשית בלבד.</string>
+    <string name="explorer_refresh">רענון</string>
+    <string name="explorer_save_failed">לא ניתן לשמור את ההגדרות.</string>
+    <string name="explorer_observed_fmt">זמן התצפית: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">تفاصيل المستكشف</string>
+    <string name="explorer_enable">تفعيل تفاصيل المستكشف</string>
+    <string name="explorer_help">اختياري. يشارك كل استعلام عنوان IP ومعرّف هذه المعاملة مع explorer.nexawal.com عبر HTTPS على الإنترنت العام، حتى في وضع I2P. لا توجد طلبات في الخلفية. لا تتغير بيانات المحفظة.</string>
+    <string name="explorer_reported">بيانات عامة من المستكشف فقط؛ محفظتك تتحقق من المدفوعات.</string>
+    <string name="explorer_disabled">فعّل تفاصيل المستكشف في الإعدادات لاستخدام هذه الميزة.</string>
+    <string name="explorer_missing">لم يُعثر عليها في هذه العقدة. هذا لا يثبت أن دفعة ما مفقودة.</string>
+    <string name="explorer_unavailable">المستكشف غير متاح. محفظتك غير متأثرة. حاول مجددًا.</string>
+    <string name="explorer_node_stale">قد تكون بيانات العقدة قديمة أو غير مكتملة.</string>
+    <string name="explorer_observed">وقت الرصد</string>
+    <string name="explorer_mainnet">يدعم المستكشف العام الشبكة الرئيسية فقط.</string>
+    <string name="explorer_refresh">تحديث</string>
+    <string name="explorer_save_failed">تعذر حفظ الإعدادات.</string>
+    <string name="explorer_observed_fmt">وقت الرصد: %1$s</string>
+</resources>

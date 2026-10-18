@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Àlàyé aṣàwákiri</string>
+    <string name="explorer_enable">Tan àlàyé aṣàwákiri</string>
+    <string name="explorer_help">Àṣàyàn ni. Ìwádìí kọ̀ọ̀kan ń pín àdírẹ́sì IP rẹ àti ID ìdúnàádúrà yìí pẹ̀lú explorer.nexawal.com nípasẹ̀ HTTPS lórí ìkànnì gbangba, kódà ní ipò I2P. Kò sí ìbéèrè abẹ́lẹ̀. Dátà àpamọ́wọ́ kò yí padà.</string>
+    <string name="explorer_reported">Dátà gbangba aṣàwákiri nìkan; àpamọ́wọ́ rẹ ló ń jẹ́rìí àwọn ìsanwó.</string>
+    <string name="explorer_disabled">Tan àlàyé aṣàwákiri nínú Ètò láti lo iṣẹ́ yìí.</string>
+    <string name="explorer_missing">A kò rí i lórí nóòdù yìí. Èyí kò jẹ́ ẹ̀rí pé ìsanwó kan sọnù.</string>
+    <string name="explorer_unavailable">Aṣàwákiri kò sí lárọ̀ọ́wọ́tó. Àpamọ́wọ́ rẹ kò ní ìpalára. Gbìyànjú lẹ́ẹ̀kan sí i.</string>
+    <string name="explorer_node_stale">Dátà nóòdù lè ti pẹ́ tàbí kí ó má pé.</string>
+    <string name="explorer_observed">Àkókò àkíyèsí</string>
+    <string name="explorer_mainnet">Aṣàwákiri gbangba ń ṣe àtìlẹ́yìn fún nẹ́tíwọ́ọ̀kì àkọ́kọ́ nìkan.</string>
+    <string name="explorer_refresh">Tún un ṣe</string>
+    <string name="explorer_save_failed">A kò lè fi àwọn ètò pamọ́.</string>
+    <string name="explorer_observed_fmt">Àkókò àkíyèsí: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">浏览器详情</string>
+    <string name="explorer_enable">启用浏览器详情</string>
+    <string name="explorer_help">可选功能。每次查询都会通过公网 HTTPS 向 explorer.nexawal.com 发送您的 IP 地址和此交易 ID，即使在 I2P 模式下也一样。不会在后台发起请求。钱包数据不会更改。</string>
+    <string name="explorer_reported">仅为浏览器提供的公开数据；付款由您的钱包验证。</string>
+    <string name="explorer_disabled">请在设置中启用浏览器详情以使用此功能。</string>
+    <string name="explorer_missing">此节点未找到该交易。这并不能证明付款不存在。</string>
+    <string name="explorer_unavailable">浏览器不可用。您的钱包不受影响。请重试。</string>
+    <string name="explorer_node_stale">节点数据可能已过时或不完整。</string>
+    <string name="explorer_observed">观测时间</string>
+    <string name="explorer_mainnet">公共浏览器仅支持主网。</string>
+    <string name="explorer_refresh">刷新</string>
+    <string name="explorer_save_failed">无法保存设置。</string>
+    <string name="explorer_observed_fmt">观测时间: %1$s</string>
+</resources>

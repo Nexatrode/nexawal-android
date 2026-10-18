@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">탐색기 상세 정보</string>
+    <string name="explorer_enable">탐색기 상세 정보 사용</string>
+    <string name="explorer_help">선택 기능입니다. 조회할 때마다 IP 주소와 이 거래 ID를 일반 인터넷의 HTTPS를 통해 explorer.nexawal.com으로 전송합니다. I2P 모드에서도 동일합니다. 백그라운드 요청은 없습니다. 지갑 데이터는 변경되지 않습니다.</string>
+    <string name="explorer_reported">탐색기의 공개 데이터일 뿐입니다. 결제 확인은 지갑이 수행합니다.</string>
+    <string name="explorer_disabled">이 기능을 사용하려면 설정에서 탐색기 상세 정보를 켜세요.</string>
+    <string name="explorer_missing">이 노드에서 찾을 수 없습니다. 결제가 없다는 증거는 아닙니다.</string>
+    <string name="explorer_unavailable">탐색기를 사용할 수 없습니다. 지갑에는 영향이 없습니다. 다시 시도하세요.</string>
+    <string name="explorer_node_stale">노드 데이터가 오래되었거나 불완전할 수 있습니다.</string>
+    <string name="explorer_observed">관측 시각</string>
+    <string name="explorer_mainnet">공개 탐색기는 메인넷만 지원합니다.</string>
+    <string name="explorer_refresh">새로고침</string>
+    <string name="explorer_save_failed">설정을 저장하지 못했습니다.</string>
+    <string name="explorer_observed_fmt">관측 시각: %1$s</string>
+</resources>

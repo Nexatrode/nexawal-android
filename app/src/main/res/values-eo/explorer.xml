@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Detaloj de esplorilo</string>
+    <string name="explorer_enable">Ŝalti detalojn de esplorilo</string>
+    <string name="explorer_help">Nedeviga. Ĉiu serĉo dividas vian IP-adreson kaj ĉi tiun transakcian ID kun explorer.nexawal.com per HTTPS sur la publika interreto, eĉ en I2P-reĝimo. Neniuj fonaj petoj. Monujaj datumoj ne ŝanĝiĝas.</string>
+    <string name="explorer_reported">Nur publikaj datumoj de esplorilo; via monujo kontrolas pagojn.</string>
+    <string name="explorer_disabled">Ŝaltu detalojn de esplorilo en Agordoj por uzi ĉi tiun funkcion.</string>
+    <string name="explorer_missing">Ne trovita ĉe ĉi tiu nodo. Tio ne pruvas, ke pago mankas.</string>
+    <string name="explorer_unavailable">Esplorilo ne disponeblas. Via monujo ne estas tuŝita. Provu denove.</string>
+    <string name="explorer_node_stale">La datumoj de la nodo povas esti malnovaj aŭ nekompletaj.</string>
+    <string name="explorer_observed">Observita je</string>
+    <string name="explorer_mainnet">La publika esplorilo subtenas nur la ĉefan reton.</string>
+    <string name="explorer_refresh">Aktualigi</string>
+    <string name="explorer_save_failed">Ne eblis konservi agordojn.</string>
+    <string name="explorer_observed_fmt">Observita je: %1$s</string>
+</resources>

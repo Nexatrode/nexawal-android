@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Naršyklės duomenys</string>
+    <string name="explorer_enable">Įjungti naršyklės duomenis</string>
+    <string name="explorer_help">Pasirinktinai. Kiekviena užklausa perduoda jūsų IP adresą ir šios operacijos ID svetainei explorer.nexawal.com per HTTPS viešajame internete, net I2P režimu. Foninių užklausų nėra. Piniginės duomenys nekeičiami.</string>
+    <string name="explorer_reported">Tik vieši naršyklės duomenys; mokėjimus tikrina jūsų piniginė.</string>
+    <string name="explorer_disabled">Norėdami naudoti šią funkciją, nustatymuose įjunkite naršyklės duomenis.</string>
+    <string name="explorer_missing">Šiame mazge nerasta. Tai neįrodo, kad mokėjimo nėra.</string>
+    <string name="explorer_unavailable">Naršyklė nepasiekiama. Piniginė nepaveikta. Bandykite dar kartą.</string>
+    <string name="explorer_node_stale">Mazgo duomenys gali būti pasenę arba neišsamūs.</string>
+    <string name="explorer_observed">Stebėjimo laikas</string>
+    <string name="explorer_mainnet">Vieša naršyklė palaiko tik pagrindinį tinklą.</string>
+    <string name="explorer_refresh">Atnaujinti</string>
+    <string name="explorer_save_failed">Nepavyko išsaugoti nustatymų.</string>
+    <string name="explorer_observed_fmt">Stebėjimo laikas: %1$s</string>
+</resources>

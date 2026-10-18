@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">エクスプローラーの詳細</string>
+    <string name="explorer_enable">エクスプローラーの詳細を有効にする</string>
+    <string name="explorer_help">任意の機能です。検索のたびに、IPアドレスとこのトランザクションIDが explorer.nexawal.com に通常のインターネット経由のHTTPSで送信されます。I2Pモードでも同様です。バックグラウンドでの通信は行いません。ウォレットのデータは変更されません。</string>
+    <string name="explorer_reported">エクスプローラーの公開データのみです。支払いの確認はウォレットが行います。</string>
+    <string name="explorer_disabled">この機能を使うには、設定でエクスプローラーの詳細を有効にしてください。</string>
+    <string name="explorer_missing">このノードでは見つかりません。支払いが存在しないことの証明ではありません。</string>
+    <string name="explorer_unavailable">エクスプローラーを利用できません。ウォレットへの影響はありません。もう一度お試しください。</string>
+    <string name="explorer_node_stale">ノードのデータが古いか、不完全な可能性があります。</string>
+    <string name="explorer_observed">観測日時</string>
+    <string name="explorer_mainnet">公開エクスプローラーはメインネットのみ対応しています。</string>
+    <string name="explorer_refresh">更新</string>
+    <string name="explorer_save_failed">設定を保存できませんでした。</string>
+    <string name="explorer_observed_fmt">観測日時: %1$s</string>
+</resources>

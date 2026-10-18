@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">جزئیات کاوشگر</string>
+    <string name="explorer_enable">فعال‌کردن جزئیات کاوشگر</string>
+    <string name="explorer_help">اختیاری است. هر جست‌وجو نشانی IP و شناسهٔ این تراکنش را از طریق HTTPS در اینترنت عمومی با explorer.nexawal.com به اشتراک می‌گذارد، حتی در حالت I2P. درخواستی در پس‌زمینه انجام نمی‌شود. داده‌های کیف پول تغییر نمی‌کنند.</string>
+    <string name="explorer_reported">فقط داده‌های عمومی کاوشگر است؛ کیف پول شما پرداخت‌ها را تأیید می‌کند.</string>
+    <string name="explorer_disabled">برای استفاده از این قابلیت، جزئیات کاوشگر را در تنظیمات فعال کنید.</string>
+    <string name="explorer_missing">در این گره یافت نشد. این به معنی اثبات نبودن پرداخت نیست.</string>
+    <string name="explorer_unavailable">کاوشگر در دسترس نیست. کیف پول شما تحت تأثیر نیست. دوباره تلاش کنید.</string>
+    <string name="explorer_node_stale">داده‌های گره ممکن است قدیمی یا ناقص باشند.</string>
+    <string name="explorer_observed">زمان مشاهده</string>
+    <string name="explorer_mainnet">کاوشگر عمومی فقط از شبکهٔ اصلی پشتیبانی می‌کند.</string>
+    <string name="explorer_refresh">تازه‌سازی</string>
+    <string name="explorer_save_failed">ذخیرهٔ تنظیمات ممکن نشد.</string>
+    <string name="explorer_observed_fmt">زمان مشاهده: %1$s</string>
+</resources>

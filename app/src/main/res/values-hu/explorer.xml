@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Böngésző részletei</string>
+    <string name="explorer_enable">Böngésző részleteinek engedélyezése</string>
+    <string name="explorer_help">Választható. Minden lekérdezés megosztja az IP-címét és ennek a tranzakciónak az azonosítóját az explorer.nexawal.com oldallal, nyílt internetes HTTPS-en, I2P módban is. Nincsenek háttérkérések. A tárca adatai nem változnak.</string>
+    <string name="explorer_reported">Csak a böngésző nyilvános adatai; a fizetéseket a tárcája ellenőrzi.</string>
+    <string name="explorer_disabled">A funkcióhoz engedélyezze a böngésző részleteit a Beállításokban.</string>
+    <string name="explorer_missing">Ezen a csomóponton nem található. Ez nem bizonyítja egy fizetés hiányát.</string>
+    <string name="explorer_unavailable">A böngésző nem érhető el. Ez nem érinti a tárcáját. Próbálja újra.</string>
+    <string name="explorer_node_stale">A csomópont adatai elavultak vagy hiányosak lehetnek.</string>
+    <string name="explorer_observed">Megfigyelés ideje</string>
+    <string name="explorer_mainnet">A nyilvános böngésző csak a főhálózatot támogatja.</string>
+    <string name="explorer_refresh">Frissítés</string>
+    <string name="explorer_save_failed">A beállításokat nem sikerült menteni.</string>
+    <string name="explorer_observed_fmt">Megfigyelés ideje: %1$s</string>
+</resources>

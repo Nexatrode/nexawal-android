@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Podrobnosti průzkumníka</string>
+    <string name="explorer_enable">Povolit podrobnosti průzkumníka</string>
+    <string name="explorer_help">Volitelné. Každý dotaz sdílí vaši IP adresu a ID této transakce s explorer.nexawal.com přes HTTPS ve veřejném internetu, i v režimu I2P. Žádné požadavky na pozadí. Data peněženky se nemění.</string>
+    <string name="explorer_reported">Pouze veřejná data průzkumníka; platby ověřuje vaše peněženka.</string>
+    <string name="explorer_disabled">Pro použití této funkce povolte podrobnosti průzkumníka v Nastavení.</string>
+    <string name="explorer_missing">Na tomto uzlu nenalezeno. To nedokazuje, že platba chybí.</string>
+    <string name="explorer_unavailable">Průzkumník není dostupný. Vaše peněženka není ovlivněna. Zkuste to znovu.</string>
+    <string name="explorer_node_stale">Data uzlu mohou být zastaralá nebo neúplná.</string>
+    <string name="explorer_observed">Čas pozorování</string>
+    <string name="explorer_mainnet">Veřejný průzkumník podporuje jen hlavní síť.</string>
+    <string name="explorer_refresh">Obnovit</string>
+    <string name="explorer_save_failed">Nastavení se nepodařilo uložit.</string>
+    <string name="explorer_observed_fmt">Čas pozorování: %1$s</string>
+</resources>

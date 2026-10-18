@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Дані оглядача</string>
+    <string name="explorer_enable">Увімкнути дані оглядача</string>
+    <string name="explorer_help">Необов’язково. Кожен запит передає вашу IP-адресу та ID цієї транзакції на explorer.nexawal.com через HTTPS у звичайному інтернеті, навіть у режимі I2P. Фонових запитів немає. Дані гаманця не змінюються.</string>
+    <string name="explorer_reported">Лише відкриті дані оглядача; платежі перевіряє ваш гаманець.</string>
+    <string name="explorer_disabled">Щоб користуватися цією функцією, увімкніть дані оглядача в налаштуваннях.</string>
+    <string name="explorer_missing">Не знайдено на цьому вузлі. Це не доводить відсутності платежу.</string>
+    <string name="explorer_unavailable">Оглядач недоступний. На гаманець це не впливає. Спробуйте ще раз.</string>
+    <string name="explorer_node_stale">Дані вузла можуть бути застарілими або неповними.</string>
+    <string name="explorer_observed">Час спостереження</string>
+    <string name="explorer_mainnet">Публічний оглядач підтримує лише основну мережу.</string>
+    <string name="explorer_refresh">Оновити</string>
+    <string name="explorer_save_failed">Не вдалося зберегти налаштування.</string>
+    <string name="explorer_observed_fmt">Час спостереження: %1$s</string>
+</resources>

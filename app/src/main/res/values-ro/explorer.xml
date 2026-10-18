@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Detalii explorator</string>
+    <string name="explorer_enable">Activează detaliile exploratorului</string>
+    <string name="explorer_help">Opțional. Fiecare căutare trimite adresa IP și ID-ul acestei tranzacții către explorer.nexawal.com prin HTTPS pe internetul public, chiar și în modul I2P. Fără cereri în fundal. Datele portofelului nu se modifică.</string>
+    <string name="explorer_reported">Doar date publice ale exploratorului; portofelul verifică plățile.</string>
+    <string name="explorer_disabled">Activează detaliile exploratorului în Setări pentru a folosi funcția.</string>
+    <string name="explorer_missing">Nu a fost găsită pe acest nod. Aceasta nu dovedește că lipsește o plată.</string>
+    <string name="explorer_unavailable">Explorator indisponibil. Portofelul nu este afectat. Încearcă din nou.</string>
+    <string name="explorer_node_stale">Datele nodului pot fi vechi sau incomplete.</string>
+    <string name="explorer_observed">Observat la</string>
+    <string name="explorer_mainnet">Exploratorul public acceptă doar rețeaua principală.</string>
+    <string name="explorer_refresh">Reîmprospătează</string>
+    <string name="explorer_save_failed">Setările nu au putut fi salvate.</string>
+    <string name="explorer_observed_fmt">Observat la: %1$s</string>
+</resources>

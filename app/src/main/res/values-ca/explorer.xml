@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Detalls de l’explorador</string>
+    <string name="explorer_enable">Activa els detalls de l’explorador</string>
+    <string name="explorer_help">Opcional. Cada consulta comparteix la vostra adreça IP i aquest ID de transacció amb explorer.nexawal.com mitjançant HTTPS a la xarxa pública, també en mode I2P. Sense peticions en segon pla. Les dades del moneder no canvien.</string>
+    <string name="explorer_reported">Només dades públiques de l’explorador; el moneder verifica els pagaments.</string>
+    <string name="explorer_disabled">Activeu els detalls de l’explorador a Configuració per usar aquesta funció.</string>
+    <string name="explorer_missing">No s’ha trobat en aquest node. Això no demostra que falti un pagament.</string>
+    <string name="explorer_unavailable">Explorador no disponible. El moneder no es veu afectat. Torneu-ho a provar.</string>
+    <string name="explorer_node_stale">Les dades del node poden ser antigues o incompletes.</string>
+    <string name="explorer_observed">Observat el</string>
+    <string name="explorer_mainnet">L’explorador públic només admet la xarxa principal.</string>
+    <string name="explorer_refresh">Actualitza</string>
+    <string name="explorer_save_failed">No s’ha pogut desar la configuració.</string>
+    <string name="explorer_observed_fmt">Observat el: %1$s</string>
+</resources>

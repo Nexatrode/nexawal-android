@@ -228,7 +228,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
             }
         }
     }
-    selected?.let { row -> TransferDetailsDialog(row.atChainHeight(state.syncStatus?.chainHeight ?: 0), walletManager.fiatPrices.snapshots.snapshot(row.txid)) { selected = null } }
+    selected?.let { row -> TransferDetailsDialog(row.atChainHeight(state.syncStatus?.chainHeight ?: 0), walletManager.fiatPrices.snapshots.snapshot(row.txid), state.mainnet) { selected = null } }
 }
 
 internal fun Transfer.atChainHeight(chainHeight: Long): Transfer = copy(confirmations =

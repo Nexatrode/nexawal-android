@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Sonraí an taiscéalaí</string>
+    <string name="explorer_enable">Cumasaigh sonraí an taiscéalaí</string>
+    <string name="explorer_help">Roghnach. Roinneann gach cuardach do sheoladh IP agus aitheantas an idirbhirt seo le explorer.nexawal.com trí HTTPS ar an idirlíon poiblí, fiú i mód I2P. Gan iarratais chúlra. Ní athraítear sonraí an sparáin.</string>
+    <string name="explorer_reported">Sonraí poiblí an taiscéalaí amháin; fíoraíonn do sparán íocaíochtaí.</string>
+    <string name="explorer_disabled">Cumasaigh sonraí an taiscéalaí sna Socruithe chun an ghné seo a úsáid.</string>
+    <string name="explorer_missing">Níor aimsíodh ar an nód seo é. Ní cruthúnas é seo go bhfuil íocaíocht ar iarraidh.</string>
+    <string name="explorer_unavailable">Níl an taiscéalaí ar fáil. Níl aon tionchar ar do sparán. Bain triail eile as.</string>
+    <string name="explorer_node_stale">D’fhéadfadh sonraí an nóid a bheith sean nó neamhiomlán.</string>
+    <string name="explorer_observed">Am breathnaithe</string>
+    <string name="explorer_mainnet">Ní thacaíonn an taiscéalaí poiblí ach leis an bpríomhlíonra.</string>
+    <string name="explorer_refresh">Athnuaigh</string>
+    <string name="explorer_save_failed">Níorbh fhéidir na socruithe a shábháil.</string>
+    <string name="explorer_observed_fmt">Am breathnaithe: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Mga detalye ng explorer</string>
+    <string name="explorer_enable">Paganahin ang mga detalye ng explorer</string>
+    <string name="explorer_help">Opsyonal. Ibinabahagi ng bawat paghahanap ang iyong IP address at ID ng transaksyong ito sa explorer.nexawal.com gamit ang HTTPS sa pampublikong internet, kahit sa I2P mode. Walang mga kahilingan sa background. Hindi binabago ang datos ng wallet.</string>
+    <string name="explorer_reported">Pampublikong datos lamang ng explorer; ang wallet mo ang nagpapatunay ng mga bayad.</string>
+    <string name="explorer_disabled">Paganahin ang mga detalye ng explorer sa Mga Setting para gamitin ito.</string>
+    <string name="explorer_missing">Hindi nakita sa node na ito. Hindi nito pinatutunayang may nawawalang bayad.</string>
+    <string name="explorer_unavailable">Hindi available ang explorer. Hindi apektado ang wallet mo. Subukang muli.</string>
+    <string name="explorer_node_stale">Maaaring luma o kulang ang datos ng node.</string>
+    <string name="explorer_observed">Oras ng pagmamasid</string>
+    <string name="explorer_mainnet">Mainnet lamang ang sinusuportahan ng pampublikong explorer.</string>
+    <string name="explorer_refresh">I-refresh</string>
+    <string name="explorer_save_failed">Hindi mai-save ang mga setting.</string>
+    <string name="explorer_observed_fmt">Oras ng pagmamasid: %1$s</string>
+</resources>

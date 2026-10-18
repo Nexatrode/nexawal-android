@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Изилдегичтин чоо-жайы</string>
+    <string name="explorer_enable">Изилдегичтин чоо-жайын иштетүү</string>
+    <string name="explorer_help">Милдеттүү эмес. Ар бир суроо IP дарегиңизди жана бул транзакциянын ID-син explorer.nexawal.com сайтына ачык интернеттеги HTTPS аркылуу жөнөтөт, I2P режиминде да. Фондук сурамдар жок. Капчыктын маалыматтары өзгөрбөйт.</string>
+    <string name="explorer_reported">Изилдегичтин ачык маалыматтары гана; төлөмдөрдү капчыгыңыз текшерет.</string>
+    <string name="explorer_disabled">Бул мүмкүнчүлүктү колдонуу үчүн Жөндөөлөрдөн изилдегичтин чоо-жайын иштетиңиз.</string>
+    <string name="explorer_missing">Бул түйүндөн табылган жок. Бул төлөм жок экенин далилдебейт.</string>
+    <string name="explorer_unavailable">Изилдегич жеткиликсиз. Капчыгыңызга таасир этпейт. Кайра аракет кылыңыз.</string>
+    <string name="explorer_node_stale">Түйүндүн маалыматтары эски же толук эмес болушу мүмкүн.</string>
+    <string name="explorer_observed">Байкалган убакыт</string>
+    <string name="explorer_mainnet">Ачык изилдегич негизги тармакты гана колдойт.</string>
+    <string name="explorer_refresh">Жаңылоо</string>
+    <string name="explorer_save_failed">Жөндөөлөрдү сактоо мүмкүн болгон жок.</string>
+    <string name="explorer_observed_fmt">Байкалган убакыт: %1$s</string>
+</resources>

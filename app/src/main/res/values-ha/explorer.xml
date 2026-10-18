@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Bayanan mai bincike</string>
+    <string name="explorer_enable">Kunna bayanan mai bincike</string>
+    <string name="explorer_help">Na zaɓi ne. Kowane bincike yana raba adireshin IP naka da ID na wannan ciniki da explorer.nexawal.com ta HTTPS a intanet na jama\'a, har a yanayin I2P. Babu buƙatu a bayan fage. Bayanan walat ba sa canzawa.</string>
+    <string name="explorer_reported">Bayanan jama\'a na mai bincike kawai; walat ɗinka yana tabbatar da biyan kuɗi.</string>
+    <string name="explorer_disabled">Kunna bayanan mai bincike a Saituna don amfani da wannan fasalin.</string>
+    <string name="explorer_missing">Ba a samu a wannan kumburin ba. Wannan ba ya tabbatar da cewa biyan kuɗi ya ɓace.</string>
+    <string name="explorer_unavailable">Mai bincike ba ya samuwa. Walat ɗinka bai samu matsala ba. Sake gwadawa.</string>
+    <string name="explorer_node_stale">Bayanan kumburin na iya tsufa ko rashin cika.</string>
+    <string name="explorer_observed">Lokacin da aka lura</string>
+    <string name="explorer_mainnet">Mai bincike na jama\'a yana goyon bayan babban hanyar sadarwa kawai.</string>
+    <string name="explorer_refresh">Sabunta</string>
+    <string name="explorer_save_failed">An kasa adana saituna.</string>
+    <string name="explorer_observed_fmt">Lokacin da aka lura: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Jehechaha marandu</string>
+    <string name="explorer_enable">Emyandy jehechaha marandu</string>
+    <string name="explorer_help">Eiporavokuaa. Peteĩteĩ jeheka ombohasa ne IP ha ko tembiapo ID explorer.nexawal.com-pe HTTPS rupive internet opavavépe guarãme, I2P-pe jepe. Ndaipóri mba’ejerure tapykuépe. Viru ryru marandu noñemoambuéi.</string>
+    <string name="explorer_reported">Jehechaha marandu opavavépe guarãnte; ne viru ryru ohechajey umi ñeme’ẽ.</string>
+    <string name="explorer_disabled">Emyandy jehechaha marandu Ñembohekópe eiporu hag̃ua ko tembiapo.</string>
+    <string name="explorer_missing">Ndojejuhúi ko nódope. Kóva ndohechaukái peteĩ ñeme’ẽ okañy hague.</string>
+    <string name="explorer_unavailable">Jehechaha ndojeporukuaái. Ne viru ryru noñembyaíri. Eha’ãjey.</string>
+    <string name="explorer_node_stale">Nodo marandu ikatu itujáma térã noĩmbái.</string>
+    <string name="explorer_observed">Aravo ojehechahague</string>
+    <string name="explorer_mainnet">Jehechaha opavavépe guarã omba’apo red tenondeguápe año.</string>
+    <string name="explorer_refresh">Mbopyahu</string>
+    <string name="explorer_save_failed">Ndaikatúi oñeñongatu ñemboheko.</string>
+    <string name="explorer_observed_fmt">Aravo ojehechahague: %1$s</string>
+</resources>

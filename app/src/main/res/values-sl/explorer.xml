@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Podatki raziskovalca</string>
+    <string name="explorer_enable">Omogoči podatke raziskovalca</string>
+    <string name="explorer_help">Izbirno. Vsaka poizvedba deli vaš naslov IP in ID te transakcije z explorer.nexawal.com prek HTTPS v javnem internetu, tudi v načinu I2P. Brez zahtev v ozadju. Podatki denarnice se ne spreminjajo.</string>
+    <string name="explorer_reported">Samo javni podatki raziskovalca; vaša denarnica preverja plačila.</string>
+    <string name="explorer_disabled">Za to funkcijo omogočite podatke raziskovalca v Nastavitvah.</string>
+    <string name="explorer_missing">Na tem vozlišču ni najdeno. To ne dokazuje, da plačilo manjka.</string>
+    <string name="explorer_unavailable">Raziskovalec ni na voljo. Vaša denarnica ni prizadeta. Poskusite znova.</string>
+    <string name="explorer_node_stale">Podatki vozlišča so lahko zastareli ali nepopolni.</string>
+    <string name="explorer_observed">Čas opažanja</string>
+    <string name="explorer_mainnet">Javni raziskovalec podpira samo glavno omrežje.</string>
+    <string name="explorer_refresh">Osveži</string>
+    <string name="explorer_save_failed">Nastavitev ni bilo mogoče shraniti.</string>
+    <string name="explorer_observed_fmt">Čas opažanja: %1$s</string>
+</resources>

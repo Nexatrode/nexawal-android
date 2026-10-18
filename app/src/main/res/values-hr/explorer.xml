@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Podaci preglednika</string>
+    <string name="explorer_enable">Omogući podatke preglednika</string>
+    <string name="explorer_help">Neobavezno. Svaki upit dijeli vašu IP adresu i ID ove transakcije s explorer.nexawal.com putem HTTPS-a na javnom internetu, čak i u načinu I2P. Nema pozadinskih zahtjeva. Podaci novčanika ostaju nepromijenjeni.</string>
+    <string name="explorer_reported">Samo javni podaci preglednika; vaš novčanik provjerava plaćanja.</string>
+    <string name="explorer_disabled">Omogućite podatke preglednika u Postavkama za ovu značajku.</string>
+    <string name="explorer_missing">Nije pronađeno na ovom čvoru. To ne dokazuje da plaćanje nedostaje.</string>
+    <string name="explorer_unavailable">Preglednik nije dostupan. To ne utječe na novčanik. Pokušajte ponovno.</string>
+    <string name="explorer_node_stale">Podaci čvora mogu biti zastarjeli ili nepotpuni.</string>
+    <string name="explorer_observed">Vrijeme opažanja</string>
+    <string name="explorer_mainnet">Javni preglednik podržava samo glavnu mrežu.</string>
+    <string name="explorer_refresh">Osvježi</string>
+    <string name="explorer_save_failed">Postavke nije moguće spremiti.</string>
+    <string name="explorer_observed_fmt">Vrijeme opažanja: %1$s</string>
+</resources>

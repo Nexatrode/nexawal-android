@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Данни от изследователя</string>
+    <string name="explorer_enable">Включване на данните от изследователя</string>
+    <string name="explorer_help">По избор. Всяка справка споделя IP адреса ви и идентификатора на тази транзакция с explorer.nexawal.com чрез HTTPS в публичния интернет, дори в режим I2P. Няма заявки във фонов режим. Данните на портфейла не се променят.</string>
+    <string name="explorer_reported">Само публични данни от изследователя; портфейлът ви проверява плащанията.</string>
+    <string name="explorer_disabled">Включете данните от изследователя в Настройки, за да използвате функцията.</string>
+    <string name="explorer_missing">Не е намерена на този възел. Това не доказва, че липсва плащане.</string>
+    <string name="explorer_unavailable">Изследователят е недостъпен. Портфейлът ви не е засегнат. Опитайте отново.</string>
+    <string name="explorer_node_stale">Данните на възела може да са остарели или непълни.</string>
+    <string name="explorer_observed">Наблюдавано на</string>
+    <string name="explorer_mainnet">Публичният изследовател поддържа само основната мрежа.</string>
+    <string name="explorer_refresh">Обновяване</string>
+    <string name="explorer_save_failed">Настройките не можаха да бъдат запазени.</string>
+    <string name="explorer_observed_fmt">Наблюдавано на: %1$s</string>
+</resources>

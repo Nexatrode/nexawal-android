@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">ایکسپلورر کی تفصیلات</string>
+    <string name="explorer_enable">ایکسپلورر کی تفصیلات فعال کریں</string>
+    <string name="explorer_help">اختیاری۔ ہر تلاش آپ کا IP پتہ اور اس لین دین کی ID عام انٹرنیٹ پر HTTPS کے ذریعے explorer.nexawal.com کے ساتھ شیئر کرتی ہے، I2P موڈ میں بھی۔ پس منظر میں کوئی درخواست نہیں ہوتی۔ بٹوے کا ڈیٹا تبدیل نہیں ہوتا۔</string>
+    <string name="explorer_reported">صرف ایکسپلورر کا عوامی ڈیٹا؛ ادائیگیوں کی تصدیق آپ کا بٹوہ کرتا ہے۔</string>
+    <string name="explorer_disabled">یہ خصوصیت استعمال کرنے کے لیے ترتیبات میں ایکسپلورر کی تفصیلات فعال کریں۔</string>
+    <string name="explorer_missing">اس نوڈ پر نہیں ملا۔ اس سے یہ ثابت نہیں ہوتا کہ ادائیگی موجود نہیں۔</string>
+    <string name="explorer_unavailable">ایکسپلورر دستیاب نہیں۔ آپ کا بٹوہ متاثر نہیں ہوتا۔ دوبارہ کوشش کریں۔</string>
+    <string name="explorer_node_stale">نوڈ کا ڈیٹا پرانا یا نامکمل ہو سکتا ہے۔</string>
+    <string name="explorer_observed">مشاہدے کا وقت</string>
+    <string name="explorer_mainnet">عوامی ایکسپلورر صرف مین نیٹ کی حمایت کرتا ہے۔</string>
+    <string name="explorer_refresh">تازہ کریں</string>
+    <string name="explorer_save_failed">ترتیبات محفوظ نہیں ہو سکیں۔</string>
+    <string name="explorer_observed_fmt">مشاہدے کا وقت: %1$s</string>
+</resources>

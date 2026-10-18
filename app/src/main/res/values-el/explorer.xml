@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Στοιχεία εξερευνητή</string>
+    <string name="explorer_enable">Ενεργοποίηση στοιχείων εξερευνητή</string>
+    <string name="explorer_help">Προαιρετικό. Κάθε αναζήτηση κοινοποιεί τη διεύθυνση IP σας και το ID αυτής της συναλλαγής στο explorer.nexawal.com μέσω HTTPS στο δημόσιο διαδίκτυο, ακόμη και σε λειτουργία I2P. Χωρίς αιτήματα παρασκηνίου. Τα δεδομένα του πορτοφολιού δεν αλλάζουν.</string>
+    <string name="explorer_reported">Μόνο δημόσια δεδομένα εξερευνητή· το πορτοφόλι σας επαληθεύει τις πληρωμές.</string>
+    <string name="explorer_disabled">Ενεργοποιήστε τα στοιχεία εξερευνητή στις Ρυθμίσεις για αυτήν τη λειτουργία.</string>
+    <string name="explorer_missing">Δεν βρέθηκε σε αυτόν τον κόμβο. Αυτό δεν αποδεικνύει ότι λείπει πληρωμή.</string>
+    <string name="explorer_unavailable">Ο εξερευνητής δεν είναι διαθέσιμος. Το πορτοφόλι σας δεν επηρεάζεται. Δοκιμάστε ξανά.</string>
+    <string name="explorer_node_stale">Τα δεδομένα του κόμβου μπορεί να είναι παλιά ή ελλιπή.</string>
+    <string name="explorer_observed">Χρόνος παρατήρησης</string>
+    <string name="explorer_mainnet">Ο δημόσιος εξερευνητής υποστηρίζει μόνο το κύριο δίκτυο.</string>
+    <string name="explorer_refresh">Ανανέωση</string>
+    <string name="explorer_save_failed">Δεν ήταν δυνατή η αποθήκευση των ρυθμίσεων.</string>
+    <string name="explorer_observed_fmt">Χρόνος παρατήρησης: %1$s</string>
+</resources>

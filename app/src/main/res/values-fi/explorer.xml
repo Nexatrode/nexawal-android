@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Selaimen tiedot</string>
+    <string name="explorer_enable">Ota selaimen tiedot käyttöön</string>
+    <string name="explorer_help">Valinnainen. Jokainen haku lähettää IP-osoitteesi ja tämän tapahtumatunnisteen explorer.nexawal.com-palveluun julkisen internetin HTTPS-yhteydellä myös I2P-tilassa. Ei taustapyyntöjä. Lompakon tiedot eivät muutu.</string>
+    <string name="explorer_reported">Vain selaimen julkisia tietoja; lompakkosi tarkistaa maksut.</string>
+    <string name="explorer_disabled">Ota selaimen tiedot käyttöön asetuksissa käyttääksesi toimintoa.</string>
+    <string name="explorer_missing">Ei löytynyt tältä solmulta. Tämä ei todista maksun puuttumista.</string>
+    <string name="explorer_unavailable">Selain ei ole käytettävissä. Tämä ei vaikuta lompakkoosi. Yritä uudelleen.</string>
+    <string name="explorer_node_stale">Solmun tiedot voivat olla vanhentuneita tai puutteellisia.</string>
+    <string name="explorer_observed">Havaittu</string>
+    <string name="explorer_mainnet">Julkinen selain tukee vain pääverkkoa.</string>
+    <string name="explorer_refresh">Päivitä</string>
+    <string name="explorer_save_failed">Asetuksia ei voitu tallentaa.</string>
+    <string name="explorer_observed_fmt">Havaittu: %1$s</string>
+</resources>

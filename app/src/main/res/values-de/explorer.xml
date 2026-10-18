@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Explorer-Details</string>
+    <string name="explorer_enable">Explorer-Details aktivieren</string>
+    <string name="explorer_help">Optional. Jede Abfrage übermittelt Ihre IP-Adresse und diese Transaktions-ID über Clearnet-HTTPS an explorer.nexawal.com, auch im I2P-Modus. Keine Hintergrundabfragen. Wallet-Daten bleiben unverändert.</string>
+    <string name="explorer_reported">Nur öffentliche Explorer-Daten; Ihre Wallet prüft Zahlungen.</string>
+    <string name="explorer_disabled">Aktivieren Sie Explorer-Details in den Einstellungen, um diese Funktion zu nutzen.</string>
+    <string name="explorer_missing">Auf diesem Node nicht gefunden. Das beweist nicht, dass eine Zahlung fehlt.</string>
+    <string name="explorer_unavailable">Explorer nicht verfügbar. Ihre Wallet ist nicht betroffen. Erneut versuchen.</string>
+    <string name="explorer_node_stale">Node-Daten können veraltet oder unvollständig sein.</string>
+    <string name="explorer_observed">Beobachtet am</string>
+    <string name="explorer_mainnet">Der öffentliche Explorer unterstützt nur das Mainnet.</string>
+    <string name="explorer_refresh">Aktualisieren</string>
+    <string name="explorer_save_failed">Einstellungen konnten nicht gespeichert werden.</string>
+    <string name="explorer_observed_fmt">Beobachtet am: %1$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Hollësitë e eksploruesit</string>
+    <string name="explorer_enable">Aktivizo hollësitë e eksploruesit</string>
+    <string name="explorer_help">Opsionale. Çdo kërkim ndan adresën tuaj IP dhe ID-në e këtij transaksioni me explorer.nexawal.com përmes HTTPS në internetin publik, edhe në modalitetin I2P. Pa kërkesa në sfond. Të dhënat e portofolit nuk ndryshojnë.</string>
+    <string name="explorer_reported">Vetëm të dhëna publike të eksploruesit; portofoli juaj verifikon pagesat.</string>
+    <string name="explorer_disabled">Aktivizoni hollësitë e eksploruesit te Cilësimet për këtë veçori.</string>
+    <string name="explorer_missing">Nuk u gjet në këtë nyjë. Kjo nuk provon se mungon një pagesë.</string>
+    <string name="explorer_unavailable">Eksploruesi nuk është i disponueshëm. Portofoli juaj nuk preket. Provoni përsëri.</string>
+    <string name="explorer_node_stale">Të dhënat e nyjës mund të jenë të vjetra ose të paplota.</string>
+    <string name="explorer_observed">Koha e vëzhgimit</string>
+    <string name="explorer_mainnet">Eksploruesi publik mbështet vetëm rrjetin kryesor.</string>
+    <string name="explorer_refresh">Rifresko</string>
+    <string name="explorer_save_failed">Cilësimet nuk u ruajtën.</string>
+    <string name="explorer_observed_fmt">Koha e vëzhgimit: %1$s</string>
+</resources>

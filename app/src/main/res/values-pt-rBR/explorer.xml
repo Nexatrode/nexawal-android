@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Detalhes do explorador</string>
+    <string name="explorer_enable">Ativar detalhes do explorador</string>
+    <string name="explorer_help">Opcional. Cada consulta compartilha seu endereço IP e este ID de transação com explorer.nexawal.com por HTTPS na rede pública, mesmo no modo I2P. Sem solicitações em segundo plano. Os dados da carteira não são alterados.</string>
+    <string name="explorer_reported">Apenas dados públicos do explorador; sua carteira verifica os pagamentos.</string>
+    <string name="explorer_disabled">Ative os detalhes do explorador nas Configurações para usar este recurso.</string>
+    <string name="explorer_missing">Não encontrado neste nó. Isso não prova que um pagamento esteja faltando.</string>
+    <string name="explorer_unavailable">Explorador indisponível. Sua carteira não é afetada. Tente novamente.</string>
+    <string name="explorer_node_stale">Os dados do nó podem estar desatualizados ou incompletos.</string>
+    <string name="explorer_observed">Observado em</string>
+    <string name="explorer_mainnet">O explorador público oferece suporte apenas à rede principal.</string>
+    <string name="explorer_refresh">Atualizar</string>
+    <string name="explorer_save_failed">Não foi possível salvar as configurações.</string>
+    <string name="explorer_observed_fmt">Observado em: %1$s</string>
+</resources>

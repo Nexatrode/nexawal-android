@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Butiran peneroka</string>
+    <string name="explorer_enable">Dayakan butiran peneroka</string>
+    <string name="explorer_help">Pilihan. Setiap carian berkongsi alamat IP dan ID transaksi ini dengan explorer.nexawal.com melalui HTTPS di internet awam, walaupun dalam mod I2P. Tiada permintaan latar belakang. Data dompet tidak berubah.</string>
+    <string name="explorer_reported">Data awam peneroka sahaja; dompet anda mengesahkan pembayaran.</string>
+    <string name="explorer_disabled">Dayakan butiran peneroka dalam Tetapan untuk menggunakan ciri ini.</string>
+    <string name="explorer_missing">Tidak ditemui pada nod ini. Ini tidak membuktikan bahawa pembayaran tiada.</string>
+    <string name="explorer_unavailable">Peneroka tidak tersedia. Dompet anda tidak terjejas. Cuba lagi.</string>
+    <string name="explorer_node_stale">Data nod mungkin lapuk atau tidak lengkap.</string>
+    <string name="explorer_observed">Masa pemerhatian</string>
+    <string name="explorer_mainnet">Peneroka awam hanya menyokong rangkaian utama.</string>
+    <string name="explorer_refresh">Muat semula</string>
+    <string name="explorer_save_failed">Tetapan tidak dapat disimpan.</string>
+    <string name="explorer_observed_fmt">Masa pemerhatian: %1$s</string>
+</resources>

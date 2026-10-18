@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Explorergegevens</string>
+    <string name="explorer_enable">Explorergegevens inschakelen</string>
+    <string name="explorer_help">Optioneel. Elke zoekopdracht deelt uw IP-adres en deze transactie-ID met explorer.nexawal.com via HTTPS over het openbare internet, ook in I2P-modus. Geen achtergrondverzoeken. Walletgegevens blijven ongewijzigd.</string>
+    <string name="explorer_reported">Alleen openbare explorergegevens; uw wallet controleert betalingen.</string>
+    <string name="explorer_disabled">Schakel explorergegevens in bij Instellingen om deze functie te gebruiken.</string>
+    <string name="explorer_missing">Niet gevonden op deze node. Dit bewijst niet dat een betaling ontbreekt.</string>
+    <string name="explorer_unavailable">Explorer niet beschikbaar. Uw wallet blijft werken. Probeer opnieuw.</string>
+    <string name="explorer_node_stale">Nodegegevens kunnen verouderd of onvolledig zijn.</string>
+    <string name="explorer_observed">Waargenomen op</string>
+    <string name="explorer_mainnet">De openbare explorer ondersteunt alleen het mainnet.</string>
+    <string name="explorer_refresh">Vernieuwen</string>
+    <string name="explorer_save_failed">Instellingen konden niet worden opgeslagen.</string>
+    <string name="explorer_observed_fmt">Waargenomen op: %1$s</string>
+</resources>

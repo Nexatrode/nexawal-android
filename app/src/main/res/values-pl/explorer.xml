@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_details">Dane eksploratora</string>
+    <string name="explorer_enable">Włącz dane eksploratora</string>
+    <string name="explorer_help">Opcjonalne. Każde zapytanie udostępnia Twój adres IP i identyfikator tej transakcji witrynie explorer.nexawal.com przez HTTPS w publicznym internecie, także w trybie I2P. Brak zapytań w tle. Dane portfela nie ulegają zmianie.</string>
+    <string name="explorer_reported">To tylko publiczne dane eksploratora; płatności weryfikuje portfel.</string>
+    <string name="explorer_disabled">Włącz dane eksploratora w ustawieniach, aby użyć tej funkcji.</string>
+    <string name="explorer_missing">Nie znaleziono w tym węźle. Nie dowodzi to braku płatności.</string>
+    <string name="explorer_unavailable">Eksplorator niedostępny. Nie wpływa to na portfel. Spróbuj ponownie.</string>
+    <string name="explorer_node_stale">Dane węzła mogą być nieaktualne lub niepełne.</string>
+    <string name="explorer_observed">Czas obserwacji</string>
+    <string name="explorer_mainnet">Publiczny eksplorator obsługuje tylko sieć główną.</string>
+    <string name="explorer_refresh">Odśwież</string>
+    <string name="explorer_save_failed">Nie udało się zapisać ustawień.</string>
+    <string name="explorer_observed_fmt">Czas obserwacji: %1$s</string>
+</resources>
