@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Расширенные сведения</string>
+    <string name="explorer_version">Версия</string>
+    <string name="explorer_serialized_size">Размер сериализованных данных</string>
+    <string name="explorer_downloaded_size">Загруженный размер</string>
+    <string name="explorer_weight">Вес</string>
+    <string name="explorer_unlock">Дополнительное условие разблокировки</string>
+    <string name="explorer_inputs">Входы</string>
+    <string name="explorer_outputs">Выходы</string>
+    <string name="explorer_miner">Транзакция майнера</string>
+    <string name="explorer_transfer">Перевод</string>
+    <string name="explorer_previous">Назад</string>
+    <string name="explorer_next">Далее</string>
+    <string name="explorer_page">Страница</string>
+    <string name="explorer_key_image">Образ ключа</string>
+    <string name="explorer_ring_size">Размер кольца</string>
+    <string name="explorer_indices">Абсолютные индексы выходов</string>
+    <string name="explorer_output_key">Одноразовый ключ выхода</string>
+    <string name="explorer_view_tag">Тег просмотра</string>
+    <string name="explorer_global_index">Глобальный индекс выхода</string>
+    <string name="explorer_extra">Дополнительные данные транзакции (hex)</string>
+    <string name="explorer_truncated">Предпросмотр сокращён.</string>
+    <string name="explorer_hidden">Скрыто (RingCT)</string>
+    <string name="explorer_conflict">Узел сообщает о конфликтующем расходовании. Не считайте это подтверждённым платежом.</string>
+    <string name="explorer_ring_help">Участники кольца — возможные входы, а не доказательство того, какой выход потрачен.</string>
+    <string name="explorer_received">Время наблюдения узлом</string>
+</resources>

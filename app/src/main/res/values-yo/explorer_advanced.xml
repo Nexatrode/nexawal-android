@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Àwọn àlàyé ìlọsíwájú</string>
+    <string name="explorer_version">Ẹ̀yà</string>
+    <string name="explorer_serialized_size">Ìwọ̀n dátà tí a tò</string>
+    <string name="explorer_downloaded_size">Ìwọ̀n tí a gbà kalẹ̀</string>
+    <string name="explorer_weight">Ìwọ̀n</string>
+    <string name="explorer_unlock">Àfikún ipò ṣíṣí pa dà</string>
+    <string name="explorer_inputs">Àwọn ìwọlé</string>
+    <string name="explorer_outputs">Àwọn ìjáde</string>
+    <string name="explorer_miner">Ìṣòwò awakùsà</string>
+    <string name="explorer_transfer">Gbigbe</string>
+    <string name="explorer_previous">Tẹ́lẹ̀</string>
+    <string name="explorer_next">Tókàn</string>
+    <string name="explorer_page">Ojú ìwé</string>
+    <string name="explorer_key_image">Àwòrán kọ́kọ́rọ́</string>
+    <string name="explorer_ring_size">Ìwọ̀n òrùka</string>
+    <string name="explorer_indices">Àwọn atọ́ka ìjáde pípé</string>
+    <string name="explorer_output_key">Kọ́kọ́rọ́ ìjáde ẹ̀ẹ̀kan</string>
+    <string name="explorer_view_tag">Àmì ìwò</string>
+    <string name="explorer_global_index">Atọ́ka ìjáde àgbáyé</string>
+    <string name="explorer_extra">Àfikún dátà ìṣòwò (hex)</string>
+    <string name="explorer_truncated">A ti gé àwòtẹ́lẹ̀ kúrú.</string>
+    <string name="explorer_hidden">Fífarapamọ́ (RingCT)</string>
+    <string name="explorer_conflict">Node sọ pé ìnáwó tako ara wọn. Má ṣe kà á sí ìsanwó tí a ti fìdí múlẹ̀.</string>
+    <string name="explorer_ring_help">Àwọn ọmọ òrùka jẹ́ àwọn ìwọlé tó ṣeé ṣe, kì í ṣe ẹ̀rí ìjáde tí a ná.</string>
+    <string name="explorer_received">Node ṣàkíyèsí rẹ̀</string>
+</resources>

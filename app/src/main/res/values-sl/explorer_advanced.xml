@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Napredne podrobnosti</string>
+    <string name="explorer_version">Različica</string>
+    <string name="explorer_serialized_size">Serializirana velikost</string>
+    <string name="explorer_downloaded_size">Prenesena velikost</string>
+    <string name="explorer_weight">Teža</string>
+    <string name="explorer_unlock">Dodaten pogoj za odklep</string>
+    <string name="explorer_inputs">Vhodi</string>
+    <string name="explorer_outputs">Izhodi</string>
+    <string name="explorer_miner">Transakcija rudarja</string>
+    <string name="explorer_transfer">Prenos</string>
+    <string name="explorer_previous">Prejšnja</string>
+    <string name="explorer_next">Naslednja</string>
+    <string name="explorer_page">Stran</string>
+    <string name="explorer_key_image">Slika ključa</string>
+    <string name="explorer_ring_size">Velikost obroča</string>
+    <string name="explorer_indices">Absolutni indeksi izhodov</string>
+    <string name="explorer_output_key">Enkratni izhodni ključ</string>
+    <string name="explorer_view_tag">Oznaka pogleda</string>
+    <string name="explorer_global_index">Globalni indeks izhoda</string>
+    <string name="explorer_extra">Dodatni podatki transakcije (hex)</string>
+    <string name="explorer_truncated">Predogled je skrajšan.</string>
+    <string name="explorer_hidden">Skrito (RingCT)</string>
+    <string name="explorer_conflict">Vozlišče poroča o nasprotujoči si porabi. Tega ne štejte za potrjeno plačilo.</string>
+    <string name="explorer_ring_help">Člani obroča so možni vhodi, ne dokaz, kateri izhod je bil porabljen.</string>
+    <string name="explorer_received">Opaženo v vozlišču</string>
+</resources>

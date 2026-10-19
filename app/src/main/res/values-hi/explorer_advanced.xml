@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">उन्नत विवरण</string>
+    <string name="explorer_version">संस्करण</string>
+    <string name="explorer_serialized_size">सीरियलाइज़ किया गया आकार</string>
+    <string name="explorer_downloaded_size">डाउनलोड किया गया आकार</string>
+    <string name="explorer_weight">वज़न</string>
+    <string name="explorer_unlock">अतिरिक्त अनलॉक शर्त</string>
+    <string name="explorer_inputs">इनपुट</string>
+    <string name="explorer_outputs">आउटपुट</string>
+    <string name="explorer_miner">माइनर लेनदेन</string>
+    <string name="explorer_transfer">अंतरण</string>
+    <string name="explorer_previous">पिछला</string>
+    <string name="explorer_next">अगला</string>
+    <string name="explorer_page">पृष्ठ</string>
+    <string name="explorer_key_image">की इमेज</string>
+    <string name="explorer_ring_size">रिंग का आकार</string>
+    <string name="explorer_indices">आउटपुट के निरपेक्ष सूचकांक</string>
+    <string name="explorer_output_key">एक बार उपयोग होने वाली आउटपुट कुंजी</string>
+    <string name="explorer_view_tag">व्यू टैग</string>
+    <string name="explorer_global_index">वैश्विक आउटपुट सूचकांक</string>
+    <string name="explorer_extra">लेनदेन का अतिरिक्त डेटा (hex)</string>
+    <string name="explorer_truncated">पूर्वावलोकन छोटा किया गया है।</string>
+    <string name="explorer_hidden">छिपा हुआ (RingCT)</string>
+    <string name="explorer_conflict">नोड परस्पर विरोधी खर्च की सूचना देता है। इसे पुष्ट भुगतान न मानें।</string>
+    <string name="explorer_ring_help">रिंग सदस्य संभावित इनपुट हैं, यह प्रमाण नहीं कि कौन सा आउटपुट खर्च हुआ।</string>
+    <string name="explorer_received">नोड द्वारा देखा गया</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Lisätiedot</string>
+    <string name="explorer_version">Versio</string>
+    <string name="explorer_serialized_size">Sarjoitettu koko</string>
+    <string name="explorer_downloaded_size">Ladattu koko</string>
+    <string name="explorer_weight">Paino</string>
+    <string name="explorer_unlock">Ylimääräinen avausehto</string>
+    <string name="explorer_inputs">Syötteet</string>
+    <string name="explorer_outputs">Tulosteet</string>
+    <string name="explorer_miner">Louhijan tapahtuma</string>
+    <string name="explorer_transfer">Siirto</string>
+    <string name="explorer_previous">Edellinen</string>
+    <string name="explorer_next">Seuraava</string>
+    <string name="explorer_page">Sivu</string>
+    <string name="explorer_key_image">Avainkuva</string>
+    <string name="explorer_ring_size">Renkaan koko</string>
+    <string name="explorer_indices">Absoluuttiset tulosteindeksit</string>
+    <string name="explorer_output_key">Kertakäyttöinen tulosteen avain</string>
+    <string name="explorer_view_tag">Katselutunniste</string>
+    <string name="explorer_global_index">Yleinen tulosteindeksi</string>
+    <string name="explorer_extra">Tapahtuman lisätiedot (hex)</string>
+    <string name="explorer_truncated">Esikatselua on lyhennetty.</string>
+    <string name="explorer_hidden">Piilotettu (RingCT)</string>
+    <string name="explorer_conflict">Solmu ilmoittaa ristiriitaisesta kulutuksesta. Älä pidä tätä vahvistettuna maksuna.</string>
+    <string name="explorer_ring_help">Renkaan jäsenet ovat mahdollisia syötteitä, eivät todiste siitä, mikä tuloste kulutettiin.</string>
+    <string name="explorer_received">Solmun havaitsema</string>
+</resources>

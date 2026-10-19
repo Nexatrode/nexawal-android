@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">اعلیٰ تفصیلات</string>
+    <string name="explorer_version">ورژن</string>
+    <string name="explorer_serialized_size">سیریلائز کردہ حجم</string>
+    <string name="explorer_downloaded_size">ڈاؤن لوڈ کردہ حجم</string>
+    <string name="explorer_weight">وزن</string>
+    <string name="explorer_unlock">کھولنے کی اضافی شرط</string>
+    <string name="explorer_inputs">ان پٹس</string>
+    <string name="explorer_outputs">آؤٹ پٹس</string>
+    <string name="explorer_miner">مائنر کی ٹرانزیکشن</string>
+    <string name="explorer_transfer">منتقلی</string>
+    <string name="explorer_previous">پچھلا</string>
+    <string name="explorer_next">اگلا</string>
+    <string name="explorer_page">صفحہ</string>
+    <string name="explorer_key_image">کلیدی تصویر</string>
+    <string name="explorer_ring_size">رِنگ کا حجم</string>
+    <string name="explorer_indices">آؤٹ پٹ کے مطلق اشاریے</string>
+    <string name="explorer_output_key">ایک بار استعمال ہونے والی آؤٹ پٹ کلید</string>
+    <string name="explorer_view_tag">ویو ٹیگ</string>
+    <string name="explorer_global_index">عالمی آؤٹ پٹ اشاریہ</string>
+    <string name="explorer_extra">ٹرانزیکشن کا اضافی ڈیٹا (hex)</string>
+    <string name="explorer_truncated">پیش منظر مختصر کیا گیا ہے۔</string>
+    <string name="explorer_hidden">پوشیدہ (RingCT)</string>
+    <string name="explorer_conflict">نوڈ متضاد خرچ کی اطلاع دیتا ہے۔ اسے تصدیق شدہ ادائیگی نہ سمجھیں۔</string>
+    <string name="explorer_ring_help">رِنگ کے ارکان ممکنہ ان پٹس ہیں، اس بات کا ثبوت نہیں کہ کون سا آؤٹ پٹ خرچ ہوا۔</string>
+    <string name="explorer_received">نوڈ کے مشاہدے کا وقت</string>
+</resources>

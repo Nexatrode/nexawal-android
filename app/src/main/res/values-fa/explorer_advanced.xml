@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">جزئیات پیشرفته</string>
+    <string name="explorer_version">نسخه</string>
+    <string name="explorer_serialized_size">اندازهٔ سریال‌شده</string>
+    <string name="explorer_downloaded_size">اندازهٔ بارگیری‌شده</string>
+    <string name="explorer_weight">وزن</string>
+    <string name="explorer_unlock">شرط بازگشایی اضافی</string>
+    <string name="explorer_inputs">ورودی‌ها</string>
+    <string name="explorer_outputs">خروجی‌ها</string>
+    <string name="explorer_miner">تراکنش ماینر</string>
+    <string name="explorer_transfer">انتقال</string>
+    <string name="explorer_previous">قبلی</string>
+    <string name="explorer_next">بعدی</string>
+    <string name="explorer_page">صفحه</string>
+    <string name="explorer_key_image">تصویر کلید</string>
+    <string name="explorer_ring_size">اندازهٔ حلقه</string>
+    <string name="explorer_indices">شاخص‌های مطلق خروجی</string>
+    <string name="explorer_output_key">کلید خروجی یک‌بارمصرف</string>
+    <string name="explorer_view_tag">برچسب مشاهده</string>
+    <string name="explorer_global_index">شاخص سراسری خروجی</string>
+    <string name="explorer_extra">داده‌های اضافی تراکنش (hex)</string>
+    <string name="explorer_truncated">پیش‌نمایش کوتاه شده است.</string>
+    <string name="explorer_hidden">پنهان (RingCT)</string>
+    <string name="explorer_conflict">گره یک خرج متعارض گزارش می‌کند. آن را پرداخت تأییدشده تلقی نکنید.</string>
+    <string name="explorer_ring_help">اعضای حلقه ورودی‌های احتمالی هستند، نه مدرکی برای اینکه کدام خروجی خرج شده است.</string>
+    <string name="explorer_received">مشاهده‌شده توسط گره</string>
+</resources>

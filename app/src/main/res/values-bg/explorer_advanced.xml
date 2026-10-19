@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Разширени подробности</string>
+    <string name="explorer_version">Версия</string>
+    <string name="explorer_serialized_size">Сериализиран размер</string>
+    <string name="explorer_downloaded_size">Изтеглен размер</string>
+    <string name="explorer_weight">Тегло</string>
+    <string name="explorer_unlock">Допълнително условие за отключване</string>
+    <string name="explorer_inputs">Входове</string>
+    <string name="explorer_outputs">Изходи</string>
+    <string name="explorer_miner">Транзакция на миньор</string>
+    <string name="explorer_transfer">Превод</string>
+    <string name="explorer_previous">Предишна</string>
+    <string name="explorer_next">Следваща</string>
+    <string name="explorer_page">Страница</string>
+    <string name="explorer_key_image">Ключов образ</string>
+    <string name="explorer_ring_size">Размер на пръстена</string>
+    <string name="explorer_indices">Абсолютни индекси на изходите</string>
+    <string name="explorer_output_key">Еднократен ключ на изхода</string>
+    <string name="explorer_view_tag">Етикет за преглед</string>
+    <string name="explorer_global_index">Глобален индекс на изхода</string>
+    <string name="explorer_extra">Допълнителни данни на транзакцията (hex)</string>
+    <string name="explorer_truncated">Прегледът е съкратен.</string>
+    <string name="explorer_hidden">Скрито (RingCT)</string>
+    <string name="explorer_conflict">Възелът съобщава за конфликтно изразходване. Не го считайте за потвърдено плащане.</string>
+    <string name="explorer_ring_help">Членовете на пръстена са възможни входове, а не доказателство кой изход е изразходван.</string>
+    <string name="explorer_received">Наблюдавано от възела</string>
+</resources>

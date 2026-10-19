@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Detalles avanzados</string>
+    <string name="explorer_version">Versión</string>
+    <string name="explorer_serialized_size">Tamaño serializado</string>
+    <string name="explorer_downloaded_size">Tamaño descargado</string>
+    <string name="explorer_weight">Peso</string>
+    <string name="explorer_unlock">Condición adicional de desbloqueo</string>
+    <string name="explorer_inputs">Entradas</string>
+    <string name="explorer_outputs">Saídas</string>
+    <string name="explorer_miner">Transacción de mineiro</string>
+    <string name="explorer_transfer">Transferencia</string>
+    <string name="explorer_previous">Anterior</string>
+    <string name="explorer_next">Seguinte</string>
+    <string name="explorer_page">Páxina</string>
+    <string name="explorer_key_image">Imaxe de chave</string>
+    <string name="explorer_ring_size">Tamaño do anel</string>
+    <string name="explorer_indices">Índices absolutos de saída</string>
+    <string name="explorer_output_key">Chave de saída dun só uso</string>
+    <string name="explorer_view_tag">Etiqueta de vista</string>
+    <string name="explorer_global_index">Índice global de saída</string>
+    <string name="explorer_extra">Datos adicionais da transacción (hex)</string>
+    <string name="explorer_truncated">Vista previa truncada.</string>
+    <string name="explorer_hidden">Oculto (RingCT)</string>
+    <string name="explorer_conflict">O nó informa dun gasto en conflito. Non o considere un pagamento confirmado.</string>
+    <string name="explorer_ring_help">Os membros do anel son entradas posibles, non unha proba de que saída se gastou.</string>
+    <string name="explorer_received">Observado polo nó</string>
+</resources>

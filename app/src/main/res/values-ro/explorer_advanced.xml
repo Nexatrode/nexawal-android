@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Detalii avansate</string>
+    <string name="explorer_version">Versiune</string>
+    <string name="explorer_serialized_size">Dimensiune serializată</string>
+    <string name="explorer_downloaded_size">Dimensiune descărcată</string>
+    <string name="explorer_weight">Greutate</string>
+    <string name="explorer_unlock">Condiție suplimentară de deblocare</string>
+    <string name="explorer_inputs">Intrări</string>
+    <string name="explorer_outputs">Ieșiri</string>
+    <string name="explorer_miner">Tranzacție de miner</string>
+    <string name="explorer_transfer">Transfer</string>
+    <string name="explorer_previous">Anterior</string>
+    <string name="explorer_next">Următor</string>
+    <string name="explorer_page">Pagină</string>
+    <string name="explorer_key_image">Imaginea cheii</string>
+    <string name="explorer_ring_size">Dimensiunea inelului</string>
+    <string name="explorer_indices">Indici absoluți ai ieșirilor</string>
+    <string name="explorer_output_key">Cheie de ieșire de unică folosință</string>
+    <string name="explorer_view_tag">Etichetă de vizualizare</string>
+    <string name="explorer_global_index">Indice global al ieșirii</string>
+    <string name="explorer_extra">Date suplimentare ale tranzacției (hex)</string>
+    <string name="explorer_truncated">Previzualizare trunchiată.</string>
+    <string name="explorer_hidden">Ascuns (RingCT)</string>
+    <string name="explorer_conflict">Nodul raportează o cheltuire în conflict. Nu o considerați o plată confirmată.</string>
+    <string name="explorer_ring_help">Membrii inelului sunt intrări posibile, nu o dovadă a ieșirii cheltuite.</string>
+    <string name="explorer_received">Observat de nod</string>
+</resources>

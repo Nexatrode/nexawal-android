@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Chi tiết nâng cao</string>
+    <string name="explorer_version">Phiên bản</string>
+    <string name="explorer_serialized_size">Kích thước tuần tự hóa</string>
+    <string name="explorer_downloaded_size">Kích thước đã tải</string>
+    <string name="explorer_weight">Trọng lượng</string>
+    <string name="explorer_unlock">Điều kiện mở khóa bổ sung</string>
+    <string name="explorer_inputs">Đầu vào</string>
+    <string name="explorer_outputs">Đầu ra</string>
+    <string name="explorer_miner">Giao dịch thợ đào</string>
+    <string name="explorer_transfer">Chuyển tiền</string>
+    <string name="explorer_previous">Trước</string>
+    <string name="explorer_next">Tiếp</string>
+    <string name="explorer_page">Trang</string>
+    <string name="explorer_key_image">Ảnh khóa</string>
+    <string name="explorer_ring_size">Kích thước vòng</string>
+    <string name="explorer_indices">Chỉ mục đầu ra tuyệt đối</string>
+    <string name="explorer_output_key">Khóa đầu ra dùng một lần</string>
+    <string name="explorer_view_tag">Thẻ xem</string>
+    <string name="explorer_global_index">Chỉ mục đầu ra toàn cục</string>
+    <string name="explorer_extra">Dữ liệu bổ sung giao dịch (hex)</string>
+    <string name="explorer_truncated">Bản xem trước đã rút gọn.</string>
+    <string name="explorer_hidden">Ẩn (RingCT)</string>
+    <string name="explorer_conflict">Nút báo cáo chi tiêu xung đột. Không coi đây là khoản thanh toán đã xác nhận.</string>
+    <string name="explorer_ring_help">Thành viên vòng là các đầu vào có thể có, không chứng minh đầu ra nào đã được chi tiêu.</string>
+    <string name="explorer_received">Nút quan sát lúc</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Szczegóły zaawansowane</string>
+    <string name="explorer_version">Wersja</string>
+    <string name="explorer_serialized_size">Rozmiar po serializacji</string>
+    <string name="explorer_downloaded_size">Pobrany rozmiar</string>
+    <string name="explorer_weight">Waga</string>
+    <string name="explorer_unlock">Dodatkowy warunek odblokowania</string>
+    <string name="explorer_inputs">Wejścia</string>
+    <string name="explorer_outputs">Wyjścia</string>
+    <string name="explorer_miner">Transakcja górnika</string>
+    <string name="explorer_transfer">Przelew</string>
+    <string name="explorer_previous">Poprzednia</string>
+    <string name="explorer_next">Następna</string>
+    <string name="explorer_page">Strona</string>
+    <string name="explorer_key_image">Obraz klucza</string>
+    <string name="explorer_ring_size">Rozmiar pierścienia</string>
+    <string name="explorer_indices">Bezwzględne indeksy wyjść</string>
+    <string name="explorer_output_key">Jednorazowy klucz wyjścia</string>
+    <string name="explorer_view_tag">Znacznik widoku</string>
+    <string name="explorer_global_index">Globalny indeks wyjścia</string>
+    <string name="explorer_extra">Dodatkowe dane transakcji (hex)</string>
+    <string name="explorer_truncated">Podgląd został skrócony.</string>
+    <string name="explorer_hidden">Ukryte (RingCT)</string>
+    <string name="explorer_conflict">Węzeł zgłasza sprzeczne wydanie środków. Nie traktuj tego jako potwierdzonej płatności.</string>
+    <string name="explorer_ring_help">Członkowie pierścienia to możliwe wejścia, a nie dowód, które wyjście zostało wydane.</string>
+    <string name="explorer_received">Zaobserwowane przez węzeł</string>
+</resources>

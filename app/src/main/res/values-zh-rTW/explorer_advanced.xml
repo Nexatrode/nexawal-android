@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">進階詳情</string>
+    <string name="explorer_version">版本</string>
+    <string name="explorer_serialized_size">序列化大小</string>
+    <string name="explorer_downloaded_size">下載大小</string>
+    <string name="explorer_weight">權重</string>
+    <string name="explorer_unlock">額外解鎖條件</string>
+    <string name="explorer_inputs">輸入</string>
+    <string name="explorer_outputs">輸出</string>
+    <string name="explorer_miner">礦工交易</string>
+    <string name="explorer_transfer">轉帳</string>
+    <string name="explorer_previous">上一頁</string>
+    <string name="explorer_next">下一頁</string>
+    <string name="explorer_page">頁</string>
+    <string name="explorer_key_image">金鑰映像</string>
+    <string name="explorer_ring_size">環大小</string>
+    <string name="explorer_indices">輸出絕對索引</string>
+    <string name="explorer_output_key">一次性輸出金鑰</string>
+    <string name="explorer_view_tag">檢視標籤</string>
+    <string name="explorer_global_index">全域輸出索引</string>
+    <string name="explorer_extra">交易附加資料（hex）</string>
+    <string name="explorer_truncated">預覽已截斷。</string>
+    <string name="explorer_hidden">隱藏（RingCT）</string>
+    <string name="explorer_conflict">節點回報了衝突花費。請勿將其視為已確認的付款。</string>
+    <string name="explorer_ring_help">環成員是可能的輸入，不能證明實際花費了哪個輸出。</string>
+    <string name="explorer_received">節點觀察時間</string>
+</resources>

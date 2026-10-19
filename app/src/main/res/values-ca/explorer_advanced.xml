@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Detalls avançats</string>
+    <string name="explorer_version">Versió</string>
+    <string name="explorer_serialized_size">Mida serialitzada</string>
+    <string name="explorer_downloaded_size">Mida baixada</string>
+    <string name="explorer_weight">Pes</string>
+    <string name="explorer_unlock">Condició addicional de desbloqueig</string>
+    <string name="explorer_inputs">Entrades</string>
+    <string name="explorer_outputs">Sortides</string>
+    <string name="explorer_miner">Transacció de miner</string>
+    <string name="explorer_transfer">Transferència</string>
+    <string name="explorer_previous">Anterior</string>
+    <string name="explorer_next">Següent</string>
+    <string name="explorer_page">Pàgina</string>
+    <string name="explorer_key_image">Imatge de clau</string>
+    <string name="explorer_ring_size">Mida de l’anell</string>
+    <string name="explorer_indices">Índexs absoluts de sortida</string>
+    <string name="explorer_output_key">Clau de sortida d’un sol ús</string>
+    <string name="explorer_view_tag">Etiqueta de visualització</string>
+    <string name="explorer_global_index">Índex global de sortida</string>
+    <string name="explorer_extra">Dades addicionals de la transacció (hex)</string>
+    <string name="explorer_truncated">Vista prèvia truncada.</string>
+    <string name="explorer_hidden">Ocult (RingCT)</string>
+    <string name="explorer_conflict">El node informa d’una despesa en conflicte. No ho considereu un pagament confirmat.</string>
+    <string name="explorer_ring_help">Els membres de l’anell són entrades possibles, no una prova de quina sortida s’ha gastat.</string>
+    <string name="explorer_received">Observat pel node</string>
+</resources>

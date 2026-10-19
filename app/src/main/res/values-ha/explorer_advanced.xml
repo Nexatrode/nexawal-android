@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Ƙarin cikakkun bayanai</string>
+    <string name="explorer_version">Siga</string>
+    <string name="explorer_serialized_size">Girman bayanan da aka jera</string>
+    <string name="explorer_downloaded_size">Girman da aka sauke</string>
+    <string name="explorer_weight">Nauyi</string>
+    <string name="explorer_unlock">Ƙarin sharadin buɗewa</string>
+    <string name="explorer_inputs">Abubuwan shigarwa</string>
+    <string name="explorer_outputs">Abubuwan fitarwa</string>
+    <string name="explorer_miner">Cinikin mai haƙa</string>
+    <string name="explorer_transfer">Canja wuri</string>
+    <string name="explorer_previous">Na baya</string>
+    <string name="explorer_next">Na gaba</string>
+    <string name="explorer_page">Shafi</string>
+    <string name="explorer_key_image">Hoton maɓalli</string>
+    <string name="explorer_ring_size">Girman zobe</string>
+    <string name="explorer_indices">Cikakkun lambobin fitarwa</string>
+    <string name="explorer_output_key">Maɓallin fitarwa na sau ɗaya</string>
+    <string name="explorer_view_tag">Alamar dubawa</string>
+    <string name="explorer_global_index">Lambar fitarwa ta duniya</string>
+    <string name="explorer_extra">Ƙarin bayanan ciniki (hex)</string>
+    <string name="explorer_truncated">An rage samfurin dubawa.</string>
+    <string name="explorer_hidden">A ɓoye (RingCT)</string>
+    <string name="explorer_conflict">Node ya ba da rahoton kashewa mai saɓani. Kada a ɗauke shi a matsayin tabbataccen biya.</string>
+    <string name="explorer_ring_help">Membobin zobe su ne yiwuwar shigarwa, ba hujjar wace fitarwa aka kashe ba.</string>
+    <string name="explorer_received">Node ya lura da shi</string>
+</resources>

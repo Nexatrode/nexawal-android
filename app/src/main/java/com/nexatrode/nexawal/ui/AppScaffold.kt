@@ -1294,6 +1294,7 @@ private fun WalletScreen(
             t = selectedTransfer!!,
             snapshot = walletManager.fiatPrices.snapshots.snapshot(selectedTransfer!!.txid),
             mainnet = state.mainnet,
+            walletSession = state.historySession,
             onDismiss = {
                 showTransferDetails = false
                 selectedTransfer = null
@@ -1463,12 +1464,13 @@ internal fun TransferDetailsDialog(
     t: Transfer,
     snapshot: FiatTxSnapshot?,
     mainnet: Boolean = true,
+    walletSession: String = "",
     onDismiss: () -> Unit,
 ) {
     var showExplorer by remember(t.txid) { mutableStateOf(false) }
     if (showExplorer) {
         androidx.compose.ui.window.Dialog(onDismissRequest = { showExplorer = false }, properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false)) {
-            ExplorerDetailsScreen(t.txid, mainnet) { showExplorer = false }
+            ExplorerDetailsScreen(t.txid, mainnet, walletSession = walletSession) { showExplorer = false }
         }
         return
     }

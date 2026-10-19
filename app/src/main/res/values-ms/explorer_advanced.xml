@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Butiran lanjutan</string>
+    <string name="explorer_version">Versi</string>
+    <string name="explorer_serialized_size">Saiz bersiri</string>
+    <string name="explorer_downloaded_size">Saiz dimuat turun</string>
+    <string name="explorer_weight">Berat</string>
+    <string name="explorer_unlock">Syarat buka kunci tambahan</string>
+    <string name="explorer_inputs">Input</string>
+    <string name="explorer_outputs">Output</string>
+    <string name="explorer_miner">Transaksi pelombong</string>
+    <string name="explorer_transfer">Pindahan</string>
+    <string name="explorer_previous">Sebelumnya</string>
+    <string name="explorer_next">Seterusnya</string>
+    <string name="explorer_page">Halaman</string>
+    <string name="explorer_key_image">Imej kunci</string>
+    <string name="explorer_ring_size">Saiz gelang</string>
+    <string name="explorer_indices">Indeks output mutlak</string>
+    <string name="explorer_output_key">Kunci output sekali guna</string>
+    <string name="explorer_view_tag">Tag paparan</string>
+    <string name="explorer_global_index">Indeks output global</string>
+    <string name="explorer_extra">Data tambahan transaksi (hex)</string>
+    <string name="explorer_truncated">Pratonton dipendekkan.</string>
+    <string name="explorer_hidden">Tersembunyi (RingCT)</string>
+    <string name="explorer_conflict">Nod melaporkan perbelanjaan bercanggah. Jangan anggap ini bayaran yang disahkan.</string>
+    <string name="explorer_ring_help">Ahli gelang ialah input yang mungkin, bukan bukti output mana yang dibelanjakan.</string>
+    <string name="explorer_received">Diperhatikan oleh nod</string>
+</resources>

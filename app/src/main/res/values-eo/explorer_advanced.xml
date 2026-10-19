@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Altnivelaj detaloj</string>
+    <string name="explorer_version">Versio</string>
+    <string name="explorer_serialized_size">Seriigita grando</string>
+    <string name="explorer_downloaded_size">Elŝutita grando</string>
+    <string name="explorer_weight">Pezo</string>
+    <string name="explorer_unlock">Aldona malŝloskondiĉo</string>
+    <string name="explorer_inputs">Enigoj</string>
+    <string name="explorer_outputs">Eligoj</string>
+    <string name="explorer_miner">Minista transakcio</string>
+    <string name="explorer_transfer">Transigo</string>
+    <string name="explorer_previous">Antaŭa</string>
+    <string name="explorer_next">Sekva</string>
+    <string name="explorer_page">Paĝo</string>
+    <string name="explorer_key_image">Ŝlosilbildo</string>
+    <string name="explorer_ring_size">Ringa grando</string>
+    <string name="explorer_indices">Absolutaj eligaj indeksoj</string>
+    <string name="explorer_output_key">Unuuza eliga ŝlosilo</string>
+    <string name="explorer_view_tag">Vida etikedo</string>
+    <string name="explorer_global_index">Tutmonda eliga indekso</string>
+    <string name="explorer_extra">Kromaj transakciaj datumoj (hex)</string>
+    <string name="explorer_truncated">Antaŭvido detranĉita.</string>
+    <string name="explorer_hidden">Kaŝita (RingCT)</string>
+    <string name="explorer_conflict">La nodo raportas konfliktan elspezon. Ne konsideru tion konfirmita pago.</string>
+    <string name="explorer_ring_help">Ringanoj estas eblaj enigoj, ne pruvo pri kiu eligo estis elspezita.</string>
+    <string name="explorer_received">Observita de la nodo</string>
+</resources>

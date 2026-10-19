@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Ardsonraí</string>
+    <string name="explorer_version">Leagan</string>
+    <string name="explorer_serialized_size">Méid sraitheach</string>
+    <string name="explorer_downloaded_size">Méid íoslódáilte</string>
+    <string name="explorer_weight">Meáchan</string>
+    <string name="explorer_unlock">Coinníoll breise díghlasála</string>
+    <string name="explorer_inputs">Ionchuir</string>
+    <string name="explorer_outputs">Aschuir</string>
+    <string name="explorer_miner">Idirbheart mianadóra</string>
+    <string name="explorer_transfer">Aistriú</string>
+    <string name="explorer_previous">Roimhe</string>
+    <string name="explorer_next">Ar aghaidh</string>
+    <string name="explorer_page">Leathanach</string>
+    <string name="explorer_key_image">Íomhá eochrach</string>
+    <string name="explorer_ring_size">Méid an fháinne</string>
+    <string name="explorer_indices">Innéacsanna absalóideacha aschuir</string>
+    <string name="explorer_output_key">Eochair aschuir aonuaire</string>
+    <string name="explorer_view_tag">Clib amhairc</string>
+    <string name="explorer_global_index">Innéacs domhanda aschuir</string>
+    <string name="explorer_extra">Sonraí breise idirbhirt (hex)</string>
+    <string name="explorer_truncated">Réamhamharc giorraithe.</string>
+    <string name="explorer_hidden">Folaithe (RingCT)</string>
+    <string name="explorer_conflict">Tuairiscíonn an nód caiteachas contrártha. Ná caith leis mar íocaíocht dheimhnithe.</string>
+    <string name="explorer_ring_help">Is ionchuir fhéideartha iad baill an fháinne, ní cruthúnas ar an aschur a caitheadh.</string>
+    <string name="explorer_received">Breathnaithe ag an nód</string>
+</resources>

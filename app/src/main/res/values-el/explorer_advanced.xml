@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Σύνθετες λεπτομέρειες</string>
+    <string name="explorer_version">Έκδοση</string>
+    <string name="explorer_serialized_size">Σειριοποιημένο μέγεθος</string>
+    <string name="explorer_downloaded_size">Μέγεθος λήψης</string>
+    <string name="explorer_weight">Βάρος</string>
+    <string name="explorer_unlock">Πρόσθετη συνθήκη ξεκλειδώματος</string>
+    <string name="explorer_inputs">Είσοδοι</string>
+    <string name="explorer_outputs">Έξοδοι</string>
+    <string name="explorer_miner">Συναλλαγή εξορύκτη</string>
+    <string name="explorer_transfer">Μεταφορά</string>
+    <string name="explorer_previous">Προηγούμενη</string>
+    <string name="explorer_next">Επόμενη</string>
+    <string name="explorer_page">Σελίδα</string>
+    <string name="explorer_key_image">Εικόνα κλειδιού</string>
+    <string name="explorer_ring_size">Μέγεθος δακτυλίου</string>
+    <string name="explorer_indices">Απόλυτοι δείκτες εξόδων</string>
+    <string name="explorer_output_key">Κλειδί εξόδου μίας χρήσης</string>
+    <string name="explorer_view_tag">Ετικέτα προβολής</string>
+    <string name="explorer_global_index">Καθολικός δείκτης εξόδου</string>
+    <string name="explorer_extra">Πρόσθετα δεδομένα συναλλαγής (hex)</string>
+    <string name="explorer_truncated">Η προεπισκόπηση περικόπηκε.</string>
+    <string name="explorer_hidden">Κρυφό (RingCT)</string>
+    <string name="explorer_conflict">Ο κόμβος αναφέρει αντικρουόμενη δαπάνη. Μην το θεωρείτε επιβεβαιωμένη πληρωμή.</string>
+    <string name="explorer_ring_help">Τα μέλη του δακτυλίου είναι πιθανές είσοδοι, όχι απόδειξη ποια έξοδος δαπανήθηκε.</string>
+    <string name="explorer_received">Παρατηρήθηκε από τον κόμβο</string>
+</resources>

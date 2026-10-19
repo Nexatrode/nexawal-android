@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Rozšírené podrobnosti</string>
+    <string name="explorer_version">Verzia</string>
+    <string name="explorer_serialized_size">Serializovaná veľkosť</string>
+    <string name="explorer_downloaded_size">Stiahnutá veľkosť</string>
+    <string name="explorer_weight">Váha</string>
+    <string name="explorer_unlock">Dodatočná podmienka odomknutia</string>
+    <string name="explorer_inputs">Vstupy</string>
+    <string name="explorer_outputs">Výstupy</string>
+    <string name="explorer_miner">Transakcia ťažiara</string>
+    <string name="explorer_transfer">Prevod</string>
+    <string name="explorer_previous">Predchádzajúca</string>
+    <string name="explorer_next">Ďalšia</string>
+    <string name="explorer_page">Stránka</string>
+    <string name="explorer_key_image">Obraz kľúča</string>
+    <string name="explorer_ring_size">Veľkosť kruhu</string>
+    <string name="explorer_indices">Absolútne indexy výstupov</string>
+    <string name="explorer_output_key">Jednorazový kľúč výstupu</string>
+    <string name="explorer_view_tag">Značka zobrazenia</string>
+    <string name="explorer_global_index">Globálny index výstupu</string>
+    <string name="explorer_extra">Doplnkové údaje transakcie (hex)</string>
+    <string name="explorer_truncated">Náhľad je skrátený.</string>
+    <string name="explorer_hidden">Skryté (RingCT)</string>
+    <string name="explorer_conflict">Uzol hlási konfliktné minutie. Nepovažujte to za potvrdenú platbu.</string>
+    <string name="explorer_ring_help">Členovia kruhu sú možné vstupy, nie dôkaz, ktorý výstup bol minutý.</string>
+    <string name="explorer_received">Pozorované uzlom</string>
+</resources>

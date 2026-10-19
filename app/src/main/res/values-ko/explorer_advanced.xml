@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">고급 세부 정보</string>
+    <string name="explorer_version">버전</string>
+    <string name="explorer_serialized_size">직렬화 크기</string>
+    <string name="explorer_downloaded_size">다운로드 크기</string>
+    <string name="explorer_weight">가중치</string>
+    <string name="explorer_unlock">추가 잠금 해제 조건</string>
+    <string name="explorer_inputs">입력</string>
+    <string name="explorer_outputs">출력</string>
+    <string name="explorer_miner">채굴자 거래</string>
+    <string name="explorer_transfer">이체</string>
+    <string name="explorer_previous">이전</string>
+    <string name="explorer_next">다음</string>
+    <string name="explorer_page">페이지</string>
+    <string name="explorer_key_image">키 이미지</string>
+    <string name="explorer_ring_size">링 크기</string>
+    <string name="explorer_indices">출력 절대 인덱스</string>
+    <string name="explorer_output_key">일회용 출력 키</string>
+    <string name="explorer_view_tag">뷰 태그</string>
+    <string name="explorer_global_index">전역 출력 인덱스</string>
+    <string name="explorer_extra">거래 추가 데이터 (hex)</string>
+    <string name="explorer_truncated">미리보기가 잘렸습니다.</string>
+    <string name="explorer_hidden">비공개 (RingCT)</string>
+    <string name="explorer_conflict">노드가 충돌하는 지출을 보고했습니다. 이를 확정된 결제로 간주하지 마세요.</string>
+    <string name="explorer_ring_help">링 구성원은 가능한 입력일 뿐, 실제로 사용된 출력을 증명하지 않습니다.</string>
+    <string name="explorer_received">노드 관측 시각</string>
+</resources>

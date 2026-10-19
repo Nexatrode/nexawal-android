@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Papildu informācija</string>
+    <string name="explorer_version">Versija</string>
+    <string name="explorer_serialized_size">Serializētais izmērs</string>
+    <string name="explorer_downloaded_size">Lejupielādētais izmērs</string>
+    <string name="explorer_weight">Svars</string>
+    <string name="explorer_unlock">Papildu atbloķēšanas nosacījums</string>
+    <string name="explorer_inputs">Ievades</string>
+    <string name="explorer_outputs">Izvades</string>
+    <string name="explorer_miner">Racēja darījums</string>
+    <string name="explorer_transfer">Pārskaitījums</string>
+    <string name="explorer_previous">Iepriekšējā</string>
+    <string name="explorer_next">Nākamā</string>
+    <string name="explorer_page">Lapa</string>
+    <string name="explorer_key_image">Atslēgas attēls</string>
+    <string name="explorer_ring_size">Gredzena izmērs</string>
+    <string name="explorer_indices">Absolūtie izvades indeksi</string>
+    <string name="explorer_output_key">Vienreizēja izvades atslēga</string>
+    <string name="explorer_view_tag">Skata tags</string>
+    <string name="explorer_global_index">Globālais izvades indekss</string>
+    <string name="explorer_extra">Darījuma papildu dati (hex)</string>
+    <string name="explorer_truncated">Priekšskatījums ir saīsināts.</string>
+    <string name="explorer_hidden">Slēpts (RingCT)</string>
+    <string name="explorer_conflict">Mezgls ziņo par konfliktējošu tēriņu. Neuzskatiet to par apstiprinātu maksājumu.</string>
+    <string name="explorer_ring_help">Gredzena dalībnieki ir iespējamās ievades, nevis pierādījums, kura izvade iztērēta.</string>
+    <string name="explorer_received">Mezgla novērots</string>
+</resources>

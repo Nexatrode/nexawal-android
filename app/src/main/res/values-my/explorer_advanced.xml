@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">အဆင့်မြင့်အသေးစိတ်</string>
+    <string name="explorer_version">ဗားရှင်း</string>
+    <string name="explorer_serialized_size">စီစဉ်သိမ်းဆည်းထားသောအရွယ်</string>
+    <string name="explorer_downloaded_size">ဒေါင်းလုဒ်အရွယ်</string>
+    <string name="explorer_weight">အလေးချိန်</string>
+    <string name="explorer_unlock">ထပ်ဆောင်းသော့ဖွင့်စည်းကမ်း</string>
+    <string name="explorer_inputs">အဝင်များ</string>
+    <string name="explorer_outputs">အထွက်များ</string>
+    <string name="explorer_miner">မိုင်းနာလုပ်ဆောင်ချက်</string>
+    <string name="explorer_transfer">လွှဲပြောင်းမှု</string>
+    <string name="explorer_previous">ယခင်</string>
+    <string name="explorer_next">နောက်</string>
+    <string name="explorer_page">စာမျက်နှာ</string>
+    <string name="explorer_key_image">ကီးပုံရိပ်</string>
+    <string name="explorer_ring_size">ရင်းအရွယ်</string>
+    <string name="explorer_indices">အထွက်၏ ပကတိအညွှန်းများ</string>
+    <string name="explorer_output_key">တစ်ကြိမ်သုံးအထွက်ကီး</string>
+    <string name="explorer_view_tag">ကြည့်ရှုမှုတံဆိပ်</string>
+    <string name="explorer_global_index">ကမ္ဘာလုံးဆိုင်ရာအထွက်အညွှန်း</string>
+    <string name="explorer_extra">လုပ်ဆောင်ချက်အပိုဒေတာ (hex)</string>
+    <string name="explorer_truncated">အကြိုကြည့်ရှုမှုကို ဖြတ်တောက်ထားသည်။</string>
+    <string name="explorer_hidden">ဝှက်ထားသည် (RingCT)</string>
+    <string name="explorer_conflict">နိုဒ်က ပဋိပက္ခဖြစ်သောသုံးစွဲမှုကို သတင်းပို့သည်။ အတည်ပြုငွေပေးချေမှုဟု မယူဆပါနှင့်။</string>
+    <string name="explorer_ring_help">ရင်းအဖွဲ့ဝင်များသည် ဖြစ်နိုင်သောအဝင်များသာဖြစ်ပြီး မည်သည့်အထွက်သုံးစွဲခဲ့သည်ကို သက်သေမပြပါ။</string>
+    <string name="explorer_received">နိုဒ်မှတွေ့ရှိချိန်</string>
+</resources>

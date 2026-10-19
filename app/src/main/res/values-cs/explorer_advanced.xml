@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Pokročilé podrobnosti</string>
+    <string name="explorer_version">Verze</string>
+    <string name="explorer_serialized_size">Serializovaná velikost</string>
+    <string name="explorer_downloaded_size">Stažená velikost</string>
+    <string name="explorer_weight">Váha</string>
+    <string name="explorer_unlock">Dodatečná podmínka odemčení</string>
+    <string name="explorer_inputs">Vstupy</string>
+    <string name="explorer_outputs">Výstupy</string>
+    <string name="explorer_miner">Transakce těžaře</string>
+    <string name="explorer_transfer">Převod</string>
+    <string name="explorer_previous">Předchozí</string>
+    <string name="explorer_next">Další</string>
+    <string name="explorer_page">Stránka</string>
+    <string name="explorer_key_image">Obraz klíče</string>
+    <string name="explorer_ring_size">Velikost kruhu</string>
+    <string name="explorer_indices">Absolutní indexy výstupů</string>
+    <string name="explorer_output_key">Jednorázový klíč výstupu</string>
+    <string name="explorer_view_tag">Značka zobrazení</string>
+    <string name="explorer_global_index">Globální index výstupu</string>
+    <string name="explorer_extra">Doplňková data transakce (hex)</string>
+    <string name="explorer_truncated">Náhled je zkrácen.</string>
+    <string name="explorer_hidden">Skryté (RingCT)</string>
+    <string name="explorer_conflict">Uzel hlásí konfliktní utracení. Nepovažujte to za potvrzenou platbu.</string>
+    <string name="explorer_ring_help">Členové kruhu jsou možné vstupy, nikoli důkaz, který výstup byl utracen.</string>
+    <string name="explorer_received">Pozorováno uzlem</string>
+</resources>

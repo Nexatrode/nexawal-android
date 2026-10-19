@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">উন্নত বিবরণ</string>
+    <string name="explorer_version">সংস্করণ</string>
+    <string name="explorer_serialized_size">সিরিয়ালাইজ করা আকার</string>
+    <string name="explorer_downloaded_size">ডাউনলোড করা আকার</string>
+    <string name="explorer_weight">ওজন</string>
+    <string name="explorer_unlock">অতিরিক্ত আনলক শর্ত</string>
+    <string name="explorer_inputs">ইনপুট</string>
+    <string name="explorer_outputs">আউটপুট</string>
+    <string name="explorer_miner">মাইনার লেনদেন</string>
+    <string name="explorer_transfer">স্থানান্তর</string>
+    <string name="explorer_previous">আগের</string>
+    <string name="explorer_next">পরের</string>
+    <string name="explorer_page">পৃষ্ঠা</string>
+    <string name="explorer_key_image">কী ইমেজ</string>
+    <string name="explorer_ring_size">রিংয়ের আকার</string>
+    <string name="explorer_indices">আউটপুটের পরম সূচক</string>
+    <string name="explorer_output_key">একবার ব্যবহারযোগ্য আউটপুট কী</string>
+    <string name="explorer_view_tag">ভিউ ট্যাগ</string>
+    <string name="explorer_global_index">বৈশ্বিক আউটপুট সূচক</string>
+    <string name="explorer_extra">লেনদেনের অতিরিক্ত তথ্য (hex)</string>
+    <string name="explorer_truncated">প্রাকদর্শন সংক্ষিপ্ত করা হয়েছে।</string>
+    <string name="explorer_hidden">গোপন (RingCT)</string>
+    <string name="explorer_conflict">নোড পরস্পরবিরোধী ব্যয়ের কথা জানিয়েছে। এটিকে নিশ্চিত পেমেন্ট ভাববেন না।</string>
+    <string name="explorer_ring_help">রিং সদস্যরা সম্ভাব্য ইনপুট, কোন আউটপুট খরচ হয়েছে তার প্রমাণ নয়।</string>
+    <string name="explorer_received">নোডে পর্যবেক্ষিত</string>
+</resources>

@@ -22,12 +22,15 @@ import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
 @Composable
-internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: ExplorerService? = null, onClose: () -> Unit) {
+internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: ExplorerService? = null, walletSession: String = "", onClose: () -> Unit) {
     val context = LocalContext.current
     val palette = rememberAppPalette()
     val preferences = remember { ExplorerAccess.preferences(context) }
     val service = remember { lookup ?: ExplorerService(context) }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
+    // Never rebind an already mounted transaction view to a replacement wallet.
+    val boundSession = remember { walletSession }
+    val currentSession by rememberUpdatedState(walletSession)
     var enabled by remember { mutableStateOf(ExplorerAccess.enabled(context)) }
     var requested by remember { mutableStateOf(ExplorerAccess.enabled(context)) }
     var request by remember { mutableIntStateOf(0) }
@@ -35,24 +38,28 @@ internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: Explo
     var data by remember(txid) { mutableStateOf<ExplorerObservation?>(null) }
     var error by remember(txid) { mutableStateOf<Int?>(null) }
     var loading by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
+    var requestedPage by remember { mutableStateOf<Int?>(null) }
     DisposableEffect(service) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-            if (key == ExplorerAccess.KEY) { requested = false; enabled = ExplorerAccess.enabled(context); data = null; error = null }
+            if (key == ExplorerAccess.KEY) { requested = false; enabled = ExplorerAccess.enabled(context); data = null; error = null; expanded = false; requestedPage = null }
         }
         val observer = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_STOP) { requested = false; paused = true; data = null; error = null; service.cancel() }
+            if (event == Lifecycle.Event.ON_STOP) { requested = false; paused = true; data = null; error = null; expanded = false; requestedPage = null; service.cancel() }
         }
         preferences.registerOnSharedPreferenceChangeListener(listener)
         lifecycle.addObserver(observer)
         onDispose { preferences.unregisterOnSharedPreferenceChangeListener(listener); lifecycle.removeObserver(observer); service.close() }
     }
-    LaunchedEffect(txid, request, enabled, paused, mainnet, requested) {
-        data = null; error = null; loading = false
-        if (!enabled || !requested || !mainnet || paused || !lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) return@LaunchedEffect
+    LaunchedEffect(txid, request, enabled, paused, mainnet, requested, walletSession, requestedPage) {
+        error = null; loading = false
+        if (!enabled || !mainnet || paused || walletSession != boundSession || !lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) { data = null; expanded = false; return@LaunchedEffect }
+        if (!requested) return@LaunchedEffect
+        if (requestedPage == null) data = null
         loading = true
         try {
-            val result = service.fetch(txid)
-            if (ExplorerAccess.enabled(context) && requested && !paused && mainnet && lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) data = result
+            val result = service.fetch(txid, requestedPage)
+            if (ExplorerAccess.enabled(context) && requested && !paused && mainnet && currentSession == boundSession && lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) data = result
         }
         catch (e: CancellationException) { throw e }
         catch (e: ExplorerMissing) { if (requested && enabled && !paused && mainnet) error = R.string.explorer_missing }
@@ -69,7 +76,7 @@ internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: Explo
             if (!mainnet) Text(stringResource(R.string.explorer_mainnet))
             if (loading) CircularProgressIndicator(color = palette.accent)
             error?.let { Text(stringResource(it), color = palette.secondaryText) }
-            data?.takeIf { enabled && !paused && mainnet }?.let { value ->
+            data?.takeIf { enabled && !paused && mainnet && walletSession == boundSession }?.let { value ->
                 Text(stringResource(R.string.tx_status_fmt, stringResource(if (value.status == "pending") R.string.status_pending else R.string.status_confirmed)))
                 Text(stringResource(R.string.tx_confirmations_fmt, value.confirmations.toString()))
                 Text(stringResource(R.string.tx_fee_fmt, value.feePiconero?.let { BigDecimal(it).movePointLeft(12).setScale(12).toPlainString() + " XMR" } ?: "—"))
@@ -78,8 +85,18 @@ internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: Explo
                 value.blockTimestamp?.let { Text(stringResource(R.string.tx_time_fmt, TimeFormat.absolute(it) ?: "—")) }
                 Text(stringResource(R.string.explorer_observed_fmt, TimeFormat.absolute(value.observedAt) ?: "—"))
                 if (!value.nodeReady) Text(stringResource(R.string.explorer_node_stale), color = palette.secondaryText)
+                if (value.doubleSpendSeen) Text(stringResource(R.string.explorer_conflict), color = palette.danger)
             }
-            if (enabled && mainnet) Button(onClick = { requested = true; paused = false; request++ }, enabled = !loading, colors = ButtonDefaults.buttonColors(containerColor = palette.accent, contentColor = palette.background)) { Text(stringResource(R.string.explorer_refresh)) }
+            if (enabled && mainnet) {
+                TextButton(onClick = {
+                    if (expanded) { expanded = false; requested = false; service.cancel() }
+                    else if (!loading) { expanded = true; requestedPage = 0; requested = true; paused = false; request++ }
+                }) { Text(stringResource(R.string.explorer_advanced), color = palette.accent) }
+                if (expanded && !loading) data?.details?.let { details ->
+                    ExplorerAdvancedContent(details, palette) { page -> requestedPage = page; requested = true; request++ }
+                }
+                Button(onClick = { requestedPage = if (expanded) 0 else null; requested = true; paused = false; request++ }, enabled = !loading, colors = ButtonDefaults.buttonColors(containerColor = palette.accent, contentColor = palette.background)) { Text(stringResource(R.string.explorer_refresh)) }
+            }
             SelectionContainer { Text(txid, fontFamily = FontFamily.Monospace) }
             val clipboard = ClipboardCompat.current()
             val scope = rememberCoroutineScope()
@@ -87,5 +104,56 @@ internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: Explo
             TextButton(onClick = onClose) { Text(stringResource(R.string.action_close), color = palette.accent) }
         }
         }
+    }
+}
+
+@Composable
+private fun ExplorerAdvancedContent(d: ExplorerAdvanced, palette: NexaPalette, onPage: (Int) -> Unit) {
+    fun bytes(n: Long?) = n?.let { "$it B" } ?: "—"
+    Text(stringResource(R.string.tx_type_fmt, stringResource(if (d.coinbase) R.string.explorer_miner else R.string.explorer_transfer)))
+    Text("${stringResource(R.string.explorer_version)}: ${d.version}")
+    Text("${stringResource(R.string.explorer_serialized_size)}: ${bytes(d.serializedSize)}")
+    Text("${stringResource(R.string.explorer_downloaded_size)}: ${bytes(d.downloadedSize)}")
+    Text("${stringResource(R.string.explorer_weight)}: ${bytes(d.weight)}")
+    val unlock = if (d.unlockKind == "none") "—" else "${stringResource(if (d.unlockKind == "height") R.string.label_height else R.string.label_time)}: ${d.unlockValue}"
+    Text("${stringResource(R.string.explorer_unlock)}: $unlock")
+    Text("${stringResource(R.string.explorer_inputs)}: ${d.inputCount}")
+    Text("${stringResource(R.string.explorer_outputs)}: ${d.outputCount}")
+    d.receivedTimestamp?.let { Text("${stringResource(R.string.explorer_received)}: ${TimeFormat.absolute(it) ?: "—"}") }
+    Text(stringResource(R.string.explorer_ring_help), style = MaterialTheme.typography.bodySmall)
+    if (d.coinbase) Text(stringResource(R.string.explorer_miner))
+    for (row in d.inputs) key(row.index) {
+        var open by remember { mutableStateOf(false) }
+        TextButton(onClick = { open = !open }) { Text("${stringResource(R.string.explorer_inputs)} #${row.index}", color = palette.accent) }
+        if (open) {
+            Text(stringResource(R.string.explorer_key_image))
+            SelectionContainer { Text(row.keyImage, fontFamily = FontFamily.Monospace) }
+            Text("${stringResource(R.string.explorer_ring_size)}: ${row.ringSize}")
+            Text(stringResource(R.string.explorer_indices))
+            SelectionContainer { Text(row.indices.joinToString(", "), fontFamily = FontFamily.Monospace) }
+            if (row.truncated) Text(stringResource(R.string.explorer_truncated))
+        }
+    }
+    for (row in d.outputs) key(row.index) {
+        var open by remember { mutableStateOf(false) }
+        TextButton(onClick = { open = !open }) { Text("${stringResource(R.string.explorer_outputs)} #${row.index}", color = palette.accent) }
+        if (open) {
+            Text(stringResource(R.string.explorer_output_key))
+            SelectionContainer { Text(row.key, fontFamily = FontFamily.Monospace) }
+            Text(stringResource(R.string.tx_amount_fmt, row.amount?.let { BigDecimal(it).movePointLeft(12).setScale(12).toPlainString() + " XMR" } ?: stringResource(R.string.explorer_hidden)))
+            Text("${stringResource(R.string.explorer_view_tag)}: ${row.viewTag?.let { "%02x".format(it) } ?: "—"}")
+            Text("${stringResource(R.string.explorer_global_index)}: ${row.globalIndex ?: "—"}")
+        }
+    }
+    Text("${stringResource(R.string.explorer_page)} ${d.page + 1}/${d.pageCount}")
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        TextButton(onClick = { onPage(d.page - 1) }, enabled = d.page > 0) { Text(stringResource(R.string.explorer_previous), color = if (d.page > 0) palette.accent else palette.secondaryText) }
+        TextButton(onClick = { onPage(d.page + 1) }, enabled = d.page + 1 < d.pageCount) { Text(stringResource(R.string.explorer_next), color = if (d.page + 1 < d.pageCount) palette.accent else palette.secondaryText) }
+    }
+    var showExtra by remember { mutableStateOf(false) }
+    TextButton(onClick = { showExtra = !showExtra }) { Text(stringResource(R.string.explorer_extra), color = palette.accent) }
+    if (showExtra) {
+        SelectionContainer { Text(d.extra.ifEmpty { "—" }, fontFamily = FontFamily.Monospace) }
+        if (d.extraTruncated) Text(stringResource(R.string.explorer_truncated))
     }
 }

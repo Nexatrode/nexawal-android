@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Geavanceerde details</string>
+    <string name="explorer_version">Versie</string>
+    <string name="explorer_serialized_size">Geserialiseerde grootte</string>
+    <string name="explorer_downloaded_size">Gedownloade grootte</string>
+    <string name="explorer_weight">Gewicht</string>
+    <string name="explorer_unlock">Aanvullende ontgrendelvoorwaarde</string>
+    <string name="explorer_inputs">Ingangen</string>
+    <string name="explorer_outputs">Uitgangen</string>
+    <string name="explorer_miner">Minertransactie</string>
+    <string name="explorer_transfer">Overboeking</string>
+    <string name="explorer_previous">Vorige</string>
+    <string name="explorer_next">Volgende</string>
+    <string name="explorer_page">Pagina</string>
+    <string name="explorer_key_image">Sleutelafbeelding</string>
+    <string name="explorer_ring_size">Ringgrootte</string>
+    <string name="explorer_indices">Absolute uitgangsindexen</string>
+    <string name="explorer_output_key">Eenmalige uitgangssleutel</string>
+    <string name="explorer_view_tag">Weergavetag</string>
+    <string name="explorer_global_index">Globale uitgangsindex</string>
+    <string name="explorer_extra">Extra transactiegegevens (hex)</string>
+    <string name="explorer_truncated">Voorbeeld ingekort.</string>
+    <string name="explorer_hidden">Verborgen (RingCT)</string>
+    <string name="explorer_conflict">De node meldt een conflicterende besteding. Beschouw dit niet als een bevestigde betaling.</string>
+    <string name="explorer_ring_help">Ringleden zijn mogelijke ingangen, geen bewijs van welke uitgang is besteed.</string>
+    <string name="explorer_received">Waargenomen door de node</string>
+</resources>

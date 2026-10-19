@@ -10,6 +10,45 @@ This feature is **off by default**, independently of fiat estimates. It does not
 
 There is no account, API key, seed/view-key entry, full-history upload, persistent response cache, or automatic repair/rescan based on these results. Mainnet only for the current public service. Errors are shown separately; a missing result is never proof that a payment is lost.
 
+## Advanced public details
+
+Expand **Advanced details** to fetch page zero. Previous/Next requests are manual
+and replace the current page, with at most 10 inputs and 10 outputs in memory.
+No page prefetch occurs. The public network sees another request for the same
+transaction ID and the chosen page number. All existing consent/lifecycle gates
+still apply, including cancellation on collapse while a page is loading.
+
+The view includes transaction type/version, serialized/downloaded size, weight,
+additional unlock condition, node-observed pending time, input key images/ring
+sizes/absolute indices, output keys/view tags/global indices, and extra hex.
+Unavailable size/weight/index data stays unavailable, not zero. RingCT output
+amounts stay hidden; legacy/coinbase public amounts are displayed exactly.
+Conflicting-spend warnings remain visible outside the advanced section and never
+change wallet balances or send decisions. Explorer observations are not receipt
+proof or a statement identifying the actually spent ring member.
+
+Extra previews cover at most 2,048 bytes; ring-index previews cover at most 128
+indices per input, marked explicitly if truncated. Modern 16-member rings fit
+fully. iOS/Android can expand individual input/output rows; GPUI lists the bounded
+page inline. The website uses 25-row pages; native/API pages use 10 for bounded
+memory. Same public fields, not identical pagination/layout.
+
+The server must include `/api/v1/transactions/{txid}/details/{page}` before live
+advanced lookups work. An older server still supports the compact summary; an
+unsupported advanced endpoint produces unavailable, not a lost-payment warning.
+The shared synthetic contract fixture is validated by all three native parsers.
+
+## Automated lifecycle regressions
+
+Run `./gradlew :app:testDebugUnitTest --tests '*Explorer*Test'` from this repository
+using Android Studio's JDK. `ExplorerLifecycleTest` runs the real Compose view,
+lifecycle observer, preferences and OkHttp service with intercepted delayed HTTP
+responses (no DNS or sockets). It covers background/resume without auto-fetch,
+disable/re-enable, close/reopen and out-of-order responses, wallet-session changes,
+clearing displayed results, and the non-mainnet gate. Existing service/UI tests
+cover default-off behavior, enabling alone, localization and malformed responses.
+No wallet, secrets, funds or physical device is used; do the phone smoke pass too.
+
 ## Phone / desktop smoke checklist
 
 No new funded send or seed disclosure is needed. Use an existing transaction, or a disposable test wallet.

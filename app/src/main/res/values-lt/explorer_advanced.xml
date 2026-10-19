@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Išplėstinė informacija</string>
+    <string name="explorer_version">Versija</string>
+    <string name="explorer_serialized_size">Serializuotas dydis</string>
+    <string name="explorer_downloaded_size">Atsisiųstas dydis</string>
+    <string name="explorer_weight">Svoris</string>
+    <string name="explorer_unlock">Papildoma atrakinimo sąlyga</string>
+    <string name="explorer_inputs">Įvestys</string>
+    <string name="explorer_outputs">Išvestys</string>
+    <string name="explorer_miner">Kasėjo operacija</string>
+    <string name="explorer_transfer">Pervedimas</string>
+    <string name="explorer_previous">Ankstesnis</string>
+    <string name="explorer_next">Kitas</string>
+    <string name="explorer_page">Puslapis</string>
+    <string name="explorer_key_image">Rakto atvaizdas</string>
+    <string name="explorer_ring_size">Žiedo dydis</string>
+    <string name="explorer_indices">Absoliutūs išvesčių indeksai</string>
+    <string name="explorer_output_key">Vienkartinis išvesties raktas</string>
+    <string name="explorer_view_tag">Peržiūros žyma</string>
+    <string name="explorer_global_index">Globalus išvesties indeksas</string>
+    <string name="explorer_extra">Papildomi operacijos duomenys (hex)</string>
+    <string name="explorer_truncated">Peržiūra sutrumpinta.</string>
+    <string name="explorer_hidden">Paslėpta (RingCT)</string>
+    <string name="explorer_conflict">Mazgas praneša apie prieštaringą išleidimą. Nelaikykite to patvirtintu mokėjimu.</string>
+    <string name="explorer_ring_help">Žiedo nariai yra galimos įvestys, o ne įrodymas, kuri išvestis buvo išleista.</string>
+    <string name="explorer_received">Pastebėta mazgo</string>
+</resources>

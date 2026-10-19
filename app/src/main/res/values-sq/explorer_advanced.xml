@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Hollësi të avancuara</string>
+    <string name="explorer_version">Versioni</string>
+    <string name="explorer_serialized_size">Madhësia e serializuar</string>
+    <string name="explorer_downloaded_size">Madhësia e shkarkuar</string>
+    <string name="explorer_weight">Pesha</string>
+    <string name="explorer_unlock">Kusht shtesë zhbllokimi</string>
+    <string name="explorer_inputs">Hyrjet</string>
+    <string name="explorer_outputs">Daljet</string>
+    <string name="explorer_miner">Transaksion minatori</string>
+    <string name="explorer_transfer">Transferim</string>
+    <string name="explorer_previous">E mëparshmja</string>
+    <string name="explorer_next">Tjetra</string>
+    <string name="explorer_page">Faqja</string>
+    <string name="explorer_key_image">Imazhi i çelësit</string>
+    <string name="explorer_ring_size">Madhësia e unazës</string>
+    <string name="explorer_indices">Indekset absolute të daljeve</string>
+    <string name="explorer_output_key">Çelës daljeje njëpërdorimësh</string>
+    <string name="explorer_view_tag">Etiketa e shikimit</string>
+    <string name="explorer_global_index">Indeksi global i daljes</string>
+    <string name="explorer_extra">Të dhëna shtesë të transaksionit (hex)</string>
+    <string name="explorer_truncated">Parapamja është shkurtuar.</string>
+    <string name="explorer_hidden">E fshehur (RingCT)</string>
+    <string name="explorer_conflict">Nyja raporton një shpenzim konfliktues. Mos e trajtoni si pagesë të konfirmuar.</string>
+    <string name="explorer_ring_help">Anëtarët e unazës janë hyrje të mundshme, jo provë se cila dalje është shpenzuar.</string>
+    <string name="explorer_received">Vëzhguar nga nyja</string>
+</resources>

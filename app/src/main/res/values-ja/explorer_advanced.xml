@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">高度な詳細</string>
+    <string name="explorer_version">バージョン</string>
+    <string name="explorer_serialized_size">シリアライズ後のサイズ</string>
+    <string name="explorer_downloaded_size">ダウンロードサイズ</string>
+    <string name="explorer_weight">ウェイト</string>
+    <string name="explorer_unlock">追加のロック解除条件</string>
+    <string name="explorer_inputs">入力</string>
+    <string name="explorer_outputs">出力</string>
+    <string name="explorer_miner">マイナートランザクション</string>
+    <string name="explorer_transfer">送金</string>
+    <string name="explorer_previous">前へ</string>
+    <string name="explorer_next">次へ</string>
+    <string name="explorer_page">ページ</string>
+    <string name="explorer_key_image">キーイメージ</string>
+    <string name="explorer_ring_size">リングサイズ</string>
+    <string name="explorer_indices">出力の絶対インデックス</string>
+    <string name="explorer_output_key">ワンタイム出力鍵</string>
+    <string name="explorer_view_tag">ビュータグ</string>
+    <string name="explorer_global_index">グローバル出力インデックス</string>
+    <string name="explorer_extra">トランザクション追加データ（hex）</string>
+    <string name="explorer_truncated">プレビューは省略されています。</string>
+    <string name="explorer_hidden">非公開（RingCT）</string>
+    <string name="explorer_conflict">ノードが競合する支出を報告しています。確定済みの支払いとして扱わないでください。</string>
+    <string name="explorer_ring_help">リングメンバーは入力の候補であり、実際に使用された出力を証明するものではありません。</string>
+    <string name="explorer_received">ノードの観測時刻</string>
+</resources>

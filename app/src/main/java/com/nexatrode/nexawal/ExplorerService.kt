@@ -20,15 +20,34 @@ object ExplorerAccess {
     fun setEnabled(context: Context, enabled: Boolean) { preferences(context).edit().putBoolean(KEY, enabled).apply() }
 }
 
+// Android's JSONTokener is recursive. Bound nesting before invoking it so an
+// untrusted (but byte-bounded) explorer/error body cannot overflow the stack.
+internal fun checkExplorerJson(text: String, limit: Int) {
+    require(text.toByteArray(Charsets.UTF_8).size <= limit)
+    var depth = 0; var quoted = false; var escaped = false
+    for (c in text) {
+        if (quoted) {
+            if (escaped) escaped = false else if (c == '\\') escaped = true else if (c == '"') quoted = false
+        } else when (c) {
+            '"' -> quoted = true
+            '{', '[' -> { depth++; require(depth <= 16) }
+            '}', ']' -> { depth--; require(depth >= 0) }
+        }
+    }
+    require(depth == 0 && !quoted)
+}
+
 data class ExplorerObservation(
     val txid: String, val status: String, val feePiconero: String?, val height: Long?,
     val blockHash: String?, val blockTimestamp: Long?, val confirmations: Long,
     val nodeReady: Boolean, val observedAt: Long,
+    val doubleSpendSeen: Boolean = false, val details: ExplorerAdvanced? = null,
 ) {
     companion object {
         fun validId(id: String) = id.matches(Regex("[0-9a-f]{64}"))
-        fun parse(body: String, txid: String, now: Long): ExplorerObservation {
-            require(body.toByteArray(Charsets.UTF_8).size <= 16_384 && validId(txid))
+        fun parse(body: String, txid: String, now: Long, page: Int? = null): ExplorerObservation {
+            require(body.toByteArray(Charsets.UTF_8).size <= (if (page == null) 16_384 else 65_536) && validId(txid))
+            checkExplorerJson(body, if (page == null) 16_384 else 65_536)
             val json = JSONObject(body)
             fun integer(key: String): Long {
                 val v = json.get(key)
@@ -54,7 +73,10 @@ data class ExplorerObservation(
                 "confirmed" -> require(height != null && height < chain && confirmations == chain - height && hash != null && validId(hash) && time != null && time > 0 && time <= now + 600)
                 else -> error("invalid explorer status")
             }
-            return ExplorerObservation(txid, status, fee, height, hash, time, confirmations, json.get("node_ready") as Boolean, observed)
+            require((page == null) == !json.has("details"))
+            val details = page?.let { ExplorerAdvanced.parse(json.getJSONObject("details"), it, now, status == "pending") }
+            val conflict = if (json.has("double_spend_seen")) json.get("double_spend_seen") as Boolean else false
+            return ExplorerObservation(txid, status, fee, height, hash, time, confirmations, json.get("node_ready") as Boolean, observed, conflict, details)
         }
     }
 }
@@ -82,9 +104,11 @@ class ExplorerService(context: Context, private val client: OkHttpClient = explo
         preferences.unregisterOnSharedPreferenceChangeListener(listener)
         client.connectionPool.evictAll()
     }
-    suspend fun fetch(txid: String): ExplorerObservation = suspendCancellableCoroutine { continuation ->
-        require(ExplorerObservation.validId(txid))
-        val call = client.newCall(Request.Builder().url("https://explorer.nexawal.com/api/v1/transactions/$txid").header("Accept", "application/json").get().build())
+    suspend fun fetch(txid: String, page: Int? = null): ExplorerObservation = suspendCancellableCoroutine { continuation ->
+        require(ExplorerObservation.validId(txid) && (page == null || page in 0..409))
+        val limit = if (page == null) 16_384 else 65_536
+        val suffix = page?.let { "/details/$it" } ?: ""
+        val call = client.newCall(Request.Builder().url("https://explorer.nexawal.com/api/v1/transactions/$txid$suffix").header("Accept", "application/json").get().build())
         continuation.invokeOnCancellation { call.cancel() }
         synchronized(lock) {
             if (closed || !preferences.getBoolean(ExplorerAccess.KEY, false) || !continuation.isActive) {
@@ -101,7 +125,7 @@ class ExplorerService(context: Context, private val client: OkHttpClient = explo
                         val result = response.use {
                             require(it.code in listOf(200, 404) && it.header("Content-Type")?.substringBefore(';') == "application/json")
                             val body = it.body ?: error("missing explorer body")
-                            require(body.contentLength() <= 16_384)
+                            require(body.contentLength() <= limit)
                             val bytes = body.byteStream().use { input ->
                                 val output = java.io.ByteArrayOutputStream()
                                 val buffer = ByteArray(1024)
@@ -109,18 +133,19 @@ class ExplorerService(context: Context, private val client: OkHttpClient = explo
                                     if (call.isCanceled()) throw IOException()
                                     val n = input.read(buffer)
                                     if (n < 0) break
-                                    require(output.size() + n <= 16_384)
+                                    require(output.size() + n <= limit)
                                     output.write(buffer, 0, n)
                                 }
                                 output.toByteArray()
                             }
                             val text = bytes.toString(Charsets.UTF_8)
+                            checkExplorerJson(text,limit)
                             if (it.code == 404) {
                                 val failure = JSONObject(text)
                                 require(failure.get("api_version") == 1 && failure.getJSONObject("error").get("code") == "not_found")
-                                throw ExplorerMissing()
+                                if (page == null) throw ExplorerMissing() else throw IOException("Explorer unavailable")
                             }
-                            ExplorerObservation.parse(text, txid, System.currentTimeMillis() / 1000)
+                            ExplorerObservation.parse(text, txid, System.currentTimeMillis() / 1000, page)
                         }
                         if (continuation.isActive && preferences.getBoolean(ExplorerAccess.KEY, false) && !call.isCanceled()) continuation.resume(result)
                         else continuation.cancel()

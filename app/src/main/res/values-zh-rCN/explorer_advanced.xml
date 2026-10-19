@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">高级详情</string>
+    <string name="explorer_version">版本</string>
+    <string name="explorer_serialized_size">序列化大小</string>
+    <string name="explorer_downloaded_size">下载大小</string>
+    <string name="explorer_weight">权重</string>
+    <string name="explorer_unlock">额外解锁条件</string>
+    <string name="explorer_inputs">输入</string>
+    <string name="explorer_outputs">输出</string>
+    <string name="explorer_miner">矿工交易</string>
+    <string name="explorer_transfer">转账</string>
+    <string name="explorer_previous">上一页</string>
+    <string name="explorer_next">下一页</string>
+    <string name="explorer_page">页</string>
+    <string name="explorer_key_image">密钥镜像</string>
+    <string name="explorer_ring_size">环大小</string>
+    <string name="explorer_indices">输出绝对索引</string>
+    <string name="explorer_output_key">一次性输出密钥</string>
+    <string name="explorer_view_tag">查看标签</string>
+    <string name="explorer_global_index">全局输出索引</string>
+    <string name="explorer_extra">交易附加数据（hex）</string>
+    <string name="explorer_truncated">预览已截断。</string>
+    <string name="explorer_hidden">隐藏（RingCT）</string>
+    <string name="explorer_conflict">节点报告了冲突花费。请勿将其视为已确认的付款。</string>
+    <string name="explorer_ring_help">环成员是可能的输入，不能证明实际花费了哪个输出。</string>
+    <string name="explorer_received">节点观察时间</string>
+</resources>

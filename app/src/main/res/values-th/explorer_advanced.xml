@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">รายละเอียดขั้นสูง</string>
+    <string name="explorer_version">เวอร์ชัน</string>
+    <string name="explorer_serialized_size">ขนาดข้อมูลที่ทำซีเรียลไลซ์</string>
+    <string name="explorer_downloaded_size">ขนาดที่ดาวน์โหลด</string>
+    <string name="explorer_weight">น้ำหนัก</string>
+    <string name="explorer_unlock">เงื่อนไขปลดล็อกเพิ่มเติม</string>
+    <string name="explorer_inputs">อินพุต</string>
+    <string name="explorer_outputs">เอาต์พุต</string>
+    <string name="explorer_miner">ธุรกรรมของนักขุด</string>
+    <string name="explorer_transfer">การโอน</string>
+    <string name="explorer_previous">ก่อนหน้า</string>
+    <string name="explorer_next">ถัดไป</string>
+    <string name="explorer_page">หน้า</string>
+    <string name="explorer_key_image">คีย์อิมเมจ</string>
+    <string name="explorer_ring_size">ขนาดวงแหวน</string>
+    <string name="explorer_indices">ดัชนีเอาต์พุตแบบสัมบูรณ์</string>
+    <string name="explorer_output_key">คีย์เอาต์พุตใช้ครั้งเดียว</string>
+    <string name="explorer_view_tag">แท็กการดู</string>
+    <string name="explorer_global_index">ดัชนีเอาต์พุตส่วนกลาง</string>
+    <string name="explorer_extra">ข้อมูลเพิ่มเติมของธุรกรรม (hex)</string>
+    <string name="explorer_truncated">ตัดทอนตัวอย่างแล้ว</string>
+    <string name="explorer_hidden">ซ่อนอยู่ (RingCT)</string>
+    <string name="explorer_conflict">โหนดรายงานการใช้จ่ายที่ขัดแย้งกัน อย่าถือว่าเป็นการชำระเงินที่ยืนยันแล้ว</string>
+    <string name="explorer_ring_help">สมาชิกวงแหวนเป็นอินพุตที่เป็นไปได้ ไม่ใช่หลักฐานว่าเอาต์พุตใดถูกใช้จ่ายจริง</string>
+    <string name="explorer_received">เวลาที่โหนดพบ</string>
+</resources>

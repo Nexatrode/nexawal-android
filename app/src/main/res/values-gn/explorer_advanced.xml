@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Mba’emimi hetave</string>
+    <string name="explorer_version">Versión</string>
+    <string name="explorer_serialized_size">Tuichakue serializado</string>
+    <string name="explorer_downloaded_size">Tuichakue oñemboguejýva</string>
+    <string name="explorer_weight">Pohýikue</string>
+    <string name="explorer_unlock">Ñembojuruja condición ambue</string>
+    <string name="explorer_inputs">Jeikeha</string>
+    <string name="explorer_outputs">Ñesẽha</string>
+    <string name="explorer_miner">Minero ñemondo</string>
+    <string name="explorer_transfer">Ñemondo</string>
+    <string name="explorer_previous">Mboyvegua</string>
+    <string name="explorer_next">Oúva</string>
+    <string name="explorer_page">Kuatiarogue</string>
+    <string name="explorer_key_image">Clave ra’anga</string>
+    <string name="explorer_ring_size">Anillo tuichakue</string>
+    <string name="explorer_indices">Ñesẽha índice absoluto</string>
+    <string name="explorer_output_key">Ñesẽha clave ojeporúva peteĩ jey</string>
+    <string name="explorer_view_tag">Hechaha etiqueta</string>
+    <string name="explorer_global_index">Ñesẽha índice global</string>
+    <string name="explorer_extra">Ñemondo marandu ambue (hex)</string>
+    <string name="explorer_truncated">Jehecha mbykyve.</string>
+    <string name="explorer_hidden">Oñemíva (RingCT)</string>
+    <string name="explorer_conflict">Nodo omombe’u gasto oñemoĩva ojuehe. Ani eimo’ã ha’eha pago oñemoañetéva.</string>
+    <string name="explorer_ring_help">Anillo rehegua ikatu ha’e jeikeha; ndohechaukái mba’e ñesẽha ojeporu.</string>
+    <string name="explorer_received">Nodo ohecháva</string>
+</resources>

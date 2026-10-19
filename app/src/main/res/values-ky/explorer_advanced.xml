@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Кеңири маалымат</string>
+    <string name="explorer_version">Версия</string>
+    <string name="explorer_serialized_size">Сериялаштырылган өлчөм</string>
+    <string name="explorer_downloaded_size">Жүктөлгөн өлчөм</string>
+    <string name="explorer_weight">Салмак</string>
+    <string name="explorer_unlock">Кулпуну ачуунун кошумча шарты</string>
+    <string name="explorer_inputs">Кириштер</string>
+    <string name="explorer_outputs">Чыгыштар</string>
+    <string name="explorer_miner">Майнердин транзакциясы</string>
+    <string name="explorer_transfer">Которуу</string>
+    <string name="explorer_previous">Мурунку</string>
+    <string name="explorer_next">Кийинки</string>
+    <string name="explorer_page">Бет</string>
+    <string name="explorer_key_image">Ачкычтын сүрөтү</string>
+    <string name="explorer_ring_size">Шакектин өлчөмү</string>
+    <string name="explorer_indices">Чыгыштардын абсолюттук индекстери</string>
+    <string name="explorer_output_key">Бир жолку чыгыш ачкычы</string>
+    <string name="explorer_view_tag">Көрүү белгиси</string>
+    <string name="explorer_global_index">Чыгыштын глобалдык индекси</string>
+    <string name="explorer_extra">Транзакциянын кошумча маалыматы (hex)</string>
+    <string name="explorer_truncated">Алдын ала көрүү кыскартылган.</string>
+    <string name="explorer_hidden">Жашыруун (RingCT)</string>
+    <string name="explorer_conflict">Түйүн карама-каршы сарптоону билдирди. Муну тастыкталган төлөм деп эсептебеңиз.</string>
+    <string name="explorer_ring_help">Шакектин мүчөлөрү мүмкүн болгон кириштер, кайсы чыгыш сарпталганын далилдебейт.</string>
+    <string name="explorer_received">Түйүн байкаган</string>
+</resources>

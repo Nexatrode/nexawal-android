@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Gelişmiş ayrıntılar</string>
+    <string name="explorer_version">Sürüm</string>
+    <string name="explorer_serialized_size">Serileştirilmiş boyut</string>
+    <string name="explorer_downloaded_size">İndirilen boyut</string>
+    <string name="explorer_weight">Ağırlık</string>
+    <string name="explorer_unlock">Ek kilit açma koşulu</string>
+    <string name="explorer_inputs">Girdiler</string>
+    <string name="explorer_outputs">Çıktılar</string>
+    <string name="explorer_miner">Madenci işlemi</string>
+    <string name="explorer_transfer">Transfer</string>
+    <string name="explorer_previous">Önceki</string>
+    <string name="explorer_next">Sonraki</string>
+    <string name="explorer_page">Sayfa</string>
+    <string name="explorer_key_image">Anahtar görüntüsü</string>
+    <string name="explorer_ring_size">Halka boyutu</string>
+    <string name="explorer_indices">Mutlak çıktı indeksleri</string>
+    <string name="explorer_output_key">Tek kullanımlık çıktı anahtarı</string>
+    <string name="explorer_view_tag">Görüntüleme etiketi</string>
+    <string name="explorer_global_index">Genel çıktı indeksi</string>
+    <string name="explorer_extra">Ek işlem verileri (hex)</string>
+    <string name="explorer_truncated">Önizleme kısaltıldı.</string>
+    <string name="explorer_hidden">Gizli (RingCT)</string>
+    <string name="explorer_conflict">Düğüm çakışan bir harcama bildiriyor. Bunu onaylanmış bir ödeme olarak değerlendirmeyin.</string>
+    <string name="explorer_ring_help">Halka üyeleri olası girdilerdir, hangi çıktının harcandığının kanıtı değildir.</string>
+    <string name="explorer_received">Düğüm tarafından gözlemlendi</string>
+</resources>

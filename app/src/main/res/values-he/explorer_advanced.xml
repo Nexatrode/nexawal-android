@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">פרטים מתקדמים</string>
+    <string name="explorer_version">גרסה</string>
+    <string name="explorer_serialized_size">גודל בסריאליזציה</string>
+    <string name="explorer_downloaded_size">גודל שהורד</string>
+    <string name="explorer_weight">משקל</string>
+    <string name="explorer_unlock">תנאי שחרור נוסף</string>
+    <string name="explorer_inputs">קלטים</string>
+    <string name="explorer_outputs">פלטים</string>
+    <string name="explorer_miner">עסקת כורה</string>
+    <string name="explorer_transfer">העברה</string>
+    <string name="explorer_previous">הקודם</string>
+    <string name="explorer_next">הבא</string>
+    <string name="explorer_page">עמוד</string>
+    <string name="explorer_key_image">תמונת מפתח</string>
+    <string name="explorer_ring_size">גודל הטבעת</string>
+    <string name="explorer_indices">אינדקסים מוחלטים של פלטים</string>
+    <string name="explorer_output_key">מפתח פלט חד־פעמי</string>
+    <string name="explorer_view_tag">תג צפייה</string>
+    <string name="explorer_global_index">אינדקס פלט גלובלי</string>
+    <string name="explorer_extra">נתונים נוספים לעסקה (hex)</string>
+    <string name="explorer_truncated">התצוגה המקדימה קוצרה.</string>
+    <string name="explorer_hidden">מוסתר (RingCT)</string>
+    <string name="explorer_conflict">הצומת מדווח על הוצאה סותרת. אין להתייחס לכך כתשלום מאושר.</string>
+    <string name="explorer_ring_help">חברי הטבעת הם קלטים אפשריים, לא הוכחה איזה פלט הוצא.</string>
+    <string name="explorer_received">נצפה על ידי הצומת</string>
+</resources>

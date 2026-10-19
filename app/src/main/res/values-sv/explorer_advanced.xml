@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Avancerade detaljer</string>
+    <string name="explorer_version">Version</string>
+    <string name="explorer_serialized_size">Serialiserad storlek</string>
+    <string name="explorer_downloaded_size">Nedladdad storlek</string>
+    <string name="explorer_weight">Vikt</string>
+    <string name="explorer_unlock">Ytterligare upplåsningsvillkor</string>
+    <string name="explorer_inputs">Indata</string>
+    <string name="explorer_outputs">Utdata</string>
+    <string name="explorer_miner">Gruvtransaktion</string>
+    <string name="explorer_transfer">Överföring</string>
+    <string name="explorer_previous">Föregående</string>
+    <string name="explorer_next">Nästa</string>
+    <string name="explorer_page">Sida</string>
+    <string name="explorer_key_image">Nyckelbild</string>
+    <string name="explorer_ring_size">Ringstorlek</string>
+    <string name="explorer_indices">Absoluta utdataindex</string>
+    <string name="explorer_output_key">Engångsnyckel för utdata</string>
+    <string name="explorer_view_tag">Visningstagg</string>
+    <string name="explorer_global_index">Globalt utdataindex</string>
+    <string name="explorer_extra">Extra transaktionsdata (hex)</string>
+    <string name="explorer_truncated">Förhandsvisningen är avkortad.</string>
+    <string name="explorer_hidden">Dolt (RingCT)</string>
+    <string name="explorer_conflict">Noden rapporterar en motstridig spendering. Betrakta inte detta som en bekräftad betalning.</string>
+    <string name="explorer_ring_help">Ringmedlemmar är möjliga indata, inte bevis på vilken utdata som spenderades.</string>
+    <string name="explorer_received">Observerad av noden</string>
+</resources>

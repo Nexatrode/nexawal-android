@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Erweiterte Details</string>
+    <string name="explorer_version">Version</string>
+    <string name="explorer_serialized_size">Serialisierte Größe</string>
+    <string name="explorer_downloaded_size">Heruntergeladene Größe</string>
+    <string name="explorer_weight">Gewicht</string>
+    <string name="explorer_unlock">Zusätzliche Entsperrbedingung</string>
+    <string name="explorer_inputs">Eingänge</string>
+    <string name="explorer_outputs">Ausgänge</string>
+    <string name="explorer_miner">Miner-Transaktion</string>
+    <string name="explorer_transfer">Überweisung</string>
+    <string name="explorer_previous">Zurück</string>
+    <string name="explorer_next">Weiter</string>
+    <string name="explorer_page">Seite</string>
+    <string name="explorer_key_image">Schlüsselbild</string>
+    <string name="explorer_ring_size">Ringgröße</string>
+    <string name="explorer_indices">Absolute Ausgangsindizes</string>
+    <string name="explorer_output_key">Einmaliger Ausgangsschlüssel</string>
+    <string name="explorer_view_tag">Ansichts-Tag</string>
+    <string name="explorer_global_index">Globaler Ausgangsindex</string>
+    <string name="explorer_extra">Zusätzliche Transaktionsdaten (hex)</string>
+    <string name="explorer_truncated">Vorschau gekürzt.</string>
+    <string name="explorer_hidden">Verborgen (RingCT)</string>
+    <string name="explorer_conflict">Der Knoten meldet eine widersprüchliche Ausgabe. Betrachte dies nicht als bestätigte Zahlung.</string>
+    <string name="explorer_ring_help">Ringmitglieder sind mögliche Eingänge, kein Beweis dafür, welcher Ausgang ausgegeben wurde.</string>
+    <string name="explorer_received">Vom Knoten beobachtet</string>
+</resources>

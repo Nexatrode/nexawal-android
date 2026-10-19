@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Täpsemad üksikasjad</string>
+    <string name="explorer_version">Versioon</string>
+    <string name="explorer_serialized_size">Serialiseeritud suurus</string>
+    <string name="explorer_downloaded_size">Allalaaditud suurus</string>
+    <string name="explorer_weight">Kaal</string>
+    <string name="explorer_unlock">Täiendav avamistingimus</string>
+    <string name="explorer_inputs">Sisendid</string>
+    <string name="explorer_outputs">Väljundid</string>
+    <string name="explorer_miner">Kaevandaja tehing</string>
+    <string name="explorer_transfer">Ülekanne</string>
+    <string name="explorer_previous">Eelmine</string>
+    <string name="explorer_next">Järgmine</string>
+    <string name="explorer_page">Leht</string>
+    <string name="explorer_key_image">Võtmekujutis</string>
+    <string name="explorer_ring_size">Ringi suurus</string>
+    <string name="explorer_indices">Väljundite absoluutsed indeksid</string>
+    <string name="explorer_output_key">Ühekordne väljundvõti</string>
+    <string name="explorer_view_tag">Vaatemärgis</string>
+    <string name="explorer_global_index">Globaalne väljundiindeks</string>
+    <string name="explorer_extra">Tehingu lisaandmed (hex)</string>
+    <string name="explorer_truncated">Eelvaade on kärbitud.</string>
+    <string name="explorer_hidden">Peidetud (RingCT)</string>
+    <string name="explorer_conflict">Sõlm teatab vastuolulisest kulutusest. Ärge käsitage seda kinnitatud maksena.</string>
+    <string name="explorer_ring_help">Ringi liikmed on võimalikud sisendid, mitte tõend selle kohta, milline väljund kulutati.</string>
+    <string name="explorer_received">Sõlme vaadeldud</string>
+</resources>

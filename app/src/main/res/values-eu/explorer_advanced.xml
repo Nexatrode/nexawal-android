@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Xehetasun aurreratuak</string>
+    <string name="explorer_version">Bertsioa</string>
+    <string name="explorer_serialized_size">Serializatutako tamaina</string>
+    <string name="explorer_downloaded_size">Deskargatutako tamaina</string>
+    <string name="explorer_weight">Pisua</string>
+    <string name="explorer_unlock">Desblokeatzeko baldintza gehigarria</string>
+    <string name="explorer_inputs">Sarrerak</string>
+    <string name="explorer_outputs">Irteerak</string>
+    <string name="explorer_miner">Meatzariaren transakzioa</string>
+    <string name="explorer_transfer">Transferentzia</string>
+    <string name="explorer_previous">Aurrekoa</string>
+    <string name="explorer_next">Hurrengoa</string>
+    <string name="explorer_page">Orria</string>
+    <string name="explorer_key_image">Gako-irudia</string>
+    <string name="explorer_ring_size">Eraztunaren tamaina</string>
+    <string name="explorer_indices">Irteeren indize absolutuak</string>
+    <string name="explorer_output_key">Erabilera bakarreko irteera-gakoa</string>
+    <string name="explorer_view_tag">Ikuspegi-etiketa</string>
+    <string name="explorer_global_index">Irteeraren indize globala</string>
+    <string name="explorer_extra">Transakzioaren datu gehigarriak (hex)</string>
+    <string name="explorer_truncated">Aurrebista moztuta.</string>
+    <string name="explorer_hidden">Ezkutatua (RingCT)</string>
+    <string name="explorer_conflict">Nodoak gastu gatazkatsua jakinarazi du. Ez hartu ordainketa baieztatutzat.</string>
+    <string name="explorer_ring_help">Eraztuneko kideak balizko sarrerak dira, ez zein irteera gastatu den frogatzeko modua.</string>
+    <string name="explorer_received">Nodoak ikusita</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Advanced details</string>
+    <string name="explorer_version">Version</string>
+    <string name="explorer_serialized_size">Serialized size</string>
+    <string name="explorer_downloaded_size">Downloaded size</string>
+    <string name="explorer_weight">Weight</string>
+    <string name="explorer_unlock">Additional unlock condition</string>
+    <string name="explorer_inputs">Inputs</string>
+    <string name="explorer_outputs">Outputs</string>
+    <string name="explorer_miner">Miner transaction</string>
+    <string name="explorer_transfer">Transfer</string>
+    <string name="explorer_previous">Previous</string>
+    <string name="explorer_next">Next</string>
+    <string name="explorer_page">Page</string>
+    <string name="explorer_key_image">Key image</string>
+    <string name="explorer_ring_size">Ring size</string>
+    <string name="explorer_indices">Absolute output indices</string>
+    <string name="explorer_output_key">One-time output key</string>
+    <string name="explorer_view_tag">View tag</string>
+    <string name="explorer_global_index">Global output index</string>
+    <string name="explorer_extra">Transaction extra (hex)</string>
+    <string name="explorer_truncated">Preview truncated.</string>
+    <string name="explorer_hidden">Hidden (RingCT)</string>
+    <string name="explorer_conflict">The node reports a conflicting spend. Do not treat this as a confirmed payment.</string>
+    <string name="explorer_ring_help">Ring members are possible inputs, not proof of which output was spent.</string>
+    <string name="explorer_received">Observed by node</string>
+</resources>

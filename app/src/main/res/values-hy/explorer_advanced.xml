@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Ընդլայնված մանրամասներ</string>
+    <string name="explorer_version">Տարբերակ</string>
+    <string name="explorer_serialized_size">Սերիալացված չափ</string>
+    <string name="explorer_downloaded_size">Ներբեռնված չափ</string>
+    <string name="explorer_weight">Քաշ</string>
+    <string name="explorer_unlock">Ապակողպման լրացուցիչ պայման</string>
+    <string name="explorer_inputs">Մուտքեր</string>
+    <string name="explorer_outputs">Ելքեր</string>
+    <string name="explorer_miner">Մայների գործարք</string>
+    <string name="explorer_transfer">Փոխանցում</string>
+    <string name="explorer_previous">Նախորդը</string>
+    <string name="explorer_next">Հաջորդը</string>
+    <string name="explorer_page">Էջ</string>
+    <string name="explorer_key_image">Բանալու պատկեր</string>
+    <string name="explorer_ring_size">Օղակի չափ</string>
+    <string name="explorer_indices">Ելքերի բացարձակ ինդեքսներ</string>
+    <string name="explorer_output_key">Միանգամյա ելքային բանալի</string>
+    <string name="explorer_view_tag">Դիտման պիտակ</string>
+    <string name="explorer_global_index">Ելքի գլոբալ ինդեքս</string>
+    <string name="explorer_extra">Գործարքի լրացուցիչ տվյալներ (hex)</string>
+    <string name="explorer_truncated">Նախադիտումը կրճատված է։</string>
+    <string name="explorer_hidden">Թաքնված (RingCT)</string>
+    <string name="explorer_conflict">Հանգույցը հայտնում է հակասող ծախսի մասին։ Սա հաստատված վճարում մի համարեք։</string>
+    <string name="explorer_ring_help">Օղակի անդամները հնարավոր մուտքեր են, ոչ թե ապացույց, թե որ ելքն է ծախսվել։</string>
+    <string name="explorer_received">Դիտվել է հանգույցի կողմից</string>
+</resources>

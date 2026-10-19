@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Speciális részletek</string>
+    <string name="explorer_version">Verzió</string>
+    <string name="explorer_serialized_size">Szerializált méret</string>
+    <string name="explorer_downloaded_size">Letöltött méret</string>
+    <string name="explorer_weight">Súly</string>
+    <string name="explorer_unlock">További feloldási feltétel</string>
+    <string name="explorer_inputs">Bemenetek</string>
+    <string name="explorer_outputs">Kimenetek</string>
+    <string name="explorer_miner">Bányásztranzakció</string>
+    <string name="explorer_transfer">Átutalás</string>
+    <string name="explorer_previous">Előző</string>
+    <string name="explorer_next">Következő</string>
+    <string name="explorer_page">Oldal</string>
+    <string name="explorer_key_image">Kulcskép</string>
+    <string name="explorer_ring_size">Gyűrűméret</string>
+    <string name="explorer_indices">Abszolút kimeneti indexek</string>
+    <string name="explorer_output_key">Egyszer használatos kimeneti kulcs</string>
+    <string name="explorer_view_tag">Megtekintési címke</string>
+    <string name="explorer_global_index">Globális kimeneti index</string>
+    <string name="explorer_extra">További tranzakcióadatok (hex)</string>
+    <string name="explorer_truncated">Az előnézet csonkolva.</string>
+    <string name="explorer_hidden">Rejtett (RingCT)</string>
+    <string name="explorer_conflict">A csomópont ütköző költést jelez. Ne tekintse ezt megerősített fizetésnek.</string>
+    <string name="explorer_ring_help">A gyűrű tagjai lehetséges bemenetek, nem bizonyítják, melyik kimenetet költötték el.</string>
+    <string name="explorer_received">A csomópont észlelte</string>
+</resources>

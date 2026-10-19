@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Mga advanced na detalye</string>
+    <string name="explorer_version">Bersyon</string>
+    <string name="explorer_serialized_size">Laki ng serialized na datos</string>
+    <string name="explorer_downloaded_size">Na-download na laki</string>
+    <string name="explorer_weight">Timbang</string>
+    <string name="explorer_unlock">Karagdagang kondisyon ng pag-unlock</string>
+    <string name="explorer_inputs">Mga input</string>
+    <string name="explorer_outputs">Mga output</string>
+    <string name="explorer_miner">Transaksiyon ng minero</string>
+    <string name="explorer_transfer">Paglipat</string>
+    <string name="explorer_previous">Nakaraan</string>
+    <string name="explorer_next">Susunod</string>
+    <string name="explorer_page">Pahina</string>
+    <string name="explorer_key_image">Key image</string>
+    <string name="explorer_ring_size">Laki ng ring</string>
+    <string name="explorer_indices">Mga absolute output index</string>
+    <string name="explorer_output_key">Isahang-gamit na output key</string>
+    <string name="explorer_view_tag">View tag</string>
+    <string name="explorer_global_index">Global output index</string>
+    <string name="explorer_extra">Karagdagang datos ng transaksiyon (hex)</string>
+    <string name="explorer_truncated">Pinaikli ang preview.</string>
+    <string name="explorer_hidden">Nakatago (RingCT)</string>
+    <string name="explorer_conflict">Nag-ulat ang node ng magkasalungat na paggastos. Huwag itong ituring na kumpirmadong bayad.</string>
+    <string name="explorer_ring_help">Ang mga miyembro ng ring ay posibleng input, hindi patunay kung aling output ang nagastos.</string>
+    <string name="explorer_received">Naobserbahan ng node</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Avancerede detaljer</string>
+    <string name="explorer_version">Version</string>
+    <string name="explorer_serialized_size">Serialiseret størrelse</string>
+    <string name="explorer_downloaded_size">Downloadet størrelse</string>
+    <string name="explorer_weight">Vægt</string>
+    <string name="explorer_unlock">Ekstra oplåsningsbetingelse</string>
+    <string name="explorer_inputs">Input</string>
+    <string name="explorer_outputs">Output</string>
+    <string name="explorer_miner">Minertransaktion</string>
+    <string name="explorer_transfer">Overførsel</string>
+    <string name="explorer_previous">Forrige</string>
+    <string name="explorer_next">Næste</string>
+    <string name="explorer_page">Side</string>
+    <string name="explorer_key_image">Nøglebillede</string>
+    <string name="explorer_ring_size">Ringstørrelse</string>
+    <string name="explorer_indices">Absolutte outputindekser</string>
+    <string name="explorer_output_key">Engangs-outputnøgle</string>
+    <string name="explorer_view_tag">Visningstag</string>
+    <string name="explorer_global_index">Globalt outputindeks</string>
+    <string name="explorer_extra">Ekstra transaktionsdata (hex)</string>
+    <string name="explorer_truncated">Forhåndsvisningen er afkortet.</string>
+    <string name="explorer_hidden">Skjult (RingCT)</string>
+    <string name="explorer_conflict">Noden rapporterer et modstridende forbrug. Betragt det ikke som en bekræftet betaling.</string>
+    <string name="explorer_ring_help">Ringmedlemmer er mulige input, ikke bevis for hvilket output der blev brugt.</string>
+    <string name="explorer_received">Observeret af noden</string>
+</resources>

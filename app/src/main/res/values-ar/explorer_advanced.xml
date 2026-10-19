@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">تفاصيل متقدمة</string>
+    <string name="explorer_version">الإصدار</string>
+    <string name="explorer_serialized_size">الحجم المتسلسل</string>
+    <string name="explorer_downloaded_size">الحجم المنزّل</string>
+    <string name="explorer_weight">الوزن</string>
+    <string name="explorer_unlock">شرط فتح إضافي</string>
+    <string name="explorer_inputs">المدخلات</string>
+    <string name="explorer_outputs">المخرجات</string>
+    <string name="explorer_miner">معاملة المُعدّن</string>
+    <string name="explorer_transfer">تحويل</string>
+    <string name="explorer_previous">السابق</string>
+    <string name="explorer_next">التالي</string>
+    <string name="explorer_page">الصفحة</string>
+    <string name="explorer_key_image">صورة المفتاح</string>
+    <string name="explorer_ring_size">حجم الحلقة</string>
+    <string name="explorer_indices">فهارس المخرجات المطلقة</string>
+    <string name="explorer_output_key">مفتاح مخرج لمرة واحدة</string>
+    <string name="explorer_view_tag">وسم العرض</string>
+    <string name="explorer_global_index">فهرس المخرج العام</string>
+    <string name="explorer_extra">بيانات المعاملة الإضافية (hex)</string>
+    <string name="explorer_truncated">المعاينة مقتطعة.</string>
+    <string name="explorer_hidden">مخفي (RingCT)</string>
+    <string name="explorer_conflict">تشير العقدة إلى إنفاق متعارض. لا تعتبره دفعة مؤكدة.</string>
+    <string name="explorer_ring_help">أعضاء الحلقة مدخلات محتملة، وليسوا دليلاً على المخرج الذي أُنفق.</string>
+    <string name="explorer_received">رصدته العقدة</string>
+</resources>

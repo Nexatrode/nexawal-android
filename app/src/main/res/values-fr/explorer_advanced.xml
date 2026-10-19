@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Détails avancés</string>
+    <string name="explorer_version">Version</string>
+    <string name="explorer_serialized_size">Taille sérialisée</string>
+    <string name="explorer_downloaded_size">Taille téléchargée</string>
+    <string name="explorer_weight">Poids</string>
+    <string name="explorer_unlock">Condition de déverrouillage supplémentaire</string>
+    <string name="explorer_inputs">Entrées</string>
+    <string name="explorer_outputs">Sorties</string>
+    <string name="explorer_miner">Transaction de mineur</string>
+    <string name="explorer_transfer">Transfert</string>
+    <string name="explorer_previous">Précédent</string>
+    <string name="explorer_next">Suivant</string>
+    <string name="explorer_page">Page</string>
+    <string name="explorer_key_image">Image de clé</string>
+    <string name="explorer_ring_size">Taille de l’anneau</string>
+    <string name="explorer_indices">Indices absolus des sorties</string>
+    <string name="explorer_output_key">Clé de sortie à usage unique</string>
+    <string name="explorer_view_tag">Étiquette de vue</string>
+    <string name="explorer_global_index">Indice global de sortie</string>
+    <string name="explorer_extra">Données supplémentaires de transaction (hex)</string>
+    <string name="explorer_truncated">Aperçu tronqué.</string>
+    <string name="explorer_hidden">Masqué (RingCT)</string>
+    <string name="explorer_conflict">Le nœud signale une dépense conflictuelle. Ne la considérez pas comme un paiement confirmé.</string>
+    <string name="explorer_ring_help">Les membres de l’anneau sont des entrées possibles, pas une preuve de la sortie dépensée.</string>
+    <string name="explorer_received">Observé par le nœud</string>
+</resources>

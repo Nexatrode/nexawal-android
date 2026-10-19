@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Detail lanjutan</string>
+    <string name="explorer_version">Versi</string>
+    <string name="explorer_serialized_size">Ukuran terserialisasi</string>
+    <string name="explorer_downloaded_size">Ukuran unduhan</string>
+    <string name="explorer_weight">Bobot</string>
+    <string name="explorer_unlock">Syarat pembukaan tambahan</string>
+    <string name="explorer_inputs">Input</string>
+    <string name="explorer_outputs">Output</string>
+    <string name="explorer_miner">Transaksi penambang</string>
+    <string name="explorer_transfer">Transfer</string>
+    <string name="explorer_previous">Sebelumnya</string>
+    <string name="explorer_next">Berikutnya</string>
+    <string name="explorer_page">Halaman</string>
+    <string name="explorer_key_image">Citra kunci</string>
+    <string name="explorer_ring_size">Ukuran ring</string>
+    <string name="explorer_indices">Indeks output absolut</string>
+    <string name="explorer_output_key">Kunci output sekali pakai</string>
+    <string name="explorer_view_tag">Tag tampilan</string>
+    <string name="explorer_global_index">Indeks output global</string>
+    <string name="explorer_extra">Data tambahan transaksi (hex)</string>
+    <string name="explorer_truncated">Pratinjau dipotong.</string>
+    <string name="explorer_hidden">Tersembunyi (RingCT)</string>
+    <string name="explorer_conflict">Node melaporkan pengeluaran yang bertentangan. Jangan anggap ini pembayaran terkonfirmasi.</string>
+    <string name="explorer_ring_help">Anggota ring adalah kemungkinan input, bukan bukti output mana yang dibelanjakan.</string>
+    <string name="explorer_received">Diamati oleh node</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Ətraflı məlumat</string>
+    <string name="explorer_version">Versiya</string>
+    <string name="explorer_serialized_size">Seriyalaşdırılmış ölçü</string>
+    <string name="explorer_downloaded_size">Endirilmiş ölçü</string>
+    <string name="explorer_weight">Çəki</string>
+    <string name="explorer_unlock">Əlavə kilidaçma şərti</string>
+    <string name="explorer_inputs">Girişlər</string>
+    <string name="explorer_outputs">Çıxışlar</string>
+    <string name="explorer_miner">Mayner tranzaksiyası</string>
+    <string name="explorer_transfer">Köçürmə</string>
+    <string name="explorer_previous">Əvvəlki</string>
+    <string name="explorer_next">Növbəti</string>
+    <string name="explorer_page">Səhifə</string>
+    <string name="explorer_key_image">Açar təsviri</string>
+    <string name="explorer_ring_size">Halqa ölçüsü</string>
+    <string name="explorer_indices">Mütləq çıxış indeksləri</string>
+    <string name="explorer_output_key">Birdəfəlik çıxış açarı</string>
+    <string name="explorer_view_tag">Baxış teqi</string>
+    <string name="explorer_global_index">Qlobal çıxış indeksi</string>
+    <string name="explorer_extra">Əlavə tranzaksiya məlumatı (hex)</string>
+    <string name="explorer_truncated">Önizləmə qısaldılıb.</string>
+    <string name="explorer_hidden">Gizli (RingCT)</string>
+    <string name="explorer_conflict">Düyün ziddiyyətli xərcləmə bildirir. Bunu təsdiqlənmiş ödəniş saymayın.</string>
+    <string name="explorer_ring_help">Halqa üzvləri mümkün girişlərdir, hansı çıxışın xərcləndiyinin sübutu deyil.</string>
+    <string name="explorer_received">Düyünün müşahidə vaxtı</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Draft translations synchronized by nexawal-explorer/Scripts/sync-client-localizations.mjs. -->
+<resources>
+    <string name="explorer_advanced">Napredne pojedinosti</string>
+    <string name="explorer_version">Verzija</string>
+    <string name="explorer_serialized_size">Serijalizirana veličina</string>
+    <string name="explorer_downloaded_size">Preuzeta veličina</string>
+    <string name="explorer_weight">Težina</string>
+    <string name="explorer_unlock">Dodatni uvjet otključavanja</string>
+    <string name="explorer_inputs">Ulazi</string>
+    <string name="explorer_outputs">Izlazi</string>
+    <string name="explorer_miner">Transakcija rudara</string>
+    <string name="explorer_transfer">Prijenos</string>
+    <string name="explorer_previous">Prethodna</string>
+    <string name="explorer_next">Sljedeća</string>
+    <string name="explorer_page">Stranica</string>
+    <string name="explorer_key_image">Slika ključa</string>
+    <string name="explorer_ring_size">Veličina prstena</string>
+    <string name="explorer_indices">Apsolutni indeksi izlaza</string>
+    <string name="explorer_output_key">Jednokratni ključ izlaza</string>
+    <string name="explorer_view_tag">Oznaka pregleda</string>
+    <string name="explorer_global_index">Globalni indeks izlaza</string>
+    <string name="explorer_extra">Dodatni podaci transakcije (hex)</string>
+    <string name="explorer_truncated">Pregled je skraćen.</string>
+    <string name="explorer_hidden">Skriveno (RingCT)</string>
+    <string name="explorer_conflict">Čvor prijavljuje sukobljeno trošenje. Nemojte to smatrati potvrđenim plaćanjem.</string>
+    <string name="explorer_ring_help">Članovi prstena mogući su ulazi, a ne dokaz koji je izlaz potrošen.</string>
+    <string name="explorer_received">Zabilježio čvor</string>
+</resources>
