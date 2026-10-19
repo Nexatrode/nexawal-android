@@ -68,7 +68,7 @@
     <string name="starting_height_fetching">Начална височина: извличане от възела…</string>
     <string name="starting_height_unavailable">Начална височина (бърза): недостъпна (ще се използва 0)</string>
     <string name="restore_height_label">Височина за възстановяване:</string>
-    <string name="restore_height_tip">Съвет: 0 сканира цялата история на верижния блок. Това е най-безопасният вариант, ако не сте сигурни, но синхронизацията може да отнеме повече време.</string>
+    <string name="restore_height_tip">Съвет: 0 сканира цялата история на блокчейна. Това е най-безопасният вариант, ако не сте сигурни, но синхронизацията може да отнеме повече време.</string>
     <string name="restore_height_warning">Предупреждение: Ако зададете височина за възстановяване след първата си транзакция, по-старите средства няма да се появят, докато не сканирате отново от по-ранна височина.</string>
     <string name="toggle_mainnet">Основна мрежа</string>
     <string name="toggle_require_face_id">Изискване на Face ID / Touch ID</string>
@@ -85,7 +85,7 @@
     <string name="creating_wallet">Създаване на портфейл...</string>
     <string name="create_wallet">Създаване на портфейл</string>
     <string name="replace_wallet_title">Да се замени ли съществуващият портфейл?</string>
-    <string name="replace_wallet_message">Това ще замени съществуващия портфейл на това устройство.\n\nАко продължите, текущо запазената мнемонична фраза и състоянието на сканиране ще бъдат премахнати. Уверете се, че имате резервно копие на мнемоничната фраза, преди да продължите.</string>
+    <string name="replace_wallet_message">Това ще замени съществуващия портфейл на това устройство.\n\nАко продължите, запазената фраза за възстановяване и състоянието на сканиране ще бъдат премахнати. Уверете се, че имате резервно копие на фразата за възстановяване, преди да продължите.</string>
     <string name="section_network_node">Мрежа и възел</string>
     <string name="node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexawal.com</string>
     <string name="save_node">Запазване на възела</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Вашата фраза за възстановяване:</string>
     <string name="recovery_seed_instructions">Запишете тези думи по ред и ги съхранявайте безопасно офлайн. Ще имате нужда от тях, за да възстановите портфейла, ако този телефон бъде загубен. NexaWal също пази шифровано копие на устройството за отключване — третирайте резервното копие като пари в брой.</string>
     <string name="confirm_backup_prompt">Потвърдете резервното си копие — въведете поисканите думи:</string>
-    <string name="mnemonic_paste_label">Мнемонична фраза (поставяне):</string>
-    <string name="mnemonic_paste_placeholder">Поставете 25-думна мнемонична фраза…</string>
+    <string name="mnemonic_paste_label">Фраза за възстановяване (поставяне):</string>
+    <string name="mnemonic_paste_placeholder">Поставете фразата за възстановяване от 25 думи…</string>
     <string name="starting_height_fast_label">Начална височина (бърза):</string>
     <string name="fetching_from_node">Извличане от възела…</string>
     <string name="suggested_height_fetch_failed">Извличането на бърза височина за възстановяване от възела не бе възможно. Височината за възстановяване остава 0.</string>
@@ -116,7 +116,7 @@
     <string name="network_policy_clearnet">Само Clearnet</string>
     <string name="network_policy_i2p">Само I2P</string>
     <string name="network_policy_hybrid">И двете (сканиране в Clearnet, разпращане през I2P)</string>
-    <string name="network_policy_help">Само Clearnet използва възел в Clearnet. Само I2P използва възел и прокси на I2P. И двете сканира в Clearnet и разпраща през I2P.</string>
+    <string name="network_policy_help">Само Clearnet използва възел в Clearnet. Само I2P използва възел и прокси на I2P. И двата режима сканират в Clearnet и излъчват през I2P.</string>
     <string name="section_clearnet_node">Възел в Clearnet</string>
     <string name="clearnet_node_url_help">Въведете пълния URL адрес, включително http:// или https://.\nВъзел по подразбиране: https://rpc.nexawal.com</string>
     <string name="use_this_node">Използване на този възел</string>
@@ -156,9 +156,9 @@
     <string name="section_about">Относно</string>
     <string name="terms_of_use">Условия за ползване</string>
     <string name="terms_title">Условия за ползване</string>
-    <string name="terms_body_custody">nexawal от Nexatrode LLC е интерфейс със самостоятелно съхранение за управление на цифрови активи. Вие носите изключителна отговорност за частните си ключове и seed фразата от 25 думи.</string>
+    <string name="terms_body_custody">nexawal от Nexatrode LLC е интерфейс, чрез който сами управлявате цифровите си активи. Вие носите пълна отговорност за частните си ключове и фразата си за възстановяване от 25 думи.</string>
     <string name="terms_body_as_is">Приложението се предоставя „такова, каквото е“, без изрични или подразбиращи се гаранции. Използването е на ваш риск. Nexatrode LLC не носи отговорност за загубени активи, потребителски грешки, прекъсвания или проблеми с услуги или нодове на трети страни.</string>
-    <string name="terms_body_node">Препоръчва се да стартирате или да се свържете към собствен Monero нод. Публичните стойности по подразбиране са само за удобство.</string>
+    <string name="terms_body_node">Препоръчва се да стартирате собствен Monero възел или да се свържете към такъв. Публичните възли по подразбиране са само за удобство.</string>
     <string name="terms_review_full">Прегледайте пълните условия на сайта на Nexatrode LLC</string>
     <string name="terms_checkbox">Прочетох и се съгласявам с Условията за ползване</string>
     <string name="terms_agree">Съгласен/на съм</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Изпратен максимум</string>
     <string name="biometric_confirm_send">Потвърждение на изпращането</string>
     <string name="biometric_confirm_send_max">Потвърждение на изпращане на максимум</string>
-    <string name="biometric_send_max_subtitle">Удостоверете се, за да изпратите целия баланс на портфейла</string>
+    <string name="biometric_send_max_subtitle">Удостоверете се, за да изпратите цялото отключено салдо след приспадане на мрежовата такса.</string>
     <string name="label_to">До</string>
     <string name="label_total">Общо</string>
     <string name="address_copied">Адресът е копиран в клипборда</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Предоставяне на разрешение за камерата</string>
     <string name="error_wallet_unlocked_biometrics">Портфейлът трябва да бъде отключен, преди да промените биометричната защита.</string>
     <string name="biometric_disable_face_id">Удостоверете се, за да изключите защитата с Face ID</string>
-    <string name="error_mnemonic_empty">Мнемоничната фраза не може да е празна.</string>
-    <string name="error_rescan_no_mnemonic">Повторното сканиране не бе успешно: мнемоничната фраза не е достъпна.</string>
+    <string name="error_mnemonic_empty">Фразата за възстановяване не може да е празна.</string>
+    <string name="error_rescan_no_mnemonic">Повторното сканиране не бе успешно: фразата за възстановяване не е достъпна.</string>
     <string name="biometric_unlock_nexawal">Удостоверете се, за да отключите nexawal</string>
     <string name="biometric_unlock_wallet">Отключване на портфейла</string>
     <string name="biometric_unlock_subtitle">Удостоверете се, за да отворите запазения портфейл Monero</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Кодирането на метаданните на портфейла не бе възможно.</string>
     <string name="storage_decode_failed">Декодирането на метаданните на портфейла не бе възможно.</string>
     <string name="storage_no_wallet">На това устройство не е запазен портфейл.</string>
-    <string name="storage_missing_mnemonic">Запазената мнемонична фраза не бе намерена.</string>
+    <string name="storage_missing_mnemonic">Запазената фраза за възстановяване не бе намерена.</string>
     <string name="storage_auth_failed">Удостоверяването не беше успешно.</string>
     <string name="storage_auth_cancelled">Удостоверяването беше отменено.</string>
     <string name="storage_biometry_unavailable">Биометричното удостоверяване не е достъпно на това устройство.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Не бяха намерени запазени метаданни на портфейл</string>
     <string name="failed_read_metadata">Прочитането на запазените метаданни на портфейла не бе успешно</string>
     <string name="no_wallet_open">Няма отворен портфейл</string>
-    <string name="stored_metadata_no_mnemonic">Запазените метаданни не съдържат мнемонична фраза</string>
+    <string name="stored_metadata_no_mnemonic">Запазените метаданни не съдържат фраза за възстановяване.</string>
     <string name="biometric_not_available_short">Биометрично удостоверяване или удостоверяване с данни на устройството не е достъпно</string>
     <string name="authentication_failed">Удостоверяването не бе успешно</string>
     <string name="biometric_permission_missing">Разрешението за биометрия липсва или не е достъпно</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Покажи всички транзакции (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d чакащи транзакции</string>
     <string name="send_fee_increased_unapproved">Таксата на мрежата се увеличи. Нищо не е излъчено. Проверете таксата и потвърдете отново.</string>
-    <string name="fiat_help_nexatrode">По избор. Когато е включено, NexaWal заявява курс на XMR за избраната от вас валута от rates.nexawal.com чрез HTTPS. Заявката използва обикновения интернет (Clearnet), дори когато възелът на портфейла използва I2P. Nexatrode може да види IP адреса ви и избраната валута, но не получава суми, адреси, начална фраза или история на транзакциите от портфейла. Курсовете са само ориентировъчни — изпращате и съхранявате XMR.</string>
-    <string name="about_disclaimer_nexatrode">Лицензиран от MIT, неодитиран софтуер. Вие носите отговорност за вашата фраза за възстановяване и средства. Отдалеченият възел по подразбиране може да вижда вашите заявки за синхронизиране на IP и портфейл — стартирайте свой собствен възел за по-голяма поверителност. Незадължителни фиатни оценки, ако са активирани, свържете се с rates.nexawal.com за цени.</string>
+    <string name="fiat_help_nexatrode">По избор. Когато е включено, NexaWal заявява по HTTPS от rates.nexawal.com курса на XMR за избраната от вас валута. Заявката използва обикновения интернет (Clearnet), дори когато възелът на портфейла използва I2P. Nexatrode може да види IP адреса ви и избраната валута, но не получава салда, адреси, фразата ви за възстановяване или историята на транзакциите. Курсовете са само ориентировъчни — изпращате и съхранявате XMR.</string>
+    <string name="about_disclaimer_nexatrode">Софтуер с MIT лиценз, който не е преминал независим одит по сигурността. Вие носите отговорност за фразата си за възстановяване и средствата си. Отдалеченият възел по подразбиране може да вижда IP адреса ви и заявките за синхронизация на портфейла ви; за по-добра поверителност използвайте собствен възел. Ако включите незадължителните фиатни оценки, приложението получава курсовете от rates.nexawal.com.</string>
     <string name="history_export_csv">Експортирай съвпадащите трансакции (CSV)</string>
     <string name="history_export_failed">Експортирането на CSV не бе успешно. Опитайте отново.</string>
     <string name="send_previous_payment_recovered">Предишното плащане е възстановено. Новото плащане не е изпратено. Прегледайте го отново.</string>

@@ -85,7 +85,7 @@
     <string name="creating_wallet">Vytváření peněženky...</string>
     <string name="create_wallet">Vytvořit peněženku</string>
     <string name="replace_wallet_title">Nahradit existující peněženku?</string>
-    <string name="replace_wallet_message">Tímto se nahradí existující peněženka v tomto zařízení.\n\nBudete-li pokračovat, aktuálně uložená mnemonická fráze a stav skenování budou odstraněny. Než budete pokračovat, ujistěte se, že máte mnemonickou frázi zálohovanou.</string>
+    <string name="replace_wallet_message">Tímto se nahradí existující peněženka v tomto zařízení.\n\nPokud budete pokračovat, uložená fráze pro obnovení a stav skenování budou odstraněny. Než budete pokračovat, ověřte, že máte frázi pro obnovení zálohovanou.</string>
     <string name="section_network_node">Síť a uzel</string>
     <string name="node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.\nVýchozí uzel: https://rpc.nexawal.com</string>
     <string name="save_node">Uložit uzel</string>
@@ -101,7 +101,7 @@
     <string name="recovery_seed_label">Vaše fráze pro obnovení:</string>
     <string name="recovery_seed_instructions">Zapište si tato slova v pořadí a uložte je bezpečně offline. Budete je potřebovat k obnovení peněženky, pokud tento telefon ztratíte. NexaWal také uchovává šifrovanou kopii v zařízení pro odemknutí — zacházejte se zálohou jako s hotovostí.</string>
     <string name="confirm_backup_prompt">Potvrďte svou zálohu — zadejte požadovaná slova:</string>
-    <string name="mnemonic_paste_label">Mnemonická fráze (vložit):</string>
+    <string name="mnemonic_paste_label">Fráze pro obnovení (vložit):</string>
     <string name="mnemonic_paste_placeholder">Vložte 25slovnou mnemonickou frázi…</string>
     <string name="starting_height_fast_label">Počáteční výška (rychlá):</string>
     <string name="fetching_from_node">Získávání z uzlu…</string>
@@ -116,7 +116,7 @@
     <string name="network_policy_clearnet">Pouze Clearnet</string>
     <string name="network_policy_i2p">Pouze I2P</string>
     <string name="network_policy_hybrid">Obojí (skenovat clearnet, vysílat přes I2P)</string>
-    <string name="network_policy_help">Pouze Clearnet používá uzel Clearnet. Pouze I2P používá uzel a proxy I2P. Obojí skenuje na Clearnet a vysílá přes I2P.</string>
+    <string name="network_policy_help">Režim Pouze Clearnet používá uzel Clearnet. Režim Pouze I2P používá uzel I2P a proxy. Hybridní režim skenuje přes Clearnet a transakce odesílá přes I2P.</string>
     <string name="section_clearnet_node">Uzel Clearnet</string>
     <string name="clearnet_node_url_help">Zadejte celou URL adresu, včetně http:// nebo https://.\nVýchozí uzel: https://rpc.nexawal.com</string>
     <string name="use_this_node">Použít tento uzel</string>
@@ -156,7 +156,7 @@
     <string name="section_about">O aplikaci</string>
     <string name="terms_of_use">Podmínky použití</string>
     <string name="terms_title">Podmínky použití</string>
-    <string name="terms_body_custody">nexawal od Nexatrode LLC je self-custodial rozhraní pro správu digitálních aktiv. Výhradní odpovědnost za soukromé klíče a 25slovnou seed frázi neseš ty.</string>
+    <string name="terms_body_custody">nexawal od Nexatrode LLC je rozhraní, které vám umožňuje spravovat digitální aktiva ve vlastní úschově. Za své soukromé klíče a 25slovnou frázi pro obnovení nesete výhradní odpovědnost.</string>
     <string name="terms_body_as_is">Aplikace je poskytována tak, jak je, bez výslovných či předpokládaných záruk. Použití je na vlastní riziko. Nexatrode LLC neodpovídá za ztracená aktiva, chyby uživatele, výpadky ani problémy se službami či nody třetích stran.</string>
     <string name="terms_body_node">Doporučuje se provozovat nebo se připojit k vlastnímu Monero nodu. Veřejné výchozí hodnoty jsou pouze pro pohodlí.</string>
     <string name="terms_review_full">Zobrazit úplné podmínky na webu Nexatrode LLC</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Odesláno maximum</string>
     <string name="biometric_confirm_send">Potvrdit odeslání</string>
     <string name="biometric_confirm_send_max">Potvrdit odeslání maxima</string>
-    <string name="biometric_send_max_subtitle">Ověřte se pro odeslání celého zůstatku peněženky</string>
+    <string name="biometric_send_max_subtitle">Ověřte se pro odeslání celého odemčeného zůstatku po odečtení poplatku</string>
     <string name="label_to">Komu</string>
     <string name="label_total">Celkem</string>
     <string name="address_copied">Adresa zkopírována do schránky</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Udělit oprávnění ke kameře</string>
     <string name="error_wallet_unlocked_biometrics">Peněženka musí být odemčena, než změníte biometrickou ochranu.</string>
     <string name="biometric_disable_face_id">Ověřte se pro vypnutí ochrany Face ID</string>
-    <string name="error_mnemonic_empty">Mnemonická fráze nemůže být prázdná.</string>
-    <string name="error_rescan_no_mnemonic">Přeskenování se nezdařilo: mnemonická fráze není k dispozici.</string>
+    <string name="error_mnemonic_empty">Fráze pro obnovení nesmí být prázdná.</string>
+    <string name="error_rescan_no_mnemonic">Opětovné skenování se nezdařilo: fráze pro obnovení není k dispozici.</string>
     <string name="biometric_unlock_nexawal">Ověřte se pro odemknutí nexawal</string>
     <string name="biometric_unlock_wallet">Odemknout peněženku</string>
     <string name="biometric_unlock_subtitle">Ověřte se pro otevření uložené peněženky Monero</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Nepodařilo se zakódovat metadata peněženky.</string>
     <string name="storage_decode_failed">Nepodařilo se dekódovat metadata peněženky.</string>
     <string name="storage_no_wallet">Na tomto zařízení nebyla uložena žádná peněženka.</string>
-    <string name="storage_missing_mnemonic">Uložená mnemonická fráze nebyla nalezena.</string>
+    <string name="storage_missing_mnemonic">Uloženou frázi pro obnovení se nepodařilo najít.</string>
     <string name="storage_auth_failed">Ověření nebylo úspěšné.</string>
     <string name="storage_auth_cancelled">Ověření bylo zrušeno.</string>
     <string name="storage_biometry_unavailable">Biometrické ověření není na tomto zařízení k dispozici.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Nebyla nalezena žádná uložená metadata peněženky</string>
     <string name="failed_read_metadata">Nepodařilo se přečíst uložená metadata peněženky</string>
     <string name="no_wallet_open">Žádná peněženka není otevřená</string>
-    <string name="stored_metadata_no_mnemonic">Uložená metadata neobsahují mnemonickou frázi</string>
+    <string name="stored_metadata_no_mnemonic">Uložená metadata neobsahují frázi pro obnovení</string>
     <string name="biometric_not_available_short">Biometrické ověření nebo ověření přístupovými údaji zařízení není k dispozici</string>
     <string name="authentication_failed">Ověření se nezdařilo</string>
     <string name="biometric_permission_missing">Chybí oprávnění k biometrii nebo není k dispozici</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d čekajících transakcí</string>
     <string name="send_fee_increased_unapproved">Síťový poplatek se zvýšil. Nic nebylo odesláno. Zkontrolujte poplatek a znovu potvrďte.</string>
     <string name="fiat_help_nexatrode">Volitelné. Je-li funkce zapnutá, NexaWal si přes HTTPS vyžádá kurz XMR pro zvolenou měnu ze serveru rates.nexawal.com. Požadavek jde přes veřejný internet (Clearnet), i když peněženka používá uzel I2P. Nexatrode může vidět vaši IP adresu a zvolenou měnu, ale nedostává zůstatky, adresy, obnovovací frázi ani historii transakcí. Kurzy jsou pouze orientační — držíte a posíláte XMR.</string>
-    <string name="about_disclaimer_nexatrode">Neauditovaný software s licencí MIT. Jste odpovědní za svou frázi pro obnovení a finanční prostředky. Výchozí vzdálený uzel vidí vaši IP adresu a dotazy na synchronizaci peněženky – spusťte svůj vlastní uzel pro větší soukromí. Volitelné odhady fiat, pokud jsou povoleny, kontaktujte rates.nexawal.com pro sazby.</string>
+    <string name="about_disclaimer_nexatrode">Software s licencí MIT, který neprošel nezávislým bezpečnostním auditem. Za svou frázi pro obnovení a prostředky nesete odpovědnost vy. Výchozí vzdálený uzel může vidět vaši IP adresu a požadavky peněženky při synchronizaci; pro větší soukromí spusťte vlastní uzel. Pokud povolíte volitelné odhady fiat měn, aplikace načítá kurzy z rates.nexawal.com.</string>
     <string name="history_export_csv">Exportovat odpovídající transakce (CSV)</string>
     <string name="history_export_failed">Export CSV se nezdařil. Zkuste to znovu.</string>
     <string name="send_previous_payment_recovered">Předchozí platba byla obnovena. Nová platba nebyla odeslána. Znovu zobrazte náhled.</string>

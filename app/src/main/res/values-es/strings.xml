@@ -85,13 +85,13 @@
     <string name="creating_wallet">Creando cartera...</string>
     <string name="create_wallet">Crear cartera</string>
     <string name="replace_wallet_title">¿Reemplazar la cartera existente?</string>
-    <string name="replace_wallet_message">Esto reemplazará la cartera existente en este dispositivo.\n\nSi continúas, se eliminarán la frase mnemónica y el estado de escaneo guardados. Asegúrate de tener tu frase respaldada antes de continuar.</string>
+    <string name="replace_wallet_message">Esto reemplazará la cartera existente en este dispositivo.\n\nSi continúas, se eliminarán la frase de recuperación y el estado de escaneo guardados. Asegúrate de haber respaldado tu frase de recuperación antes de continuar.</string>
     <string name="section_network_node">Red y nodo</string>
     <string name="node_url_help">Escribe la URL completa, incluyendo http:// o https://.\nNodo predeterminado: https://rpc.nexawal.com</string>
     <string name="save_node">Guardar nodo</string>
     <string name="section_info">Información</string>
     <string name="walletcore_version_label">Versión de WalletCore:</string>
-<string name="generate_new_seed">Generar nueva frase</string>
+<string name="generate_new_seed">Generar nueva frase de recuperación</string>
     <string name="wrote_seed_down">Anoté mi frase de recuperación</string>
     <string name="seed_challenge_intro">Confirma que la anotaste: escribe las palabras pedidas abajo.</string>
     <string name="seed_challenge_mismatch">Las palabras aún no coinciden.</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Acerca de</string>
     <string name="terms_of_use">Términos de uso</string>
     <string name="terms_title">Términos de uso</string>
-    <string name="terms_body_custody">nexawal de Nexatrode LLC es una interfaz de autocustodia para gestionar activos digitales. Usted tiene la responsabilidad exclusiva de sus claves privadas y de su frase semilla de 25 palabras.</string>
+    <string name="terms_body_custody">nexawal de Nexatrode LLC es una interfaz de autocustodia para gestionar activos digitales. Usted tiene la responsabilidad exclusiva de sus claves privadas y de su frase de recuperación de 25 palabras.</string>
     <string name="terms_body_as_is">La aplicación se proporciona tal cual, sin garantías expresas o implícitas. El uso es bajo su propio riesgo. Nexatrode LLC no es responsable de activos perdidos, errores del usuario, interrupciones o problemas con servicios o nodos de terceros.</string>
     <string name="terms_body_node">Se recomienda ejecutar o conectarse a su propio nodo de Monero. Los valores públicos predeterminados son solo por comodidad.</string>
     <string name="terms_review_full">Revisar los términos completos en el sitio web de Nexatrode LLC</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Ver todas las transacciones (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d transacciones pendientes</string>
     <string name="send_fee_increased_unapproved">La comisión de red aumentó. No se envió nada. Revisa la comisión y vuelve a confirmar.</string>
-    <string name="fiat_help_nexatrode">Opcional. Al activarlo, NexaWal solicita por HTTPS a rates.nexawal.com la cotización de XMR para la moneda elegida. La solicitud usa Internet público (Clearnet), aunque el nodo de la cartera use I2P. Nexatrode puede ver tu IP y la moneda elegida, pero no recibe saldos, direcciones, frase semilla ni historial de transacciones. Las cotizaciones son solo estimaciones: lo que tienes y envías es XMR.</string>
-    <string name="about_disclaimer_nexatrode">software no auditado con licencia del MIT. Usted es responsable de su frase de recuperación y de sus fondos. El nodo remoto predeterminado puede ver sus consultas de sincronización de IP y billetera; ejecute su propio nodo para mayor privacidad. Estimaciones fiduciarias opcionales, si están habilitadas, comuníquese con rates.nexawal.com para conocer las tarifas.</string>
+    <string name="fiat_help_nexatrode">Opcional. Al activarlo, NexaWal solicita por HTTPS a rates.nexawal.com la cotización de XMR para la moneda elegida. La solicitud usa Internet público (Clearnet), aunque el nodo de la cartera use I2P. Nexatrode puede ver tu IP y la moneda elegida, pero no recibe saldos, direcciones, frases de recuperación ni historial de transacciones. Las cotizaciones son solo estimaciones: lo que tienes y envías es XMR.</string>
+    <string name="about_disclaimer_nexatrode">Software con licencia MIT que aún no ha sido auditado. Usted es responsable de su frase de recuperación y de sus fondos. El nodo remoto predeterminado puede ver su dirección IP y las consultas de sincronización de su cartera. Para mayor privacidad, ejecute su propio nodo. Si activa las estimaciones opcionales en moneda fiduciaria, la aplicación consulta las cotizaciones en rates.nexawal.com.</string>
     <string name="history_export_csv">Exportar las transacciones coincidentes (CSV)</string>
     <string name="history_export_failed">No se pudo exportar el CSV. Inténtalo de nuevo.</string>
     <string name="send_previous_payment_recovered">Se recuperó el pago anterior. El nuevo pago no se envió. Vuelve a previsualizarlo.</string>

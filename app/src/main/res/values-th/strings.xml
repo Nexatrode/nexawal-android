@@ -85,7 +85,7 @@
     <string name="creating_wallet">กำลังสร้างกระเป๋าเงิน...</string>
     <string name="create_wallet">สร้างกระเป๋าเงิน</string>
     <string name="replace_wallet_title">แทนที่กระเป๋าเงินที่มีอยู่หรือไม่?</string>
-    <string name="replace_wallet_message">การทำเช่นนี้จะแทนที่กระเป๋าเงินที่มีอยู่บนอุปกรณ์นี้\n\nหากคุณดำเนินการต่อ วลีช่วยจำและสถานะการสแกนที่จัดเก็บไว้ในปัจจุบันจะถูกลบออก โปรดตรวจสอบให้แน่ใจว่าคุณได้สำรองวลีช่วยจำไว้แล้วก่อนดำเนินการต่อ</string>
+    <string name="replace_wallet_message">การดำเนินการนี้จะแทนที่กระเป๋าเงินที่มีอยู่บนอุปกรณ์นี้\n\nหากดำเนินการต่อ วลีกู้คืนที่บันทึกไว้และสถานะการสแกนจะถูกลบ โปรดสำรองวลีกู้คืนไว้ก่อนดำเนินการต่อ</string>
     <string name="section_network_node">เครือข่ายและโหนด</string>
     <string name="node_url_help">กรอก URL แบบเต็ม รวมถึง http:// หรือ https://\nโหนดเริ่มต้น: https://rpc.nexawal.com</string>
     <string name="save_node">บันทึกโหนด</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">วลีกู้คืนของคุณ:</string>
     <string name="recovery_seed_instructions">จดคำเหล่านี้ตามลำดับและเก็บไว้อย่างปลอดภัยแบบออฟไลน์ คุณจะต้องใช้คำเหล่านี้เพื่อกู้คืนกระเป๋าเงินหากโทรศัพท์เครื่องนี้สูญหาย NexaWal ยังเก็บสำเนาที่เข้ารหัสไว้บนอุปกรณ์สำหรับการปลดล็อกด้วย — ปฏิบัติต่อข้อมูลสำรองเหมือนเงินสด</string>
     <string name="confirm_backup_prompt">ยืนยันข้อมูลสำรองของคุณ — กรอกคำที่ต้องการ:</string>
-    <string name="mnemonic_paste_label">วลีช่วยจำ (วาง):</string>
-    <string name="mnemonic_paste_placeholder">วางวลีช่วยจำ 25 คำ…</string>
+    <string name="mnemonic_paste_label">วลีกู้คืน (วาง):</string>
+    <string name="mnemonic_paste_placeholder">วางวลีกู้คืน 25 คำ…</string>
     <string name="starting_height_fast_label">ความสูงเริ่มต้น (แบบเร็ว):</string>
     <string name="fetching_from_node">กำลังดึงข้อมูลจากโหนด…</string>
     <string name="suggested_height_fetch_failed">ไม่สามารถดึงความสูงการกู้คืนแบบเร็วจากโหนดได้ จะปล่อยความสูงการกู้คืนไว้ที่ 0</string>
@@ -156,7 +156,7 @@
     <string name="section_about">เกี่ยวกับ</string>
     <string name="terms_of_use">ข้อกำหนดการใช้งาน</string>
     <string name="terms_title">ข้อกำหนดการใช้งาน</string>
-    <string name="terms_body_custody">nexawal โดย Nexatrode LLC เป็นอินเทอร์เฟซแบบดูแลเองสำหรับจัดการสินทรัพย์ดิจิทัล คุณรับผิดชอบแต่เพียงผู้เดียวต่อคีย์ส่วนตัวและวลีซีด 25 คำ</string>
+    <string name="terms_body_custody">NexaWal โดย Nexatrode LLC เป็นกระเป๋าเงินสำหรับจัดการสินทรัพย์ดิจิทัลด้วยตนเอง คุณรับผิดชอบแต่เพียงผู้เดียวต่อคีย์ส่วนตัวและวลีกู้คืน 25 คำของคุณ</string>
     <string name="terms_body_as_is">แอปให้บริการตามสภาพ โดยไม่มีการรับประกันใด ๆ ทั้งโดยชัดแจ้งหรือโดยนัย การใช้งานเป็นความเสี่ยงของคุณเอง Nexatrode LLC ไม่รับผิดชอบต่อสินทรัพย์ที่สูญหาย ข้อผิดพลาดของผู้ใช้ ช่วงเวลาหยุดทำงาน หรือปัญหาของบริการ/โหนดบุคคลที่สาม</string>
     <string name="terms_body_node">แนะนำให้รันหรือเชื่อมต่อโหนด Monero ของคุณเอง ค่าเริ่มต้นสาธารณะมีไว้เพื่อความสะดวกเท่านั้น</string>
     <string name="terms_review_full">ดูข้อกำหนดฉบับเต็มบนเว็บไซต์ Nexatrode LLC</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">ส่งยอดสูงสุดแล้ว</string>
     <string name="biometric_confirm_send">ยืนยันการส่ง</string>
     <string name="biometric_confirm_send_max">ยืนยันการส่งยอดสูงสุด</string>
-    <string name="biometric_send_max_subtitle">ยืนยันตัวตนเพื่อโอนยอดคงเหลือทั้งหมดของกระเป๋าเงิน</string>
+    <string name="biometric_send_max_subtitle">ยืนยันตัวตนเพื่อส่งยอดคงเหลือที่ปลดล็อกทั้งหมดหลังหักค่าธรรมเนียมเครือข่าย</string>
     <string name="label_to">ถึง</string>
     <string name="label_total">รวม</string>
     <string name="address_copied">คัดลอกที่อยู่ไปยังคลิปบอร์ดแล้ว</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">อนุญาตการใช้กล้อง</string>
     <string name="error_wallet_unlocked_biometrics">ต้องปลดล็อกกระเป๋าเงินก่อนเปลี่ยนการป้องกันไบโอเมตริก</string>
     <string name="biometric_disable_face_id">ยืนยันตัวตนเพื่อปิดการป้องกัน Face ID</string>
-    <string name="error_mnemonic_empty">วลีช่วยจำต้องไม่เป็นค่าว่าง</string>
-    <string name="error_rescan_no_mnemonic">การสแกนซ้ำล้มเหลว: ไม่มีวลีช่วยจำ</string>
+    <string name="error_mnemonic_empty">วลีกู้คืนต้องไม่เว้นว่าง</string>
+    <string name="error_rescan_no_mnemonic">การสแกนซ้ำล้มเหลว: ไม่มีวลีกู้คืน</string>
     <string name="biometric_unlock_nexawal">ยืนยันตัวตนเพื่อปลดล็อก nexawal</string>
     <string name="biometric_unlock_wallet">ปลดล็อกกระเป๋าเงิน</string>
     <string name="biometric_unlock_subtitle">ยืนยันตัวตนเพื่อเปิดกระเป๋าเงิน Monero ที่จัดเก็บไว้</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">ไม่สามารถเข้ารหัสข้อมูลเมตาของกระเป๋าเงินได้</string>
     <string name="storage_decode_failed">ไม่สามารถถอดรหัสข้อมูลเมตาของกระเป๋าเงินได้</string>
     <string name="storage_no_wallet">ยังไม่มีกระเป๋าเงินถูกจัดเก็บไว้บนอุปกรณ์นี้</string>
-    <string name="storage_missing_mnemonic">ไม่พบวลีช่วยจำที่จัดเก็บไว้</string>
+    <string name="storage_missing_mnemonic">ไม่พบวลีกู้คืนที่บันทึกไว้</string>
     <string name="storage_auth_failed">การยืนยันตัวตนไม่สำเร็จ</string>
     <string name="storage_auth_cancelled">การยืนยันตัวตนถูกยกเลิก</string>
     <string name="storage_biometry_unavailable">การยืนยันตัวตนด้วยไบโอเมตริกไม่พร้อมใช้งานบนอุปกรณ์นี้</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">ไม่พบข้อมูลเมตาของกระเป๋าเงินที่จัดเก็บไว้</string>
     <string name="failed_read_metadata">ไม่สามารถอ่านข้อมูลเมตาของกระเป๋าเงินที่จัดเก็บไว้</string>
     <string name="no_wallet_open">ไม่มีกระเป๋าเงินที่เปิดอยู่</string>
-    <string name="stored_metadata_no_mnemonic">ข้อมูลเมตาที่จัดเก็บไว้ไม่มีวลีช่วยจำ</string>
+    <string name="stored_metadata_no_mnemonic">ข้อมูลเมตาที่บันทึกไว้ไม่มีวลีกู้คืน</string>
     <string name="biometric_not_available_short">การยืนยันตัวตนด้วยไบโอเมตริกหรือข้อมูลรับรองอุปกรณ์ไม่พร้อมใช้งาน</string>
     <string name="authentication_failed">การยืนยันตัวตนล้มเหลว</string>
     <string name="biometric_permission_missing">ไม่มีสิทธิ์ไบโอเมตริกหรือไม่พร้อมใช้งาน</string>
@@ -407,8 +407,8 @@
     <string name="history_view_all_fmt">ดูธุรกรรมทั้งหมด (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d ธุรกรรมรอดำเนินการ</string>
     <string name="send_fee_increased_unapproved">ค่าธรรมเนียมเครือข่ายเพิ่มขึ้น ไม่มีการเผยแพร่ธุรกรรม ตรวจสอบค่าธรรมเนียมและยืนยันอีกครั้ง</string>
-    <string name="fiat_help_nexatrode">ไม่บังคับ เมื่อเปิดใช้ NexaWal จะขออัตรา XMR สำหรับสกุลเงินที่คุณเลือกจาก rates.nexawal.com ผ่าน HTTPS คำขอนี้ใช้อินเทอร์เน็ตสาธารณะ (Clearnet) แม้โหนดกระเป๋าเงินจะใช้ I2P ก็ตาม Nexatrode อาจเห็นที่อยู่ IP และสกุลเงินที่เลือก แต่จะไม่ได้รับยอดเงิน ที่อยู่ วลีเมล็ดพันธุ์ หรือประวัติธุรกรรมของกระเป๋าเงิน อัตราเป็นเพียงค่าประมาณ — สินทรัพย์ที่คุณส่งและถือคือ XMR</string>
-    <string name="about_disclaimer_nexatrode">ซอฟต์แวร์ที่ได้รับอนุญาตจาก MIT และยังไม่ได้รับการตรวจสอบ คุณต้องรับผิดชอบต่อวลีกู้คืนและเงินทุนของคุณ โหนดระยะไกลเริ่มต้นสามารถดู IP และคำขอซิงค์กระเป๋าเงินของคุณ — เรียกใช้โหนดของคุณเองเพื่อความเป็นส่วนตัวที่แข็งแกร่งยิ่งขึ้น การประมาณการคำสั่งเพิ่มเติม หากเปิดใช้งาน โปรดติดต่อ rates.nexawal.com เพื่อสอบถามอัตรา</string>
+    <string name="fiat_help_nexatrode">ไม่บังคับ เมื่อเปิดใช้ NexaWal จะขออัตรา XMR สำหรับสกุลเงินที่เลือกจาก rates.nexawal.com ผ่าน HTTPS คำขอนี้ใช้อินเทอร์เน็ตสาธารณะ (Clearnet) แม้โหนดกระเป๋าเงินจะใช้ I2P Nexatrode อาจเห็นที่อยู่ IP และสกุลเงินที่เลือก แต่จะไม่ได้รับยอดเงิน ที่อยู่ วลีกู้คืน หรือประวัติธุรกรรมของกระเป๋าเงิน อัตราเป็นเพียงค่าประมาณ — คุณส่งและถือ XMR</string>
+    <string name="about_disclaimer_nexatrode">ซอฟต์แวร์นี้ใช้สัญญาอนุญาต MIT และยังไม่ผ่านการตรวจสอบความปลอดภัยโดยอิสระ คุณรับผิดชอบต่อวลีกู้คืนและสินทรัพย์ของคุณ โหนดระยะไกลเริ่มต้นอาจเห็นที่อยู่ IP และคำขอซิงค์กระเป๋าเงินของคุณ เพื่อความเป็นส่วนตัวที่มากขึ้น ให้ใช้โหนดของคุณเอง อัตราเงินเฟียตเป็นตัวเลือกและปิดไว้ตามค่าเริ่มต้น หากเปิดใช้ แอปจะดึงอัตราจาก rates.nexawal.com</string>
     <string name="history_export_csv">ส่งออกธุรกรรมที่ตรงกัน (CSV)</string>
     <string name="history_export_failed">ส่งออก CSV ไม่สำเร็จ ลองอีกครั้ง</string>
     <string name="send_previous_payment_recovered">กู้คืนการชำระเงินก่อนหน้าแล้ว ยังไม่ได้ส่งการชำระเงินใหม่ โปรดดูตัวอย่างอีกครั้ง</string>

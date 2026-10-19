@@ -85,7 +85,7 @@
     <string name="creating_wallet">Opretter tegnebog...</string>
     <string name="create_wallet">Opret tegnebog</string>
     <string name="replace_wallet_title">Erstat eksisterende tegnebog?</string>
-    <string name="replace_wallet_message">Dette vil erstatte den eksisterende tegnebog på denne enhed.\n\nHvis du fortsætter, fjernes den nuværende gemte mnemonic-sætning og scanningstilstand. Sørg for, at du har sikkerhedskopieret din mnemonic-sætning, før du fortsætter.</string>
+    <string name="replace_wallet_message">Dette erstatter den eksisterende tegnebog på denne enhed.\n\nHvis du fortsætter, fjernes den gemte gendannelsesfrase og scanningstilstanden. Sørg for at have en sikkerhedskopi af gendannelsesfrasen, før du fortsætter.</string>
     <string name="section_network_node">Netværk &amp; node</string>
     <string name="node_url_help">Indtast den fulde URL, inklusive http:// eller https://.\nStandard node: https://rpc.nexawal.com</string>
     <string name="save_node">Gem node</string>
@@ -101,7 +101,7 @@
     <string name="recovery_seed_label">Din gendannelsesfrase:</string>
     <string name="recovery_seed_instructions">Skriv disse ord ned i rækkefølge, og opbevar dem sikkert offline. Du får brug for dem til at gendanne tegnebogen, hvis denne telefon bliver væk. NexaWal gemmer også en krypteret kopi på enheden til oplåsning — behandl sikkerhedskopien som kontanter.</string>
     <string name="confirm_backup_prompt">Bekræft din sikkerhedskopi — indtast de anmodede ord:</string>
-    <string name="mnemonic_paste_label">Mnemonic (indsæt):</string>
+    <string name="mnemonic_paste_label">Gendannelsesfrase (indsæt):</string>
     <string name="mnemonic_paste_placeholder">Indsæt 25-ords mnemonic…</string>
     <string name="starting_height_fast_label">Starthøjde (hurtig):</string>
     <string name="fetching_from_node">Henter fra node…</string>
@@ -116,7 +116,7 @@
     <string name="network_policy_clearnet">Kun clearnet</string>
     <string name="network_policy_i2p">Kun I2P</string>
     <string name="network_policy_hybrid">Begge (scan clearnet, udsend via I2P)</string>
-    <string name="network_policy_help">Kun clearnet bruger en clearnet-node. Kun I2P bruger en I2P-node og proxy. Begge scanner på clearnet og udsender via I2P.</string>
+    <string name="network_policy_help">Tilstanden Kun clearnet bruger en clearnet-node. Tilstanden Kun I2P bruger en I2P-node og proxy. Hybridtilstanden scanner via clearnet og udsender transaktioner via I2P.</string>
     <string name="section_clearnet_node">Clearnet-node</string>
     <string name="clearnet_node_url_help">Indtast den fulde URL, inklusive http:// eller https://.\nStandard node: https://rpc.nexawal.com</string>
     <string name="use_this_node">Brug denne node</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Om</string>
     <string name="terms_of_use">Brugsvilkår</string>
     <string name="terms_title">Brugsvilkår</string>
-    <string name="terms_body_custody">nexawal fra Nexatrode LLC er en self-custodial grænseflade til at administrere digitale aktiver. Du har det fulde ansvar for dine private nøgler og 25-ords seed-sætning.</string>
+    <string name="terms_body_custody">nexawal fra Nexatrode LLC er en grænseflade, hvor du selv opbevarer og administrerer dine digitale aktiver. Du har det fulde ansvar for dine private nøgler og din gendannelsesfrase på 25 ord.</string>
     <string name="terms_body_as_is">Appen leveres som den er, uden udtrykkelige eller underforståede garantier. Brug sker på egen risiko. Nexatrode LLC er ikke ansvarlig for mistede aktiver, brugerfejl, nedetid eller problemer med tredjepartstjenester eller noder.</string>
     <string name="terms_body_node">Det anbefales at køre eller oprette forbindelse til din egen Monero-node. Offentlige standardværdier er kun for bekvemmelighed.</string>
     <string name="terms_review_full">Gennemgå de fulde vilkår på Nexatrode LLC’s websted</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Maks. sendt</string>
     <string name="biometric_confirm_send">Bekræft afsendelse</string>
     <string name="biometric_confirm_send_max">Bekræft send maks</string>
-    <string name="biometric_send_max_subtitle">Godkend for at tømme tegnebogens saldo</string>
+    <string name="biometric_send_max_subtitle">Godkend for at sende hele den tilgængelige, oplåste saldo efter gebyret</string>
     <string name="label_to">Til</string>
     <string name="label_total">Total</string>
     <string name="address_copied">Adresse kopieret til udklipsholder</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Giv kameratilladelse</string>
     <string name="error_wallet_unlocked_biometrics">Tegnebogen skal låses op, før biometrisk beskyttelse kan ændres.</string>
     <string name="biometric_disable_face_id">Godkend for at slå Face ID-beskyttelse fra</string>
-    <string name="error_mnemonic_empty">Mnemonic-sætningen kan ikke være tom.</string>
-    <string name="error_rescan_no_mnemonic">Genscanning mislykkedes: mnemonic-sætningen er ikke tilgængelig.</string>
+    <string name="error_mnemonic_empty">Gendannelsesfrasen må ikke være tom.</string>
+    <string name="error_rescan_no_mnemonic">Genscanning mislykkedes: gendannelsesfrasen er ikke tilgængelig.</string>
     <string name="biometric_unlock_nexawal">Godkend for at låse nexawal op</string>
     <string name="biometric_unlock_wallet">Lås tegnebog op</string>
     <string name="biometric_unlock_subtitle">Godkend for at åbne den gemte Monero-tegnebog</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Kan ikke kode tegnebogens metadata.</string>
     <string name="storage_decode_failed">Kan ikke afkode tegnebogens metadata.</string>
     <string name="storage_no_wallet">Der er ikke gemt nogen tegnebog på denne enhed.</string>
-    <string name="storage_missing_mnemonic">Gemt mnemonic-sætning kunne ikke findes.</string>
+    <string name="storage_missing_mnemonic">Den gemte gendannelsesfrase blev ikke fundet.</string>
     <string name="storage_auth_failed">Godkendelsen mislykkedes.</string>
     <string name="storage_auth_cancelled">Godkendelsen blev annulleret.</string>
     <string name="storage_biometry_unavailable">Biometrisk godkendelse er ikke tilgængelig på denne enhed.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Ingen gemte tegnebogs-metadata fundet</string>
     <string name="failed_read_metadata">Kunne ikke læse gemte tegnebogs-metadata</string>
     <string name="no_wallet_open">Ingen tegnebog åben</string>
-    <string name="stored_metadata_no_mnemonic">Gemte metadata indeholder ikke en mnemonic-sætning</string>
+    <string name="stored_metadata_no_mnemonic">De gemte metadata indeholder ingen gendannelsesfrase</string>
     <string name="biometric_not_available_short">Biometrisk eller enhedsgodkendelse med adgangskode er ikke tilgængelig</string>
     <string name="authentication_failed">Godkendelse mislykkedes</string>
     <string name="biometric_permission_missing">Biometrisk tilladelse mangler eller er ikke tilgængelig</string>
@@ -409,8 +409,8 @@
     <string name="history_view_all_fmt">Se alle transaktioner (%1$d)</string>
     <string name="history_pending_count_fmt">%1$d afventende transaktioner</string>
     <string name="send_fee_increased_unapproved">Netværksgebyret steg. Intet blev udsendt. Gennemgå gebyret, og bekræft igen.</string>
-    <string name="fiat_help_nexatrode">Valgfrit. Når det er slået til, henter NexaWal en XMR-kurs for din valgte valuta fra rates.nexawal.com via HTTPS. Anmodningen bruger det almindelige internet (clearnet), også når din wallet-node bruger I2P. Nexatrode kan se din IP-adresse og valgte valuta, men modtager ikke walletbeløb, adresser, seed eller transaktionshistorik. Kurserne er kun vejledende — det er XMR, du sender og opbevarer.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licenseret, ikke-revideret software. Du er ansvarlig for din genopretningssætning og midler. Standard-fjernknuden kan se dine IP- og tegnebogssynkroniseringsforespørgsler - kør din egen node for stærkere privatliv. Valgfri fiat-estimat, hvis aktiveret, kontakt rates.nexawal.com for priser.</string>
+    <string name="fiat_help_nexatrode">Valgfrit. Når det er slået til, henter NexaWal XMR-kursen for den valgte valuta fra rates.nexawal.com via HTTPS. Anmodningen bruger det almindelige internet (clearnet), også når din wallet-node bruger I2P. Nexatrode kan se din IP-adresse og valgte valuta, men modtager ikke walletbeløb, adresser, gendannelsesfrase eller transaktionshistorik. Kurserne er kun vejledende — du sender og opbevarer XMR.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licenseret software, der ikke er blevet uafhængigt sikkerhedsrevideret. Du er ansvarlig for din gendannelsesfrase og dine midler. Standard-fjernknuden kan se din IP-adresse og tegnebogens synkroniseringsforespørgsler; kør din egen node for bedre privatliv. Hvis du slår de valgfrie fiat-estimater til, henter appen kurser fra rates.nexawal.com.</string>
     <string name="history_export_csv">Eksportér matchende transaktioner (CSV)</string>
     <string name="history_export_failed">CSV-eksport mislykkedes. Prøv igen.</string>
     <string name="send_previous_payment_recovered">Den tidligere betaling er gendannet. Den nye betaling blev ikke sendt. Se forhåndsvisningen igen.</string>

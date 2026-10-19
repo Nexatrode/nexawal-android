@@ -115,8 +115,8 @@
     <string name="section_how_to_connect">نحوه اتصال</string>
     <string name="network_policy_clearnet">فقط Clearnet</string>
     <string name="network_policy_i2p">فقط I2P</string>
-    <string name="network_policy_hybrid">هر دو (اسکن در Clearnet، ارسال از طریق I2P)</string>
-    <string name="network_policy_help">فقط Clearnet از یک گره Clearnet استفاده می‌کند. فقط I2P از یک گره و پراکسی I2P استفاده می‌کند. هر دو، اسکن را روی Clearnet انجام می‌دهد و از طریق I2P ارسال می‌کند.</string>
+    <string name="network_policy_hybrid">ترکیبی (اسکن از اینترنت عمومی، ارسال از طریق I2P)</string>
+    <string name="network_policy_help">حالت فقط Clearnet از گره Clearnet استفاده می‌کند. حالت فقط I2P از گره و پراکسی I2P استفاده می‌کند. حالت ترکیبی از طریق Clearnet اسکن می‌کند و تراکنش‌ها را از طریق I2P می‌فرستد.</string>
     <string name="section_clearnet_node">گره Clearnet</string>
     <string name="clearnet_node_url_help">نشانی کامل را وارد کنید، شامل http:// یا https://.\nگره پیش فرض: https://rpc.nexawal.com</string>
     <string name="use_this_node">استفاده از این گره</string>
@@ -156,7 +156,7 @@
     <string name="section_about">درباره</string>
     <string name="terms_of_use">شرایط استفاده</string>
     <string name="terms_title">شرایط استفاده</string>
-    <string name="terms_body_custody">nexawal از Nexatrode LLC یک رابط خودنگهدار برای مدیریت دارایی‌های دیجیتال است. مسئولیت انحصاری کلیدهای خصوصی و عبارت بازیابی ۲۵ کلمه‌ای بر عهده شماست.</string>
+    <string name="terms_body_custody">nexawal از Nexatrode LLC رابطی برای مدیریت دارایی‌های دیجیتال است که در آن کلیدهای خصوصی در اختیار خود شما هستند. مسئولیت کامل کلیدهای خصوصی و عبارت بازیابی ۲۵ کلمه‌ای بر عهده شماست.</string>
     <string name="terms_body_as_is">برنامه به‌صورت «همان‌گونه که هست» و بدون هرگونه ضمانت صریح یا ضمنی ارائه می‌شود. استفاده بر عهده خود شماست. Nexatrode LLC مسئول دارایی‌های ازدست‌رفته، خطای کاربر، قطعی یا مشکلات خدمات یا نودهای شخص ثالث نیست.</string>
     <string name="terms_body_node">اجرا یا اتصال به نود Monero خودتان توصیه می‌شود. مقادیر پیش‌فرض عمومی فقط برای راحتی هستند.</string>
     <string name="terms_review_full">شرایط کامل را در وب‌سایت Nexatrode LLC ببینید</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">حداکثر ارسال شد</string>
     <string name="biometric_confirm_send">تأیید ارسال</string>
     <string name="biometric_confirm_send_max">تأیید ارسال حداکثر</string>
-    <string name="biometric_send_max_subtitle">برای برداشت کامل موجودی کیف پول احراز هویت کنید</string>
+    <string name="biometric_send_max_subtitle">برای ارسال کل موجودیِ در دسترس و بازشده پس از کسر کارمزد احراز هویت کنید</string>
     <string name="label_to">به</string>
     <string name="label_total">مجموع</string>
     <string name="address_copied">آدرس در کلیپ‌بورد کپی شد</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d تراکنش در انتظار</string>
     <string name="send_fee_increased_unapproved">کارمزد شبکه افزایش یافت. چیزی پخش نشد. کارمزد را بررسی و دوباره تأیید کنید.</string>
     <string name="fiat_help_nexatrode">اختیاری است. با فعال‌کردن آن، NexaWal نرخ XMR برای ارز انتخابی شما را از طریق HTTPS از rates.nexawal.com می‌گیرد. این درخواست حتی هنگام استفادهٔ گره کیف پول از I2P از اینترنت عمومی (Clearnet) عبور می‌کند. Nexatrode می‌تواند نشانی IP و ارز انتخابی شما را ببیند، اما موجودی‌ها، نشانی‌ها، عبارت بازیابی یا سابقهٔ تراکنش‌های کیف پول ارسال نمی‌شوند. نرخ‌ها فقط تخمینی‌اند — دارایی‌ای که می‌فرستید و نگه می‌دارید XMR است.</string>
-    <string name="about_disclaimer_nexatrode">نرم افزار دارای مجوز MIT و حسابرسی نشده. شما مسئول عبارت و وجوه بازیابی خود هستید. گره راه دور پیش‌فرض می‌تواند جستارهای همگام‌سازی IP و کیف پول شما را ببیند - برای حفظ حریم خصوصی قوی‌تر، گره خود را اجرا کنید. تخمین‌های فیات اختیاری، در صورت فعال بودن، برای اطلاع از نرخ‌ها با rates.nexawal.com تماس بگیرید.</string>
+    <string name="about_disclaimer_nexatrode">نرم‌افزار دارای مجوز MIT است و ممیزی مستقل امنیتی نشده است. مسئولیت عبارت بازیابی و دارایی‌هایتان بر عهده شماست. گره راه دور پیش‌فرض می‌تواند نشانی IP و درخواست‌های همگام‌سازی کیف پول را ببیند؛ برای حریم خصوصی بیشتر، گره خود را اجرا کنید. اگر برآوردهای اختیاری ارز فیات را فعال کنید، برنامه نرخ‌ها را از rates.nexawal.com دریافت می‌کند.</string>
     <string name="history_export_csv">تراکنش‌های منطبق را صادر کنید (CSV)</string>
     <string name="history_export_failed">خروجی CSV ناموفق بود. دوباره تلاش کنید.</string>
     <string name="send_previous_payment_recovered">پرداخت قبلی بازیابی شد. پرداخت جدید ارسال نشد. دوباره پیش‌نمایش را ببینید.</string>

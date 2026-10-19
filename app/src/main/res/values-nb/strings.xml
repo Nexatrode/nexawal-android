@@ -85,13 +85,13 @@
     <string name="creating_wallet">Oppretter lommebok...</string>
     <string name="create_wallet">Opprett lommebok</string>
     <string name="replace_wallet_title">Erstatte eksisterende lommebok?</string>
-    <string name="replace_wallet_message">Dette vil erstatte den eksisterende lommeboken på denne enheten.\n\nHvis du fortsetter, blir den lagrede mnemonicen og skanntilstanden fjernet. Sørg for at du har sikkerhetskopiert mnemonicen før du fortsetter.</string>
+    <string name="replace_wallet_message">Dette vil erstatte den eksisterende lommeboken på denne enheten.\n\nHvis du fortsetter, blir den lagrede gjenopprettingsfrasen og skannetilstanden fjernet. Sørg for at du har sikkerhetskopiert gjenopprettingsfrasen før du fortsetter.</string>
     <string name="section_network_node">Nettverk og node</string>
     <string name="node_url_help">Skriv inn hele URL-en, inkludert http:// eller https://.\nStandard node: https://rpc.nexawal.com</string>
     <string name="save_node">Lagre node</string>
     <string name="section_info">Informasjon</string>
     <string name="walletcore_version_label">WalletCore-versjon:</string>
-<string name="generate_new_seed">Generer ny frase</string>
+<string name="generate_new_seed">Generer ny gjenopprettingsfrase</string>
     <string name="wrote_seed_down">Jeg har skrevet ned gjenopprettingsfrasen min</string>
     <string name="seed_challenge_intro">Bekreft at du skrev den ned: skriv inn de forespurte ordene nedenfor.</string>
     <string name="seed_challenge_mismatch">Ordet/ordene stemmer ikke ennå.</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Gjenopprettingsfrasen din:</string>
     <string name="recovery_seed_instructions">Skriv ned disse ordene i riktig rekkefølge og oppbevar dem trygt offline. Du vil trenge dem for å gjenopprette lommeboken hvis denne telefonen blir borte. NexaWal beholder også en kryptert kopi på enheten for opplåsing — behandle sikkerhetskopien som kontanter.</string>
     <string name="confirm_backup_prompt">Bekreft sikkerhetskopien din — skriv inn de forespurte ordene:</string>
-    <string name="mnemonic_paste_label">Mnemonic (lim inn):</string>
-    <string name="mnemonic_paste_placeholder">Lim inn mnemonic med 25 ord…</string>
+    <string name="mnemonic_paste_label">Gjenopprettingsfrase (lim inn):</string>
+    <string name="mnemonic_paste_placeholder">Lim inn gjenopprettingsfrasen på 25 ord…</string>
     <string name="starting_height_fast_label">Starthøyde (rask):</string>
     <string name="fetching_from_node">Henter fra node…</string>
     <string name="suggested_height_fetch_failed">Kunne ikke hente en rask gjenopprettingshøyde fra noden. Gjenopprettingshøyden forblir 0.</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Om</string>
     <string name="terms_of_use">Bruksvilkår</string>
     <string name="terms_title">Bruksvilkår</string>
-    <string name="terms_body_custody">nexawal fra Nexatrode LLC er et self-custodial-grensesnitt for å administrere digitale eiendeler. Du har eneansvar for dine private nøkler og 25-ords seed-frase.</string>
+    <string name="terms_body_custody">NexaWal fra Nexatrode LLC er en selvforvaltet Monero-lommebok. Du har eneansvar for de private nøklene dine og gjenopprettingsfrasen på 25 ord.</string>
     <string name="terms_body_as_is">Appen leveres som den er, uten uttrykte eller underforståtte garantier. Bruk skjer på egen risiko. Nexatrode LLC er ikke ansvarlig for tapte eiendeler, brukerfeil, nedetid eller problemer med tredjepartstjenester eller noder.</string>
     <string name="terms_body_node">Det anbefales å kjøre eller koble til din egen Monero-node. Offentlige standardverdier er kun for bekvemmelighet.</string>
     <string name="terms_review_full">Se fullstendige vilkår på Nexatrode LLC sitt nettsted</string>
@@ -207,8 +207,8 @@
     <string name="preview_fee">Forhåndsvis avgift</string>
     <string name="preview_fee_android">Forhåndsvis avgift</string>
     <string name="sending">Sender...</string>
-    <string name="send_max">Send maks</string>
-    <string name="send_max_android">Send maks</string>
+    <string name="send_max">Send maksimalt disponibelt beløp</string>
+    <string name="send_max_android">Send maksimalt disponibelt beløp</string>
     <string name="send_xmr_title">Send XMR</string>
     <string name="error_valid_address_amount">Angi en gyldig adresse og beløp.</string>
     <string name="info_fee_subaddress">Avgift estimert (input begrenset til valgt underadresse).</string>
@@ -234,10 +234,10 @@
     <string name="to_address">Til adresse</string>
     <string name="scan_qr_cd">Skann QR-kode</string>
     <string name="amount_xmr_label">Beløp (XMR)</string>
-    <string name="confirm_send_max">Bekreft sending av maks</string>
-    <string name="confirm_send_max_section">Bekreft sending av maks</string>
+    <string name="confirm_send_max">Bekreft sending av maksimalt disponibelt beløp</string>
+    <string name="confirm_send_max_section">Bekreft sending av maksimalt disponibelt beløp</string>
     <string name="estimating_max">Estimerer maks...</string>
-    <string name="preview_send_max">Forhåndsvis sending av maks</string>
+    <string name="preview_send_max">Forhåndsvis maksimalt disponibelt beløp</string>
     <string name="fee_estimated_ok">Avgift estimert.</string>
     <string name="invalid_amount">Ugyldig beløp</string>
     <string name="max_amount_estimated">Maks sendbart beløp er estimert.</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Maks sendt</string>
     <string name="biometric_confirm_send">Bekreft sending</string>
     <string name="biometric_confirm_send_max">Bekreft sending av maks</string>
-    <string name="biometric_send_max_subtitle">Autentiser for å tømme lommebokens saldo</string>
+    <string name="biometric_send_max_subtitle">Autentiser for å sende hele den opplåste saldoen etter at nettverksgebyret er trukket fra.</string>
     <string name="label_to">Til</string>
     <string name="label_total">Totalt</string>
     <string name="address_copied">Adresse kopiert til utklippstavlen</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Gi kameratillatelse</string>
     <string name="error_wallet_unlocked_biometrics">Lommeboken må låses opp før du endrer biometrisk beskyttelse.</string>
     <string name="biometric_disable_face_id">Autentiser for å slå av Face ID-beskyttelse</string>
-    <string name="error_mnemonic_empty">Mnemonic kan ikke være tom.</string>
-    <string name="error_rescan_no_mnemonic">Skanning på nytt mislyktes: mnemonic er utilgjengelig.</string>
+    <string name="error_mnemonic_empty">Gjenopprettingsfrasen kan ikke være tom.</string>
+    <string name="error_rescan_no_mnemonic">Ny skanning mislyktes: gjenopprettingsfrasen er utilgjengelig.</string>
     <string name="biometric_unlock_nexawal">Autentiser for å låse opp nexawal</string>
     <string name="biometric_unlock_wallet">Lås opp lommebok</string>
     <string name="biometric_unlock_subtitle">Autentiser for å åpne den lagrede Monero-lommeboken</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Kunne ikke kode lommebokens metadata.</string>
     <string name="storage_decode_failed">Kunne ikke dekode lommebokens metadata.</string>
     <string name="storage_no_wallet">Ingen lommebok er lagret på denne enheten.</string>
-    <string name="storage_missing_mnemonic">Den lagrede mnemonicen kunne ikke finnes.</string>
+    <string name="storage_missing_mnemonic">Fant ikke den lagrede gjenopprettingsfrasen.</string>
     <string name="storage_auth_failed">Autentiseringen var ikke vellykket.</string>
     <string name="storage_auth_cancelled">Autentiseringen ble avbrutt.</string>
     <string name="storage_biometry_unavailable">Biometrisk autentisering er ikke tilgjengelig på denne enheten.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Fant ingen lagrede lommebok-metadata</string>
     <string name="failed_read_metadata">Kunne ikke lese lagrede lommebok-metadata</string>
     <string name="no_wallet_open">Ingen lommebok åpen</string>
-    <string name="stored_metadata_no_mnemonic">Lagrede metadata inneholder ikke en mnemonic</string>
+    <string name="stored_metadata_no_mnemonic">De lagrede metadataene inneholder ikke en gjenopprettingsfrase</string>
     <string name="biometric_not_available_short">Biometrisk eller enhetsbasert autentisering er ikke tilgjengelig</string>
     <string name="authentication_failed">Autentisering mislyktes</string>
     <string name="biometric_permission_missing">Biometritillatelse mangler eller er utilgjengelig</string>
@@ -343,7 +343,7 @@
     <string name="unlocked_balance_fmt">Ulåst saldo: %1$s XMR</string>
     <string name="estimated_fee_fmt">Estimert avgift: %1$s XMR</string>
     <string name="total_with_fee_fmt">Totalt (beløp + avgift): %1$s XMR</string>
-    <string name="send_max_amount_fmt">Maks sendbart beløp: %1$s XMR</string>
+    <string name="send_max_amount_fmt">Maksimalt disponibelt beløp etter fratrekk av nettverksgebyret: %1$s XMR</string>
     <string name="txid_value_fmt">TXID: %1$s</string>
     <string name="fee_xmr_fmt">Avgift: %1$s XMR</string>
     <string name="amount_xmr_fmt">Beløp: %1$s XMR</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d ventende transaksjoner</string>
     <string name="send_fee_increased_unapproved">Nettverksgebyret økte. Ingenting ble kringkastet. Se over gebyret og bekreft på nytt.</string>
     <string name="fiat_help_nexatrode">Valgfritt. Når det er slått på, ber NexaWal rates.nexawal.com om XMR-kursen for valutaen du har valgt, via HTTPS. Forespørselen bruker det offentlige nettet (clearnet), selv om lommeboknoden bruker I2P. Nexatrode kan se IP-adressen din og valgt valuta, men mottar ikke lommebeløp, adresser, gjenopprettingsfrase eller transaksjonshistorikk. Kursene er kun anslag — du sender og oppbevarer XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-lisensiert, urevidert programvare. Du er ansvarlig for gjenopprettingsfrasen og midler. Standard ekstern node kan se IP- og lommeboksynkroniseringsspørsmålene dine - kjør din egen node for sterkere personvern. Valgfrie fiat-anslag, hvis aktivert, kontakt rates.nexawal.com for priser.</string>
+    <string name="about_disclaimer_nexatrode">MIT-lisensiert programvare som ikke er uavhengig sikkerhetsrevidert. Du er ansvarlig for gjenopprettingsfrasen og midlene dine. Standard ekstern node kan se IP-adressen din og forespørsler om lommeboksynkronisering — bruk din egen node for bedre personvern. Hvis valgfrie fiat-estimater er aktivert, henter appen kurs fra rates.nexawal.com.</string>
     <string name="history_export_csv">Eksporter samsvarende transaksjoner (CSV)</string>
     <string name="history_export_failed">CSV-eksporten mislyktes. Prøv igjen.</string>
     <string name="send_previous_payment_recovered">Den tidligere betalingen er gjenopprettet. Den nye betalingen ble ikke sendt. Se forhåndsvisningen igjen.</string>

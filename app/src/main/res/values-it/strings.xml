@@ -85,13 +85,13 @@
     <string name="creating_wallet">Creazione wallet...</string>
     <string name="create_wallet">Crea wallet</string>
     <string name="replace_wallet_title">Sostituire il wallet esistente?</string>
-    <string name="replace_wallet_message">Questa operazione sostituirà il wallet esistente su questo dispositivo.\n\nSe continui, la frase mnemonica salvata e lo stato di scansione verranno rimossi. Assicurati di aver salvato una copia della tua frase mnemonica prima di procedere.</string>
+    <string name="replace_wallet_message">Questa operazione sostituirà il wallet esistente su questo dispositivo.\n\nSe continui, la frase di recupero salvata e lo stato di scansione verranno rimossi. Assicurati di averne una copia di backup prima di procedere.</string>
     <string name="section_network_node">Rete e nodo</string>
     <string name="node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexawal.com</string>
     <string name="save_node">Salva nodo</string>
     <string name="section_info">Informazioni</string>
     <string name="walletcore_version_label">Versione WalletCore:</string>
-<string name="generate_new_seed">Genera nuova frase di recupero</string>
+<string name="generate_new_seed">Genera una nuova frase di recupero</string>
     <string name="wrote_seed_down">Ho scritto la mia frase di recupero</string>
     <string name="seed_challenge_intro">Confermi di averla scritta: inserisci qui sotto le parole richieste.</string>
     <string name="seed_challenge_mismatch">Le parole non corrispondono ancora.</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">La tua frase di recupero:</string>
     <string name="recovery_seed_instructions">Scrivi queste parole in ordine e conservale offline in un luogo sicuro. Ti serviranno per ripristinare il wallet se perdi questo telefono. NexaWal conserva anche una copia crittografata sul dispositivo per lo sblocco — tratta il backup come contanti.</string>
     <string name="confirm_backup_prompt">Confermi il backup — inserisci le parole richieste:</string>
-    <string name="mnemonic_paste_label">Frase mnemonica (incolla):</string>
-    <string name="mnemonic_paste_placeholder">Incolla la frase mnemonica di 25 parole…</string>
+    <string name="mnemonic_paste_label">Frase di recupero (incolla):</string>
+    <string name="mnemonic_paste_placeholder">Incolla la frase di recupero di 25 parole…</string>
     <string name="starting_height_fast_label">Altezza iniziale (rapida):</string>
     <string name="fetching_from_node">Recupero dal nodo…</string>
     <string name="suggested_height_fetch_failed">Non è stato possibile recuperare un\'altezza di ripristino rapida dal nodo. L\'altezza di ripristino resterà a 0.</string>
@@ -116,7 +116,7 @@
     <string name="network_policy_clearnet">Solo clearnet</string>
     <string name="network_policy_i2p">Solo I2P</string>
     <string name="network_policy_hybrid">Entrambi (scansione clearnet, trasmissione I2P)</string>
-    <string name="network_policy_help">Solo clearnet usa un nodo clearnet. Solo I2P usa un nodo e un proxy I2P. Entrambi scansiona su clearnet e trasmette via I2P.</string>
+    <string name="network_policy_help">Solo clearnet usa un nodo clearnet. Solo I2P usa un nodo e un proxy I2P. Entrambe le modalità eseguono la scansione su clearnet e trasmettono tramite I2P.</string>
     <string name="section_clearnet_node">Nodo clearnet</string>
     <string name="clearnet_node_url_help">Digita l\'URL completo, incluso http:// o https://.\nNodo predefinito: https://rpc.nexawal.com</string>
     <string name="use_this_node">Usa questo nodo</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Informazioni</string>
     <string name="terms_of_use">Termini di utilizzo</string>
     <string name="terms_title">Termini di utilizzo</string>
-    <string name="terms_body_custody">nexawal di Nexatrode LLC è un’interfaccia self-custodial per gestire asset digitali. Hai la responsabilità esclusiva delle tue chiavi private e della frase seed di 25 parole.</string>
+    <string name="terms_body_custody">nexawal di Nexatrode LLC è un’interfaccia di autocustodia per gestire gli asset digitali. Hai la responsabilità esclusiva delle tue chiavi private e della frase di recupero di 25 parole.</string>
     <string name="terms_body_as_is">L\'app è fornita così com\'è, senza garanzie espresse o implicite. L\'uso è a tuo rischio. Nexatrode LLC non è responsabile per asset persi, errori dell\'utente, interruzioni o problemi con servizi o nodi di terze parti.</string>
     <string name="terms_body_node">Si raccomanda di eseguire o collegarsi al proprio nodo Monero. I valori pubblici predefiniti sono solo per comodità.</string>
     <string name="terms_review_full">Consulta i termini completi sul sito di Nexatrode LLC</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Concedi il permesso della fotocamera</string>
     <string name="error_wallet_unlocked_biometrics">Il wallet deve essere sbloccato prima di modificare la protezione biometrica.</string>
     <string name="biometric_disable_face_id">Autenticati per disattivare la protezione Face ID</string>
-    <string name="error_mnemonic_empty">La frase mnemonica non può essere vuota.</string>
-    <string name="error_rescan_no_mnemonic">Nuova scansione non riuscita: la frase mnemonica non è disponibile.</string>
+    <string name="error_mnemonic_empty">La frase di recupero non può essere vuota.</string>
+    <string name="error_rescan_no_mnemonic">Nuova scansione non riuscita: la frase di recupero non è disponibile.</string>
     <string name="biometric_unlock_nexawal">Autenticati per sbloccare nexawal</string>
     <string name="biometric_unlock_wallet">Sblocca wallet</string>
     <string name="biometric_unlock_subtitle">Autenticati per aprire il wallet Monero salvato</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Impossibile codificare i metadati del wallet.</string>
     <string name="storage_decode_failed">Impossibile decodificare i metadati del wallet.</string>
     <string name="storage_no_wallet">Nessun wallet è stato salvato su questo dispositivo.</string>
-    <string name="storage_missing_mnemonic">La frase mnemonica salvata non è stata trovata.</string>
+    <string name="storage_missing_mnemonic">La frase di recupero salvata non è stata trovata.</string>
     <string name="storage_auth_failed">L\'autenticazione non è riuscita.</string>
     <string name="storage_auth_cancelled">Autenticazione annullata.</string>
     <string name="storage_biometry_unavailable">L\'autenticazione biometrica non è disponibile su questo dispositivo.</string>
@@ -314,11 +314,11 @@
     <string name="no_stored_metadata">Nessun metadato di wallet salvato trovato</string>
     <string name="failed_read_metadata">Impossibile leggere i metadati salvati del wallet</string>
     <string name="no_wallet_open">Nessun wallet aperto</string>
-    <string name="stored_metadata_no_mnemonic">I metadati salvati non contengono una frase mnemonica</string>
+    <string name="stored_metadata_no_mnemonic">I metadati salvati non contengono una frase di recupero</string>
     <string name="biometric_not_available_short">L\'autenticazione biometrica o con credenziali del dispositivo non è disponibile</string>
     <string name="authentication_failed">Autenticazione non riuscita</string>
     <string name="biometric_permission_missing">Il permesso biometrico è assente o non disponibile</string>
-    <string name="starting_height_fast_fmt">Altezza iniziale (rapida): %1$d (height del nodo − 10)</string>
+    <string name="starting_height_fast_fmt">Altezza iniziale (rapida): %1$d (altezza del nodo − 10)</string>
     <string name="word_number_fmt">Parola #%1$d</string>
     <string name="scanned_to_block_fmt">Scansionato fino al blocco %1$s</string>
     <string name="fetching_initial_fmt">Recupero dei blocchi iniziali da %1$s</string>
@@ -408,7 +408,7 @@
     <string name="history_pending_count_fmt">%1$d transazioni in sospeso</string>
     <string name="send_fee_increased_unapproved">La commissione di rete è aumentata. Non è stato trasmesso nulla. Controlla la commissione e conferma di nuovo.</string>
     <string name="fiat_help_nexatrode">Facoltativo. Se attivato, NexaWal richiede via HTTPS a rates.nexawal.com il tasso XMR per la valuta scelta. La richiesta usa Internet pubblico (clearnet), anche se il nodo del portafoglio usa I2P. Nexatrode può vedere il tuo IP e la valuta scelta, ma non riceve saldi, indirizzi, frase di recupero o cronologia delle transazioni. I tassi sono solo stime: invii e conservi XMR.</string>
-    <string name="about_disclaimer_nexatrode">software non certificato con licenza MIT. Sei responsabile della tua frase di recupero e dei tuoi fondi. Il nodo remoto predefinito può vedere il tuo IP e le query di sincronizzazione del portafoglio: esegui il tuo nodo per una maggiore privacy. Stime fiat opzionali, se abilitate, contattare rates.nexawal.com per le tariffe.</string>
+    <string name="about_disclaimer_nexatrode">Software con licenza MIT, non sottoposto a una verifica di sicurezza indipendente. Sei responsabile della tua frase di recupero e dei tuoi fondi. Il nodo remoto predefinito può vedere il tuo indirizzo IP e le richieste di sincronizzazione del wallet. Per una maggiore privacy, usa un nodo tuo. Se attivi le stime in valuta fiat, l’app recupera i tassi da rates.nexawal.com.</string>
     <string name="history_export_csv">Esporta le transazioni corrispondenti (CSV)</string>
     <string name="history_export_failed">Esportazione CSV non riuscita. Riprova.</string>
     <string name="send_previous_payment_recovered">Il pagamento precedente è stato recuperato. Il nuovo pagamento non è stato inviato. Visualizza di nuovo l\'anteprima.</string>

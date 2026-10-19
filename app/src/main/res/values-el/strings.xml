@@ -85,7 +85,7 @@
     <string name="creating_wallet">Δημιουργία πορτοφολιού...</string>
     <string name="create_wallet">Δημιουργία πορτοφολιού</string>
     <string name="replace_wallet_title">Αντικατάσταση υπάρχοντος πορτοφολιού;</string>
-    <string name="replace_wallet_message">Αυτό θα αντικαταστήσει το υπάρχον πορτοφόλι σε αυτή τη συσκευή.\n\nΑν συνεχίσετε, η αποθηκευμένη μνημονική φράση και η κατάσταση σάρωσης θα αφαιρεθούν. Βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας της μνημονικής φράσης σας πριν προχωρήσετε.</string>
+    <string name="replace_wallet_message">Αυτό θα αντικαταστήσει το υπάρχον πορτοφόλι σε αυτή τη συσκευή.\n\nΑν συνεχίσετε, θα αφαιρεθούν η αποθηκευμένη φράση ανάκτησης και η κατάσταση σάρωσης. Πριν συνεχίσετε, βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας της φράσης ανάκτησης.</string>
     <string name="section_network_node">Δίκτυο &amp; κόμβος</string>
     <string name="node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexawal.com</string>
     <string name="save_node">Αποθήκευση κόμβου</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Η φράση ανάκτησής σας:</string>
     <string name="recovery_seed_instructions">Γράψτε αυτές τις λέξεις με τη σειρά και αποθηκεύστε τις με ασφάλεια offline. Θα τις χρειαστείτε για να επαναφέρετε το πορτοφόλι αν χαθεί αυτό το τηλέφωνο. Το NexaWal κρατά επίσης ένα κρυπτογραφημένο αντίγραφο στη συσκευή για ξεκλείδωμα — αντιμετωπίστε το αντίγραφο ασφαλείας σαν μετρητά.</string>
     <string name="confirm_backup_prompt">Επιβεβαιώστε το αντίγραφο ασφαλείας σας — εισαγάγετε τις ζητούμενες λέξεις:</string>
-    <string name="mnemonic_paste_label">Μνημονική φράση (επικόλληση):</string>
-    <string name="mnemonic_paste_placeholder">Επικολλήστε τη μνημονική φράση 25 λέξεων…</string>
+    <string name="mnemonic_paste_label">Φράση ανάκτησης (επικόλληση):</string>
+    <string name="mnemonic_paste_placeholder">Επικολλήστε τη φράση ανάκτησης 25 λέξεων…</string>
     <string name="starting_height_fast_label">Αρχικό ύψος (ταχύ):</string>
     <string name="fetching_from_node">Λήψη από τον κόμβο…</string>
     <string name="suggested_height_fetch_failed">Δεν ήταν δυνατή η λήψη ταχέος ύψους επαναφοράς από τον κόμβο. Το ύψος επαναφοράς παραμένει 0.</string>
@@ -116,7 +116,7 @@
     <string name="network_policy_clearnet">Μόνο Clearnet</string>
     <string name="network_policy_i2p">Μόνο I2P</string>
     <string name="network_policy_hybrid">Και τα δύο (σάρωση Clearnet, μετάδοση I2P)</string>
-    <string name="network_policy_help">Το «Μόνο Clearnet» χρησιμοποιεί κόμβο Clearnet. Το «Μόνο I2P» χρησιμοποιεί κόμβο και διαμεσολαβητή I2P. Το «Και τα δύο» σαρώνει στο Clearnet και μεταδίδει μέσω I2P.</string>
+    <string name="network_policy_help">Η λειτουργία «Μόνο Clearnet» χρησιμοποιεί κόμβο Clearnet. Η λειτουργία «Μόνο I2P» χρησιμοποιεί κόμβο και διαμεσολαβητή I2P. Η υβριδική λειτουργία σαρώνει μέσω Clearnet και μεταδίδει συναλλαγές μέσω I2P.</string>
     <string name="section_clearnet_node">Κόμβος Clearnet</string>
     <string name="clearnet_node_url_help">Πληκτρολογήστε την πλήρη διεύθυνση URL, συμπεριλαμβανομένου του http:// ή https://.\nΠροεπιλεγμένος κόμβος: https://rpc.nexawal.com</string>
     <string name="use_this_node">Χρήση αυτού του κόμβου</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Σχετικά</string>
     <string name="terms_of_use">Όροι χρήσης</string>
     <string name="terms_title">Όροι χρήσης</string>
-    <string name="terms_body_custody">Το nexawal της Nexatrode LLC είναι μια διεπαφή αυτοφύλαξης για τη διαχείριση ψηφιακών περιουσιακών στοιχείων. Έχετε αποκλειστική ευθύνη για τα ιδιωτικά σας κλειδιά και τη φράση seed 25 λέξεων.</string>
+    <string name="terms_body_custody">Το nexawal της Nexatrode LLC είναι μια διεπαφή για τη διαχείριση ψηφιακών περιουσιακών στοιχείων με δική σας φύλαξη. Έχετε την αποκλειστική ευθύνη για τα ιδιωτικά σας κλειδιά και τη φράση ανάκτησης 25 λέξεων.</string>
     <string name="terms_body_as_is">Η εφαρμογή παρέχεται ως έχει, χωρίς ρητές ή σιωπηρές εγγυήσεις. Η χρήση γίνεται με δική σας ευθύνη. Η Nexatrode LLC δεν ευθύνεται για χαμένα περιουσιακά στοιχεία, σφάλματα χρήστη, διακοπές ή προβλήματα με υπηρεσίες ή κόμβους τρίτων.</string>
     <string name="terms_body_node">Συνιστάται να εκτελείτε ή να συνδέεστε στον δικό σας κόμβο Monero. Οι δημόσιες προεπιλογές είναι μόνο για ευκολία.</string>
     <string name="terms_review_full">Δείτε τους πλήρεις όρους στον ιστότοπο της Nexatrode LLC</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Απεστάλη το μέγιστο</string>
     <string name="biometric_confirm_send">Επιβεβαίωση αποστολής</string>
     <string name="biometric_confirm_send_max">Επιβεβαίωση αποστολής μέγιστου</string>
-    <string name="biometric_send_max_subtitle">Ελέγξτε την ταυτότητά σας για εκκαθάριση του υπολοίπου του πορτοφολιού</string>
+    <string name="biometric_send_max_subtitle">Επαληθεύστε την ταυτότητά σας για να στείλετε όλο το διαθέσιμο ξεκλείδωτο υπόλοιπο μετά την αφαίρεση της χρέωσης</string>
     <string name="label_to">Προς</string>
     <string name="label_total">Σύνολο</string>
     <string name="address_copied">Η διεύθυνση αντιγράφηκε στο πρόχειρο</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Παραχώρηση άδειας κάμερας</string>
     <string name="error_wallet_unlocked_biometrics">Το πορτοφόλι πρέπει να ξεκλειδωθεί πριν αλλάξετε τη βιομετρική προστασία.</string>
     <string name="biometric_disable_face_id">Ελέγξτε την ταυτότητά σας για να απενεργοποιήσετε την προστασία Face ID</string>
-    <string name="error_mnemonic_empty">Η μνημονική φράση δεν μπορεί να είναι κενή.</string>
-    <string name="error_rescan_no_mnemonic">Η επανασάρωση απέτυχε: η μνημονική φράση δεν είναι διαθέσιμη.</string>
+    <string name="error_mnemonic_empty">Η φράση ανάκτησης δεν μπορεί να είναι κενή.</string>
+    <string name="error_rescan_no_mnemonic">Η επανασάρωση απέτυχε: η φράση ανάκτησης δεν είναι διαθέσιμη.</string>
     <string name="biometric_unlock_nexawal">Ελέγξτε την ταυτότητά σας για να ξεκλειδώσετε το nexawal</string>
     <string name="biometric_unlock_wallet">Ξεκλείδωμα πορτοφολιού</string>
     <string name="biometric_unlock_subtitle">Ελέγξτε την ταυτότητά σας για να ανοίξετε το αποθηκευμένο πορτοφόλι Monero</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Δεν ήταν δυνατή η κωδικοποίηση των μεταδεδομένων του πορτοφολιού.</string>
     <string name="storage_decode_failed">Δεν ήταν δυνατή η αποκωδικοποίηση των μεταδεδομένων του πορτοφολιού.</string>
     <string name="storage_no_wallet">Δεν έχει αποθηκευτεί πορτοφόλι σε αυτή τη συσκευή.</string>
-    <string name="storage_missing_mnemonic">Δεν βρέθηκε η αποθηκευμένη μνημονική φράση.</string>
+    <string name="storage_missing_mnemonic">Δεν βρέθηκε η αποθηκευμένη φράση ανάκτησης.</string>
     <string name="storage_auth_failed">Ο έλεγχος ταυτότητας δεν ήταν επιτυχής.</string>
     <string name="storage_auth_cancelled">Ο έλεγχος ταυτότητας ακυρώθηκε.</string>
     <string name="storage_biometry_unavailable">Ο βιομετρικός έλεγχος ταυτότητας δεν είναι διαθέσιμος σε αυτή τη συσκευή.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Δεν βρέθηκαν αποθηκευμένα μεταδεδομένα πορτοφολιού</string>
     <string name="failed_read_metadata">Δεν ήταν δυνατή η ανάγνωση των αποθηκευμένων μεταδεδομένων πορτοφολιού</string>
     <string name="no_wallet_open">Δεν υπάρχει ανοιχτό πορτοφόλι</string>
-    <string name="stored_metadata_no_mnemonic">Τα αποθηκευμένα μεταδεδομένα δεν περιέχουν μνημονική φράση</string>
+    <string name="stored_metadata_no_mnemonic">Τα αποθηκευμένα μεταδεδομένα δεν περιέχουν φράση ανάκτησης</string>
     <string name="biometric_not_available_short">Ο βιομετρικός έλεγχος ή ο έλεγχος με διαπιστευτήρια συσκευής δεν είναι διαθέσιμος</string>
     <string name="authentication_failed">Ο έλεγχος ταυτότητας απέτυχε</string>
     <string name="biometric_permission_missing">Η άδεια βιομετρικού ελέγχου λείπει ή δεν είναι διαθέσιμη</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d εκκρεμείς συναλλαγές</string>
     <string name="send_fee_increased_unapproved">Η χρέωση δικτύου αυξήθηκε. Δεν μεταδόθηκε τίποτα. Ελέγξτε τη χρέωση και επιβεβαιώστε ξανά.</string>
     <string name="fiat_help_nexatrode">Προαιρετικό. Όταν είναι ενεργό, το NexaWal ζητά μέσω HTTPS από το rates.nexawal.com την ισοτιμία XMR για το νόμισμα που επιλέξατε. Το αίτημα χρησιμοποιεί το δημόσιο διαδίκτυο (clearnet), ακόμη κι αν ο κόμβος του πορτοφολιού χρησιμοποιεί I2P. Η Nexatrode μπορεί να δει τη διεύθυνση IP και το επιλεγμένο νόμισμα, αλλά δεν λαμβάνει ποσά, διευθύνσεις, φράση ανάκτησης ή ιστορικό συναλλαγών. Οι ισοτιμίες είναι μόνο εκτιμήσεις — στέλνετε και κρατάτε XMR.</string>
-    <string name="about_disclaimer_nexatrode">Λογισμικό με άδεια MIT, μη ελεγμένο. Είστε υπεύθυνοι για τη φράση και τα χρήματά σας ανάκτησης. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει τα ερωτήματα συγχρονισμού IP και πορτοφολιού — εκτελέστε τον δικό σας κόμβο για ισχυρότερο απόρρητο. Προαιρετικές εκτιμήσεις fiat, εάν είναι ενεργοποιημένες, επικοινωνήστε με το rates.nexawal.com για τιμές.</string>
+    <string name="about_disclaimer_nexatrode">Λογισμικό με άδεια MIT που δεν έχει ελεγχθεί ανεξάρτητα ως προς την ασφάλεια. Είστε υπεύθυνοι για τη φράση ανάκτησης και τα χρήματά σας. Ο προεπιλεγμένος απομακρυσμένος κόμβος μπορεί να δει τη διεύθυνση IP σας και τα αιτήματα συγχρονισμού του πορτοφολιού· για μεγαλύτερο απόρρητο, χρησιμοποιήστε δικό σας κόμβο. Αν ενεργοποιήσετε τις προαιρετικές εκτιμήσεις fiat, η εφαρμογή λαμβάνει ισοτιμίες από το rates.nexawal.com.</string>
     <string name="history_export_csv">Εξαγωγή συναλλαγών που ταιριάζουν (CSV)</string>
     <string name="history_export_failed">Η εξαγωγή CSV απέτυχε. Δοκιμάστε ξανά.</string>
     <string name="send_previous_payment_recovered">Η προηγούμενη πληρωμή ανακτήθηκε. Η νέα πληρωμή δεν στάλθηκε. Δείτε ξανά την προεπισκόπηση.</string>

@@ -85,7 +85,7 @@
     <string name="creating_wallet">Skapar plånbok...</string>
     <string name="create_wallet">Skapa plånbok</string>
     <string name="replace_wallet_title">Ersätt befintlig plånbok?</string>
-    <string name="replace_wallet_message">Detta kommer att ersätta den befintliga plånboken på den här enheten.\n\nOm du fortsätter tas den nu sparade mnemoniska frasen och skanningstillståndet bort. Se till att du har säkerhetskopierat din mnemoniska fras innan du fortsätter.</string>
+    <string name="replace_wallet_message">Detta ersätter den befintliga plånboken på den här enheten.\n\nOm du fortsätter tas den sparade återställningsfrasen och skanningstillståndet bort. Se till att du har säkerhetskopierat återställningsfrasen innan du fortsätter.</string>
     <string name="section_network_node">Nätverk och nod</string>
     <string name="node_url_help">Ange fullständig URL, inklusive http:// eller https://.\nStandardnod: https://rpc.nexawal.com</string>
     <string name="save_node">Spara nod</string>
@@ -93,7 +93,7 @@
     <string name="walletcore_version_label">WalletCore-version:</string>
 <string name="generate_new_seed">Generera ny återställningsfras</string>
     <string name="wrote_seed_down">Jag har skrivit ner min återställningsfras</string>
-    <string name="seed_challenge_intro">Bekräfta att du har skrivit ner den: ange de begärda orden nedan.</string>
+    <string name="seed_challenge_intro">Bekräfta att du har skrivit ner frasen: ange de begärda orden nedan.</string>
     <string name="seed_challenge_mismatch">Orden matchar inte ännu.</string>
     <string name="node_url_scheme_error">Börja nod-URL:en med http:// eller https://</string>
     <string name="saved_node">Nod sparad</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Din återställningsfras:</string>
     <string name="recovery_seed_instructions">Skriv ner dessa ord i ordning och förvara dem säkert offline. Du behöver dem för att återställa plånboken om den här telefonen förloras. NexaWal sparar också en krypterad kopia på enheten för upplåsning — behandla säkerhetskopian som kontanter.</string>
     <string name="confirm_backup_prompt">Bekräfta din säkerhetskopia — ange de begärda orden:</string>
-    <string name="mnemonic_paste_label">Mnemonisk fras (klistra in):</string>
-    <string name="mnemonic_paste_placeholder">Klistra in 25-ords mnemonisk fras…</string>
+    <string name="mnemonic_paste_label">Återställningsfras (klistra in):</string>
+    <string name="mnemonic_paste_placeholder">Klistra in återställningsfrasen på 25 ord…</string>
     <string name="starting_height_fast_label">Starthöjd (snabb):</string>
     <string name="fetching_from_node">Hämtar från nod…</string>
     <string name="suggested_height_fetch_failed">Kunde inte hämta en snabb återställningshöjd från noden. Återställningshöjden lämnas som 0.</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Om</string>
     <string name="terms_of_use">Användarvillkor</string>
     <string name="terms_title">Användarvillkor</string>
-    <string name="terms_body_custody">nexawal från Nexatrode LLC är ett self-custodial-gränssnitt för att hantera digitala tillgångar. Du har ensamt ansvar för dina privata nycklar och 25-ords fröfras.</string>
+    <string name="terms_body_custody">NexaWal från Nexatrode LLC är en plånbok för självförvaltning av digitala tillgångar. Du ansvarar själv för dina privata nycklar och din återställningsfras på 25 ord.</string>
     <string name="terms_body_as_is">Appen tillhandahålls i befintligt skick, utan uttryckliga eller underförstådda garantier. Användning sker på egen risk. Nexatrode LLC ansvarar inte för förlorade tillgångar, användarfel, driftstopp eller problem med tredjepartstjänster eller noder.</string>
     <string name="terms_body_node">Det rekommenderas att köra eller ansluta till din egen Monero-nod. Offentliga standardvärden är endast för bekvämlighet.</string>
     <string name="terms_review_full">Läs de fullständiga villkoren på Nexatrode LLC:s webbplats</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Max skickat</string>
     <string name="biometric_confirm_send">Bekräfta sändning</string>
     <string name="biometric_confirm_send_max">Bekräfta sänd max</string>
-    <string name="biometric_send_max_subtitle">Autentisera för att tömma plånbokens saldo</string>
+    <string name="biometric_send_max_subtitle">Autentisera för att skicka hela det upplåsta saldot efter att nätverksavgiften dragits av.</string>
     <string name="label_to">Till</string>
     <string name="label_total">Totalt</string>
     <string name="address_copied">Adress kopierad till urklipp</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Bevilja kameratillstånd</string>
     <string name="error_wallet_unlocked_biometrics">Plånboken måste låsas upp innan biometriskt skydd ändras.</string>
     <string name="biometric_disable_face_id">Autentisera för att stänga av skydd med Face ID</string>
-    <string name="error_mnemonic_empty">Den mnemoniska frasen kan inte vara tom.</string>
-    <string name="error_rescan_no_mnemonic">Omskanning misslyckades: mnemonisk fras är inte tillgänglig.</string>
+    <string name="error_mnemonic_empty">Återställningsfrasen får inte vara tom.</string>
+    <string name="error_rescan_no_mnemonic">Omskanning misslyckades: återställningsfrasen är inte tillgänglig.</string>
     <string name="biometric_unlock_nexawal">Autentisera för att låsa upp nexawal</string>
     <string name="biometric_unlock_wallet">Lås upp plånbok</string>
     <string name="biometric_unlock_subtitle">Autentisera för att öppna den sparade Monero-plånboken</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Det gick inte att koda plånboksmetadata.</string>
     <string name="storage_decode_failed">Det gick inte att avkoda plånboksmetadata.</string>
     <string name="storage_no_wallet">Ingen plånbok har sparats på den här enheten.</string>
-    <string name="storage_missing_mnemonic">Sparad mnemonisk fras kunde inte hittas.</string>
+    <string name="storage_missing_mnemonic">Den sparade återställningsfrasen kunde inte hittas.</string>
     <string name="storage_auth_failed">Autentiseringen lyckades inte.</string>
     <string name="storage_auth_cancelled">Autentiseringen avbröts.</string>
     <string name="storage_biometry_unavailable">Biometrisk autentisering är inte tillgänglig på den här enheten.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Ingen sparad plånboksmetadata hittades</string>
     <string name="failed_read_metadata">Det gick inte att läsa sparad plånboksmetadata</string>
     <string name="no_wallet_open">Ingen plånbok öppen</string>
-    <string name="stored_metadata_no_mnemonic">Sparad metadata innehåller ingen mnemonisk fras</string>
+    <string name="stored_metadata_no_mnemonic">Sparade metadata innehåller ingen återställningsfras.</string>
     <string name="biometric_not_available_short">Biometrisk autentisering eller autentisering med enhetsuppgifter är inte tillgänglig</string>
     <string name="authentication_failed">Autentiseringen misslyckades</string>
     <string name="biometric_permission_missing">Behörighet för biometri saknas eller är inte tillgänglig</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d väntande transaktioner</string>
     <string name="send_fee_increased_unapproved">Nätverksavgiften ökade. Inget skickades. Granska avgiften och bekräfta igen.</string>
     <string name="fiat_help_nexatrode">Valfritt. När det är aktiverat hämtar NexaWal XMR-kursen för den valda valutan från rates.nexawal.com via HTTPS. Begäran använder det öppna internet (clearnet), även när plånboksnoden använder I2P. Nexatrode kan se din IP-adress och valda valuta, men får inte plånbelopp, adresser, återställningsfras eller transaktionshistorik. Kurserna är endast uppskattningar — du skickar och förvarar XMR.</string>
-    <string name="about_disclaimer_nexatrode">MIT-licensierad, oreviderad programvara. Du är ansvarig för din återställningsfras och pengar. Standardfjärrnoden kan se dina IP- och plånbokssynkroniseringsfrågor – kör din egen nod för bättre integritet. Valfria fiat-uppskattningar, om de är aktiverade, kontakta rates.nexawal.com för priser.</string>
+    <string name="about_disclaimer_nexatrode">MIT-licensierad programvara som inte har granskats oberoende ur säkerhetssynpunkt. Du ansvarar för din återställningsfras och dina tillgångar. Standardnoden kan se din IP-adress och plånbokens synkroniseringsförfrågningar. Använd en egen nod för bättre integritet. Valfria fiatkurser är avstängda som standard; om du aktiverar dem hämtar appen kurser från rates.nexawal.com.</string>
     <string name="history_export_csv">Exportera matchande transaktioner (CSV)</string>
     <string name="history_export_failed">CSV-exporten misslyckades. Försök igen.</string>
     <string name="send_previous_payment_recovered">Den tidigare betalningen återställdes. Den nya betalningen skickades inte. Förhandsgranska den igen.</string>

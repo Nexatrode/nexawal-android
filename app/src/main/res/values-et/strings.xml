@@ -85,7 +85,7 @@
     <string name="creating_wallet">Rahakoti loomine...</string>
     <string name="create_wallet">Loo rahakott</string>
     <string name="replace_wallet_title">Asendada olemasolev rahakott?</string>
-    <string name="replace_wallet_message">Sellega asendatakse selles seadmes olev rahakott.\n\nKui jätkate, eemaldatakse praegu salvestatud mnemooniline fraas ja skannimise olek. Veenduge, et olete oma mnemoonilise fraasi varundanud enne jätkamist.</string>
+    <string name="replace_wallet_message">See asendab selles seadmes oleva rahakoti.\n\nKui jätkate, eemaldatakse salvestatud taastefraas ja skannimise olek. Enne jätkamist veenduge, et olete taastefraasist varukoopia teinud.</string>
     <string name="section_network_node">Võrk ja sõlm</string>
     <string name="node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexawal.com</string>
     <string name="save_node">Salvesta sõlm</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Teie taastefraas:</string>
     <string name="recovery_seed_instructions">Kirjutage need sõnad järjekorras üles ja hoidke neid turvaliselt võrguühenduseta. Vajate neid rahakoti taastamiseks, kui see telefon kaob. NexaWal hoiab avamiseks ka krüpteeritud koopiat seadmes — kohtlege varukoopiat nagu sularaha.</string>
     <string name="confirm_backup_prompt">Kinnitage oma varukoopia — sisestage küsitud sõnad:</string>
-    <string name="mnemonic_paste_label">Mnemooniline fraas (kleebi):</string>
-    <string name="mnemonic_paste_placeholder">Kleebi 25-sõnaline mnemooniline fraas…</string>
+    <string name="mnemonic_paste_label">Taastefraas (kleebi):</string>
+    <string name="mnemonic_paste_placeholder">Kleebi 25-sõnaline taastefraas…</string>
     <string name="starting_height_fast_label">Algkõrgus (kiire):</string>
     <string name="fetching_from_node">Laadimine sõlmest…</string>
     <string name="suggested_height_fetch_failed">Sõlmest ei õnnestunud laadida kiiret taastamiskõrgust. Taastamiskõrgus jääb 0-ks.</string>
@@ -115,8 +115,8 @@
     <string name="section_how_to_connect">Kuidas ühenduda</string>
     <string name="network_policy_clearnet">Ainult Clearnet</string>
     <string name="network_policy_i2p">Ainult I2P</string>
-    <string name="network_policy_hybrid">Mõlemad (skanni Clearnetis, saada I2P kaudu)</string>
-    <string name="network_policy_help">Ainult Clearnet kasutab Clearnet-sõlme. Ainult I2P kasutab I2P sõlme ja puhverserverit. Mõlemad skannib Clearnetis ja saadab I2P kaudu.</string>
+    <string name="network_policy_hybrid">Hübriid (skanni Clearneti kaudu, edasta I2P kaudu)</string>
+    <string name="network_policy_help">Ainult Clearneti režiim kasutab Clearnet-sõlme. Ainult I2P režiim kasutab I2P-sõlme ja puhverserverit. Hübriidrežiim skannib Clearneti kaudu ja edastab tehingud I2P kaudu.</string>
     <string name="section_clearnet_node">Clearnet sõlm</string>
     <string name="clearnet_node_url_help">Sisestage täielik URL, kaasa arvatud http:// või https://.\nVaikimisi sõlm: https://rpc.nexawal.com</string>
     <string name="use_this_node">Kasuta seda sõlme</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Rakenduse kohta</string>
     <string name="terms_of_use">Kasutustingimused</string>
     <string name="terms_title">Kasutustingimused</string>
-    <string name="terms_body_custody">Nexatrode LLC nexawal on isehoidlik liides digitaalse vara haldamiseks. Kannate ainuisikulist vastutust privaatvõtmete ja 25-sõnalise seemnelause eest.</string>
+    <string name="terms_body_custody">Nexatrode LLC nexawal võimaldab teil digitaalseid varasid ise hallata. Vastutate ainuisikuliselt oma privaatvõtmete ja 25-sõnalise taastefraasi eest.</string>
     <string name="terms_body_as_is">Rakendus esitatakse nii nagu on, ilma otseste või kaudsete garantiideta. Kasutamine on omal riisikol. Nexatrode LLC ei vastuta kaotatud vara, kasutajavigade, seisakute ega kolmandate osapoolte teenuste või nodede probleemide eest.</string>
     <string name="terms_body_node">Soovitatav on käivitada või ühenduda oma Monero node’iga. Avalikud vaikeväärtused on ainult mugavuseks.</string>
     <string name="terms_review_full">Vaadake täielikke tingimusi Nexatrode LLC veebisaidil</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Maksimum saadetud</string>
     <string name="biometric_confirm_send">Kinnita saatmine</string>
     <string name="biometric_confirm_send_max">Kinnita maksimumi saatmine</string>
-    <string name="biometric_send_max_subtitle">Autendi, et tühjendada rahakoti saldo</string>
+    <string name="biometric_send_max_subtitle">Autendi, et saata kogu pärast tasu mahaarvamist saadaolev lukustamata saldo</string>
     <string name="label_to">Kellele</string>
     <string name="label_total">Kokku</string>
     <string name="address_copied">Aadress kopeeritud lõikelauale</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Luba kaamera kasutamine</string>
     <string name="error_wallet_unlocked_biometrics">Rahakott peab olema lahti lukustatud enne biomeetrilise kaitse muutmist.</string>
     <string name="biometric_disable_face_id">Autendi, et lülitada välja Face ID kaitse</string>
-    <string name="error_mnemonic_empty">Mnemooniline fraas ei tohi olla tühi.</string>
-    <string name="error_rescan_no_mnemonic">Uuesti skannimine ebaõnnestus: mnemooniline fraas ei ole saadaval.</string>
+    <string name="error_mnemonic_empty">Taastefraas ei tohi olla tühi.</string>
+    <string name="error_rescan_no_mnemonic">Uuesti skannimine ebaõnnestus: taastefraas pole saadaval.</string>
     <string name="biometric_unlock_nexawal">Autendi, et lukustada nexawal lahti</string>
     <string name="biometric_unlock_wallet">Lukusta rahakott lahti</string>
     <string name="biometric_unlock_subtitle">Autendi, et avada salvestatud Monero rahakott</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Rahakoti metaandmete kodeerimine ebaõnnestus.</string>
     <string name="storage_decode_failed">Rahakoti metaandmete dekodeerimine ebaõnnestus.</string>
     <string name="storage_no_wallet">Selles seadmes ei ole rahakotti salvestatud.</string>
-    <string name="storage_missing_mnemonic">Salvestatud mnemoonilist fraasi ei leitud.</string>
+    <string name="storage_missing_mnemonic">Salvestatud taastefraasi ei leitud.</string>
     <string name="storage_auth_failed">Autentimine ei olnud edukas.</string>
     <string name="storage_auth_cancelled">Autentimine katkestati.</string>
     <string name="storage_biometry_unavailable">Biomeetriline autentimine ei ole selles seadmes saadaval.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Salvestatud rahakoti metaandmeid ei leitud</string>
     <string name="failed_read_metadata">Salvestatud rahakoti metaandmete lugemine ebaõnnestus</string>
     <string name="no_wallet_open">Rahakott ei ole avatud</string>
-    <string name="stored_metadata_no_mnemonic">Salvestatud metaandmed ei sisalda mnemoonilist fraasi</string>
+    <string name="stored_metadata_no_mnemonic">Salvestatud metaandmed ei sisalda taastefraasi</string>
     <string name="biometric_not_available_short">Biomeetriline või seadme mandaadiga autentimine ei ole saadaval</string>
     <string name="authentication_failed">Autentimine ebaõnnestus</string>
     <string name="biometric_permission_missing">Biomeetria luba puudub või ei ole saadaval</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d ootel tehingut</string>
     <string name="send_fee_increased_unapproved">Võrgutasu suurenes. Midagi ei edastatud. Vaata tasu üle ja kinnita uuesti.</string>
     <string name="fiat_help_nexatrode">Valikuline. Kui see on sisse lülitatud, küsib NexaWal HTTPS-i kaudu saidilt rates.nexawal.com XMR-i kurssi valitud valuuta jaoks. Päring kasutab avalikku internetti (Clearnet) ka siis, kui rahakoti sõlm kasutab I2P-d. Nexatrode näeb sinu IP-aadressi ja valitud valuutat, kuid rahakoti summasid, aadresse, taastefraasi ega tehinguajalugu ei saadeta. Kursid on vaid hinnangud — hoiad ja saadad XMR-i.</string>
-    <string name="about_disclaimer_nexatrode">MIT-litsentsiga, auditeerimata tarkvara. Vastutate oma taastamisfraasi ja raha eest. Vaikimisi kaugsõlm näeb teie IP ja rahakoti sünkroonimise päringuid – tugevama privaatsuse tagamiseks käivitage oma sõlm. Valikulised fiati hinnangud, kui see on lubatud, võtke hindade saamiseks ühendust rates.nexawal.com-ga.</string>
+    <string name="about_disclaimer_nexatrode">MIT-litsentsiga tarkvara, mida pole sõltumatult turvalisuse suhtes auditeeritud. Vastutate oma taastefraasi ja raha eest. Vaikimisi kaugsõlm võib näha teie IP-aadressi ja rahakoti sünkroonimispäringuid; suurema privaatsuse tagamiseks kasutage oma sõlme. Kui lubate valikulised fiat-valuuta hinnangud, hangib rakendus kursid aadressilt rates.nexawal.com.</string>
     <string name="history_export_csv">Ekspordi vastavad tehingud (CSV)</string>
     <string name="history_export_failed">CSV eksportimine ebaõnnestus. Proovi uuesti.</string>
     <string name="send_previous_payment_recovered">Eelmine makse taastati. Uut makset ei saadetud. Vaadake eelvaadet uuesti.</string>

@@ -85,13 +85,13 @@
     <string name="creating_wallet">Duke krijuar Portofolin...</string>
     <string name="create_wallet">Krijo Portofolin</string>
     <string name="replace_wallet_title">Të zëvendësohet portofoli ekzistues?</string>
-    <string name="replace_wallet_message">Kjo do të zëvendësojë portofolin ekzistues në këtë pajisje.\n\nNëse vazhdon, mnemoniku i ruajtur aktualisht dhe gjendja e skanimit do të hiqen. Sigurohu që e ke bërë kopje rezervë të mnemonikut para se të vazhdosh.</string>
+    <string name="replace_wallet_message">Kjo do të zëvendësojë portofolin ekzistues në këtë pajisje.\n\nNëse vazhdon, fraza aktuale e rikuperimit dhe gjendja e skanimit do të hiqen. Sigurohu që ke një kopje rezervë të frazës së rikuperimit para se të vazhdosh.</string>
     <string name="section_network_node">Rrjeti &amp; Nyja</string>
     <string name="node_url_help">Shkruaj URL-në e plotë, duke përfshirë http:// ose https://.\nNyja e parazgjedhur: https://rpc.nexawal.com</string>
     <string name="save_node">Ruaj nyjen</string>
     <string name="section_info">Informacion</string>
     <string name="walletcore_version_label">Versioni i WalletCore:</string>
-<string name="generate_new_seed">Gjenero seed të re</string>
+    <string name="generate_new_seed">Gjenero frazë të re rikuperimi</string>
     <string name="wrote_seed_down">E shkrova frazën time të rikuperimit</string>
     <string name="seed_challenge_intro">Konfirmo që e ke shkruar: fut fjalët e kërkuara më poshtë.</string>
     <string name="seed_challenge_mismatch">Fjala(ët) nuk përputhet(en) ende.</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Fraza jote e rikuperimit:</string>
     <string name="recovery_seed_instructions">Shkruaji këto fjalë me radhë dhe ruaji ato të sigurta jashtë linje. Do t\'i nevojiten për të rikuperuar portofolin nëse humbet ky telefon. NexaWal mban gjithashtu një kopje të enkriptuar në pajisje për shkyçje — trajtoje kopjen rezervë si para në dorë.</string>
     <string name="confirm_backup_prompt">Konfirmo kopjen rezervë — fut fjalët e kërkuara:</string>
-    <string name="mnemonic_paste_label">Mnemoniku (ngjit):</string>
-    <string name="mnemonic_paste_placeholder">Ngjit mnemonikun me 25 fjalë…</string>
+    <string name="mnemonic_paste_label">Fraza e rikuperimit (ngjite):</string>
+    <string name="mnemonic_paste_placeholder">Ngjit frazën e rikuperimit me 25 fjalë…</string>
     <string name="starting_height_fast_label">Lartësia fillestare (e shpejtë):</string>
     <string name="fetching_from_node">Duke marrë nga nyja…</string>
     <string name="suggested_height_fetch_failed">Nuk u mor lartësia e shpejtë e rikuperimit nga nyja. Lartësia e rikuperimit mbetet 0.</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Rreth</string>
     <string name="terms_of_use">Kushtet e përdorimit</string>
     <string name="terms_title">Kushtet e përdorimit</string>
-    <string name="terms_body_custody">nexawal nga Nexatrode LLC është një ndërfaqe vetë-ruajtëse për menaxhimin e aseteve digjitale. Ju mbani përgjegjësi ekskluzive për çelësat tuaj privatë dhe frazën seed me 25 fjalë.</string>
+    <string name="terms_body_custody">NexaWal nga Nexatrode LLC është një ndërfaqe për administrimin e pavarur të aseteve digjitale. Ju mbani përgjegjësi të plotë për çelësat privatë dhe frazën e rikuperimit me 25 fjalë.</string>
     <string name="terms_body_as_is">Aplikacioni ofrohet ashtu si është, pa garanci të shprehura ose të nënkuptuara. Përdorimi është në rrezikun tuaj. Nexatrode LLC nuk është përgjegjës për asete të humbura, gabime të përdoruesit, ndërprerje ose probleme me shërbime apo nyje të palëve të treta.</string>
     <string name="terms_body_node">Rekomandohet të ekzekutoni ose të lidheni me nyjen tuaj Monero. Vlerat e parazgjedhura publike janë vetëm për lehtësi.</string>
     <string name="terms_review_full">Rishikoni kushtet e plota në faqen e Nexatrode LLC</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Maksimumi u dërgua</string>
     <string name="biometric_confirm_send">Konfirmo dërgimin</string>
     <string name="biometric_confirm_send_max">Konfirmo dërgimin e maksimumit</string>
-    <string name="biometric_send_max_subtitle">Autentikohu për të fshirë bilancin e portofolit</string>
+    <string name="biometric_send_max_subtitle">Autentikohu për të dërguar të gjithë bilancin e zhbllokuar, pasi të zbritet tarifa e rrjetit.</string>
     <string name="label_to">Te</string>
     <string name="label_total">Totali</string>
     <string name="address_copied">Adresa u kopjua në clipboard</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Jep Lejen e Kamerës</string>
     <string name="error_wallet_unlocked_biometrics">Portofoli duhet të zhbllokohet para se të ndryshohet mbrojtja biometrike.</string>
     <string name="biometric_disable_face_id">Autentikohu për të fikur mbrojtjen Face ID</string>
-    <string name="error_mnemonic_empty">Mnemoniku nuk mund të jetë bosh.</string>
-    <string name="error_rescan_no_mnemonic">Riskanimi dështoi: mnemoniku nuk është i disponueshëm.</string>
+    <string name="error_mnemonic_empty">Fraza e rikuperimit nuk mund të jetë bosh.</string>
+    <string name="error_rescan_no_mnemonic">Riskanimi dështoi: fraza e rikuperimit nuk është e disponueshme.</string>
     <string name="biometric_unlock_nexawal">Autentikohu për të zhbllokuar nexawal</string>
     <string name="biometric_unlock_wallet">Zhblloko portofolin</string>
     <string name="biometric_unlock_subtitle">Autentikohu për të hapur portofolin e ruajtur të Monero</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Nuk mund të kodohen metadatat e portofolit.</string>
     <string name="storage_decode_failed">Nuk mund të dekodohen metadatat e portofolit.</string>
     <string name="storage_no_wallet">Nuk është ruajtur asnjë portofol në këtë pajisje.</string>
-    <string name="storage_missing_mnemonic">Mnemoniku i ruajtur nuk u gjet.</string>
+    <string name="storage_missing_mnemonic">Fraza e ruajtur e rikuperimit nuk u gjet.</string>
     <string name="storage_auth_failed">Autentikimi nuk pati sukses.</string>
     <string name="storage_auth_cancelled">Autentikimi u anulua.</string>
     <string name="storage_biometry_unavailable">Autentikimi biometrik nuk është i disponueshëm në këtë pajisje.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Nuk u gjetën metadata të ruajtura të portofolit</string>
     <string name="failed_read_metadata">Leximi i metadatave të ruajtura të portofolit dështoi</string>
     <string name="no_wallet_open">Nuk ka portofol të hapur</string>
-    <string name="stored_metadata_no_mnemonic">Metadatat e ruajtura nuk përmbajnë mnemonik</string>
+    <string name="stored_metadata_no_mnemonic">Metadatat e ruajtura nuk përmbajnë frazën e rikuperimit.</string>
     <string name="biometric_not_available_short">Autentikimi biometrik ose me kredencialet e pajisjes nuk është i disponueshëm</string>
     <string name="authentication_failed">Autentikimi dështoi</string>
     <string name="biometric_permission_missing">Leja biometrike mungon ose nuk është e disponueshme</string>
@@ -410,7 +410,7 @@
     <string name="history_pending_count_fmt">%1$d transaksione në pritje</string>
     <string name="send_fee_increased_unapproved">Tarifa e rrjetit u rrit. Nuk u transmetua asgjë. Kontrolloni tarifën dhe konfirmoni përsëri.</string>
     <string name="fiat_help_nexatrode">Opsionale. Kur aktivizohet, NexaWal kërkon përmes HTTPS nga rates.nexawal.com kursin e XMR-së për monedhën e zgjedhur. Kërkesa përdor internetin publik (Clearnet), edhe kur nyja e portofolit përdor I2P. Nexatrode mund të shohë adresën tuaj IP dhe monedhën e zgjedhur, por nuk merr gjendjen, adresat, frazën e rikuperimit ose historikun e transaksioneve të portofolit. Kurset janë vetëm vlerësime — dërgoni dhe mbani XMR.</string>
-    <string name="about_disclaimer_nexatrode">Softuer i paaudituar i licencuar nga MIT. Ju jeni përgjegjës për frazën dhe fondet tuaja të rikuperimit. Nyja e largët e parazgjedhur mund të shohë pyetjet tuaja të sinkronizimit të IP-së dhe portofolit - drejtoni nyjen tuaj për privatësi më të fortë. Vlerësimet opsionale të fiat-it, nëse janë të aktivizuara, kontaktoni rates.nexawal.com për tarifat.</string>
+    <string name="about_disclaimer_nexatrode">Softuer me licencë MIT, i paaudituar në mënyrë të pavarur për sigurinë. Ju jeni përgjegjës për frazën e rikuperimit dhe fondet tuaja. Nyja e largët e parazgjedhur mund të shohë adresën tuaj IP dhe kërkesat e portofolit për sinkronizim. Për më shumë privatësi, përdorni nyjën tuaj. Vlerësimet e kurseve të monedhave fiat janë opsionale; nëse i aktivizoni, aplikacioni i merr kurset nga rates.nexawal.com.</string>
     <string name="history_export_csv">Eksporto transaksionet që përputhen (CSV)</string>
     <string name="history_export_failed">Eksportimi i CSV-së dështoi. Provo përsëri.</string>
     <string name="send_previous_payment_recovered">Pagesa e mëparshme u rikuperua. Pagesa e re nuk u dërgua. Shikojeni paraprakisht përsëri.</string>

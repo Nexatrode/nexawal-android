@@ -85,7 +85,7 @@
     <string name="creating_wallet">Створення гаманця...</string>
     <string name="create_wallet">Створити гаманець</string>
     <string name="replace_wallet_title">Замінити наявний гаманець?</string>
-    <string name="replace_wallet_message">Це замінить наявний гаманець на цьому пристрої.\n\nЯкщо ви продовжите, поточну збережену мнемонічну фразу та стан сканування буде видалено. Перш ніж продовжити, переконайтеся, що маєте резервну копію мнемонічної фрази.</string>
+    <string name="replace_wallet_message">Це замінить наявний гаманець на цьому пристрої.\n\nЯкщо продовжити, збережену фразу відновлення та стан сканування буде видалено. Перш ніж продовжити, переконайтеся, що маєте резервну копію фрази відновлення.</string>
     <string name="section_network_node">Мережа і вузол</string>
     <string name="node_url_help">Введіть повну URL-адресу, включно з http:// або https://.\nВузол за замовчуванням: https://rpc.nexawal.com</string>
     <string name="save_node">Зберегти вузол</string>
@@ -101,8 +101,8 @@
     <string name="recovery_seed_label">Ваша фраза відновлення:</string>
     <string name="recovery_seed_instructions">Запишіть ці слова по порядку і зберігайте їх безпечно офлайн. Вони знадобляться для відновлення гаманця, якщо цей телефон буде втрачено. NexaWal також зберігає зашифровану копію на пристрої для розблокування — ставтеся до резервної копії як до готівки.</string>
     <string name="confirm_backup_prompt">Підтвердьте резервну копію — введіть потрібні слова:</string>
-    <string name="mnemonic_paste_label">Мнемонічна фраза (вставити):</string>
-    <string name="mnemonic_paste_placeholder">Вставте мнемонічну фразу з 25 слів…</string>
+    <string name="mnemonic_paste_label">Фраза відновлення (вставити):</string>
+    <string name="mnemonic_paste_placeholder">Вставте фразу відновлення з 25 слів…</string>
     <string name="starting_height_fast_label">Початкова висота (швидка):</string>
     <string name="fetching_from_node">Отримання з вузла…</string>
     <string name="suggested_height_fetch_failed">Не вдалося отримати швидку висоту відновлення з вузла. Висоту відновлення залишено 0.</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Про застосунок</string>
     <string name="terms_of_use">Умови використання</string>
     <string name="terms_title">Умови використання</string>
-    <string name="terms_body_custody">nexawal від Nexatrode LLC — це інтерфейс із самостійним зберіганням цифрових активів. Ви несете виключну відповідальність за свої приватні ключі та seed-фразу з 25 слів.</string>
+    <string name="terms_body_custody">NexaWal від Nexatrode LLC — це гаманець для самостійного зберігання цифрових активів. Ви несете повну відповідальність за свої приватні ключі та фразу відновлення з 25 слів.</string>
     <string name="terms_body_as_is">Додаток надається «як є», без явних чи подразумеваних гарантій. Використання на ваш власний ризик. Nexatrode LLC не несе відповідальності за втрачені активи, помилки користувача, простої або проблеми зі сторонніми сервісами чи нодами.</string>
     <string name="terms_body_node">Рекомендується запускати або підключатися до власної ноди Monero. Публічні значення за замовчуванням лише для зручності.</string>
     <string name="terms_review_full">Переглянути повні умови на сайті Nexatrode LLC</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Надіслано максимум</string>
     <string name="biometric_confirm_send">Підтвердити надсилання</string>
     <string name="biometric_confirm_send_max">Підтвердити надсилання максимуму</string>
-    <string name="biometric_send_max_subtitle">Пройдіть автентифікацію, щоб вивести весь баланс гаманця</string>
+    <string name="biometric_send_max_subtitle">Підтвердьте особу, щоб надіслати весь доступний баланс після вирахування мережевої комісії.</string>
     <string name="label_to">Кому</string>
     <string name="label_total">Разом</string>
     <string name="address_copied">Адресу скопійовано в буфер обміну</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Надати дозвіл на камеру</string>
     <string name="error_wallet_unlocked_biometrics">Гаманець потрібно розблокувати перед зміною біометричного захисту.</string>
     <string name="biometric_disable_face_id">Пройдіть автентифікацію, щоб вимкнути захист Face ID</string>
-    <string name="error_mnemonic_empty">Мнемонічна фраза не може бути порожньою.</string>
-    <string name="error_rescan_no_mnemonic">Повторне сканування не вдалося: мнемонічна фраза недоступна.</string>
+    <string name="error_mnemonic_empty">Фраза відновлення не може бути порожньою.</string>
+    <string name="error_rescan_no_mnemonic">Повторне сканування не вдалося: фраза відновлення недоступна.</string>
     <string name="biometric_unlock_nexawal">Пройдіть автентифікацію, щоб розблокувати nexawal</string>
     <string name="biometric_unlock_wallet">Розблокувати гаманець</string>
     <string name="biometric_unlock_subtitle">Пройдіть автентифікацію, щоб відкрити збережений гаманець Monero</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Не вдалося кодувати метадані гаманця.</string>
     <string name="storage_decode_failed">Не вдалося декодувати метадані гаманця.</string>
     <string name="storage_no_wallet">На цьому пристрої не збережено жодного гаманця.</string>
-    <string name="storage_missing_mnemonic">Не вдалося знайти збережену мнемонічну фразу.</string>
+    <string name="storage_missing_mnemonic">Не вдалося знайти збережену фразу відновлення.</string>
     <string name="storage_auth_failed">Автентифікація не вдалася.</string>
     <string name="storage_auth_cancelled">Автентифікацію скасовано.</string>
     <string name="storage_biometry_unavailable">Біометрична автентифікація недоступна на цьому пристрої.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Не знайдено збережених метаданих гаманця</string>
     <string name="failed_read_metadata">Не вдалося прочитати метадані збереженого гаманця</string>
     <string name="no_wallet_open">Немає відкритого гаманця</string>
-    <string name="stored_metadata_no_mnemonic">Збережені метадані не містять мнемонічної фрази</string>
+    <string name="stored_metadata_no_mnemonic">Збережені метадані не містять фрази відновлення.</string>
     <string name="biometric_not_available_short">Автентифікація за біометрією або обліковими даними пристрою недоступна</string>
     <string name="authentication_failed">Автентифікація не вдалася</string>
     <string name="biometric_permission_missing">Дозвіл на біометрію відсутній або недоступний</string>
@@ -408,7 +408,7 @@
     <string name="history_pending_count_fmt">%1$d транзакцій очікується</string>
     <string name="send_fee_increased_unapproved">Мережева комісія зросла. Нічого не передано. Перевірте комісію та підтвердьте ще раз.</string>
     <string name="fiat_help_nexatrode">Необов’язково. Якщо ввімкнено, NexaWal запитує через HTTPS на rates.nexawal.com курс XMR для вибраної валюти. Запит використовує звичайний інтернет (Clearnet), навіть якщо вузол гаманця працює через I2P. Nexatrode може бачити вашу IP-адресу й вибрану валюту, але не отримує суми, адреси, фразу відновлення чи історію транзакцій гаманця. Курси є лише оцінкою — ви надсилаєте й зберігаєте XMR.</string>
-    <string name="about_disclaimer_nexatrode">програмне забезпечення, що не перевірялося, ліцензоване MIT. Ви несете відповідальність за свою фразу відновлення та кошти. Віддалений вузол за замовчуванням може бачити вашу IP-адресу та запити синхронізації гаманця — запустіть власний вузол для кращої конфіденційності. Необов’язкова оцінка фіат, якщо ввімкнено, зв’яжіться з rates.nexawal.com, щоб дізнатися ціни.</string>
+    <string name="about_disclaimer_nexatrode">Програмне забезпечення з ліцензією MIT, яке не проходило незалежного аудиту безпеки. Ви відповідаєте за фразу відновлення та свої кошти. Віддалений вузол за замовчуванням може бачити вашу IP-адресу та запити гаманця для синхронізації. Для кращої конфіденційності використовуйте власний вузол. Необов’язкові фіатні курси вимкнено за замовчуванням; якщо їх увімкнути, застосунок отримуватиме курси з rates.nexawal.com.</string>
     <string name="history_export_csv">Експортувати відповідні транзакції (CSV)</string>
     <string name="history_export_failed">Не вдалося експортувати CSV. Спробуйте ще раз.</string>
     <string name="send_previous_payment_recovered">Попередній платіж відновлено. Новий платіж не надіслано. Повторіть попередній перегляд.</string>

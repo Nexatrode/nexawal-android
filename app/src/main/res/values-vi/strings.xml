@@ -85,7 +85,7 @@
     <string name="creating_wallet">Đang tạo ví...</string>
     <string name="create_wallet">Tạo ví</string>
     <string name="replace_wallet_title">Thay thế ví hiện có?</string>
-    <string name="replace_wallet_message">Việc này sẽ thay thế ví hiện có trên thiết bị này.\n\nNếu bạn tiếp tục, cụm từ mnemonic và trạng thái quét đang lưu sẽ bị xóa. Hãy đảm bảo bạn đã sao lưu cụm từ mnemonic trước khi tiếp tục.</string>
+    <string name="replace_wallet_message">Việc này sẽ thay thế ví hiện có trên thiết bị này.\n\nNếu bạn tiếp tục, cụm từ khôi phục và trạng thái đồng bộ đang lưu sẽ bị xóa. Hãy đảm bảo bạn đã sao lưu cụm từ khôi phục trước khi tiếp tục.</string>
     <string name="section_network_node">Mạng và node</string>
     <string name="node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.\nNút mặc định: https://rpc.nexawal.com</string>
     <string name="save_node">Lưu node</string>
@@ -93,16 +93,16 @@
     <string name="walletcore_version_label">Phiên bản WalletCore:</string>
 <string name="generate_new_seed">Tạo cụm từ khôi phục mới</string>
     <string name="wrote_seed_down">Tôi đã ghi lại cụm từ khôi phục của mình</string>
-    <string name="seed_challenge_intro">Xác nhận bạn đã ghi lại: nhập các từ được yêu cầu dưới đây.</string>
+    <string name="seed_challenge_intro">Xác nhận bạn đã ghi lại cụm từ khôi phục: nhập các từ được yêu cầu dưới đây.</string>
     <string name="seed_challenge_mismatch">Các từ chưa khớp.</string>
     <string name="node_url_scheme_error">Bắt đầu URL node bằng http:// hoặc https://</string>
     <string name="saved_node">Đã lưu node</string>
     <string name="wallet_already_stored">Đã có một ví được lưu trên thiết bị này.</string>
     <string name="recovery_seed_label">Cụm từ khôi phục của bạn:</string>
-    <string name="recovery_seed_instructions">Ghi lại các từ này theo đúng thứ tự và lưu giữ chúng an toàn ngoại tuyến. Bạn sẽ cần chúng để khôi phục ví nếu chiếc điện thoại này bị mất. NexaWal cũng giữ một bản sao được mã hóa trên thiết bị để mở khóa — hãy coi bản sao lưu như tiền mặt.</string>
+    <string name="recovery_seed_instructions">Ghi lại cụm từ khôi phục này theo đúng thứ tự và cất giữ an toàn ngoại tuyến. Bạn sẽ cần cụm từ này để khôi phục ví nếu điện thoại bị mất. NexaWal cũng giữ một bản sao được mã hóa trên thiết bị để mở khóa — hãy bảo vệ bản sao lưu như tiền mặt.</string>
     <string name="confirm_backup_prompt">Xác nhận bản sao lưu của bạn — nhập các từ được yêu cầu:</string>
-    <string name="mnemonic_paste_label">Cụm từ mnemonic (dán):</string>
-    <string name="mnemonic_paste_placeholder">Dán cụm từ mnemonic gồm 25 từ…</string>
+    <string name="mnemonic_paste_label">Cụm từ khôi phục (dán):</string>
+    <string name="mnemonic_paste_placeholder">Dán cụm từ khôi phục gồm 25 từ…</string>
     <string name="starting_height_fast_label">Độ cao bắt đầu (nhanh):</string>
     <string name="fetching_from_node">Đang lấy dữ liệu từ node…</string>
     <string name="suggested_height_fetch_failed">Không thể lấy độ cao khôi phục nhanh từ node. Giữ độ cao khôi phục ở mức 0.</string>
@@ -115,8 +115,8 @@
     <string name="section_how_to_connect">Cách kết nối</string>
     <string name="network_policy_clearnet">Chỉ clearnet</string>
     <string name="network_policy_i2p">Chỉ I2P</string>
-    <string name="network_policy_hybrid">Cả hai (quét clearnet, phát qua I2P)</string>
-    <string name="network_policy_help">Chỉ clearnet sử dụng node clearnet. Chỉ I2P sử dụng node và proxy I2P. Cả hai sẽ quét trên clearnet và phát qua I2P.</string>
+    <string name="network_policy_hybrid">Cả hai (đồng bộ qua Clearnet, phát giao dịch qua I2P)</string>
+    <string name="network_policy_help">Chỉ Clearnet sử dụng node Clearnet. Chỉ I2P sử dụng node và proxy I2P. Chế độ Cả hai đồng bộ ví qua Clearnet và phát giao dịch qua I2P.</string>
     <string name="section_clearnet_node">Node clearnet</string>
     <string name="clearnet_node_url_help">Nhập đầy đủ URL, bao gồm http:// hoặc https://.\nNút mặc định: https://rpc.nexawal.com</string>
     <string name="use_this_node">Dùng node này</string>
@@ -156,7 +156,7 @@
     <string name="section_about">Giới thiệu</string>
     <string name="terms_of_use">Điều khoản sử dụng</string>
     <string name="terms_title">Điều khoản sử dụng</string>
-    <string name="terms_body_custody">nexawal của Nexatrode LLC là giao diện tự lưu ký để quản lý tài sản số. Bạn chịu trách nhiệm duy nhất về khóa riêng và cụm từ khôi phục 25 từ.</string>
+    <string name="terms_body_custody">NexaWal của Nexatrode LLC là ví tài sản số do bạn tự quản lý. Bạn hoàn toàn chịu trách nhiệm bảo vệ khóa riêng và cụm từ khôi phục gồm 25 từ.</string>
     <string name="terms_body_as_is">Ứng dụng được cung cấp nguyên trạng, không có bảo đảm rõ ràng hoặc ngụ ý. Việc sử dụng do bạn tự chịu rủi ro. Nexatrode LLC không chịu trách nhiệm về tài sản bị mất, lỗi người dùng, thời gian ngừng hoạt động hoặc sự cố với dịch vụ/nút của bên thứ ba.</string>
     <string name="terms_body_node">Nên chạy hoặc kết nối với nút Monero của riêng bạn. Các mặc định công khai chỉ nhằm tiện lợi.</string>
     <string name="terms_review_full">Xem đầy đủ điều khoản trên trang web Nexatrode LLC</string>
@@ -174,7 +174,7 @@
     <string name="saved_i2p">Đã lưu I2P</string>
     <string name="saved_both">Đã lưu cả hai</string>
     <string name="connecting_over_i2p">Đang kết nối qua I2P</string>
-    <string name="connecting_hybrid">Đang kết nối (quét clearnet, phát I2P)</string>
+    <string name="connecting_hybrid">Đang kết nối (đồng bộ qua Clearnet, phát giao dịch qua I2P)</string>
     <string name="could_not_update_face_id">Không thể cập nhật cài đặt Face ID</string>
     <string name="techno_theme_enabled">Đã bật Giao diện Techno</string>
     <string name="techno_theme_disabled">Đã tắt Giao diện Techno</string>
@@ -190,7 +190,7 @@
     <string name="account_gap_android">Tài khoản (quét trước)</string>
     <string name="enter_whole_number">Nhập một số nguyên</string>
     <string name="settings_subtitle">Quản lý quyền truy cập node, bảo mật thiết bị và cách khôi phục.</string>
-    <string name="how_to_connect_desc">Chỉ clearnet sử dụng node clearnet. Chỉ I2P sử dụng node và proxy I2P. Cả hai sẽ quét trên clearnet và phát qua I2P.</string>
+    <string name="how_to_connect_desc">Chỉ Clearnet sử dụng node Clearnet. Chỉ I2P sử dụng node và proxy I2P. Chế độ Cả hai đồng bộ ví qua Clearnet và phát giao dịch qua I2P.</string>
     <string name="clearnet_node_url_label">URL node clearnet</string>
     <string name="available_subaddress">Khả dụng (địa chỉ phụ đã chọn)</string>
     <string name="available">Khả dụng</string>
@@ -229,7 +229,7 @@
     <string name="info_amount_set_max">Số tiền đã được đặt ở mức tối đa có thể chi tiêu. Phí cuối cùng có thể thay đổi nhẹ khi gửi.</string>
     <string name="error_enter_valid_address">Nhập địa chỉ hợp lệ.</string>
     <string name="biometric_prompt_send">Xác thực để gửi Monero</string>
-    <string name="policy_hybrid_send">Quét clearnet, phát qua I2P</string>
+    <string name="policy_hybrid_send">Đồng bộ qua Clearnet, phát giao dịch qua I2P</string>
     <string name="send_subtitle">Nhập người nhận và số tiền, xem trước phí, sau đó xác nhận giao dịch.</string>
     <string name="to_address">Địa chỉ đến</string>
     <string name="scan_qr_cd">Quét mã QR</string>
@@ -247,7 +247,7 @@
     <string name="sent_max_section">Đã gửi tối đa</string>
     <string name="biometric_confirm_send">Xác nhận gửi</string>
     <string name="biometric_confirm_send_max">Xác nhận gửi tối đa</string>
-    <string name="biometric_send_max_subtitle">Xác thực để chuyển toàn bộ số dư ví</string>
+    <string name="biometric_send_max_subtitle">Xác thực để gửi toàn bộ số dư khả dụng đã mở khóa sau khi trừ phí mạng.</string>
     <string name="label_to">Đến</string>
     <string name="label_total">Tổng</string>
     <string name="address_copied">Đã sao chép địa chỉ vào bộ nhớ tạm</string>
@@ -295,8 +295,8 @@
     <string name="grant_camera">Cấp quyền camera</string>
     <string name="error_wallet_unlocked_biometrics">Ví phải được mở khóa trước khi thay đổi bảo vệ sinh trắc học.</string>
     <string name="biometric_disable_face_id">Xác thực để tắt bảo vệ Face ID</string>
-    <string name="error_mnemonic_empty">Cụm từ mnemonic không được để trống.</string>
-    <string name="error_rescan_no_mnemonic">Quét lại thất bại: cụm từ mnemonic không khả dụng.</string>
+    <string name="error_mnemonic_empty">Cụm từ khôi phục không được để trống.</string>
+    <string name="error_rescan_no_mnemonic">Đồng bộ lại thất bại: không có cụm từ khôi phục.</string>
     <string name="biometric_unlock_nexawal">Xác thực để mở khóa nexawal</string>
     <string name="biometric_unlock_wallet">Mở khóa ví</string>
     <string name="biometric_unlock_subtitle">Xác thực để mở ví Monero đã lưu</string>
@@ -304,7 +304,7 @@
     <string name="storage_encode_failed">Không thể mã hóa metadata ví.</string>
     <string name="storage_decode_failed">Không thể giải mã metadata ví.</string>
     <string name="storage_no_wallet">Chưa có ví nào được lưu trên thiết bị này.</string>
-    <string name="storage_missing_mnemonic">Không tìm thấy cụm từ mnemonic đã lưu.</string>
+    <string name="storage_missing_mnemonic">Không tìm thấy cụm từ khôi phục đã lưu.</string>
     <string name="storage_auth_failed">Xác thực không thành công.</string>
     <string name="storage_auth_cancelled">Xác thực đã bị hủy.</string>
     <string name="storage_biometry_unavailable">Xác thực sinh trắc học không khả dụng trên thiết bị này.</string>
@@ -314,7 +314,7 @@
     <string name="no_stored_metadata">Không tìm thấy metadata ví đã lưu</string>
     <string name="failed_read_metadata">Không thể đọc metadata ví đã lưu</string>
     <string name="no_wallet_open">Không có ví nào đang mở</string>
-    <string name="stored_metadata_no_mnemonic">Metadata đã lưu không chứa cụm từ mnemonic</string>
+    <string name="stored_metadata_no_mnemonic">Metadata đã lưu không chứa cụm từ khôi phục.</string>
     <string name="biometric_not_available_short">Xác thực bằng sinh trắc học hoặc thông tin đăng nhập thiết bị không khả dụng</string>
     <string name="authentication_failed">Xác thực không thành công</string>
     <string name="biometric_permission_missing">Thiếu quyền sinh trắc học hoặc không khả dụng</string>
@@ -324,7 +324,7 @@
     <string name="fetching_initial_fmt">Đang lấy các khối ban đầu từ %1$s</string>
     <string name="blocks_remaining_fmt">Còn lại %1$s khối</string>
     <string name="blocks_per_sec_fmt">%1$.1f khối/s</string>
-    <string name="confirmations_fmt">%1$s xác nhận</string>
+    <string name="confirmations_fmt">Số lần xác nhận: %1$s</string>
     <string name="fee_value_fmt">Phí %1$s</string>
     <string name="clear_scan_cache_failed_fmt">Xóa bộ nhớ đệm quét thất bại: %1$s</string>
     <string name="app_version_fmt">nexawal %1$s (%2$s)</string>
@@ -352,7 +352,7 @@
     <string name="tx_amount_fmt">Số tiền: %1$s</string>
     <string name="tx_fee_fmt">Phí: %1$s</string>
     <string name="tx_height_fmt">Độ cao: %1$s</string>
-    <string name="tx_confirmations_fmt">Xác nhận: %1$s</string>
+    <string name="tx_confirmations_fmt">Số lần xác nhận: %1$s</string>
     <string name="tx_time_fmt">Thời gian: %1$s</string>
     <string name="tx_txid_fmt">TXID:\n%1$s</string>
     <string name="network_selected_fmt">✓ %1$s</string>
@@ -408,7 +408,7 @@
     <string name="history_pending_count_fmt">%1$d giao dịch đang chờ</string>
     <string name="send_fee_increased_unapproved">Phí mạng đã tăng. Chưa có giao dịch nào được phát đi. Kiểm tra phí và xác nhận lại.</string>
     <string name="fiat_help_nexatrode">Tùy chọn. Khi bật, NexaWal yêu cầu rates.nexawal.com cung cấp tỷ giá XMR cho loại tiền bạn chọn qua HTTPS. Yêu cầu này dùng Internet công cộng (Clearnet), ngay cả khi nút ví dùng I2P. Nexatrode có thể thấy địa chỉ IP và loại tiền đã chọn, nhưng không nhận số dư, địa chỉ, cụm từ khôi phục hay lịch sử giao dịch của ví. Tỷ giá chỉ là ước tính — tài sản bạn gửi và nắm giữ là XMR.</string>
-    <string name="about_disclaimer_nexatrode">Phần mềm chưa được kiểm tra, được MIT cấp phép. Bạn chịu trách nhiệm về thời hạn khôi phục và số tiền của mình. Nút từ xa mặc định có thể xem các truy vấn đồng bộ hóa IP và ví của bạn — hãy chạy nút của riêng bạn để có được sự bảo mật mạnh mẽ hơn. Ước tính tiền pháp định tùy chọn, nếu được bật, hãy liên hệ với rates.nexawal.com để biết mức giá.</string>
+    <string name="about_disclaimer_nexatrode">Phần mềm được cấp phép theo MIT và chưa được kiểm toán độc lập. Bạn chịu trách nhiệm về cụm từ khôi phục và tiền của mình. Nút từ xa mặc định có thể thấy địa chỉ IP và các yêu cầu đồng bộ hóa ví của bạn. Để tăng quyền riêng tư, hãy chạy nút riêng. Nếu bật ước tính tiền pháp định, ứng dụng sẽ lấy tỷ giá từ rates.nexawal.com.</string>
     <string name="history_export_csv">Xuất các giao dịch phù hợp (CSV)</string>
     <string name="history_export_failed">Xuất CSV không thành công. Hãy thử lại.</string>
     <string name="send_previous_payment_recovered">Đã khôi phục khoản thanh toán trước. Khoản thanh toán mới chưa được gửi. Hãy xem trước lại.</string>
