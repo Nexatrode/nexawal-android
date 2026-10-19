@@ -415,5 +415,5 @@
     <string name="history_export_failed">ייצוא ה־CSV נכשל. נסו שוב.</string>
     <string name="send_previous_payment_recovered">התשלום הקודם שוחזר. התשלום החדש לא נשלח. הצג שוב תצוגה מקדימה.</string>
     <string name="haptic_feedback">משוב הפטי</string>
-    <string name="send_sounds">צלילי שליחה</string>
+    <string name="send_sounds">הצליל מופעל</string>
 </resources>

@@ -415,5 +415,5 @@
     <string name="history_export_failed">فشل تصدير CSV. حاول مرة أخرى.</string>
     <string name="send_previous_payment_recovered">تم استرداد الدفعة السابقة. لم تُرسل الدفعة الجديدة. عاينها مجددًا.</string>
     <string name="haptic_feedback">الاستجابة اللمسية</string>
-    <string name="send_sounds">أصوات الإرسال</string>
+    <string name="send_sounds">الصوت مفعّل</string>
 </resources>

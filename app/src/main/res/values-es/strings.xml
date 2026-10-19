@@ -415,5 +415,5 @@
     <string name="history_export_failed">No se pudo exportar el CSV. Inténtalo de nuevo.</string>
     <string name="send_previous_payment_recovered">Se recuperó el pago anterior. El nuevo pago no se envió. Vuelve a previsualizarlo.</string>
     <string name="haptic_feedback">Respuesta háptica</string>
-    <string name="send_sounds">Sonidos de envío</string>
+    <string name="send_sounds">Sonido activado</string>
 </resources>

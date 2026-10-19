@@ -415,5 +415,5 @@
     <string name="history_export_failed">CSV экспорттоо ишке ашкан жок. Кайра аракет кылыңыз.</string>
     <string name="send_previous_payment_recovered">Мурунку төлөм калыбына келтирилди. Жаңы төлөм жөнөтүлгөн жок. Алдын ала көрүнүшүн кайра текшериңиз.</string>
     <string name="haptic_feedback">Тактилдик жооп</string>
-    <string name="send_sounds">Жөнөтүү үндөрү</string>
+    <string name="send_sounds">Үн күйгүзүлгөн</string>
 </resources>

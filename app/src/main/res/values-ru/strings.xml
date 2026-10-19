@@ -413,5 +413,5 @@
     <string name="history_export_failed">Не удалось экспортировать CSV. Попробуйте ещё раз.</string>
     <string name="send_previous_payment_recovered">Предыдущий платёж восстановлен. Новый платёж не отправлен. Повторите предварительный просмотр.</string>
     <string name="haptic_feedback">Тактильная отдача</string>
-    <string name="send_sounds">Звуки отправки</string>
+    <string name="send_sounds">Звук включён</string>
 </resources>

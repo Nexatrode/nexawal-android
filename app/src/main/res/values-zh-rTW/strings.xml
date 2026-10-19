@@ -413,5 +413,5 @@
     <string name="history_export_failed">CSV 匯出失敗，請再試一次。</string>
     <string name="send_previous_payment_recovered">已恢復上一筆付款。新的付款尚未傳送。請重新預覽。</string>
     <string name="haptic_feedback">觸覺回饋</string>
-    <string name="send_sounds">傳送提示音</string>
+    <string name="send_sounds">聲音已開啟</string>
 </resources>

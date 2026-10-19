@@ -415,5 +415,5 @@
     <string name="history_export_failed">Eksportimi i CSV-së dështoi. Provo përsëri.</string>
     <string name="send_previous_payment_recovered">Pagesa e mëparshme u rikuperua. Pagesa e re nuk u dërgua. Shikojeni paraprakisht përsëri.</string>
     <string name="haptic_feedback">Reagim haptik</string>
-    <string name="send_sounds">Tingujt e dërgimit</string>
+    <string name="send_sounds">Tingulli është aktiv</string>
 </resources>

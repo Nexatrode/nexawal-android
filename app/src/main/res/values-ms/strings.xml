@@ -415,5 +415,5 @@
     <string name="history_export_failed">Eksport CSV gagal. Cuba lagi.</string>
     <string name="send_previous_payment_recovered">Pembayaran terdahulu dipulihkan. Pembayaran baharu tidak dihantar. Lihat pratonton sekali lagi.</string>
     <string name="haptic_feedback">Maklum balas haptik</string>
-    <string name="send_sounds">Bunyi penghantaran</string>
+    <string name="send_sounds">Bunyi dihidupkan</string>
 </resources>

@@ -413,5 +413,5 @@
     <string name="history_export_failed">CSV निर्यात विफल हुआ। फिर से प्रयास करें।</string>
     <string name="send_previous_payment_recovered">पिछला भुगतान पुनर्प्राप्त हो गया। नया भुगतान नहीं भेजा गया। उसका पूर्वावलोकन फिर देखें।</string>
     <string name="haptic_feedback">हैप्टिक प्रतिक्रिया</string>
-    <string name="send_sounds">भेजने की ध्वनियाँ</string>
+    <string name="send_sounds">ध्वनि चालू है</string>
 </resources>

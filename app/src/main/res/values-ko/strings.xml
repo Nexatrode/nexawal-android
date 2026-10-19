@@ -413,5 +413,5 @@
     <string name="history_export_failed">CSV 내보내기에 실패했습니다. 다시 시도하세요.</string>
     <string name="send_previous_payment_recovered">이전 결제가 복구되었습니다. 새 결제는 전송되지 않았습니다. 다시 미리 보기를 확인하세요.</string>
     <string name="haptic_feedback">햅틱 피드백</string>
-    <string name="send_sounds">전송 소리</string>
+    <string name="send_sounds">소리 켜짐</string>
 </resources>

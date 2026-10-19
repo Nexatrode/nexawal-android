@@ -415,5 +415,5 @@
     <string name="history_export_failed">Izvoz CSV ni uspel. Poskusite znova.</string>
     <string name="send_previous_payment_recovered">Prejšnje plačilo je obnovljeno. Novo plačilo ni bilo poslano. Ponovno si oglejte predogled.</string>
     <string name="haptic_feedback">Haptični odziv</string>
-    <string name="send_sounds">Zvoki pošiljanja</string>
+    <string name="send_sounds">Zvok vklopljen</string>
 </resources>

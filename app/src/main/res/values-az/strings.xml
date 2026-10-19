@@ -415,5 +415,5 @@
     <string name="history_export_failed">CSV ixracı alınmadı. Yenidən cəhd edin.</string>
     <string name="send_previous_payment_recovered">Əvvəlki ödəniş bərpa edildi. Yeni ödəniş göndərilmədi. Yenidən önizləyin.</string>
     <string name="haptic_feedback">Haptik əks əlaqə</string>
-    <string name="send_sounds">Göndərmə səsləri</string>
+    <string name="send_sounds">Səs aktivdir</string>
 </resources>

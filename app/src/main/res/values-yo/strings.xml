@@ -415,5 +415,5 @@
     <string name="history_export_failed">Gbigbe CSV jáde kuna. Gbìyànjú lẹ́ẹ̀kan síi.</string>
     <string name="send_previous_payment_recovered">A ti mú ìsanwó iṣaaju padà. A kò fi ìsanwó tuntun ránṣẹ́. Wo àwòkọ rẹ̀ lẹ́ẹ̀kan sí i.</string>
     <string name="haptic_feedback">Ìdáhùn ìfọwọ́kan</string>
-    <string name="send_sounds">Àwọn ohùn fífi ránṣẹ́</string>
+    <string name="send_sounds">Ohùn ti tan</string>
 </resources>

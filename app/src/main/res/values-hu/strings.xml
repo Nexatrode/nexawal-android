@@ -415,5 +415,5 @@
     <string name="history_export_failed">A CSV-exportálás nem sikerült. Próbálja újra.</string>
     <string name="send_previous_payment_recovered">A korábbi fizetés helyreállt. Az új fizetés nem lett elküldve. Tekintsd meg újra az előnézetet.</string>
     <string name="haptic_feedback">Haptikus visszajelzés</string>
-    <string name="send_sounds">Küldési hangok</string>
+    <string name="send_sounds">Hang bekapcsolva</string>
 </resources>

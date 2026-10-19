@@ -415,5 +415,5 @@
     <string name="history_export_failed">Exportul CSV a eșuat. Încercați din nou.</string>
     <string name="send_previous_payment_recovered">Plata anterioară a fost recuperată. Noua plată nu a fost trimisă. Previzualizați-o din nou.</string>
     <string name="haptic_feedback">Feedback haptic</string>
-    <string name="send_sounds">Sunete de trimitere</string>
+    <string name="send_sounds">Sunet activat</string>
 </resources>

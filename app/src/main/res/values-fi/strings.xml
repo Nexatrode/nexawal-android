@@ -415,5 +415,5 @@
     <string name="history_export_failed">CSV-vienti epäonnistui. Yritä uudelleen.</string>
     <string name="send_previous_payment_recovered">Aiempi maksu palautettiin. Uutta maksua ei lähetetty. Avaa esikatselu uudelleen.</string>
     <string name="haptic_feedback">Haptinen palaute</string>
-    <string name="send_sounds">Lähetysäänet</string>
+    <string name="send_sounds">Ääni päällä</string>
 </resources>

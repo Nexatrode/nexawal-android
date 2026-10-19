@@ -415,5 +415,5 @@
     <string name="history_export_failed">Export CSV se nezdařil. Zkuste to znovu.</string>
     <string name="send_previous_payment_recovered">Předchozí platba byla obnovena. Nová platba nebyla odeslána. Znovu zobrazte náhled.</string>
     <string name="haptic_feedback">Haptická odezva</string>
-    <string name="send_sounds">Zvuky odesílání</string>
+    <string name="send_sounds">Zvuk zapnutý</string>
 </resources>
