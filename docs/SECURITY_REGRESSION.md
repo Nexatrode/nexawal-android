@@ -1,5 +1,12 @@
 # Focused security fixes — September 2026
 
+## WalletCore v0.1.19 dependency update
+
+The source submodule now pins `c5430e9ba86ca962aae07e6744f8eaa78abff905` and builds WalletCore
+0.1.19 from source with Rustls 0.23.46. Android unit tests and the unsigned Release APK build pass;
+signed-device authentication, lifecycle, and send/recovery QA remain required before distribution.
+No WalletCore prebuilt binary replaces the from-source F-Droid and Wallet Scrutiny path.
+
 ## October 13 release-candidate corrections — WalletCore v0.1.18
 
 - Create uses the configured scan node and HTTP-proxy policy, a five-second whole-call timeout
