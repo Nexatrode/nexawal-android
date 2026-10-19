@@ -100,7 +100,22 @@ internal fun ExplorerDetailsScreen(txid: String, mainnet: Boolean, lookup: Explo
             SelectionContainer { Text(txid, fontFamily = FontFamily.Monospace) }
             val clipboard = ClipboardCompat.current()
             val scope = rememberCoroutineScope()
-            TextButton(onClick = { scope.launch { ClipboardCompat.setText(clipboard, "https://explorer.nexawal.com/tx/$txid") } }) { Text(stringResource(R.string.copy_explorer_link), color = palette.accent) }
+            val explorerUrl = "https://explorer.nexawal.com/tx/$txid"
+            val linkCopiedText = stringResource(R.string.link_copied)
+            Text(stringResource(R.string.copy_explorer_link), color = palette.secondaryText, style = MaterialTheme.typography.bodySmall)
+            TextButton(onClick = {
+                scope.launch {
+                    ClipboardCompat.setText(clipboard, explorerUrl)
+                    android.widget.Toast.makeText(context, linkCopiedText, android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text(
+                    explorerUrl,
+                    color = palette.accent,
+                    fontFamily = FontFamily.Monospace,
+                    textDecoration = androidx.compose.ui.text.style.TextDecoration.Underline,
+                )
+            }
             TextButton(onClick = onClose) { Text(stringResource(R.string.action_close), color = palette.accent) }
         }
         }

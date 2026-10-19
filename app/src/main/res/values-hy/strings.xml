@@ -414,4 +414,6 @@
     <string name="history_export_csv">Արտահանել համապատասխան գործարքները (CSV)</string>
     <string name="history_export_failed">CSV-ի արտահանումը չհաջողվեց։ Կրկին փորձեք։</string>
     <string name="send_previous_payment_recovered">Նախորդ վճարումը վերականգնվել է։ Նոր վճարումը չի ուղարկվել։ Կրկին դիտեք նախադիտումը։</string>
+    <string name="haptic_feedback">Հապտիկ արձագանք</string>
+    <string name="send_sounds">Ուղարկման ձայներ</string>
 </resources>

@@ -414,4 +414,6 @@
     <string name="history_export_csv">Izvezi odgovarajuće transakcije (CSV)</string>
     <string name="history_export_failed">Izvoz CSV-a nije uspio. Pokušajte ponovno.</string>
     <string name="send_previous_payment_recovered">Prethodno plaćanje je obnovljeno. Novo plaćanje nije poslano. Ponovno pogledajte pretpregled.</string>
+    <string name="haptic_feedback">Haptička povratna informacija</string>
+    <string name="send_sounds">Zvukovi slanja</string>
 </resources>

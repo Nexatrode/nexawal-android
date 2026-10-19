@@ -60,6 +60,8 @@ class A11yStringsXmlTest {
         "section_info",
         "section_chain",
         "daemon_url_label",
+        "haptic_feedback",
+        "send_sounds",
     )
 
     private val requiredA11yKeys = listOf(

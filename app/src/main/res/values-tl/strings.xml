@@ -414,4 +414,6 @@
     <string name="history_export_csv">I-export ang mga tumugmang transaksyon (CSV)</string>
     <string name="history_export_failed">Hindi na-export ang CSV. Subukan muli.</string>
     <string name="send_previous_payment_recovered">Na-recover ang nakaraang bayad. Hindi naipadala ang bagong bayad. I-preview itong muli.</string>
+    <string name="haptic_feedback">Haptic na tugon</string>
+    <string name="send_sounds">Mga tunog sa pagpapadala</string>
 </resources>

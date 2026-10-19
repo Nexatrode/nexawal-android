@@ -412,4 +412,6 @@
     <string name="history_export_csv">导出匹配的交易记录 (CSV)</string>
     <string name="history_export_failed">CSV 导出失败，请重试。</string>
     <string name="send_previous_payment_recovered">已恢复上一笔付款。新的付款尚未发送。请重新预览。</string>
+    <string name="haptic_feedback">触觉反馈</string>
+    <string name="send_sounds">发送提示音</string>
 </resources>

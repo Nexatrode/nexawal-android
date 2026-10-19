@@ -414,4 +414,6 @@
     <string name="history_export_csv">Ekspordi vastavad tehingud (CSV)</string>
     <string name="history_export_failed">CSV eksportimine ebaõnnestus. Proovi uuesti.</string>
     <string name="send_previous_payment_recovered">Eelmine makse taastati. Uut makset ei saadetud. Vaadake eelvaadet uuesti.</string>
+    <string name="haptic_feedback">Haptiline tagasiside</string>
+    <string name="send_sounds">Saatmishelid</string>
 </resources>

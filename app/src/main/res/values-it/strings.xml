@@ -412,4 +412,6 @@
     <string name="history_export_csv">Esporta le transazioni corrispondenti (CSV)</string>
     <string name="history_export_failed">Esportazione CSV non riuscita. Riprova.</string>
     <string name="send_previous_payment_recovered">Il pagamento precedente è stato recuperato. Il nuovo pagamento non è stato inviato. Visualizza di nuovo l\'anteprima.</string>
+    <string name="haptic_feedback">Feedback aptico</string>
+    <string name="send_sounds">Suoni di invio</string>
 </resources>

@@ -414,4 +414,6 @@
     <string name="history_export_csv">تراکنش‌های منطبق را صادر کنید (CSV)</string>
     <string name="history_export_failed">خروجی CSV ناموفق بود. دوباره تلاش کنید.</string>
     <string name="send_previous_payment_recovered">پرداخت قبلی بازیابی شد. پرداخت جدید ارسال نشد. دوباره پیش‌نمایش را ببینید.</string>
+    <string name="haptic_feedback">بازخورد لمسی</string>
+    <string name="send_sounds">صداهای ارسال</string>
 </resources>

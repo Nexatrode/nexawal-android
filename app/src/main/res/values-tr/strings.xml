@@ -412,4 +412,6 @@
     <string name="history_export_csv">Eşleşen işlemleri dışa aktar (CSV)</string>
     <string name="history_export_failed">CSV dışa aktarılamadı. Yeniden deneyin.</string>
     <string name="send_previous_payment_recovered">Önceki ödeme kurtarıldı. Yeni ödeme gönderilmedi. Yeniden önizleyin.</string>
+    <string name="haptic_feedback">Dokunsal geri bildirim</string>
+    <string name="send_sounds">Gönderim sesleri</string>
 </resources>

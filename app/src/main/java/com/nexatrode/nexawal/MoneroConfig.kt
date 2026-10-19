@@ -42,6 +42,8 @@ object MoneroConfig {
     private const val KEY_I2P_RPC_ADDRESS: String = "monero_i2p_rpc_address"
     private const val KEY_I2P_HTTP_PROXY: String = "monero_i2p_http_proxy"
     private const val KEY_TECHNO_THEME: String = "ui_techno_theme"
+    private const val KEY_HAPTIC_FEEDBACK_ENABLED: String = "ui_haptic_feedback_enabled"
+    private const val KEY_SEND_SOUNDS_ENABLED: String = "ui_send_sounds_enabled"
     private const val KEY_CLASSIC_UI_LEGACY: String = "ui_classic_mode"
     private const val KEY_SYNC_DETAILS_EXPANDED: String = "ui_sync_details_expanded"
     private const val KEY_FIAT_ESTIMATES_ENABLED: String = "fiat_estimates_enabled"
@@ -63,6 +65,8 @@ object MoneroConfig {
     const val DEFAULT_REQUIRE_DEVICE_AUTH: Boolean = true
     /** Techno Theme ON = neon terminal look; OFF (default) = standard look. */
     const val DEFAULT_TECHNO_THEME: Boolean = false
+    const val DEFAULT_HAPTIC_FEEDBACK_ENABLED: Boolean = true
+    const val DEFAULT_SEND_SOUNDS_ENABLED: Boolean = false
     private const val DEFAULT_NETWORK_POLICY_RAW: String = "clearnet"
 
     /** Bump when summary or full ToS changes so users must re-accept. */
@@ -180,6 +184,24 @@ object MoneroConfig {
             .putBoolean(KEY_TECHNO_THEME, enabled)
             .remove(KEY_CLASSIC_UI_LEGACY)
             .apply()
+    }
+
+    @JvmStatic
+    fun hapticFeedbackEnabled(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_HAPTIC_FEEDBACK_ENABLED, DEFAULT_HAPTIC_FEEDBACK_ENABLED)
+
+    @JvmStatic
+    fun setHapticFeedbackEnabled(context: Context, enabled: Boolean) {
+        prefs(context).edit().putBoolean(KEY_HAPTIC_FEEDBACK_ENABLED, enabled).apply()
+    }
+
+    @JvmStatic
+    fun sendSoundsEnabled(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_SEND_SOUNDS_ENABLED, DEFAULT_SEND_SOUNDS_ENABLED)
+
+    @JvmStatic
+    fun setSendSoundsEnabled(context: Context, enabled: Boolean) {
+        prefs(context).edit().putBoolean(KEY_SEND_SOUNDS_ENABLED, enabled).apply()
     }
 
     @JvmStatic

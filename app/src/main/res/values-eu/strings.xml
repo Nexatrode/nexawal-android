@@ -414,4 +414,6 @@
     <string name="history_export_csv">Esportatu bat datozen transakzioak (CSV)</string>
     <string name="history_export_failed">Ezin izan da CSV esportatu. Saiatu berriro.</string>
     <string name="send_previous_payment_recovered">Aurreko ordainketa berreskuratu da. Ordainketa berria ez da bidali. Ikusi aurrebista berriro.</string>
+    <string name="haptic_feedback">Feedback haptikoa</string>
+    <string name="send_sounds">Bidaltze-soinuak</string>
 </resources>

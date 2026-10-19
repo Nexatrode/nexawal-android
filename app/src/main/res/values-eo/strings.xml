@@ -414,4 +414,6 @@
     <string name="history_export_csv">Eksporti kongruajn transakciojn (CSV)</string>
     <string name="history_export_failed">Eksporto de CSV malsukcesis. Provu denove.</string>
     <string name="send_previous_payment_recovered">La antaŭa pago estis reakirita. La nova pago ne estis sendita. Antaŭrigardu ĝin denove.</string>
+    <string name="haptic_feedback">Tuŝa respondo</string>
+    <string name="send_sounds">Sendaj sonoj</string>
 </resources>

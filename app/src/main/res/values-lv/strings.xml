@@ -414,4 +414,6 @@
     <string name="history_export_csv">Eksportēt atbilstošos darījumus (CSV)</string>
     <string name="history_export_failed">CSV eksportēšana neizdevās. Mēģiniet vēlreiz.</string>
     <string name="send_previous_payment_recovered">Iepriekšējais maksājums atjaunots. Jaunais maksājums netika nosūtīts. Apskatiet priekšskatījumu vēlreiz.</string>
+    <string name="haptic_feedback">Haptiskā atgriezeniskā saite</string>
+    <string name="send_sounds">Sūtīšanas skaņas</string>
 </resources>

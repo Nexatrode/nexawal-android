@@ -414,4 +414,6 @@
     <string name="history_export_csv">Easpórtáil na hidirbhearta meaitseáilte (CSV)</string>
     <string name="history_export_failed">Theip ar easpórtáil CSV. Bain triail eile as.</string>
     <string name="send_previous_payment_recovered">Aisghabhadh an íocaíocht roimhe seo. Níor seoladh an íocaíocht nua. Réamhamharc uirthi arís.</string>
+    <string name="haptic_feedback">Aiseolas haptach</string>
+    <string name="send_sounds">Fuaimeanna seolta</string>
 </resources>

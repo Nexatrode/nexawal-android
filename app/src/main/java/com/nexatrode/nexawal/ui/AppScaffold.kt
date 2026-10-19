@@ -91,6 +91,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -1478,6 +1479,7 @@ internal fun TransferDetailsDialog(
     val clipboard = ClipboardCompat.current()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val view = LocalView.current
     val perXmr = snapshot?.let { FiatEstimate.decimalOrNull(it.fiatPerXmr) }
     val snapCurrency = snapshot?.currency
     val directionLabel = when (t.direction.lowercase()) {
@@ -1531,6 +1533,7 @@ internal fun TransferDetailsDialog(
                     onClick = {
                         scope.launch {
                             ClipboardCompat.setText(clipboard, t.txid)
+                            AppHaptics.light(context, view)
                         }
                     },
                     colors = ButtonDefaults.buttonColors(
@@ -1543,19 +1546,27 @@ internal fun TransferDetailsDialog(
                 Spacer(Modifier.height(8.dp))
                 val explorerUrl = "https://explorer.nexawal.com/tx/${t.txid}"
                 val linkCopiedText = stringResource(R.string.link_copied)
-                Button(
+                Text(
+                    stringResource(R.string.copy_explorer_link),
+                    color = Color.Gray,
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 12.sp,
+                )
+                TextButton(
                     onClick = {
                         scope.launch {
                             ClipboardCompat.setText(clipboard, explorerUrl)
+                            AppHaptics.light(context, view)
                             Toast.makeText(context, linkCopiedText, Toast.LENGTH_SHORT).show()
                         }
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF121612),
-                        contentColor = Color(0xFF39FF14),
-                    )
+                    }
                 ) {
-                    Text(stringResource(R.string.copy_explorer_link))
+                    Text(
+                        explorerUrl,
+                        color = Color(0xFF39FF14),
+                        fontFamily = FontFamily.Monospace,
+                        textDecoration = TextDecoration.Underline,
+                    )
                 }
             }
         },
@@ -1578,6 +1589,7 @@ internal fun TransferDetailsDialog(
 private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val view = LocalView.current
     val clipboard = ClipboardCompat.current()
     val fiatRate by walletManager.fiatPrices.displayRate.collectAsState()
 
@@ -1804,6 +1816,7 @@ private fun ReceiveScreen(walletManager: WalletManager, palette: NexaPalette) {
             onClick = {
                 scope.launch {
                     ClipboardCompat.setText(clipboard, receiveAddress)
+                    AppHaptics.light(context, view)
                     statusText = addressCopiedText
                 }
             },
@@ -1934,6 +1947,7 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
     val state by walletManager.state.collectAsState()
     val fiatRate by walletManager.fiatPrices.displayRate.collectAsState()
     val context = LocalContext.current
+    val view = LocalView.current
 
     var toAddress by remember { mutableStateOf("") }
     var amountXmrText by remember { mutableStateOf("") }
@@ -2356,6 +2370,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         sendResult = null
                         sweepResult = null
                         scope.launch {
+                            var sendAttempted = false
+                            var sendCompleted = false
                             try {
                                 val amountPiconeroNow = approvedAmount
                                 val feePiconero = approvedMaxFee
@@ -2387,11 +2403,15 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     approvedIntent = null
                                     throw IllegalStateException(context.getString(R.string.error_preview_before_send))
                                 }
+                                sendAttempted = true
                                 sendResult = walletManager.send(
                                     toAddress = approvedDestination,
                                     amountPiconero = amountPiconeroNow,
                                     approvedMaxFee = approvedMaxFee,
                                 )
+                                sendCompleted = true
+                                AppHaptics.success(context, view)
+                                SendSounds.success(context)
                                 infoText = transactionBroadcastText
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.PreviousPaymentRecovered) {
@@ -2400,9 +2420,19 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                 errorText = context.getString(R.string.send_previous_payment_recovered) + "\nTXID: ${t.txid}"
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
+                                if (sendAttempted && !sendCompleted) {
+                                    AppHaptics.failure(context, view)
+                                    SendSounds.failure(context)
+                                }
                                 estimatedFee = null
                                 errorText = context.getString(R.string.send_fee_increased_unapproved)
                             } catch (t: Throwable) {
+                                if (sendAttempted && !sendCompleted && t !is kotlinx.coroutines.CancellationException &&
+                                    t.message != com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS
+                                ) {
+                                    AppHaptics.failure(context, view)
+                                    SendSounds.failure(context)
+                                }
                                 errorText = if (t.message == com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS) {
                                     context.getString(R.string.send_already_in_progress)
                                 } else {
@@ -2467,6 +2497,8 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                         infoText = null
                         sendResult = null
                         scope.launch {
+                            var sendAttempted = false
+                            var sendCompleted = false
                             try {
                                 if (MoneroConfig.requireDeviceAuth(context)) {
                                     if (!DeviceAuthGate.isAvailable(context)) {
@@ -2486,7 +2518,11 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                     approvedIntent = null
                                     throw IllegalStateException(context.getString(R.string.preview_max_before))
                                 }
+                                sendAttempted = true
                                 sweepResult = walletManager.sweep(toAddress = approvedDestination, approvedMaxFee = approvedMaxFee)
+                                sendCompleted = true
+                                AppHaptics.success(context, view)
+                                SendSounds.success(context)
                                 infoText = maxBalanceBroadcastText
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.PreviousPaymentRecovered) {
@@ -2495,9 +2531,19 @@ private fun SendScreen(walletManager: WalletManager, palette: NexaPalette) {
                                 errorText = context.getString(R.string.send_previous_payment_recovered) + "\nTXID: ${t.txid}"
                                 walletManager.refreshWalletDataSnapshots()
                             } catch (t: com.nexatrode.nexawal.logic.SendSafety.FeeApprovalException) {
+                                if (sendAttempted && !sendCompleted) {
+                                    AppHaptics.failure(context, view)
+                                    SendSounds.failure(context)
+                                }
                                 sweepPreview = null
                                 errorText = context.getString(R.string.send_fee_increased_unapproved)
                             } catch (t: Throwable) {
+                                if (sendAttempted && !sendCompleted && t !is kotlinx.coroutines.CancellationException &&
+                                    t.message != com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS
+                                ) {
+                                    AppHaptics.failure(context, view)
+                                    SendSounds.failure(context)
+                                }
                                 errorText = if (t.message == com.nexatrode.nexawal.logic.SendGate.ALREADY_IN_PROGRESS) {
                                     context.getString(R.string.send_already_in_progress)
                                 } else {
@@ -2593,6 +2639,7 @@ private fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val state by walletManager.state.collectAsState()
     val context = LocalContext.current
+    val view = LocalView.current
     val clipboard = ClipboardCompat.current()
     val palette = rememberNexaPalette(technoTheme)
 
@@ -2693,6 +2740,8 @@ private fun SettingsScreen(
     var showAdvancedRecovery by remember { mutableStateOf(false) }
     var fiatEnabled by remember { mutableStateOf(MoneroConfig.fiatEstimatesEnabled(context)) }
     var explorerEnabled by remember { mutableStateOf(com.nexatrode.nexawal.ExplorerAccess.enabled(context)) }
+    var hapticFeedbackEnabled by remember { mutableStateOf(MoneroConfig.hapticFeedbackEnabled(context)) }
+    var sendSoundsEnabled by remember { mutableStateOf(MoneroConfig.sendSoundsEnabled(context)) }
     var fiatCurrency by remember { mutableStateOf(MoneroConfig.fiatCurrency(context)) }
     var fiatCurrencyMenuOpen by remember { mutableStateOf(false) }
 
@@ -2750,6 +2799,24 @@ private fun SettingsScreen(
                     },
                     palette = palette,
                     testTag = A11yTags.TECHNO_THEME_SWITCH,
+                )
+                LabeledSwitchRow(
+                    label = stringResource(R.string.haptic_feedback),
+                    checked = hapticFeedbackEnabled,
+                    onCheckedChange = {
+                        hapticFeedbackEnabled = it
+                        MoneroConfig.setHapticFeedbackEnabled(context, it)
+                    },
+                    palette = palette,
+                )
+                LabeledSwitchRow(
+                    label = stringResource(R.string.send_sounds),
+                    checked = sendSoundsEnabled,
+                    onCheckedChange = {
+                        sendSoundsEnabled = it
+                        MoneroConfig.setSendSoundsEnabled(context, it)
+                    },
+                    palette = palette,
                 )
             }
         }
@@ -3094,7 +3161,10 @@ private fun SettingsScreen(
                                     accountGapInput = ag
                                 },
                             )
-                            statusText = if (ok) savedScanLookaheadText else statusText
+                            if (ok) {
+                                statusText = savedScanLookaheadText
+                                AppHaptics.light(context, view)
+                            }
                         },
                         palette = palette,
                         modifier = Modifier.fillMaxWidth(),

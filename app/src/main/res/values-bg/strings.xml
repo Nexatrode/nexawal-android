@@ -414,4 +414,6 @@
     <string name="history_export_csv">Експортирай съвпадащите трансакции (CSV)</string>
     <string name="history_export_failed">Експортирането на CSV не бе успешно. Опитайте отново.</string>
     <string name="send_previous_payment_recovered">Предишното плащане е възстановено. Новото плащане не е изпратено. Прегледайте го отново.</string>
+    <string name="haptic_feedback">Тактилна обратна връзка</string>
+    <string name="send_sounds">Звуци при изпращане</string>
 </resources>

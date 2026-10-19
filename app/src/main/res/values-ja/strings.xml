@@ -412,4 +412,6 @@
     <string name="history_export_csv">該当する取引をエクスポート (CSV)</string>
     <string name="history_export_failed">CSVをエクスポートできませんでした。もう一度お試しください。</string>
     <string name="send_previous_payment_recovered">前の支払いを復旧しました。新しい支払いは送信されていません。もう一度プレビューしてください。</string>
+    <string name="haptic_feedback">触覚フィードバック</string>
+    <string name="send_sounds">送信音</string>
 </resources>

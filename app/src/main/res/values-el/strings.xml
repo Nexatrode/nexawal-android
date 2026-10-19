@@ -414,4 +414,6 @@
     <string name="history_export_csv">Εξαγωγή συναλλαγών που ταιριάζουν (CSV)</string>
     <string name="history_export_failed">Η εξαγωγή CSV απέτυχε. Δοκιμάστε ξανά.</string>
     <string name="send_previous_payment_recovered">Η προηγούμενη πληρωμή ανακτήθηκε. Η νέα πληρωμή δεν στάλθηκε. Δείτε ξανά την προεπισκόπηση.</string>
+    <string name="haptic_feedback">Απτική ανάδραση</string>
+    <string name="send_sounds">Ήχοι αποστολής</string>
 </resources>

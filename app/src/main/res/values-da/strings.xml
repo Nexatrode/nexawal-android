@@ -414,4 +414,6 @@
     <string name="history_export_csv">Eksportér matchende transaktioner (CSV)</string>
     <string name="history_export_failed">CSV-eksport mislykkedes. Prøv igen.</string>
     <string name="send_previous_payment_recovered">Den tidligere betaling er gendannet. Den nye betaling blev ikke sendt. Se forhåndsvisningen igen.</string>
+    <string name="haptic_feedback">Haptisk feedback</string>
+    <string name="send_sounds">Sendelyde</string>
 </resources>

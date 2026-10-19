@@ -412,4 +412,6 @@
     <string name="history_export_csv">ส่งออกธุรกรรมที่ตรงกัน (CSV)</string>
     <string name="history_export_failed">ส่งออก CSV ไม่สำเร็จ ลองอีกครั้ง</string>
     <string name="send_previous_payment_recovered">กู้คืนการชำระเงินก่อนหน้าแล้ว ยังไม่ได้ส่งการชำระเงินใหม่ โปรดดูตัวอย่างอีกครั้ง</string>
+    <string name="haptic_feedback">การตอบสนองแบบสัมผัส</string>
+    <string name="send_sounds">เสียงการส่ง</string>
 </resources>

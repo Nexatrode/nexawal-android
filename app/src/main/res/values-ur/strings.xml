@@ -414,4 +414,6 @@
     <string name="history_export_csv">مماثل لین دین برآمد کریں (CSV)</string>
     <string name="history_export_failed">CSV برآمد نہیں ہو سکی۔ دوبارہ کوشش کریں۔</string>
     <string name="send_previous_payment_recovered">پچھلی ادائیگی بازیافت ہو گئی۔ نئی ادائیگی نہیں بھیجی گئی۔ دوبارہ پیش منظر دیکھیں۔</string>
+    <string name="haptic_feedback">ہیپٹک فیڈبیک</string>
+    <string name="send_sounds">بھیجنے کی آوازیں</string>
 </resources>

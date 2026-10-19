@@ -412,4 +412,6 @@
     <string name="history_export_csv">Overeenkomende transacties exporteren (CSV)</string>
     <string name="history_export_failed">CSV-export mislukt. Probeer het opnieuw.</string>
     <string name="send_previous_payment_recovered">De vorige betaling is hersteld. De nieuwe betaling is niet verzonden. Bekijk het voorbeeld opnieuw.</string>
+    <string name="haptic_feedback">Haptische feedback</string>
+    <string name="send_sounds">Verzendgeluiden</string>
 </resources>

@@ -414,4 +414,6 @@
     <string name="history_export_csv">ကိုက်ညီသော ငွေလွှဲမှုများကို ထုတ်ယူရန် (CSV)</string>
     <string name="history_export_failed">CSV ထုတ်ယူမှု မအောင်မြင်ပါ။ ထပ်မံကြိုးစားပါ။</string>
     <string name="send_previous_payment_recovered">ယခင်ငွေပေးချေမှုကို ပြန်လည်ရယူပြီးပါပြီ။ ငွေပေးချေမှုအသစ်ကို မပို့ရသေးပါ။ အကြိုကြည့်ရှုမှုကို ထပ်ကြည့်ပါ။</string>
+    <string name="haptic_feedback">ထိတွေ့တုံ့ပြန်မှု</string>
+    <string name="send_sounds">ပို့သည့်အသံများ</string>
 </resources>

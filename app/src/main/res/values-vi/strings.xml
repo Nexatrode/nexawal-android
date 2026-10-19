@@ -412,4 +412,6 @@
     <string name="history_export_csv">Xuất các giao dịch phù hợp (CSV)</string>
     <string name="history_export_failed">Xuất CSV không thành công. Hãy thử lại.</string>
     <string name="send_previous_payment_recovered">Đã khôi phục khoản thanh toán trước. Khoản thanh toán mới chưa được gửi. Hãy xem trước lại.</string>
+    <string name="haptic_feedback">Phản hồi xúc giác</string>
+    <string name="send_sounds">Âm thanh gửi</string>
 </resources>
