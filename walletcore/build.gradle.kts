@@ -242,6 +242,8 @@ tasks.matching { it.name == "preBuild" }.configureEach {
 android {
     namespace = "com.nexatrode.nexawal.walletcore"
     compileSdk = 36
+    // Keep the native CMake build aligned with CI and F-Droid's pinned r27b.
+    ndkVersion = "27.1.12297006"
 
     defaultConfig {
         minSdk = 26
