@@ -69,6 +69,19 @@ abstract class BuildMoneroWalletCoreFromSource @Inject constructor(
                 Properties().apply { propsFile.inputStream().use { load(it) } }.getProperty("ndk.dir")
             }
 
+        // F-Droid's build recipe installs Rust with rustup in CARGO_HOME, but
+        // its later Gradle process does not inherit PATH edits made by the
+        // recipe's setup shell. Add the Rust tool directory explicitly for the
+        // native build subprocess; local builds with cargo already on PATH are
+        // unchanged.
+        val cargoHome = System.getenv("CARGO_HOME")
+            ?.takeIf { it.isNotBlank() }
+            ?: File(System.getProperty("user.home"), ".cargo").absolutePath
+        val inheritedPath = System.getenv("PATH").orEmpty()
+        val rustBuildPath = listOf(File(cargoHome, "bin").absolutePath, inheritedPath)
+            .filter { it.isNotBlank() }
+            .joinToString(File.pathSeparator)
+
         require(!ndkHome.isNullOrBlank()) {
             "NEXAWAL_BUILD_NATIVE_FROM_SOURCE requires ANDROID_NDK_HOME/ANDROID_NDK_ROOT or ndk.dir in local.properties"
         }
@@ -88,6 +101,8 @@ abstract class BuildMoneroWalletCoreFromSource @Inject constructor(
             environment("PROFILE", "release")
             environment("CARGO_FEATURES", cargoFeatures.get())
             environment("ABIS", abis.get())
+            environment("CARGO_HOME", cargoHome)
+            environment("PATH", rustBuildPath)
             environment("INSTALL_TO_NEXAWAL_ANDROID", "1")
             environment("NEXAWAL_ANDROID_DIR", nexawalAndroidDir.get())
             isIgnoreExitValue = false

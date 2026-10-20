@@ -44,8 +44,8 @@ jobs:
         with:
           packages: platform-tools
 
-      - name: Install Rust stable
-        uses: dtolnay/rust-toolchain@stable
+      - name: Install pinned Rust 1.97.1
+        uses: dtolnay/rust-toolchain@1.97.1
         with:
           targets: aarch64-linux-android,x86_64-linux-android
 

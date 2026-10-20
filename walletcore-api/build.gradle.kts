@@ -1,5 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     // Kotlin-only module. The Kotlin plugin is already on the buildscript classpath (via the Android toolchain),
     // so we must apply it without specifying a version to avoid the "unknown version" conflict.
@@ -7,8 +9,17 @@ plugins {
 }
 
 kotlin {
-    // Keep JVM target aligned with the Android project toolchain.
-    jvmToolchain(11)
+    // Build with the JDK provided by the isolated builder, while retaining
+    // Java 11 bytecode compatibility for consumers.
+    jvmToolchain(21)
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 dependencies {

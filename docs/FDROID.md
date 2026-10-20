@@ -14,21 +14,21 @@ Companion docs:
 - Store copy (Fastlane): [`../fastlane/metadata/android/`](../fastlane/metadata/android/)
 - Draft fdroiddata recipe: [`fdroid/com.nexatrode.nexawal.yml`](fdroid/com.nexatrode.nexawal.yml)
 
-## AntiFeatures (expected)
+## Network disclosures / AntiFeatures
 
-Declare these honestly in fdroiddata:
-
-| AntiFeature | Why |
-| --- | --- |
-| `NonFreeNet` | Default daemon is `https://rpc.nexawal.com` (user-replaceable). Optional fiat estimates contact `https://rates.nexawal.com` when enabled. |
+The default daemon is user-configurable. Fiat rates and transaction-explorer
+lookups are optional and disabled by default. The draft therefore does not
+pre-label the app as `NonFreeNet` or `TetheredNet`; explain these behaviors in
+the listing and let F-Droid maintainers make the final AntiFeature decision.
 
 No proprietary Google SDKs ship in the APK.
 
+
 ## Build requirements (buildserver)
 
-- JDK **17**
+- JDK **21** (Kotlin-only modules emit Java 11 bytecode)
 - Android SDK (compileSdk **36**), NDK (**r27b** recommended; pin in recipe)
-- Rust **1.97.1** (the WalletCore toolchain pin) with targets `aarch64-linux-android`, `x86_64-linux-android`
+- Rust **1.97.1** (the WalletCore toolchain pin) with targets `aarch64-linux-android`, `x86_64-linux-android`; the draft recipe installs this through fdroiddata's pinned `rustup` srclib
 - Git submodules initialized
 - Source build is the Gradle default. `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1` is
   still accepted for older recipes.
@@ -56,12 +56,12 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
 5. GitHub Release: app SHA, FFI SHA, NDK, AGP/Gradle, link to native CI SHA256SUMS.
 6. Open / update an MR on [fdroiddata](https://gitlab.com/fdroid/fdroiddata) using
    [`fdroid/com.nexatrode.nexawal.yml`](fdroid/com.nexatrode.nexawal.yml) as the starting point.
-7. Expect F-Droid maintainers to adjust `sudo:` / NDK / Rust paths for their buildserver.
+7. Run `fdroid lint` and a clean F-Droid build-server test; the Gradle native task adds `$CARGO_HOME/bin` to its subprocess PATH so the rustup-installed `cargo` works after F-Droid's setup shell exits. The recipe removes WalletCore's `resp.bin` test fixture because F-Droid rejects binaries in source; it is not needed to build or run the app.
 
 ## Local dry-run (developer machine)
 
 ```bash
-git checkout v1.0.2   # after tagging the final tested release commit
+git checkout v1.0.2   # only after device QA and the tag exists
 git submodule update --init --recursive
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon

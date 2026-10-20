@@ -43,7 +43,7 @@ Record those values in the GitHub Release notes.
 
 ## Prerequisites
 
-- JDK **17** (AGP 9.x / current Android tooling)
+- JDK **21** (AGP 9.x / current Android tooling; Kotlin-only modules retain Java 11 bytecode output)
 - Android SDK with **compileSdk 36**
 - Android **NDK** (for `libc++_shared.so` and the CMake JNI shim)
 - Network once to resolve Gradle / Maven deps (offline rebuilds need a warm cache)
@@ -114,7 +114,7 @@ Suggested **fdroiddata** / recipe sketch (exact metadata file is a separate MR):
 ```yaml
 # In the build recipe:
 sudo: false
-# Install JDK 17, Android SDK/NDK, Rust (aarch64-linux-android, x86_64-linux-android)
+# Install JDK 21, Android SDK/NDK, Rust (aarch64-linux-android, x86_64-linux-android)
 # Then:
 build:
   - export NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1
@@ -148,12 +148,14 @@ PROFILE=release CARGO_FEATURES="compile-time-generators" \
   ./Scripts/build_android.sh
 ```
 
-### CI from-source rebuild (Wallet Scrutiny / F-Droid path)
+### CI from-source rebuild (WalletScrutiny evidence)
 
 GitHub Actions workflow [`.github/workflows/native-android.yml`](../.github/workflows/native-android.yml)
-runs the **F-Droid path end-to-end**:
+runs a source-first reference rebuild for Android. It is useful evidence for
+WalletScrutiny, but it is **not** a substitute for validating the metadata and
+building in F-Droid's buildserver:
 
-- Rust stable + Android NDK **r27b** + JDK 17
+- Rust **1.97.1** (pinned in `MoneroWalletCoreFFI/rust-toolchain.toml`) + Android NDK **r27b** + JDK 21
 - `NEXAWAL_BUILD_NATIVE_FROM_SOURCE=1 ./gradlew :app:assembleRelease`
 - Uploaded unsigned APK, `.so` files, and `native-android-SHA256SUMS.txt`
   (app commit, FFI commit, NDK)
