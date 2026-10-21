@@ -61,7 +61,7 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
 ## Local dry-run (developer machine)
 
 ```bash
-git checkout v1.0.2   # only after device QA and the tag exists
+git checkout v1.0.3   # only after device QA and the tag exists
 git submodule update --init --recursive
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon

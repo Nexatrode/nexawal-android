@@ -3,7 +3,7 @@
 All notable changes to **NexaWal Android** are documented here.
 Release tags use `v<versionName>` (e.g. `v1.0.0`).
 
-## [1.0.2] — Unreleased
+## [1.0.3] — 2026-10-21
 
 ### Changed
 - Localize transaction-history labels, filters, errors, and wallet history buttons across all 53 shipped locales
@@ -20,6 +20,7 @@ Release tags use `v<versionName>` (e.g. `v1.0.0`).
 - Clear expired fiat input before returning to XMR so a fiat number cannot become an XMR amount
 - Keep the release theme compatible with Android 11 while using Android 12+ splash-screen styling
 - Mark camera as optional so devices without a camera are not filtered out of installs
+- Add vertical spacing between the Techno Theme, Haptic feedback, and Sound On switches
 
 ## [1.0.1] — 2026-09-04
 

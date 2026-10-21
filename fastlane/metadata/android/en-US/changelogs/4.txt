@@ -1,0 +1,1 @@
+Improved spacing between the Techno Theme, Haptic feedback, and Sound On switches for easier use.

@@ -2836,6 +2836,7 @@ private fun SettingsScreen(
                     palette = palette,
                     testTag = A11yTags.TECHNO_THEME_SWITCH,
                 )
+                Spacer(Modifier.height(8.dp))
                 LabeledSwitchRow(
                     label = stringResource(R.string.haptic_feedback),
                     checked = hapticFeedbackEnabled,
@@ -2845,6 +2846,7 @@ private fun SettingsScreen(
                     },
                     palette = palette,
                 )
+                Spacer(Modifier.height(8.dp))
                 LabeledSwitchRow(
                     label = stringResource(R.string.send_sounds),
                     checked = sendSoundsEnabled,
