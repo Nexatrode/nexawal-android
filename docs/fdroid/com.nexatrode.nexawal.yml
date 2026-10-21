@@ -97,9 +97,9 @@ MaintainerNotes: |
   are optional and disabled by default; review network AntiFeatures against the
   actual release behavior rather than assuming a fixed service dependency.
   Privacy policy: https://nexawal.com/privacy/
-  The 1.0.3 build entry pins the QA-approved source commit. Confirm the clean
-  F-Droid build-server result and update its commit if source changes before
-  filing an inclusion request.
+  The 1.0.3 build entry pins the QA-approved source commit. A clean F-Droid
+  build-server run passed for this exact commit on 2026-10-21; repeat it if
+  source changes before filing an inclusion request.
   See docs/FDROID.md and docs/REPRODUCIBLE_BUILD.md in the app repo.
   minSdk is 30.
 
