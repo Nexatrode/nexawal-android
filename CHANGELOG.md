@@ -3,6 +3,11 @@
 All notable changes to **NexaWal Android** are documented here.
 Release tags use `v<versionName>` (e.g. `v1.0.0`).
 
+## [1.0.4] — 2026-10-21
+
+### Changed
+- Add the current standard-theme wallet screen to the Android store screenshots
+
 ## [1.0.3] — 2026-10-21
 
 ### Changed

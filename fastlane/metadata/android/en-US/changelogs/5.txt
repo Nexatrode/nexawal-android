@@ -1,0 +1,1 @@
+Adds the current NexaWal wallet screen as the F-Droid and app-store listing screenshot.

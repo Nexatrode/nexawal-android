@@ -72,7 +72,7 @@ See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md
   Scrutiny path.
 - **Store copy:** [fastlane/metadata/android/](fastlane/metadata/android/)
 - **fdroiddata draft:** [docs/fdroid/com.nexatrode.nexawal.yml](docs/fdroid/com.nexatrode.nexawal.yml)
-- **Release tags:** `v<versionName>` (current `versionName` is `1.0.3`; tag after final device QA).
+- **Release tags:** `v<versionName>` (current `versionName` is `1.0.4`; tag after final device QA).
 
 ## Screenshots
 

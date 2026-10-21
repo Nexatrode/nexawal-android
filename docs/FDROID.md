@@ -61,7 +61,7 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
 ## Local dry-run (developer machine)
 
 ```bash
-git checkout v1.0.3   # only after device QA and the tag exists
+git checkout v1.0.4   # only after device QA and the tag exists
 git submodule update --init --recursive
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon
@@ -69,5 +69,6 @@ export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.prope
 
 ## Screenshots
 
-Phone screenshots live under `docs/screenshots/` and are linked from the README.
-Copy into Fastlane `phoneScreenshots/` when preparing store assets if desired.
+Phone screenshots live under Fastlane `metadata/android/en-US/images/phoneScreenshots/`
+so F-Droid can display the app in its Latest listing. The current release includes
+one wallet screenshot.
