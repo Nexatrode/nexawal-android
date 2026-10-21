@@ -71,6 +71,25 @@ Builds:
       - "${CARGO_HOME:-$HOME/.cargo}/bin/rustup target add --toolchain 1.97.1 aarch64-linux-android x86_64-linux-android"
     ndk: 27.1.12297006
 
+  - versionName: 1.0.3
+    versionCode: 4
+    commit: 7ebc6a4499a0ce861268e8600d2757459e0a01e4
+    submodules: true
+    rm:
+      - MoneroWalletCoreFFI/monero-oxide-output/resp.bin
+    sudo:
+      - apt-get update
+      - apt-get install -y build-essential protobuf-compiler
+    gradle:
+      - yes
+    output: app/build/outputs/apk/release/app-release-unsigned.apk
+    srclibs:
+      - rustup@1.28.2
+    build:
+      - $$rustup$$/rustup-init.sh -y --no-modify-path --default-toolchain 1.97.1
+      - "${CARGO_HOME:-$HOME/.cargo}/bin/rustup target add --toolchain 1.97.1 aarch64-linux-android x86_64-linux-android"
+    ndk: 27.1.12297006
+
 MaintainerNotes: |
   Native Monero core is rebuilt from the MoneroWalletCoreFFI submodule by the
   default Gradle path (do not package committed .so files).
@@ -78,13 +97,14 @@ MaintainerNotes: |
   are optional and disabled by default; review network AntiFeatures against the
   actual release behavior rather than assuming a fixed service dependency.
   Privacy policy: https://nexawal.com/privacy/
-  The 1.0.2 build entry is provisional; update its commit to the exact
-  QA-approved release revision before filing an F-Droid inclusion request.
+  The 1.0.3 build entry pins the QA-approved source commit. Confirm the clean
+  F-Droid build-server result and update its commit if source changes before
+  filing an inclusion request.
   See docs/FDROID.md and docs/REPRODUCIBLE_BUILD.md in the app repo.
   minSdk is 30.
 
 ArchivePolicy: 2
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.0.2
-CurrentVersionCode: 3
+CurrentVersion: 1.0.3
+CurrentVersionCode: 4
