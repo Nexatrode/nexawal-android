@@ -84,7 +84,14 @@ internal class TransactionsPager(
 internal enum class HistoryPageError { LOAD, DETAILS }
 
 @Composable
-internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalette, initialFilter: String, onExportReady: (File, String) -> Unit, onBack: () -> Unit) {
+internal fun TransactionsScreen(
+    walletManager: WalletManager,
+    palette: NexaPalette,
+    initialFilter: String,
+    onExportReady: (File, String) -> Unit,
+    onBack: () -> Unit,
+    onOpenTransfer: (Transfer) -> Unit,
+) {
     val state by walletManager.state.collectAsState()
     val id = state.walletId ?: return
     val pager = remember(id, state.walletAddress, state.historySession) { TransactionsPager(onRows = { rows -> walletManager.fiatPrices.recordSeenTransfers(rows.map { FiatSeenTransfer(txid = it.txid, timestampSeconds = it.timestamp) }) }) }
@@ -95,7 +102,6 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
     var filter by rememberSaveable { mutableStateOf(initialFilter) }
     var from by rememberSaveable { mutableStateOf("") }
     var through by rememberSaveable { mutableStateOf("") }
-    var selected by remember { mutableStateOf<Transfer?>(null) }
     var isExporting by remember { mutableStateOf(false) }
     var exportStatus by remember { mutableStateOf<String?>(null) }
     var exportFailed by remember { mutableStateOf(false) }
@@ -109,7 +115,7 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
         }
     }
     LaunchedEffect(id, state.walletAddress, state.historySession, queryResult) {
-        pager.cancel(); selected = null
+        pager.cancel()
         delay(200)
         queryResult.getOrNull()?.let { pager.reset(id, it); listState.scrollToItem(0) }
     }
@@ -221,14 +227,13 @@ internal fun TransactionsScreen(walletManager: WalletManager, palette: NexaPalet
                 try {
                     val detail = HistoryPaging.query(id, HistoryQuery(limit = 1, txid = row.txid)).transfers.firstOrNull()
                     if (walletManager.state.value.walletId == id && walletManager.state.value.historySession == session) {
-                        if (detail == null) pager.changed = true else selected = detail
+                        if (detail == null) pager.changed = true else onOpenTransfer(detail.atChainHeight(state.syncStatus?.chainHeight ?: 0))
                     }
                 } catch (e: CancellationException) { throw e
                 } catch (_: Exception) { if (walletManager.state.value.historySession == session) pager.error = HistoryPageError.DETAILS }
             }
         }
     }
-    selected?.let { row -> TransferDetailsDialog(row.atChainHeight(state.syncStatus?.chainHeight ?: 0), walletManager.fiatPrices.snapshots.snapshot(row.txid), state.mainnet, state.historySession) { selected = null } }
 }
 
 internal fun Transfer.atChainHeight(chainHeight: Long): Transfer = copy(confirmations =

@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -84,7 +85,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Seeds, balances and history must never enter screenshots, casting or Recents snapshots.
+        // Start secure until Compose determines whether a seed/recovery screen is visible.
+        // This avoids a cold-start frame exposing the wallet-setup seed surface.
         window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
 
         walletManager = (application as NexaWalApp).walletManager
@@ -100,6 +102,26 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf(!MoneroConfig.needsTermsAcceptance(applicationContext))
                 }
 
+                val state by walletManager.state.collectAsState()
+                val access by accessGate.state.collectAsState()
+                val exportRevision by historyExports.revision.collectAsState()
+                val exportFailed by historyExports.failed.collectAsState()
+                val scope = rememberCoroutineScope()
+                var unlockError by remember { mutableStateOf<String?>(null) }
+                var showRecoveryReset by remember { mutableStateOf(false) }
+                var resettingWallet by remember { mutableStateOf(false) }
+
+                SideEffect {
+                    val sensitiveSetupVisible = access == WalletAccessGate.State.OPEN && state.walletId == null
+                    ScreenshotProtection.apply(
+                        window = window,
+                        protect = ScreenshotProtection.shouldProtect(
+                            seedSetupVisible = sensitiveSetupVisible,
+                            recoveryFlowVisible = showRecoveryReset || resettingWallet,
+                        ),
+                    )
+                }
+
                 if (!termsAccepted) {
                     TermsAcceptanceScreen(
                         onAccepted = { termsAccepted = true },
@@ -107,10 +129,6 @@ class MainActivity : ComponentActivity() {
                     return@NexawalTheme
                 }
 
-                val state by walletManager.state.collectAsState()
-                val access by accessGate.state.collectAsState()
-                val exportRevision by historyExports.revision.collectAsState()
-                val exportFailed by historyExports.failed.collectAsState()
                 LaunchedEffect(access, state.walletAddress, exportRevision) {
                     // The worker retains the application resolver, not this Activity.
                     val resolver = applicationContext.contentResolver
@@ -130,11 +148,6 @@ class MainActivity : ComponentActivity() {
                         historyExports.acknowledgeFailure()
                     }
                 }
-                val scope = rememberCoroutineScope()
-                var unlockError by remember { mutableStateOf<String?>(null) }
-                var showRecoveryReset by remember { mutableStateOf(false) }
-                var resettingWallet by remember { mutableStateOf(false) }
-
                 SyncLifecycleEffects(
                     walletManager = walletManager,
                     refreshInProgress = state.refreshInProgress,

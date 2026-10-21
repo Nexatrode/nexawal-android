@@ -28,6 +28,10 @@ import androidx.compose.ui.unit.dp
 /** Stable test tags for Compose UI accessibility tests. */
 object A11yTags {
     const val BOTTOM_NAV = "a11y_bottom_nav"
+    const val NAV_WALLET = "a11y_nav_wallet"
+    const val NAV_RECEIVE = "a11y_nav_receive"
+    const val NAV_SEND = "a11y_nav_send"
+    const val NAV_SETTINGS = "a11y_nav_settings"
     const val TRANSFER_ROW = "a11y_transfer_row"
     const val SCAN_QR = "a11y_scan_qr"
     const val RECEIVE_QR = "a11y_receive_qr"

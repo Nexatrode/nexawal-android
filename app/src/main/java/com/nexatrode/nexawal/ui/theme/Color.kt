@@ -2,9 +2,9 @@ package com.nexatrode.nexawal.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Non-neon (Techno Theme OFF) accents — orange, matching PrimaryActionButton fallback.
-val NexaOrange = Color(0xFFFF6B35)
-val NexaOrangeOn = Color(0xFFFFFFFF)
+// Standard NexaWal accent. Per-screen light/dark values live in rememberNexaPalette.
+val NexaTeal = Color(0xFF006F80)
+val NexaTealOn = Color(0xFFFFFFFF)
 
 // Neon (Techno Theme ON) accents — terminal green.
 val NexaNeon = Color(0xFF39FF14)

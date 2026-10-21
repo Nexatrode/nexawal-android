@@ -4,6 +4,7 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -209,18 +210,18 @@ internal fun rememberNexaPalette(technoTheme: Boolean): NexaPalette {
             }
         } else {
             NexaPalette(
-                background = if (dark) Color(0xFF0B0F14) else Color(0xFFF2F2F7),
-                card = if (dark) Color(0xFF171C22) else Color(0xFFFFFFFF),
-                primaryText = if (dark) Color(0xFFF5F7FA) else Color(0xFF111111),
-                secondaryText = if (dark) Color(0xFF8E98AA) else Color(0xFF6D6D72),
-                separator = if (dark) Color(0xFF262D36) else Color(0xFFE5E5EA),
-                accent = Color(0xFFFF6B35),
-                secondaryAction = if (dark) Color(0xFF242B35) else Color(0xFFF5F6FA),
-                success = Color(0xFF34C759),
-                danger = Color(0xFFFF3B30),
-                border = if (dark) Color(0xFF262D36) else Color(0xFFE5E5EA),
-                cta = Color(0xFFFF6B35),
-                ctaText = Color(0xFFFFFFFF),
+                background = if (dark) Color(0xFF081522) else Color(0xFFF2F6F8),
+                card = if (dark) Color(0xFF102433) else Color(0xFFFFFFFF),
+                primaryText = if (dark) Color(0xFFE6F2F7) else Color(0xFF152B37),
+                secondaryText = if (dark) Color(0xFFA0B4C0) else Color(0xFF516977),
+                separator = if (dark) Color(0xFF263D4B) else Color(0xFFD8E3E9),
+                accent = if (dark) Color(0xFF36C7D6) else Color(0xFF006F80),
+                secondaryAction = if (dark) Color(0xFF173040) else Color(0xFFE7EFF3),
+                success = if (dark) Color(0xFF24B88A) else Color(0xFF006F58),
+                danger = if (dark) Color(0xFFF05F6D) else Color(0xFFB32636),
+                border = if (dark) Color(0xFF335364) else Color(0xFFC6D5DC),
+                cta = if (dark) Color(0xFF36C7D6) else Color(0xFF006F80),
+                ctaText = if (dark) Color(0xFF04151C) else Color(0xFFFFFFFF),
                 classic = false,
                 isLight = !dark,
             )
@@ -259,7 +260,7 @@ private fun SectionCard(
         shape = shape,
         tonalElevation = if (palette.classic) 0.dp else 1.dp,
         shadowElevation = 0.dp,
-        border = if (palette.classic) BorderStroke(1.dp, palette.border) else null,
+        border = BorderStroke(1.dp, palette.border.copy(alpha = if (palette.classic) 1f else 0.7f)),
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             content()
@@ -311,8 +312,8 @@ internal fun PrimaryActionButton(
     icon: ImageVector? = null,
 ) {
     val neon = palette.classic
-    val container = if (neon) palette.cta else Color(0xFFFF6B35)
-    val content = if (neon) palette.ctaText else Color.White
+    val container = palette.cta
+    val content = palette.ctaText
     Button(
         onClick = onClick,
         enabled = enabled,
@@ -322,11 +323,11 @@ internal fun PrimaryActionButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = container,
             contentColor = content,
-            disabledContainerColor = if (neon) palette.cta.copy(alpha = if (palette.isLight) 0.45f else 0.35f) else Color(0xFFFF6B35).copy(alpha = 0.4f),
-            disabledContentColor = if (neon) palette.ctaText.copy(alpha = 0.7f) else Color.White.copy(alpha = 0.7f),
+            disabledContainerColor = palette.cta.copy(alpha = if (palette.isLight) 0.45f else 0.35f),
+            disabledContentColor = palette.ctaText.copy(alpha = 0.7f),
         )
     ) {
-        val textColor = if (enabled) content else (if (neon) palette.secondaryText.copy(alpha = 0.5f) else Color.White.copy(alpha = 0.7f))
+        val textColor = if (enabled) content else palette.ctaText.copy(alpha = 0.7f)
         if (icon != null) {
             Icon(icon, contentDescription = null, tint = textColor, modifier = Modifier.size(20.dp))
             Spacer(Modifier.width(8.dp))
@@ -429,7 +430,7 @@ internal fun DangerActionButton(
 /**
  * Wallet home Send / Receive — matches iOS WalletView:
  * - Techno: clear fill, neon border box (4dp), accent label
- * - Standard: filled (Send orange / Receive green), 12dp corners, white label
+ * - Standard: filled teal/green actions, 12dp corners, high-contrast label
  */
 @Composable
 private fun WalletHomeActionButton(
@@ -442,7 +443,7 @@ private fun WalletHomeActionButton(
 ) {
     val neon = palette.classic
     val container = if (neon) Color.Transparent else fillColor
-    val content = if (neon) palette.accent else Color.White
+    val content = if (neon) palette.accent else palette.ctaText
     Button(
         onClick = onClick,
         modifier = modifier.heightIn(min = 52.dp),
@@ -475,6 +476,9 @@ fun AppScaffold(
 ) {
     val navController = rememberNavController()
     val context = LocalContext.current
+    val walletState by walletManager.state.collectAsState()
+    var selectedTransfer by remember { mutableStateOf<Transfer?>(null) }
+    LaunchedEffect(walletState.walletId, walletState.historySession) { selectedTransfer = null }
     var technoTheme by remember { mutableStateOf(MoneroConfig.isTechnoThemeEnabled(context)) }
     val palette = rememberNexaPalette(technoTheme)
     val items = listOf(
@@ -542,14 +546,35 @@ fun AppScaffold(
                     val label = stringResource(item.labelRes)
 
                     NavigationBarItem(
+                        modifier = Modifier.semantics { testTag = item.testTag },
                         selected = selected,
                         onClick = {
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+                            selectedTransfer = null
+                            if (item == BottomNavItem.Wallet) {
+                                // Wallet is the root tab. Pop directly back to it so
+                                // nested history routes can never leave it stranded
+                                // behind a restored tab stack.
+                                val returnedToWallet = navController.popBackStack(
+                                    route = BottomNavItem.Wallet.route,
+                                    inclusive = false,
+                                )
+                                if (!returnedToWallet) {
+                                    navController.navigate(item.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
                                 }
-                                launchSingleTop = true
-                                restoreState = true
+                            } else {
+                                navController.navigate(item.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             }
                         },
                         colors = NavigationBarItemDefaults.colors(
@@ -579,37 +604,60 @@ fun AppScaffold(
             }
         }
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = BottomNavItem.Wallet.route,
-            modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(BottomNavItem.Wallet.route) {
-                WalletScreen(
-                    walletManager = walletManager,
+        Box(Modifier.fillMaxSize().padding(innerPadding)) {
+            NavHost(
+                navController = navController,
+                startDestination = BottomNavItem.Wallet.route,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                composable(BottomNavItem.Wallet.route) {
+                    WalletScreen(
+                        walletManager = walletManager,
+                        palette = palette,
+                        onOpenSend = { navController.navigate(BottomNavItem.Send.route) },
+                        onOpenReceive = { navController.navigate(BottomNavItem.Receive.route) },
+                        onOpenHistory = { filter -> navController.navigate("transactions/$filter") },
+                        onOpenTransfer = { selectedTransfer = it },
+                    )
+                }
+                composable("transactions/{filter}") { entry ->
+                    TransactionsScreen(
+                        walletManager = walletManager,
+                        palette = palette,
+                        initialFilter = entry.arguments?.getString("filter") ?: "all",
+                        onExportReady = onHistoryExportReady,
+                        onBack = { navController.popBackStack() },
+                        onOpenTransfer = { selectedTransfer = it },
+                    )
+                }
+                composable(BottomNavItem.Send.route) {
+                    SendScreen(walletManager = walletManager, palette = palette)
+                }
+                composable(BottomNavItem.Receive.route) {
+                    ReceiveScreen(walletManager = walletManager, palette = palette)
+                }
+                composable(BottomNavItem.Settings.route) {
+                    SettingsScreen(
+                        walletManager = walletManager,
+                        technoTheme = technoTheme,
+                        onTechnoThemeChange = { enabled ->
+                            technoTheme = enabled
+                            MoneroConfig.setTechnoThemeEnabled(context, enabled)
+                        },
+                    )
+                }
+            }
+            val transfer = selectedTransfer
+            if (transfer != null) {
+                BackHandler(enabled = true) { selectedTransfer = null }
+                TransferDetailsScreen(
+                    t = transfer,
+                    snapshot = walletManager.fiatPrices.snapshots.snapshot(transfer.txid),
+                    mainnet = walletState.mainnet,
+                    walletSession = walletState.historySession,
                     palette = palette,
-                    onOpenSend = { navController.navigate(BottomNavItem.Send.route) },
-                    onOpenReceive = { navController.navigate(BottomNavItem.Receive.route) },
-                    onOpenHistory = { filter -> navController.navigate("transactions/$filter") },
-                )
-            }
-            composable("transactions/{filter}") { entry ->
-                TransactionsScreen(walletManager, palette, entry.arguments?.getString("filter") ?: "all", onHistoryExportReady) { navController.popBackStack() }
-            }
-            composable(BottomNavItem.Send.route) {
-                SendScreen(walletManager = walletManager, palette = palette)
-            }
-            composable(BottomNavItem.Receive.route) {
-                ReceiveScreen(walletManager = walletManager, palette = palette)
-            }
-            composable(BottomNavItem.Settings.route) {
-                SettingsScreen(
-                    walletManager = walletManager,
-                    technoTheme = technoTheme,
-                    onTechnoThemeChange = { enabled ->
-                        technoTheme = enabled
-                        MoneroConfig.setTechnoThemeEnabled(context, enabled)
-                    },
+                    modifier = Modifier.fillMaxSize(),
+                    onDismiss = { selectedTransfer = null },
                 )
             }
         }
@@ -627,29 +675,34 @@ private sealed class BottomNavItem(
     val route: String,
     val labelRes: Int,
     val icon: androidx.compose.ui.graphics.vector.ImageVector,
+    val testTag: String,
 ) {
     data object Wallet : BottomNavItem(
         route = "wallet",
         labelRes = R.string.nav_wallet,
-        icon = Icons.Filled.Home
+        icon = Icons.Filled.Home,
+        testTag = A11yTags.NAV_WALLET,
     )
 
     data object Send : BottomNavItem(
         route = "send",
         labelRes = R.string.nav_send,
-        icon = Icons.AutoMirrored.Filled.Send
+        icon = Icons.AutoMirrored.Filled.Send,
+        testTag = A11yTags.NAV_SEND,
     )
 
     data object Receive : BottomNavItem(
         route = "receive",
         labelRes = R.string.nav_receive,
-        icon = Icons.Filled.QrCode
+        icon = Icons.Filled.QrCode,
+        testTag = A11yTags.NAV_RECEIVE,
     )
 
     data object Settings : BottomNavItem(
         route = "settings",
         labelRes = R.string.nav_settings,
-        icon = Icons.Filled.Settings
+        icon = Icons.Filled.Settings,
+        testTag = A11yTags.NAV_SETTINGS,
     )
 }
 
@@ -668,6 +721,7 @@ private fun WalletScreen(
     onOpenSend: () -> Unit,
     onOpenReceive: () -> Unit,
     onOpenHistory: (String) -> Unit,
+    onOpenTransfer: (Transfer) -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -708,13 +762,6 @@ private fun WalletScreen(
 
             delay(balanceIntervalMs)
         }
-    }
-
-    var selectedTransfer by remember { mutableStateOf<Transfer?>(null) }
-    var showTransferDetails by remember { mutableStateOf(false) }
-    LaunchedEffect(state.walletId, state.historySession) {
-        showTransferDetails = false
-        selectedTransfer = null
     }
 
     val mergedError = errorText ?: state.lastError
@@ -811,7 +858,7 @@ private fun WalletScreen(
 
     // iOS-like theme-aware colors (approximate).
     // We keep iOS "System Blue" consistent and vary backgrounds/secondary text with system theme.
-    val iosBlue = if (palette.classic) palette.accent else Color(0xFF007AFF)
+    val iosBlue = palette.accent
     val iosGroupedBg = palette.background
     val iosCardBg = palette.card
     val iosSecondary = palette.secondaryText
@@ -971,7 +1018,7 @@ private fun WalletScreen(
                             icon = Icons.AutoMirrored.Filled.Send,
                             onClick = onOpenSend,
                             palette = palette,
-                            fillColor = Color(0xFFE67E22).copy(alpha = 0.9f),
+                            fillColor = palette.cta,
                             modifier = Modifier.weight(1f),
                         )
                         Spacer(Modifier.width(12.dp))
@@ -980,7 +1027,7 @@ private fun WalletScreen(
                             icon = Icons.Filled.QrCode,
                             onClick = onOpenReceive,
                             palette = palette,
-                            fillColor = Color(0xFF34C759).copy(alpha = 0.9f),
+                            fillColor = palette.success,
                             modifier = Modifier.weight(1f),
                         )
                     }
@@ -1152,8 +1199,7 @@ private fun WalletScreen(
                             t = t,
                             palette = palette,
                             onClick = {
-                                selectedTransfer = t
-                                showTransferDetails = true
+                                onOpenTransfer(t)
                             }
                         )
                         if (index != transfersSorted.lastIndex) {
@@ -1211,16 +1257,16 @@ private fun WalletScreen(
                     null
                 },
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = if (palette.classic) Color.Transparent else Color(0xFF007AFF),
-                    contentColor = if (palette.classic) palette.accent else Color.White,
-                    disabledContainerColor = if (palette.classic) Color.Transparent else Color(0xFF007AFF).copy(alpha = 0.45f),
-                    disabledContentColor = if (palette.classic) palette.accent.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f),
+                    containerColor = if (palette.classic) Color.Transparent else palette.cta,
+                    contentColor = if (palette.classic) palette.accent else palette.ctaText,
+                    disabledContainerColor = if (palette.classic) Color.Transparent else palette.cta.copy(alpha = 0.45f),
+                    disabledContentColor = if (palette.classic) palette.accent.copy(alpha = 0.45f) else palette.ctaText.copy(alpha = 0.7f),
                 ),
             ) {
                 val refreshContent = if (state.refreshInProgress) {
-                    if (palette.classic) palette.accent.copy(alpha = 0.45f) else Color.White.copy(alpha = 0.7f)
+                    if (palette.classic) palette.accent.copy(alpha = 0.45f) else palette.ctaText.copy(alpha = 0.7f)
                 } else {
-                    if (palette.classic) palette.accent else Color.White
+                    if (palette.classic) palette.accent else palette.ctaText
                 }
                 if (state.refreshInProgress) {
                     CircularProgressIndicator(
@@ -1278,10 +1324,10 @@ private fun WalletScreen(
             Spacer(Modifier.height(12.dp))
             Text(
                 it,
-                color = Color(0xFFB00020),
+                color = palette.danger,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0x1AB00020))
+                    .background(palette.danger.copy(alpha = 0.1f))
                     .padding(12.dp)
                     .a11yAssertiveError()
             )
@@ -1290,18 +1336,6 @@ private fun WalletScreen(
         Spacer(Modifier.height(24.dp))
     }
 
-    if (showTransferDetails && selectedTransfer != null) {
-        TransferDetailsDialog(
-            t = selectedTransfer!!,
-            snapshot = walletManager.fiatPrices.snapshots.snapshot(selectedTransfer!!.txid),
-            mainnet = state.mainnet,
-            walletSession = state.historySession,
-            onDismiss = {
-                showTransferDetails = false
-                selectedTransfer = null
-            }
-        )
-    }
 }
 
 @Composable
@@ -1461,18 +1495,18 @@ internal fun TransferRow(
 }
 
 @Composable
-internal fun TransferDetailsDialog(
+internal fun TransferDetailsScreen(
     t: Transfer,
     snapshot: FiatTxSnapshot?,
-    mainnet: Boolean = true,
-    walletSession: String = "",
+    mainnet: Boolean,
+    walletSession: String,
+    palette: NexaPalette,
+    modifier: Modifier = Modifier,
     onDismiss: () -> Unit,
 ) {
     var showExplorer by remember(t.txid) { mutableStateOf(false) }
     if (showExplorer) {
-        androidx.compose.ui.window.Dialog(onDismissRequest = { showExplorer = false }, properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false)) {
-            ExplorerDetailsScreen(t.txid, mainnet, walletSession = walletSession) { showExplorer = false }
-        }
+        ExplorerDetailsScreen(t.txid, mainnet, walletSession = walletSession) { showExplorer = false }
         return
     }
     val absTime = TimeFormat.absolute(t.timestamp)
@@ -1491,11 +1525,28 @@ internal fun TransferDetailsDialog(
     val statusLabel = if (t.pending) stringResource(R.string.status_pending) else stringResource(R.string.status_confirmed)
     val dash = "—"
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.transaction)) },
-        text = {
-            Column {
+    Surface(modifier = modifier.fillMaxSize(), color = palette.background, contentColor = palette.primaryText) {
+        Column(Modifier.fillMaxSize()) {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                TextButton(onClick = onDismiss) {
+                    Text(stringResource(R.string.action_close), color = palette.accent)
+                }
+                Text(
+                    stringResource(R.string.transaction),
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = palette.primaryText,
+                )
+                Spacer(Modifier.width(64.dp))
+            }
+            Column(
+                Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 Text(stringResource(R.string.tx_type_fmt, directionLabel), fontFamily = FontFamily.Monospace)
                 Text(stringResource(R.string.tx_status_fmt, statusLabel), fontFamily = FontFamily.Monospace)
                 Text(stringResource(R.string.tx_amount_fmt, t.amountXmr()), fontFamily = FontFamily.Monospace)
@@ -1504,7 +1555,7 @@ internal fun TransferDetailsDialog(
                         FiatEstimate.recordedApproxText(t.amount, perXmr, snapCurrency),
                         fontFamily = FontFamily.Monospace,
                         fontSize = 13.sp,
-                        color = Color.Gray,
+                        color = palette.secondaryText,
                     )
                 }
                 t.fee?.let { fee ->
@@ -1514,21 +1565,19 @@ internal fun TransferDetailsDialog(
                             FiatEstimate.recordedApproxText(fee, perXmr, snapCurrency),
                             fontFamily = FontFamily.Monospace,
                             fontSize = 13.sp,
-                            color = Color.Gray,
+                            color = palette.secondaryText,
                         )
                     }
                 }
-                Spacer(Modifier.height(8.dp))
                 Text(stringResource(R.string.tx_height_fmt, t.height?.toString() ?: dash), fontFamily = FontFamily.Monospace)
                 Text(stringResource(R.string.tx_confirmations_fmt, t.confirmations.toString()), fontFamily = FontFamily.Monospace)
                 Text(stringResource(R.string.tx_time_fmt, absTime ?: dash), fontFamily = FontFamily.Monospace)
-                Spacer(Modifier.height(8.dp))
                 SelectionContainer {
                     Text(stringResource(R.string.tx_txid_fmt, t.txid), fontFamily = FontFamily.Monospace)
                 }
-                Spacer(Modifier.height(8.dp))
-                TextButton(onClick = { showExplorer = true }) { Text(stringResource(R.string.explorer_details)) }
-                // themed below via palette from parent if available
+                TextButton(onClick = { showExplorer = true }) {
+                    Text(stringResource(R.string.explorer_details), color = palette.accent)
+                }
                 Button(
                     onClick = {
                         scope.launch {
@@ -1536,19 +1585,15 @@ internal fun TransferDetailsDialog(
                             AppHaptics.light(context, view)
                         }
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF39FF14),
-                        contentColor = Color(0xFF001A12),
-                    )
+                    colors = ButtonDefaults.buttonColors(containerColor = palette.accent, contentColor = palette.background)
                 ) {
                     Text(stringResource(R.string.copy_txid))
                 }
-                Spacer(Modifier.height(8.dp))
                 val explorerUrl = "https://explorer.nexawal.com/tx/${t.txid}"
                 val linkCopiedText = stringResource(R.string.link_copied)
                 Text(
                     stringResource(R.string.copy_explorer_link),
-                    color = Color.Gray,
+                    color = palette.secondaryText,
                     fontFamily = FontFamily.Monospace,
                     fontSize = 12.sp,
                 )
@@ -1563,23 +1608,14 @@ internal fun TransferDetailsDialog(
                 ) {
                     Text(
                         explorerUrl,
-                        color = Color(0xFF39FF14),
+                        color = palette.accent,
                         fontFamily = FontFamily.Monospace,
                         textDecoration = TextDecoration.Underline,
                     )
                 }
             }
-        },
-        confirmButton = {
-            Button(
-                onClick = onDismiss,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF121612),
-                    contentColor = Color(0xFF39FF14),
-                )
-            ) { Text(stringResource(R.string.action_close)) }
         }
-    )
+    }
 }
 
 /**

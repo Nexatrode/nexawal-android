@@ -81,7 +81,9 @@ No personal wallet was opened or payment sent, and no store submission was perfo
 - Failed/stale opens clean up their own authority without tearing down a newer authenticated session.
 - Metadata operations cannot repopulate the plaintext session after background locking.
 - Seed setup drops input/generated/challenge references on background/disposal. FLAG_SECURE
-  covers the Activity; secret keyboard requests disable personalized learning/extract UI.
+  is enabled for seed setup and recovery flows only; ordinary wallet screens are capturable.
+  Verify setup/recovery stays protected and the wallet UI can be captured. Secret keyboard
+  requests disable personalized learning/extract UI.
   These requests do not make a malicious keyboard trustworthy.
 - AES plaintext arrays and owned JNI seed buffers are wiped. Kotlin/VM strings and framework
   copies cannot be guaranteed erased; do not advertise complete RAM wiping.

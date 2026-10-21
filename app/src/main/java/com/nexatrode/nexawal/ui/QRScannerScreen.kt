@@ -90,8 +90,8 @@ fun QRScannerScreen(
                     onClick = { cameraPermissionState.launchPermissionRequest() },
                     shape = RoundedCornerShape(if (neon) 28.dp else 14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (neon) palette.cta else Color(0xFFFF6B35),
-                        contentColor = if (neon) palette.ctaText else Color.White,
+                        containerColor = palette.cta,
+                        contentColor = palette.ctaText,
                     )
                 ) {
                     Text(

@@ -5,6 +5,7 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsOn
+import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertIsToggleable
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
@@ -97,6 +98,22 @@ class AccessibilitySemanticsTest {
             hasTag(A11yTags.NETWORK_POLICY)
         }
         composeRule.onNodeWithTag(A11yTags.NETWORK_POLICY).assertIsDisplayed()
+    }
+
+    @Test
+    fun bottomNavigation_walletTabReturnsFromEveryOtherTab() {
+        composeRule.waitUntil(timeoutMillis = 15_000) {
+            hasTag(A11yTags.CREATE_MAINNET_SWITCH) || hasTag(A11yTags.BOTTOM_NAV)
+        }
+        if (!hasTag(A11yTags.BOTTOM_NAV)) return
+
+        listOf(A11yTags.NAV_SEND, A11yTags.NAV_RECEIVE, A11yTags.NAV_SETTINGS).forEach { tabTag ->
+            composeRule.onNodeWithTag(tabTag).performClick()
+            composeRule.onNodeWithTag(tabTag).assertIsSelected()
+
+            composeRule.onNodeWithTag(A11yTags.NAV_WALLET).performClick()
+            composeRule.onNodeWithTag(A11yTags.NAV_WALLET).assertIsSelected()
+        }
     }
 
     @Test

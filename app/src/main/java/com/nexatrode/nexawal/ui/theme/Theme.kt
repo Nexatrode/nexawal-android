@@ -12,27 +12,31 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = NexaOrange,
-    onPrimary = NexaOrangeOn,
-    secondary = NexaOrange,
-    onSecondary = NexaOrangeOn,
-    tertiary = NexaOrange,
-    background = Color(0xFF0B0F14),
-    onBackground = Color(0xFFF5F7FA),
-    surface = Color(0xFF171C22),
-    onSurface = Color(0xFFF5F7FA),
+    primary = Color(0xFF36C7D6),
+    onPrimary = Color(0xFF04151C),
+    secondary = Color(0xFF36C7D6),
+    onSecondary = Color(0xFF04151C),
+    tertiary = Color(0xFF24B88A),
+    background = Color(0xFF081522),
+    onBackground = Color(0xFFE6F2F7),
+    surface = Color(0xFF102433),
+    onSurface = Color(0xFFE6F2F7),
+    error = Color(0xFFF05F6D),
+    onError = Color(0xFF081522),
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = NexaOrange,
-    onPrimary = NexaOrangeOn,
-    secondary = NexaOrange,
-    onSecondary = NexaOrangeOn,
-    tertiary = NexaOrange,
-    background = Color(0xFFF2F2F7),
-    onBackground = Color(0xFF111111),
+    primary = NexaTeal,
+    onPrimary = NexaTealOn,
+    secondary = NexaTeal,
+    onSecondary = NexaTealOn,
+    tertiary = Color(0xFF006F58),
+    background = Color(0xFFF2F6F8),
+    onBackground = Color(0xFF152B37),
     surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF111111),
+    onSurface = Color(0xFF152B37),
+    error = Color(0xFFB32636),
+    onError = Color(0xFFFFFFFF),
 )
 
 @Composable
