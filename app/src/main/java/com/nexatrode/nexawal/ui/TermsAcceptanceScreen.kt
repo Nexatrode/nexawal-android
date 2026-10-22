@@ -16,7 +16,6 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,8 +28,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.nexatrode.nexawal.MoneroConfig
 import com.nexatrode.nexawal.R
 import kotlin.system.exitProcess
@@ -49,20 +46,11 @@ fun TermsAcceptanceScreen(
     val palette = rememberNexaPalette(technoTheme)
     val neon = palette.classic
     val hasCheckedAgree = remember { mutableStateOf(false) }
-    val showFullTerms = remember { mutableStateOf(false) }
     val scroll = rememberScrollState()
-
-    if (showFullTerms.value) {
-        Dialog(
-            onDismissRequest = { showFullTerms.value = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false),
-        ) {
-            LegalDocumentScreen(
-                document = LegalDocument.Terms,
-                onClose = { showFullTerms.value = false },
-                modifier = Modifier.fillMaxSize(),
-            )
-        }
+    val termsMarkdown = remember {
+        runCatching {
+            context.assets.open("legal/terms.md").bufferedReader().use { it.readText() }
+        }.getOrDefault("")
     }
 
     Scaffold(
@@ -107,46 +95,45 @@ fun TermsAcceptanceScreen(
                     color = palette.secondaryText,
                     fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
                 )
+                Spacer(Modifier.height(20.dp))
+                LegalMarkdownContent(
+                    markdown = termsMarkdown,
+                    palette = palette,
+                    neon = neon,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(Modifier.height(20.dp))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(
+                            enabled = termsMarkdown.isNotBlank(),
+                            role = Role.Checkbox,
+                            onClick = { hasCheckedAgree.value = !hasCheckedAgree.value },
+                        )
+                        .padding(vertical = 4.dp),
+                ) {
+                    Checkbox(
+                        checked = hasCheckedAgree.value,
+                        onCheckedChange = { hasCheckedAgree.value = it },
+                        enabled = termsMarkdown.isNotBlank(),
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = palette.accent,
+                            uncheckedColor = palette.separator,
+                            checkmarkColor = palette.ctaText,
+                        ),
+                    )
+                    Text(
+                        text = stringResource(R.string.terms_checkbox),
+                        color = palette.primaryText,
+                        fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
             }
 
             Spacer(Modifier.height(8.dp))
-            TextButton(
-                onClick = { showFullTerms.value = true },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(
-                    text = stringResource(R.string.terms_review_full),
-                    color = palette.accent,
-                    fontWeight = FontWeight.SemiBold,
-                    fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                )
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable(
-                        role = Role.Checkbox,
-                        onClick = { hasCheckedAgree.value = !hasCheckedAgree.value },
-                    )
-                    .padding(vertical = 4.dp),
-            ) {
-                Checkbox(
-                    checked = hasCheckedAgree.value,
-                    onCheckedChange = { hasCheckedAgree.value = it },
-                    colors = CheckboxDefaults.colors(
-                        checkedColor = palette.accent,
-                        uncheckedColor = palette.separator,
-                        checkmarkColor = palette.ctaText,
-                    ),
-                )
-                Text(
-                    text = stringResource(R.string.terms_checkbox),
-                    color = palette.primaryText,
-                    fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                    modifier = Modifier.weight(1f),
-                )
-            }
             Spacer(Modifier.height(12.dp))
             PrimaryActionButton(
                 text = stringResource(R.string.terms_agree),
@@ -155,7 +142,7 @@ fun TermsAcceptanceScreen(
                     onAccepted()
                 },
                 palette = palette,
-                enabled = hasCheckedAgree.value,
+                enabled = hasCheckedAgree.value && termsMarkdown.isNotBlank(),
                 modifier = Modifier.fillMaxWidth(),
             )
             Spacer(Modifier.height(8.dp))

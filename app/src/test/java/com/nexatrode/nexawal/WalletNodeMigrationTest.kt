@@ -15,20 +15,21 @@ import java.io.File
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35], application = Application::class)
 class WalletNodeMigrationTest {
-    @Test fun previousBuiltinRPCMigratesButCustomNodesRemainConfigured() = runBlocking {
+    @Test fun builtinRPCVariantsCanonicalizeButCustomNodesRemainConfigured() = runBlocking {
         val context: Context = ApplicationProvider.getApplicationContext()
         val settings = File(context.filesDir, "WalletSlot/settings.json")
         settings.parentFile!!.mkdirs()
         val previous = settings.takeIf { it.exists() }?.readBytes()
         try {
             for ((saved, expected) in listOf(
-                "https://rpc.nexatrode.com" to "https://rpc.nexawal.com",
-                " HTTPS://RPC.NEXATRODE.COM/ " to "https://rpc.nexawal.com",
-                "https://rpc.nexatrode.com:443/" to "https://rpc.nexawal.com",
+                "https://rpc.nexawal.com" to "https://rpc.nexawal.com",
+                " HTTPS://RPC.NEXAWAL.COM/ " to "https://rpc.nexawal.com",
+                "https://rpc.nexawal.com:443/" to "https://rpc.nexawal.com",
+                "http://rpc.nexawal.com" to "https://rpc.nexawal.com",
                 "https://monero.nexatrode.com" to "https://monero.nexatrode.com",
                 "http://127.0.0.1:18081" to "http://127.0.0.1:18081",
                 "http://example.b32.i2p" to "http://example.b32.i2p",
-                "https://rpc.nexatrode.com/custom" to "https://rpc.nexatrode.com/custom",
+                "https://rpc.nexawal.com/custom" to "https://rpc.nexawal.com/custom",
             )) {
                 settings.writeText(JSONObject().put("nodeUrl", saved).put("savedAtMs", 0).toString())
                 val manager = WalletManager(context)

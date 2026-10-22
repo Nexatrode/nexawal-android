@@ -3,6 +3,12 @@
 All notable changes to **NexaWal Android** are documented here.
 Release tags use `v<versionName>` (e.g. `v1.0.0`).
 
+## [1.0.5] — 2026-10-21
+
+### Changed
+- Show the full Terms of Use inline in the first-run agreement instead of requiring a separate link
+- Canonicalize the built-in RPC variants to `https://rpc.nexawal.com`
+
 ## [1.0.4] — 2026-10-21
 
 ### Changed

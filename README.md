@@ -15,8 +15,8 @@
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 
 The default node is `https://rpc.nexawal.com`. Saved copies of the previous
-built-in `rpc.nexatrode.com` default migrate on load; custom nodes and I2P
-settings remain unchanged. Optional rates use `https://rates.nexawal.com` over
+built-in RPC default migrate on load; custom nodes and I2P settings remain
+unchanged. Optional rates use `https://rates.nexawal.com` over
 clearnet HTTPS, independently of wallet-node routing.
 
 ## Setup
@@ -72,7 +72,7 @@ See [docs/REPRODUCIBLE_BUILD.md](docs/REPRODUCIBLE_BUILD.md) and [docs/FDROID.md
   Scrutiny path.
 - **Store copy:** [fastlane/metadata/android/](fastlane/metadata/android/)
 - **fdroiddata draft:** [docs/fdroid/com.nexatrode.nexawal.yml](docs/fdroid/com.nexatrode.nexawal.yml)
-- **Release tags:** `v<versionName>` (current `versionName` is `1.0.4`; tag after final device QA).
+- **Release tags:** `v<versionName>` (current `versionName` is `1.0.5`; tag after final device QA).
 
 ## Screenshots
 

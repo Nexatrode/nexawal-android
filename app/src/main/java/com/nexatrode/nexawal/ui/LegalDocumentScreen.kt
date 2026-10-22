@@ -56,8 +56,6 @@ fun LegalDocumentScreen(
             context.assets.open(assetPath).bufferedReader().use { it.readText() }
         }.getOrDefault("")
     }
-    val blocks = remember(markdown) { SimpleMarkdown.parse(markdown) }
-
     Scaffold(
         modifier = modifier,
         containerColor = palette.background,
@@ -87,54 +85,70 @@ fun LegalDocumentScreen(
             )
         },
     ) { padding ->
-        Column(
+        LegalMarkdownContent(
+            markdown = markdown,
+            palette = palette,
+            neon = neon,
             modifier = Modifier
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            if (blocks.isEmpty()) {
-                Text(
-                    text = stringResource(R.string.legal_load_error),
-                    color = palette.secondaryText,
-                    fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                )
-            } else {
-                blocks.forEach { block ->
-                    when (block) {
-                        is SimpleMarkdown.Block.Heading -> {
-                            Text(
-                                text = block.text,
-                                color = palette.primaryText,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = when (block.level) {
-                                    1 -> 22.sp
-                                    2 -> 18.sp
-                                    else -> 16.sp
-                                },
-                                fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = if (block.level <= 2) 8.dp else 4.dp),
-                            )
-                        }
-                        is SimpleMarkdown.Block.Bullet -> {
-                            Text(
-                                text = "• ${block.text}",
-                                color = palette.secondaryText,
-                                fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                                modifier = Modifier.fillMaxWidth(),
-                            )
-                        }
-                        is SimpleMarkdown.Block.Paragraph -> {
-                            Text(
-                                text = block.text,
-                                color = palette.secondaryText,
-                                fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
-                                modifier = Modifier.fillMaxWidth(),
-                            )
-                        }
+        )
+    }
+}
+
+@Composable
+internal fun LegalMarkdownContent(
+    markdown: String,
+    palette: NexaPalette,
+    neon: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val blocks = remember(markdown) { SimpleMarkdown.parse(markdown) }
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        if (blocks.isEmpty()) {
+            Text(
+                text = stringResource(R.string.legal_load_error),
+                color = palette.secondaryText,
+                fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+            )
+        } else {
+            blocks.forEach { block ->
+                when (block) {
+                    is SimpleMarkdown.Block.Heading -> {
+                        Text(
+                            text = block.text,
+                            color = palette.primaryText,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = when (block.level) {
+                                1 -> 22.sp
+                                2 -> 18.sp
+                                else -> 16.sp
+                            },
+                            fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = if (block.level <= 2) 8.dp else 4.dp),
+                        )
+                    }
+                    is SimpleMarkdown.Block.Bullet -> {
+                        Text(
+                            text = "• ${block.text}",
+                            color = palette.secondaryText,
+                            fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+                    is SimpleMarkdown.Block.Paragraph -> {
+                        Text(
+                            text = block.text,
+                            color = palette.secondaryText,
+                            fontFamily = if (neon) FontFamily.Monospace else FontFamily.Default,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
                     }
                 }
             }

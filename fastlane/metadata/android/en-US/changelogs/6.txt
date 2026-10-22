@@ -1,0 +1,1 @@
+Show the full Terms of Use inline during first-run setup. Canonicalize the built-in RPC to https://rpc.nexawal.com.
