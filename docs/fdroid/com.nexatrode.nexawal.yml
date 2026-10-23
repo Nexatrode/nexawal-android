@@ -14,9 +14,9 @@ RepoType: git
 Repo: https://github.com/Nexatrode/nexawal-android.git
 
 Builds:
-  - versionName: 1.0.4
-    versionCode: 5
-    commit: 95972517ead040841b5dfa7a02c91b0761b121dc
+  - versionName: 1.0.5
+    versionCode: 7
+    commit: 6af1f9e30b9e81077990254cceba91eb26a302d9
     submodules: true
     rm:
       - MoneroWalletCoreFFI/monero-oxide-output/resp.bin
@@ -40,13 +40,14 @@ MaintainerNotes: |
   are optional and disabled by default; review network AntiFeatures against the
   actual release behavior rather than assuming a fixed service dependency.
   Privacy policy: https://nexawal.com/privacy/
-  The 1.0.4 entry pins the screenshot-bearing Android release commit. A clean
-  F-Droid buildserver-trixie run passed for this exact commit on 2026-10-21.
+  The 1.0.5 entry pins the Play-submitted Android source commit (versionCode 7).
+  A clean F-Droid buildserver-trixie Docker build passed on 2026-10-23 from this
+  exact commit; the resulting APK is unsigned for F-Droid to sign.
   See docs/FDROID.md and docs/REPRODUCIBLE_BUILD.md in the app repo.
   minSdk is 30.
 
 ArchivePolicy: 2
 AutoUpdateMode: Version
 UpdateCheckMode: Tags
-CurrentVersion: 1.0.4
-CurrentVersionCode: 5
+CurrentVersion: 1.0.5
+CurrentVersionCode: 7

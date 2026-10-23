@@ -58,10 +58,31 @@ CI reference build: [`.github/workflows/native-android.yml`](../.github/workflow
    [`fdroid/com.nexatrode.nexawal.yml`](fdroid/com.nexatrode.nexawal.yml) as the starting point.
 7. Run `fdroid lint` and a clean F-Droid build-server test; the Gradle native task adds `$CARGO_HOME/bin` to its subprocess PATH so the rustup-installed `cargo` works after F-Droid's setup shell exits. The recipe removes WalletCore's `resp.bin` test fixture because F-Droid rejects binaries in source; it is not needed to build or run the app.
 
+## 1.0.5 buildserver verification
+
+The source commit submitted to Google Play was also rebuilt successfully for
+F-Droid as an unsigned APK:
+
+- Version: `1.0.5` / code `7`
+- App commit: `6af1f9e30b9e81077990254cceba91eb26a302d9`
+- WalletCore submodule: `f51b3066f221d1f4e82e43afbf110bb9fad19af1`
+- Environment: F-Droid's official `fdroidserver:buildserver` Docker image,
+  Android SDK 36 / build-tools 36.1.0, NDK 27.1.12297006, JDK 21, Rust 1.97.1
+- Command: `fdroid build --verbose com.nexatrode.nexawal:7`
+- Result: `BUILD SUCCESSFUL`; F-Droid reported one successful build.
+- Unsigned APK SHA-256:
+  `183883fe8e074155d844fa8e0e6a4635b0bee92f6e15e807e53acad0e7ba6ad7`
+- F-Droid source archive SHA-256:
+  `034d4588426b1ad4328c8aa98951f2f283e56f83472d6fac33315a78e9a67e54`
+
+This is a local clean buildserver test, not a build by F-Droid's hosted
+infrastructure. The APK is unsigned and is not the Play-distributed APK; F-Droid
+will sign its repository build after the metadata proposal is accepted.
+
 ## Local dry-run (developer machine)
 
 ```bash
-git checkout v1.0.4   # only after device QA and the tag exists
+git checkout v1.0.5   # only after device QA and the tag exists
 git submodule update --init --recursive
 export ANDROID_NDK_HOME=/path/to/ndk/27.1.12297006   # or ndk.dir in local.properties
 ./gradlew :app:assembleRelease --no-daemon
