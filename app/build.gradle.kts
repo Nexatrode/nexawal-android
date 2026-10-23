@@ -16,7 +16,7 @@ android {
         applicationId = "com.nexatrode.nexawal"
         minSdk = 30
         targetSdk = 36
-        versionCode = 6
+        versionCode = 7
         versionName = "1.0.5"
         ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
 

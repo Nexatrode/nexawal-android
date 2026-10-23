@@ -1,0 +1,1 @@
+Show the full Terms of Use inline during first-run setup. Use https://rpc.nexawal.com as the built-in wallet node.
