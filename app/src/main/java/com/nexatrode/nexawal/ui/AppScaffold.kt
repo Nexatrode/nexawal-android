@@ -13,6 +13,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -20,6 +21,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -86,6 +88,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -465,9 +468,110 @@ private fun WalletHomeActionButton(
     }
 }
 
-/**
- * Root application scaffold with bottom-tab navigation.
- */
+private enum class AppNavigationLayout {
+    BottomBar,
+    Rail,
+    Sidebar,
+}
+
+@Composable
+private fun AppNavigationPanel(
+    items: List<BottomNavItem>,
+    selectedItem: BottomNavItem?,
+    expanded: Boolean,
+    palette: NexaPalette,
+    onNavigate: (BottomNavItem) -> Unit,
+) {
+    val itemShape = RoundedCornerShape(if (palette.classic) 4.dp else 12.dp)
+
+    Column(
+        modifier = Modifier
+            .width(if (expanded) 232.dp else 84.dp)
+            .fillMaxHeight()
+            .background(palette.card)
+            .padding(horizontal = if (expanded) 12.dp else 8.dp, vertical = 16.dp),
+        horizontalAlignment = if (expanded) Alignment.Start else Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = if (expanded) "nexawal" else "NW",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = if (expanded) 12.dp else 0.dp, vertical = 8.dp),
+            color = palette.primaryText,
+            textAlign = if (expanded) TextAlign.Start else TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+            letterSpacing = if (palette.classic) 1.sp else 0.sp,
+        )
+        Spacer(Modifier.height(if (expanded) 20.dp else 16.dp))
+
+        items.forEach { item ->
+            val selected = item == selectedItem
+            val label = stringResource(item.labelRes)
+            val itemModifier = Modifier
+                .fillMaxWidth()
+                .clip(itemShape)
+                .background(if (selected) palette.accent else Color.Transparent, itemShape)
+                .selectable(
+                    selected = selected,
+                    onClick = { onNavigate(item) },
+                    role = Role.Tab,
+                )
+                .semantics { testTag = item.testTag }
+                .padding(
+                    horizontal = if (expanded) 14.dp else 4.dp,
+                    vertical = if (expanded) 12.dp else 10.dp,
+                )
+
+            if (expanded) {
+                Row(
+                    modifier = itemModifier,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null,
+                        tint = if (selected) palette.ctaText else palette.secondaryText,
+                        modifier = Modifier.size(22.dp),
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    Text(
+                        text = if (palette.classic) label.uppercase() else label,
+                        color = if (selected) palette.ctaText else palette.secondaryText,
+                        fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+                    )
+                }
+            } else {
+                Column(
+                    modifier = itemModifier,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null,
+                        tint = if (selected) palette.ctaText else palette.secondaryText,
+                        modifier = Modifier.size(22.dp),
+                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text(
+                        text = if (palette.classic) label.uppercase() else label,
+                        color = if (selected) palette.ctaText else palette.secondaryText,
+                        fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                        fontSize = 10.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Clip,
+                        textAlign = TextAlign.Center,
+                    )
+                }
+            }
+            Spacer(Modifier.height(8.dp))
+        }
+    }
+}
+
+/** Root scaffold: bottom tabs on phones, a rail on medium windows, and a sidebar on tablets. */
 @Composable
 fun AppScaffold(
     walletManager: WalletManager,
@@ -529,139 +633,171 @@ fun AppScaffold(
         null
     }
 
-    val scaffoldContent = @Composable {
-    Scaffold(
-        modifier = scaffoldModifier,
-        containerColor = palette.background,
-        bottomBar = {
-            NavigationBar(
-                modifier = Modifier.semantics { testTag = A11yTags.BOTTOM_NAV },
-                containerColor = palette.card,
-                contentColor = palette.secondaryText
-            ) {
-                items.forEach { item ->
-                    val selected = currentDestination
-                        ?.hierarchy
-                        ?.any { it.route == item.route || (item == BottomNavItem.Wallet && it.route?.startsWith("transactions") == true) } == true
-                    val label = stringResource(item.labelRes)
-
-                    NavigationBarItem(
-                        modifier = Modifier.semantics { testTag = item.testTag },
-                        selected = selected,
-                        onClick = {
-                            selectedTransfer = null
-                            if (item == BottomNavItem.Wallet) {
-                                // Wallet is the root tab. Pop directly back to it so
-                                // nested history routes can never leave it stranded
-                                // behind a restored tab stack.
-                                val returnedToWallet = navController.popBackStack(
-                                    route = BottomNavItem.Wallet.route,
-                                    inclusive = false,
-                                )
-                                if (!returnedToWallet) {
-                                    navController.navigate(item.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
-                                            saveState = true
-                                        }
-                                        launchSingleTop = true
-                                        restoreState = true
-                                    }
-                                }
-                            } else {
-                                navController.navigate(item.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
-                                    }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            }
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = palette.accent,
-                            selectedTextColor = palette.primaryText,
-                            indicatorColor = palette.separator,
-                            unselectedIconColor = palette.secondaryText,
-                            unselectedTextColor = palette.secondaryText,
-                        ),
-                        icon = {
-                            Icon(
-                                imageVector = item.icon,
-                                contentDescription = null,
-                                tint = if (selected) palette.accent else palette.secondaryText
-                            )
-                        },
-                        label = {
-                            Text(
-                                if (palette.classic) label.uppercase() else label,
-                                color = if (selected) palette.primaryText else palette.secondaryText,
-                                fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
-                                fontSize = if (palette.classic) 11.sp else 12.sp,
-                            )
-                        }
-                    )
+    val navigateToTab: (BottomNavItem) -> Unit = { item ->
+        selectedTransfer = null
+        if (item == BottomNavItem.Wallet) {
+            // Wallet is the root tab. Pop directly back to it so nested history routes
+            // cannot leave it stranded behind a restored tab stack.
+            val returnedToWallet = navController.popBackStack(
+                route = BottomNavItem.Wallet.route,
+                inclusive = false,
+            )
+            if (!returnedToWallet) {
+                navController.navigate(item.route) {
+                    popUpTo(navController.graph.findStartDestination().id) {
+                        saveState = true
+                    }
+                    launchSingleTop = true
+                    restoreState = true
                 }
             }
-        }
-    ) { innerPadding ->
-        Box(Modifier.fillMaxSize().padding(innerPadding)) {
-            NavHost(
-                navController = navController,
-                startDestination = BottomNavItem.Wallet.route,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                composable(BottomNavItem.Wallet.route) {
-                    WalletScreen(
-                        walletManager = walletManager,
-                        palette = palette,
-                        onOpenSend = { navController.navigate(BottomNavItem.Send.route) },
-                        onOpenReceive = { navController.navigate(BottomNavItem.Receive.route) },
-                        onOpenHistory = { filter -> navController.navigate("transactions/$filter") },
-                        onOpenTransfer = { selectedTransfer = it },
-                    )
+        } else {
+            navController.navigate(item.route) {
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
                 }
-                composable("transactions/{filter}") { entry ->
-                    TransactionsScreen(
-                        walletManager = walletManager,
-                        palette = palette,
-                        initialFilter = entry.arguments?.getString("filter") ?: "all",
-                        onExportReady = onHistoryExportReady,
-                        onBack = { navController.popBackStack() },
-                        onOpenTransfer = { selectedTransfer = it },
-                    )
-                }
-                composable(BottomNavItem.Send.route) {
-                    SendScreen(walletManager = walletManager, palette = palette)
-                }
-                composable(BottomNavItem.Receive.route) {
-                    ReceiveScreen(walletManager = walletManager, palette = palette)
-                }
-                composable(BottomNavItem.Settings.route) {
-                    SettingsScreen(
-                        walletManager = walletManager,
-                        technoTheme = technoTheme,
-                        onTechnoThemeChange = { enabled ->
-                            technoTheme = enabled
-                            MoneroConfig.setTechnoThemeEnabled(context, enabled)
-                        },
-                    )
-                }
-            }
-            val transfer = selectedTransfer
-            if (transfer != null) {
-                BackHandler(enabled = true) { selectedTransfer = null }
-                TransferDetailsScreen(
-                    t = transfer,
-                    snapshot = walletManager.fiatPrices.snapshots.snapshot(transfer.txid),
-                    mainnet = walletState.mainnet,
-                    walletSession = walletState.historySession,
-                    palette = palette,
-                    modifier = Modifier.fillMaxSize(),
-                    onDismiss = { selectedTransfer = null },
-                )
+                launchSingleTop = true
+                restoreState = true
             }
         }
     }
+
+    val selectedNavItem = items.firstOrNull { item ->
+        currentDestination?.hierarchy?.any {
+            it.route == item.route || (item == BottomNavItem.Wallet && it.route?.startsWith("transactions") == true)
+        } == true
+    }
+
+    val scaffoldContent = @Composable {
+        BoxWithConstraints(modifier = scaffoldModifier) {
+            val navigationLayout = when {
+                maxWidth >= 840.dp -> AppNavigationLayout.Sidebar
+                maxWidth >= 600.dp -> AppNavigationLayout.Rail
+                else -> AppNavigationLayout.BottomBar
+            }
+
+            Scaffold(
+                modifier = Modifier.fillMaxSize(),
+                containerColor = palette.background,
+                bottomBar = {
+                    if (navigationLayout == AppNavigationLayout.BottomBar) {
+                        NavigationBar(
+                            modifier = Modifier.semantics { testTag = A11yTags.BOTTOM_NAV },
+                            containerColor = palette.card,
+                            contentColor = palette.secondaryText,
+                        ) {
+                            items.forEach { item ->
+                                val selected = item == selectedNavItem
+                                val label = stringResource(item.labelRes)
+                                NavigationBarItem(
+                                    modifier = Modifier.semantics { testTag = item.testTag },
+                                    selected = selected,
+                                    onClick = { navigateToTab(item) },
+                                    colors = NavigationBarItemDefaults.colors(
+                                        selectedIconColor = palette.accent,
+                                        selectedTextColor = palette.primaryText,
+                                        indicatorColor = palette.separator,
+                                        unselectedIconColor = palette.secondaryText,
+                                        unselectedTextColor = palette.secondaryText,
+                                    ),
+                                    icon = {
+                                        Icon(
+                                            imageVector = item.icon,
+                                            contentDescription = null,
+                                            tint = if (selected) palette.accent else palette.secondaryText,
+                                        )
+                                    },
+                                    label = {
+                                        Text(
+                                            if (palette.classic) label.uppercase() else label,
+                                            color = if (selected) palette.primaryText else palette.secondaryText,
+                                            fontFamily = if (palette.classic) FontFamily.Monospace else FontFamily.Default,
+                                            fontSize = if (palette.classic) 11.sp else 12.sp,
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                    }
+                },
+            ) { innerPadding ->
+                Row(Modifier.fillMaxSize().padding(innerPadding)) {
+                    if (navigationLayout != AppNavigationLayout.BottomBar) {
+                        AppNavigationPanel(
+                            items = items,
+                            selectedItem = selectedNavItem,
+                            expanded = navigationLayout == AppNavigationLayout.Sidebar,
+                            palette = palette,
+                            onNavigate = navigateToTab,
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
+                        contentAlignment = Alignment.TopCenter,
+                    ) {
+                        Box(Modifier.fillMaxSize().widthIn(max = 1360.dp)) {
+                            NavHost(
+                                navController = navController,
+                                startDestination = BottomNavItem.Wallet.route,
+                                modifier = Modifier.fillMaxSize(),
+                            ) {
+                                composable(BottomNavItem.Wallet.route) {
+                                    WalletScreen(
+                                        walletManager = walletManager,
+                                        palette = palette,
+                                        onOpenSend = { navController.navigate(BottomNavItem.Send.route) },
+                                        onOpenReceive = { navController.navigate(BottomNavItem.Receive.route) },
+                                        onOpenHistory = { filter -> navController.navigate("transactions/$filter") },
+                                        onOpenTransfer = { selectedTransfer = it },
+                                    )
+                                }
+                                composable("transactions/{filter}") { entry ->
+                                    TransactionsScreen(
+                                        walletManager = walletManager,
+                                        palette = palette,
+                                        initialFilter = entry.arguments?.getString("filter") ?: "all",
+                                        onExportReady = onHistoryExportReady,
+                                        onBack = { navController.popBackStack() },
+                                        onOpenTransfer = { selectedTransfer = it },
+                                    )
+                                }
+                                composable(BottomNavItem.Send.route) {
+                                    SendScreen(walletManager = walletManager, palette = palette)
+                                }
+                                composable(BottomNavItem.Receive.route) {
+                                    ReceiveScreen(walletManager = walletManager, palette = palette)
+                                }
+                                composable(BottomNavItem.Settings.route) {
+                                    SettingsScreen(
+                                        walletManager = walletManager,
+                                        technoTheme = technoTheme,
+                                        onTechnoThemeChange = { enabled ->
+                                            technoTheme = enabled
+                                            MoneroConfig.setTechnoThemeEnabled(context, enabled)
+                                        },
+                                    )
+                                }
+                            }
+
+                            val transfer = selectedTransfer
+                            if (transfer != null) {
+                                BackHandler(enabled = true) { selectedTransfer = null }
+                                TransferDetailsScreen(
+                                    t = transfer,
+                                    snapshot = walletManager.fiatPrices.snapshots.snapshot(transfer.txid),
+                                    mainnet = walletState.mainnet,
+                                    walletSession = walletState.historySession,
+                                    palette = palette,
+                                    modifier = Modifier.fillMaxSize(),
+                                    onDismiss = { selectedTransfer = null },
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     if (neonScheme != null) {
