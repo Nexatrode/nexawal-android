@@ -318,10 +318,10 @@ object MoneroConfig {
     @JvmStatic
     fun i2pRpcAddress(context: Context): String {
         val saved = prefs(context).getString(KEY_I2P_RPC_ADDRESS, null)?.trim().orEmpty()
-        if (saved.isEmpty()) return ""
+        if (saved.isEmpty()) return NetworkRouting.DEFAULT_I2P_RPC_ADDRESS
         if (legacyDefaultI2pRpcAddresses.contains(saved.lowercase())) {
             prefs(context).edit().remove(KEY_I2P_RPC_ADDRESS).apply()
-            return ""
+            return NetworkRouting.DEFAULT_I2P_RPC_ADDRESS
         }
         return saved
     }

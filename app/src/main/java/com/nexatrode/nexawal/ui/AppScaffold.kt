@@ -2872,6 +2872,14 @@ private fun SettingsScreen(
         networkPolicy = policy
         val i2pNode = i2pRpcInput.trim()
         val i2pProxy = i2pProxyInput.trim()
+        if (policy != MoneroConfig.NetworkPolicy.CLEARNET) {
+            try {
+                NetworkRouting.validateI2pConfiguration(i2pNode, i2pProxy)
+            } catch (error: IllegalArgumentException) {
+                statusText = error.message
+                return
+            }
+        }
         MoneroConfig.setNetworkPolicy(context, policy)
         MoneroConfig.setI2pRpcAddress(context, i2pNode.ifEmpty { null })
         MoneroConfig.setI2pHttpProxyAddress(context, i2pProxy.ifEmpty { null })

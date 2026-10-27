@@ -98,6 +98,20 @@ static bool check_rc_or_throw(JNIEnv* env, int32_t rc, const char* context) {
 
 extern "C" {
 
+JNIEXPORT void JNICALL
+Java_com_nexatrode_nexawal_walletcore_WalletCoreJni_setI2pHttpProxy(JNIEnv* env, jclass, jstring proxy) {
+    // Refuse operation with an old native artifact; never silently retain env-only routing.
+    using configure_fn = int32_t (*)(const char*);
+    auto fn = reinterpret_cast<configure_fn>(dlsym(RTLD_DEFAULT, "wallet_set_i2p_http_proxy"));
+    if (!fn) {
+        jclass cls = env->FindClass("java/lang/IllegalStateException");
+        if (cls) env->ThrowNew(cls, "Rebuild walletcore: explicit I2P routing is unavailable");
+        return;
+    }
+    const auto value = jstring_to_std_string(env, proxy);
+    check_rc_or_throw(env, fn(proxy == nullptr ? nullptr : value.c_str()), "configure I2P HTTP proxy");
+}
+
 // Kotlin/Java signature:
 //   package com.nexatrode.nexawal.walletcore
 //   internal object WalletCoreJni { external fun version(): String }

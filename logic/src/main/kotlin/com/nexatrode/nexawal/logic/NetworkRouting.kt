@@ -4,6 +4,23 @@ package com.nexatrode.nexawal.logic
  * Pure network-policy helpers shared by Settings / WalletManager (no Android Context).
  */
 object NetworkRouting {
+    const val DEFAULT_I2P_RPC_ADDRESS = "7lfi73h743qm663hv4x5q6ccgc4jc5ncl65dfvpe665m6pawwdxa.b32.i2p"
+
+    fun validateI2pConfiguration(nodeAddress: String, proxyAddress: String?) {
+        val node = runCatching { java.net.URI(normalizeUrl(nodeAddress)) }.getOrNull()
+        require(node != null && node.scheme.equals("http", ignoreCase = true) &&
+            node.host?.lowercase()?.endsWith(".i2p") == true && node.query == null && node.fragment == null &&
+            (node.port == -1 || node.port in 1..65535)) {
+            "Enter an HTTP I2P RPC address ending in .i2p, with a valid port (not the P2P address)"
+        }
+        val raw = proxyAddress?.trim().orEmpty()
+        val proxy = runCatching { java.net.URI(if (raw.contains("://")) raw else "http://$raw") }.getOrNull()
+        require(proxy != null && proxy.scheme.equals("http", ignoreCase = true) &&
+            !proxy.host.isNullOrEmpty() && proxy.port in 1..65535 && proxy.userInfo == null &&
+            proxy.query == null && proxy.fragment == null && (proxy.path.isNullOrEmpty() || proxy.path == "/")) {
+            "Enter an I2P HTTP proxy as host:port, usually 127.0.0.1:4444 (not SOCKS or HTTPS)"
+        }
+    }
 
     enum class Policy {
         CLEARNET,

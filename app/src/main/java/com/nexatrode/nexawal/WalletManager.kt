@@ -291,40 +291,29 @@ class WalletManager(
     }
 
     private fun applyProxyEnv(forBroadcast: Boolean) {
-        val useProxy = MoneroConfig.shouldUseI2pHttpProxy(appContext, forBroadcast = forBroadcast)
+        // No process environment mutation: every core HTTP client captures its own route.
+        val policy = MoneroConfig.networkPolicy(appContext)
         val proxy = MoneroConfig.i2pHttpProxyAddress(appContext)
-        if (useProxy && !proxy.isNullOrBlank()) {
-            val proxyUrl = if (proxy.startsWith("http://") || proxy.startsWith("https://")) proxy else "http://$proxy"
-            runCatching {
-                android.system.Os.setenv("HTTP_PROXY", proxyUrl, true)
-                android.system.Os.setenv("http_proxy", proxyUrl, true)
-                android.system.Os.setenv("ALL_PROXY", proxyUrl, true)
-                android.system.Os.setenv("all_proxy", proxyUrl, true)
-            }
-        } else {
-            runCatching {
-                android.system.Os.unsetenv("HTTP_PROXY")
-                android.system.Os.unsetenv("http_proxy")
-                android.system.Os.unsetenv("ALL_PROXY")
-                android.system.Os.unsetenv("all_proxy")
-            }
+        if (policy == MoneroConfig.NetworkPolicy.I2P || (policy == MoneroConfig.NetworkPolicy.HYBRID && forBroadcast)) {
+            NetworkRouting.validateI2pConfiguration(MoneroConfig.i2pRpcAddress(appContext), proxy)
         }
+        WalletCore.setI2pHttpProxy(proxy)
     }
 
     private fun parseProxyHostPort(raw: String): Pair<String, Int>? {
         val trimmed = raw.trim()
-            .removePrefix("http://")
-            .removePrefix("https://")
-        val parts = trimmed.split(":")
-        if (parts.size != 2) return null
-        val host = parts[0].trim()
-        val port = parts[1].trim().toIntOrNull() ?: return null
-        if (host.isEmpty() || port <= 0) return null
-        return host to port
+        val uri = runCatching { java.net.URI(if (trimmed.contains("://")) trimmed else "http://$trimmed") }.getOrNull() ?: return null
+        val host = uri.host ?: return null
+        return host.removePrefix("[").removeSuffix("]") to uri.port
     }
 
     private fun buildDaemonHttpClient(forBroadcast: Boolean): OkHttpClient {
+        val policy = MoneroConfig.networkPolicy(appContext)
+        if (policy == MoneroConfig.NetworkPolicy.I2P || (policy == MoneroConfig.NetworkPolicy.HYBRID && forBroadcast)) {
+            NetworkRouting.validateI2pConfiguration(MoneroConfig.i2pRpcAddress(appContext), MoneroConfig.i2pHttpProxyAddress(appContext))
+        }
         val builder = OkHttpClient.Builder()
+            .followRedirects(false).followSslRedirects(false)
             .connectTimeout(5, TimeUnit.SECONDS)
             .readTimeout(5, TimeUnit.SECONDS)
             .writeTimeout(5, TimeUnit.SECONDS)
@@ -2401,6 +2390,9 @@ class WalletManager(
         val pending = loadPendingPrepared(walletId) ?: return null
         applyProxyEnv(forBroadcast = true)
         val endpoint = pending.nodeUrl.ifBlank { preferredNodeUrl }
+        if (MoneroConfig.networkPolicy(appContext) != MoneroConfig.NetworkPolicy.CLEARNET) {
+            NetworkRouting.validateI2pConfiguration(endpoint, MoneroConfig.i2pHttpProxyAddress(appContext))
+        }
         Log.i(
             "WalletManager",
             "Recovering pending prepared send txid=${pending.prepared.txid} via $endpoint",

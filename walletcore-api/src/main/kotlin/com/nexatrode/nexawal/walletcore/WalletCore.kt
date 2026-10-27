@@ -41,6 +41,10 @@ object WalletCore {
     @JvmStatic
     fun version(): String = WalletCoreJni.version()
 
+    /** Explicit I2P route; never changes concurrent clearnet clients. */
+    @JvmStatic
+    fun setI2pHttpProxy(proxy: String?) = WalletCoreJni.setI2pHttpProxy(proxy)
+
     /**
      * Generate a new English Monero mnemonic (25 words).
      *
@@ -658,6 +662,7 @@ internal object WalletCoreJni {
     }
 
     external fun version(): String
+    external fun setI2pHttpProxy(proxy: String?)
     external fun generateMnemonicEnglish(): String
 
     /**
